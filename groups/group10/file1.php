@@ -6,15 +6,11 @@ $klein->respond('GET', '/group10', function ($request, $response, $service) {
   $query = "SELECT * from movies";
   $stmt = $conn->prepare($query);
   $stmt->execute();
-  $num = $stmt->rowCount();
-  if($num > 0) {
-    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-      extract($row);
-      echo "id : ".$id.", name : ".$name."\n";
-    }
-  }
-  die;
 
+  $num = $stmt->rowCount();
+  $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+  $service->allMovies = $arr;
   $service->pageTitle = 'Hello';
-  $service->render('layouts/home.php');
+  $service->render('layouts/group10/home.php');
 });

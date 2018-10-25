@@ -6,5 +6,6 @@
   </head>
   <body>
     This is home <?=$this->pageTitle ?>
+    <p>HELLO</p>
   </body>
 </html>

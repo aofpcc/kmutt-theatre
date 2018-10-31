@@ -5,15 +5,7 @@
   <title><?=$this->pageTitle ?></title>
 </head>
 <body>
-  <ul>
-    <?php
-    foreach ($this->allMovies as $key => $value) {
-    ?>
-    <li><?=$value["name"] ?></li>
-    <?php
-    }
-    ?>
-  </ul>
-  HELLO
+  <h1>Welcome to KMUTT Theatre</h1>
+  <a href="/customer/booking">Booking Page</a>
 </body>
 </html>

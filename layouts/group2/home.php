@@ -5,6 +5,6 @@
     <title></title>
   </head>
   <body>
-    abc
+    This is home <?=$this->pageTitle ?>
   </body>
 </html>

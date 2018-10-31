@@ -1,3 +1,19 @@
+<? session_start(); ?>
+
+<?php
+require_once(''); ?>
+
+<?php
+require_once(''); ?>
+<?php
+
+$chair = array('' );
+$price =
+
+ ?>
+
+
+
 <?php
 $klein->respond('GET', '/group1', function ($request, $response, $service) {
   global $database;

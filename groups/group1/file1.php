@@ -1,19 +1,3 @@
-<? session_start(); ?>
-
-<?php
-require_once(''); ?>
-
-<?php
-require_once(''); ?>
-<?php
-
-$chair = array('' );
-$price =
-
- ?>
-
-
-
 <?php
 $klein->respond('GET', '/group1', function ($request, $response, $service) {
   global $database;
@@ -61,8 +45,12 @@ $klein->respond('GET', '/customer/home', function ($request, $response, $service
   $service->render('layouts/group1/home.php');
 });
 
+$klein->respond('/customer/home/[file_path]', function ($request, $response, $service) {
+    $response->file('layouts/group1/[file_path]');
+});
+
 $klein->respond('GET', '/customer/booking', function ($request, $response, $service) {
-  $service->render('layouts/group1/bookingPage.php');
+  $service->render('layouts/group1/bookingPagee.php');
 });
 
 $klein->respond('GET', '/', function ($request, $response, $service) {

@@ -1,3 +1,7 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,9 +24,9 @@
 
   <link href='https://fonts.googleapis.com/css?family=Kotta+One' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-  <link href="/layouts/group1/css/style.css" rel="stylesheet" type="text/css" media="all" />
   <script src="/layouts/group1/js/jquery-1.11.0.min.js"></script>
   <script src="/layouts/group1/js/jquery.seat-charts.js"></script>
+  <link href="/layouts/group1/css/style.css" rel="stylesheet" type="text/css" media="all" />
   <link rel="stylesheet" href="/layouts/group1/css/onStyle.css">
 </head>
 </head>
@@ -95,7 +99,8 @@
       <div style="clear:both"></div>
     </div>
 
-    <script src="/layouts/group1/js/booking.js" charset="utf-8"></script>
+    <!-- <script src="/layouts/group1/js/booking.js" charset="utf-8"></script> -->
+    <?php $this->render("layouts/group1/js/booking.php"); ?>
   </div>
   <script src="/layouts/group1/js/jquery.nicescroll.js"></script>
   <script src="/layouts/group1/js/scripts.js"></script>

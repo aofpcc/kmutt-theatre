@@ -94,7 +94,7 @@ p.copy_rights a:hover{
 }
 /*-- movie ticket --*/
 .front{
-    margin: 5px 4px 45px 38px;
+    margin: 5px 80px 45px 38px;
     background-color: #D88A04;
     color: #fff;
     text-align: center;
@@ -120,6 +120,14 @@ p.copy_rights a:hover{
     font-size: 14px;
 	font-weight:normal;
 }
+.img_container{
+        border: 1px solid gray;
+        height: 250px;
+        width: 900px;
+        display: table-cell;
+				padding: 30px 120px;
+        vertical-align: middle;
+      }
 div.seatCharts-cell {
 	color: #182C4E;
     height: 29px;

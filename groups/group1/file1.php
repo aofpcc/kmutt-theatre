@@ -18,7 +18,14 @@ $klein->respond('GET', '/customer/home', function ($request, $response, $service
     '__aaaaaa__'
   ];
 
-  $query = "SELECT seat_no FROM Booking";
+  $movie_id = 2;
+  $theatre_no = 2;
+  $branch = 2;
+  $showtime = TIME("00:00:00");
+  $date = '0000-00-00';
+
+  $query = "SELECT seat_no FROM ticket WHERE movie_id = $movie_id AND theatre_no = $theatre_no
+            AND branch = $branch AND showtime = $showtime AND date = $date";
   $stmt = $conn->prepare($query);
   $stmt->execute();
   $num = $stmt->rowCount();
@@ -28,10 +35,6 @@ $klein->respond('GET', '/customer/home', function ($request, $response, $service
   if($num > 0) {
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
       extract($row);
-      // array_push($result, array(
-      //   "id" => $id,
-      //   "name" => $name
-      // ));
       array_push($result, $seat_no);
     }
   }

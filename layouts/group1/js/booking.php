@@ -6,7 +6,7 @@
 <script>
   var price = 10; //price
   $(document).ready(function() {
-    var $cart = $('#selected-seats'), //Sitting Area
+    var $cart = $('#selectedSeats'), //Sitting Area
     $counter = $('#counter'), //Votes
     $total = $('#total'); //Total money
 
@@ -58,10 +58,15 @@
       },
       click: function () { //Click event
         if (this.status() == 'available') { //optional seat
-          $('<li>Row'+(this.settings.row+1)+' Seat'+this.settings.label+'</li>')
+
+          $("<li><input class='' name='selectedSeats[]' value='" + this.settings.id + "' type='hidden'>Row"+(this.settings.row+1)+" Seat"+this.settings.label+"</input></li>")
           .attr('id', 'cart-item-'+this.settings.id)
+          // .attr('name', 'cart-item-'+this.settings.id)
+          .attr('value', this.settings.id)
+          // .attr('name', 'selectedSeats[]')
           .data('seatId', this.settings.id)
           .appendTo($cart);
+
           $counter.text(sc.find('selected').length+1);
           $total.text(recalculateTotal(sc)+price);
 

@@ -1,6 +1,6 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);?>
+
+?>
 
 <!DOCTYPE html>
 <html>
@@ -70,40 +70,9 @@ ini_set('display_errors', 1);?>
   </nav>
 
   <div class="main">
-    <h2>Booking</h2>
-    <div class="demo">
-      <div id="seat-map">
-        <div class="front">SCREEN</div>
-      </div>
-      <div class="booking-details">
-        <ul class="book-left">
-          <li>Movie </li>
-          <li>Time </li>
-          <li>Tickets</li>
-          <li>Total</li>
-          <li>Seats :</li>
-        </ul>
-        <ul class="book-right">
-          <li>: Gingerclown</li>
-          <li>: April 3, 21:00</li>
-          <li>: <span id="counter">0</span></li>
-          <li>: <b><i>$</i><span id="total">0</span></b></li>
-        </ul>
-        <div class="clear"></div>
-
-        <form action="/customer/payment" method="post">
-          <ul id="selectedSeats" class="scrollbar scrollbar1"></ul>
-          <button id="booknow" class="checkout-button">Book Now
-        </form>
-
-        </button>
-        <div id="legend"></div>
-      </div>
-      <div style="clear:both"></div>
-    </div>
-
-    <!-- <script src="/layouts/group1/js/booking.js" charset="utf-8"></script> -->
-    <?php $this->render("layouts/group1/js/booking.php"); ?>
+    <p>
+      <?php echo json_encode($this->selectedSeats); ?>
+    </p>
   </div>
   <script src="/layouts/group1/js/jquery.nicescroll.js"></script>
   <script src="/layouts/group1/js/scripts.js"></script>

@@ -58,7 +58,7 @@ $klein->respond('GET', '/group6/checkUniqness', function ($request, $response, $
   $user = $_GET['user'];
   $phoneno = $_GET['phoneno'];
 
-  $query = "SELECT ID from Membership where Username = '$user' and PhoneNumber = '$phoneno'";
+  $query = "SELECT ID from Membership where Username = '$user' or PhoneNumber = '$phoneno'";
   $stmt = $conn->prepare($query);
   $stmt->execute();
 

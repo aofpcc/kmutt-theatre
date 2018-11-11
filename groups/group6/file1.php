@@ -48,6 +48,7 @@ $klein->respond('GET', '/group6/regis', function ($request, $response, $service)
   $num = $stmt->rowCount();
   $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
 
+  echo json_encode([$query]);
 });
 
 $klein->respond('GET', '/group6/max', function ($request, $response, $service) {

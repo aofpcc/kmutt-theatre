@@ -51,6 +51,23 @@ $klein->respond('GET', '/group6/regis', function ($request, $response, $service)
   echo json_encode([$query]);
 });
 
+$klein->respond('GET', '/group6/checkUniqness', function ($request, $response, $service) {
+  global $database;
+  $conn = $database->getConnection();
+
+  $user = $_GET['user'];
+  $phoneno = $_GET['phoneno'];
+
+  $query = "SELECT ID from Membership where Username = '$user' and PhoneNumber = '$phoneno'";
+  $stmt = $conn->prepare($query);
+  $stmt->execute();
+
+  $num = $stmt->rowCount();
+  $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+  echo json_encode($arr);
+});
+
 $klein->respond('GET', '/group6/max', function ($request, $response, $service) {
   global $database;
   $conn = $database->getConnection();

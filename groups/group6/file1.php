@@ -12,4 +12,8 @@ $klein->respond('GET', '/group6', function ($request, $response, $service) {
 
   echo json_encode($arr);
 });
+
+$klein->respond('GET', '/group6/max', fucntion($request, $response, $service ) {
+  $response->body("Max");
+});
 ?>

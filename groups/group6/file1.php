@@ -35,5 +35,5 @@ $klein->respond('GET', '/group6/login', function ($request, $response, $service)
   if ($num == 1)
     echo json_encode($arr);
   else
-    echo 'Invalid';
+    echo json_encode(['Invalid']);
 });

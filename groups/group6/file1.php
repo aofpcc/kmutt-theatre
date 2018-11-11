@@ -13,6 +13,25 @@ $klein->respond('GET', '/group6', function ($request, $response, $service) {
   echo json_encode($arr);
 });
 
+
+$klein->respond('GET', '/group6/loginn', function ($request, $response, $service) {
+  global $database;
+  $conn = $database->getConnection();
+
+  $user = $_GET['user'];
+  $password = $_GET['pass'];
+
+  $query = "SELECT ID from Membership where Username = '$user' and Password = '$password' ";
+  $stmt = $conn->prepare($query);
+  $stmt->execute();
+
+  $num = $stmt->rowCount();
+  $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+  echo json_encode($arr);
+});
+
+
 $klein->respond('GET', '/group6/max', function($request, $response, $service ) {
 
   $response->body("Max");

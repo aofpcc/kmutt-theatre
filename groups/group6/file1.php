@@ -25,7 +25,7 @@ $klein->respond('POST', '/group6/login', function ($request, $response, $service
   $user = $request->user;
   $password = $request->password;
 
-  $query = "SELECT FirstName from Membership where Username= '$user' and password='$password'";
+  $query = "SELECT FirstName from Membership where Username = '$user' and Password = '$password' ";
   $stmt = $conn->prepare($query);
   $stmt->execute();
 
@@ -33,7 +33,7 @@ $klein->respond('POST', '/group6/login', function ($request, $response, $service
   $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
 
   if ($num == 1)
-    echo json_encode($arr);
+    echo json_encode([$query, $arr]);
   else
     echo json_encode([$query, 'Invalid']);
 });

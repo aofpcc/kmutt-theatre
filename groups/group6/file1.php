@@ -18,13 +18,14 @@ $klein->respond('GET', '/group6/max', function($request, $response, $service ) {
   $response->body("Max");
 });
 
-$klein->respond('GET', '/group6/login', function ($request, $response, $service) {
+$klein->respond('POST', '/group6/login', function ($request, $response, $service) {
   global $database;
   $conn = $database->getConnection();
 
-  // $user = $request->user;
+  $user = $request->user;
+  $password = $request->password;
 
-  $query = "SELECT Username, Password from Membership where Username='Ay' and password='123s456'";
+  $query = "SELECT FirstName from Membership where Username= '$user' and password='$password'";
   $stmt = $conn->prepare($query);
   $stmt->execute();
 

@@ -92,7 +92,7 @@ ini_set('display_errors', 1);?>
         <div class="clear"></div>
 
         <form action="/customer/payment" method="post">
-          <ul id="selectedSeats" class="scrollbar scrollbar1"></ul>
+            <ul id="selectedSeats" class="scrollbar scrollbar1"></ul>
           <button id="booknow" class="checkout-button">Book Now
         </form>
 

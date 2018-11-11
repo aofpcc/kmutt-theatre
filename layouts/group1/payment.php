@@ -71,7 +71,15 @@
 
   <div class="main">
     <p>
-      <?php echo json_encode($this->selectedSeats); ?>
+      <?php //echo json_encode($this->selectedSeats);
+        if($this->selectedSeats == null){
+          //echo 'select the chair';
+          header('location: http://localhost:8000/customer/home');
+          die;
+        }else{
+          echo json_encode($this->selectedSeats);
+        }
+      ?>
     </p>
   </div>
   <script src="/layouts/group1/js/jquery.nicescroll.js"></script>

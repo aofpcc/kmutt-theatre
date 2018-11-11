@@ -71,7 +71,17 @@
 
   <div class="main">
     <p>
-      <?php echo json_encode($this->selectedSeats); ?>
+      <?php //echo json_encode($this->selectedSeats);
+        if($this->selectedSeats == null){
+           echo 'select the chair';
+          // header('location: http://localhost:8000/customer/home'); ?>
+          <?php $this->render("layouts/group1/popup.php"); ?>
+        <?php
+        }else{
+          echo json_encode($this->selectedSeats);
+        }
+        ?>
+
     </p>
   </div>
   <script src="/layouts/group1/js/jquery.nicescroll.js"></script>

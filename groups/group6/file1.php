@@ -18,7 +18,7 @@ $klein->respond('GET', '/group6/max', function($request, $response, $service ) {
   $response->body("Max");
 });
 
-$klein->respond('POST', '/group6/login', function ($request, $response, $service) {
+$klein->respond('GET', '/group6/login', function ($request, $response, $service) {
   global $database;
   $conn = $database->getConnection();
 

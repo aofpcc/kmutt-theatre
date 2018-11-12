@@ -22,7 +22,7 @@
    //  $stmt->execute();
 
     // Render the page
-    $service->render('layouts/group2/payment.php');
+    $service->render('layouts/group1/payment.php');
   });
 
 ?>

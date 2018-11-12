@@ -73,7 +73,7 @@
     <p>
       <?php //echo json_encode($this->selectedSeats);
         if($this->selectedSeats == null){
-           echo 'select the chair';
+           //echo 'select the chair';
           // header('location: http://localhost:8000/customer/home'); ?>
           <?php $this->render("layouts/group1/popup.php"); ?>
         <?php

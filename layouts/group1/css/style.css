@@ -32,7 +32,7 @@ img{max-width:100%;}
 body{
 	padding:0;
 	margin:0;
-    background:url(../image/back3.jpg) no-repeat center;
+    background:url(../image/back3.jpg) repeat center;
     background-size: cover;
     -webkit-background-size: cover;
     -o-background-size: cover;
@@ -208,6 +208,22 @@ span.seatCharts-legendDescription {
 	/*-- w3layouts --*/
     -ms-transition: 0.5s all;
 }
+.goback-button {
+    display: block;
+    margin: auto;
+    border:none;
+    font-size: 16px;
+    cursor: pointer;
+    background: #D88A04;
+    padding: 7px 11px;
+    color: #fff;
+	outline:none;
+	transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+	}
 #selected-seats {
 	max-height: 84px;
 	overflow-y: auto;

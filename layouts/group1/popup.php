@@ -1,12 +1,18 @@
 <?php
+echo '<script language="javascript">';
+echo 'alert("you forget to select the chair");';
+echo 'window.location.href = "http://localhost:8000/customer/home";';
+echo '</script>';
  ?>
- <!DOCTYPE html>
-<html>
+
+ <!-- old -->
+<!-- <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 
-</style>
+</style> -->
+
 <!--<style>
 body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box;}
@@ -79,13 +85,16 @@ body {font-family: Arial, Helvetica, sans-serif;}
   opacity: 1;
 }
 </style>-->
-</head>
+
+<!-- old -->
+<!-- </head>
 <body>
 
 <h2>Popup Form</h2>
 <h1 align = "center">You forget to select the chair and please go back to select the chair please.</h1>
 <br><br>
-<button id="booknow" class="goback-button">Book Now</button>
+<button id="booknow" class="goback-button">Book Now</button> -->
+
 <!--<button class="open-button" onclick="openForm()">Go back</button>
 
 <div class="form-popup" id="myForm">
@@ -103,7 +112,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
   </form>
 </div>-->
 
-<script>
+<!-- old -->
+<!-- <script>
 function openForm() {
     document.getElementById("myForm").style.display = "block";
 }
@@ -114,4 +124,16 @@ function closeForm() {
 </script>
 
 </body>
-</html>
+</html> -->
+
+
+<!-- <!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <body>
+    <script>
+      function myFunction() {
+        alert(location.hostname);
+      }
+</script>
+  </body>
+</html> -->

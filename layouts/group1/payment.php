@@ -71,7 +71,7 @@
 
   <div class="main">
 
-    
+
   <div class="card card-temp shadow-lg">
           <div class="container">
             <br>
@@ -81,7 +81,7 @@
                     <a href="#"><img class="card-img-top" src="https://lh3.googleusercontent.com/8Lr1BMoZOxsSLoTZr6IxDZuLDiSc6oMTopLA2B-MhXbwxqpDguDHy8r_zj1430V2augHqTSdHsNjz6MYfbEm=w260" alt=""></a>
                   </div>
                 </div>
-            
+
                 <div class="col-md-8">
                     <br><br>
                     <font size="6">GingerClown</font><br><br>
@@ -90,16 +90,18 @@
                     <font size="4">135 Mins</font> <br><br>
                     <font size="4">ที่นั่งเลือก</font> <<font size="4"> ราคารวม </font>
                     <p>
-                        <?php //echo json_encode($this->selectedSeats);
-                        if($this->selectedSeats == null){
-                            echo 'select the chair';
-                              // header('location: http://localhost:8000/customer/home'); ?>
+
+                         <?php //echo json_encode($this->selectedSeats);
+                       if($this->selectedSeats == null){
+                      //       echo 'select the chair';
+                      //         // header('location: http://localhost:8000/customer/home'); ?>
                         <?php $this->render("layouts/group1/popup.php"); ?>
-                      <?php
+                      // <?php
                         }else{
                             echo json_encode($this->selectedSeats);
                         }
                       ?>
+
                     </p>
 
                       </p><br><br>
@@ -111,7 +113,7 @@
         </div>
 </div>
 
-  
+
   <script src="/layouts/group1/js/jquery.nicescroll.js"></script>
   <script src="/layouts/group1/js/scripts.js"></script>
 </body>

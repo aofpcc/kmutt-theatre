@@ -51,6 +51,45 @@ $klein->respond('GET', '/group6/regis', function ($request, $response, $service)
   echo json_encode([$query]);
 });
 
+$klein->respond('GET', '/group6/update', function ($request, $response, $service) {
+  global $database;
+  $conn = $database->getConnection();
+
+  $id = $_GET['id'];
+   $pass = $_GET['pass'];  $firstname = $_GET['firstname'];
+  $lastname = $_GET['lastname'];  $gender = $_GET['gender'];  $birthdate = $_GET['birthdate'];
+  $email = $_GET['email'];  $phonenumber = $_GET['phonenumber'];  $address = $_GET['address'];
+  $district = $_GET['district'];  $province = $_GET['province'];  $postcode = $_GET['postcode'];
+
+
+  $query = "UPDATE Membership SET Password='$pass', FirstName='$firstname', LastName='$lastname', Gender='$gender', Birthdate='$birthdate', Email='$email', PhoneNumber='$phonenumber', Address='$address', District='$district', Province='$province', Postcode='$postcode' WHERE ID=$id";
+
+  $stmt = $conn->prepare($query);
+  $stmt->execute();
+
+  $num = $stmt->rowCount();
+  $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+  echo json_encode([$query]);
+});
+
+$klein->respond('GET', '/group6/setMoney', function ($request, $response, $service) {
+  global $database;
+  $conn = $database->getConnection();
+
+  $id = $_GET['id'];
+  $money = $_GET['money'];
+
+  $query = "UPDATE Membership SET Money=$money WHERE ID = $id";
+  $stmt = $conn->prepare($query);
+  $stmt->execute();
+
+  $num = $stmt->rowCount();
+  $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+  echo json_encode([$query]);
+});
+
 $klein->respond('GET', '/group6/checkUniqness', function ($request, $response, $service) {
   global $database;
   $conn = $database->getConnection();

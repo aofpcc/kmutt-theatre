@@ -62,7 +62,7 @@
             <a href="#"><img class="card-img-top" src="Pic/Movie1.jpg" alt=""></a>
             <div class="card-body">
               <h4 class="card-title">
-                <a href="/group8/Movie1.html" id="m1">Before 03:00 PM</a>
+                <a href="/group8M" id="m1">Before 03:00 PM</a>
                 
               </h4>
               <p class="card-text">     </p>
@@ -74,7 +74,7 @@
             <a href="#"><img class="card-img-top" src="Pic/Movie2.jpg" alt=""></a>
             <div class="card-body">
               <h4 class="card-title">
-                <a href="#">After 03:00 PM</a>
+                <a href="/group8M2" >After 03:00 PM</a>
               </h4>
               <p class="card-text">     </p>
             </div>
@@ -85,7 +85,7 @@
             <a href="#"><img class="card-img-top" src="Pic/Food1.jpg" alt=""></a>
             <div class="card-body">
               <h4 class="card-title">
-                <a href="#">Couple set(Popcorn M + Drink M)</a>
+                <a href="/group8F">Couple set(Popcorn M + Drink M)</a>
               </h4>
               <p class="card-text"></p>
             </div>
@@ -96,7 +96,7 @@
             <a href="#"><img class="card-img-top" src="Pic/Food2.jpg" alt=""></a>
             <div class="card-body">
               <h4 class="card-title">
-                <a href="#">Couple set(Popcorn L + Drink L)</a>
+                <a href="/group8F2">Couple set(Popcorn L + Drink L)</a>
               </h4>
               <p class="card-text">    </p>
             </div>
@@ -107,7 +107,7 @@
             <a href="#"><img class="card-img-top" src="Pic/Food3.jpg" alt=""></a>
             <div class="card-body">
               <h4 class="card-title">
-                <a href="#">Family set(Popcorn XL + Drink XL)</a>
+                <a href="/group8F3">Family set(Popcorn XL + Drink XL)</a>
               </h4>
               <p class="card-text"></p>
             </div>

@@ -68,6 +68,7 @@
           <p></p>
           <p>
             <a class="btn btn-primary btn-lg" href="#">Buy now &raquo;</a>
+            
           </p>
         </div>
         

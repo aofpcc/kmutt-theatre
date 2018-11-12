@@ -36,19 +36,19 @@ $klein->respond('GET', '/group8M', function ($request, $response, $service) {
 });
 $klein->respond('GET', '/group8M2', function ($request, $response, $service) {
 
-  $service->render('layouts/group8/DB2/Movie2.html');
+  $service->render('layouts/group8/DB2/Movie2.php');
 });
 $klein->respond('GET', '/group8F', function ($request, $response, $service) {
 
-  $service->render('layouts/group8/DB2/Food1.html');
+  $service->render('layouts/group8/DB2/Food1.php');
 });
 $klein->respond('GET', '/group8F2', function ($request, $response, $service) {
 
-  $service->render('layouts/group8/DB2/Food2.html');
+  $service->render('layouts/group8/DB2/Food2.php');
 });
 $klein->respond('GET', '/group8F3', function ($request, $response, $service) {
 
-  $service->render('layouts/group8/DB2/Food3.html');
+  $service->render('layouts/group8/DB2/Food3.php');
 });
 
 $klein->respond('GET', '/group8/N', function ($request, $response, $service) {

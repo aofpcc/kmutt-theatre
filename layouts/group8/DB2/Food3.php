@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Food2</title>
+    <title>Food3</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -52,7 +52,7 @@
     <div class="row">
         <div class="col-lg-4 col-sm-6 portfolio-item">
           <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="Pic/Food2.jpg" alt=""class="center"> </a>
+            <a href="#"><img class="card-img-top" src="Pic/Food3.jpg" alt=""class="center"> </a>
            
             </div>
           </div>
@@ -63,11 +63,18 @@
 
       <div class="row">
         <div class="col-sm-8">
-          <h2 class="mt-4">Couple set II</h2>
-          <p>Popcorn (size L) x1</p>
-          <p>Drink (size L) x1</p>
+          <h2 class="mt-4">Family set</h2>
+          <p>Popcorn (size XL)</p>
+          <p>Drink (size XL) x1</p>
           <p>
-            <a class="btn btn-primary btn-lg" href="#">Get Code &raquo;</a>
+          <?php
+              if ($this->rand) {
+                  // echo 'YES';
+              } 
+              else {
+                  echo "<a class='btn btn-primary btn-lg' href='/group8/gen'>Get Code &raquo;</a>";
+              }
+                ?>
           </p>
         </div>
         

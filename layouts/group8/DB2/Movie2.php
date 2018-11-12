@@ -67,7 +67,14 @@
           <p>Buy ticket after 03:00 PM 150/ticket</p>
           <p></p>
           <p>
-            <a class="btn btn-primary btn-lg" href="#">Buy now &raquo;</a>
+              <?php
+              if ($this->rand) {
+                  // echo 'YES';
+              } 
+              else {
+                  echo "<a class='btn btn-primary btn-lg' href='/group8/gen'>Get Code &raquo;</a>";
+              }
+                ?>
           </p>
         </div>
         

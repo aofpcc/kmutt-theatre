@@ -25,11 +25,11 @@ $klein->respond('GET', '/customer/home', function ($request, $response, $service
   $date = '0000-00-00';
 
   $query = "SELECT seat_no FROM ticket WHERE movie_id = $movie_id AND theatre_no = $theatre_no
-            AND branch = $branch AND showtime = $showtime AND dates = $date";
+            AND branch = $branch AND showtime = $showtime AND date = $date";
   $stmt = $conn->prepare($query);
   $stmt->execute();
   $num = $stmt->rowCount();
-  
+
   $result = array();
 
   if($num > 0) {

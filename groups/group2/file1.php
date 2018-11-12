@@ -16,7 +16,7 @@ $klein->respond('GET', '/customer/ticket', function ($request, $response, $servi
   });
 
   $klein->respond('GET', '/customer/booking', function ($request, $response, $service) {
-  $service->render('layouts/group2/bookingPagee.php');
+  $service->render('layouts/group2/bookingPage.php');
   });
 
   $klein->respond('GET', '/', function ($request, $response, $service) {

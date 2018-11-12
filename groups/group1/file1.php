@@ -18,14 +18,15 @@ $klein->respond('GET', '/customer/home', function ($request, $response, $service
     '__aaaaaa__'
   ];
 
-  $movie_id = 2;
-  $theatre_no = 2;
-  $branch = 2;
+  $movie_id = '1';
+  $theatre_no = '3';
+  $branch = '1';
   $showtime = TIME("00:00:00");
-  $date = '0000-00-00';
+  $dates = '0000-00-00';
 
-  $query = "SELECT seat_no FROM ticket WHERE movie_id = $movie_id AND theatre_no = $theatre_no
-            AND branch = $branch AND showtime = $showtime AND dates = $date";
+  $query = "SELECT seat_no FROM ticket WHERE movie_id = '$movie_id' AND theatre_no = '$theatre_no'
+            AND branch = '$branch'";
+  //echo $query;
   $stmt = $conn->prepare($query);
   $stmt->execute();
   $num = $stmt->rowCount();

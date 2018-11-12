@@ -1,5 +1,5 @@
 <?php
-$klein->respond('GET', '/group1', function ($request, $response, $service) {
+$klein->respond('GET', '/customer/home', function ($request, $response, $service) {
   global $database;
   $conn = $database->getConnection();
 
@@ -15,7 +15,7 @@ $klein->respond('GET', '/group1', function ($request, $response, $service) {
   $service->render('layouts/group1/home.php');
 });
 
-$klein->respond('GET', '/group', function ($request, $response, $service) {
+$klein->respond('GET', '/customer/bookingPage', function ($request, $response, $service) {
   global $database;
   $conn = $database->getConnection();
 

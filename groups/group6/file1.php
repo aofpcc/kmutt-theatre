@@ -68,6 +68,22 @@ $klein->respond('GET', '/group6/checkUniqness', function ($request, $response, $
   echo json_encode($arr);
 });
 
+$klein->respond('GET', '/group6/getInfo', function ($request, $response, $service) {
+  global $database;
+  $conn = $database->getConnection();
+
+  $id = $_GET['id'];
+
+  $query = "SELECT * from Membership where ID = '$id'";
+  $stmt = $conn->prepare($query);
+  $stmt->execute();
+
+  $num = $stmt->rowCount();
+  $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+  echo json_encode($arr);
+});
+
 $klein->respond('GET', '/group6/max', function ($request, $response, $service) {
   global $database;
   $conn = $database->getConnection();

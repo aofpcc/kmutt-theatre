@@ -5,6 +5,9 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
+
+</style>
+<!--<style>
 body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box;}
 
@@ -75,15 +78,15 @@ body {font-family: Arial, Helvetica, sans-serif;}
 .form-container .btn:hover, .open-button:hover {
   opacity: 1;
 }
-</style>
+</style>-->
 </head>
 <body>
 
 <h2>Popup Form</h2>
-<p>You forget to select the chair and please go back to select the chair please.</p>
-
-
-<button class="open-button" onclick="openForm()">Go back</button>
+<h1 align = "center">You forget to select the chair and please go back to select the chair please.</h1>
+<br><br>
+<button id="booknow" class="goback-button">Book Now</button>
+<!--<button class="open-button" onclick="openForm()">Go back</button>
 
 <div class="form-popup" id="myForm">
   <form action="/action_page.php" class="form-container">
@@ -98,7 +101,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
     <button type="submit" class="btn">Login</button>
     <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
   </form>
-</div>
+</div>-->
 
 <script>
 function openForm() {

@@ -71,6 +71,11 @@ ini_set('display_errors', 1);?>
 
   <div class="main">
     <h2>Booking</h2>
+    <div class = "img_container">
+  <img src="/layouts/group1/image/ging.jpg" width="150">
+</div>
+<br>
+<br>
     <div class="demo">
       <div id="seat-map">
         <div class="front">SCREEN</div>

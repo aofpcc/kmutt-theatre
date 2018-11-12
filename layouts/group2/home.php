@@ -5,6 +5,18 @@
     <title></title>
   </head>
   <body>
-    This is home <?=$this->pageTitle ?>
+  <?php
+  $x = array(
+    array(
+      'name' => 'Parin',
+      'age' => 19
+    ),
+    array(
+      'name' => 'Game',
+      'age' => 20
+    ),
+  );
+  ?>
+   
   </body>
 </html>

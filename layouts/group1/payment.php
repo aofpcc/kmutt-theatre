@@ -70,20 +70,48 @@
   </nav>
 
   <div class="main">
-    <p>
-      <?php //echo json_encode($this->selectedSeats);
-        if($this->selectedSeats == null){
-           //echo 'select the chair';
-          // header('location: http://localhost:8000/customer/home'); ?>
-          <?php $this->render("layouts/group1/popup.php"); ?>
-        <?php
-        }else{
-          echo json_encode($this->selectedSeats);
-        }
-        ?>
 
-    </p>
-  </div>
+    
+  <div class="card card-temp shadow-lg">
+          <div class="container">
+            <br>
+            <div class="row">
+              <div class="col-lg-4 col-md-6 mb-4">
+                  <div class="card h-100">
+                    <a href="#"><img class="card-img-top" src="https://lh3.googleusercontent.com/8Lr1BMoZOxsSLoTZr6IxDZuLDiSc6oMTopLA2B-MhXbwxqpDguDHy8r_zj1430V2augHqTSdHsNjz6MYfbEm=w260" alt=""></a>
+                  </div>
+                </div>
+            
+                <div class="col-md-8">
+                    <br><br>
+                    <font size="6">GingerClown</font><br><br>
+                    <font size="4">30 February 2030</font><br><br>
+                    <font size="4">21 : 00</font> &nbsp&nbsp&nbsp  <font size="4"> Theater 5 </font><br><br>
+                    <font size="4">135 Mins</font> <br><br>
+                    <font size="4">ที่นั่งเลือก</font> <<font size="4"> ราคารวม </font>
+                    <p>
+                        <?php //echo json_encode($this->selectedSeats);
+                        if($this->selectedSeats == null){
+                            echo 'select the chair';
+                              // header('location: http://localhost:8000/customer/home'); ?>
+                        <?php $this->render("layouts/group1/popup.php"); ?>
+                      <?php
+                        }else{
+                            echo json_encode($this->selectedSeats);
+                        }
+                      ?>
+                    </p>
+
+                      </p><br><br>
+                    <button type="button" class="btn btn-lg btn-default">PAYMENT</button>
+                  </div>
+              </div>
+          </div>
+        </div>
+        </div>
+</div>
+
+  
   <script src="/layouts/group1/js/jquery.nicescroll.js"></script>
   <script src="/layouts/group1/js/scripts.js"></script>
 </body>

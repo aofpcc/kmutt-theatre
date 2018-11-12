@@ -1,4 +1,5 @@
 <?php
 $included = array(
-  'file1'
+  'file1',
+  'gen'
 );

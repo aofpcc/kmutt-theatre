@@ -47,6 +47,7 @@
 
     }
     // Render the page
+    
     $service->render('layouts/group1/payment.php');
 
      //error

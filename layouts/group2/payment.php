@@ -1,6 +1,6 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);?>
+
+?>
 
 <!DOCTYPE html>
 <html>
@@ -71,29 +71,37 @@ ini_set('display_errors', 1);?>
 
   <div class="main">
     <h2>Booking</h2>
-    <div class="demo">
-      <div id="seat-map">
+    <div class="active">
+      <!-- <div id="seat-map">
         <div class="front">SCREEN</div>
+      </div> -->
+      <div id="poster">
+        <div class="poster-details">
+          <ul class="poster-left">
+        <img src = "https://m.media-amazon.com/images/M/MV5BMjg0OTQ4NjYyOV5BMl5BanBnXkFtZTgwNDM4NjczMzE@._V1_SY1000_CR0,0,666,1000_AL_.jpg"
+        align="left" width="213" height="320">
+      </ul>
+      </div>
       </div>
       <div class="booking-details">
         <ul class="book-left">
           <li>Movie </li>
           <li>Time </li>
-          <li>Tickets</li>
+          <!-- <li>Tickets</li> -->
           <li>Total</li>
           <li>Seats :</li>
         </ul>
         <ul class="book-right">
           <li>: Gingerclown</li>
           <li>: April 3, 21:00</li>
-          <li>: <span id="counter">0</span></li>
+          <li>: <span id="counter">1</span></li>
           <li>: <b><i>$</i><span id="total">0</span></b></li>
         </ul>
         <div class="clear"></div>
 
         <form action="/customer/payment" method="post">
             <ul id="selectedSeats" class="scrollbar scrollbar1"></ul>
-          <button id="booknow" class="checkout-button">Book Now
+          <button id="TicketOut" class="checkout-button">Ticket Out
         </form>
 
         </button>
@@ -102,8 +110,8 @@ ini_set('display_errors', 1);?>
       <div style="clear:both"></div>
     </div>
 
-    <!-- <script src="/layouts/group2/js/booking.js" charset="utf-8"></script> -->
-    <?php $this->render("layouts/group2/js/booking.php"); ?>
+    <!-- <script src="/layouts/group2/js/booking.js" charset="utf-8"></script>
+    <?php $this->render("layouts/group2/js/ทำวันหลัง"); ?> -->
   </div>
   <script src="/layouts/group2/js/jquery.nicescroll.js"></script>
   <script src="/layouts/group2/js/scripts.js"></script>

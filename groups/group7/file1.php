@@ -11,6 +11,11 @@ $klein->respond('GET', '/group7', function ($request, $response, $service) {
   $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
 
   $service->allMovies = $arr;
-  $service->pageTitle = 'Hello';
+  $service->pageTitle = 'asdfafdsfsafasdfa';
   $service->render('layouts/group7/home.php');
+});
+
+$klein->respond('GET', '/group7/min/[:text]?', function ($req, $response, $service) {
+  $service->value = $req->text;
+  $service->render('layouts/group7/min.php');
 });

@@ -43,6 +43,7 @@ $klein->respond('POST', '/staff', function ($request, $response, $service) {
   if ($resultCount == 1) {
     session_start();
     $_SESSION['name'] = $username;
+    $_SESSION['pass'] = $password;
     $response->redirect('/staff/employee');
     $response->send();
   }
@@ -62,7 +63,7 @@ $klein->respond('GET', '/staff/employee/dashboard', function ($request, $respons
   ini_set('display_errors', 1);
   
   session_start();
-  if($_SESSION['name'] !=""){
+  if($_SESSION['name'] !="" &&  $_SESSION['pass'] !=""){
   $service->nameTag = 'dashboard.php'; 
   $service->name =$_SESSION['name'];
   $service->render('layouts/group11/employee.php');

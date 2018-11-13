@@ -22,6 +22,8 @@
       <?php 
       if($this->nameTag =="dashboard.php"){
       echo("<input class='form-control form-control-dark w-100' type='text' placeholder='Search' aria-label='Search'>");
+      }else{
+      echo("<div class='form-control form-control-dark w-100' ></div>");  
       }
       ?>
       <ul class="navbar-nav px-3">

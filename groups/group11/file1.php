@@ -2,30 +2,30 @@
 error_reporting(E_ALL); 
 ini_set('display_errors', 1);
 
-$klein->respond('GET', '/group11', function ($request, $response, $service) {
-  global $database;
-  $conn = $database->getConnection();
+// $klein->respond('GET', '/group11', function ($request, $response, $service) {
+//   global $database;
+//   $conn = $database->getConnection();
 
-  $query = "SELECT * from employee";
-  $stmt = $conn->prepare($query);
-  $stmt->execute();
+//   $query = "SELECT * from employee";
+//   $stmt = $conn->prepare($query);
+//   $stmt->execute();
 
-  $num = $stmt->rowCount();
-  $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
+//   $num = $stmt->rowCount();
+//   $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
 
-  $service->allMovies = $arr;
-  $service->pageTitle = 'Hello';
-  $service->render('layouts/group11/home.php');
-});
+//   $service->allMovies = $arr;
+//   $service->pageTitle = 'Hello';
+//   $service->render('layouts/group11/home.php');
+// });
 
-$klein->respond('GET', '/login', function ($request, $response, $service) {
+$klein->respond('GET', '/staff', function ($request, $response, $service) {
 error_reporting(E_ALL); 
 ini_set('display_errors', 1);
 
   $service->render('layouts/group11/login.php');
 });
 
-$klein->respond('POST', '/login/auth', function ($request, $response, $service) {
+$klein->respond('POST', '/staff', function ($request, $response, $service) {
   
   // username & pass
   $username = $request->username;
@@ -40,11 +40,10 @@ $klein->respond('POST', '/login/auth', function ($request, $response, $service) 
   $stmt->execute();
   
   $resultCount = $stmt->rowCount();
-  // $result = $stmt->fetchAll(PDO::FETCH_BOTH);
   if ($resultCount == 1) {
     session_start();
     $_SESSION['name'] = $username;
-    $response->redirect('/employee');
+    $response->redirect('/staff/employee');
     $response->send();
   }
   else {
@@ -53,29 +52,50 @@ $klein->respond('POST', '/login/auth', function ($request, $response, $service) 
   }
 });
 
+$klein->respond('GET', '/staff/employee', function ($request, $response, $service) {
+  $service->nameTag = 'dashboard.php';
+  $response->redirect('/staff/employee/dashboard');
+});
 
-$klein->respond('GET', '/employee', function ($request, $response, $service) {
+$klein->respond('GET', '/staff/employee/dashboard', function ($request, $response, $service) {
   error_reporting(E_ALL); 
   ini_set('display_errors', 1);
   
   session_start();
   if($_SESSION['name'] !=""){
+  $service->nameTag = 'dashboard.php'; 
   $service->name =$_SESSION['name'];
   $service->render('layouts/group11/employee.php');
   }else{
-    $response->redirect('/login');
+    $response->redirect('/staff');
     $response->send();
   }
   });
 
-  $klein->respond('GET', '/logout', function ($request, $response, $service) {
+  $klein->respond('GET', '/staff/employee/profile', function ($request, $response, $service) {
+    error_reporting(E_ALL); 
+    ini_set('display_errors', 1);
+    
+    session_start();
+    if($_SESSION['name'] !=""){
+    
+    $service->nameTag = 'profile.php'; 
+    $service->name =$_SESSION['name'];
+    $service->render('layouts/group11/employee.php');
+    }else{
+      $response->redirect('/staff');
+      $response->send();
+    }
+    });
+
+  $klein->respond('GET', '/staff/logout', function ($request, $response, $service) {
     error_reporting(E_ALL); 
     ini_set('display_errors', 1);
     
     session_start();
    
     if(session_destroy()) {
-      $response->redirect('/login');
+      $response->redirect('/staff');
       $response->send();
     }
     });

@@ -3,7 +3,7 @@ $klein->respond('GET', '/group3', function ($request, $response, $service) {
   global $database;
   $conn = $database->getConnection();
 
-  $list = $conn->query("SELECT transactionId, dName, date, e.FirstName, e.LastName, m.FirstName, m.LastName, amount FROM Financial, FinancialID, Membership as m, employee as e WHERE Financial.FinID = FinancialID.ID AND  Financial.empID = e. EmpID AND Financial.customerID = m.ID")->fetchAll(PDO::FETCH_BOTH);
+  $list = $conn->query("SELECT transactionId, dName, date, e.FirstName as empFN, e.LastName as empLN, m.FirstName as memFN, m.LastName as memLN, amount FROM Financial, FinancialID, Membership as m, employee as e WHERE Financial.FinID = FinancialID.ID AND  Financial.empID = e. EmpID AND Financial.customerID = m.ID")->fetchAll(PDO::FETCH_BOTH);
   // $num = $stmt->rowCount();
   // $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
 

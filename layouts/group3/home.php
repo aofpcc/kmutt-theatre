@@ -12,7 +12,6 @@
     <script type="text/javascript">
       google.charts.load('current', {'packages':['line']});
       google.charts.setOnLoadCallback(drawChart);
-    <?php var_dump() ?>
     function drawChart() {
 
       var data = new google.visualization.DataTable();
@@ -85,18 +84,8 @@
                   <td><?=$this->list[$i]['transactionId'] ?></td>
                   <td><?=$this->list[$i]['dName'] ?></td>
                   <td><?=$this->list[$i]['date'] ?></td>
-                  <?=
-                    $Fname = $this->list[$i]['empFN'];
-                    $Lname = $this->list[$i]['empLN'];
-                    $name = $Fname." ".$Lname;
-                  ?>
-                  <td><?=$name?></td>
-                  <?=
-                    $Fname = $this->list[$i]['memFN'];
-                    $Lname = $this->list[$i]['memLN'];
-                    $name = $Fname." ".$Lname;
-                  ?>
-                  <td><?=$name?></td>
+                  <td><?=$this->list[$i]['empFN']." ".$this->list[$i]['empLN']?></td>
+                  <td><?=$this->list[$i]['memFN']." ".$this->list[$i]['memLN'];?></td>
                   <td><?=$this->list[$i]['amount'] ?></td>
                 </tr>
               <?php } ?>

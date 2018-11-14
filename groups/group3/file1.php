@@ -1,5 +1,5 @@
 <?php
-$klein->respond('GET', '/group10', function ($request, $response, $service) {
+$klein->respond('GET', '/group3', function ($request, $response, $service) {
   global $database;
   $conn = $database->getConnection();
 

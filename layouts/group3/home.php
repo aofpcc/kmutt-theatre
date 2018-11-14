@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <title><?=$this->pageTitle ?></title>
-    <link rel="stylesheet" href="/layouts/group3/css/style.css"">
+    <link rel="stylesheet" href="/layouts/group3/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="/layouts/group3/js/ads.js"></script>
 
@@ -12,7 +12,7 @@
     <script type="text/javascript">
       google.charts.load('current', {'packages':['line']});
       google.charts.setOnLoadCallback(drawChart);
-
+    <?php var_dump() ?>
     function drawChart() {
 
       var data = new google.visualization.DataTable();
@@ -71,9 +71,9 @@
               <tr>
                 <th class="list-id">ID</th>
                 <th>Department</th>
-                <th>Date</th>
+                <th>Date & Time</th>
                 <th>Sold by</th>
-                <th>Customer ID</th>
+                <th>Purchase fy</th>
                 <th>Amount</th>
               </tr>
             </thead>
@@ -82,11 +82,12 @@
                 for($i = 0; $i < count($this->list); $i++) {
               ?>
                 <tr>
-                  <td id="id<?=$this->list[$i]['transactionID'] ?>"><?=$this->list[$i]['id'] ?></td>
-                  <td id="type<?=$this->list[$i]['id'] ?>"><?=$this->list[$i]['department'] ?></td>
-                  <td id="type<?=$this->list[$i]['id'] ?>"><?=$this->list[$i]['date'] ?></td>
-                  <td id="st-date<?=$this->list[$i]['id'] ?>"><?=$this->list[$i]['empID'] ?></td>
-                  <td id="en-date<?=$this->list[$i]['id'] ?>"><?=$this->list[$i]['amount'] ?></td>
+                  <td><?=$this->list[$i]['transactionId'] ?></td>
+                  <td><?=$this->list[$i]['dName'] ?></td>
+                  <td><?=$this->list[$i]['date'] ?></td>
+                  <td><?=$this->list[$i]['e.FirstName'].$this->list[$i]['e.LastName']?></td>
+                  <td><?=$this->list[$i]['m.FirstName'].$this->list[$i]['m.LastName'] ?></td>
+                  <td><?=$this->list[$i]['amount'] ?></td>
                 </tr>
               <?php } ?>
             </tbody>

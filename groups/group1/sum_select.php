@@ -1,7 +1,7 @@
 <?php
 
 //เหลือใส่ให้ใช้ layout ของเกม
-  $klein->respond('POST', '/customer/payment', function ($request, $response, $service)  use($database){
+  $klein->respond('GET', '/customer/payment', function ($request, $response, $service)  use($database){
   $conn = $database->getConnection();
 
     error_reporting(E_ALL);
@@ -12,7 +12,7 @@
    //
 
    //  // Pass on the params to the page we're gonna render
-     // $service->selectedSeats = $request->selectedSeats;
+      $service->selectedSeats = $request->selectedSeats;
 
 //new code
     // if ($request->selectedSeats) {

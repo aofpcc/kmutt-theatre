@@ -86,15 +86,15 @@
                   <td><?=$this->list[$i]['dName'] ?></td>
                   <td><?=$this->list[$i]['date'] ?></td>
                   <?=
-                    $Fname = $this->list[$i]['e.FirstName'];
-                    $Lname = $this->list[$i]['e.LastName'];
-                    $name = Fname.Lname;
+                    $Fname = $this->list[$i]['empFN'];
+                    $Lname = $this->list[$i]['empLN'];
+                    $name = $Fname." ".$Lname;
                   ?>
                   <td><?=$name?></td>
                   <?=
-                    $Fname = $this->list[$i]['m.FirstName'];
-                    $Lname = $this->list[$i]['m.LastName'];
-                    $name = Fname.Lname;
+                    $Fname = $this->list[$i]['memFN'];
+                    $Lname = $this->list[$i]['memLN'];
+                    $name = $Fname." ".$Lname;
                   ?>
                   <td><?=$name?></td>
                   <td><?=$this->list[$i]['amount'] ?></td>

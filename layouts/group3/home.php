@@ -85,8 +85,18 @@
                   <td><?=$this->list[$i]['transactionId'] ?></td>
                   <td><?=$this->list[$i]['dName'] ?></td>
                   <td><?=$this->list[$i]['date'] ?></td>
-                  <td><?=$this->list[$i]['e.FirstName'].$this->list[$i]['e.LastName']?></td>
-                  <td><?=$this->list[$i]['m.FirstName'].$this->list[$i]['m.LastName'] ?></td>
+                  <?=
+                    $Fname = $this->list[$i]['e.FirstName'];
+                    $Lname = $this->list[$i]['e.LastName'];
+                    $name = Fname.Lname;
+                  ?>
+                  <td><?=$name?></td>
+                  <?=
+                    $Fname = $this->list[$i]['m.FirstName'];
+                    $Lname = $this->list[$i]['m.LastName'];
+                    $name = Fname.Lname;
+                  ?>
+                  <td><?=$name?></td>
                   <td><?=$this->list[$i]['amount'] ?></td>
                 </tr>
               <?php } ?>

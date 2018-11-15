@@ -1,5 +1,6 @@
 <?php
 $included = array(
   'file1',
-  'insertdb'
+  'sum_select',
+  'inset_data'
 );

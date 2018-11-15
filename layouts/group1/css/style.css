@@ -67,10 +67,10 @@ label{
     text-transform: uppercase;
 }
 .main{
-    width: 45%;
+    width: 50%;
     margin: 45px auto;
     background:rgba(255, 255, 255, 0.88);
-    padding: 30px 30px;
+  
 }
 .main h2 {
     color: #000000;

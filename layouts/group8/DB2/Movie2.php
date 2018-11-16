@@ -11,10 +11,10 @@
     <title>Movie2</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/layouts/group8/DB2/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/business-frontpage.css" rel="stylesheet">
+    <link href="/layouts/group8/DB2/css/business-frontpage.css" rel="stylesheet">
 
   </head>
 
@@ -52,7 +52,7 @@
     <div class="row">
         <div class="col-lg-4 col-sm-6 portfolio-item">
           <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="Pic/Movie2.jpg" alt=""class="center"> </a>
+            <a href="#"><img class="card-img-top" src="/layouts/group8/DB2/Pic/Movie2.jpg" alt=""class="center"> </a>
            
             </div>
           </div>
@@ -66,7 +66,7 @@
           <h2 class="mt-4">Buy ticket after 03:00 PM</h2>
           <p>Buy ticket after 03:00 PM 150/ticket</p>
           <p></p>
-          <p>
+          <p></p>
               <?php
               if ($this->rand) {
                   // echo 'YES';
@@ -75,7 +75,7 @@
                   echo "<a class='btn btn-primary btn-lg' href='/group8/gen'>Get Code &raquo;</a>";
               }
                 ?>
-          </p>
+          
         </div>
         
       </div>
@@ -97,8 +97,8 @@
     </footer>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/layouts/group8/DB2/vendor/jquery/jquery.min.js"></script>
+    <script src="/layouts/group8/DB2/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   </body>
 

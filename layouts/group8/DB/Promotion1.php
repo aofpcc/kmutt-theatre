@@ -11,10 +11,10 @@
     <title>Promotion List</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/layouts/group8/DB/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 
     <!-- Custom styles for this template -->
-    <link href="css/3-col-portfolio.css" rel="stylesheet">
+    <link href="/layouts/group8/DB/css/3-col-portfolio.css" rel="stylesheet" type="text/css">
 
   </head>
 
@@ -59,7 +59,7 @@
       <div class="row">
         <div class="col-lg-4 col-sm-6 portfolio-item">
           <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="Pic/Movie1.jpg" alt=""></a>
+            <a href="#"><img class="card-img-top" src="/layouts/group8/DB2/Pic/Movie1.jpg" alt=""></a>
             <div class="card-body">
               <h4 class="card-title">
                 <a href="/group8M" id="m1">Before 03:00 PM</a>
@@ -71,7 +71,7 @@
         </div>
         <div class="col-lg-4 col-sm-6 portfolio-item">
           <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="Pic/Movie2.jpg" alt=""></a>
+            <a href="#"><img class="card-img-top" src="/layouts/group8/DB2/Pic/Movie2.jpg" alt=""></a>
             <div class="card-body">
               <h4 class="card-title">
                 <a href="/group8M2" >After 03:00 PM</a>
@@ -82,7 +82,7 @@
         </div>
         <div class="col-lg-4 col-sm-6 portfolio-item">
           <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="Pic/Food1.jpg" alt=""></a>
+            <a href="#"><img class="card-img-top" src="/layouts/group8/DB2/Pic/Food1.jpg" alt=""></a>
             <div class="card-body">
               <h4 class="card-title">
                 <a href="/group8F">Couple set(Popcorn M + Drink M)</a>
@@ -93,7 +93,7 @@
         </div>
         <div class="col-lg-4 col-sm-6 portfolio-item">
           <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="Pic/Food2.jpg" alt=""></a>
+            <a href="#"><img class="card-img-top" src="/layouts/group8/DB2/Pic/Food2.jpg" alt=""></a>
             <div class="card-body">
               <h4 class="card-title">
                 <a href="/group8F2">Couple set(Popcorn L + Drink L)</a>
@@ -104,7 +104,7 @@
         </div>
         <div class="col-lg-4 col-sm-6 portfolio-item">
           <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="Pic/Food3.jpg" alt=""></a>
+            <a href="#"><img class="card-img-top" src="/layouts/group8/DB2/Pic/Food3.jpg" alt=""></a>
             <div class="card-body">
               <h4 class="card-title">
                 <a href="/group8F3">Family set(Popcorn XL + Drink XL)</a>

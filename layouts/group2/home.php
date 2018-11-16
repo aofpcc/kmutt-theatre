@@ -1,111 +1,102 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);?>
+
+?>
 
 <!DOCTYPE html>
-<html>
-<head>
-  <title><?=$this->pageTitle ?></title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title><?=$this->pageTitle ?></title>
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- For-Mobile-Apps -->
+    	<meta name="viewport" content="width=device-width, initial-scale=1" />
+    	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    	<meta name="keywords" content="E Shop Product Details Widget Responsive, Login Form Web Template, Flat Pricing Tables, Flat Drop-Downs, Sign-Up Web Templates, Flat Web Templates, Login Sign-up Responsive Web Template, Smartphone Compatible Web Template, Android Compatible Web Template, Free Web Designs for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design" />
+    	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //For-Mobile-Apps -->
 
-  <!-- Custom fonts for this template -->
-  <!-- <link href="vendor/font-awesome/css/font-aweqsome.min.css" rel="stylesheet" type="text/css"> -->
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <!-- Web-Fonts -->
+    	<link href='//fonts.googleapis.com/css?family=Raleway:400,500,600,700,300' rel='stylesheet' type='text/css'>
+    	<link href='//fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+    <!-- //Web-Fonts -->
 
-  <!-- Plugin CSS -->
-  <!-- <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css"> -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    	<link rel="stylesheet" href="/layouts/group2/css/style.css" type="text/css" media="all" />
+  </head>
+  <body>
 
+	<!-- Content-Starts-Here -->
+	<div class="content">
 
-  <link href='https://fonts.googleapis.com/css?family=Kotta+One' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-  <script src="/layouts/group2/js/jquery-1.11.0.min.js"></script>
-  <script src="/layouts/group2/js/jquery.seat-charts.js"></script>
-  <link href="/layouts/group2/css/style.css" rel="stylesheet" type="text/css" media="all" />
-  <link rel="stylesheet" href="/layouts/group2/css/onStyle.css">
-</head>
-</head>
+	<h1>BOOKING</h1>
 
-<body>
-  <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">KMUTT THEATER</a>
-      </div>
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Home</a></li>
-        </ul>
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Booking</a></li>
-        </ul>
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Promotion</a></li>
-        </ul>
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Register</a></li>
-        </ul>
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="#">About Us</a></li>
-        </ul>
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Profile</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="register.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-          <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+		<div class="container">
 
-  <div class="main">
-    <h2>Booking</h2>
-    <div class="demo">
-      <div id="seat-map">
-        <div class="front">SCREEN</div>
-      </div>
-      <div class="booking-details">
-        <ul class="book-left">
-          <li>Movie </li>
-          <li>Time </li>
-          <li>Tickets</li>
-          <li>Total</li>
-          <li>Seats :</li>
-        </ul>
-        <ul class="book-right">
-          <li>: Gingerclown</li>
-          <li>: April 3, 21:00</li>
-          <li>: <span id="counter">0</span></li>
-          <li>: <b><i>$</i><span id="total">0</span></b></li>
-        </ul>
-        <div class="clear"></div>
+			<h2>HOMESTAY</h2>
 
-        <form action="/customer/payment" method="post">
-            <ul id="selectedSeats" class="scrollbar scrollbar1"></ul>
-          <button id="booknow" class="checkout-button">Book Now
-        </form>
+			<div class="product">
+				<div class="product-image">
+					<div class="img-resize"><img src="/layouts/group2/images/mainmovie/homestay.jpg"></div>
+				</div>
+				<div class="product-info">
+					<p><span>Movie</span>Homestay</p>
+					<p><span>Showtime</span>14:20</p>
+					<p><span>Date</span>25 Oct 2018</p>
+					<p><span>Theatre</span> 8 </p>
+					<p><span>Seat No.</span> E4,E5,E6 </p>
+					<p><span>Total </span> 360 THB</p>
 
-        </button>
-        <div id="legend"></div>
-      </div>
-      <div style="clear:both"></div>
-    </div>
+					<div class="cart"><a href="#">Submit and Out</a></div>
+				</div>
+				<div class="clear"></div>
+			</div>
 
-    <!-- <script src="/layouts/group2/js/booking.js" charset="utf-8"></script> -->
-    <?php $this->render("layouts/group2/js/booking.php"); ?>
-  </div>
-  <script src="/layouts/group2/js/jquery.nicescroll.js"></script>
-  <script src="/layouts/group2/js/scripts.js"></script>
+			<div class="accordion">
+				<section class="ac-container">
+					<div>
+						<input id="ac-1" name="accordion-1" type="checkbox" />
+						<label for="ac-1">Description</label>
+						<article class="ac-small" style="overflow-y:scroll">
+							<p>เมื่อ "ร่างชั่วคราว" คือรางวัลสุดมหัศจรรย์จากสวรรค์เขามีเวลา 100 วัน เพื่อเปลี่ยนรางวัลเป็นชีวิต..."มึงได้รางวัลนะ"ผู้ชายท่าทางลึกลับที่เรียกตัวเองว่า ผู้คุม (นพชัย ชัยนาม) บอกผม ในขณะที่เรายืนประจันหน้ากันบนผนังตึกของโรงพยาบาลที่หมุนพลิกราวกับแรงโน้มถ่วงกลับด้าน! ผู้คุมไม่รอให้ผมปะติดปะต่อเรื่องราวในหัว เขากระชากคอเสื้อผมให้มาฟังคำอธิบายถึงรางวัลที่วิญญาณเร่ร่อนอย่างผมได้รับ นั่นก็คือการได้กลับมามีชีวิตอีกครั้งในร่างของเด็กม.ปลายที่ชื่อ มิน (ธีรดนย์ ศุภพันธุ์ภิญโญ) ที่นอนนิ่งอยู่ในตู้เก็บศพของโรงพยาบาลแห่งนี้ จะว่าไปการได้มาอยู่ในร่างใหม่ ก็ไม่ต่างอะไรกับการอยู่โฮมสเตย์ คืออยู่ได้แค่ชั่วคราว แถมยังไม่ได้อยู่ฟรีๆ เพราะผมต้องหาคำตอบให้ได้ภายใน 100 วัน ว่า "มินตายเพราะใคร" ถ้าตอบไม่ได้ ผมจะต้องตายและจากร่างโฮมสเตย์นี้ไปตลอดกาลเอาเข้าจริงๆ ผมก็ไม่คิดว่าจะอินกับการอยู่ในร่างโฮมสเตย์นี้ซักเท่าไหร่ การมีครอบครัวใหม่ มีเพื่อนใหม่ ก็ไม่ทำให้หัวใจเต้นแรงเท่าการได้มีความรักครั้งใหม่ ผมได้รู้จักกับ พาย (เฌอปราง อารีย์กุล) พี่รหัสของมิน ผู้หญิงที่ทำให้ผมอยากอยู่ในร่างโฮมสเตย์นี้ตลอดไป แต่เวลา ชีวิต และความรัก เป็นเหมือนรางวัลที่สวรรค์ให้ผมมาแค่ชั่วคราว ผมจึงต้องทำทุกวิถีทางเพื่อตอบคำถามผู้คุมให้ได้ว่า “มินตายเพราะใคร” ก่อนที่เวลาชีวิตในร่างโฮมสเตย์ของผมจะหมดลง....</p>
+						</article>
+					</div>
+        <div>
+						<input id="ac-2" name="accordion-1" type="checkbox" />
+						<label for="ac-2">More Movie</label>
+						<article class="ac-large ac-image" style="overflow-y:scroll">
+							<div class="accordion-image">
+								<div class="ac-img">
+                  <!-- <div class="container"></div> -->
+                  <h3>Overlord</h3>
+									<img src="/layouts/group2/images/moremovie/overlord.jpg">
+								</div>
+								<div class="ac-img" >
+                  <h3>The Grinch</h3>
+                  <img src="/layouts/group2/images/moremovie/thegrin.jpg">
+								</div>
+								<div class="clear"></div>
+							</div>
+						</article>
+					</div>
+					<div>
+						<input id="ac-3" name="accordion-1" type="checkbox" />
+						<label for="ac-3">Rating & Reviews</label>
+						<article class="ac-large ac-review">
+							<h3>"Excellent Fragrance!"</h3>
+							<h4>Reno Jean</h4>
+							<p>GDH ไม่ทำให้ผิดหวังจริงๆ นักแสดงเล่นดี กราฟฟิกก็สวยอลังใช่เล่น ชอบมากๆ</p>
+							<span>5 Stars</span>
+							<a href="#" class="next">Next Review &rarr;</a>
+						</article>
+					</div>
+					<div>
+
+					</div>
+				</section>
+			</div>
+
+		</div>
+
+	</div>
+
 </body>
 </html>

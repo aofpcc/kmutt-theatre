@@ -49,32 +49,24 @@
     </nav>
 
     <!-- Header with Background Image -->
-    <div class="row">
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-          <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="/layouts/group8/DB2/Pic/Food2.jpg" alt=""class="center"> </a>
-           
-            </div>
-          </div>
-        </div>
-
+    
     <!-- Page Content -->
     <div class="container">
 
       <div class="row">
         <div class="col-sm-8">
-          <h2 class="mt-4">Couple set II</h2>
-          <p>Popcorn (size L) x1</p>
-          <p>Drink (size L) x1</p>
-          <p>
-          <?php
-              if ($this->rand) {
-                  // echo 'YES';
-              } 
-              else {
-                  echo "<a class='btn btn-primary btn-lg' href='/group8/gen'>Get Code &raquo;</a>";
-              }
-                ?>
+          <h2 class="mt-4">Your code</h2>
+          
+          <input id="codeContent" type="text" value="<?php echo $this->rand; ?>" disabled />
+    <!-- <button id="btn1">Sent</button> -->
+    <?php
+        if ($this->rand) {
+            // echo 'YES';
+        } 
+        else {
+            echo "<a class='button' href='/group8/gen'>Send</a>";
+        }
+    ?>
           </p>
         </div>
         

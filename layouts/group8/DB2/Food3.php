@@ -11,10 +11,10 @@
     <title>Food3</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/layouts/group8/DB2/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/business-frontpage.css" rel="stylesheet">
+    <link href="/layouts/group8/DB2/css/business-frontpage.css" rel="stylesheet">
 
   </head>
 
@@ -52,7 +52,7 @@
     <div class="row">
         <div class="col-lg-4 col-sm-6 portfolio-item">
           <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="Pic/Food3.jpg" alt=""class="center"> </a>
+            <a href="#"><img class="card-img-top" src="/layouts/group8/DB2/Pic/Food3.jpg" alt=""class="center"> </a>
            
             </div>
           </div>
@@ -97,8 +97,8 @@
     </footer>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/layouts/group8/DB2/vendor/jquery/jquery.min.js"></script>
+    <script src="/layouts/group8/DB2/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   </body>
 

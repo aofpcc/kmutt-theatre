@@ -99,8 +99,21 @@ $klein->respond('GET', '/staff/employee/dashboard', function ($request, $respons
     error_reporting(E_ALL); 
     ini_set('display_errors', 1);
     
-    session_start();
-    if($_SESSION['name'] !=""){
+   // connect db
+   global $database;
+   $conn = $database->getConnection();
+   
+   session_start();
+   $key = $_SESSION['token'];
+
+   //select table
+   $query = "SELECT Token FROM Emp_login WHERE Token = '$key'";
+   $stmt = $conn->prepare($query);
+   $stmt->execute();
+
+   //check accout
+  $resultCount2 = $stmt->rowCount();
+    if($resultCount2 == 1){
     
     $service->nameTag = 'profile.php'; 
     // $service->name =$_SESSION['name'];
@@ -115,8 +128,21 @@ $klein->respond('GET', '/staff/employee/dashboard', function ($request, $respons
       error_reporting(E_ALL); 
       ini_set('display_errors', 1);
       
-      session_start();
-      if($_SESSION['name'] !=""){
+       // connect db
+   global $database;
+   $conn = $database->getConnection();
+   
+   session_start();
+   $key = $_SESSION['token'];
+
+   //select table
+   $query = "SELECT Token FROM Emp_login WHERE Token = '$key'";
+   $stmt = $conn->prepare($query);
+   $stmt->execute();
+
+   //check accout
+  $resultCount2 = $stmt->rowCount();
+    if($resultCount2 == 1){
       
       $service->nameTag = 'finance.php'; 
       // $service->name =$_SESSION['name'];

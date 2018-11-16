@@ -11,8 +11,13 @@
                 This week
               </button> -->
             <!-- </div> -->
-          <!-- </div> -->
+          </div>
 
           <!-- <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> -->
-
+          <div style="margin-center:0 auto">
+        <?php
+          echo hash('md5', '123456'), PHP_EOL; 
+          ?>
+        </div>
         </main>
+        

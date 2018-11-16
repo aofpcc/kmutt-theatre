@@ -89,6 +89,22 @@ $klein->respond('GET', '/staff/employee/dashboard', function ($request, $respons
     }
     });
 
+    $klein->respond('GET', '/staff/employee/finance', function ($request, $response, $service) {
+      error_reporting(E_ALL); 
+      ini_set('display_errors', 1);
+      
+      session_start();
+      if($_SESSION['name'] !=""){
+      
+      $service->nameTag = 'finance.php'; 
+      $service->name =$_SESSION['name'];
+      $service->render('layouts/group11/employee.php');
+      }else{
+        $response->redirect('/staff');
+        $response->send();
+      }
+      });
+
   $klein->respond('GET', '/staff/logout', function ($request, $response, $service) {
     error_reporting(E_ALL); 
     ini_set('display_errors', 1);

@@ -19,13 +19,10 @@
   <body>
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
       <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/staff/employee">KMUTT-Theatre</a>
-      <?php 
-      if($this->nameTag =="dashboard.php"){
-      echo("<input class='form-control form-control-dark w-100' type='text' placeholder='Search' aria-label='Search'>");
-      }else{
-      echo("<div class='form-control form-control-dark w-100' ></div>");  
-      }
-      ?>
+      
+         <!-- <input class='form-control form-control-dark w-100' type='text' placeholder='Search' aria-label='Search'> -->
+      <div class="form-control form-control-dark w-100" ></div>
+      
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
           <a class="nav-link" href="/staff/logout">Sign out</a>
@@ -46,43 +43,43 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link"  href="/staff/employee/profile">
-                  <span data-feather="file"></span>
+                  <span data-feather="user"></span>
                   Profile
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="">
                   <span data-feather="shopping-cart"></span>
-                  Products
+                  Edit Profile
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="">
-                  <span data-feather="users"></span>
-                  Customers
+                  <span data-feather="clock"></span>
+                  Time Stamp
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="">
-                  <span data-feather="bar-chart-2"></span>
-                  Reports
+                  <span data-feather="film"></span>
+                  Add movie
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="">
+               <li class="nav-item">
+                <a class="nav-link" href="/staff/employee/finance">
                   <span data-feather="layers"></span>
-                  Integrations
+                  Finance
                 </a>
               </li>
             </ul>
 
-            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+            <!-- <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
               <span>Saved reports</span>
               <a class="d-flex align-items-center text-muted" href="">
                 <span data-feather="plus-circle"></span>
               </a>
-            </h6>
-            <ul class="nav flex-column mb-2">
+            </h6> -->
+            <!-- <ul class="nav flex-column mb-2">
               <li class="nav-item">
                 <a class="nav-link" href="">
                   <span data-feather="file-text"></span>
@@ -107,7 +104,7 @@
                   Year-end sale
                 </a>
               </li>
-            </ul>
+            </ul> -->
           </div>
         </nav>
         <?php 

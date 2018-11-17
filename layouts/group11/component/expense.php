@@ -24,6 +24,7 @@
             <th>Amount</th>
           </tr>
       </thead>
+    <?php  if (count($this->list)>=1) { ?>
       <tbody>
           <tr class="clickable" data-toggle="collapse" data-target="#group-of-rows-1"
           aria-expanded="false" aria-controls="group-of-rows-1">
@@ -55,6 +56,7 @@
               <?php } ?>
           </tr>
       </tbody>
+    <?php  } if (count($this->list)>=2) { ?>
       <tbody>
           <tr class="clickable" data-toggle="collapse" data-target="#group-of-rows-2"
           aria-expanded="false" aria-controls="group-of-rows-2">
@@ -86,6 +88,7 @@
               <?php } ?>
           </tr>
       </tbody>
+    <?php  } if (count($this->list)>=3) { ?>
       <tbody>
           <tr class="clickable" data-toggle="collapse" data-target="#group-of-rows-3"
           aria-expanded="false" aria-controls="group-of-rows-3">
@@ -117,6 +120,7 @@
               <?php } ?>
           </tr>
       </tbody>
+    <?php  } if (count($this->list)>=4) { ?>
       <tbody>
           <tr class="clickable" data-toggle="collapse" data-target="#group-of-rows-4"
           aria-expanded="false" aria-controls="group-of-rows-4">
@@ -148,6 +152,7 @@
               <?php } ?>
           </tr>
       </tbody>
+    <?php  } if (count($this->list)>=5) { ?>
       <tbody>
           <tr class="clickable" data-toggle="collapse" data-target="#group-of-rows-5"
           aria-expanded="false" aria-controls="group-of-rows-5">
@@ -178,6 +183,8 @@
               ?>
               <?php } ?>
           </tr>
+      </tbody>
+    <?php  } if (count($this->list)>=6) { ?>
           <tbody>
               <tr class="clickable" data-toggle="collapse" data-target="#group-of-rows-6"
               aria-expanded="false" aria-controls="group-of-rows-6">
@@ -206,9 +213,10 @@
                   <?php
                       }
                   ?>
-                  <?php } ?>
+                <?php } ?>
               </tr>
-      </tbody>
+          </tbody>
+      <?php } ?>
     </table>
 </div>
 

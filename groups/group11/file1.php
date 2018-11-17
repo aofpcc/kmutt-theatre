@@ -244,6 +244,23 @@ $klein->respond('GET', '/staff/employee/dashboard', function ($request, $respons
         $conn = $database->getConnection();
         $service->nameTag = 'statistics.php';
 
+        $gene = $conn->query(" SELECT Gene, COUNT(*) FROM ticket ,movies WHERE ticket.movie_id = movies.ID GROUP BY  Gene")->fetchAll(PDO::FETCH_BOTH);
+        $service->gene = $gene;
+
+        $productName = $conn->query("SELECT productName, COUNT(*) FROM detail_fnb , productList_fnb WHERE productList_fnb.ProductID  = detail_fnb.ProductID  GROUP BY  detail_fnb.ProductID,productName ")->fetchAll(PDO::FETCH_BOTH);
+        $service->productName = $productName;
+
+        $morning= $conn->query(" SELECT Count(*) as morning from MSB_showingroom where hour(startTime) >= 8 AND hour(startTime) <= 12 ")->fetchAll(PDO::FETCH_BOTH);
+        $service->morning = $morning;
+
+        $afternoon = $conn->query(" SELECT COUNT(*) as afternoon from MSB_showingroom where hour(startTime) >= 13 AND hour(startTime) <= 17")->fetchAll(PDO::FETCH_BOTH);
+        $service->afternoon = $afternoon;
+
+        $evening = $conn->query("SELECT COUNT(*) as evening from MSB_showingroom where hour(startTime) >= 18 AND hour(startTime) <= 20")->fetchAll(PDO::FETCH_BOTH);
+        $service->evening = $evening;
+
+        $midnight = $conn->query("SELECT COUNT(*) as midnight from MSB_showingroom where hour(startTime) >= 21 AND hour(startTime) <= 6")->fetchAll(PDO::FETCH_BOTH);
+        $service->midnight = $midnight;
 
         $service->render('layouts/group11/employee.php');
         echo($service->nameTag);

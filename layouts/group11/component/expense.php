@@ -24,32 +24,29 @@
             <th>Amount</th>
           </tr>
       </thead>
-      <?php
-        for($i = 1; $i < count($this->list); $i++) {
-      ?>
       <tbody>
           <tr class="clickable" data-toggle="collapse" data-target="#group-of-rows-1"
           aria-expanded="false" aria-controls="group-of-rows-1">
               <td><i class="fas fa-plus"></i></td> <!-- not bind data here-->
-              <td><?=$this->list[$i]['dName']?></td>
+              <td><?=$this->list[0]['dName']?></td>
             	<td></td> <!-- not bind data here-->
               <td></td> <!-- not bind data here-->
               <td></td> <!-- not bind data here-->
-              <td><?=$this->list[$i]['total']?></td>
+              <td><?=$this->list[0]['total']?></td>
           </tr>
       </tbody>
       <tbody id="group-of-rows-1" class="collapse">
+        <?php
+          for($j = 0; $j < count($this->expensesList); $j++) {
+            if ($this->list[0]['dName'] == $this->expensesList[$j]['dName'] ) {
+        ?>
           <tr><!-- this is when collapse bind all data in each department here -->
-              <td><?=$this->list[$i]['dName']?></td>
-              <?php
-                for($j = 0; $j < count($this->expensesList); $j++) {
-                  if ($this->list[$i]['dName'] == $this->expensesList[$j]['dName'] ) {
-              ?>
+
                 <td><?=$this->expensesList[$j]['transactionId'] ?></td>
                 <td><?=$this->expensesList[$j]['dName'] ?></td>
                 <td><?=$this->expensesList[$j]['date'] ?></td>
-                <td><?=$this->expensesList[$j]['empFN']." ".$this->expensesList[$i]['empLN']?></td>
-                <td><?=$this->expensesList[$j]['memFN']." ".$this->expensesList[$i]['memLN'];?></td>
+                <td><?=$this->expensesList[$j]['empFN']." ".$this->expensesList[$j]['empLN']?></td>
+                <td><?=$this->expensesList[$j]['memFN']." ".$this->expensesList[$j]['memLN'];?></td>
                 <td><?=$this->expensesList[$j]['amount'] ?></td>
 
               <?php
@@ -58,7 +55,160 @@
               <?php } ?>
           </tr>
       </tbody>
-      <?php } ?>
+      <tbody>
+          <tr class="clickable" data-toggle="collapse" data-target="#group-of-rows-2"
+          aria-expanded="false" aria-controls="group-of-rows-2">
+              <td><i class="fas fa-plus"></i></td> <!-- not bind data here-->
+              <td><?=$this->list[1]['dName']?></td>
+            	<td></td> <!-- not bind data here-->
+              <td></td> <!-- not bind data here-->
+              <td></td> <!-- not bind data here-->
+              <td><?=$this->list[1]['total']?></td>
+          </tr>
+      </tbody>
+      <tbody id="group-of-rows-2" class="collapse">
+        <?php
+          for($j = 0; $j < count($this->expensesList); $j++) {
+            if ($this->list[1]['dName'] == $this->expensesList[$j]['dName'] ) {
+        ?>
+          <tr><!-- this is when collapse bind all data in each department here -->
+
+                <td><?=$this->expensesList[$j]['transactionId'] ?></td>
+                <td><?=$this->expensesList[$j]['dName'] ?></td>
+                <td><?=$this->expensesList[$j]['date'] ?></td>
+                <td><?=$this->expensesList[$j]['empFN']." ".$this->expensesList[$j]['empLN']?></td>
+                <td><?=$this->expensesList[$j]['memFN']." ".$this->expensesList[$j]['memLN'];?></td>
+                <td><?=$this->expensesList[$j]['amount'] ?></td>
+
+              <?php
+                  }
+              ?>
+              <?php } ?>
+          </tr>
+      </tbody>
+      <tbody>
+          <tr class="clickable" data-toggle="collapse" data-target="#group-of-rows-3"
+          aria-expanded="false" aria-controls="group-of-rows-3">
+              <td><i class="fas fa-plus"></i></td> <!-- not bind data here-->
+              <td><?=$this->list[2]['dName']?></td>
+            	<td></td> <!-- not bind data here-->
+              <td></td> <!-- not bind data here-->
+              <td></td> <!-- not bind data here-->
+              <td><?=$this->list[2]['total']?></td>
+          </tr>
+      </tbody>
+      <tbody id="group-of-rows-3" class="collapse">
+        <?php
+          for($j = 0; $j < count($this->expensesList); $j++) {
+            if ($this->list[2]['dName'] == $this->expensesList[$j]['dName'] ) {
+        ?>
+          <tr><!-- this is when collapse bind all data in each department here -->
+
+                <td><?=$this->expensesList[$j]['transactionId'] ?></td>
+                <td><?=$this->expensesList[$j]['dName'] ?></td>
+                <td><?=$this->expensesList[$j]['date'] ?></td>
+                <td><?=$this->expensesList[$j]['empFN']." ".$this->expensesList[$j]['empLN']?></td>
+                <td><?=$this->expensesList[$j]['memFN']." ".$this->expensesList[$j]['memLN'];?></td>
+                <td><?=$this->expensesList[$j]['amount'] ?></td>
+
+              <?php
+                  }
+              ?>
+              <?php } ?>
+          </tr>
+      </tbody>
+      <tbody>
+          <tr class="clickable" data-toggle="collapse" data-target="#group-of-rows-4"
+          aria-expanded="false" aria-controls="group-of-rows-4">
+              <td><i class="fas fa-plus"></i></td> <!-- not bind data here-->
+              <td><?=$this->list[3]['dName']?></td>
+             <td></td> <!-- not bind data here-->
+              <td></td> <!-- not bind data here-->
+              <td></td> <!-- not bind data here-->
+              <td><?=$this->list[3]['total']?></td>
+          </tr>
+      </tbody>
+      <tbody id="group-of-rows-4" class="collapse">
+        <?php
+          for($j = 0; $j < count($this->expensesList); $j++) {
+            if ($this->list[3]['dName'] == $this->expensesList[$j]['dName'] ) {
+        ?>
+          <tr><!-- this is when collapse bind all data in each department here -->
+
+                <td><?=$this->expensesList[$j]['transactionId'] ?></td>
+                <td><?=$this->expensesList[$j]['dName'] ?></td>
+                <td><?=$this->expensesList[$j]['date'] ?></td>
+                <td><?=$this->expensesList[$j]['empFN']." ".$this->expensesList[$j]['empLN']?></td>
+                <td><?=$this->expensesList[$j]['memFN']." ".$this->expensesList[$j]['memLN'];?></td>
+                <td><?=$this->expensesList[$j]['amount'] ?></td>
+
+              <?php
+                  }
+              ?>
+              <?php } ?>
+          </tr>
+      </tbody>
+      <tbody>
+          <tr class="clickable" data-toggle="collapse" data-target="#group-of-rows-5"
+          aria-expanded="false" aria-controls="group-of-rows-5">
+              <td><i class="fas fa-plus"></i></td> <!-- not bind data here-->
+              <td><?=$this->list[4]['dName']?></td>
+            	<td></td> <!-- not bind data here-->
+              <td></td> <!-- not bind data here-->
+              <td></td> <!-- not bind data here-->
+              <td><?=$this->list[4]['total']?></td>
+          </tr>
+      </tbody>
+      <tbody id="group-of-rows-5" class="collapse">
+        <?php
+          for($j = 0; $j < count($this->expensesList); $j++) {
+            if ($this->list[4]['dName'] == $this->expensesList[$j]['dName'] ) {
+        ?>
+          <tr><!-- this is when collapse bind all data in each department here -->
+
+                <td><?=$this->expensesList[$j]['transactionId'] ?></td>
+                <td><?=$this->expensesList[$j]['dName'] ?></td>
+                <td><?=$this->expensesList[$j]['date'] ?></td>
+                <td><?=$this->expensesList[$j]['empFN']." ".$this->expensesList[$j]['empLN']?></td>
+                <td><?=$this->expensesList[$j]['memFN']." ".$this->expensesList[$j]['memLN'];?></td>
+                <td><?=$this->expensesList[$j]['amount'] ?></td>
+
+              <?php
+                  }
+              ?>
+              <?php } ?>
+          </tr>
+          <tbody>
+              <tr class="clickable" data-toggle="collapse" data-target="#group-of-rows-6"
+              aria-expanded="false" aria-controls="group-of-rows-6">
+                  <td><i class="fas fa-plus"></i></td> <!-- not bind data here-->
+                  <td><?=$this->list[5]['dName']?></td>
+                	<td></td> <!-- not bind data here-->
+                  <td></td> <!-- not bind data here-->
+                  <td></td> <!-- not bind data here-->
+                  <td><?=$this->list[5]['total']?></td>
+              </tr>
+          </tbody>
+          <tbody id="group-of-rows-6" class="collapse">
+            <?php
+              for($j = 0; $j < count($this->expensesList); $j++) {
+                if ($this->list[5]['dName'] == $this->expensesList[$j]['dName'] ) {
+            ?>
+              <tr><!-- this is when collapse bind all data in each department here -->
+
+                    <td><?=$this->expensesList[$j]['transactionId'] ?></td>
+                    <td><?=$this->expensesList[$j]['dName'] ?></td>
+                    <td><?=$this->expensesList[$j]['date'] ?></td>
+                    <td><?=$this->expensesList[$j]['empFN']." ".$this->expensesList[$j]['empLN']?></td>
+                    <td><?=$this->expensesList[$j]['memFN']." ".$this->expensesList[$j]['memLN'];?></td>
+                    <td><?=$this->expensesList[$j]['amount'] ?></td>
+
+                  <?php
+                      }
+                  ?>
+                  <?php } ?>
+              </tr>
+      </tbody>
     </table>
 </div>
 

@@ -87,16 +87,23 @@ $klein->respond('GET', '/staff/employee/dashboard', function ($request, $respons
    //check accout
   $resultCount2 = $stmt->rowCount();
   if($resultCount2 == 1){
+
+    //all employee
+    $query = "SELECT * from Emp_staff ORDER BY Status ASC" ;
+      $stmt = $conn->prepare($query);
+      $stmt->execute();
+      $service->employee = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+
   $service->nameTag = 'dashboard.php';
   $service->render('layouts/group11/employee.php');
   }else{
     $response->redirect('/staff');
     $response->send();
   }
-  });
+});
 
-  $klein->respond('GET', '/staff/employee/profile', function ($request, $response, $service) {
-    error_reporting(E_ALL);
+$klein->respond('GET', '/staff/employee/profile', function ($request, $response, $service) {
     ini_set('display_errors', 1);
 
    // connect db
@@ -122,10 +129,9 @@ $klein->respond('GET', '/staff/employee/dashboard', function ($request, $respons
       $response->redirect('/staff');
       $response->send();
     }
-    });
+});
 
-    $klein->respond('GET', '/staff/employee/finance', function ($request, $response, $service) {
-      error_reporting(E_ALL);
+$klein->respond('GET', '/staff/employee/finance', function ($request, $response, $service) {
       ini_set('display_errors', 1);
 
        // connect db
@@ -151,12 +157,9 @@ $klein->respond('GET', '/staff/employee/dashboard', function ($request, $respons
         $response->redirect('/staff');
         $response->send();
       }
-      });
+});
 
-
-
-  $klein->respond('GET', '/staff/logout', function ($request, $response, $service) {
-    error_reporting(E_ALL);
+$klein->respond('GET', '/staff/logout', function ($request, $response, $service) {
     ini_set('display_errors', 1);
 
     session_start();
@@ -165,7 +168,7 @@ $klein->respond('GET', '/staff/employee/dashboard', function ($request, $respons
       $response->redirect('/staff');
       $response->send();
     }
-    });
+});
 
     $klein->respond('GET', '/staff/employee/revenue', function ($request, $response, $service) {
 

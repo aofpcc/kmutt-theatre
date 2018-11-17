@@ -10,7 +10,13 @@
   <!-- Button ends -->
 
   <div class="container" style="padding:70px;">
-    <p>Most profit month <kbd>ctrl + p</kbd></p>
+    <h2>Most profit month <kbd>Month</kbd></h2>
+    <h2>Most income <kbd>Month</kbd></h2>
+    <h2>Most expense <kbd>Month</kbd></h2>
+    <h2>Gene best seller <kbd>Type</kbd></h2>
+    <h2>Gene worst seller <kbd>Type</kbd></h2>
+    <h2>Snack best seller <kbd>Type</kbd></h2>
+    <h2>Most popular time(movie showtime) <kbd>Length</kbd></h2>
 
   </div>
 

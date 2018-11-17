@@ -10,7 +10,6 @@
   <!-- Button -->
   <?php include('layouts/group11/component/layout/buttons.php'); ?>
   <!-- Button end -->
-
   <!-- month pickup -->
   <div class="container">
     <div class="row">
@@ -30,9 +29,15 @@
       </div>
       <div class="col-sm">
         <div class="container" style="padding-top:30px;">
-          <h2>Income <kbd>500 Bath</kbd></h2>
-          <h2>Outcome <kbd>500 Bath</kbd></h2>
-          <h2>Profit <kbd>500 Bath</kbd></h2>
+
+          <h2>Income <kbd> <?php echo ($this->revenue[0]['total']); ?> Bath</kbd></h2>
+          <h2>Outcome <kbd><?php echo ($this->expenses[0]['total']); ?> Bath</kbd></h2>
+          <?php  $profit = $this->revenue[0]['total'] - $this->expenses[0]['total'];
+          if ($profit >= 0) { ?>
+            <h2>Profit <kbd><?php echo ($this->revenue[0]['total']- $this->expenses[0]['total'] ) ;?> Bath</kbd></h2>
+          <?php } else {?>
+            <h2>Profit <kbd><?php echo (abs($profit)) ?> Bath</kbd></h2>
+          <?php }?>
         </div>
       </div>
     </div>

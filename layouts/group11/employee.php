@@ -68,27 +68,9 @@
                <li class="nav-item">
                 <a class="nav-link" href="/staff/employee/finance">
                   <span data-feather="layers"></span>
-                  Finance
+                  Financial
                 </a>
               </li>
-              <li class="nav-item">
-               <a class="nav-link" href="/staff/employee/revenue">
-                 <span data-feather="layers"></span>
-                 Revenue
-               </a>
-             </li>
-             <li class="nav-item">
-              <a class="nav-link" href="/staff/employee/expense">
-                <span data-feather="layers"></span>
-                Expense
-              </a>
-            </li>
-            <li class="nav-item">
-             <a class="nav-link" href="/staff/employee/statistics">
-               <span data-feather="layers"></span>
-               Statistics
-             </a>
-           </li>
             </ul>
 
             <!-- <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">

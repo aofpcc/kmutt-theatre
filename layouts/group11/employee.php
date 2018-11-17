@@ -14,15 +14,15 @@
 
     <!-- Custom styles for this template -->
     <link href="/layouts/group11/css/dashboard.css" rel="stylesheet">
-    
+
   </head>
   <body>
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
       <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/staff/employee">KMUTT-Theatre <?php echo($this->token) ?></a>
-      
+
          <!-- <input class='form-control form-control-dark w-100' type='text' placeholder='Search' aria-label='Search'> -->
       <div class="form-control form-control-dark w-100" ></div>
-      
+
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
           <a class="nav-link" href="/staff/logout">Sign out</a>
@@ -71,6 +71,24 @@
                   Finance
                 </a>
               </li>
+              <li class="nav-item">
+               <a class="nav-link" href="/staff/employee/revenue">
+                 <span data-feather="layers"></span>
+                 Revenue
+               </a>
+             </li>
+             <li class="nav-item">
+              <a class="nav-link" href="/staff/employee/expense">
+                <span data-feather="layers"></span>
+                Expense
+              </a>
+            </li>
+            <li class="nav-item">
+             <a class="nav-link" href="/staff/employee/statistics">
+               <span data-feather="layers"></span>
+               Statistics
+             </a>
+           </li>
             </ul>
 
             <!-- <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
@@ -107,11 +125,11 @@
             </ul> -->
           </div>
         </nav>
-        <?php 
+        <?php
         // $this->render('layouts/group11/component/dashboard.php');
-        $this->render('layouts/group11/component/'.$this->nameTag);  
+        $this->render('layouts/group11/component/'.$this->nameTag);
         ?>
-        
+
       </div>
     </div>
 

@@ -182,12 +182,12 @@ $klein->respond('GET', '/staff/employee/dashboard', function ($request, $respons
                                         FROM  Revenue, FinancialID, Membership as m, employee as e
                                         WHERE Revenue.FinID = FinancialID.ID AND  Revenue.empID = e.EmpID AND Revenue.customerID = m.ID 
                                         GROUP BY year(date),month(date) 
-                                      ")
+                                      ")->fetchALL(PDO::FETCH_BOTH);
         $revenueDate = $conn->query("   SELECT  month(date), '|' ,year(date)
                                         FROM  Revenue, FinancialID, Membership as m, employee as e
                                         WHERE Revenue.FinID = FinancialID.ID AND  Revenue.empID = e.EmpID AND Revenue.customerID = m.ID 
                                         GROUP BY year(date),month(date) 
-                                      ")
+                                      ")->fetchALL(PDO::FETCH_BOTH);
         $revenueList = $conn->query(" SELECT transactionId, dName, date, e.FirstName as empFN, e.LastName as empLN, m.FirstName as memFN, m.LastName as memLN, amount
                                       FROM Revenue, FinancialID, Membership as m, employee as e
                                       WHERE Revenue.FinID = FinancialID.ID AND  Revenue.empID = e. EmpID AND Revenue.customerID = m.ID")->fetchAll(PDO::FETCH_BOTH);
@@ -219,7 +219,7 @@ $klein->respond('GET', '/staff/employee/dashboard', function ($request, $respons
           $service->pageTitle = 'Expense';
           $service->expensesList = $expensesList;
           echo($service->nameTag);
-        $service->render('layouts/group11/employee.php');
+         $service->render('layouts/group11/employee.php');
         echo($service->nameTag);
     });
 

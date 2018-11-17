@@ -72,8 +72,8 @@
                     </p>
 
                   </p><br><br> <!--link to ticket-->
-                    <button type="button" class="btn btn-lg btn-default" ><a href="ticket.php">PAYMENT</a></button>
-                    
+                    <button type="button" class="btn btn-lg btn-default" >PAYMENT</button>
+
                   </div>
               </div>
           </div>

@@ -70,7 +70,7 @@ label{
     width: 50%;
     margin: 45px auto;
     background:rgba(255, 255, 255, 0.88);
-  
+
 }
 .main h2 {
     color: #000000;
@@ -498,5 +498,17 @@ ul.book-right li {
 	span.seatCharts-legendDescription {
 		line-height: 0px;
 		font-size: 13px;
+	}
+}
+
+@media (max-width: 500px) {
+	.seatCharts-container {
+		min-width: inherit;
+	}
+}
+
+@media (max-width: 1000px) {
+	.seatCharts-container {
+		min-width: 400px;
 	}
 }

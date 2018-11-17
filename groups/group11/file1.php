@@ -178,7 +178,16 @@ $klein->respond('GET', '/staff/employee/dashboard', function ($request, $respons
                               GROUP BY dName")
                               ->fetchAll(PDO::FETCH_BOTH);
         $service->list = $list;
-
+        $revenueGrahp = $conn->query("  SELECT  sum(amount)
+                                        FROM  Revenue, FinancialID, Membership as m, employee as e
+                                        WHERE Revenue.FinID = FinancialID.ID AND  Revenue.empID = e.EmpID AND Revenue.customerID = m.ID 
+                                        GROUP BY year(date),month(date) 
+                                      ")
+        $revenueDate = $conn->query("   SELECT  month(date), '|' ,year(date)
+                                        FROM  Revenue, FinancialID, Membership as m, employee as e
+                                        WHERE Revenue.FinID = FinancialID.ID AND  Revenue.empID = e.EmpID AND Revenue.customerID = m.ID 
+                                        GROUP BY year(date),month(date) 
+                                      ")
         $revenueList = $conn->query(" SELECT transactionId, dName, date, e.FirstName as empFN, e.LastName as empLN, m.FirstName as memFN, m.LastName as memLN, amount
                                       FROM Revenue, FinancialID, Membership as m, employee as e
                                       WHERE Revenue.FinID = FinancialID.ID AND  Revenue.empID = e. EmpID AND Revenue.customerID = m.ID")->fetchAll(PDO::FETCH_BOTH);

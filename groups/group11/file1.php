@@ -180,9 +180,9 @@ $klein->respond('GET', '/staff/employee/dashboard', function ($request, $respons
         $service->list = $list;
         $revenueGrahp = $conn->query("  SELECT  sum(amount)
                                         FROM  Revenue, FinancialID, Membership as m, employee as e
-                                        WHERE Revenue.FinID = FinancialID.ID AND  Revenue.empID = e.EmpID AND Revenue.customerID = m.ID 
-                                        GROUP BY year(date),month(date) 
-                                      ")->fetchALL(PDO::FETCH_BOTH);
+                                        WHERE Revenue.FinID = FinancialID.ID AND  Revenue.empID = e.EmpID AND Revenue.customerID = m.ID
+                                        GROUP BY year(date),month(date)
+                                      ")->fetchAll(PDO::FETCH_BOTH);
         $revenueDate = $conn->query("   SELECT  month(date), '|' ,year(date)
                                         FROM  Revenue, FinancialID, Membership as m, employee as e
                                         WHERE Revenue.FinID = FinancialID.ID AND  Revenue.empID = e.EmpID AND Revenue.customerID = m.ID 

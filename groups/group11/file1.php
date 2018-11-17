@@ -153,7 +153,7 @@ $klein->respond('GET', '/staff/employee/dashboard', function ($request, $respons
       $revenue = $conn->query("SELECT sum(amount) as total FROM Revenue")->fetchAll(PDO::FETCH_BOTH);
       $service->revenue = $revenue;
 
-      $expenses = $conn->query("SELECT sum(amount) as total FROM expenses")->fetchAll(PDO::FETCH_BOTH);
+      $expenses = $conn->query("SELECT sum(amount) as total FROM Expenses")->fetchAll(PDO::FETCH_BOTH);
       $service->expenses = $expenses;
 
       $service->render('layouts/group11/employee.php');
@@ -239,8 +239,12 @@ $klein->respond('GET', '/staff/employee/dashboard', function ($request, $respons
     });
 
     $klein->respond('GET', '/staff/employee/statistics', function ($request, $response, $service) {
-
+      // connect db
+        global $database;
+        $conn = $database->getConnection();
         $service->nameTag = 'statistics.php';
+
+
         $service->render('layouts/group11/employee.php');
         echo($service->nameTag);
     });

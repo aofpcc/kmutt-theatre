@@ -12,5 +12,11 @@
       <br>
       <button type="submit" name="button">Submit</button>
     </form>
+
+    <script type="text/javascript">
+      <?php if ($this->err) foreach ($this->errs as $key => $value): ?>
+        alert("<?php echo $value; ?>");
+      <?php endforeach; ?>
+    </script>
   </body>
 </html>

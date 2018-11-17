@@ -9,6 +9,11 @@
   <?php include('layouts/group11/component/layout/buttons.php'); ?>
   <!-- Button ends -->
 
+  <div class="container" style="padding:70px;">
+    <p>Most profit month <kbd>ctrl + p</kbd></p>
+
+  </div>
+
 
 
 <!-- Stop here -->

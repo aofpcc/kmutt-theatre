@@ -24,11 +24,12 @@
             <th>Amount</th>
           </tr>
       </thead>
+    <?php  if (count($this->list)>=1) { ?>
       <tbody>
           <tr class="clickable" data-toggle="collapse" data-target="#group-of-rows-1"
           aria-expanded="false" aria-controls="group-of-rows-1">
               <td><i class="fas fa-plus"></i></td> <!-- not bind data here-->
-              <td><?=$this->list[0]['dName']?></td>
+              <td><b><?=$this->list[0]['dName']?></b></td>
             	<td></td> <!-- not bind data here-->
               <td></td> <!-- not bind data here-->
               <td></td> <!-- not bind data here-->
@@ -55,11 +56,12 @@
               <?php } ?>
           </tr>
       </tbody>
+    <?php  } if (count($this->list)>=2) { ?>
       <tbody>
           <tr class="clickable" data-toggle="collapse" data-target="#group-of-rows-2"
           aria-expanded="false" aria-controls="group-of-rows-2">
               <td><i class="fas fa-plus"></i></td> <!-- not bind data here-->
-              <td><?=$this->list[1]['dName']?></td>
+              <td><b><?=$this->list[1]['dName']?></b></td>
             	<td></td> <!-- not bind data here-->
               <td></td> <!-- not bind data here-->
               <td></td> <!-- not bind data here-->
@@ -86,11 +88,12 @@
               <?php } ?>
           </tr>
       </tbody>
+    <?php  } if (count($this->list)>=3) { ?>
       <tbody>
           <tr class="clickable" data-toggle="collapse" data-target="#group-of-rows-3"
           aria-expanded="false" aria-controls="group-of-rows-3">
               <td><i class="fas fa-plus"></i></td> <!-- not bind data here-->
-              <td><?=$this->list[2]['dName']?></td>
+              <td><b><?=$this->list[2]['dName']?></b></td>
             	<td></td> <!-- not bind data here-->
               <td></td> <!-- not bind data here-->
               <td></td> <!-- not bind data here-->
@@ -117,11 +120,12 @@
               <?php } ?>
           </tr>
       </tbody>
+    <?php  } if (count($this->list)>=4) { ?>
       <tbody>
           <tr class="clickable" data-toggle="collapse" data-target="#group-of-rows-4"
           aria-expanded="false" aria-controls="group-of-rows-4">
               <td><i class="fas fa-plus"></i></td> <!-- not bind data here-->
-              <td><?=$this->list[3]['dName']?></td>
+              <td><b><?=$this->list[3]['dName']?></b></td>
              <td></td> <!-- not bind data here-->
               <td></td> <!-- not bind data here-->
               <td></td> <!-- not bind data here-->
@@ -148,11 +152,12 @@
               <?php } ?>
           </tr>
       </tbody>
+    <?php  } if (count($this->list)>=5) { ?>
       <tbody>
           <tr class="clickable" data-toggle="collapse" data-target="#group-of-rows-5"
           aria-expanded="false" aria-controls="group-of-rows-5">
               <td><i class="fas fa-plus"></i></td> <!-- not bind data here-->
-              <td><?=$this->list[4]['dName']?></td>
+              <td><b><?=$this->list[4]['dName']?></b></td>
             	<td></td> <!-- not bind data here-->
               <td></td> <!-- not bind data here-->
               <td></td> <!-- not bind data here-->
@@ -178,11 +183,13 @@
               ?>
               <?php } ?>
           </tr>
+      </tbody>
+    <?php  } if (count($this->list)>=6) { ?>
           <tbody>
               <tr class="clickable" data-toggle="collapse" data-target="#group-of-rows-6"
               aria-expanded="false" aria-controls="group-of-rows-6">
                   <td><i class="fas fa-plus"></i></td> <!-- not bind data here-->
-                  <td><?=$this->list[5]['dName']?></td>
+                  <td><b><?=$this->list[5]['dName']?></b></td>
                 	<td></td> <!-- not bind data here-->
                   <td></td> <!-- not bind data here-->
                   <td></td> <!-- not bind data here-->
@@ -206,9 +213,10 @@
                   <?php
                       }
                   ?>
-                  <?php } ?>
+                <?php } ?>
               </tr>
-      </tbody>
+          </tbody>
+      <?php } ?>
     </table>
 </div>
 

@@ -168,12 +168,11 @@ $klein->respond('GET', '/staff/employee/dashboard', function ($request, $respons
     });
 
     $klein->respond('GET', '/staff/employee/revenue', function ($request, $response, $service) {
+        // connect db
         global $database;
         $conn = $database->getConnection();
         $service->nameTag = 'revenue.php';
-
-        echo($service->nameTag);
-
+        //select table
         $list = $conn->query("SELECT dName , sum(amount) as total FROM FinancialID,Revenue
                               WHERE Revenue.FinID = FinancialID.id
                               GROUP BY dName")
@@ -195,11 +194,31 @@ $klein->respond('GET', '/staff/employee/dashboard', function ($request, $respons
         $service->pageTitle = 'Financial';
         $service->revenueList = $revenueList;
         $service->render('layouts/group11/employee.php');
+        echo($service->nameTag);
     });
 
     $klein->respond('GET', '/staff/employee/expense', function ($request, $response, $service) {
 
         $service->nameTag = 'expense.php';
+        // connect db
+          global $database;
+          $conn = $database->getConnection();
+          $service->nameTag = 'expense.php';
+
+
+          //select table
+          $list = $conn->query("SELECT dName , sum(amount) as total FROM FinancialID,Expenses
+                                WHERE Expenses.FinID = FinancialID.id
+                                GROUP BY dName")
+                                ->fetchAll(PDO::FETCH_BOTH);
+          $service->list = $list;
+
+          $expensesList = $conn->query(" SELECT transactionId, dName, date, e.FirstName as empFN, e.LastName as empLN, m.FirstName as memFN, m.LastName as memLN, amount
+                                        FROM Expenses, FinancialID, Membership as m, employee as e
+                                        WHERE Expenses.FinID = FinancialID.ID AND  Expenses.empID = e. EmpID AND Expenses.customerID = m.ID")->fetchAll(PDO::FETCH_BOTH);
+          $service->pageTitle = 'Expense';
+          $service->expensesList = $expensesList;
+          echo($service->nameTag);
         $service->render('layouts/group11/employee.php');
         echo($service->nameTag);
     });

@@ -8,13 +8,26 @@
   <!-- Code finance here -->
 
   <!-- Button -->
-  <a href="/staff/employee/finance" class="btn btn-light">Summary</a>
-  <a href="/revenue.php" class="btn btn-light">See revenues</a>
-  <a href="/expense.php" class="btn btn-light">See expenses</a>
-  <a href="/statistics.php" class="btn btn-light">See statistics</a>
-  <!-- Button ends -->
+  <?php include('layouts/group11/component/layout/buttons.php'); ?>
+  <!-- Button end -->
 
-  <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+  <!-- month pickup -->
+  <div class="form-group">
+  </br>
+    <label>Start period :</label>
+    <input type="text" class="form-control form-control-1 input-sm from col-sm-4" placeholder="Month and year start" >
+  </div>
+
+  <div class="form-group">
+    <label>End period :</label>
+    <input type="text" class="form-control form-control-2 input-sm to col-sm-4" placeholder="Month and year end">
+  </div>
+
+  <button type="button" class="btn btn-primary active">Search</button>
+
+  <!-- month pickup ends -->
+
+  <canvas class="my-4 w-100" id="sumChart" width="900" height="380"></canvas>
   <h2>EMPLOYEE</h2>
   <div class="table-responsive">
     <table class="table table-striped table-sm">
@@ -150,16 +163,24 @@
 <!-- Graphs -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 <script>
-  var ctx = document.getElementById("myChart");
-  var myChart = new Chart(ctx, {
+  var ctx = document.getElementById("sumChart");
+  var sumChart = new Chart(ctx, {
     type: 'line',
     data: {
-      labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      labels: ["January", "Februry", "March", "April", "May", "June", "July"],
       datasets: [{
         data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
         lineTension: 0,
         backgroundColor: 'transparent',
         borderColor: '#007bff',
+        borderWidth: 4,
+        pointBackgroundColor: '#007bff'
+      },
+      {
+        data: [15339, 2135, 1883, 2403, 2389, 2092, 1204],
+        lineTension: 0,
+        backgroundColor: 'transparent',
+        borderColor: '#000000',
         borderWidth: 4,
         pointBackgroundColor: '#007bff'
       }]
@@ -177,4 +198,36 @@
       }
     }
   });
+</script>
+<!-- Graphs end -->
+
+<!-- month pickup -->
+<script>
+var startDate = new Date();
+var fechaFin = new Date();
+var FromEndDate = new Date();
+var ToEndDate = new Date();
+
+
+
+
+$('.from').datepicker({
+    autoclose: true,
+    minViewMode: 1,
+    format: 'mm/yyyy'
+}).on('changeDate', function(selected){
+        startDate = new Date(selected.date.valueOf());
+        startDate.setDate(startDate.getDate(new Date(selected.date.valueOf())));
+        $('.to').datepicker('setStartDate', startDate);
+    });
+
+$('.to').datepicker({
+    autoclose: true,
+    minViewMode: 1,
+    format: 'mm/yyyy'
+}).on('changeDate', function(selected){
+        FromEndDate = new Date(selected.date.valueOf());
+        FromEndDate.setDate(FromEndDate.getDate(new Date(selected.date.valueOf())));
+        $('.from').datepicker('setEndDate', FromEndDate);
+    });
 </script>

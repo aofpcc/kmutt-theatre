@@ -6,10 +6,7 @@
   <!-- Code finance here -->
 
   <!-- Button -->
-  <a href="/staff/employee/finance" class="btn btn-light">Summary</a>
-  <a href="/revenue.php" class="btn btn-light">See revenues</a>
-  <a href="/expense.php" class="btn btn-light">See expenses</a>
-  <a href="/statistics.php" class="btn btn-light">See statistics</a>
+  <?php include('layouts/group11/component/layout/buttons.php'); ?>
   <!-- Button ends -->
 
   <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>

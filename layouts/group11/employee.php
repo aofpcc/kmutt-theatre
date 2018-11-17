@@ -108,8 +108,11 @@
           </div>
         </nav>
         <?php
+
         // $this->render('layouts/group11/component/dashboard.php');
+
         $this->render('layouts/group11/component/'.$this->nameTag);
+  
         ?>
 
       </div>

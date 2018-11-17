@@ -30,8 +30,8 @@
       <div class="col-sm">
         <div class="container" style="padding-top:30px;">
 
-          <h2>Income <kbd style="background-color:green"> <?php echo ($this->revenue[0]['total']); ?> Bath</kbd></h2>
-          <h2>Outcome <kbd style="background-color:red"><?php echo ($this->expenses[0]['total']); ?> Bath</kbd></h2>
+          <h2>Revenue <kbd style="background-color:green"> <?php echo ($this->revenue[0]['total']); ?> Bath</kbd></h2>
+          <h2>Expense <kbd style="background-color:red"><?php echo ($this->expenses[0]['total']); ?> Bath</kbd></h2>
           <?php  $profit = $this->revenue[0]['total'] - $this->expenses[0]['total'];
           if ($profit >= 0) { ?>
             <h2>Profit <kbd style="background-color:green"><?php echo ($this->revenue[0]['total']- $this->expenses[0]['total'] ) ;?> Bath</kbd></h2>

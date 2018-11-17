@@ -175,15 +175,18 @@
         borderColor: '#007bff',
         borderWidth: 4,
         pointBackgroundColor: '#007bff'
+      },
+      {
+        data: [15339, 2135, 1883, 2403, 2389, 2092, 1204],
+        lineTension: 0,
+        backgroundColor: 'transparent',
+        borderColor: '#000000',
+        borderWidth: 4,
+        pointBackgroundColor: '#007bff'
       }]
     },
     options: {
       scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero: false
-          }
-        }],
         yAxes: [{
           ticks: {
             beginAtZero: false

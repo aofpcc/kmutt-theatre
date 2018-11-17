@@ -197,12 +197,16 @@ tbody.collapse.in {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 <script>
   var ctx = document.getElementById("revChart");
+  var labelR =  <?php echo json_encode($revenueDate)  ?>;
+  var dataR = <?php echo json_encode($revenueGraph) ?>;
   var revChart = new Chart(ctx, {
     type: 'line',
     data: {
-      labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      //labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      labels: labelR,
       datasets: [{
-        data: [1, 21345, 18483, 24003, 23489, 24092, 12034],
+        //data: [1, 21345, 18483, 24003, 23489, 24092, 12034],
+        data: dataR,
         lineTension: 0,
         backgroundColor: 'transparent',
         borderColor: '#007bff',

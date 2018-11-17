@@ -11,7 +11,22 @@
 
   <canvas class="my-4 w-100" id="revChart" width="900" height="380"></canvas>
   <h2>Revenue list</h2>
-
+      <?php
+         $date = $date();
+         while($row = mysql_fetch_assoc($revenueDate)){
+          $date[] = $row;
+        }
+         $json = json_encode($date);
+         echo "<div id='date' style='display:none;'> " . $json . "</div>";
+      ?>
+      <?php
+         $data = $data();
+         while($row = mysql_fetch_assoc($revenueGraph)){
+          $data[] = $row;
+        }
+         $json = json_encode($data);
+         echo "<div id='date' style='display:none;'> " . $json . "</div>";
+      ?>
   <div class="table-responsive">
     <table class="table table-striped table-sm">
       <thead>
@@ -203,16 +218,16 @@ tbody.collapse.in {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 <script>
   var ctx = document.getElementById("revChart");
-  var labelR =  <?php echo json_encode($revenueDate)  ?>;
-  var dataR = <?php echo json_encode($revenueGraph) ?>;
+  var dates = JSON.parse(document.getElementById('date').innerHTML);
+  var datas = JSON.parse(document.getElementById('data').innerHTML);
   var revChart = new Chart(ctx, {
     type: 'line',
     data: {
       //labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-      labels: labelR,
+      labels: dates,
       datasets: [{
         //data: [1, 21345, 18483, 24003, 23489, 24092, 12034],
-        data: dataR,
+        data: datas,
         lineTension: 0,
         backgroundColor: 'transparent',
         borderColor: '#007bff',

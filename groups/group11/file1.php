@@ -38,7 +38,7 @@ $klein->respond('POST', '/staff', function ($request, $response, $service) {
 
    //update token
    $token = md5(uniqid($username,true));
-   $query2 = "UPDATE Emp_login SET Token = '$token'";
+   $query2 = "UPDATE Emp_login SET Token = '$token' WHERE Email = '$username' AND Pass = '$password' ";
    //echo "Here is an query code >>>>>>> " .$query ."<<<<<<<<";
    $stmt = $conn->prepare($query2);
    $stmt->execute();

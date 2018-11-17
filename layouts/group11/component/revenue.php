@@ -37,6 +37,22 @@
       </tbody>
       <tbody id="group-of-rows-1" class="collapse">
         <?php
+         $wanT = array();
+         while($row = mysqli_fetch_assoc($this->revenueDate)){
+         $wanT[] = $row;
+        }
+         $json = json_encode($wanT);
+         echo "<div id='wanT' style='display:none;'> " . $json . "</div>";
+        ?>
+        <?php
+         $korMoon = array();
+         while($row = mysqli_fetch_assoc($this->revenueGrahp)){
+          $korMoon[] = $row;
+        }
+         $json = json_encode($korMoon);
+         echo "<div id='korMoon' style='display:none;'> " . $json . "</div>";
+        ?>
+        <?php
           for($j = 0; $j < count($this->revenueList); $j++) {
             if ($this->list[0]['dName'] == $this->revenueList[$j]['dName'] ) {
         ?>

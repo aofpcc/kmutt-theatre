@@ -156,9 +156,6 @@ $klein->respond('GET', '/staff/employee/dashboard', function ($request, $respons
       $expenses = $conn->query("SELECT sum(amount) as total FROM Expenses")->fetchAll(PDO::FETCH_BOTH);
       $service->expenses = $expenses;
 
-      $profit = revenue[0]['total'] -revenue[0]['total'] ;
-      $service->profit = $profit;
-
       $service->render('layouts/group11/employee.php');
       }else{
         $response->redirect('/staff');

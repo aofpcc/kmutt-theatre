@@ -9,7 +9,7 @@
   <?php include('layouts/group11/component/layout/buttons.php'); ?>
   <!-- Button ends -->
 
-  <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+  <canvas class="my-4 w-100" id="revChart" width="900" height="380"></canvas>
   <h2>Revenue list</h2>
 
   <div class="table-responsive">
@@ -56,6 +56,7 @@
                   }
               ?>
               <?php } ?>
+              <br>
           </tr>
       </tbody>
       <?php } ?>
@@ -73,6 +74,38 @@ tbody.collapse.in {
   display: table-row-group;
 }
 </style>
+
+<!-- Graphs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+<script>
+  var ctx = document.getElementById("revChart");
+  var revChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      datasets: [{
+        data: [1, 21345, 18483, 24003, 23489, 24092, 12034],
+        lineTension: 0,
+        backgroundColor: 'transparent',
+        borderColor: '#007bff',
+        borderWidth: 4,
+        pointBackgroundColor: '#007bff'
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: false
+          }
+        }]
+      },
+      legend: {
+        display: false,
+      }
+    }
+  });
+</script>
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
 integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">

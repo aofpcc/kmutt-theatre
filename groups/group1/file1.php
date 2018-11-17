@@ -41,8 +41,10 @@ $klein->respond('GET', '/customer/home', function ($request, $response, $service
   }
 
   // $query = array("SELECT seat_no from Booking");
-  $service->soldSeat = $result;
-//  $service->soldSeat = ['1_2', '4_4','4_5','6_6','6_7','8_5','8_6','8_7','8_8', '10_1', '10_2'];
+
+  // $service->soldSeat = $result;
+
+ $service->soldSeat = ['1_2', '4_4','4_5','6_6','6_7','8_5','8_6','8_7','8_8', '10_1', '10_2'];
   $service->render('layouts/group1/home.php');
 });
 

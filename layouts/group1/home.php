@@ -23,7 +23,7 @@ ini_set('display_errors', 1);?>
 </head>
 </head>
 
-<body>
+<!-- <body>
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
  <a class="navbar-brand" href="#">KMUTT THEATER</a>
  <ul class="navbar-nav">
@@ -34,7 +34,7 @@ ini_set('display_errors', 1);?>
      <a class="nav-link" href="#">promotion</a>
    </li>
  </ul>
-</nav>
+</nav> -->
 
   <div class="main">
     <h2>Booking</h2>

@@ -8,7 +8,7 @@
     ini_set('display_errors', 1);
 
     // Check submitted params
-  //  $request->validate('selectedSeats')->notNull();
+    $request->validate('selectedSeats')->notNull();
    //
 
    //  // Pass on the params to the page we're gonna render

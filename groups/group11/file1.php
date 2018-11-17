@@ -196,7 +196,7 @@ $klein->respond('GET', '/staff/employee/dashboard', function ($request, $respons
                                         GROUP BY year(date),month(date)
                                       ")->fetchAll(PDO::FETCH_BOTH);
 
-        $revenueDate = $conn->query("   SELECT  month(date), '|' ,year(date)
+        $revenueDate = $conn->query("   SELECT  month(date) as month , '|' ,year(date) as year
                                         FROM  Revenue, FinancialID, Membership as m, employee as e
                                         WHERE Revenue.FinID = FinancialID.ID AND  Revenue.empID = e.EmpID AND Revenue.customerID = m.ID
                                         GROUP BY year(date),month(date)

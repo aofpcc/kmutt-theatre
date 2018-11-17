@@ -12,25 +12,16 @@
   <canvas class="my-4 w-100" id="revChart" width="900" height="380"></canvas>
   <h2>Revenue list</h2>
       <?php
-         $calling = mysql_query(" SELECT  sum(amount)
-                                FROM  Revenue, FinancialID, Membership as m, employee as e
-                                WHERE Revenue.FinID = FinancialID.ID AND  Revenue.empID = e.EmpID AND Revenue.customerID = m.ID
-                                GROUP BY year(date),month(date)");
-
          $wanT = array();
-         while($row = mysql_fetch_assoc($calling)){
+         while($row = mysqli_fetch_assoc($revenueDate)){
          $wanT[] = $row;
         }
          $json = json_encode($wanT);
          echo "<div id='date' style='display:none;'> " . $json . "</div>";
       ?>
       <?php
-       $calling = mysql_query(" SELECT  month(date) as month , '|' ,year(date) as year
-                                FROM  Revenue, FinancialID, Membership as m, employee as e
-                                WHERE Revenue.FinID = FinancialID.ID AND  Revenue.empID = e.EmpID AND Revenue.customerID = m.ID
-                                GROUP BY year(date),month(date)");
          $korMoon = array();
-         while($row = mysql_fetch_assoc($calling)){
+         while($row = mysqli_fetch_assoc($revenueGrahp)){
           $korMoon[] = $row;
         }
          $json = json_encode($korMoon);

@@ -153,6 +153,8 @@ $klein->respond('GET', '/staff/employee/dashboard', function ($request, $respons
       }
       });
 
+
+
   $klein->respond('GET', '/staff/logout', function ($request, $response, $service) {
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
@@ -163,4 +165,25 @@ $klein->respond('GET', '/staff/employee/dashboard', function ($request, $respons
       $response->redirect('/staff');
       $response->send();
     }
+    });
+
+    $klein->respond('GET', '/staff/employee/revenue', function ($request, $response, $service) {
+
+        $service->nameTag = 'revenue.php';
+        $service->render('layouts/group11/employee.php');
+        echo($service->nameTag);
+    });
+
+    $klein->respond('GET', '/staff/employee/expense', function ($request, $response, $service) {
+
+        $service->nameTag = 'expense.php';
+        $service->render('layouts/group11/employee.php');
+        echo($service->nameTag);
+    });
+
+    $klein->respond('GET', '/staff/employee/statistics', function ($request, $response, $service) {
+
+        $service->nameTag = 'statistics.php';
+        $service->render('layouts/group11/employee.php');
+        echo($service->nameTag);
     });

@@ -13,19 +13,19 @@
   <h2>Revenue list</h2>
       <?php
          $wanT = array();
-         while($row = mysqli_fetch_assoc($revenueDate)){
+         while($row = mysqli_fetch_assoc($this->revenueDate)){
          $wanT[] = $row;
         }
          $json = json_encode($wanT);
-         echo "<div id='date' style='display:none;'> " . $json . "</div>";
+         echo "<div id='wanT' style='display:none;'> " . $json . "</div>";
       ?>
       <?php
          $korMoon = array();
-         while($row = mysqli_fetch_assoc($revenueGrahp)){
+         while($row = mysqli_fetch_assoc($this->revenueGrahp)){
           $korMoon[] = $row;
         }
          $json = json_encode($korMoon);
-         echo "<div id='date' style='display:none;'> " . $json . "</div>";
+         echo "<div id='korMoon' style='display:none;'> " . $json . "</div>";
       ?>
   <div class="table-responsive">
     <table class="table table-striped table-sm">

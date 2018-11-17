@@ -12,18 +12,32 @@
   <!-- Button end -->
 
   <!-- month pickup -->
-  <div class="form-group">
-  </br>
-    <label>Start period :</label>
-    <input type="text" class="form-control form-control-1 input-sm from col-sm-4" placeholder="Month and year start" >
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <div class="form-group">
+        </br>
+          <label>Start period :</label>
+          <input type="text" class="form-control form-control-1 input-sm from col-sm-4" placeholder="Month and year start" >
+        </div>
+
+        <div class="form-group">
+          <label>End period :</label>
+          <input type="text" class="form-control form-control-2 input-sm to col-sm-4" placeholder="Month and year end">
+        </div>
+
+        <button type="button" class="btn btn-primary active">Search</button>
+      </div>
+      <div class="col-sm">
+        <div class="container" style="padding-top:30px;">
+          <h2>Income <kbd>500 Bath</kbd></h2>
+          <h2>Outcome <kbd>500 Bath</kbd></h2>
+          <h2>Profit <kbd>500 Bath</kbd></h2>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="form-group">
-    <label>End period :</label>
-    <input type="text" class="form-control form-control-2 input-sm to col-sm-4" placeholder="Month and year end">
-  </div>
-
-  <button type="button" class="btn btn-primary active">Search</button>
 
 
 

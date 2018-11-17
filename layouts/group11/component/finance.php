@@ -51,7 +51,7 @@
         pointBackgroundColor: '#007bff'
       },
       {
-        data: [15339, 2135, 1883, 2403, 2389, 2092, 1204],
+        data: [1, 2135, 1883, 2403, 2389, 2092, 1204],
         lineTension: 0,
         backgroundColor: 'transparent',
         borderColor: '#000000',

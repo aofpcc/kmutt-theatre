@@ -8,19 +8,12 @@
     <meta charset="utf-8">
     <title><?=$this->pageTitle ?></title>
 
-    <!-- For-Mobile-Apps -->
-    	<meta name="viewport" content="width=device-width, initial-scale=1" />
-    	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    	<meta name="keywords" content="E Shop Product Details Widget Responsive, Login Form Web Template, Flat Pricing Tables, Flat Drop-Downs, Sign-Up Web Templates, Flat Web Templates, Login Sign-up Responsive Web Template, Smartphone Compatible Web Template, Android Compatible Web Template, Free Web Designs for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design" />
-    	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-    <!-- //For-Mobile-Apps -->
-
     <!-- Web-Fonts -->
     	<link href='//fonts.googleapis.com/css?family=Raleway:400,500,600,700,300' rel='stylesheet' type='text/css'>
     	<link href='//fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
     <!-- //Web-Fonts -->
 
-    	<link rel="stylesheet" href="/layouts/group2/css/style.css" type="text/css" media="all" />
+    	<link rel="stylesheet" href="/layouts/group2/css/ticket/style.css" type="text/css" media="all" />
   </head>
   <body>
 
@@ -35,7 +28,7 @@
 
 			<div class="product">
 				<div class="product-image">
-					<div class="img-resize"><img src="/layouts/group2/images/mainmovie/homestay.jpg"></div>
+					<div class="img-resize"><img src="/layouts/group2/images/ticket/mainmovie/homestay.jpg"></div>
 				</div>
 				<div class="product-info">
 					<p><span>Movie</span>Homestay</p>
@@ -67,11 +60,11 @@
 								<div class="ac-img">
                   <!-- <div class="container"></div> -->
                   <h3>Overlord</h3>
-									<img src="/layouts/group2/images/moremovie/overlord.jpg">
+									<img src="/layouts/group2/images/ticket/moremovie/overlord.jpg">
 								</div>
 								<div class="ac-img" >
                   <h3>The Grinch</h3>
-                  <img src="/layouts/group2/images/moremovie/thegrin.jpg">
+                  <img src="/layouts/group2/images/ticket/moremovie/thegrin.jpg">
 								</div>
 								<div class="clear"></div>
 							</div>

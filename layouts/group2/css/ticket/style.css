@@ -33,7 +33,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 /*-- Index-Page-Styling --*/
 
 body {
-    background: url("../images/bg.jpg");
+    background: url("/layouts/group2/images/ticket/bg.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
@@ -120,7 +120,7 @@ span {
 
 .starRating:not(old) > label {
     float: right;
-    background: url(../images/star.png);
+    background: url(/layouts/group2/images/ticket/star.png);
     background-size: contain;
     margin-right: 2px;
 }
@@ -130,7 +130,7 @@ span {
   display         : block;
   width           : 18px;
   height          : 18px;
-  background      : url(../images/star1.png);
+  background      : url(/layouts/group2/images/ticket/ticket/star1.png);
   background-size : contain;
   opacity         : 0;
   transition      : opacity 0.2s linear;
@@ -212,10 +212,10 @@ select.dropdown {
     height: 24px;
     right: 13px;
     top: 10px;
-    background: transparent url(../images/arrow_down.png) no-repeat center center;
+    background: transparent url(/layouts/group2/images/ticket/ticket/arrow_down.png) no-repeat center center;
 }
 .ac-container input:checked + label:hover:after{
-    background-image: url(../images/arrow_up.png);
+    background-image: url(/layouts/group2/images/ticket/ticket/arrow_up.png);
 }
 .ac-container input{
     display: none;
@@ -324,7 +324,7 @@ select.dropdown {
     color: #EC0A0A;
 }
 .ac-large span {
-    background: url("../images/5stars.png") no-repeat 0px 0px;
+    background: url("/layouts/group2/images/ticket/5stars.png") no-repeat 0px 0px;
     color: #FE3A3E;
     font-weight: 600;
     margin-left: 20px;
@@ -350,17 +350,17 @@ ul.ship {
     color: #2196F3;
 }
 li.day {
-    background: url("../images/day.png") no-repeat 0px 0px;
+    background: url("/layouts/group2/images/ticket/day.png") no-repeat 0px 0px;
     margin: 10px 0 10px 30px;
     padding-left: 40px;
 }
 li.home {
-    background: url("../images/home.png") no-repeat 0px 0px;
+    background: url("/layouts/group2/images/ticket/home.png") no-repeat 0px 0px;
     margin: 10px 0 10px 30px;
     padding-left: 40px;
 }
 li.cod {
-    background: url("../images/cod.png") no-repeat 0px 0px;
+    background: url("/layouts/group2/images/ticket/cod.png") no-repeat 0px 0px;
     margin: 10px 0 10px 30px;
     padding-left: 40px;
 }

@@ -146,6 +146,16 @@ $klein->respond('GET', '/staff/employee/dashboard', function ($request, $respons
 
       $service->nameTag = 'finance.php';
       // $service->name =$_SESSION['name'];
+      // connect db
+      global $database;
+      $conn = $database->getConnection();
+
+      $revenue = $conn->query("SELECT sum(amount) as total FROM Revenue")->fetchAll(PDO::FETCH_BOTH);
+      $service->revenue = $revenue;
+
+      $expenses = $conn->query("SELECT sum(amount) as total FROM expenses")->fetchAll(PDO::FETCH_BOTH);
+      $service->expenses = $expenses;
+
       $service->render('layouts/group11/employee.php');
       }else{
         $response->redirect('/staff');
@@ -177,20 +187,25 @@ $klein->respond('GET', '/staff/employee/dashboard', function ($request, $respons
                               WHERE Revenue.FinID = FinancialID.id
                               GROUP BY dName")
                               ->fetchAll(PDO::FETCH_BOTH);
+
         $service->list = $list;
+
         $revenueGrahp = $conn->query("  SELECT  sum(amount)
                                         FROM  Revenue, FinancialID, Membership as m, employee as e
                                         WHERE Revenue.FinID = FinancialID.ID AND  Revenue.empID = e.EmpID AND Revenue.customerID = m.ID
                                         GROUP BY year(date),month(date)
                                       ")->fetchAll(PDO::FETCH_BOTH);
+
         $revenueDate = $conn->query("   SELECT  month(date), '|' ,year(date)
                                         FROM  Revenue, FinancialID, Membership as m, employee as e
-                                        WHERE Revenue.FinID = FinancialID.ID AND  Revenue.empID = e.EmpID AND Revenue.customerID = m.ID 
-                                        GROUP BY year(date),month(date) 
+                                        WHERE Revenue.FinID = FinancialID.ID AND  Revenue.empID = e.EmpID AND Revenue.customerID = m.ID
+                                        GROUP BY year(date),month(date)
                                       ")->fetchALL(PDO::FETCH_BOTH);
+
         $revenueList = $conn->query(" SELECT transactionId, dName, date, e.FirstName as empFN, e.LastName as empLN, m.FirstName as memFN, m.LastName as memLN, amount
                                       FROM Revenue, FinancialID, Membership as m, employee as e
                                       WHERE Revenue.FinID = FinancialID.ID AND  Revenue.empID = e. EmpID AND Revenue.customerID = m.ID")->fetchAll(PDO::FETCH_BOTH);
+
         $service->pageTitle = 'Financial';
         $service->revenueList = $revenueList;
         $service->render('layouts/group11/employee.php');

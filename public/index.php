@@ -2,6 +2,7 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../config/database.php';
 require_once __DIR__ . '/../config/login.php';
+require_once __DIR__ . '/../config/js.php';
 
 $klein = new \Klein\Klein();
 $database = new \Database();
@@ -12,12 +13,12 @@ session_start();
 $klein->respond(function($request, $response, $service, $app, $validator) use($database, $loginperformer){
   $app->db = $database;
   $app->login = $loginperformer;
+  $app->js = new JavaScriptPart;
 });
 
 include_once __DIR__ . "/../groups/shared/index.php";
 
 include_once __DIR__ . "/../god/included_files.php";
-
 foreach ($included as $key => $value) {
   include_once __DIR__ . "/../god/$value.php";
 }

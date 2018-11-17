@@ -10,13 +10,15 @@
   <!-- Button ends -->
 
   <div class="container" style="padding:70px;">
-    <h2>Most profit month <kbd>Month</kbd></h2>
-    <h2>Most income <kbd>Month</kbd></h2>
-    <h2>Most expense <kbd>Month</kbd></h2>
-    <h2>Gene best seller <kbd>Type</kbd></h2>
-    <h2>Gene worst seller <kbd>Type</kbd></h2>
-    <h2>Snack best seller <kbd>Type</kbd></h2>
-    <h2>Most popular time(movie showtime) <kbd>Length</kbd></h2>
+    <h2>Most Profit month by avgrage <kbd>Month</kbd></h2>
+    <h2>Most Revenue month by avgrage<kbd>Month</kbd></h2>
+    <h2>Most Expense month by avgrage<kbd>Month</kbd></h2>
+    <h2>Best seller Gene<kbd>Type</kbd></h2>
+    <h2>Worst seller Gene<kbd>Type</kbd></h2>
+    <h2>Best seller Snack<kbd>Type</kbd></h2>
+    <h2>Worst seller Snack<kbd>Type</kbd></h2>
+    <h2>Best popular time(movie showtime) <kbd>Length</kbd></h2>
+    <h2>Worst popular time(movie showtime) <kbd>Length</kbd></h2>
 
   </div>
 

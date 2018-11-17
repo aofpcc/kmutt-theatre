@@ -93,10 +93,9 @@ $klein->respond('GET', '/staff/employee/dashboard', function ($request, $respons
     $response->redirect('/staff');
     $response->send();
   }
-  });
+});
 
-  $klein->respond('GET', '/staff/employee/profile', function ($request, $response, $service) {
-    error_reporting(E_ALL);
+$klein->respond('GET', '/staff/employee/profile', function ($request, $response, $service) {
     ini_set('display_errors', 1);
 
    // connect db
@@ -122,10 +121,9 @@ $klein->respond('GET', '/staff/employee/dashboard', function ($request, $respons
       $response->redirect('/staff');
       $response->send();
     }
-    });
+});
 
-    $klein->respond('GET', '/staff/employee/finance', function ($request, $response, $service) {
-      error_reporting(E_ALL);
+$klein->respond('GET', '/staff/employee/finance', function ($request, $response, $service) {
       ini_set('display_errors', 1);
 
        // connect db
@@ -151,12 +149,9 @@ $klein->respond('GET', '/staff/employee/dashboard', function ($request, $respons
         $response->redirect('/staff');
         $response->send();
       }
-      });
+});
 
-
-
-  $klein->respond('GET', '/staff/logout', function ($request, $response, $service) {
-    error_reporting(E_ALL);
+$klein->respond('GET', '/staff/logout', function ($request, $response, $service) {
     ini_set('display_errors', 1);
 
     session_start();
@@ -165,7 +160,7 @@ $klein->respond('GET', '/staff/employee/dashboard', function ($request, $respons
       $response->redirect('/staff');
       $response->send();
     }
-    });
+});
 
     $klein->respond('GET', '/staff/employee/revenue', function ($request, $response, $service) {
 

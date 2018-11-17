@@ -10,7 +10,7 @@
   <!-- Button ends -->
 
   <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
-  <h2>Expense lists</h2>
+  <h2>Expense Lists</h2>
 
   <div class="table-responsive">
     <table class="table table-striped table-sm">
@@ -24,51 +24,42 @@
             <th>Amount</th>
           </tr>
       </thead>
+      <?php
+        for($i = 1; $i < count($this->list); $i++) {
+      ?>
       <tbody>
           <tr class="clickable" data-toggle="collapse" data-target="#group-of-rows-1"
           aria-expanded="false" aria-controls="group-of-rows-1">
               <td><i class="fas fa-plus"></i></td> <!-- not bind data here-->
-              <td>data</td>
+              <td><?=$this->list[$i]['dName']?></td>
             	<td></td> <!-- not bind data here-->
               <td></td> <!-- not bind data here-->
               <td></td> <!-- not bind data here-->
-              <td>Amount</td>
+              <td><?=$this->list[$i]['total']?></td>
           </tr>
       </tbody>
       <tbody id="group-of-rows-1" class="collapse">
           <tr><!-- this is when collapse bind all data in each department here -->
-              <td>1</td>
-              <td>data 1</td>
-            	<td>data 1</td>
-              <td>data 1</td>
-            	<td>data 1</td>
-              <td>data 1</td>
+              <td><?=$this->list[$i]['dName']?></td>
+              <?php
+                for($j = 0; $j < count($this->expensesList); $j++) {
+                  if ($this->list[$i]['dName'] == $this->expensesList[$j]['dName'] ) {
+              ?>
+                <td><?=$this->expensesList[$j]['transactionId'] ?></td>
+                <td><?=$this->expensesList[$j]['dName'] ?></td>
+                <td><?=$this->expensesList[$j]['date'] ?></td>
+                <td><?=$this->expensesList[$j]['empFN']." ".$this->expensesList[$i]['empLN']?></td>
+                <td><?=$this->expensesList[$j]['memFN']." ".$this->expensesList[$i]['memLN'];?></td>
+                <td><?=$this->expensesList[$j]['amount'] ?></td>
 
+              <?php
+                  }
+              ?>
+              <?php } ?>
           </tr>
       </tbody>
-      <tbody>
-          <tr class="clickable" data-toggle="collapse" data-target="#group-of-rows-2"
-          aria-expanded="false" aria-controls="group-of-rows-2">
-
-              <td><i class="fas fa-plus"></i></td> <!-- not bind data here-->
-              <td>data</td>
-              <td></td> <!-- not bind data here-->
-              <td></td> <!-- not bind data here-->
-              <td></td> <!-- not bind data here-->
-              <td>Amount</td>
-          </tr>
-      </tbody>
-      <tbody id="group-of-rows-2" class="collapse">
-          <tr>
-            <td>1</td>
-            <td>data 1</td>
-            <td>data 1</td>
-            <td>data 1</td>
-            <td>data 1</td>
-            <td>data 1</td>
-          </tr>
-      </tbody>
-  </table>
+      <?php } ?>
+    </table>
 </div>
 
 

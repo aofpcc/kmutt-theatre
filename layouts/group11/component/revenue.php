@@ -10,7 +10,7 @@
   <!-- Button ends -->
 
   <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
-  <h2>Revenue list</h2>
+  <h2>Revenue List</h2>
 
   <div class="table-responsive">
     <table class="table table-striped table-sm">
@@ -59,7 +59,7 @@
           </tr>
       </tbody>
       <?php } ?>
-  </table>
+    </table>
 </div>
 
 

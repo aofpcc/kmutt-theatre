@@ -1,6 +1,5 @@
 <?php
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+require_once __DIR__ . "/../vendor/phpmailer/phpmailer/PHPMailerAutoload.php";
 class MailSender {
 
   public function sent($to, $header, $body) {
@@ -85,7 +84,7 @@ class LoginPerformer
   }
 
   public function forgotPwd($email) {
-    
+
   }
 
   public function register($username, $password, $email) {

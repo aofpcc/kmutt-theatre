@@ -25,10 +25,10 @@
 
 <body>
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
- <a class="navbar-brand" href="#">KMUTT THEATER</a>
+ <a class="navbar-brand" href="http://localhost:8000/customer/kmutt_home">KMUTT THEATER</a>
  <ul class="navbar-nav">
    <li class="nav-item">
-     <a class="nav-link" href="#">home</a>
+     <a class="nav-link" href="http://localhost:8000/customer/kmutt_home">home</a>
    </li>
    <li class="nav-item">
      <a class="nav-link" href="#">promotion</a>
@@ -59,11 +59,13 @@
                     <p>
 
                          <?php //echo json_encode($this->selectedSeats);
-                       if($this->selectedSeats == null){
+                        if($this->selectedSeats == null){
                       //       echo 'select the chair';
-                      //         // header('location: http://localhost:8000/customer/home'); ?>
-                        <?php $this->render("layouts/group1/popup.php"); ?>
+                      //         // header('location: http://localhost:8000/customer/home');
+                         $this->render("layouts/group1/popup_forget_chair.php");
                       // <?php
+                        }else if(count($this->selectedSeats) >= 10){
+                          $this->render("layouts/group1/popup_booking_ten.php");
                         }else{
                             echo json_encode($this->selectedSeats);
                         }

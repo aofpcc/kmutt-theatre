@@ -1,6 +1,10 @@
 <?php
 $included = array(
-  'file1',
-  'sum_select',
-  //'inset_data'
+  'home_page',
+  'branch_page',
+  'showtime_page',
+  'select_chair',
+  'payment_page',
+  'tenpeople_page',
+  'ticket_page'
 );

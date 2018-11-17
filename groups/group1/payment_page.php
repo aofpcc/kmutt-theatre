@@ -3,7 +3,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-$klein->respond('POST', '/customer/payment', function ($request, $response, $service)  use($database){
+$klein->respond('POST', '/customer/kmutt_home/branch/show_time/select_chair/payment', function ($request, $response, $service)  use($database){
   $conn = $database->getConnection();
 
 

@@ -1,3 +1,5 @@
+<?php  ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,10 +14,10 @@
 
 
    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-  <a class="navbar-brand" href="#">KMUTT THEATER</a>
+  <a class="navbar-brand" href="http://localhost:8000/customer/kmutt_home">KMUTT THEATER</a>
   <ul class="navbar-nav">
     <li class="nav-item">
-      <a class="nav-link" href="#">home</a>
+      <a class="nav-link" href="http://localhost:8000/customer/kmutt_home">home</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="#">promotion</a>

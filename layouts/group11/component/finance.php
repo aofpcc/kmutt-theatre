@@ -30,9 +30,12 @@
       </div>
       <div class="col-sm">
         <div class="container" style="padding-top:30px;">
-          <h2>Income <kbd>500 Bath</kbd></h2>
-          <h2>Outcome <kbd>500 Bath</kbd></h2>
-          <h2>Profit <kbd>500 Bath</kbd></h2>
+          <h2>Income <kbd><?php revenue[0]['total'] ?> Bath</kbd></h2>
+          <h2>Outcome <kbd><?php expenses[0]['total'] ?> Bath</kbd></h2>
+          <?php if (($this->profit)>=0) { ?>
+            <h2>Profit <kbd><?php revenue[0]['total'] ?> Bath</kbd></h2>
+          <?php } eles {?>
+            <h2>Profit <kbd><?php abd(revenue[0]['total']) ?> Bath</kbd></h2>
         </div>
       </div>
     </div>

@@ -12,19 +12,28 @@
   <canvas class="my-4 w-100" id="revChart" width="900" height="380"></canvas>
   <h2>Revenue list</h2>
       <?php
-         $date = $date();
-         while($row = mysql_fetch_assoc($revenueDate)){
-          $date[] = $row;
+         $calling = mysql_query(" SELECT  sum(amount)
+                                FROM  Revenue, FinancialID, Membership as m, employee as e
+                                WHERE Revenue.FinID = FinancialID.ID AND  Revenue.empID = e.EmpID AND Revenue.customerID = m.ID
+                                GROUP BY year(date),month(date)");
+
+         $wanT = array();
+         while($row = mysql_fetch_assoc($calling)){
+         $wanT[] = $row;
         }
-         $json = json_encode($date);
+         $json = json_encode($wanT);
          echo "<div id='date' style='display:none;'> " . $json . "</div>";
       ?>
       <?php
-         $data = $data();
-         while($row = mysql_fetch_assoc($revenueGraph)){
-          $data[] = $row;
+       $calling = mysql_query(" SELECT  month(date) as month , '|' ,year(date) as year
+                                FROM  Revenue, FinancialID, Membership as m, employee as e
+                                WHERE Revenue.FinID = FinancialID.ID AND  Revenue.empID = e.EmpID AND Revenue.customerID = m.ID
+                                GROUP BY year(date),month(date)");
+         $korMoon = array();
+         while($row = mysql_fetch_assoc($calling)){
+          $korMoon[] = $row;
         }
-         $json = json_encode($data);
+         $json = json_encode($korMoon);
          echo "<div id='date' style='display:none;'> " . $json . "</div>";
       ?>
   <div class="table-responsive">
@@ -218,8 +227,8 @@ tbody.collapse.in {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 <script>
   var ctx = document.getElementById("revChart");
-  var dates = JSON.parse(document.getElementById('date').innerHTML);
-  var datas = JSON.parse(document.getElementById('data').innerHTML);
+  var dates = JSON.parse(document.getElementById('wanT').innerHTML);
+  var datas = JSON.parse(document.getElementById('korMoon').innerHTML);
   var revChart = new Chart(ctx, {
     type: 'line',
     data: {

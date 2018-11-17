@@ -202,6 +202,7 @@ $klein->respond('GET', '/staff/employee/dashboard', function ($request, $respons
                                         GROUP BY year(date),month(date)
                                       ")->fetch(PDO::FETCH_ASSOC);
 
+
         $revenueList = $conn->query(" SELECT transactionId, dName, date, e.FirstName as empFN, e.LastName as empLN, m.FirstName as memFN, m.LastName as memLN, amount
                                       FROM Revenue, FinancialID, Membership as m, employee as e
                                       WHERE Revenue.FinID = FinancialID.ID AND  Revenue.empID = e. EmpID AND Revenue.customerID = m.ID")->fetchAll(PDO::FETCH_BOTH);

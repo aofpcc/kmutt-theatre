@@ -26,6 +26,15 @@
     <!-- Custom styles for this template -->
     <link href="css/shop-homepage.css" rel="stylesheet">
     <style>
+    body{
+      background-color: #303030;
+      }
+      .main{
+        width: 80%;
+        margin: 45px auto;
+        background:rgba(255, 255, 255, 0.88);
+        padding: 30px 30px;
+      }
         /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
         .row.content {height: 1500px}
 
@@ -68,7 +77,7 @@
    </ul>
   </nav>
 
-
+    <div class="main">
     <div class = "container" id="promo-ads">
     <div class="col-lg-12">
 
@@ -263,6 +272,7 @@
 </div>
     </div>
   </div>
+</div>
 
 
     <!-- Bootstrap core JavaScript -->

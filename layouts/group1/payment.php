@@ -35,10 +35,8 @@
    </li>
  </ul>
 </nav>
-
+<br><br>
   <div class="main">
-
-
   <div class="card card-temp shadow-lg">
           <div class="container">
             <br>

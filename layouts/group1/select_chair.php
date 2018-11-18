@@ -35,7 +35,7 @@ ini_set('display_errors', 1);?>
    </li>
  </ul>
 </nav>
-
+<br><br>
   <div class="main">
     <h2>Booking</h2>
     <div class = "img_container">

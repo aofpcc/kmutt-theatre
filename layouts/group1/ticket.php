@@ -26,7 +26,7 @@ background-color: #303030;
 }
 
 .main{
-width: 70%;
+width: 80%;
 margin: 45px auto;
 background:rgba(255, 255, 255, 0.88);
 padding: 30px 30px;

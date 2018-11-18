@@ -4,6 +4,10 @@
   <head>
 
     <meta charset="utf-8">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -18,46 +22,36 @@
 
 
   </head>
-
+  <style>
+  body{
+    background-color: #303030;
+  }
+  .main{
+  width: 80%;
+  margin: 45px auto;
+  background:rgba(255, 255, 255, 0.88);
+  padding: 30px 30px;
+}
+  </style>
   <body>
 
     <!-- Navigation -->
     <body>
 
-        <!-- Navigation -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-          <div class="container">
-            <a class="navbar-brand navbar-center" href="#">CSC318 MOVIE</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                  <a class="nav-link" href="#">Home
-                    <span class="sr-only">(current)</span>
-                  </a>
-                </li>
-
-                <li class="nav-item">
-                  <a class="nav-link" href="#">MOVIES</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">PROMOTION</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">MEMBER CARD</a>
-                </li>
-              </ul>
-              <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span>Log In/Sign Up</a></li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-
+      <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+     <a class="navbar-brand" href="http://localhost:8000/customer/kmutt_home">KMUTT THEATER</a>
+     <ul class="navbar-nav">
+       <li class="nav-item">
+         <a class="nav-link" href="http://localhost:8000/customer/kmutt_home">home</a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link" href="#">promotion</a>
+       </li>
+     </ul>
+    </nav>
+    <br><br>
     <!-- Page Content -->
+    <div class="main">
     <div class="container">
 
       <!-- Page Heading -->
@@ -110,6 +104,7 @@
           </div>
 
         </div>
+      </div>
 
     <br><br><br>
     <!-- Footer -->

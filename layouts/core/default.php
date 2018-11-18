@@ -27,7 +27,7 @@
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Welcome, <?=$this->username ?></a>
           <ul class="dropdown-menu">
             <?php foreach ($this->login_menu as $key => $value) { ?>
-              <li> <a href="#"><?=$value ?></a> </li>
+              <li> <a href="<?=$value["href"] ?>"><?=$value["name"] ?></a> </li>
             <?php } ?>
           </ul>
         </li>

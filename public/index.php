@@ -14,13 +14,26 @@ $klein->respond(function ($request, $response, $service, $app, $validator) use (
     $app->db = $database;
     $app->login = $loginperformer;
     $app->js = new JavaScriptPart;
+
+    $username = ( empty($_SESSION['username']) ? "Guest" : $_SESSION['username'] );
+
+    if($username == 'Guest') {
+      $login_menu = [
+        ["name" => "Log in", "href" => "/test/login"],
+        ["name" => "Register", "href" => "/test/register"],
+      ];
+    }else{
+      $login_menu = [
+        ["name" => "View Profile", "href" => "#"],
+        ["name" => "Change Password", "href" => "/test/changePassword"],
+        ["name" => "Log out", "href" => "/test/logout"],
+      ];
+    }
+
     $app->passValue = [
       "title" => "Page",
-      "username" => "Guest",
-      "login_menu" => [
-        "Login",
-        "Register"
-      ]
+      "username" => $username,
+      "login_menu" => $login_menu
     ];
 });
 

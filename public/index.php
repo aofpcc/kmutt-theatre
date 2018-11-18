@@ -11,19 +11,20 @@ $loginperformer = new \LoginPerformer($database, $klein);
 session_start();
 
 $klein->respond(function ($request, $response, $service, $app, $validator) use ($database, $loginperformer) {
+    $service->layout('layouts/core/default.php');
     $app->db = $database;
     $app->login = $loginperformer;
     $app->js = new JavaScriptPart;
 
-    $username = ( empty($_SESSION['username']) ? "Guest" : $_SESSION['username'] );
+    $username = (empty($_SESSION['username']) ? "Guest" : $_SESSION['username']);
 
-    if($username == 'Guest') {
-      $login_menu = [
+    if ($username == 'Guest') {
+        $login_menu = [
         ["name" => "Log in", "href" => "/test/login"],
         ["name" => "Register", "href" => "/test/register"],
       ];
-    }else{
-      $login_menu = [
+    } else {
+        $login_menu = [
         ["name" => "View Profile", "href" => "#"],
         ["name" => "Change Password", "href" => "/test/changePassword"],
         ["name" => "Log out", "href" => "/test/logout"],
@@ -38,7 +39,6 @@ $klein->respond(function ($request, $response, $service, $app, $validator) use (
 });
 
 $klein->onHttpError(function ($code, $router) {
-    $router->service()->layout('layouts/core/default.php');
     switch ($code) {
         case 404:
           $arr = $router->app()->passValue;

@@ -1,16 +1,12 @@
 <?php
-$klein->respond('GET', '/group2', function ($request, $response, $service) {
+$klein->respond('GET', '/group2/home', function ($request, $response, $service) {
   global $database;
   $conn = $database->getConnection();
 
-  $query = "SELECT * from movies";
-  $stmt = $conn->prepare($query);
-  $stmt->execute();
+  $list = $conn->query("SELECT * FROM movies")->fetchAll(PDO::FETCH_BOTH);
 
-  $num = $stmt->rowCount();
-  $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
-
-  $service->allMovies = $arr;
-  $service->pageTitle = 'Hello';
-  $service->render('layouts/group2/home.php');
+  $service->pageTitle = 'KMUTT THEATRE | Get Tickets';
+  $service->list = $list;
+  $service->render('layouts/group2/index.php');
+  $conn=null;
 });

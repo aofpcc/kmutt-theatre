@@ -116,6 +116,23 @@ $klein->with("/test", function () use ($klein) {
         $service->render('layouts/core/resetPassword.php', $pass);
     });
 
+    $klein->respond('POST', '/resetPassword', function ($request, $response, $service, $app, $validator) {
+        $service->validateParam('newpassword', 'New Password cannot be null')->notNull();
+        $service->validateParam('confirmpassword', 'Confirm Password cannot be null')->notNull();
+        if ($request->newpassword != $request->confirmpassword) {
+            $service->flash('Shit Not the same');
+            $service->back();
+        }
+        $pass = $app->passValue;
+        $result = $app->login->setNewPassword($request->newpassword);
+        if ($result["update"]) {
+            $pass["content"] = "Password was reseted";
+        } else {
+            $pass["content"] = "Password was not reseted. Please Contact Us";
+        }
+        $service->render('layouts/core/home.php', $pass);
+    });
+
     $klein->respond('GET', '/changePassword', function ($request, $response, $service, $app, $validator) {
         $pass = $app->passValue;
         $result = $app->login->requireLogin('customer');
@@ -127,14 +144,14 @@ $klein->with("/test", function () use ($klein) {
     $klein->respond('POST', '/changePassword', function ($request, $response, $service, $app, $validator) {
         $pass = $app->passValue;
         $result = $app->login->requireLogin('customer');
-        if($request->newpassword != $request->confirmpassword) {
-          $service->flash("New password is not same as confirm password");
-          $service->back();
+        if ($request->newpassword != $request->confirmpassword) {
+            $service->flash("New password is not same as confirm password");
+            $service->back();
         }
         $result = $app->login->changePassword($request->oldpassword, $request->newpassword);
-        if(!$result["change"]) {
-          $service->flash("The old password incorrect");
-          $service->back();
+        if (!$result["change"]) {
+            $service->flash("The old password incorrect");
+            $service->back();
         }
         $pass["content"] = "The password was changed";
         $service->render('layouts/core/home.php', $pass);

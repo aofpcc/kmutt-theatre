@@ -92,34 +92,55 @@ class LoginPerformer
         }
     }
 
-    public function resetPassword($base64) {
-      try {
-          $password = base64_decode($base64);
-          $stmt = $this->conn->prepare("SELECT * from core_user_pwd where password = :password");
-          $stmt->bindParam(":password", $password);
-          $stmt->execute();
+    public function resetPassword($base64)
+    {
+        try {
+            $password = base64_decode($base64);
+            $stmt = $this->conn->prepare("SELECT * from core_user_pwd where password = :password");
+            $stmt->bindParam(":password", $password);
+            $stmt->execute();
 
-          if ($stmt->rowCount() == 0) {
-              throw new \Exception("Incorrect Password", 1);
-          }
+            if ($stmt->rowCount() == 0) {
+                throw new \Exception("Incorrect Password", 1);
+            }
 
-          $result = $stmt->fetchAll();
-          $userID = $result[0]["userID"];
+            $result = $stmt->fetchAll();
+            $userID = $result[0]["userID"];
 
-          $_SESSION['role'] = $result[0]["role"];
-          $_SESSION['userID'] = $result[0]["userID"];
-          $_SESSION['username'] = $result[0]["username"];
+            $_SESSION['role'] = $result[0]["role"];
+            $_SESSION['userID'] = $result[0]["userID"];
+            $_SESSION['username'] = $result[0]["username"];
 
-          return [
+            return [
           "change" => true,
           "userID" => $userID
         ];
-      } catch (Exception $e) {
-          return [
+        } catch (Exception $e) {
+            return [
           "change" => false,
           "data" => $e->getMessage()
         ];
-      }
+        }
+    }
+
+    public function setNewPassword($password)
+    {
+        try {
+            $password = $this->md5($password);
+            $stmt = $this->conn->prepare("INSERT into core_password_table(userID, password, create_date)
+        values(:userID, :password, NOW());");
+            $stmt->bindParam(":password", $password);
+            $stmt->bindParam(":userID", $_SESSION['userID']);
+            $stmt->execute();
+
+            return [
+          "update" => true
+        ];
+        } catch (Exception $e) {
+            return [
+          "update" => false
+        ];
+        }
     }
 
     public function changePassword($old, $new)
@@ -172,8 +193,9 @@ class LoginPerformer
             }
             $base64 = base64_encode($result[0]["password"]);
 
-            // $mail = new MailSender;
-            // $mail->sent($email, "Change Password", "<a href='http://".$_SERVER['HTTP_HOST']."/test/forgetPassword/reset/$base64'>Verify Account</a>");
+            $mail = new MailSender;
+            $mail->SMTPDebug  = 2;
+            $mail->sent($email, "Reset Password", "Please click <a href='http://".$_SERVER['HTTP_HOST']."/test/forgetPassword/reset/$base64'>this</a> to reset your password");
             return [
               "sent" => true
             ];

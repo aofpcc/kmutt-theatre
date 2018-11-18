@@ -22,6 +22,7 @@ $klein->respond(function ($request, $response, $service, $app, $validator) use (
         $login_menu = [
         ["name" => "Log in", "href" => "/test/login"],
         ["name" => "Register", "href" => "/test/register"],
+        ["name" => "Forget Password", "href" => "/test/forgetPassword"]
       ];
     } else {
         $login_menu = [

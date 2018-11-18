@@ -10,152 +10,45 @@
   <!-- Button -->
   <?php include('layouts/group11/component/layout/buttons.php'); ?>
   <!-- Button end -->
-
   <!-- month pickup -->
-  <div class="form-group">
-  </br>
-    <label>Start period :</label>
-    <input type="text" class="form-control form-control-1 input-sm from col-sm-4" placeholder="Month and year start" >
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <div class="form-group">
+        </br>
+          <label>Start period :</label>
+          <input type="text" class="form-control form-control-1 input-sm from col-sm-4" placeholder="Month and year start" >
+        </div>
+
+        <div class="form-group">
+          <label>End period :</label>
+          <input type="text" class="form-control form-control-2 input-sm to col-sm-4" placeholder="Month and year end">
+        </div>
+
+        <button type="button" class="btn btn-primary active">Search</button>
+      </div>
+      <div class="col-sm">
+        <div class="container" style="padding-top:30px;">
+
+          <h2>Revenue <kbd style="background-color:green"> <?php echo ($this->revenue[0]['total']); ?> Bath</kbd></h2>
+          <h2>Expense <kbd style="background-color:red"><?php echo ($this->expenses[0]['total']); ?> Bath</kbd></h2>
+          <?php  $profit = $this->revenue[0]['total'] - $this->expenses[0]['total'];
+          if ($profit >= 0) { ?>
+            <h2>Profit <kbd style="background-color:green"><?php echo ($this->revenue[0]['total']- $this->expenses[0]['total'] ) ;?> Bath</kbd></h2>
+          <?php } else {?>
+            <h2>Profit <kbd style="background-color:red"><?php echo (($profit)) ?> Bath</kbd></h2>
+          <?php }?>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="form-group">
-    <label>End period :</label>
-    <input type="text" class="form-control form-control-2 input-sm to col-sm-4" placeholder="Month and year end">
-  </div>
 
-  <button type="button" class="btn btn-primary active">Search</button>
+
 
   <!-- month pickup ends -->
 
   <canvas class="my-4 w-100" id="sumChart" width="900" height="380"></canvas>
-  <h2>EMPLOYEE</h2>
-  <div class="table-responsive">
-    <table class="table table-striped table-sm">
-      <thead>
-        <tr>
-          <th>Status</th>
-          <th>Name</th>
-          <th>Surname</th>
-          <th>Salary</th>
-          <th>Call</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1,001</td>
-          <td>Lorem</td>
-          <td>ipsum</td>
-          <td>dolor</td>
-          <td>sit</td>
-        </tr>
-        <tr>
-          <td>1,002</td>
-          <td>amet</td>
-          <td>consectetur</td>
-          <td>adipiscing</td>
-          <td>elit</td>
-        </tr>
-        <tr>
-          <td>1,003</td>
-          <td>Integer</td>
-          <td>nec</td>
-          <td>odio</td>
-          <td>Praesent</td>
-        </tr>
-        <tr>
-          <td>1,003</td>
-          <td>libero</td>
-          <td>Sed</td>
-          <td>cursus</td>
-          <td>ante</td>
-        </tr>
-        <tr>
-          <td>1,004</td>
-          <td>dapibus</td>
-          <td>diam</td>
-          <td>Sed</td>
-          <td>nisi</td>
-        </tr>
-        <tr>
-          <td>1,005</td>
-          <td>Nulla</td>
-          <td>quis</td>
-          <td>sem</td>
-          <td>at</td>
-        </tr>
-        <tr>
-          <td>1,006</td>
-          <td>nibh</td>
-          <td>elementum</td>
-          <td>imperdiet</td>
-          <td>Duis</td>
-        </tr>
-        <tr>
-          <td>1,007</td>
-          <td>sagittis</td>
-          <td>ipsum</td>
-          <td>Praesent</td>
-          <td>mauris</td>
-        </tr>
-        <tr>
-          <td>1,008</td>
-          <td>Fusce</td>
-          <td>nec</td>
-          <td>tellus</td>
-          <td>sed</td>
-        </tr>
-        <tr>
-          <td>1,009</td>
-          <td>augue</td>
-          <td>semper</td>
-          <td>porta</td>
-          <td>Mauris</td>
-        </tr>
-        <tr>
-          <td>1,010</td>
-          <td>massa</td>
-          <td>Vestibulum</td>
-          <td>lacinia</td>
-          <td>arcu</td>
-        </tr>
-        <tr>
-          <td>1,011</td>
-          <td>eget</td>
-          <td>nulla</td>
-          <td>Class</td>
-          <td>aptent</td>
-        </tr>
-        <tr>
-          <td>1,012</td>
-          <td>taciti</td>
-          <td>sociosqu</td>
-          <td>ad</td>
-          <td>litora</td>
-        </tr>
-        <tr>
-          <td>1,013</td>
-          <td>torquent</td>
-          <td>per</td>
-          <td>conubia</td>
-          <td>nostra</td>
-        </tr>
-        <tr>
-          <td>1,014</td>
-          <td>per</td>
-          <td>inceptos</td>
-          <td>himenaeos</td>
-          <td>Curabitur</td>
-        </tr>
-        <tr>
-          <td>1,015</td>
-          <td>sodales</td>
-          <td>ligula</td>
-          <td>in</td>
-          <td>libero</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
 
 <!-- Stop here -->
 </main>
@@ -177,7 +70,7 @@
         pointBackgroundColor: '#007bff'
       },
       {
-        data: [15339, 2135, 1883, 2403, 2389, 2092, 1204],
+        data: [1, 2135, 1883, 2403, 2389, 2092, 1204],
         lineTension: 0,
         backgroundColor: 'transparent',
         borderColor: '#000000',
@@ -202,32 +95,10 @@
 <!-- Graphs end -->
 
 <!-- month pickup -->
-<script>
-var startDate = new Date();
-var fechaFin = new Date();
-var FromEndDate = new Date();
-var ToEndDate = new Date();
+<link rel="stylesheet" type="text/css" media="all" href="daterangepicker.css" />
 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
 
-
-$('.from').datepicker({
-    autoclose: true,
-    minViewMode: 1,
-    format: 'mm/yyyy'
-}).on('changeDate', function(selected){
-        startDate = new Date(selected.date.valueOf());
-        startDate.setDate(startDate.getDate(new Date(selected.date.valueOf())));
-        $('.to').datepicker('setStartDate', startDate);
-    });
-
-$('.to').datepicker({
-    autoclose: true,
-    minViewMode: 1,
-    format: 'mm/yyyy'
-}).on('changeDate', function(selected){
-        FromEndDate = new Date(selected.date.valueOf());
-        FromEndDate.setDate(FromEndDate.getDate(new Date(selected.date.valueOf())));
-        $('.from').datepicker('setEndDate', FromEndDate);
-    });
-</script>
+<script type="text/javascript" src="daterangepicker.js"></script>

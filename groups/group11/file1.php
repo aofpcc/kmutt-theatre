@@ -152,6 +152,16 @@ $klein->respond('GET', '/staff/employee/finance', function ($request, $response,
 
       $service->nameTag = 'finance.php';
       // $service->name =$_SESSION['name'];
+      // connect db
+      global $database;
+      $conn = $database->getConnection();
+
+      $revenue = $conn->query("SELECT sum(amount) as total FROM Revenue")->fetchAll(PDO::FETCH_BOTH);
+      $service->revenue = $revenue;
+
+      $expenses = $conn->query("SELECT sum(amount) as total FROM Expenses")->fetchAll(PDO::FETCH_BOTH);
+      $service->expenses = $expenses;
+
       $service->render('layouts/group11/employee.php');
       }else{
         $response->redirect('/staff');
@@ -171,8 +181,37 @@ $klein->respond('GET', '/staff/logout', function ($request, $response, $service)
 });
 
     $klein->respond('GET', '/staff/employee/revenue', function ($request, $response, $service) {
-
+        // connect db
+        global $database;
+        $conn = $database->getConnection();
         $service->nameTag = 'revenue.php';
+        //select table
+        $list = $conn->query("SELECT dName , sum(amount) as total FROM FinancialID,Revenue
+                              WHERE Revenue.FinID = FinancialID.id
+                              GROUP BY dName")
+                              ->fetchAll(PDO::FETCH_BOTH);
+
+        $service->list = $list;
+
+        $revenueGrahp = $conn->query("  SELECT  sum(amount)
+                                        FROM  Revenue, FinancialID, Membership as m, employee as e
+                                        WHERE Revenue.FinID = FinancialID.ID AND  Revenue.empID = e.EmpID AND Revenue.customerID = m.ID
+                                        GROUP BY year(date),month(date)
+                                      ")->fetch(PDO::FETCH_ASSOC);
+
+        $revenueDate = $conn->query("   SELECT  month(date) as month , '|' ,year(date) as year
+                                        FROM  Revenue, FinancialID, Membership as m, employee as e
+                                        WHERE Revenue.FinID = FinancialID.ID AND  Revenue.empID = e.EmpID AND Revenue.customerID = m.ID
+                                        GROUP BY year(date),month(date)
+                                      ")->fetch(PDO::FETCH_ASSOC);
+
+
+        $revenueList = $conn->query(" SELECT transactionId, dName, date, e.FirstName as empFN, e.LastName as empLN, m.FirstName as memFN, m.LastName as memLN, amount
+                                      FROM Revenue, FinancialID, Membership as m, employee as e
+                                      WHERE Revenue.FinID = FinancialID.ID AND  Revenue.empID = e. EmpID AND Revenue.customerID = m.ID")->fetchAll(PDO::FETCH_BOTH);
+
+        $service->pageTitle = 'Financial';
+        $service->revenueList = $revenueList;
         $service->render('layouts/group11/employee.php');
         echo($service->nameTag);
     });
@@ -180,13 +219,53 @@ $klein->respond('GET', '/staff/logout', function ($request, $response, $service)
     $klein->respond('GET', '/staff/employee/expense', function ($request, $response, $service) {
 
         $service->nameTag = 'expense.php';
-        $service->render('layouts/group11/employee.php');
+        // connect db
+          global $database;
+          $conn = $database->getConnection();
+          $service->nameTag = 'expense.php';
+
+
+          //select table
+          $list = $conn->query("SELECT dName , sum(amount) as total FROM FinancialID,Expenses
+                                WHERE Expenses.FinID = FinancialID.id
+                                GROUP BY dName")
+                                ->fetchAll(PDO::FETCH_BOTH);
+          $service->list = $list;
+
+          $expensesList = $conn->query(" SELECT transactionId, dName, date, e.FirstName as empFN, e.LastName as empLN, m.FirstName as memFN, m.LastName as memLN, amount
+                                        FROM Expenses, FinancialID, Membership as m, employee as e
+                                        WHERE Expenses.FinID = FinancialID.ID AND  Expenses.empID = e. EmpID AND Expenses.customerID = m.ID")->fetchAll(PDO::FETCH_BOTH);
+          $service->pageTitle = 'Expense';
+          $service->expensesList = $expensesList;
+          echo($service->nameTag);
+         $service->render('layouts/group11/employee.php');
         echo($service->nameTag);
     });
 
     $klein->respond('GET', '/staff/employee/statistics', function ($request, $response, $service) {
-
+      // connect db
+        global $database;
+        $conn = $database->getConnection();
         $service->nameTag = 'statistics.php';
+
+        $gene = $conn->query(" SELECT Gene, COUNT(*) FROM ticket ,movies WHERE ticket.movie_id = movies.ID GROUP BY  Gene")->fetchAll(PDO::FETCH_BOTH);
+        $service->gene = $gene;
+
+        $productName = $conn->query("SELECT productName, COUNT(*) FROM detail_fnb , productList_fnb WHERE productList_fnb.ProductID  = detail_fnb.ProductID  GROUP BY  detail_fnb.ProductID,productName ")->fetchAll(PDO::FETCH_BOTH);
+        $service->productName = $productName;
+
+        $morning= $conn->query(" SELECT Count(*) as morning from MSB_showingroom where hour(startTime) >= 8 AND hour(startTime) <= 12 ")->fetchAll(PDO::FETCH_BOTH);
+        $service->morning = $morning;
+
+        $afternoon = $conn->query(" SELECT COUNT(*) as afternoon from MSB_showingroom where hour(startTime) >= 13 AND hour(startTime) <= 17")->fetchAll(PDO::FETCH_BOTH);
+        $service->afternoon = $afternoon;
+
+        $evening = $conn->query("SELECT COUNT(*) as evening from MSB_showingroom where hour(startTime) >= 18 AND hour(startTime) <= 20")->fetchAll(PDO::FETCH_BOTH);
+        $service->evening = $evening;
+
+        $midnight = $conn->query("SELECT COUNT(*) as midnight from MSB_showingroom where hour(startTime) >= 21 AND hour(startTime) <= 6")->fetchAll(PDO::FETCH_BOTH);
+        $service->midnight = $midnight;
+
         $service->render('layouts/group11/employee.php');
         echo($service->nameTag);
     });

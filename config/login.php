@@ -33,17 +33,25 @@ class MailSender {
   }
 }
 
+/**
+ * @author Bunyarit [github.com/aofpcc]
+ *
+ * The LoginPerformer is a performer of login which
+ * can handle about register, perform login, forget password, validateToken
+ */
 class LoginPerformer
 {
   private $conn;
   private $klein;
 
-  public function __construct($db, $klein)
-  {
+  public function __construct($db, $klein) {
     $this->conn = $db->getConnection();
     $this->klein = $klein;
   }
 
+  /**
+  * @param string $hash is md5 of password
+  **/
   public function validateToken($hash) {
     try {
       $this->conn->beginTransaction();
@@ -84,10 +92,45 @@ class LoginPerformer
   }
 
   public function forgotPwd($email) {
+    try {
+      $this->conn->beginTransaction();
+      $stmt = $this->conn->prepare("SELECT password from core_password_table where password = :password");
+      $stmt->bindParam(":password", $hash);
+      $stmt->execute();
 
+      // set the resulting array to associative
+      $result = $stmt->fetchAll();
+      // var_dump($stmt->rowCount());
+      if($stmt->rowCount() > 0) {
+        $stmt = $this->conn->prepare("UPDATE core_user_table
+          SET validated = 1
+          WHERE userID = (select userID from core_password_table where password = :password)");
+        $stmt->bindParam(":password", $hash);
+        $stmt->execute();
+
+      }else {
+        $this->conn->rollback();
+        return [
+          "validated" => false,
+          "data" => "No any token matched to this token"
+        ];
+      }
+
+      $this->conn->commit();
+      return [
+        "validated" => true
+      ];
+    }
+    catch(PDOException $e) {
+      $this->conn->rollback();
+      return [
+        "validated" => false,
+        "data" => $e->getMessage()
+      ];
+    }
   }
 
-  public function register($username, $password, $email) {
+  public function register($username, $password, $email, $validateLink) {
     try {
       $this->conn->beginTransaction();
       $md5 = $this->md5($password);
@@ -106,7 +149,7 @@ class LoginPerformer
 
       $mail = new MailSender;
       $mail->sent($email, "Verify Account", "
-      <a href='http://".$_SERVER['HTTP_HOST']."/verify/$md5'>Verify Account</a>
+      <a href='http://".$_SERVER['HTTP_HOST']."$validateLink/$md5'>Verify Account</a>
       ");
 
       $this->conn->commit();

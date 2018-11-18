@@ -2,20 +2,21 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Test Login</title>
   </head>
   <body>
-    <form class="" action="/register" method="post">
-      <label for="">Username</label> <input type="text" name="username" value="" required>
+    <form class="" action="/test/login/action" method="post">
+      <label for="">Username</label> <input type="text" name="username" value="">
       <br>
-      <label for="">Email</label> <input type="email" name="email" value="" required>
+      <label for="">Password</label> <input type="text" name="password" value="">
       <br>
-      <label for="">Password</label> <input type="password" name="password" value="" required>
-      <br>
-      <label for="">Comfirm Password</label>
-      <input type="password" name="confirmpassword" value="" required>
-      <br>
-      <button type="submit" name="button">Register</button>
+      <button type="submit" name="button">Submit</button>
     </form>
+
+    <script type="text/javascript">
+      <?php if ($this->errs) foreach ($this->errs as $key => $value): ?>
+        alert("<?php echo $value; ?>");
+      <?php endforeach; ?>
+    </script>
   </body>
 </html>

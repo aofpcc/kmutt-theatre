@@ -17,7 +17,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>CSC318Movie - Home</title>
+    <title>KMUTT THEATER</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -118,8 +118,8 @@
       <nav class="nav nav-pills nav-fill">
           <a class="nav-item nav-link disabled"></a>
           <a class="nav-item nav-link disabled" ></a>
-          <a class="nav-item nav-link active" href="#">Now Showing</a>
-          <a class="nav-item nav-link" >Coming Soon</a>
+          <a class="nav-item nav-link" href="#">Now Showing</a>
+          <a class="nav-item nav-link" href="#">Coming Soon</a>
           <a class="nav-item nav-link disabled"></a>
           <a class="nav-item nav-link disabled" ></a>
         </nav>

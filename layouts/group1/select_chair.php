@@ -36,11 +36,35 @@ ini_set('display_errors', 1);?>
  </ul>
 </nav>
 <br><br>
+
   <div class="main">
-    <h2>Booking</h2>
-    <div class = "img_container">
-  <img src="/layouts/group1/image/ging.jpg" width="150">
-</div>
+    <h1 class="my-4"><button type="button" class="btn btn-lg btn-primary">STEP 3</button>
+      <small>Select seats</small>
+    </h1>
+    <div class="card card-temp shadow-lg">
+            <div class="container">
+              <br>
+              <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100">
+                      <a href="#"><img class="card-img-top" src="https://lh3.googleusercontent.com/8Lr1BMoZOxsSLoTZr6IxDZuLDiSc6oMTopLA2B-MhXbwxqpDguDHy8r_zj1430V2augHqTSdHsNjz6MYfbEm=w260" alt=""></a>
+                    </div>
+                  </div>
+
+                  <div class="col-md-8">
+                      <br><br>
+                      <font size="6">GingerClown</font><br><br>
+                      <font size="4">30 February 2030</font><br><br>
+                      <font size="4">21 : 00</font> &nbsp&nbsp&nbsp  <font size="4"> Theater 5 </font><br><br>
+                      <font size="4">135 Mins</font> <br><br>
+
+                    <br><br> <!--link to ticket-->
+
+
+                    </div>
+                </div>
+            </div>
+          </div>
 <br>
 <br>
     <div class="demo">

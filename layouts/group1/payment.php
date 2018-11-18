@@ -37,6 +37,9 @@
 </nav>
 <br><br>
   <div class="main">
+    <h1 class="my-4"><button type="button" class="btn btn-lg btn-primary">STEP 4</button>
+      <small>Payment</small>
+    </h1>
   <div class="card card-temp shadow-lg">
           <div class="container">
             <br>
@@ -48,7 +51,7 @@
                 </div>
 
                 <div class="col-md-8">
-                    <br><br>
+                    <br>
                     <font size="6">GingerClown</font><br><br>
                     <font size="4">30 February 2030</font><br><br>
                     <font size="4">21 : 00</font> &nbsp&nbsp&nbsp  <font size="4"> Theater 5 </font><br><br>
@@ -71,9 +74,13 @@
 
                     </p>
 
-                  </p><br><br> <!--link to ticket-->
-                    <button type="button" class="btn btn-lg btn-default" >PAYMENT</button>
+                  </p><br> <!--link to ticket-->
+                    <button type="button" class="btn btn-lg btn-default" >KBANK</button>
+                    <button type="button" class="btn btn-lg btn-default" >SCB</button>
+                    <button type="button" class="btn btn-lg btn-default" >CREDIT</button>
+                    <button type="button" class="btn btn-lg btn-default" >CLUBCARD</button>
 
+                    <br>
                   </div>
               </div>
           </div>

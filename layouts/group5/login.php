@@ -2,10 +2,10 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="layouts/group5/login.css">
+    <link rel="stylesheet" href="layouts/group5/css/login.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script type="text/javascript"src="layouts/group5/login.js"></script>
+    <script type="text/javascript"src="layouts/group5/css/login.js"></script>
     <title>LOGIN</title>
   </head>
   <body>

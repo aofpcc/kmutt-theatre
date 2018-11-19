@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="register-makeup.css">
+    <link rel="stylesheet" href="layouts\group5\register-makeup.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <title>Register</title>
@@ -41,7 +41,7 @@
             <p class="lead">Just one more steps and you're done!
 We hate paperwork, too.</p>
         </div>
-        <div class="col-md-8 order-md-1 text-center">
+        <div class="col-md-8 order-md-1">
             <div class="row">
                 <h5 class="mb-3">Information Request</h5>
             </div>
@@ -147,11 +147,22 @@ We hate paperwork, too.</p>
             <!--line-->
             <hr class="mb-4">
             <!-- End line -->
-            <div class="custom-control custom-checkbox mb-4">
+            <div class="custom-control custom-checkbox mb-5">
               <input type="checkbox" class="custom-control-input" id="Condition">
               <label class="custom-control-label" for="Condition">I have read and understood to the <u><a href="#">Terms & Condition</a></u> of BangMot Theathre.</label>
             </div>
 
         </div>
+        </div>
+        <!-- Footer -->
+        <footer class="text-muted footer-bg">
+<div class ="container">
+        <p class="float-right">
+          <a href="#">Back to top</a>
+        </p>
+        <p>Album example is © Bootstrap, but please download and customize it for yourself!</p>
+        <p>New to Bootstrap? <a href="../../">Visit the homepage</a> or read our <a href="../../getting-started/">getting started guide</a>.</p>
+    </footer>
+    </div>
 </body>
 </html>

@@ -43,3 +43,21 @@ $klein->respond('GET', '/login', function ($request, $response, $service) {
   $service->pageTitle = 'Fish and Chips';
   $service->render('layouts/group5/login.php');
 });
+
+
+// Drive-Register
+$klein->respond('GET', '/register', function ($request, $response, $service) {
+  global $database;
+  $conn = $database->getConnection();
+
+  // $query = "SELECT * from movies";
+  // $stmt = $conn->prepare($query);
+  // $stmt->execute();
+  //
+  // $num = $stmt->rowCount();
+  // $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+  //$service->allMovies = $arr;
+  $service->pageTitle = 'Fish and Chips';
+  $service->render('layouts/group5/register.php');
+});

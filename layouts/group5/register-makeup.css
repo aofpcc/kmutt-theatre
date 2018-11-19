@@ -27,6 +27,13 @@ background: black;
 background: black;
 }
 
+.footer-set {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .navbar-color {
 color: #770A18;
 }

@@ -49,17 +49,21 @@
         <!-- middle left-->
         <div class="col-sm-4">
           <p class="gap"></p>
-          <p class="gap bold set-text">Username :
-            <a class="Username unbold">username</a>
+          <p class="gap bold set-text">Member ID :
+            <a class="Username unbold"><?php echo($this->usr[0][0])?></a>
           </p>
           <p class="gap bold set-text">Password :
-            <a class="Password unbold">password</a>
+            <a class="Password unbold">********
+              <!-- <?php for ($i = 0; $i < strlen($this->usr[0][1]); $i++) { ?>
+                <?php echo "*";?>
+              <?php }?> -->
+            </a>
           </p>
           <p class="gap bold set-text">Phone Number :
-            <a class="PhoneNumber unbold">000 000 0000</a>
+            <a class="PhoneNumber unbold"><?php echo($this->usr[0][2])?></a>
           </p>
           <p class="gap bold set-text">E-mail :
-            <a class="Email unbold">computer_science18@example.com</a>
+            <a class="Email unbold"><?php echo($this->usr[0][3])?></a>
           </p>
         </div>
         <!-- middle right -->
@@ -87,7 +91,7 @@
         <div class="col-sm-3"></div>
         <div class="col-sm-9">
           <div class="bold set-text">Remaining Point :
-            <a class="set-text">777</a>
+            <a class="set-text"><?php echo($this->usr[0][4])?></a>
             <a class="set-text">Point</a>
           </div>
         </div>

@@ -38,17 +38,17 @@ $klein->respond('POST', '/staff', function ($request, $response, $service) {
 
    //update token
    $token = md5(uniqid($username,true));
-   $query2 = "UPDATE Emp_login SET Token = '$token' WHERE Email = '$username' AND Pass = '$password' ";
+   $query2 = "UPDATE G11_Emp_login SET Token = '$token' WHERE Email = '$username' AND Pass = '$password' ";
    //echo "Here is an query code >>>>>>> " .$query ."<<<<<<<<";
    $stmt = $conn->prepare($query2);
    $stmt->execute();
 
-  $query = "SELECT * FROM Emp_login WHERE Email = '$username' and pass = '$password'";
+  $query = "SELECT * FROM G11_Emp_login WHERE Email = '$username' and pass = '$password'";
   $stmt = $conn->prepare($query);
   $stmt->execute();
 
   // $arr = $stmt->fetch(PDO::FETCH_ASSOC);
-  // echo ($arr["Emp_id"])."<br>";
+  // echo ($arr["G11_Emp_id"])."<br>";
 
   $resultCount = $stmt->rowCount();
   if ($resultCount == 1) {
@@ -80,7 +80,7 @@ $klein->respond('GET', '/staff/employee/dashboard', function ($request, $respons
    $key = $_SESSION['token'];
 
    //select table
-   $query = "SELECT Token FROM Emp_login WHERE Token = '$key'";
+   $query = "SELECT Token FROM G11_Emp_login WHERE Token = '$key'";
    $stmt = $conn->prepare($query);
    $stmt->execute();
 
@@ -89,7 +89,7 @@ $klein->respond('GET', '/staff/employee/dashboard', function ($request, $respons
   if($resultCount2 == 1){
 
     //all employee
-    $query = "SELECT * from Emp_staff ORDER BY Status ASC" ;
+    $query = "SELECT * from G11_Emp_staff ORDER BY Status ASC" ;
       $stmt = $conn->prepare($query);
       $stmt->execute();
       $service->employee = $stmt->fetchAll(PDO::FETCH_BOTH);
@@ -114,7 +114,7 @@ $klein->respond('GET', '/staff/employee/profile', function ($request, $response,
    $key = $_SESSION['token'];
 
    //select table
-   $query = "SELECT Token FROM Emp_login WHERE Token = '$key'";
+   $query = "SELECT Token FROM G11_Emp_login WHERE Token = '$key'";
    $stmt = $conn->prepare($query);
    $stmt->execute();
 
@@ -142,7 +142,7 @@ $klein->respond('GET', '/staff/employee/finance', function ($request, $response,
    $key = $_SESSION['token'];
 
    //select table
-   $query = "SELECT Token FROM Emp_login WHERE Token = '$key'";
+   $query = "SELECT Token FROM G11_Emp_login WHERE Token = '$key'";
    $stmt = $conn->prepare($query);
    $stmt->execute();
 

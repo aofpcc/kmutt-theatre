@@ -31,7 +31,7 @@
           </br>
 
         </form>
-        <p class="message2">Don't have an account? <a href="https://www.blognone.com/user/register">Resgister</a></p>
+        <p class="message2">Don't have an account? <a href="http://localhost:8000/register">Resgister</a></p>
       </div>
     </div>
   </body>

@@ -1,5 +1,7 @@
 <?php
-
+// $query = "INSERT INTO `G02_Ticket_history` VALUES (60130500222,'0800420423','SUPERMANs2','','E13','')";
+// $stmt = $conn->prepare($query);
+// $stmt->execute();
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +29,7 @@
 					<div class="clear"></div>
 					<div class="login-agileits-top">
 						<form action="#" method="post">
-							<input type="text" class="name" name="user name" Placeholder="Card No." required=""/>
+							<input type="text" class="name" name="card_no" Placeholder="Card No." required=""/>
 							<!-- <input type="password" class="password" name="Password" Placeholder="Password" required=""/> -->
 							<input type="submit" value="Check">
 						</form>

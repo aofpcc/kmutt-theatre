@@ -89,7 +89,7 @@ $klein->respond('GET', '/staff/employee/dashboard', function ($request, $respons
   if($resultCount2 == 1){
 
     //all employee
-    $query = "SELECT * from Emp_staff ORDER BY Status ASC" ;
+    $query = "SELECT * from Emp_staff ORDER BY Status, Firstname ASC" ;
       $stmt = $conn->prepare($query);
       $stmt->execute();
       $service->employee = $stmt->fetchAll(PDO::FETCH_BOTH);

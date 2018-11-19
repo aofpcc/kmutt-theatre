@@ -49,12 +49,12 @@
         <!-- middle left-->
         <div class="col-sm-4">
           <p class="gap"></p>
-          <p class="gap bold set-text">Member ID :
+          <!-- <p class="gap bold set-text">Member ID :
             <a class="Username unbold"><?php echo($this->usr[0][0])?></a>
-          </p>
+          </p> -->
           <p class="gap bold set-text">Password :
             <a class="Password unbold">********
-              <!-- <?php for ($i = 0; $i < strlen($this->usr[0][1]); $i++) { ?>
+              <!-- <?php for ($i = 0; $i < strlen($this->usr[0][V]); $i++) { ?>
                 <?php echo "*";?>
               <?php }?> -->
             </a>
@@ -72,10 +72,10 @@
         <!-- right -->
         <div class="col-sm-3">
           <p class="gap"></p>
-          <p class="gap set-text"><a href="localhost:8000/change/username">Change username</a></p>
-          <p class="gap set-text"><a href="localhost:8000/change/password">Change password</a></p>
-          <p class="gap set-text"><a href="localhost:8000/change/phonenumber">Change phone number</a></p>
-          <p class="gap set-text"><a href="localhost:8000/change/password">Change e-mail</a></p>
+          <!-- <p class="gap set-text"><a href="localhost:8000/change/username">Change username</a></p> -->
+          <p class="gap set-text"><a href="/change/password">Change password</a></p>
+          <p class="gap set-text"><a href="/change/phonenumber">Change phone number</a></p>
+          <p class="gap set-text"><a href="/change/password">Change e-mail</a></p>
         </div>
       </div>
       <!-- middle line -->

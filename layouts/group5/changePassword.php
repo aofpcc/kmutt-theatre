@@ -42,7 +42,7 @@
             <!-- Current Password -->
             <div class="form-group">
               <label class="box-name-text gap" for="exampleInputPassword1">Current Password</label>
-              <small class="right"><a href="localhost:8000/chage/password">Forget password?</a></small>
+              <!-- <small class="right"><a href="localhost:8000/chage/password">Forget password?</a></small> -->
               <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="">
             </div>
             <!-- New Password -->
@@ -57,8 +57,8 @@
             </div>
             <!-- Button -->
             <div class="gap-more"></div>
-              <button type="button" class="block gap">Save</button>
-              <button type="button" class="cancel-block gap">Cancel</button>
+              <button type="button" class="block gap" onclick="location = '/membership'">Save</button>
+              <button type="button" class="cancel-block gap" onclick="location = '/membership'">Cancel</button>
           </form>
         </div>
         <div class="col-sm-5"></div>

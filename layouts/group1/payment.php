@@ -7,19 +7,11 @@
 <head>
   <title><?=$this->pageTitle ?></title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-  <!-- Custom fonts for this template -->
-  <!-- <link href="vendor/font-awesome/css/font-aweqsome.min.css" rel="stylesheet" type="text/css"> -->
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-
-  <!-- Plugin CSS -->
-  <!-- <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css"> -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
 
   <link href='https://fonts.googleapis.com/css?family=Kotta+One' rel='stylesheet' type='text/css'>
@@ -32,58 +24,71 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">KMUTT THEATER</a>
-      </div>
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Home</a></li>
-        </ul>
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Booking</a></li>
-        </ul>
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Promotion</a></li>
-        </ul>
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Register</a></li>
-        </ul>
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="#">About As</a></li>
-        </ul>
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Profile</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="register.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-          <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+ <a class="navbar-brand" href="http://localhost:8000/customer/kmutt_home">KMUTT THEATER</a>
+ <ul class="navbar-nav">
+   <li class="nav-item">
+     <a class="nav-link" href="http://localhost:8000/customer/kmutt_home">home</a>
+   </li>
+   <li class="nav-item">
+     <a class="nav-link" href="#">promotion</a>
+   </li>
+ </ul>
+</nav>
+<br><br>
   <div class="main">
-    <p>
-      <?php //echo json_encode($this->selectedSeats);
-        if($this->selectedSeats == null){
-           echo 'select the chair';
-          // header('location: http://localhost:8000/customer/home'); ?>
-          <?php $this->render("layouts/group1/popup.php"); ?>
-        <?php
-        }else{
-          echo json_encode($this->selectedSeats);
-        }
-        ?>
+    <h1 class="my-4"><button type="button" class="btn btn-lg btn-primary">STEP 4</button>
+      <small>Payment</small>
+    </h1>
+  <div class="card card-temp shadow-lg">
+          <div class="container">
+            <br>
+            <div class="row">
+              <div class="col-lg-4 col-md-6 mb-4">
+                  <div class="card h-100">
+                    <a href="#"><img class="card-img-top" src="https://lh3.googleusercontent.com/8Lr1BMoZOxsSLoTZr6IxDZuLDiSc6oMTopLA2B-MhXbwxqpDguDHy8r_zj1430V2augHqTSdHsNjz6MYfbEm=w260" alt=""></a>
+                  </div>
+                </div>
 
-    </p>
-  </div>
+                <div class="col-md-8">
+                    <br>
+                    <font size="6">GingerClown</font><br><br>
+                    <font size="4">30 February 2030</font><br><br>
+                    <font size="4">21 : 00</font> &nbsp&nbsp&nbsp  <font size="4"> Theater 5 </font><br><br>
+                    <font size="4">135 Mins</font> <br><br>
+                    <font size="4">ที่นั่งเลือก</font> <<font size="4"> ราคารวม </font>
+                    <p>
+
+                         <?php //echo json_encode($this->selectedSeats);
+                        if($this->selectedSeats == null){
+                      //       echo 'select the chair';
+                      //         // header('location: http://localhost:8000/customer/home');
+                         $this->render("layouts/group1/popup_forget_chair.php");
+                      // <?php
+                        }else if(count($this->selectedSeats) >= 10){
+                          $this->render("layouts/group1/popup_booking_ten.php");
+                        }else{
+                            echo json_encode($this->selectedSeats);
+                        }
+                      ?>
+
+                    </p>
+
+                  </p><br> <!--link to ticket-->
+                    <button type="button" class="btn btn-lg btn-default" >KBANK</button>
+                    <button type="button" class="btn btn-lg btn-default" >SCB</button>
+                    <button type="button" class="btn btn-lg btn-default" >CREDIT</button>
+                    <button type="button" class="btn btn-lg btn-default" >CLUBCARD</button>
+
+                    <br>
+                  </div>
+              </div>
+          </div>
+        </div>
+        </div>
+</div>
+
+
   <script src="/layouts/group1/js/jquery.nicescroll.js"></script>
   <script src="/layouts/group1/js/scripts.js"></script>
 </body>

@@ -156,10 +156,10 @@ $klein->respond('GET', '/staff/employee/finance', function ($request, $response,
       global $database;
       $conn = $database->getConnection();
 
-      $revenue = $conn->query("SELECT sum(amount) as total FROM Revenue")->fetchAll(PDO::FETCH_BOTH);
+      $revenue = $conn->query("SELECT sum(amount) as total FROM G03_FIN_Revenue")->fetchAll(PDO::FETCH_BOTH);
       $service->revenue = $revenue;
 
-      $expenses = $conn->query("SELECT sum(amount) as total FROM Expenses")->fetchAll(PDO::FETCH_BOTH);
+      $expenses = $conn->query("SELECT sum(amount) as total FROM G03_FIN_Expenses")->fetchAll(PDO::FETCH_BOTH);
       $service->expenses = $expenses;
 
       $service->render('layouts/group11/employee.php');

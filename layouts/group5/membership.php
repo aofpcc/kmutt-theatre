@@ -136,19 +136,19 @@
         <div class="col-sm-9">
           <p class="gap"></p>
           <p class="bold set-text">National ID :
-            <a class="NationalID unbold set-text">7777777777</a>
+            <a class="NationalID unbold set-text"><?php echo($this->usr[0][5])?></a>
           </p>
           <p class="bold set-text gap2">First name :
-            <a class="Fname unbold set-text">Firstname</a>
+            <a class="Fname unbold set-text"><?php echo($this->usr[0][6])?></a>
           </p>
           <p class="bold set-text">Last name :
-            <a class="Lname unbold set-text">Lastname</a>
+            <a class="Lname unbold set-text"><?php echo($this->usr[0][7])?></a>
           </p>
           <p class="bold set-text">Gender :
-            <a class="Gender unbold set-text">Gender</a>
+            <a class="Gender unbold set-text"><?php echo($this->usr[0][8])?></a>
           </p>
           <p class="bold set-text">Birth Date :
-            <a class="BirthDate unbold set-text">19/03/1999</a>
+            <a class="BirthDate unbold set-text"><?php echo($this->usr[0][9])?></a>
           </p>
           <p class="bold set-text">Age :
             <a class="Age unbold set-text">

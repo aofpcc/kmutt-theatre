@@ -165,7 +165,7 @@
         </br>
           <!-- Button -->
           <div>
-            <button type="button" class="btn btn-danger">Edit profile</button>
+            <button type="button" class="btn btn-danger" onclick="location = '/editprofile'">Edit profile</button>
           </div>
         </div>
       </div>

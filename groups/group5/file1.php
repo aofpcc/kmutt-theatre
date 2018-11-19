@@ -67,3 +67,9 @@ $klein->respond('GET', '/register', function ($request, $response, $service) {
   $service->pageTitle = 'Fish and Chips';
   $service->render('layouts/group5/register.php');
 });
+$klein->respond('GET', '/editprofile', function ($request, $response, $service) {
+  global $database;
+  $conn = $database->getConnection();
+  $service->pageTitle = 'Fish and Chips';
+  $service->render('layouts/group5/editprofile.php');
+});

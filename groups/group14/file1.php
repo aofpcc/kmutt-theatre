@@ -32,7 +32,10 @@ $klein->respond('GET', '/group14', function ($request, $response, $service) {
 $klein->respond('GET', '/group14/map', function ($request, $response, $service) {
   global $database;
   $conn = $database->getConnection();
-  $sql = "SELECT  BranchName, Longitude, Latitude, BranchID FROM Branch";
+
+  $sql = "SELECT  b.BranchName, c.Longitude, c.Latitude, b.BranchID 
+          FROM G14_Branch as b , G14_BranchCoords as c
+          where b.LatLngID = c.CoordID";
   $stmt = $conn->prepare($sql);
   $stmt->execute();
   $data = $stmt->fetchAll();

@@ -48,7 +48,40 @@ $klein->respond('POST', '/customer/kmutt_home/branch/show_time/select_chair/paym
     //
     // }
     // // Render the page
-    //
+
+    //ADD ticket when booking in table "booking"
+    //มันไม่เข้าใน table
+    $selectedSeats = $request->selectedSeats;
+    if($request->selectedSeats){
+      try{
+
+        $ticketID = '3';
+        $status = 'booking';
+        //$time = CURRENT_TIMESTAMP;
+        $code = 'a00';
+        $buyer_id = '323';
+
+        $sql = "INSERT INTO G01_Booking (ticket_id, status, time, code, buyer_id)
+        values('$ticketID', '$status', CURRENT_TIMESTAMP, '$code', '$buyer_id')";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+        // echo json_encode($selectedSeats);
+        for ($i = 0; $i < count($selectedSeats); $i++) {
+          $sql = "INSERT INTO G02_Ticket_history (movie_id, movie_name, showtime, seat_no, code)
+                  VALUES ('2', 'bye', CURRENT_TIMESTAMP, '$selectedSeats[$i]', '$code')";
+                  $stmt = $conn->prepare($sql);
+                  $stmt->execute();
+                // echo $sql.'<br>';
+         }
+
+      }catch(PDOException $e){
+
+        echo $sql."<br>", $e->getMessage();
+
+      }
+    }
+
 
      $service->render('layouts/group1/payment.php');
 

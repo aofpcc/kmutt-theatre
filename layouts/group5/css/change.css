@@ -1,0 +1,73 @@
+.body-bg {
+  background-color: #F3F3F3;
+}
+
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.navbar-bg {
+  background: #070707;
+}
+
+.navbar-color {
+  color: #F70000;
+}
+
+.account-set-position {
+  margin-top: 50px;
+}
+
+.gap-less {
+  margin-top: 10px;
+}
+
+.gap {
+  margin-top: 20px;
+}
+
+.gap-more {
+  margin-top: 30px;
+}
+
+.right {
+  margin-left: 295px;
+}
+
+.box-name-text {
+  color: #808080;
+}
+
+.block {
+  /* display: block; */
+  width: 100px;
+  height: 45px;
+  border: none;
+  background-color: #006FFA;
+  padding: 10px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.cancel-block {
+  /* display: block; */
+  width: 100px;
+  height: 45px;
+  border: none;
+  background-color: #E1E1E1;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.set-text {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+}

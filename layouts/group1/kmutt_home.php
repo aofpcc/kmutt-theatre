@@ -65,7 +65,7 @@
 
   <body>
 
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+    <!-- <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
    <a class="navbar-brand" href="http://localhost:8000/customer/kmutt_home">KMUTT THEATER</a>
    <ul class="navbar-nav">
      <li class="nav-item">
@@ -75,7 +75,7 @@
        <a class="nav-link" href="#">promotion</a>
      </li>
    </ul>
-  </nav>
+  </nav> -->
 
     <div class="main">
     <div class = "container" id="promo-ads">

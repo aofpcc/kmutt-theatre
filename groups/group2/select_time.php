@@ -1,6 +1,6 @@
 <?php
-  // error_reporting(E_ALL);
-  // ini_set('display_errors', 1);
+  error_reporting(E_ALL);
+  ini_set('display_errors', 1);
 
   $klein->respond('GET', '/group2/home/select_movie/select_time', function ($request, $response, $service){
       global $database;

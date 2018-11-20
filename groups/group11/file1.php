@@ -223,22 +223,22 @@ $klein->respond('GET', '/staff/employee/revenue', function ($request, $response,
 
     $service->list = $list;
 
-    $revenueGrahp = $conn->query("  SELECT  sum(amount)
-                                    FROM G03_FIN_Revenue as Revenue, G03_FIN_ID as FinancialID, G05_Member_address as m, employee as e
-                                    WHERE Revenue.FinID = FinancialID.ID AND  Revenue.empID = e.EmpID AND Revenue.customerID = m.MemberID
-                                    GROUP BY year(date),month(date)
-                                  ")->fetch(PDO::FETCH_ASSOC);
+        $revenueGrahp = $conn->query("  SELECT  sum(amount)
+                                        FROM G03_FIN_Revenue as Revenue, G03_FIN_ID as FinancialID, G05_Member_profile as m, G11_Emp_staff as e
+                                        WHERE Revenue.FinID = FinancialID.ID AND  Revenue.empID = e.Emp_ID AND Revenue.customerID = m.MemberID
+                                        GROUP BY year(date),month(date)
+                                      ")->fetch(PDO::FETCH_ASSOC);
 
-    $revenueDate = $conn->query("   SELECT  month(date) as month , '|' ,year(date) as year
-                                    FROM G03_FIN_Revenue as Revenue, G03_FIN_ID as FinancialID, G05_Member_address as m, employee as e
-                                    WHERE Revenue.FinID = FinancialID.ID AND  Revenue.empID = e.EmpID AND Revenue.customerID = m.MemberID
-                                    GROUP BY year(date),month(date)
-                                  ")->fetch(PDO::FETCH_ASSOC);
+        $revenueDate = $conn->query("   SELECT  month(date) as month , '|' ,year(date) as year
+                                        FROM G03_FIN_Revenue as Revenue, G03_FIN_ID as FinancialID, G05_Member_profile as m, G11_Emp_staff as e
+                                        WHERE Revenue.FinID = FinancialID.ID AND  Revenue.empID = e.Emp_ID AND Revenue.customerID = m.MemberID
+                                        GROUP BY year(date),month(date)
+                                      ")->fetch(PDO::FETCH_ASSOC);
 
 
-    $revenueList = $conn->query(" SELECT transactionId, dName, date, e.FirstName as empFN, e.LastName as empLN, m.FirstName as memFN, m.LastName as memLN, amount
-                                  FROM G03_FIN_Revenue as Revenue, G03_FIN_ID as FinancialID, G05_Member_address as m, employee as e
-                                  WHERE Revenue.FinID = FinancialID.ID AND  Revenue.empID = e. EmpID AND Revenue.customerID = m.MemberID")->fetchAll(PDO::FETCH_BOTH);
+        $revenueList = $conn->query(" SELECT transactionId, dName, date, e.FirstName as empFN, e.LastName as empLN, m.Fname as memFN, m.Lname as memLN, amount
+                                      FROM G03_FIN_Revenue as Revenue, G03_FIN_ID as FinancialID, G05_Member_profile as m, G11_Emp_staff as e
+                                      WHERE Revenue.FinID = FinancialID.ID AND  Revenue.empID = e. Emp_ID AND Revenue.customerID = m.MemberID")->fetchAll(PDO::FETCH_BOTH);
 
     $service->pageTitle = 'Financial';
     $service->revenueList = $revenueList;
@@ -262,15 +262,15 @@ $klein->respond('GET', '/staff/employee/expense', function ($request, $response,
                             ->fetchAll(PDO::FETCH_BOTH);
       $service->list = $list;
 
-      $expensesList = $conn->query(" SELECT transactionId, dName, date, e.FirstName as empFN, e.LastName as empLN, m.FirstName as memFN, m.LastName as memLN, amount
-                                    FROM G03_FIN_Expenses as Expenses, G03_FIN_ID as FinancialID, Membership as m, employee as e
-                                    WHERE Expenses.FinID = FinancialID.ID AND  Expenses.empID = e. EmpID AND Expenses.customerID = m.MemberID")->fetchAll(PDO::FETCH_BOTH);
-      $service->pageTitle = 'Expense';
-      $service->expensesList = $expensesList;
-      echo($service->nameTag);
-      $service->render('layouts/group11/employee.php');
-    echo($service->nameTag);
-});
+          $expensesList = $conn->query(" SELECT transactionId, dName, date, e.FirstName as empFN, e.LastName as empLN, m.FName as memFN, m.LName as memLN, amount
+                                        FROM G03_FIN_Expenses as Expenses, G03_FIN_ID as FinancialID, G05_Member_profile as m, G11_Emp_staff as e
+                                        WHERE Expenses.FinID = FinancialID.ID AND Expenses.empID = e.Emp_id AND Expenses.customerID = m.MemberID")->fetchAll(PDO::FETCH_BOTH);
+          $service->pageTitle = 'Expense';
+          $service->expensesList = $expensesList;
+          echo($service->nameTag);
+         $service->render('layouts/group11/employee.php');
+        echo($service->nameTag);
+    });
 
 $klein->respond('GET', '/staff/employee/statistics', function ($request, $response, $service) {
   // connect db
@@ -278,23 +278,39 @@ $klein->respond('GET', '/staff/employee/statistics', function ($request, $respon
     $conn = $database->getConnection();
     $service->nameTag = 'statistics.php';
 
-    $gene = $conn->query(" SELECT Gene, COUNT(*) FROM ticket ,movies WHERE ticket.movie_id = movies.ID GROUP BY  Gene")->fetchAll(PDO::FETCH_BOTH);
-    $service->gene = $gene;
+        
+        // // NO movie table in the new DB yet..
+        // $gene = $conn->query("SELECT Gene, COUNT(*) 
+        //                       FROM G02_Ticket_history as ticket, movies 
+        //                       WHERE ticket.movie_id = movies.ID 
+        //                       GROUP BY  Gene")->fetchAll(PDO::FETCH_BOTH);
+        // $service->gene = $gene;
 
-    $productName = $conn->query("SELECT productName, COUNT(*) FROM detail_fnb , productList_fnb WHERE productList_fnb.ProductID  = detail_fnb.ProductID  GROUP BY  detail_fnb.ProductID,productName ")->fetchAll(PDO::FETCH_BOTH);
-    $service->productName = $productName;
+        $productName = $conn->query("SELECT productName, COUNT(*) 
+                                     FROM G13_FNB_detail as detail_fnb, G13_FNB_ProductList as productList_fnb 
+                                     WHERE productList_fnb.ProductID  = detail_fnb.ProductID 
+                                     GROUP BY  detail_fnb.ProductID, productName ")->fetchAll(PDO::FETCH_BOTH);
+        $service->productName = $productName;
 
-    $morning= $conn->query(" SELECT Count(*) as morning from MSB_showingroom where hour(startTime) >= 8 AND hour(startTime) <= 12 ")->fetchAll(PDO::FETCH_BOTH);
-    $service->morning = $morning;
+        $morning= $conn->query("SELECT Count(*) as morning 
+                                from G04_MSRnB_showingroom 
+                                where hour(startTime) >= 8 AND hour(startTime) <= 12 ")->fetchAll(PDO::FETCH_BOTH);
+        $service->morning = $morning;
 
-    $afternoon = $conn->query(" SELECT COUNT(*) as afternoon from MSB_showingroom where hour(startTime) >= 13 AND hour(startTime) <= 17")->fetchAll(PDO::FETCH_BOTH);
-    $service->afternoon = $afternoon;
+        $afternoon = $conn->query("SELECT COUNT(*) as afternoon 
+                                   from G04_MSRnB_showingroom 
+                                   where hour(startTime) >= 13 AND hour(startTime) <= 17")->fetchAll(PDO::FETCH_BOTH);
+        $service->afternoon = $afternoon;
 
-    $evening = $conn->query("SELECT COUNT(*) as evening from MSB_showingroom where hour(startTime) >= 18 AND hour(startTime) <= 20")->fetchAll(PDO::FETCH_BOTH);
-    $service->evening = $evening;
+        $evening = $conn->query("SELECT COUNT(*) as evening 
+                                 from G04_MSRnB_showingroom 
+                                 where hour(startTime) >= 18 AND hour(startTime) <= 20")->fetchAll(PDO::FETCH_BOTH);
+        $service->evening = $evening;
 
-    $midnight = $conn->query("SELECT COUNT(*) as midnight from MSB_showingroom where hour(startTime) >= 21 AND hour(startTime) <= 6")->fetchAll(PDO::FETCH_BOTH);
-    $service->midnight = $midnight;
+        $midnight = $conn->query("SELECT COUNT(*) as midnight 
+                                  from G04_MSRnB_showingroom 
+                                  where hour(startTime) >= 21 AND hour(startTime) <= 6")->fetchAll(PDO::FETCH_BOTH);
+        $service->midnight = $midnight;
 
     $service->render('layouts/group11/employee.php');
     echo($service->nameTag);

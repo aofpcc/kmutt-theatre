@@ -289,11 +289,14 @@ class LoginPerformer
         return $result;
     }
 
-    public function logout()
+    public function logout() {
+        $this->logoutThenGoTo('/test/');
+    }
+    public function logoutThenGoTo($redirectPath)
     {
         $_SESSION["login"] = false;
         session_destroy();
-        $this->klein->response()->redirect('/test/');
+        $this->klein->response()->redirect($redirectPath);
         $this->klein->response()->sendHeaders();
     }
 

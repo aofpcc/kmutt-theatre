@@ -110,7 +110,7 @@ $klein->respond('GET', '/staff/employee/profile', function ($request, $response,
    global $database;
    $conn = $database->getConnection();
 
-   session_start();
+  //  session_start();
    $key = $_SESSION['token'];
 
    //select table
@@ -138,7 +138,7 @@ $klein->respond('GET', '/staff/employee/finance', function ($request, $response,
    global $database;
    $conn = $database->getConnection();
 
-   session_start();
+  //  session_start();
    $key = $_SESSION['token'];
 
    //select table
@@ -172,7 +172,7 @@ $klein->respond('GET', '/staff/employee/finance', function ($request, $response,
 $klein->respond('GET', '/staff/logout', function ($request, $response, $service) {
     ini_set('display_errors', 1);
 
-    session_start();
+    // session_start();
 
     if(session_destroy()) {
       $response->redirect('/staff');
@@ -186,7 +186,7 @@ $klein->respond('GET', '/staff/logout', function ($request, $response, $service)
         $conn = $database->getConnection();
         $service->nameTag = 'revenue.php';
         //select table
-        $list = $conn->query("SELECT dName , sum(amount) as total FROM FinancialID,Revenue
+        $list = $conn->query("SELECT dName , sum(amount) as total FROM G03_FIN_ID as FinancialID, G03_FIN_Revenue as Revenue
                               WHERE Revenue.FinID = FinancialID.id
                               GROUP BY dName")
                               ->fetchAll(PDO::FETCH_BOTH);
@@ -194,21 +194,21 @@ $klein->respond('GET', '/staff/logout', function ($request, $response, $service)
         $service->list = $list;
 
         $revenueGrahp = $conn->query("  SELECT  sum(amount)
-                                        FROM  Revenue, FinancialID, Membership as m, employee as e
-                                        WHERE Revenue.FinID = FinancialID.ID AND  Revenue.empID = e.EmpID AND Revenue.customerID = m.ID
+                                        FROM G03_FIN_Revenue as Revenue, G03_FIN_ID as FinancialID, G05_Member_address as m, employee as e
+                                        WHERE Revenue.FinID = FinancialID.ID AND  Revenue.empID = e.EmpID AND Revenue.customerID = m.MemberID
                                         GROUP BY year(date),month(date)
                                       ")->fetch(PDO::FETCH_ASSOC);
 
         $revenueDate = $conn->query("   SELECT  month(date) as month , '|' ,year(date) as year
-                                        FROM  Revenue, FinancialID, Membership as m, employee as e
-                                        WHERE Revenue.FinID = FinancialID.ID AND  Revenue.empID = e.EmpID AND Revenue.customerID = m.ID
+                                        FROM G03_FIN_Revenue as Revenue, G03_FIN_ID as FinancialID, G05_Member_address as m, employee as e
+                                        WHERE Revenue.FinID = FinancialID.ID AND  Revenue.empID = e.EmpID AND Revenue.customerID = m.MemberID
                                         GROUP BY year(date),month(date)
                                       ")->fetch(PDO::FETCH_ASSOC);
 
 
         $revenueList = $conn->query(" SELECT transactionId, dName, date, e.FirstName as empFN, e.LastName as empLN, m.FirstName as memFN, m.LastName as memLN, amount
-                                      FROM Revenue, FinancialID, Membership as m, employee as e
-                                      WHERE Revenue.FinID = FinancialID.ID AND  Revenue.empID = e. EmpID AND Revenue.customerID = m.ID")->fetchAll(PDO::FETCH_BOTH);
+                                      FROM G03_FIN_Revenue as Revenue, G03_FIN_ID as FinancialID, G05_Member_address as m, employee as e
+                                      WHERE Revenue.FinID = FinancialID.ID AND  Revenue.empID = e. EmpID AND Revenue.customerID = m.MemberID")->fetchAll(PDO::FETCH_BOTH);
 
         $service->pageTitle = 'Financial';
         $service->revenueList = $revenueList;
@@ -226,15 +226,15 @@ $klein->respond('GET', '/staff/logout', function ($request, $response, $service)
 
 
           //select table
-          $list = $conn->query("SELECT dName , sum(amount) as total FROM FinancialID,Expenses
+          $list = $conn->query("SELECT dName , sum(amount) as total FROM G03_FIN_ID as FinancialID, G03_FIN_Expenses as Expenses
                                 WHERE Expenses.FinID = FinancialID.id
                                 GROUP BY dName")
                                 ->fetchAll(PDO::FETCH_BOTH);
           $service->list = $list;
 
           $expensesList = $conn->query(" SELECT transactionId, dName, date, e.FirstName as empFN, e.LastName as empLN, m.FirstName as memFN, m.LastName as memLN, amount
-                                        FROM Expenses, FinancialID, Membership as m, employee as e
-                                        WHERE Expenses.FinID = FinancialID.ID AND  Expenses.empID = e. EmpID AND Expenses.customerID = m.ID")->fetchAll(PDO::FETCH_BOTH);
+                                        FROM G03_FIN_Expenses as Expenses, G03_FIN_ID as FinancialID, Membership as m, employee as e
+                                        WHERE Expenses.FinID = FinancialID.ID AND  Expenses.empID = e. EmpID AND Expenses.customerID = m.MemberID")->fetchAll(PDO::FETCH_BOTH);
           $service->pageTitle = 'Expense';
           $service->expensesList = $expensesList;
           echo($service->nameTag);

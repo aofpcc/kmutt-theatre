@@ -16,6 +16,7 @@
           <!-- <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> -->
           <div style="margin-center:0 auto">
           <?php echo hash('md5', '0001'); ?>
+          
         </div>
         </main>
         

@@ -2,22 +2,6 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// $klein->respond('GET', '/group11', function ($request, $response, $service) {
-//   global $database;
-//   $conn = $database->getConnection();
-
-//   $query = "SELECT * from employee";
-//   $stmt = $conn->prepare($query);
-//   $stmt->execute();
-
-//   $num = $stmt->rowCount();
-//   $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
-
-//   $service->allMovies = $arr;
-//   $service->pageTitle = 'Hello';
-//   $service->render('layouts/group11/home.php');
-// });
-
 $klein->respond(['GET', 'POST'], "/teststaff", function ($request, $response, $service, $app, $validator) {
   $response->redirect("/staff/employee");
   $response->sendHeaders();
@@ -101,64 +85,44 @@ $klein->respond('GET', '/staff/employee/dashboard', function ($request, $respons
   error_reporting(E_ALL);
   ini_set('display_errors', 1);
   //check login
-  $detail = $app->login->requireLogin('customer');
+   $data = $app->login->LoginThenGoTo('employee','/staff');
+  
    // connect db
    global $database;
    $conn = $database->getConnection();
 
-  //  session_start();
-  //  $key = $_SESSION['token'];
-
-   //select table
-  //  $query = "SELECT Token FROM G11_Emp_login WHERE Token = '$key'";
-  //  $stmt = $conn->prepare($query);
-  //  $stmt->execute();
-
-   //check accout
-  // $resultCount2 = $stmt->rowCount();
-  // if($resultCount2 == 1){
-
-    //all employee
-    $query = "SELECT * from G11_Emp_staff ORDER BY Status, Firstname ASC" ;
-      $stmt = $conn->prepare($query);
-      $stmt->execute();
-      $service->employee = $stmt->fetchAll(PDO::FETCH_BOTH);
+  //select
+  $query = "SELECT * from G11_Emp_staff ORDER BY Status, Firstname ASC" ;
+    $stmt = $conn->prepare($query);
+    $stmt->execute();
+    $service->employee = $stmt->fetchAll(PDO::FETCH_BOTH);
 
 
   $service->nameTag = 'dashboard.php';
   $service->render('layouts/group11/employee.php');
-  // }else{
-  //   $response->redirect('/staff');
-  //   $response->send();
-  // }
+  
 });
 
-$klein->respond('GET', '/staff/employee/profile', function ($request, $response, $service) {
-    ini_set('display_errors', 1);
+$klein->respond('GET', '/staff/employee/profile', function($request, $response, $service, $app, $validator) {
+  error_reporting(E_ALL);
+  ini_set('display_errors', 1);
 
-   // connect db
-   global $database;
-   $conn = $database->getConnection();
-
-  //  session_start();
-   $key = $_SESSION['token'];
-
-   //select table
-   $query = "SELECT Token FROM G11_Emp_login WHERE Token = '$key'";
-   $stmt = $conn->prepare($query);
-   $stmt->execute();
-
-   //check accout
-  $resultCount2 = $stmt->rowCount();
-    if($resultCount2 == 1){
+  //check login
+  $data = $app->login->LoginThenGoTo('employee','/staff');
+  
+ 
 
     $service->nameTag = 'profile.php';
-    // $service->name =$_SESSION['name'];
     $service->render('layouts/group11/employee.php');
-    }else{
-      $response->redirect('/staff');
-      $response->send();
-    }
+   
+});
+
+$klein->respond('POSt', 'staff/employee/add', function($request, $response, $service, $app, $validator){
+  if($request->password != $request->confirmpassword) {
+    // redirect
+  }
+  $role = 'employee';
+  $app->login->register($username, $password, $email, $validateLink, $role);
 });
 
 $klein->respond('GET', '/staff/employee/finance', function ($request, $response, $service) {

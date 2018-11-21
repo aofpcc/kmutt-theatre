@@ -270,16 +270,18 @@ class LoginPerformer
             $this->klein->service()->back();
         }
     }
-
-    public function requireLogin($role)
+    public function requireLogin($role) {
+        $this->LoginThenGoTo($role, '/test/login');
+    }
+    public function LoginThenGoTo($role,$back)
     {
         if (empty($_SESSION['login']) || $_SESSION['login'] != true || $_SESSION['role'] != $role) {
             if ($_SESSION['role'] != $role) {
-                $this->klein->service()->flash('Shit Wrong Role, go to ask your father. What is ur role?');
+                // $this->klein->service()->flash('Shit Wrong Role, go to ask your father. What is ur role?');
             } else {
-                $this->klein->service()->flash('Shit No Login, go to ask your daddy. how to login');
+                // $this->klein->service()->flash('Shit No Login, go to ask your daddy. how to login');
             }
-            $this->klein->response()->redirect('/test/login');
+            $this->klein->response()->redirect($back);
             $this->klein->response()->sendHeaders();
         }
 

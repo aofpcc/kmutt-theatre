@@ -4,6 +4,8 @@ $included = array(
   'select_movie',
   'select_time',
   'select_seat',
-  'done'
+  'done',
+  'return_ticket',
+  'change_ticket'
 );
 ?>

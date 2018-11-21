@@ -56,8 +56,7 @@
                     <font size="4">30 February 2030</font><br><br>
                     <font size="4">21 : 00</font> &nbsp&nbsp&nbsp  <font size="4"> Theater 5 </font><br><br>
                     <font size="4">135 Mins</font> <br><br>
-                    <font size="4">ที่นั่งเลือก</font> <<font size="4"> ราคารวม </font>
-                    <p>
+                    <font size="4">จำนวนที่นั่งเลือก</font>
 
                          <?php //echo json_encode($this->selectedSeats);
                         if($this->selectedSeats == null){
@@ -68,9 +67,14 @@
                         }else if(count($this->selectedSeats) >= 10){
                           $this->render("layouts/group1/popup_booking_ten.php");
                         }else{
-                            echo json_encode($this->selectedSeats);
+                            // $json = json_encode($this->selectedSeats);
+                            // echo json_encode($json, JSON_PRETTY_PRINT);
+                            echo json_encode(count($this->selectedSeats));
                         }
                       ?>
+                        <font size="4">  ที่นั่ง</font>
+                      <br> <br> <font size="4"> ราคารวม </font>
+                      <p>
 
                     </p>
 

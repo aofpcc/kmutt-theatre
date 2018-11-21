@@ -100,6 +100,21 @@
           <li>: <span id="counter">1</span></li>
           <li>: <b><i>$</i><span id="total">0</span></b></li>
         </ul>
+
+        <?php
+                  $result = $this->employee;
+                  for($i = 0; $i<count($result); $i++){
+                    $row = $result[$i];
+                    echo '<tr>';
+                    echo '<td>'.$row['title'].'</td>';
+                    echo '<td>'.$row['length'].'</td>';
+                    echo '<td>'.$row['Lastname'].'</td>';
+                    echo '<td>'.$row['Salary'].'</td>';
+                    echo '<td>'.$row['Tell'].'</td>';      
+                    echo '</tr>';
+                  } 
+                ?> 
+                
         <div class="clear"></div>
 
         <form action="/customer/payment" method="post">

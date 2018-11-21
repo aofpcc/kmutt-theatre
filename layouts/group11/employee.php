@@ -115,7 +115,7 @@
           </div>
       </div>
         <?php
-
+       
         $this->partial('layouts/group11/component/'.$this->nameTag);
 
         // require('layouts/group11/component/'.$this->nameTag);

@@ -337,9 +337,4 @@ class LoginPerformer
     }
 }
 
-                $stmt = $this->conn->prepare("SELECT * FROM core_user_pwd WHERE userID = :userID and password = :password");
-                $stmt->bindParam(":userID", $userID);
-            $stmt = $this->conn->prepare("INSERT into core_user_table(username, email, role, create_date, validated)
-        values(:username, :email, :role, NOW(), 0);");
-            $stmt = $this->conn->prepare("INSERT into core_password_table(userID, password, create_date)
-        values(:userID, :password, NOW());");
+                

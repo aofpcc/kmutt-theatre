@@ -50,7 +50,6 @@ $klein->respond('POST', '/customer/kmutt_home/branch/show_time/select_chair/paym
     // // Render the page
 
     //ADD ticket when booking in table "booking"
-    //มันไม่เข้าใน table
     $selectedSeats = $request->selectedSeats;
     if($request->selectedSeats){
       try{

@@ -1,13 +1,10 @@
 
-<!DOCTYPE html>
-<html lang="zxx">
-
 <head>
     <title><?=$this->pageTitle ?></title>
     <!-- Meta-Tags -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
-    <meta name="keywords" content="Movie Seat Selection a Responsive Web Template, Bootstrap Web Templates, Flat Web Templates, Android Compatible Web Template, Smartphone Compatible Web Template, Free Webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design">
+    <meta name="keywords" content="Movie Seat Selection a Responsive Web Template, Bootstrap Web Templates, Flat Web Templates, Android Compatible Web Template, Smartphone Compatible Web Template, Free Webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design"> -->
     <script>
         addEventListener("load", function () {
             setTimeout(hideURLbar, 0);
@@ -36,7 +33,7 @@
                 <!-- <h2>fill the required details below and select your seats</h2> -->
                 <div class="mr_agilemain">
                     <div class="agileits-left">
-                        <label> Name
+                        <label> Name or ID no. 
                             <span>*</span>
                         </label>
                         <input type="text" id="Username" required>
@@ -45,7 +42,7 @@
                         <label> Number of Seats
                             <span>*</span>
                         </label>
-                        <input type="number" id="Numseats" required min="1">
+                        <input type="number" id="Numseats" required min="1"/>
                     </div>
                 </div>
                 <button onclick="takeData()">Start Selecting</button>
@@ -605,6 +602,3 @@
     </script>
     <!-- //script for seat selection -->
 
-</body>
-
-</html>

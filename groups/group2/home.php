@@ -47,33 +47,4 @@ $klein->respond('POST', '/group2/check_card_no', function ($request, $response, 
   // $service->pageTitle = 'KMUTT THEATRE | Member';
 
   // $service->render('layouts/group2/member.php');
-});
-
-$klein->respond('POST', '/group2/check_return_ticket', function ($request, $response, $service){
-  global $database;
-  $conn = $database->getConnection();
-
-  // $card_no = $request->card_no;
-
-  // $query = "SELECT MemberID from G05_Member_profile where ID_Card = '$card_no'" ;
-  // $stmt = $conn->prepare($query);
-  // $stmt->execute();
-
-  // $num = $stmt->rowCount();
-  // $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
-
-
-  // $resultCount = $stmt->rowCount();
-  // if ($resultCount == 1) {
-  //   // echo("founf]d it");
-  //   $response->redirect('/group2/home/select_movie');
-  //   $response->send();
-  // }
-  // else {
-  //   $response->redirect('/group2/home/select_movie/select_time/select_seat/done');
-  //   $response->send();
-  // }
-  // $service->pageTitle = 'KMUTT THEATRE | Member';
-
-  $service->render('layouts/group2/returnticket.php');
 });?>

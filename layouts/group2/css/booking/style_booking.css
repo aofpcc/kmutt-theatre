@@ -94,7 +94,6 @@ video {
     font: inherit;
     vertical-align: baseline;
 }
-
 article,
 aside,
 details,
@@ -250,7 +249,7 @@ body a:hover {
 /* content */
 
 body {
-    background: url(/layouts/group2/images/booking/banner.jpg) no-repeat center;
+    background: url(/layouts/group2/images/booking/banner.jpg) ;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -258,6 +257,7 @@ body {
     -ms-background-size: cover;
     background-attachment: fixed;
     font-family: 'Source Sans Pro', sans-serif;
+    
 }
 
 .mr_agilemain span {
@@ -267,7 +267,7 @@ body {
 .w3ls-reg {
     width: 700px;
     margin: 0 5vw;
-    background: rgba(128, 128, 128, 0.34);
+    background: rgba(128, 128, 128, 0.45);
     padding: 3.5vw;
     box-sizing: border-box;
     display: flex;
@@ -276,11 +276,11 @@ body {
 }
 
 .container {
-    display: -webkit-flex;
+    display: -webkit-flex; 
     display: -webkit-box;
     display: -moz-flex;
     display: -moz-box;
-    display: -ms-flexbox;
+    display: -ms-flexbox; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -475,9 +475,9 @@ input[type=checkbox]:before {
     vertical-align: middle;
     text-align: center;
     border: 3px solid #ff9800;
-    box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);
-    -moz-box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);
-    -webkit-box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);
+    box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .65), 0px 1px 0px 0px rgba(255, 255, 255, .8);
+    -moz-box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .65), 0px 1px 0px 0px rgba(255, 255, 255, .8);
+    -webkit-box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .65), 0px 1px 0px 0px rgba(255, 255, 255, .8);
     background-color: #ffffff;
 }
 

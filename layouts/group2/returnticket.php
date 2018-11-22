@@ -26,7 +26,7 @@
 					<div class="login-agileits-top">
                         <form action="/group2/check_return_ticket" method="post">
                             <input type="number" class="number" name="card_no" Placeholder="Card No." required/>
-							<input type="number" class="number" name="movie_no" Placeholder="Movie ID." required/>
+							<input type="number" class="number" name="return_no" Placeholder="Movie ID." required/>
 							<input type="submit" value="Submit">
 						</form>
 					</div>

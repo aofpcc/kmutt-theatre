@@ -28,7 +28,6 @@
 					<div class="login-agileits-top">
 						<form action="/group2/check_card_no" method="post">
 							<input type="number" class="number" name="card_no" Placeholder="Card No." required/>
-							<!-- <input type="password" class="password" name="Password" Placeholder="Password" required=""/> -->
 							<input type="submit" value="Check">
 						</form>
 					</div>

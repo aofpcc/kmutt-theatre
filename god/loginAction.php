@@ -17,10 +17,6 @@ $klein->with("/test", function () use ($klein) {
     });
 
     $klein->respond('GET', '/login', function ($request, $response, $service, $app, $validator) {
-        $err = $service->flashes();
-        if ($err && $err["info"]) {
-            $service->errs = $err["info"];
-        }
         $service->render('layouts/shared/test_login.php', $app->passValue);
     });
 
@@ -47,20 +43,31 @@ $klein->with("/test", function () use ($klein) {
         $validateLink = "/test/verify"; // neeed to have / before  and no / at the end
         $role = 'customer';
         $result = $app->login->register($username, $password, $email, $validateLink, $role);
+
+        $pass = $app->passValue;
         if ($result['created']) {
-            echo "Success";
+            $pass["content"] = "The account have been created.";
         } else {
-            echo "Failed\n";
-            echo $result["data"];
+            $pass["content"] = "The account cannot be created. Some error occurs!";
         }
+        $service->render("layouts/core/home.php", $pass);
     });
 
-    $klein->respond('GET', '/verify/[:hash]', function ($request, $response, $service, $app, $validator) {
-        $result = $app->login->validateToken($request->hash);
+    $klein->respond('GET', '/verify/[:hash]/[:userID]', function ($request, $response, $service, $app, $validator) {
+        $result = $app->login->validateToken($request->hash, $request->userID);
+        // var_dump($result);
+        // die;
         if ($result["validated"]) {
-            $app->js->alert("Validated");
+          $service->flash("validated");
+            $response->redirect("/test/login");
         } else {
-            $app->js->alert("Invalid Token");
+          if($result["already"]){
+            $service->flash("Already validated, Cannot use again");
+            $response->redirect("/test/login");
+          }else{
+            $service->flash("Invalid Token");
+            $response->redirect("/test");
+          }
         }
     });
 
@@ -130,7 +137,7 @@ $klein->with("/test", function () use ($klein) {
         } else {
             $pass["content"] = "Password was not reseted. Please Contact Us";
         }
-        $service->render('layouts/core/home.php', $pass);
+        $response->redirect("/test/logout");
     });
 
     $klein->respond('GET', '/changePassword', function ($request, $response, $service, $app, $validator) {

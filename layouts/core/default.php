@@ -39,6 +39,14 @@
     <?php $this->yieldView() ?>
   </div>
 
+  <script>
+  <?php
+      $this->xxx = $this->flashes();
+      if ($this->xxx["info"]) foreach ($this->xxx["info"] as $key => $value): ?>
+        alert("<?php echo $value; ?>");
+      <?php endforeach; ?>
+  </script>
+
   <footer id="footer" class="container-fluid bg-4 text-center">
     <p style="margin: 0px;">Copyright &copy; 2018 Kmutt Theatre All original contents of <a href="#">theatre.sit.kmutt.ac.th</a> </p>
   </footer>

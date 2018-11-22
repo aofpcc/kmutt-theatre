@@ -19,7 +19,7 @@
     </script>
     <!-- //Meta-Tags -->
     <!-- Index-Page-CSS -->
-    <link rel="stylesheet" href="/layouts/group2/css/booking/style.css" type="text/css" media="all">
+    <link rel="stylesheet" href="/layouts/group2/css/booking/style_booking.css" type="text/css" media="all">
     <!-- //Custom-Stylesheet-Links -->
     <!--fonts -->
     <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">

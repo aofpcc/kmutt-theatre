@@ -7,7 +7,6 @@
 
 <head>
 
-
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <link href="/layouts/group2/css/member/style.css" rel="stylesheet" type="text/css" media="all" />
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"> 
@@ -18,17 +17,17 @@
 
 	<!-- main -->
 	<div class="main">
-		<h1>KMUTT THEATRE | MEMBER</h1>
+		<h1> KMUTT THEATRE | MEMBER CHECKING </h1>
 		<div class="main-w3lsrow">
 			<!-- check form -->
-			<div class="login-form login-form-left">
+			<div class="login-form login-form-center">
 				<div class="agile-row">
-					<h2>ENTER YOUR CARD ID</h2>
-					<i class="fas fa-lock"></i>
+					<h2>ENTER YOUR CARD NO.</h2>
+					<i class="fa fa-lock"></i>
 					<div class="clear"></div>
 					<div class="login-agileits-top">
-						<form action="/group2/check" method="post">
-							<input type="text" class="name" name="card_no" Placeholder="Card No." required/>
+						<form action="/group2/check_card_no" method="post">
+							<input type="number" class="number" name="card_no" Placeholder="Card No." required/>
 							<!-- <input type="password" class="password" name="Password" Placeholder="Password" required=""/> -->
 							<input type="submit" value="Check">
 						</form>
@@ -46,12 +45,11 @@
 					</div>
 					<div class="social_icons agileinfo">
 						<ul class="top-links">
-									<li><a href="#" class="return"><i class="fas fa-undo"></i> Return Tickets</a></li>
-									<li><a href="#" class="change"><i class="fas fa-exchange-alt"></i> Change</a></li>
-									<li><a href="#" class="no_member"><i class="fas fa-fighter-jet"></i> Reserve Now</a></li>
+									<li><a href="/group2/home/returnticket" class="return"><i class="fas fa-undo"></i> Return Ticket</a></li>
+									<li><a href="/group2/home/changeticket" class="change"><i class="fas fa-exchange-alt"></i> Change</a></li>
+									<!-- <li><a href="#" class="no_member"><i class="fas fa-fighter-jet"></i> Reserve Now</a></li> -->
 								</ul>
 					</div>
 
 	</div>
-	<!-- //main -->
 

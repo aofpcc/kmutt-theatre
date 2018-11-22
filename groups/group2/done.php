@@ -6,10 +6,12 @@
   global $database;
   $conn = $database->getConnection();
 
-  $query = "SELECT * from G11_Emp_staff ORDER BY Status, Firstname ASC" ;
-    $stmt = $conn->prepare($query);
-      $stmt->execute();
-      $service->employee = $stmt->fetchAll(PDO::FETCH_BOTH);
+  
+  echo("Thanks u, next");
+  // $query = "SELECT * from G11_Emp_staff ORDER BY Status, Firstname ASC" ;
+  //   $stmt = $conn->prepare($query);
+  //     $stmt->execute();
+  //     $service->employee = $stmt->fetchAll(PDO::FETCH_BOTH);
 
   // $query = "SELECT seat_no from G02_Ticket_history";
   // $stmt = $conn->prepare($query);
@@ -21,5 +23,5 @@
   // $service->allMovies = $arr;
   $service->pageTitle = 'KMUTT THEATRE | Success!!';
 
-  $service->render('layouts/group2/payment.php');
+  // $service->render('layouts/group2/ticket.php');
 });?>

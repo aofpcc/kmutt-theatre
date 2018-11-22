@@ -280,9 +280,9 @@
 .fa-list-alt:before {
   content: "\f022";
 }
-.fa-lock:before {
+/* .fa-lock:before {
   content: "\f023";
-}
+} */
 .fa-flag:before {
   content: "\f024";
 }

@@ -14,9 +14,7 @@
     </form>
 
     <script type="text/javascript">
-      <?php if ($this->errs) foreach ($this->errs as $key => $value): ?>
-        alert("<?php echo $value; ?>");
-      <?php endforeach; ?>
+      
     </script>
   </body>
 </html>

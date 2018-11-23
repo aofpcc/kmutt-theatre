@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <title>Memeber Information</title>
     <!--Navbar-->
-    <nav class="navbar navbar-expand-lg navbar navbar-dark navbar-bg">
+    <!-- <nav class="navbar navbar-expand-lg navbar navbar-dark navbar-bg">
       <b><a class="navbar-brand mr-5 ml-3" href="#"><p class="navbar-color mb-1">CS-18</p></a></b>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
@@ -24,7 +24,7 @@
           </li>
         </ul>
       </div>
-    </nav>
+    </nav> -->
     <!-- End Navbar -->
 </head>
 
@@ -60,10 +60,10 @@
             </a>
           </p>
           <p class="gap bold set-text">Phone Number :
-            <a class="PhoneNumber unbold"><?php echo($this->usr[0][2])?></a>
+            <a class="PhoneNumber unbold set-text"><?php echo($this->usr[0][2])?></a>
           </p>
           <p class="gap bold set-text">E-mail :
-            <a class="Email unbold"><?php echo($this->usr[0][3])?></a>
+            <a class="Email unbold set-text"><?php echo($this->usr[0][3])?></a>
           </p>
         </div>
         <!-- middle right -->

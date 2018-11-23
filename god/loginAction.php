@@ -92,6 +92,7 @@ $klein->with("/test", function () use ($klein) {
         $arr = $app->passValue;
         $arr["title"] = "Home";
         $arr["content"] = "This is home 1";
+        $service->bootstrap3 = false;
         $service->render('layouts/core/home.php', $arr);
     });
 

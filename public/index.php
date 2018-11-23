@@ -11,7 +11,7 @@ $loginperformer = new \LoginPerformer($database, $klein);
 session_start();
 
 $klein->respond(function ($request, $response, $service, $app, $validator) use ($database, $loginperformer) {
-    $service->layout('layouts/core/default.php');
+    // $service->layout('layouts/core/default.php');
     $app->db = $database;
     $app->login = $loginperformer;
     $app->js = new JavaScriptPart;
@@ -66,19 +66,46 @@ foreach ($included as $key => $value) {
     include_once __DIR__ . "/../god/$value.php";
 }
 
-$folders = array(
-  'group1','group2','group3','group4','group5',
-  'group6','group7','group8','group9','group10',
-  'group11','group12','group13','group14'
+// $folders = array(
+//   'group1','group2','group3','group4','group5',
+//   'group6','group7','group8','group9','group10',
+//   'group11','group12','group13','group14'
+// );
+
+$customer = [
+    'group1', 'group5', 'group6', 'group12', 'group14' 
+];
+
+$employees = array(
+      'group2','group3','group4','group7','group8','group9','group10',
+      'group11','group13','group14'
 );
 
-foreach ($folders as $folder) {
-    include_once __DIR__ . "/../groups/$folder/included_files.php";
-    foreach ($included as $key => $value) {
-        include_once __DIR__ . "/../groups/$folder/$value.php";
-    }
-}
+// foreach ($folders as $folder) {
+//     include_once __DIR__ . "/../groups/$folder/included_files.php";
+//     foreach ($included as $key => $value) {
+//         include_once __DIR__ . "/../groups/$folder/$value.php";
+//     }
+// }
 
-    
+$klein->with('/emp', function() use($klein, $employees) {
+    $klein->service()->layout('layouts/core/template/employee.php');
+    foreach ($employees as $folder) {
+            include_once __DIR__ . "/../groups/$folder/included_files.php";
+            foreach ($included as $key => $value) {
+                include_once __DIR__ . "/../groups/$folder/$value.php";
+            }
+    }
+});
+
+$klein->with('/customer', function() use($klein, $customer, $database) {
+    $klein->service()->layout('layouts/core/template/customer.php');
+    foreach ($customer as $folder) {
+            include_once __DIR__ . "/../groups/$folder/included_files.php";
+            foreach ($included as $key => $value) {
+                include_once __DIR__ . "/../groups/$folder/$value.php";
+            }
+    }
+});
 
 $klein->dispatch();

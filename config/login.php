@@ -336,5 +336,3 @@ class LoginPerformer
         return md5($string);
     }
 }
-
-                

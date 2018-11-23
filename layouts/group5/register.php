@@ -7,12 +7,12 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <title>Register</title>
 <!--Navbar-->
-<nav class="navbar navbar-expand-lg navbar navbar-dark navbar-bg">
-  <b><a class="navbar-brand mr-5 ml-3" href="#"><p class="navbar-color mb-1">CS-18</p></a></b>
+<!-- <nav class="navbar navbar-expand-lg navbar navbar-dark navbar-bg">
+  <b><a class="navbar-brand mr-5 ml-3" href="#"><p class="navbar-color mb-1">CS-18</p></a></b> -->
   <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button> -->
-  <div class="collapse navbar-collapse" id="navbarNav">
+  <!-- <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
@@ -22,13 +22,13 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Events</a>
-      </li>
+      </li> -->
       <!-- <li class="nav-item">
         <a class="nav-link disabled" href="#">Disabled</a>
       </li> -->
-    </ul>
+    <!-- </ul>
   </div>
-</nav>
+</nav> -->
 <!-- End Navbar -->
 </head>
 
@@ -155,14 +155,14 @@ We hate paperwork, too.</p>
         </div>
         </div>
         <!-- Footer -->
-        <footer class="text-muted footer-bg">
+        <!-- <footer class="text-muted footer-bg">
 <div class ="container">
         <p class="float-right">
-          <a href="#">Back to top</a>
-        </p>
+          <a href="#">Back to top</a> -->
+        <!-- </p>
         <p>Album example is © Bootstrap, but please download and customize it for yourself!</p>
         <p>New to Bootstrap? <a href="../../">Visit the homepage</a> or read our <a href="../../getting-started/">getting started guide</a>.</p>
-    </footer>
+    </footer> -->
     </div>
 </body>
 </html>

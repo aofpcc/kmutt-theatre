@@ -44,19 +44,19 @@
       <div class="row">
         <div class="col-sm-1"></div>
         <div class="col-sm-6">
-          <form>
+          <form action="/change/phonenumber/action" method="post">
             <div class="form-group">
               <label class="box-name-text" for="exampleInputEmail1">New Mobile Phone Number</label>
-              <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+              <input type="text" class="form-control form-control-lg" id="PhoneNumber" name="PhoneNumber" placeholder="">
             </div>
             <div class="form-group">
               <label class="box-name-text gap" for="exampleInputPassword1">Current Password</label>
               <!-- <small class="right"><a href="localhost:8000/chage/password">Forget password?</a></small> -->
-              <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="">
+              <input type="password" class="form-control form-control-lg" id="Password" name="Password" placeholder="">
             </div>
             <div class="gap-more"></div>
 
-              <button type="button" class="block gap" onclick="location = '/membership'">Save</button>
+              <input type="submit" class="cancel-block gap" value="Submit">
               <button type="button" class="cancel-block gap" onclick="location = '/membership'">Cancel</button>
 
           </form>

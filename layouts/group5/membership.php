@@ -152,12 +152,21 @@
           </p>
           <p class="bold set-text">Age :
             <a class="Age unbold set-text">
-              19
+              <?php echo json_encode($this->age); ?>
               <a class="unbold set-text">years old</a>
             </a>
           </p>
           <p class="bold set-text">Address :
             <a class="Address unbold set-text">33/71 Soi Kanchanapisek005/1, Laksong, Bangkae, Bangkok</a>
+          </p>
+          <p class="bold set-text">Sub-District :
+            <a class="Address unbold set-text">Laksong</a>
+          </p>
+          <p class="bold set-text">District :
+            <a class="Address unbold set-text">Bangkae</a>
+          </p>
+          <p class="bold set-text">Province :
+            <a class="Address unbold set-text">Bangkok</a>
           </p>
           <p class="bold set-text">Post code :
             <a class="PostCode unbold set-text">10160</a>

@@ -6,16 +6,40 @@ $klein->respond('POST', '/membership', function ($request, $response, $service) 
 $klein->respond('GET', '/membership', function ($request, $response, $service) {
   global $database;
   $conn = $database->getConnection();
+
+  // query1 Profile
   $sql = "SELECT  pf.MemberID, pw.Password, pf.PhoneNumber, pf.Email, pt.Total_Point,
           pf.ID_Card, pf.Fname, pf.Lname, pf.Gender, pf.BirthDate
           FROM G05_Member_profile as pf, G05_Member_password as pw, G05_Member_point as pt
           WHERE pf.MemberID=pw.MemberID and pf.MemberID=pt.MemberID
           and pf.MemberID = 1";
+
   $stmt = $conn->prepare($sql);
   $stmt->execute();
   $data = $stmt->fetchAll();
+
+  // query2 Age
+  $sql2 = "SELECT year(current_date)-year(pf.BirthDate) as age
+           FROM G05_Member_profile as pf";
+  $stmt = $conn->prepare($sql2);
+  $stmt->execute();
+  $age = $stmt->fetchAll();
+
   $service->usr = $data;
+  $service->age = $age[0]["age"];
   $service->render('layouts/group5/membership.php');
+});
+$klein->respond('POST', '/change/phonenumber/action', function ($request, $response, $service) {
+  global $database;
+  $conn = $database->getConnection();
+  $PhoneNumber = $request->PhoneNumber;
+  // query3
+  $sql3 = "UPDATE G05_Member_profile
+           SET PhoneNumber='$PhoneNumber'
+           WHERE MemberID=1";
+  $stmt = $conn->prepare($query);
+  $stmt->execute();
+  $response->redirect('/membership');
 });
 
 // change password (page)

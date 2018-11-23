@@ -55,9 +55,9 @@
         <div class="col-sm-3">
           <p class="gap"></p>
           <!-- <p class="gap set-text"><a href="localhost:8000/change/username">Change username</a></p> -->
-          <p class="gap set-text"><a href="/change/password">Change password</a></p>
-          <p class="gap set-text"><a href="/change/phonenumber">Change phone number</a></p>
-          <p class="gap set-text"><a href="/change/password">Change e-mail</a></p>
+          <p class="gap set-text"><a href="/customer/change/password">Change password</a></p>
+          <p class="gap set-text"><a href="/customer/change/phonenumber">Change phone number</a></p>
+          <p class="gap set-text"><a href="/customer/change/email">Change e-mail</a></p>
         </div>
       </div>
       <!-- middle line -->

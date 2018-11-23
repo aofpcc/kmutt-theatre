@@ -33,15 +33,35 @@ $klein->respond('POST', '/change/phonenumber/action', function ($request, $respo
   global $database;
   $conn = $database->getConnection();
   $PhoneNumber = $request->PhoneNumber;
-  // query3
+
+  //Check Password
+  // $query = "SELECT * from movies";
+  // $stmt = $conn->prepare($query);
+  // $stmt->execute();
+  //
+  // $num = $stmt->rowCount();
+
+  // query3 Phone Number
   $sql3 = "UPDATE G05_Member_profile
            SET PhoneNumber='$PhoneNumber'
-           WHERE MemberID=1";
-  $stmt = $conn->prepare($query);
+           WHERE MemberID='1'";
+  $stmt = $conn->prepare($sql3);
   $stmt->execute();
-  $response->redirect('/membership');
+  $response->redirect('/customer/membership');
 });
+$klein->respond('POST', '/change/email/action', function ($request, $response, $service) {
+  global $database;
+  $conn = $database->getConnection();
+  $Email = $request->Email;
 
+  // query4 Email
+  $sql4 = "UPDATE G05_Member_profile
+           SET Email='$Email'
+           WHERE MemberID='1'";
+  $stmt = $conn->prepare($sql4);
+  $stmt->execute();
+  $response->redirect('/customer/membership');
+});
 // change password (page)
 $klein->respond('GET', '/change/password', function ($request, $response, $service) {
   $service->render('layouts/group5/changePassword.php');

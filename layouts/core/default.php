@@ -14,7 +14,7 @@
   <nav class="navbar navbar-custom-color">
     <div class="container-fluid nav-container">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#">KMUTT THEATRE</a>
+        <a class="navbar-brand" href="#">KMUTT <?=$this->pageRole ?></a>
       </div>
       <ul class="nav navbar-nav">
         <li class=""><a href="/test/home">Home</a></li>

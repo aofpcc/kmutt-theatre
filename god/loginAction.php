@@ -5,7 +5,6 @@ $klein->respond(['GET', 'POST'], "/test", function ($request, $response, $servic
 });
 
 $klein->with("/test", function () use ($klein) {
-    $klein->service()->layout('layouts/core/default.php');
 
     $klein->respond(['GET', 'POST'], "/", function ($request, $response, $service, $app, $validator) {
         $response->redirect("/test/home");

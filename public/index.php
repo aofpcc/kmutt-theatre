@@ -76,9 +76,13 @@ $customer = [
     'group1', 'group5', 'group6', 'group12', 'group14' 
 ];
 
+// $employees = array(
+//       'group2','group3','group4','group7','group8','group9','group10',
+//       'group11','group13'
+// );
+
 $employees = array(
-      'group2','group3','group4','group7','group8','group9','group10',
-      'group11','group13','group14'
+    'group9'
 );
 
 // foreach ($folders as $folder) {
@@ -88,17 +92,27 @@ $employees = array(
 //     }
 // }
 
-$klein->with('/emp', function() use($klein, $employees) {
+$klein->with('/emp', function() use($klein, $employees, $database) {
+    // var_dump("200");
     $klein->service()->layout('layouts/core/template/employee.php');
+
+    // echo "<pre>";
+    // var_dump($klein->response());
+    // echo "</pre>";
+    // die;
+
     foreach ($employees as $folder) {
             include_once __DIR__ . "/../groups/$folder/included_files.php";
             foreach ($included as $key => $value) {
                 include_once __DIR__ . "/../groups/$folder/$value.php";
             }
     }
+    $klein->dispatch();
+    die;
 });
 
 $klein->with('/customer', function() use($klein, $customer, $database) {
+    // var_dump("200");
     $klein->service()->layout('layouts/core/template/customer.php');
     foreach ($customer as $folder) {
             include_once __DIR__ . "/../groups/$folder/included_files.php";
@@ -106,6 +120,9 @@ $klein->with('/customer', function() use($klein, $customer, $database) {
                 include_once __DIR__ . "/../groups/$folder/$value.php";
             }
     }
+    $klein->dispatch();
+    die;
 });
+
 
 $klein->dispatch();

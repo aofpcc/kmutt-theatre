@@ -11,7 +11,8 @@ $loginperformer = new \LoginPerformer($database, $klein);
 session_start();
 
 $klein->respond(function ($request, $response, $service, $app, $validator) use ($database, $loginperformer) {
-    // $service->layout('layouts/core/default.php');
+    $service->layout('layouts/core/default.php');
+    $service->pageRole = "THEATRE";
     $app->db = $database;
     $app->login = $loginperformer;
     $app->js = new JavaScriptPart;
@@ -76,13 +77,9 @@ $customer = [
     'group1', 'group5', 'group6', 'group12', 'group14' 
 ];
 
-// $employees = array(
-//       'group2','group3','group4','group7','group8','group9','group10',
-//       'group11','group13'
-// );
-
 $employees = array(
-    'group9'
+      'group2','group3','group4','group7','group8','group9','group10',
+      'group11','group13'
 );
 
 // foreach ($folders as $folder) {
@@ -93,35 +90,24 @@ $employees = array(
 // }
 
 $klein->with('/emp', function() use($klein, $employees, $database) {
-    // var_dump("200");
-    $klein->service()->layout('layouts/core/template/employee.php');
-
-    // echo "<pre>";
-    // var_dump($klein->response());
-    // echo "</pre>";
-    // die;
-
+    // $klein->service()->pageRole = "EMPLOYEE";
     foreach ($employees as $folder) {
             include_once __DIR__ . "/../groups/$folder/included_files.php";
             foreach ($included as $key => $value) {
                 include_once __DIR__ . "/../groups/$folder/$value.php";
             }
     }
-    $klein->dispatch();
-    die;
 });
 
 $klein->with('/customer', function() use($klein, $customer, $database) {
+    // $klein->service()->pageRole = "THEATRE";
     // var_dump("200");
-    $klein->service()->layout('layouts/core/template/customer.php');
     foreach ($customer as $folder) {
             include_once __DIR__ . "/../groups/$folder/included_files.php";
             foreach ($included as $key => $value) {
                 include_once __DIR__ . "/../groups/$folder/$value.php";
             }
     }
-    $klein->dispatch();
-    die;
 });
 
 

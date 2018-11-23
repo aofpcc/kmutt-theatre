@@ -7,7 +7,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <title>Change Password</title>
 <!--Navbar-->
-<nav class="navbar navbar-expand-lg navbar navbar-dark navbar-bg">
+<!-- <nav class="navbar navbar-expand-lg navbar navbar-dark navbar-bg">
   <b><a class="navbar-brand mr-5 ml-3" href="#"><p class="navbar-color mb-1">CS-18</p></a></b>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
@@ -22,7 +22,7 @@
       </li>
     </ul>
   </div>
-</nav>
+</nav> -->
 <!-- End Navbar -->
 </head>
 

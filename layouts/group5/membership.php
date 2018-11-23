@@ -8,24 +8,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <title>Memeber Information</title>
-    <!--Navbar-->
-    <nav class="navbar navbar-expand-lg navbar navbar-dark navbar-bg">
-      <b><a class="navbar-brand mr-5 ml-3" href="#"><p class="navbar-color mb-1">CS-18</p></a></b>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Movies</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Events</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-    <!-- End Navbar -->
 </head>
 
 <body class="body-bg">
@@ -60,10 +42,10 @@
             </a>
           </p>
           <p class="gap bold set-text">Phone Number :
-            <a class="PhoneNumber unbold"><?php echo($this->usr[0][2])?></a>
+            <a class="PhoneNumber unbold set-text"><?php echo($this->usr[0][2])?></a>
           </p>
           <p class="gap bold set-text">E-mail :
-            <a class="Email unbold"><?php echo($this->usr[0][3])?></a>
+            <a class="Email unbold set-text"><?php echo($this->usr[0][3])?></a>
           </p>
         </div>
         <!-- middle right -->
@@ -73,9 +55,9 @@
         <div class="col-sm-3">
           <p class="gap"></p>
           <!-- <p class="gap set-text"><a href="localhost:8000/change/username">Change username</a></p> -->
-          <p class="gap set-text"><a href="/change/password">Change password</a></p>
-          <p class="gap set-text"><a href="/change/phonenumber">Change phone number</a></p>
-          <p class="gap set-text"><a href="/change/password">Change e-mail</a></p>
+          <p class="gap set-text"><a href="/customer/change/password">Change password</a></p>
+          <p class="gap set-text"><a href="/customer/change/phonenumber">Change phone number</a></p>
+          <p class="gap set-text"><a href="/customer/change/email">Change e-mail</a></p>
         </div>
       </div>
       <!-- middle line -->
@@ -152,12 +134,21 @@
           </p>
           <p class="bold set-text">Age :
             <a class="Age unbold set-text">
-              19
+              <?php echo json_encode($this->age); ?>
               <a class="unbold set-text">years old</a>
             </a>
           </p>
           <p class="bold set-text">Address :
             <a class="Address unbold set-text">33/71 Soi Kanchanapisek005/1, Laksong, Bangkae, Bangkok</a>
+          </p>
+          <p class="bold set-text">Sub-District :
+            <a class="Address unbold set-text">Laksong</a>
+          </p>
+          <p class="bold set-text">District :
+            <a class="Address unbold set-text">Bangkae</a>
+          </p>
+          <p class="bold set-text">Province :
+            <a class="Address unbold set-text">Bangkok</a>
           </p>
           <p class="bold set-text">Post code :
             <a class="PostCode unbold set-text">10160</a>

@@ -276,7 +276,7 @@ class LoginPerformer
             $md5 = $this->md5($password);
             // prepare sql and bind parameters
             $stmt = $this->conn->prepare("SELECT * from
-            core_user_pwd WHERE password = :password and username = :username");
+            core_user_pwd WHERE (password = :password and username OR email = :username)");
             $stmt->bindParam(':username', $username);
             $stmt->bindParam(':password', $md5);
             $stmt->execute();

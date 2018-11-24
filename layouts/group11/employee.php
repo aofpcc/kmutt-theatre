@@ -37,20 +37,20 @@
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link active" href="/staff/employee/dashboard">
+                <a class="nav-link active" href="/emp/staff/employee/dashboard">
                   <span data-feather="home"></span>
                   Dashboard <span class="sr-only">(current)</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link"  href="/staff/employee/profile">
+                <a class="nav-link"  href="/emp/staff/employee/profile">
                   <span data-feather="user"></span>
                   Profile
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="">
-                  <span data-feather="shopping-cart"></span>
+                  <span data-feather="edit"></span>
                   Edit Profile
                 </a>
               </li>
@@ -67,13 +67,13 @@
                 </a>
               </li>
                <li class="nav-item">
-                <a class="nav-link" href="/staff/employee/finance">
+                <a class="nav-link" href="/emp/staff/employee/finance">
                   <span data-feather="layers"></span>
                   Financial
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/staff/logout">
+                <a class="nav-link" href="/emp/staff/logout">
                   <span data-feather="power"></span>
                   LOGOUT
                 </a>

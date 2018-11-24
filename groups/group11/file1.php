@@ -3,19 +3,19 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 $klein->respond(['GET', 'POST'], "/teststaff", function ($request, $response, $service, $app, $validator) {
-  $response->redirect("/staff/employee");
+  $response->redirect("/emp/staff/employee");
   $response->sendHeaders();
 });
-$klein->with("/teststaff", function () use ($klein) {
+$klein->with("/emp/teststaff", function () use ($klein) {
   // $klein->service()->layout('layouts/core/default.php');
   $klein->respond(['GET', 'POST'], "/", function ($request, $response, $service, $app, $validator) {
-      $response->redirect("/staff/employee");
+      $response->redirect("/emp/staff/employee");
       $response->sendHeaders();
   });
 });
 
 $klein->respond('POST', '/staff/login', function ($request, $response, $service, $app, $validator) {
-  $app->login->perform($request->username, $request->password, "/teststaff");
+  $app->login->perform($request->username, $request->password, "/emp/teststaff");
 });
 $klein->respond('GET', '/staff', function ($request, $response, $service, $app, $validator) {
   $err = $service->flashes();
@@ -26,20 +26,20 @@ $klein->respond('GET', '/staff', function ($request, $response, $service, $app, 
 });
 
 $klein->respond(['GET', 'POST'], '/staff/logout', function ($request, $response, $service, $app, $validator) {
-  $app->login->logoutThenGoTo("/staff");
+  $app->login->logoutThenGoTo("/emp/staff");
 });
 
 
 $klein->respond('GET', '/staff/employee', function($request, $response, $service, $app, $validator) {
   $service->nameTag = 'dashboard.php';
-  $response->redirect('/staff/employee/dashboard');
+  $response->redirect('/emp/staff/employee/dashboard');
 });
 
 $klein->respond('GET', '/staff/employee/dashboard', function ($request, $response, $service, $app, $validator) {
   error_reporting(E_ALL);
   ini_set('display_errors', 1);
   //check login
-   $data = $app->login->LoginThenGoTo('employee','/staff');
+   $data = $app->login->LoginThenGoTo('employee','/emp/staff');
   //  echo($data['userID']);
    
    // connect db
@@ -63,7 +63,7 @@ $klein->respond('GET', '/staff/employee/profile', function($request, $response, 
   ini_set('display_errors', 1);
 
   //check login
-  $data = $app->login->LoginThenGoTo('employee','/staff');
+  $data = $app->login->LoginThenGoTo('employee','/emp/staff');
   
  //select db
   $service->id = $data['userID'];

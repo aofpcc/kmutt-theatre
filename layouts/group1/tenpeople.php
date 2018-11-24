@@ -11,7 +11,7 @@
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
 
-   <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+   <!-- <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
   <a class="navbar-brand" href="http://localhost:8000/customer/kmutt_home">KMUTT THEATER</a>
   <ul class="navbar-nav">
     <li class="nav-item">
@@ -21,7 +21,7 @@
       <a class="nav-link" href="#">promotion</a>
     </li>
   </ul>
-</nav>
+</nav> -->
 
   <style>
 

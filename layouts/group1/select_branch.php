@@ -90,7 +90,9 @@
                       <label for="sel1">ALL CINEMAS:</label>
                       <select class="form-control" id="sel1">
                         <?php
+
                           for($i = 0; $i < count($this->query); $i++) {
+
                         ?>
 
                         <option value="value <?=$this->query[$i]['BranchName'] ?>"><?=$this->query[$i]['BranchName']  ?></option>

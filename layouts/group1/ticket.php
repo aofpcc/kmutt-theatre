@@ -33,7 +33,7 @@ padding: 30px 30px;
 }
 </style>
 
-  <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+  <!-- <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
  <a class="navbar-brand" href="http://localhost:8000/customer/kmutt_home">KMUTT THEATER</a>
  <ul class="navbar-nav">
    <li class="nav-item">
@@ -43,10 +43,11 @@ padding: 30px 30px;
      <a class="nav-link" href="#">promotion</a>
    </li>
  </ul>
-</nav>
+</nav> -->
+
 <br><br>
   <div class="main">
-    <<h1 class="my-4"><button type="button" class="btn btn-lg btn-primary">STEP 5</button>
+    <h1 class="my-4"><button type="button" class="btn btn-lg btn-primary">STEP 5</button>
       <small>Finish</small>
     </h1>
     <button type="button" class="btn btn-primary btn-lg btn-block">BACK TO HOME</button>

@@ -21,7 +21,8 @@ $klein->respond('GET', '/group6/loginn', function ($request, $response, $service
   $user = $_GET['user'];
   $password = $_GET['pass'];
 
-  $query = "SELECT MemberID from G05_Member_profile where Email = '$user' and PhoneNumber = '$password' ";
+  //$query = "SELECT userID from core_user_pwd where username = '$user' and password = '$password' ";
+$query = "SELECT MemberID from G05_Member_profile where Email = '$user' and PhoneNumber = '$password' ";
   $stmt = $conn->prepare($query);
   $stmt->execute();
 
@@ -113,7 +114,7 @@ $klein->respond('GET', '/group6/getInfo', function ($request, $response, $servic
 
   $id = $_GET['id'];
 
-  $query = "SELECT * from Membership where ID = '$id'";
+  $query = "SELECT * from G05_Member_profile where MemberID = '$id'";
   $stmt = $conn->prepare($query);
   $stmt->execute();
 

@@ -1,7 +1,5 @@
 <?php
-// $query = "INSERT INTO `G02_Ticket_history` VALUES (60130500222,'0800420423','SUPERMANs2','','E13','')";
-// $stmt = $conn->prepare($query);
-// $stmt->execute();
+
 ?>
 
 

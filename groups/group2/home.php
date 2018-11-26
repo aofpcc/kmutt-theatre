@@ -25,7 +25,7 @@ $klein->respond('POST', '/group2/check_card_no', function ($request, $response, 
 
   $card_no = $request->card_no;
 
-  $query = "SELECT MemberID from G05_Member_profile where ID_Card = '$card_no'" ;
+  $query = "SELECT ID_Card from G05_Member_profile where ID_Card = '$card_no'" ;
   $stmt = $conn->prepare($query);
   $stmt->execute();
 

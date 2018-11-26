@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . "/../vendor/phpmailer/phpmailer/PHPMailerAutoload.php";
+//require_once __DIR__ . "/../vendor/phpmailer/phpmailer/PHPMailerAutoload.php";
 class MailSender
 {
     public function sent($to, $header, $body)
@@ -97,7 +97,7 @@ class LoginPerformer
 
                 $stmt->bindParam(":userID", $userID);
                 $stmt->execute();
-                
+
             } else {
                 $this->conn->rollback();
                 return [

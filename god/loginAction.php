@@ -5,7 +5,6 @@ $klein->respond(['GET', 'POST'], "/test", function ($request, $response, $servic
 });
 
 $klein->with("/test", function () use ($klein) {
-    $klein->service()->layout('layouts/core/default.php');
 
     $klein->respond(['GET', 'POST'], "/", function ($request, $response, $service, $app, $validator) {
         $response->redirect("/test/home");
@@ -17,10 +16,6 @@ $klein->with("/test", function () use ($klein) {
     });
 
     $klein->respond('GET', '/login', function ($request, $response, $service, $app, $validator) {
-        $err = $service->flashes();
-        if ($err && $err["info"]) {
-            $service->errs = $err["info"];
-        }
         $service->render('layouts/shared/test_login.php', $app->passValue);
     });
 
@@ -47,20 +42,31 @@ $klein->with("/test", function () use ($klein) {
         $validateLink = "/test/verify"; // neeed to have / before  and no / at the end
         $role = 'customer';
         $result = $app->login->register($username, $password, $email, $validateLink, $role);
+
+        $pass = $app->passValue;
         if ($result['created']) {
-            echo "Success";
+            $pass["content"] = "The account have been created.";
         } else {
-            echo "Failed\n";
-            echo $result["data"];
+            $pass["content"] = "The account cannot be created. Some error occurs!";
         }
+        $service->render("layouts/core/home.php", $pass);
     });
 
-    $klein->respond('GET', '/verify/[:hash]', function ($request, $response, $service, $app, $validator) {
-        $result = $app->login->validateToken($request->hash);
+    $klein->respond('GET', '/verify/[:hash]/[:userID]', function ($request, $response, $service, $app, $validator) {
+        $result = $app->login->validateToken($request->hash, $request->userID);
+        // var_dump($result);
+        // die;
         if ($result["validated"]) {
-            $app->js->alert("Validated");
+          $service->flash("validated");
+            $response->redirect("/test/login");
         } else {
-            $app->js->alert("Invalid Token");
+          if($result["already"]){
+            $service->flash("Already validated, Cannot use again");
+            $response->redirect("/test/login");
+          }else{
+            $service->flash("Invalid Token");
+            $response->redirect("/test");
+          }
         }
     });
 
@@ -86,6 +92,7 @@ $klein->with("/test", function () use ($klein) {
         $arr = $app->passValue;
         $arr["title"] = "Home";
         $arr["content"] = "This is home 1";
+        $service->bootstrap3 = false;
         $service->render('layouts/core/home.php', $arr);
     });
 
@@ -116,6 +123,23 @@ $klein->with("/test", function () use ($klein) {
         $service->render('layouts/core/resetPassword.php', $pass);
     });
 
+    $klein->respond('POST', '/resetPassword', function ($request, $response, $service, $app, $validator) {
+        $service->validateParam('newpassword', 'New Password cannot be null')->notNull();
+        $service->validateParam('confirmpassword', 'Confirm Password cannot be null')->notNull();
+        if ($request->newpassword != $request->confirmpassword) {
+            $service->flash('Shit Not the same');
+            $service->back();
+        }
+        $pass = $app->passValue;
+        $result = $app->login->setNewPassword($request->newpassword);
+        if ($result["update"]) {
+            $pass["content"] = "Password was reseted";
+        } else {
+            $pass["content"] = "Password was not reseted. Please Contact Us";
+        }
+        $response->redirect("/test/logout");
+    });
+
     $klein->respond('GET', '/changePassword', function ($request, $response, $service, $app, $validator) {
         $pass = $app->passValue;
         $result = $app->login->requireLogin('customer');
@@ -127,14 +151,14 @@ $klein->with("/test", function () use ($klein) {
     $klein->respond('POST', '/changePassword', function ($request, $response, $service, $app, $validator) {
         $pass = $app->passValue;
         $result = $app->login->requireLogin('customer');
-        if($request->newpassword != $request->confirmpassword) {
-          $service->flash("New password is not same as confirm password");
-          $service->back();
+        if ($request->newpassword != $request->confirmpassword) {
+            $service->flash("New password is not same as confirm password");
+            $service->back();
         }
         $result = $app->login->changePassword($request->oldpassword, $request->newpassword);
-        if(!$result["change"]) {
-          $service->flash("The old password incorrect");
-          $service->back();
+        if (!$result["change"]) {
+            $service->flash("The old password incorrect");
+            $service->back();
         }
         $pass["content"] = "The password was changed";
         $service->render('layouts/core/home.php', $pass);

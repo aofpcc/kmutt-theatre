@@ -13,7 +13,7 @@
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
 
-   <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+   <!-- <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
   <a class="navbar-brand" href="http://localhost:8000/customer/kmutt_home">KMUTT THEATER</a>
   <ul class="navbar-nav">
     <li class="nav-item">
@@ -23,7 +23,7 @@
       <a class="nav-link" href="#">promotion</a>
     </li>
   </ul>
-</nav>
+</nav> -->
 
   <style>
 
@@ -97,11 +97,22 @@
         <div class="col-md-5">
             <br>
           <h4>ENG</h4>
-          <a class="btn btn-outline-primary" href="#">10:20</a>
+          <?php
+              for ($i=0; $i < count($this->query); $i++) {
+
+          ?>
+
+              <button type="button" class="btn btn-outline-primary" style="margin: 1%!important">
+                <?=$this->query[$i]['endTime'] ?></button>
+          <?php
+              }
+            ?>
+
+          <!-- <a class="btn btn-outline-primary" href="#">10:20</a>
           <a class="btn btn-outline-primary" href="#">12:20</a>
           <a class="btn btn-outline-primary" href="#">15:20</a>
           <a class="btn btn-outline-primary" href="#">17:20</a>
-          <a class="btn btn-outline-primary" href="#">21:20</a>
+          <a class="btn btn-outline-primary" href="#">21:20</a> -->
         </div>
       </div>
   </div>
@@ -116,14 +127,14 @@
           <br><br>
         </div>
 
-    <div class="col-md-5">
+    <!-- <div class="col-md-5">
         <br>
       <h4>TH</h4>
       <a class="btn btn-outline-primary" href="#">15:00</a>
       <a class="btn btn-outline-primary" href="#">17:45</a>
       <a class="btn btn-outline-primary" href="#">21:15</a>
 
-    </div>
+    </div> -->
   </div>
   <!-- /.row -->
   </div>
@@ -131,3 +142,5 @@
 
 </div>
 </body>
+
+<?php  ?>

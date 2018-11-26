@@ -14,17 +14,17 @@
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
 
-  <link href='https://fonts.googleapis.com/css?family=Kotta+One' rel='stylesheet' type='text/css'>
+  <!-- <link href='https://fonts.googleapis.com/css?family=Kotta+One' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
   <script src="/layouts/group1/js/jquery-1.11.0.min.js"></script>
-  <script src="/layouts/group1/js/jquery.seat-charts.js"></script>
+  <script src="/layouts/group1/js/jquery.seat-charts.js"></script> -->
   <link href="/layouts/group1/css/style.css" rel="stylesheet" type="text/css" media="all" />
   <link rel="stylesheet" href="/layouts/group1/css/onStyle.css">
 </head>
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+  <!-- <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
  <a class="navbar-brand" href="http://localhost:8000/customer/kmutt_home">KMUTT THEATER</a>
  <ul class="navbar-nav">
    <li class="nav-item">
@@ -34,7 +34,7 @@
      <a class="nav-link" href="#">promotion</a>
    </li>
  </ul>
-</nav>
+</nav> -->
 <br><br>
   <div class="main">
     <h1 class="my-4"><button type="button" class="btn btn-lg btn-primary">STEP 4</button>
@@ -56,23 +56,48 @@
                     <font size="4">30 February 2030</font><br><br>
                     <font size="4">21 : 00</font> &nbsp&nbsp&nbsp  <font size="4"> Theater 5 </font><br><br>
                     <font size="4">135 Mins</font> <br><br>
-                    <font size="4">ที่นั่งเลือก</font> <<font size="4"> ราคารวม </font>
+                    <font size="4">จำนวนที่นั่งเลือก</font>
+
+                       <?php //echo json_encode($this->selectedSeats);
+                      if($this->selectedSeats == null){
+                    //       echo 'select the chair';
+                    //         // header('location: http://localhost:8000/customer/home');
+                       $this->render("layouts/group1/popup_forget_chair.php");
+                    // <?php
+                      }else if(count($this->selectedSeats) >= 10){
+                        $this->render("layouts/group1/popup_booking_ten.php");
+                      }else{
+                          // $json = json_encode($this->selectedSeats);
+                          // echo json_encode($json, JSON_PRETTY_PRINT);
+                          echo json_encode(count($this->selectedSeats));
+                      }
+                    ?>
+
+                    <font size="4">  ที่นั่ง</font>
+
+                    <br> <br>
+
+                    <font size="4"> ราคารวม </font>
                     <p>
 
-                         <?php //echo json_encode($this->selectedSeats);
-                        if($this->selectedSeats == null){
-                      //       echo 'select the chair';
-                      //         // header('location: http://localhost:8000/customer/home');
-                         $this->render("layouts/group1/popup_forget_chair.php");
-                      // <?php
-                        }else if(count($this->selectedSeats) >= 10){
-                          $this->render("layouts/group1/popup_booking_ten.php");
-                        }else{
-                            echo json_encode($this->selectedSeats);
-                        }
-                      ?>
-
                     </p>
+                    <br>
+
+                    <font size="4"> ที่นั่ง </font>
+                    <?php
+                    // for ($i=0; $i < count($this->seats); $i++) {
+                    //   echo json_encode($this->seats);
+                    //
+                    // }
+                    $arry = json_decode(json_encode($this->seats), true);
+                    foreach ($arry as $result)
+                    {
+                      echo $result['row'],'-',$result['seat'],'<br/>';
+                    }
+                      //echo json_encode($this->seats);
+                      //print_r($this->seats);
+                    ?>
+                    <br> <br>
 
                   </p><br> <!--link to ticket-->
                     <button type="button" class="btn btn-lg btn-default" >KBANK</button>

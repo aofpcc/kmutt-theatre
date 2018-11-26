@@ -11,19 +11,23 @@ $loginperformer = new \LoginPerformer($database, $klein);
 session_start();
 
 $klein->respond(function ($request, $response, $service, $app, $validator) use ($database, $loginperformer) {
+    $service->layout('layouts/core/default.php');
+    $service->pageRole = "THEATRE";
+    $service->bootstrap3 = true;
     $app->db = $database;
     $app->login = $loginperformer;
     $app->js = new JavaScriptPart;
 
-    $username = ( empty($_SESSION['username']) ? "Guest" : $_SESSION['username'] );
+    $username = (empty($_SESSION['username']) ? "Guest" : $_SESSION['username']);
 
-    if($username == 'Guest') {
-      $login_menu = [
+    if ($username == 'Guest') {
+        $login_menu = [
         ["name" => "Log in", "href" => "/test/login"],
         ["name" => "Register", "href" => "/test/register"],
+        ["name" => "Forget Password", "href" => "/test/forgetPassword"]
       ];
-    }else{
-      $login_menu = [
+    } else {
+        $login_menu = [
         ["name" => "View Profile", "href" => "#"],
         ["name" => "Change Password", "href" => "/test/changePassword"],
         ["name" => "Log out", "href" => "/test/logout"],
@@ -38,7 +42,6 @@ $klein->respond(function ($request, $response, $service, $app, $validator) use (
 });
 
 $klein->onHttpError(function ($code, $router) {
-    $router->service()->layout('layouts/core/default.php');
     switch ($code) {
         case 404:
           $arr = $router->app()->passValue;
@@ -65,17 +68,48 @@ foreach ($included as $key => $value) {
     include_once __DIR__ . "/../god/$value.php";
 }
 
-$folders = array(
-  'group1','group2','group3','group4','group5',
-  'group6','group7','group8','group9','group10',
-  'group11','group12','group13','group14'
+// $folders = array(
+//   'group1','group2','group3','group4','group5',
+//   'group6','group7','group8','group9','group10',
+//   'group11','group12','group13','group14'
+// );
+
+$customer = [
+    'group1', 'group5', 'group6', 'group12', 'group14' 
+];
+
+$employees = array(
+      'group2','group3','group4','group7','group8','group9','group10',
+      'group11','group13'
 );
 
-foreach ($folders as $folder) {
-    include_once __DIR__ . "/../groups/$folder/included_files.php";
-    foreach ($included as $key => $value) {
-        include_once __DIR__ . "/../groups/$folder/$value.php";
+// foreach ($folders as $folder) {
+//     include_once __DIR__ . "/../groups/$folder/included_files.php";
+//     foreach ($included as $key => $value) {
+//         include_once __DIR__ . "/../groups/$folder/$value.php";
+//     }
+// }
+
+$klein->with('/emp', function() use($klein, $employees, $database) {
+    // $klein->service()->pageRole = "EMPLOYEE";
+    foreach ($employees as $folder) {
+            include_once __DIR__ . "/../groups/$folder/included_files.php";
+            foreach ($included as $key => $value) {
+                include_once __DIR__ . "/../groups/$folder/$value.php";
+            }
     }
-}
+});
+
+$klein->with('/customer', function() use($klein, $customer, $database) {
+    // $klein->service()->pageRole = "THEATRE";
+    // var_dump("200");
+    foreach ($customer as $folder) {
+            include_once __DIR__ . "/../groups/$folder/included_files.php";
+            foreach ($included as $key => $value) {
+                include_once __DIR__ . "/../groups/$folder/$value.php";
+            }
+    }
+});
+
 
 $klein->dispatch();

@@ -1,4 +1,8 @@
 <?php
 $klein->respond('GET', '/', function ($request, $response, $service) {
-  $response->redirect("/test");
+  global $database;
+  $conn = $database->getConnection();
+
+  $service->pageTitle = 'Home';
+  $service->render('layouts/shared/home.php');
 });

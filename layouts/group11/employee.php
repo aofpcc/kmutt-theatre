@@ -1,27 +1,26 @@
-<!-- <!doctype html> -->
-<!-- <html lang="en"> -->
+<!doctype html>
+<html lang="en">
   <head>
-    <!-- <meta charset="utf-8"> -->
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
-    <!-- <meta name="description" content=""> -->
-    <!-- <meta name="author" content=""> -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
     <!-- <link rel="icon" href="../../../../favicon.ico"> -->
 
-    <!-- <title>KMUTT-Theatre-Staff</title> -->
+    <title>KMUTT-Theatre-Staff</title>
 
     <!-- Bootstrap core CSS -->
-    <!-- <link href="/layouts/group11/css/bootstrap.min.css" rel="stylesheet"> -->
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> -->
+    <link href="/layouts/group11/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="/layouts/group11/css/dashboard.css" rel="stylesheet">
 
   </head>
-  <!-- <body> -->
-    <!-- <div class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/staff/employee">KMUTT-Theatre </a>
+  <body>
+    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/staff/employee">KMUTT-Theatre <?php echo($this->token) ?></a>
 
-         <input class='form-control form-control-dark w-100' type='text' placeholder='Search' aria-label='Search'>
+         <!-- <input class='form-control form-control-dark w-100' type='text' placeholder='Search' aria-label='Search'> -->
       <div class="form-control form-control-dark w-100" ></div>
 
       <ul class="navbar-nav px-3">
@@ -29,28 +28,28 @@
           <a class="nav-link" href="/staff/logout">Sign out</a>
         </li>
       </ul>
-    </div> -->
+    </nav>
 
-    <div class="remove-container">
+    <div class="container-fluid">
       <div class="row">
-        <div class="col-md-2 d-none d-md-block bg-light sidebar">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link active" href="/emp/staff/employee/dashboard">
+                <a class="nav-link active" href="/staff/employee/dashboard">
                   <span data-feather="home"></span>
                   Dashboard <span class="sr-only">(current)</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link"  href="/emp/staff/employee/profile">
+                <a class="nav-link"  href="/staff/employee/profile">
                   <span data-feather="user"></span>
                   Profile
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="">
-                  <span data-feather="edit"></span>
+                  <span data-feather="shopping-cart"></span>
                   Edit Profile
                 </a>
               </li>
@@ -67,15 +66,9 @@
                 </a>
               </li>
                <li class="nav-item">
-                <a class="nav-link" href="/emp/staff/employee/finance">
+                <a class="nav-link" href="/staff/employee/finance">
                   <span data-feather="layers"></span>
                   Financial
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/emp/staff/logout">
-                  <span data-feather="power"></span>
-                  LOGOUT
                 </a>
               </li>
             </ul>
@@ -113,12 +106,12 @@
               </li>
             </ul> -->
           </div>
-      </div>
+        </nav>
         <?php
-       
-        $this->partial('layouts/group11/component/'.$this->nameTag);
 
-        // require('layouts/group11/component/'.$this->nameTag);
+        // $this->render('layouts/group11/component/dashboard.php');
+
+        $this->render('layouts/group11/component/'.$this->nameTag);
   
         ?>
 
@@ -128,10 +121,10 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
-    <!-- <script>window.jQuery || document.write('<script src="/layouts/group11/js/jquery-slim.min.js"><\/script>')</script> -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="/layouts/group11/js/jquery-slim.min.js"><\/script>')</script>
     <script src="/layouts/group11/js/popper.min.js"></script>
-    <!-- <script src="/layouts/group11/js/bootstrap.min.js"></script> -->
+    <script src="/layouts/group11/js/bootstrap.min.js"></script>
 
     <!-- Icons -->
     <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
@@ -170,5 +163,5 @@
         }
       });
     </script> -->
-  <!-- </body> -->
-<!-- </html> -->
+  </body>
+</html>

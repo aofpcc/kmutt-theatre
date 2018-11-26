@@ -24,7 +24,7 @@ ini_set('display_errors', 1);?>
 </head>
 
 <body>
-  <!-- <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
  <a class="navbar-brand" href="http://localhost:8000/customer/kmutt_home">KMUTT THEATER</a>
  <ul class="navbar-nav">
    <li class="nav-item">
@@ -34,7 +34,7 @@ ini_set('display_errors', 1);?>
      <a class="nav-link" href="#">promotion</a>
    </li>
  </ul>
-</nav> -->
+</nav>
 <br><br>
 
   <div class="main">

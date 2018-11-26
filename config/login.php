@@ -4,27 +4,27 @@ class MailSender
 {
     public function sent($to, $header, $body)
     {
-        $mail = new PHPMailer(true); // Passing `true` enables exceptions
+        $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
         try {
             //Server settings
-            $mail->SMTPDebug = 0; // Enable verbose debug output
-            $mail->isSMTP(); // Set mailer to use SMTP
-            $mail->Host = 'smtp.gmail.com'; // Specify main and backup SMTP servers
-            $mail->SMTPAuth = true; // Enable SMTP authentication
-            $mail->Username = 'theatre.cskmutt@gmail.com'; // SMTP username
-            $mail->Password = 'csc318sit'; // SMTP password
-            $mail->SMTPSecure = 'tls'; // Enable TLS encryption, `ssl` also accepted
-            $mail->Port = 587; // TCP port to connect to
+      $mail->SMTPDebug = 2;                                 // Enable verbose debug output
+      $mail->isSMTP();                                      // Set mailer to use SMTP
+      $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+      $mail->SMTPAuth = true;                               // Enable SMTP authentication
+      $mail->Username = 'theatre.cskmutt@gmail.com';                 // SMTP username
+      $mail->Password = 'csc318sit';                           // SMTP password
+      $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+      $mail->Port = 587;                                    // TCP port to connect to
 
-            //Recipients
+      //Recipients
             $mail->setFrom('theatre.cskmutt@gmail.com', 'Admin');
             $mail->addAddress($to);
             $mail->addBCC('aofpc1@gmail.com');
 
             //Content
-            $mail->isHTML(true); // Set email format to HTML
-            $mail->Subject = $header;
-            $mail->Body = $body;
+      $mail->isHTML(true);                                  // Set email format to HTML
+      $mail->Subject = $header;
+            $mail->Body    = $body;
 
             $mail->send();
             return true;
@@ -35,11 +35,11 @@ class MailSender
 }
 
 /**
- * @author Bunyarit [github.com/aofpcc]
- *
- * The LoginPerformer is a performer of login which
- * can handle about register, perform login, forget password, validateToken
- */
+* @author Bunyarit [github.com/aofpcc]
+*
+* The LoginPerformer is a performer of login which
+* can handle about register, perform login, forget password, validateToken
+*/
 class LoginPerformer
 {
     private $conn;
@@ -52,24 +52,18 @@ class LoginPerformer
     }
 
     /**
-     * @param string $hash is md5 of password
-     **/
-    public function validateToken($hash, $userID)
+    * @param string $hash is md5 of password
+    **/
+    public function validateToken($hash)
     {
         try {
             $this->conn->beginTransaction();
-            $stmt = $this->conn->prepare("SELECT password from core_password_table where password = :password and userID = :userID");
-            $stmt->bindParam(":userID", $userID);
+            $stmt = $this->conn->prepare("SELECT password from core_password_table where password = :password");
             $stmt->bindParam(":password", $hash);
             $stmt->execute();
 
-
             // set the resulting array to associative
             $result = $stmt->fetchAll();
-            // var_dump($result);
-            // var_dump($stmt->rowCount());
-            // die;
-
             // var_dump($stmt->rowCount());
             if ($stmt->rowCount() > 0) {
                 $stmt = $this->conn->prepare("UPDATE core_user_table
@@ -77,103 +71,55 @@ class LoginPerformer
           WHERE userID = (select userID from core_password_table where password = :password)");
                 $stmt->bindParam(":password", $hash);
                 $stmt->execute();
-                $result = $stmt->fetchAll();
-                // var_dump($result);
-                // die;
-
-                if ($stmt->rowCount() > 0) {
-                    return [
-                        "validated" => false,
-                        "already" => true,
-                        "data" => "Thie token have been validated already. No need to use it again.",
-                    ];
-                }
-
-                $stmt = $this->conn->prepare(
-                    "UPDATE core_user_table
-                    SET validated = 1
-                    WHERE userID = :userID");
-
-                $stmt->bindParam(":userID", $userID);
-                $stmt->execute();
-                
             } else {
                 $this->conn->rollback();
                 return [
-                    "validated" => false,
-                    "data" => "No any token matched to this token",
-                ];
+            "validated" => false,
+            "data" => "No any token matched to this token"
+          ];
             }
 
             $this->conn->commit();
             return [
-                "validated" => true,
+              "validated" => true
             ];
         } catch (Exception $e) {
-            // var_dump($e->getMessage());
-            // die;
             $this->conn->rollback();
             return [
-                "validated" => false,
-                "data" => $e->getMessage(),
+              "validated" => false,
+              "data" => $e->getMessage()
             ];
         }
     }
 
-    public function resetPassword($base64)
-    {
-        try {
-            $data = base64_decode($base64);
-            $result = explode(":", $data);
-            // var_dump($result);
-            // die;
-            $userID = $result[0];
-            $password = $result[1];
-            $stmt = $this->conn->prepare("SELECT * from core_user_pwd where userID = :userID and password = :password");
-            $stmt->bindParam(":userID", $userID);
-            $stmt->bindParam(":password", $password);
-            $stmt->execute();
+    public function resetPassword($base64) {
+      try {
+          $password = base64_decode($base64);
+          $stmt = $this->conn->prepare("SELECT * from core_user_pwd where password = :password");
+          $stmt->bindParam(":password", $password);
+          $stmt->execute();
 
-            if ($stmt->rowCount() == 0) {
-                throw new \Exception("Incorrect Password", 1);
-            }
+          if ($stmt->rowCount() == 0) {
+              throw new \Exception("Incorrect Password", 1);
+          }
 
-            $result = $stmt->fetchAll();
+          $result = $stmt->fetchAll();
+          $userID = $result[0]["userID"];
 
-            $_SESSION['role'] = $result[0]["role"];
-            $_SESSION['userID'] = $result[0]["userID"];
-            $_SESSION['username'] = $result[0]["username"];
+          $_SESSION['role'] = $result[0]["role"];
+          $_SESSION['userID'] = $result[0]["userID"];
+          $_SESSION['username'] = $result[0]["username"];
 
-            return [
-                "change" => true,
-                "userID" => $userID,
-            ];
-        } catch (Exception $e) {
-            return [
-                "change" => false,
-                "data" => $e->getMessage(),
-            ];
-        }
-    }
-
-    public function setNewPassword($password)
-    {
-        try {
-            $password = $this->md5($password);
-            $stmt = $this->conn->prepare("INSERT into core_password_table(userID, password, create_date)
-        values(:userID, :password, NOW());");
-            $stmt->bindParam(":password", $password);
-            $stmt->bindParam(":userID", $_SESSION['userID']);
-            $stmt->execute();
-
-            return [
-                "update" => true,
-            ];
-        } catch (Exception $e) {
-            return [
-                "update" => false,
-            ];
-        }
+          return [
+          "change" => true,
+          "userID" => $userID
+        ];
+      } catch (Exception $e) {
+          return [
+          "change" => false,
+          "data" => $e->getMessage()
+        ];
+      }
     }
 
     public function changePassword($old, $new)
@@ -193,25 +139,25 @@ class LoginPerformer
 
             $newmd5 = $this->md5($new);
             $stmt = $this->conn->prepare("INSERT into core_password_table(userID, password, create_date)
-        values(:userID, :password, NOW());");
+          values(:userID, :password, NOW());");
             $stmt->bindParam(":password", $newmd5);
             $stmt->bindParam(":userID", $userID);
             $stmt->execute();
 
             return [
-                "change" => true,
-            ];
+            "change" => true
+          ];
         } catch (Exception $e) {
             return [
-                "change" => false,
-                "data" => $e->getMessage(),
-            ];
+            "change" => false,
+            "data" => $e->getMessage()
+          ];
         }
     }
 
     /**
-     * Still need to finish
-     **/
+    * Still need to finish
+    **/
     public function forgetPassword($email)
     {
         try {
@@ -224,22 +170,17 @@ class LoginPerformer
             if ($stmt->rowCount() == 0) {
                 throw new \Exception("No any account belong to this email", 1);
             }
-            $data = $result[0]["userID"].":".$result[0]["password"];
-            //var_dump($data);
-            $base64 = base64_encode($data);
-            //var_dump($base64);
-            //die;
+            $base64 = base64_encode($result[0]["password"]);
 
-            $mail = new MailSender;
-            $mail->SMTPDebug = 2;
-            $mail->sent($email, "Reset Password", "Please click <a href='http://" . $_SERVER['HTTP_HOST'] . "/test/forgetPassword/reset/$base64'>this</a> to reset your password");
+            // $mail = new MailSender;
+            // $mail->sent($email, "Change Password", "<a href='http://".$_SERVER['HTTP_HOST']."/test/forgetPassword/reset/$base64'>Verify Account</a>");
             return [
-                "sent" => true,
+              "sent" => true
             ];
         } catch (Exception $e) {
             return [
-                "sent" => false,
-                "data" => $e->getMessage(),
+              "sent" => false,
+              "data" => $e->getMessage()
             ];
         }
     }
@@ -264,17 +205,17 @@ class LoginPerformer
             $stmt->execute();
 
             $mail = new MailSender;
-            $mail->sent($email, "Verify Account", "<a href='http://" . $_SERVER['HTTP_HOST'] . "$validateLink/$md5/$id'>Verify Account</a>");
+            $mail->sent($email, "Verify Account", "<a href='http://".$_SERVER['HTTP_HOST']."$validateLink/$md5'>Verify Account</a>");
             $this->conn->commit();
             return [
-                "created" => true,
-                "userID" => $id,
+              "created" => true ,
+              "userID" => $id
             ];
         } catch (Exception $e) {
             $this->conn->rollback();
             return [
-                "created" => false,
-                "data" => $e->getMessage(),
+              "created" => false,
+              "data" => $e->getMessage()
             ];
         }
     }
@@ -285,9 +226,7 @@ class LoginPerformer
             $md5 = $this->md5($password);
             // prepare sql and bind parameters
             $stmt = $this->conn->prepare("SELECT * from
-            core_user_pwd WHERE (password = :password and (username = :username OR email = :email))");
-            $stmt->bindParam(':username', $username);
-            $stmt->bindParam(':email', $username);
+            core_user_pwd WHERE password = :password");
             $stmt->bindParam(':password', $md5);
             $stmt->execute();
 
@@ -305,39 +244,34 @@ class LoginPerformer
                 throw new \Exception("Incorrect Username of Password", 1);
             }
         } catch (Exception $e) {
-            $this->klein->service()->flash('Shit Wrong password or username');
+            $this->klein->service()->flash('Shit Wrong password');
             $this->klein->service()->back();
         }
     }
-    public function requireLogin($role) {
-        $this->LoginThenGoTo($role, '/test/login');
-    }
-    public function LoginThenGoTo($role,$back)
+
+    public function requireLogin($role)
     {
         if (empty($_SESSION['login']) || $_SESSION['login'] != true || $_SESSION['role'] != $role) {
             if ($_SESSION['role'] != $role) {
-                // $this->klein->service()->flash('Shit Wrong Role, go to ask your father. What is ur role?');
+                $this->klein->service()->flash('Shit Wrong Role, go to ask your father. What is ur role?');
             } else {
-                // $this->klein->service()->flash('Shit No Login, go to ask your daddy. how to login');
+                $this->klein->service()->flash('Shit No Login, go to ask your daddy. how to login');
             }
-            $this->klein->response()->redirect($back);
+            $this->klein->response()->redirect('/test/login');
             $this->klein->response()->sendHeaders();
         }
 
         $result = array(
-            'userID' => $_SESSION['userID'],
+          'userID' => $_SESSION['userID']
         );
         return $result;
     }
 
-    public function logout() {
-        $this->logoutThenGoTo('/test/');
-    }
-    public function logoutThenGoTo($redirectPath)
+    public function logout()
     {
         $_SESSION["login"] = false;
         session_destroy();
-        $this->klein->response()->redirect($redirectPath);
+        $this->klein->response()->redirect('/test/');
         $this->klein->response()->sendHeaders();
     }
 
@@ -346,8 +280,3 @@ class LoginPerformer
         return md5($string);
     }
 }
-                $stmt = $this->conn->prepare(
-                    "SELECT * FROM core_user_pwd WHERE userID = :userID"
-                );
-
-                $stmt->bindParam(":userID", $userID);

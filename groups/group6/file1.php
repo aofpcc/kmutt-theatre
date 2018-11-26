@@ -3,7 +3,7 @@ $klein->respond('GET', '/group6', function ($request, $response, $service) {
   global $database;
   $conn = $database->getConnection();
 
-  $query = "SELECT * from G05_Member_profile";
+  $query = "SELECT FirstName from Membership";
   $stmt = $conn->prepare($query);
   $stmt->execute();
 
@@ -21,8 +21,7 @@ $klein->respond('GET', '/group6/loginn', function ($request, $response, $service
   $user = $_GET['user'];
   $password = $_GET['pass'];
 
-  //$query = "SELECT userID from core_user_pwd where username = '$user' and password = '$password' ";
-$query = "SELECT MemberID from G05_Member_profile where Email = '$user' and PhoneNumber = '$password' ";
+  $query = "SELECT ID from Membership where Username = '$user' and Password = '$password' ";
   $stmt = $conn->prepare($query);
   $stmt->execute();
 
@@ -114,7 +113,7 @@ $klein->respond('GET', '/group6/getInfo', function ($request, $response, $servic
 
   $id = $_GET['id'];
 
-  $query = "SELECT * from G05_Member_profile where MemberID = '$id'";
+  $query = "SELECT * from Membership where ID = '$id'";
   $stmt = $conn->prepare($query);
   $stmt->execute();
 
@@ -136,4 +135,24 @@ $klein->respond('GET', '/group6/max', function ($request, $response, $service) {
   $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
 
   echo json_encode($arr);
+});
+
+$klein->respond('POST', '/group6/login', function ($request, $response, $service) {
+  global $database;
+  $conn = $database->getConnection();
+
+  $user = $request->user;
+  $password = $request->password;
+
+  $query = "SELECT FirstName from Membership where Username = '$user' and Password = '$password' ";
+  $stmt = $conn->prepare($query);
+  $stmt->execute();
+
+  $num = $stmt->rowCount();
+  $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+  if ($num == 1)
+    echo json_encode([$query, $arr]);
+  else
+    echo json_encode([$query, 'Invalid']);
 });

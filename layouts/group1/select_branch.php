@@ -35,10 +35,10 @@
   </style>
   <body>
 
-    Navigation -->
+    <!-- Navigation -->
     <body>
 
-      <!-- <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+      <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
      <a class="navbar-brand" href="http://localhost:8000/customer/kmutt_home">KMUTT THEATER</a>
      <ul class="navbar-nav">
        <li class="nav-item">
@@ -48,13 +48,13 @@
          <a class="nav-link" href="#">promotion</a>
        </li>
      </ul>
-    </nav> -->
+    </nav>
     <br><br>
     <!-- Page Content -->
     <div class="main">
     <div class="container">
 
-       <!-- Page Heading  -->
+      <!-- Page Heading -->
       <h1 class="my-4"><button type="button" class="btn btn-lg btn-primary">STEP 1</button>
         <small>Choose location</small>
       </h1>
@@ -89,21 +89,10 @@
                     <div class="form-group">
                       <label for="sel1">ALL CINEMAS:</label>
                       <select class="form-control" id="sel1">
-                        <?php
-
-                          for($i = 0; $i < count($this->query); $i++) {
-
-                        ?>
-
-                        <option value="value <?=$this->query[$i]['BranchName'] ?>"><?=$this->query[$i]['BranchName']  ?></option>
-
-                        <?php } ?>
-
-                        <!-- <option>Emprive' Cineclub Emporium Sukhumvit</option>
+                        <option>Emprive' Cineclub Emporium Sukhumvit</option>
                         <option>SF WORLD CINEMA Central World</option>
                         <option>SFX CINEMA Central Rama 9</option>
-                        <option>SFX CINEMA Central Plaza Chaengwattana</option> -->
-
+                        <option>SFX CINEMA Central Plaza Chaengwattana</option>
                       </select>
 
                     </div>

@@ -23,7 +23,7 @@
                   <th>Status</th>
                   <th>Name</th>
                   <th>Surname</th>
-                  <th>Email</th>
+                  <th>Salary</th>
                   <th>Call</th>
                 </tr>
               </thead>
@@ -36,7 +36,7 @@
                     echo '<td>'.$row['Status'].'</td>';
                     echo '<td>'.$row['Firstname'].'</td>';
                     echo '<td>'.$row['Lastname'].'</td>';
-                    echo '<td>'.$row['Email'].'</td>';
+                    echo '<td>'.$row['Salary'].'</td>';
                     echo '<td>'.$row['Tell'].'</td>';      
                     echo '</tr>';
                   } 

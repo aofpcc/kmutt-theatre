@@ -1,1 +1,5 @@
 vendor/*
+
+layouts/group2/
+
+\.DS_Store

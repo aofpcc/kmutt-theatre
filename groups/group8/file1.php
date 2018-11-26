@@ -27,7 +27,7 @@ function RandomString()
 // });
 
 $klein->respond('GET', '/group8', function ($request, $response, $service) {
-
+  // $service->boostrap3 = false;
   $service->render('layouts/group8/DB/Promotion1.php');
 });
 $klein->respond('GET', '/group8M', function ($request, $response, $service) {

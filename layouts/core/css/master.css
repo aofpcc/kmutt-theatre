@@ -5,9 +5,8 @@
 #footer {
     clear: both;
     position: relative;
-    height: 90px;
-    margin-top: -90px;
-    line-height: 90px;
+    min-height: 90px;
+    margin-top: 0px;
 }
 
 .bg-4 {

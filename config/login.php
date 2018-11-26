@@ -63,18 +63,25 @@ class LoginPerformer
             $stmt->bindParam(":password", $hash);
             $stmt->execute();
 
+
             // set the resulting array to associative
             $result = $stmt->fetchAll();
+            // var_dump($result);
+            // var_dump($stmt->rowCount());
+            // die;
+
             // var_dump($stmt->rowCount());
             if ($stmt->rowCount() > 0) {
-                $stmt = $this->conn->prepare("UPDATE core_user_table
-          SET validated = 1
-          WHERE userID = (select userID from core_password_table where password = :password)");
-                $stmt->bindParam(":password", $hash);
-                $stmt->execute();
+                $stmt = $this->conn->prepare(
+                    "SELECT * FROM core_user_pwd WHERE userID = :userID"
+                );
 
-                // set the resulting array to associative
+                $stmt->bindParam(":userID", $userID);
+                $stmt->execute();
                 $result = $stmt->fetchAll();
+                // var_dump($result);
+                // die;
+
                 if ($stmt->rowCount() > 0) {
                     return [
                         "validated" => false,
@@ -90,6 +97,7 @@ class LoginPerformer
 
                 $stmt->bindParam(":userID", $userID);
                 $stmt->execute();
+                
             } else {
                 $this->conn->rollback();
                 return [
@@ -103,6 +111,8 @@ class LoginPerformer
                 "validated" => true,
             ];
         } catch (Exception $e) {
+            // var_dump($e->getMessage());
+            // die;
             $this->conn->rollback();
             return [
                 "validated" => false,
@@ -276,8 +286,9 @@ class LoginPerformer
             $md5 = $this->md5($password);
             // prepare sql and bind parameters
             $stmt = $this->conn->prepare("SELECT * from
-            core_user_pwd WHERE (password = :password and username OR email = :username)");
+            core_user_pwd WHERE (password = :password and (username = :username OR email = :email))");
             $stmt->bindParam(':username', $username);
+            $stmt->bindParam(':email', $username);
             $stmt->bindParam(':password', $md5);
             $stmt->execute();
 

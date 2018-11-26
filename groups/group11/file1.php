@@ -41,7 +41,7 @@ $klein->respond('GET', '/staff/employee/dashboard', function ($request, $respons
   //check login
    $data = $app->login->LoginThenGoTo('employee','/emp/staff');
   //  echo($data['userID']);
-   
+
    // connect db
    global $database;
    $conn = $database->getConnection();
@@ -52,10 +52,10 @@ $klein->respond('GET', '/staff/employee/dashboard', function ($request, $respons
     $stmt->execute();
     $service->employee = $stmt->fetchAll(PDO::FETCH_BOTH);
 
-  
+
   $service->nameTag = 'dashboard.php';
   $service->render('layouts/group11/employee.php');
-  
+
 });
 
 $klein->respond('GET', '/staff/employee/profile', function($request, $response, $service, $app, $validator) {
@@ -64,7 +64,7 @@ $klein->respond('GET', '/staff/employee/profile', function($request, $response, 
 
   //check login
   $data = $app->login->LoginThenGoTo('employee','/emp/staff');
-  
+
  //select db
   $service->id = $data['userID'];
 
@@ -72,7 +72,7 @@ $klein->respond('GET', '/staff/employee/profile', function($request, $response, 
 
     $service->nameTag = 'profile.php';
     $service->render('layouts/group11/employee.php');
-   
+
 });
 
 $klein->respond('POSt', 'staff/employee/add', function($request, $response, $service, $app, $validator){
@@ -86,7 +86,7 @@ $klein->respond('POSt', 'staff/employee/add', function($request, $response, $ser
 $klein->respond('GET', '/staff/employee/finance', function($request, $response, $service, $app, $validator) {
 
       $service->nameTag = 'finance.php';
-     
+      //test
       global $database;
       $conn = $database->getConnection();
 
@@ -168,42 +168,42 @@ $klein->respond('GET', '/staff/employee/statistics', function($request, $respons
     $conn = $database->getConnection();
     $service->nameTag = 'statistics.php';
 
-        
+
         // // NO movie table in the new DB yet..
-        // $gene = $conn->query("SELECT Gene, COUNT(*) 
-        //                       FROM G02_Ticket_history as ticket, movies 
-        //                       WHERE ticket.movie_id = movies.ID 
+        // $gene = $conn->query("SELECT Gene, COUNT(*)
+        //                       FROM G02_Ticket_history as ticket, movies
+        //                       WHERE ticket.movie_id = movies.ID
         //                       GROUP BY  Gene")->fetchAll(PDO::FETCH_BOTH);
         // $service->gene = $gene;
 
-        $productName = $conn->query("SELECT productName, COUNT(*) 
-                                     FROM G13_FNB_detail as detail_fnb, G13_FNB_ProductList as productList_fnb 
-                                     WHERE productList_fnb.ProductID  = detail_fnb.ProductID 
+        $productName = $conn->query("SELECT productName, COUNT(*)
+                                     FROM G13_FNB_detail as detail_fnb, G13_FNB_ProductList as productList_fnb
+                                     WHERE productList_fnb.ProductID  = detail_fnb.ProductID
                                      GROUP BY  detail_fnb.ProductID, productName ")->fetchAll(PDO::FETCH_BOTH);
         $service->productName = $productName;
 
-        $morning= $conn->query("SELECT Count(*) as morning 
-                                from G04_MSRnB_showingroom 
+        $morning= $conn->query("SELECT Count(*) as morning
+                                from G04_MSRnB_showingroom
                                 where hour(startTime) >= 8 AND hour(startTime) <= 12 ")->fetchAll(PDO::FETCH_BOTH);
         $service->morning = $morning;
 
-        $afternoon = $conn->query("SELECT COUNT(*) as afternoon 
-                                   from G04_MSRnB_showingroom 
+        $afternoon = $conn->query("SELECT COUNT(*) as afternoon
+                                   from G04_MSRnB_showingroom
                                    where hour(startTime) >= 13 AND hour(startTime) <= 17")->fetchAll(PDO::FETCH_BOTH);
         $service->afternoon = $afternoon;
 
-        $evening = $conn->query("SELECT COUNT(*) as evening 
-                                 from G04_MSRnB_showingroom 
+        $evening = $conn->query("SELECT COUNT(*) as evening
+                                 from G04_MSRnB_showingroom
                                  where hour(startTime) >= 18 AND hour(startTime) <= 20")->fetchAll(PDO::FETCH_BOTH);
         $service->evening = $evening;
 
-        $midnight = $conn->query("SELECT COUNT(*) as midnight 
-                                  from G04_MSRnB_showingroom 
+        $midnight = $conn->query("SELECT COUNT(*) as midnight
+                                  from G04_MSRnB_showingroom
                                   where hour(startTime) >= 21 AND hour(startTime) <= 6")->fetchAll(PDO::FETCH_BOTH);
         $service->midnight = $midnight;
 
     $service->render('layouts/group11/employee.php');
-   
+
 });
 
 // $klein->respond('GET', '/staff', function ($request, $response, $service) {

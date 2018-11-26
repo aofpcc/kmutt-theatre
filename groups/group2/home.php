@@ -24,6 +24,11 @@ $klein->respond('POST', '/group2/check_card_no', function ($request, $response, 
   $conn = $database->getConnection();
 
   $card_no = $request->card_no;
+                // $user = $_GET['user'];
+                // $password = $_GET['pass'];
+                
+                // $query = "SELECT MemberID from G05_Member_profile where Email = '$user' and PhoneNumber = '$password' ";
+                
 
   $query = "SELECT ID_Card from G05_Member_profile where ID_Card = '$card_no'" ;
   $stmt = $conn->prepare($query);

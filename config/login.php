@@ -63,18 +63,25 @@ class LoginPerformer
             $stmt->bindParam(":password", $hash);
             $stmt->execute();
 
+
             // set the resulting array to associative
             $result = $stmt->fetchAll();
+            // var_dump($result);
+            // var_dump($stmt->rowCount());
+            // die;
+
             // var_dump($stmt->rowCount());
             if ($stmt->rowCount() > 0) {
-                $stmt = $this->conn->prepare("UPDATE core_user_table
-          SET validated = 1
-          WHERE userID = (select userID from core_password_table where password = :password)");
-                $stmt->bindParam(":password", $hash);
-                $stmt->execute();
+                $stmt = $this->conn->prepare(
+                    "SELECT * FROM core_user_pwd WHERE userID = :userID"
+                );
 
-                // set the resulting array to associative
+                $stmt->bindParam(":userID", $userID);
+                $stmt->execute();
                 $result = $stmt->fetchAll();
+                // var_dump($result);
+                // die;
+
                 if ($stmt->rowCount() > 0) {
                     return [
                         "validated" => false,
@@ -90,6 +97,7 @@ class LoginPerformer
 
                 $stmt->bindParam(":userID", $userID);
                 $stmt->execute();
+                
             } else {
                 $this->conn->rollback();
                 return [
@@ -103,6 +111,8 @@ class LoginPerformer
                 "validated" => true,
             ];
         } catch (Exception $e) {
+            // var_dump($e->getMessage());
+            // die;
             $this->conn->rollback();
             return [
                 "validated" => false,

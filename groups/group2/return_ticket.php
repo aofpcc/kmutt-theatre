@@ -2,7 +2,7 @@
   error_reporting(E_ALL);
   ini_set('display_errors', 1);
 
-  $klein->respond('GET', '/group2/home/returnticket', function ($request, $response, $service){
+  $klein->respond('GET', '/emp/group2/home/returnticket', function ($request, $response, $service){
 
   // $service->pageTitle = 'KMUTT THEATRE | Return Ticket';
 
@@ -30,7 +30,7 @@ $klein->respond('POST', '/group2/check_return_ticket', function ($request, $resp
 
   if ($resultCount1 == 1 && $resultCount2 == 1 ) {
     // echo("founf]d it");
-    $response->redirect('/group2/home/select_movie');
+    $response->redirect('/emp/group2/home/select_movie');
     $response->send();
   }
   else {

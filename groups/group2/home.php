@@ -24,11 +24,10 @@ $klein->respond('POST', '/group2/check_card_no', function ($request, $response, 
   $conn = $database->getConnection();
 
   $card_no = $request->card_no;
-                // $user = $_GET['user'];
-                // $password = $_GET['pass'];
-                
-                // $query = "SELECT MemberID from G05_Member_profile where Email = '$user' and PhoneNumber = '$password' ";
-                
+  // $user = $_GET['user'];
+  // $password = $_GET['pass'];
+  // $query = "SELECT MemberID from G05_Member_profile where Email = '$user' and PhoneNumber = '$password' ";
+
 
   $query = "SELECT ID_Card from G05_Member_profile where ID_Card = '$card_no'" ;
   $stmt = $conn->prepare($query);
@@ -42,7 +41,7 @@ $klein->respond('POST', '/group2/check_card_no', function ($request, $response, 
   $resultCount = $stmt->rowCount();
   if ($resultCount == 1) {
     // echo("founf]d it");
-    $response->redirect('/group2/home/select_movie');
+    $response->redirect('/emp/group2/home/select_movie');
     $response->send();
   }
   else {

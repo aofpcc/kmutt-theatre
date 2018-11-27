@@ -137,7 +137,7 @@
                         <div class="row">
                             <div class="col-sm equal-column column-movie grid-movies" style="min-height: 2741.91px;">
                                 <div class="flex-wrapper movies-wrapper movies-now-showing">
-                                    <div class="movie-card flex-item" type="now-showing"><a href="#/HO00000074"
+                                    <div class="movie-card flex-item" type="now-showing"><a href="/emp/group2/home/select_movie/select_time"
                                             class="" title="อควาแมน เจ้าสมุทร">
                                             <div class="poster">
                                                 <div class="image" style="background-image: url(&quot;https://lh3.googleusercontent.com/raDupdKaiKxNSmTXlpmhKB1aiqfoXHAfu6PRSOl0zdVC2tL-Dr5dhQzZfeShvTX_GkFOmJFBZz-Gf2-v7o5A=w215&quot;);"></div>

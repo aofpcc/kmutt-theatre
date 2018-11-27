@@ -42,7 +42,7 @@ $klein->respond('POST', '/group2/check_card_no', function ($request, $response, 
   $resultCount = $stmt->rowCount();
   if ($resultCount == 1) {
     // echo("founf]d it");
-    $response->redirect('/group2/home/select_movie');
+    $response->redirect('/emp/group2/home/select_movie');
     $response->send();
   }
   else {

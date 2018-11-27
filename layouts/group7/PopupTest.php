@@ -9,7 +9,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 /* Button used to open the contact form - fixed at the bottom of the page */
 .open-button {
-  background-color: #555;
+  background-color: black;
   color: white;
   padding: 15px;
   border: none;
@@ -23,6 +23,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 /* The popup form - hidden by default */
 .form-popup {
+  /* background-color: rgba(255, 255, 255, 0.5); */
   display: none;
   position: fixed;
   top: 50%;
@@ -57,9 +58,13 @@ body {font-family: Arial, Helvetica, sans-serif;}
   outline: none;
 }
 
+.form-container .opacity {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
 /* Set a style for the submit/login button */
 .form-container .btn {
-  background-color: #4CAF50;
+  background-color: black;
   color: white;
   padding: 16px 20px;
   border: none;
@@ -105,17 +110,18 @@ body {font-family: Arial, Helvetica, sans-serif;}
 </head>
 <body>
 
-<h2>Popup Form (TEST)</h2>
-<p>Click on the button at the bottom of this page to open the form.</p>
-<p>Shared With:
+<h2>Promotion Detail</h2>
+<p>Promotion Description.</p>
+<center>Shared With:
 <a href="#" class="fa fa-facebook"></a>
 <a href="#" class="fa fa-twitter"></a>
-<button class="open-button" onclick="openForm()">Invite your friends with e-mail</button>
- </p>
+<button class="open-button" onclick="openForm()">E-mail</button>
+</center>
 
+<!-- <div style="background-color:rgba(255, 255, 255, 0.5)"> -->
 <div class="form-popup" id="myForm">
   <form action="/action_page.php" class="form-container">
-    <h1>Share with e-mail</h1>
+    <h1>Invite your friends with E-mail</h1>
 
     <label for="to"><b>To</b></label>
     <input type="text" placeholder="Enter your friend's email" name="to" required>
@@ -126,9 +132,9 @@ body {font-family: Arial, Helvetica, sans-serif;}
     <label for="sub"><b>Subject</b></label>
     <input type="text" placeholder="Enter your subject" name="sub" required>
 
-    <label for="note"><b>Note</b></label>
+    <label for="note"><b>Description</b></label>
     <br>
-    <textarea rows = "5" cols = "60" name = "description">Enter details here...</textarea>
+    <textarea rows = "5" cols = "99" name = "description"></textarea>
     <!-- <textarea placeholder="Description..." name="note" cols="99" rows="5" ></textarea> -->
     <!-- <input type="text" placeholder="Description..." name="note" required> -->
 

@@ -2,7 +2,7 @@
   error_reporting(E_ALL);
   ini_set('display_errors', 1);
 
-  $klein->respond('GET', '/emp/group2/home/returnticket', function ($request, $response, $service){
+  $klein->respond('GET', '/group2/home/returnticket', function ($request, $response, $service){
 
   // $service->pageTitle = 'KMUTT THEATRE | Return Ticket';
 
@@ -15,7 +15,7 @@ $klein->respond('POST', '/group2/check_return_ticket', function ($request, $resp
 
   $card_no = $request->card_no;
 
-  $query1 = "SELECT MemberID from G05_Member_profile where ID_Card = '$card_no'" ;
+  $query1 = "SELECT ID_Card from G05_Member_profile where ID_Card = '$card_no'" ;
   $stmt1 = $conn->prepare($query1);
   $stmt1->execute();
 

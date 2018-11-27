@@ -14,7 +14,7 @@
   // $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
   //
   // $service->allMovies = $arr;
-  $service->pageTitle = 'KMUTT THEATRE | Member';
+  // $service->pageTitle = 'KMUTT THEATRE | Member';
 
   $service->render('layouts/group2/member.php');
 });

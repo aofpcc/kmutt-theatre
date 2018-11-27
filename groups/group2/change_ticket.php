@@ -2,9 +2,9 @@
   error_reporting(E_ALL);
   ini_set('display_errors', 1);
 
-  $klein->respond('GET', '/emp/group2/home/changeticket', function ($request, $response, $service){
-  global $database;
-  $conn = $database->getConnection();
+  $klein->respond('GET', '/group2/home/changeticket', function ($request, $response, $service){
+  // global $database;
+  // $conn = $database->getConnection();
 
 
   // $service->pageTitle = 'KMUTT THEATRE | Return Ticket';
@@ -18,7 +18,7 @@ $klein->respond('POST', '/group2/check_change_ticket', function ($request, $resp
 
   $card_no = $request->card_no;
 
-  $query1 = "SELECT MemberID from G05_Member_profile where ID_Card = '$card_no'" ;
+  $query1 = "SELECT ID_Card from G05_Member_profile where ID_Card = '$card_no'" ;
   $stmt1 = $conn->prepare($query1);
   $stmt1->execute();
 

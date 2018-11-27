@@ -36,13 +36,6 @@ body {font-family: Arial, Helvetica, sans-serif;}
   /* z-index: 9; */
 }
 
-/* .form-bg{
-  background-color: rgba(255, 255, 255, 0.5);
-  position:absolute;
-  top:0px;
-  left:0px;
-  width:100%;
-} */
 /* Add styles to the form container */
 .form-container {
   /* max-width: 500px; */
@@ -117,13 +110,13 @@ body {font-family: Arial, Helvetica, sans-serif;}
 </head>
 <body>
 
-<h2>Popup Form (TEST)</h2>
-<p>Click on the button at the bottom of this page to open the form.</p>
-<p>Shared With:
+<h2>Promotion Detail</h2>
+<p>Promotion Description.</p>
+<center>Shared With:
 <a href="#" class="fa fa-facebook"></a>
 <a href="#" class="fa fa-twitter"></a>
 <button class="open-button" onclick="openForm()">E-mail</button>
- </p>
+</center>
 
 <!-- <div style="background-color:rgba(255, 255, 255, 0.5)"> -->
 <div class="form-popup" id="myForm">

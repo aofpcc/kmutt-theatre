@@ -15,7 +15,7 @@ $klein->respond('POST', '/group2/check_return_ticket', function ($request, $resp
 
   $card_no = $request->card_no;
 
-  $query1 = "SELECT MemberID from G05_Member_profile where ID_Card = '$card_no'" ;
+  $query1 = "SELECT ID_Card from G05_Member_profile where ID_Card = '$card_no'" ;
   $stmt1 = $conn->prepare($query1);
   $stmt1->execute();
 
@@ -30,7 +30,7 @@ $klein->respond('POST', '/group2/check_return_ticket', function ($request, $resp
 
   if ($resultCount1 == 1 && $resultCount2 == 1 ) {
     // echo("founf]d it");
-    $response->redirect('/group2/home/select_movie');
+    $response->redirect('/emp/group2/home/select_movie');
     $response->send();
   }
   else {

@@ -3,8 +3,8 @@
   ini_set('display_errors', 1);
 
   $klein->respond('GET', '/group2/home/changeticket', function ($request, $response, $service){
-  global $database;
-  $conn = $database->getConnection();
+  // global $database;
+  // $conn = $database->getConnection();
 
 
   // $service->pageTitle = 'KMUTT THEATRE | Return Ticket';
@@ -18,7 +18,7 @@ $klein->respond('POST', '/group2/check_change_ticket', function ($request, $resp
 
   $card_no = $request->card_no;
 
-  $query1 = "SELECT MemberID from G05_Member_profile where ID_Card = '$card_no'" ;
+  $query1 = "SELECT ID_Card from G05_Member_profile where ID_Card = '$card_no'" ;
   $stmt1 = $conn->prepare($query1);
   $stmt1->execute();
 
@@ -43,7 +43,7 @@ $klein->respond('POST', '/group2/check_change_ticket', function ($request, $resp
 
   if ($resultCount1 == 1 && $resultCount1 == 1) {
     // echo("founf]d it");
-    $response->redirect('/group2/home/select_movie');
+    $response->redirect('/emp/group2/home/select_movie');
     $response->send();
   }
   else {
@@ -51,7 +51,7 @@ $klein->respond('POST', '/group2/check_change_ticket', function ($request, $resp
     // $response->redirect('/group2/home/select_movie/select_time/select_seat/done');
     // $response->send();
   }
-  
+
 
   // $service->pageTitle = 'KMUTT THEATRE | Member';
 

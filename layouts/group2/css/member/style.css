@@ -28,7 +28,7 @@ nav.horizontal ul li{	display: inline-block;}/* horizontal menu */
 img{max-width:100%;}
 /*-- end reset --*/
 body {
-	background: url(/layouts/group2/images/member/bg2.jpg);
+	background: url(/layouts/group2/images/bg2.jpg);
     background-attachment: fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;

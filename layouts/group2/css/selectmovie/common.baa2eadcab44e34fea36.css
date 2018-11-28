@@ -873,22 +873,22 @@
 @font-face {
     font-family: SukhumvitTadmai;
     font-weight: 500;
-    src: url(https://www.sfcinemacity.comont/SukhumvitTadmai/sukhumvittadmai_med-webfont.eot);
-    src: url(https://www.sfcinemacity.comont/SukhumvitTadmai/sukhumvittadmai_med-webfont.eot?#iefix) format("embedded-opentype"), url(https://www.sfcinemacity.comont/SukhumvitTadmai/sukhumvittadmai_med-webfont.woff2) format("woff2"), url(https://www.sfcinemacity.comont/SukhumvitTadmai/sukhumvittadmai_med-webfont.woff) format("woff"), url(https://www.sfcinemacity.comont/SukhumvitTadmai/sukhumvittadmai_med-webfont.ttf) format("truetype"), url(https://www.sfcinemacity.comont/SukhumvitTadmai/sukhumvittadmai_med-webfont.svg#svgFontName) format("svg")
+    src: url(https://www.sfcinemacity.com/assets/font/SukhumvitTadmai/sukhumvittadmai_med-webfont.eot);
+    src: url(https://www.sfcinemacity.com/assets/font/SukhumvitTadmai/sukhumvittadmai_med-webfont.eot?#iefix) format("embedded-opentype"), url(https://www.sfcinemacity.com/assets/font/SukhumvitTadmai/sukhumvittadmai_med-webfont.woff2) format("woff2"), url(https://www.sfcinemacity.com/assets/font/SukhumvitTadmai/sukhumvittadmai_med-webfont.woff) format("woff"), url(https://www.sfcinemacity.com/assets/font/SukhumvitTadmai/sukhumvittadmai_med-webfont.ttf) format("truetype"), url(https://www.sfcinemacity.com/assets/font/SukhumvitTadmai/sukhumvittadmai_med-webfont.svg#svgFontName) format("svg")
 }
 
 @font-face {
     font-family: SukhumvitTadmai;
     font-weight: 600;
-    src: url(https://www.sfcinemacity.comont/SukhumvitTadmai/sukhumvittadmai_sebold-webfont.eot);
-    src: url(https://www.sfcinemacity.comont/SukhumvitTadmai/sukhumvittadmai_sebold-webfont.eot?#iefix) format("embedded-opentype"), url(https://www.sfcinemacity.comont/SukhumvitTadmai/sukhumvittadmai_sebold-webfont.woff2) format("woff2"), url(https://www.sfcinemacity.comont/SukhumvitTadmai/sukhumvittadmai_sebold-webfont.woff) format("woff"), url(https://www.sfcinemacity.comont/SukhumvitTadmai/sukhumvittadmai_sebold-webfont.ttf) format("truetype"), url(https://www.sfcinemacity.comont/SukhumvitTadmai/sukhumvittadmai_sebold-webfont.svg#svgFontName) format("svg")
+    src: url(https://www.sfcinemacity.com/assets/font/SukhumvitTadmai/sukhumvittadmai_sebold-webfont.eot);
+    src: url(https://www.sfcinemacity.com/assets/font/SukhumvitTadmai/sukhumvittadmai_sebold-webfont.eot?#iefix) format("embedded-opentype"), url(https://www.sfcinemacity.com/assets/font/SukhumvitTadmai/sukhumvittadmai_sebold-webfont.woff2) format("woff2"), url(https://www.sfcinemacity.com/assets/font/SukhumvitTadmai/sukhumvittadmai_sebold-webfont.woff) format("woff"), url(https://www.sfcinemacity.com/assets/font/SukhumvitTadmai/sukhumvittadmai_sebold-webfont.ttf) format("truetype"), url(https://www.sfcinemacity.com/assets/font/SukhumvitTadmai/sukhumvittadmai_sebold-webfont.svg#svgFontName) format("svg")
 }
 
 @font-face {
     font-family: SukhumvitTadmai;
     font-weight: 700;
-    src: url(https://www.sfcinemacity.comont/SukhumvitTadmai/sukhumvittadmai_bol-webfont.eot);
-    src: url(https://www.sfcinemacity.comont/SukhumvitTadmai/sukhumvittadmai_bol-webfont.eot?#iefix) format("embedded-opentype"), url(https://www.sfcinemacity.comont/SukhumvitTadmai/sukhumvittadmai_bol-webfont.woff2) format("woff2"), url(https://www.sfcinemacity.comont/SukhumvitTadmai/sukhumvittadmai_bol-webfont.woff) format("woff"), url(https://www.sfcinemacity.comont/SukhumvitTadmai/sukhumvittadmai_bol-webfont.ttf) format("truetype"), url(https://www.sfcinemacity.comont/SukhumvitTadmai/sukhumvittadmai_bol-webfont.svg#svgFontName) format("svg")
+    src: url(https://www.sfcinemacity.com/assets/font/SukhumvitTadmai/sukhumvittadmai_bol-webfont.eot);
+    src: url(https://www.sfcinemacity.com/assets/font/SukhumvitTadmai/sukhumvittadmai_bol-webfont.eot?#iefix) format("embedded-opentype"), url(https://www.sfcinemacity.com/assets/font/SukhumvitTadmai/sukhumvittadmai_bol-webfont.woff2) format("woff2"), url(https://www.sfcinemacity.com/assets/font/SukhumvitTadmai/sukhumvittadmai_bol-webfont.woff) format("woff"), url(https://www.sfcinemacity.com/assets/font/SukhumvitTadmai/sukhumvittadmai_bol-webfont.ttf) format("truetype"), url(https://www.sfcinemacity.com/assets/font/SukhumvitTadmai/sukhumvittadmai_bol-webfont.svg#svgFontName) format("svg")
 }
 
 body {
@@ -904,11 +904,11 @@ body {
 }
 
 body.bg-white #footer {
-    /* background-color: #fff */
+    background-color: #fff
 }
 
 body.bg-blue-light {
-    /* background-color: #f5f7fb */
+    background-color: #f5f7fb
 }
 
 body.open-popup {

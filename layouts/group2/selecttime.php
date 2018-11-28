@@ -3,10 +3,7 @@
 ?>
 
 <head>
-    <title>movie name | KMUTT Theatre</title>
-
-
-
+    <!-- <title>movie name | KMUTT Theatre</title> -->
 
     <!-- GA -->
     <script id="facebook-ixsdk" src="/layouts/group2/js/selecttime/platform.Extensions.js"></script>
@@ -23,7 +20,7 @@
             width: 20px;
         }
 
-    </style>
+    </style
     <link rel="preload" href="/layouts/group2/js/selecttime/manifest.86920d2276921dc8f875.js" as="script">
     <link rel="preload" href="/layouts/group2/js/selecttime/vendor.eb91d5bf77b2c769fcc2.js" as="script">
     <link rel="preload" href="/layouts/group2/js/selecttime/app.baa2eadcab44e34fea36.js" as="script">
@@ -92,19 +89,19 @@
             <div class="step-bar">
                 <div class="container">
                     <ul class="desktop">
-                        <li class="step-item active"><a href="https://www.sfcinemacity.com/showtime/movie/HO00000074/9912#">
+                        <li class="step-item active"><a href="HO00000074/9912#">
                                 <div class="no">1</div>
                                 <div class="step-name">Showtime</div>
                             </a></li>
-                        <li class="step-item"><a href="https://www.sfcinemacity.com/showtime/movie/HO00000074/9912#">
+                        <li class="step-item"><a href="HO00000074/9912#">
                                 <div class="no">2</div>
                                 <div class="step-name">Seat Selection</div>
                             </a></li>
-                        <li class="step-item"><a href="https://www.sfcinemacity.com/showtime/movie/HO00000074/9912#">
+                        <li class="step-item"><a href="HO00000074/9912#">
                                 <div class="no">3</div>
                                 <div class="step-name">Payment</div>
                             </a></li>
-                        <li class="step-item"><a href="https://www.sfcinemacity.com/showtime/movie/HO00000074/9912#">
+                        <li class="step-item"><a href="HO00000074/9912#">
                                 <div class="no">4</div>
                                 <div class="step-name">Done</div>
                             </a></li>
@@ -527,5 +524,3 @@
 
 
 </body>
-
-</html>

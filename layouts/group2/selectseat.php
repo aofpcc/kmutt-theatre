@@ -3,44 +3,10 @@
 ?>
 
 <head>
-    <title>Seat Selection | KMUTT Theatre</title>
-
-
-    <!-- <link rel="shortcut icon" href="https://www.sfcinemacity.com/favicon.ico"> -->
-    <!--<link rel="icon" type="image/png" sizes="16x16" href="https://www.sfcinemacity.com/assets/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://www.sfcinemacity.com/assets/favicon-32x32.png">
-<link rel="icon" sizes="128x128" href="https://www.sfcinemacity.com/assets/logo-128x128.png">
-<link rel="icon" sizes="192x192" href="https://www.sfcinemacity.com/assets/logo-192x192.png">
-<link rel="apple-touch-icon" sizes="120x120" href="https://www.sfcinemacity.com/assets/apple-touch-icon.png">
-<link rel="apple-touch-icon" sizes="152x152" href="https://www.sfcinemacity.com/assets/logo-152x152.png">
-<link rel="apple-touch-icon" sizes="167x167" href="https://www.sfcinemacity.com/assets/logo-167x167.png">
-<link rel="apple-touch-icon" sizes="180x180" href="https://www.sfcinemacity.com/assets/logo-180x180.png">
-<link rel="mask-icon" href="https://www.sfcinemacity.com/assets/safari-pinned-tab.svg" color="#ffffff">
-<meta name="application-name" content="SF Cinema">
-<meta name="msapplication-TileColor" content="#ffffff">
-<meta name="msapplication-config" content="/assets/browserconfig.xml">
-<link rel="manifest" href="https://www.sfcinemacity.com/assets/manifest.json">
-<meta name="theme-color" content="#2d64cf">
-
-<meta name="description" content="ซื้อตั๋ว จองตั๋วหนัง อควาแมน เจ้าสมุทร เช็ครอบหนัง ข้อมูลโรงหนัง ตัวอย่างหนัง เรื่องย่อหนัง">
-<meta property="fb:app_id" content="147744862398232">
-<meta property="og:type" content="website">
-<meta property="og:title" content="รอบหนัง อควาแมน เจ้าสมุทร | SF Cinema City">
-<meta property="og:description" content="ซื้อตั๋ว จองตั๋วหนัง อควาแมน เจ้าสมุทร เช็ครอบหนัง ข้อมูลโรงหนัง ตัวอย่างหนัง เรื่องย่อหนัง">
-<meta property="og:image" content="https://lh3.googleusercontent.com/PVX0v3YPxlctD4xvOTCXCOx8nNXy4AM5mKiiGzhVi8n1WPhv7DMT5tJXkue-aYi2C5Zz_nmtil9IDwF5YZqJiQ=s0">
-<meta property="og:site_name" content="SF Cinema City">
-<meta property="og:url" content="https://www.sfcinemacity.com/showtime/movie/HO00000074">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@WeLoveSF">
-<meta name="twitter:creator" content="@WeLoveSF">
-<meta name="twitter:title" content="รอบฉายตามภาพยนตร์ | SF Cinema City">
-<meta name="twitter:description" content="ซื้อตั๋ว จองตั๋วหนัง เช็ครอบหนัง ข้อมูลโรงหนัง ตัวอย่างหนัง เรื่องย่อหนัง">
-<meta name="twitter:image" content="https://lh3.googleusercontent.com/PVX0v3YPxlctD4xvOTCXCOx8nNXy4AM5mKiiGzhVi8n1WPhv7DMT5tJXkue-aYi2C5Zz_nmtil9IDwF5YZqJiQ=s0">
-<meta name="twitter:domain" content="sfcinemacity.com"> -->
+    <!-- <title>Seat Selection | KMUTT Theatre</title> -->
 
     <!-- GA -->
-    <script src="/layouts/group2//702701463411428" async=""></script>
+    <!-- <script src="/layouts/group2//702701463411428" async=""></script> -->
     <script async="" src="/layouts/group2/js/selectseat/fbevents.js"></script>
     <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
     <script id="facebook-ixsdk" src="/layouts/group2/js/selectseat/platform.Extensions.js"></script>
@@ -117,28 +83,23 @@
             <div class="step-bar">
                 <div class="container">
                     <ul class="desktop">
-                        <li class="step-item pass"><a href="https://www.sfcinemacity.com/showtime/movie/HO00000074/9912#">
+                        <li class="step-item pass"><a href="HO00000074/9912#">
                                 <div class="no">1</div>
                                 <div class="step-name">Showtime</div>
                             </a></li>
-                        <li class="step-item active"><a href="https://www.sfcinemacity.com/showtime/movie/HO00000074/9912#">
+                        <li class="step-item active"><a href="HO00000074/9912#">
                                 <div class="no">2</div>
                                 <div class="step-name">Seat Selection</div>
                             </a></li>
-                        <li class="step-item"><a href="https://www.sfcinemacity.com/showtime/movie/HO00000074/9912#">
+                        <li class="step-item"><a href="HO00000074/9912#">
                                 <div class="no">3</div>
                                 <div class="step-name">Payment</div>
                             </a></li>
-                        <li class="step-item"><a href="https://www.sfcinemacity.com/showtime/movie/HO00000074/9912#">
+                        <li class="step-item"><a href="HO00000074/9912#">
                                 <div class="no">4</div>
                                 <div class="step-name">Done</div>
                             </a></li>
                     </ul>
-                    <div class="mobile"><a href="https://www.sfcinemacity.com/select-seat#" class="back-step"></a>
-                        <div class="no"><span class="current">2</span> of 4
-                        </div>
-                        <div class="step-name">Seat Selection</div>
-                    </div>
                 </div>
             </div>
             <div class="section-movie-detail">
@@ -153,7 +114,7 @@
                                             <h1 class="name">อควาแมน เจ้าสมุทร</h1>
                                             <ul class="movie-detail-list movie-date-time">
                                                 <li class="list-item"><span class="date">13 ธันวาคม 2018</span></li>
-                                                <li class="list-item"><span class="time">16:20</span></li>
+                                                <li class="list-item"><span class="time">13:20</span></li>
                                             </ul>
                                         </div>
                                         <!-- <p class="cinema"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 82.97 119.39" class="sf-icon location">
@@ -165,7 +126,7 @@
 											</svg> เอส เอฟ ซีเนม่า เดอะมอลล์ ท่าพระ
 										</p> -->
                                         <ul class="movie-detail-list movie-theater">
-                                            <li class="list-item theater"><span class="cinema-text">โรงภาพยนตร์</span><span
+                                            <li class="list-item theater"><span class="cinema-text">Theatre no.</span><span
                                                     class="cinema-number">4</span></li>
                                             <li class="list-item"><svg viewBox="0 0 405.88 359.77" class="sf-icon sound">
                                                     <defs></defs>
@@ -222,7 +183,7 @@
                                                 </g>
                                             </svg></div>
                                         <p class="name">Deluxe</p>
-                                        <p class="price">220 บาท</p>
+                                        <p class="price">220 THB</p>
                                     </li>
                                     <li class="seat-item type-0002">
                                         <div class="seat-icon"><svg version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -250,7 +211,7 @@
                                                 </g>
                                             </svg></div>
                                         <p class="name">Premium</p>
-                                        <p class="price">240 บาท</p>
+                                        <p class="price">240 THB</p>
                                     </li>
                                     <li class="seat-item type-0005 group-2">
                                         <div class="seat-group">
@@ -350,7 +311,7 @@
 
                                         </div>
                                         <p class="name">Sofa Sweet (Pair)</p>
-                                        <p class="price">650 บาท</p>
+                                        <p class="price">650 THB</p>
                                     </li>
                                     <li></li>
                                 </ul>
@@ -7077,7 +7038,7 @@
                                     <h2 class="movie-name">อควาแมน เจ้าสมุทร</h2>
                                     <ul class="info-list">
                                         <li>13 ธันวาคม 2018</li>
-                                        <li>16:20</li>
+                                        <li>13:20</li>
                                     </ul>
                                     <h3 class="theater">Theatre no. 4</h3>
                                     <!-- <h3 class="location">เอส เอฟ ซีเนม่า เดอะมอลล์ ท่าพระ</h3> -->
@@ -7127,7 +7088,7 @@
                                                             </g>
                                                         </svg></span><span class="text">Discount & Promotions</span>
                                                 </button></div>
-                                            <div class="col"><button type="button" disabled="disabled" class="button button-blue button-continue btn-block">Next</button></div>
+                                            <div class="col"><a href="/emp/group2/home/select_movie/select_time/select_seat/pay_ment"><button type="button" class="button button-blue button-continue btn-block">Next</button></a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -7142,5 +7103,3 @@
                 <script src="/layouts/group2/js/selectseat/app.baa2eadcab44e34fea36.js" defer=""></script>
 
 </body>
-
-</html>

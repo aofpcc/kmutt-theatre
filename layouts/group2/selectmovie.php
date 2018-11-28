@@ -4,43 +4,10 @@
 
 
 <head>
-    <title>KMUTT Theatre</title>
-
-    <!-- <link rel="shortcut icon" href="https://www.sfcinemacity.com/favicon.ico"> -->
-    <!--<link rel="icon" type="image/png" sizes="16x16" href="https://www.sfcinemacity.com/assets/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://www.sfcinemacity.com/assets/favicon-32x32.png">
-    <link rel="icon" sizes="128x128" href="https://www.sfcinemacity.com/assets/logo-128x128.png">
-    <link rel="icon" sizes="192x192" href="https://www.sfcinemacity.com/assets/logo-192x192.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="https://www.sfcinemacity.com/assets/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="https://www.sfcinemacity.com/assets/logo-152x152.png">
-    <link rel="apple-touch-icon" sizes="167x167" href="https://www.sfcinemacity.com/assets/logo-167x167.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://www.sfcinemacity.com/assets/logo-180x180.png">
-    <link rel="mask-icon" href="https://www.sfcinemacity.com/assets/safari-pinned-tab.svg" color="#ffffff">
-    <meta name="application-name" content="SF Cinema">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-config" content="/assets/browserconfig.xml">
-    <link rel="manifest" href="https://www.sfcinemacity.com/assets/manifest.json">
-    <meta name="theme-color" content="#2d64cf">
-
-    <meta name="description" content="SF Cinema City ซื้อตั๋วหนัง จองตั๋วหนัง รอบหนัง เอสเอฟ เช็ครอบหนัง ข้อมูลโรงหนัง ตัวอย่างหนัง เรื่องย่อหนัง">
-    <meta property="fb:app_id" content="147744862398232">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="หน้าแรก | SF Cinema City">
-    <meta property="og:description" content="SF Cinema City ซื้อตั๋วหนัง จองตั๋วหนัง รอบหนัง เอสเอฟ เช็ครอบหนัง ข้อมูลโรงหนัง ตัวอย่างหนัง เรื่องย่อหนัง">
-    <meta property="og:image" content="https://lh3.googleusercontent.com/PVX0v3YPxlctD4xvOTCXCOx8nNXy4AM5mKiiGzhVi8n1WPhv7DMT5tJXkue-aYi2C5Zz_nmtil9IDwF5YZqJiQ=s0">
-    <meta property="og:site_name" content="SF Cinema City">
-    <meta property="og:url" content="https://www.sfcinemacity.com/">
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@WeLoveSF">
-    <meta name="twitter:creator" content="@WeLoveSF">
-    <meta name="twitter:title" content="หน้าแรก | SF Cinema City">
-    <meta name="twitter:description" content="SF Cinema City ซื้อตั๋วหนัง จองตั๋วหนัง รอบหนัง เอสเอฟ เช็ครอบหนัง ข้อมูลโรงหนัง ตัวอย่างหนัง เรื่องย่อหนัง">
-    <meta name="twitter:image" content="https://lh3.googleusercontent.com/PVX0v3YPxlctD4xvOTCXCOx8nNXy4AM5mKiiGzhVi8n1WPhv7DMT5tJXkue-aYi2C5Zz_nmtil9IDwF5YZqJiQ=s0">
-    <meta name="twitter:domain" content="sfcinemacity.com"> -->
+    <!-- <title>KMUTT Theatre</title> -->
 
     <!-- GA -->
-    <script src="/layouts/group2/702701463411428" async=""></script>
+    <!-- <script src="/layouts/group2/702701463411428" async=""></script> -->
     <script async="" src="/layouts/group2/js/selectmovie/fbevents.js"></script>
     <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
     <script id="facebook-ixsdk" src="/layouts/group2/js/selectmovie/platform.Extensions.js"></script>

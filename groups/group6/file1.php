@@ -13,7 +13,6 @@ $klein->respond('GET', '/group6', function ($request, $response, $service) {
   echo json_encode($arr);
 });
 
-
 $klein->respond('GET', '/group6/loginn', function ($request, $response, $service) {
   global $database;
   $conn = $database->getConnection();
@@ -22,7 +21,7 @@ $klein->respond('GET', '/group6/loginn', function ($request, $response, $service
   $password = $_GET['pass'];
 
   //$query = "SELECT userID from core_user_pwd where username = '$user' and password = '$password' ";
-$query = "SELECT MemberID from G05_Member_profile where Email = '$user' and PhoneNumber = '$password' ";
+  $query = "SELECT MemberID from G05_Member_profile where Email = '$user' and PhoneNumber = '$password' ";
   $stmt = $conn->prepare($query);
   $stmt->execute();
 
@@ -57,7 +56,7 @@ $klein->respond('GET', '/group6/update', function ($request, $response, $service
   $conn = $database->getConnection();
 
   $id = $_GET['id'];
-   $pass = $_GET['pass'];  $firstname = $_GET['firstname'];
+  $pass = $_GET['pass'];  $firstname = $_GET['firstname'];
   $lastname = $_GET['lastname'];  $gender = $_GET['gender'];  $birthdate = $_GET['birthdate'];
   $email = $_GET['email'];  $phonenumber = $_GET['phonenumber'];  $address = $_GET['address'];
   $district = $_GET['district'];  $province = $_GET['province'];  $postcode = $_GET['postcode'];
@@ -136,4 +135,32 @@ $klein->respond('GET', '/group6/max', function ($request, $response, $service) {
   $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
 
   echo json_encode($arr);
+});
+
+$klein->respond('GET', '/regist', function ($request, $response, $service) {
+  global $database;
+  $conn = $database->getConnection();
+  /*
+  $query = "SELECT * from G05_Member_profile";
+  $stmt = $conn->prepare($query);
+  $stmt->execute();
+
+  $num = $stmt->rowCount();
+  $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
+  */
+  $username = $_GET['user'];
+  $password = $_GET['pass'];
+  $email = $_GET['email'];
+  $validateLink = "/test/verify"; // neeed to have / before  and no / at the end
+  $role = 'customer';
+  $result = $app->login->register($username, $password, $email, $validateLink, $role);
+
+  $pass = $app->passValue;
+  if ($result['created']) {
+      $pass["content"] = "The account have been created.";
+  } else {
+      $pass["content"] = "The account cannot be created. Some error occurs!";
+  }
+
+  echo json_encode($pass);
 });

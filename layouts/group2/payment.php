@@ -97,11 +97,11 @@
       <div class="step-bar">
         <div class="container">
           <ul class="desktop">
-            <li class="step-item pass"><a href="https://www.sfcinemacity.com/showtime/movie/HO00000074/9912#">
+            <li class="step-item pass"><a href="/emp/group2/home_page/select_movie/select_showtime">
                 <div class="no">1</div>
                 <div class="step-name">Showtime</div>
               </a></li>
-            <li class="step-item pass"><a href="https://www.sfcinemacity.com/showtime/movie/HO00000074/9912#">
+            <li class="step-item pass"><a href="/emp/group2/home_page/select_movie/select_showtime">
                 <div class="no">2</div>
                 <div class="step-name">Seat Selection</div>
               </a></li>

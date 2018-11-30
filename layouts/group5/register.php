@@ -121,6 +121,7 @@ We hate paperwork, too.</p>
                   <option value="">Choose...</option>
                   <option>Bangkok</option>
                 </select>
+                <!--<script src="scr1.js"></script>  ****************** Script here ***************************-->
                 <div class="invalid-feedback">
                   Please select a valid Province.
                 </div>
@@ -132,6 +133,7 @@ We hate paperwork, too.</p>
                   <option>BangMot</option>
                   <option>ThungKhru</option>
                 </select>
+                <!--<script src="scr2.js"></script>  ****************** Script here ***************************-->
                 <div class="invalid-feedback">
                   Please select a valid District.
                 </div>

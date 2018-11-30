@@ -2,7 +2,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-$klein->respond('GET', '/group2/home/changeticket', function ($request, $response, $service) {
+$klein->respond('GET', '/group2/home_page/changeticket', function ($request, $response, $service) {
     // global $database;
     // $conn = $database->getConnection();
 
@@ -41,11 +41,11 @@ $klein->respond('POST', '/group2/check_change_ticket', function ($request, $resp
 
     if ($resultCount1 == 1 && $resultCount1 == 1) {
         // echo("founf]d it");
-        $response->redirect('/emp/group2/home/select_movie');
+        $response->redirect('/emp/group2/home_page/select_movie');
         $response->send();
     } else {
         echo ("Not Found This Card No. !!");
-        // $response->redirect('/group2/home/select_movie/select_time/select_seat/done');
+        // $response->redirect('/group2/home_page/select_movie/select_time/select_seat/done');
         // $response->send();
     }
 

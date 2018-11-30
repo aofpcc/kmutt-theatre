@@ -63,7 +63,7 @@
     <link rel="prefetch" href="https://www.sfcinemacity.com/dist/33.255becd3fec2dab2a718.js">
     <link rel="prefetch" href="https://www.sfcinemacity.com/dist/34.dee995da7b9128a5b462.js">
     <link rel="prefetch" href="/layouts/group2/js/selectmovie/1.2ab249ca75db547f0487.js">
-    <link rel="stylesheet" href="/layouts/group2/css/selectmovie/common.baa2eadcab44e34fea36.css">
+    <link rel="stylesheet" href="/layouts/group2/css/maincss/common.baa2eadcab44e34fea36.css">
     <script type="text/javascript" charset="utf-8" async="" src="/layouts/group2/js/selectmovie/1.2ab249ca75db547f0487.js"></script>
     <style type="text/css">
         /*# sourceURL=undefined */
@@ -108,7 +108,7 @@
                         <div class="row">
                             <div class="col-sm equal-column column-movie grid-movies" style="min-height: 2741.91px;">
                                 <div class="flex-wrapper movies-wrapper movies-now-showing">
-                                    <div class="movie-card flex-item" type="now-showing"><a href="/emp/group2/home/select_movie/select_time"
+                                    <div class="movie-card flex-item" type="now-showing"><a href="/emp/group2/home_page/select_movie/select_time"
                                             class="" title="อควาแมน เจ้าสมุทร">
                                             <div class="poster">
                                                 <div class="image" style="background-image: url(&quot;https://lh3.googleusercontent.com/raDupdKaiKxNSmTXlpmhKB1aiqfoXHAfu6PRSOl0zdVC2tL-Dr5dhQzZfeShvTX_GkFOmJFBZz-Gf2-v7o5A=w215&quot;);"></div>

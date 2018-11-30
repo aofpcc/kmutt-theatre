@@ -59,7 +59,7 @@
     <link rel="prefetch" href="https://www.sfcinemacity.com/dist/33.255becd3fec2dab2a718.js">
     <link rel="prefetch" href="https://www.sfcinemacity.com/dist/34.dee995da7b9128a5b462.js">
     <link rel="prefetch" href="/layouts/group2/js/selecttime/1.2ab249ca75db547f0487.js">
-    <link rel="stylesheet" href="/layouts/group2/css/selecttime/common.baa2eadcab44e34fea36.css">
+    <link rel="stylesheet" href="/layouts/group2/css/maincss/common.baa2eadcab44e34fea36.css">
     <script type="text/javascript" charset="utf-8" async="" src="/layouts/group2/js/selecttime/1.2ab249ca75db547f0487.js"></script>
     <style type="text/css">
         /*# sourceURL=undefined */
@@ -500,10 +500,10 @@
                                                 </li>
                                             </ul>
                                             <ul class="time-list">
-                                                <li class="time-item" ><a href="/emp/group2/home/select_movie/select_time/select_seat"><button class="button button-showtime">13:20</button></a></li>
-                                                <li class="time-item"><a href="/emp/group2/home/select_movie/select_time/select_seat"><button class="button button-showtime">16:20</button></a></li>
-                                                <li class="time-item"><a href="/emp/group2/home/select_movie/select_time/select_seat"><button class="button button-showtime">19:20</button></a></li>
-                                                <li class="time-item"><a href="/emp/group2/home/select_movie/select_time/select_seat"></a><button class="button button-showtime">22:20</button></a></li>
+                                                <li class="time-item" ><a href="/emp/group2/home_page/select_movie/select_time/select_seat"><button class="button button-showtime">13:20</button></a></li>
+                                                <li class="time-item"><a href="/emp/group2/home_page/select_movie/select_time/select_seat"><button class="button button-showtime">16:20</button></a></li>
+                                                <li class="time-item"><a href="/emp/group2/home_page/select_movie/select_time/select_seat"><button class="button button-showtime">19:20</button></a></li>
+                                                <li class="time-item"><a href="/emp/group2/home_page/select_movie/select_time/select_seat"></a><button class="button button-showtime">22:20</button></a></li>
                                             </ul>
                                         </div>
                                     </div>

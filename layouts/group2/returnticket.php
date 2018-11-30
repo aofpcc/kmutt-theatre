@@ -40,8 +40,8 @@
 					</div>
 					<div class="social_icons agileinfo">
 						<ul class="top-links">
-									<li><a href="/emp/group2/home" method="post" class="gohome"><i class="fas fa-arrow-alt-circle-left"></i> Go Back</a></li>
-									<li><a href="/emp/group2/home/changeticket" method="post" class="change"><i class="fas fa-exchange-alt"></i> Change</a></li>
+									<li><a href="/emp/group2/home_page" method="post" class="gohome"><i class="fas fa-arrow-alt-circle-left"></i> Go Back</a></li>
+									<li><a href="/emp/group2/home_page/changeticket" method="post" class="change"><i class="fas fa-exchange-alt"></i> Change</a></li>
 									<!-- <li><a href="#" class="no_member"><i class="fas fa-fighter-jet"></i> Reserve Now</a></li> -->
 								</ul>
 					</div>

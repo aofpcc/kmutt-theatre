@@ -11,6 +11,7 @@
     <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
     <script id="facebook-ixsdk" src="/layouts/group2/js/selectseat/platform.Extensions.js"></script>
     <script async="" src="/layouts/group2/js/selectseat/gtm.js"></script>
+
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -62,7 +63,7 @@
     <link rel="prefetch" href="https://www.sfcinemacity.com/dist/33.255becd3fec2dab2a718.js">
     <link rel="prefetch" href="https://www.sfcinemacity.com/dist/34.dee995da7b9128a5b462.js">
     <link rel="prefetch" href="https://www.sfcinemacity.com/dist/1.2ab249ca75db547f0487.js">
-    <link rel="stylesheet" href="/layouts/group2/css/selectseat/common.baa2eadcab44e34fea36.css">
+    <link rel="stylesheet" href="/layouts/group2/css/maincss/common.baa2eadcab44e34fea36.css">
     <script type="text/javascript" charset="utf-8" async="" src="/layouts/group2/js/selectseat/5.b3f4836c4ad2b717a7fa.js"></script>
     <script type="text/javascript" charset="utf-8" async="" src="/layouts/group2/js/selectseat/2.1a387b47ee125ca353f8.js"></script>
     <style type="text/css">
@@ -7088,7 +7089,7 @@
                                                             </g>
                                                         </svg></span><span class="text">Discount & Promotions</span>
                                                 </button></div>
-                                            <div class="col"><a href="/emp/group2/home/select_movie/select_time/select_seat/pay_ment"><button type="button" class="button button-blue button-continue btn-block">Next</button></a></div>
+                                            <div class="col"><a href="/emp/group2/home_page/select_movie/select_time/select_seat/pay_ment"><button type="button" class="button button-blue button-continue btn-block">Next</button></a></div>
                                         </div>
                                     </div>
                                 </div>

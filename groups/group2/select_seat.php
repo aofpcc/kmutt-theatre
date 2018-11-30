@@ -2,7 +2,7 @@
   error_reporting(E_ALL);
   ini_set('display_errors', 1);
 
-  $klein->respond('GET', '/group2/home/select_movie/select_time/select_seat', function ($request, $response, $service){
+  $klein->respond('GET', '/group2/home_page/select_movie/select_time/select_seat', function ($request, $response, $service){
   global $database;
   $conn = $database->getConnection();
 
@@ -19,7 +19,7 @@
   $service->render('layouts/group2/selectseat.php');
 });
 
-$klein->respond('POST', '/group2/home/select_movie/select_time/select_seat', function ($request, $response, $service) {
+$klein->respond('POST', '/group2/home_page/select_movie/select_time/select_seat', function ($request, $response, $service) {
   global $database;
   $conn = $database->getConnection();
 
@@ -40,11 +40,11 @@ $klein->respond('POST', '/group2/home/select_movie/select_time/select_seat', fun
 
   // if ($resultCount1 == 1) {
   //     // echo("founf]d it");
-      $response->redirect('/emp/group2/home/select_movie/select_time/select_seat/pay_ment');
+      $response->redirect('/emp/group2/home_page/select_movie/select_time/select_seat/pay_ment');
   //     $response->send();
   // } else {
   //     echo("Invalid Information !!");
-  //     // $response->redirect('/group2/home/select_movie/select_time/select_seat/done');
+  //     // $response->redirect('/group2/home_page/select_movie/select_time/select_seat/done');
   //     // $response->send();
   // }
   // // $service->pageTitle = 'KMUTT THEATRE | Member';

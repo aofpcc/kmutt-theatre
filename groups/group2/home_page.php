@@ -2,7 +2,7 @@
   error_reporting(E_ALL);
   ini_set('display_errors', 1);
 
-  $klein->respond('GET', '/group2/home', function ($request, $response, $service){
+  $klein->respond('GET', '/group2/home_page', function ($request, $response, $service){
   // global $database;
   // $conn = $database->getConnection();
 
@@ -16,7 +16,7 @@
   // $service->allMovies = $arr;
   // $service->pageTitle = 'KMUTT THEATRE | Member';
 
-  $service->render('layouts/group2/member.php');
+  $service->render('layouts/group2/home.php');
 });
 
 $klein->respond('POST', '/group2/check_card_no', function ($request, $response, $service){
@@ -41,7 +41,7 @@ $klein->respond('POST', '/group2/check_card_no', function ($request, $response, 
   $resultCount = $stmt->rowCount();
   if ($resultCount == 1) {
     // echo("founf]d it");
-    $response->redirect('/emp/group2/home/select_movie');
+    $response->redirect('/emp/group2/home_page/select_movie');
     $response->send();
   }
   else {

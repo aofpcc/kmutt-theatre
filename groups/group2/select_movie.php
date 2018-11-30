@@ -2,7 +2,7 @@
   error_reporting(E_ALL);
   ini_set('display_errors', 1);
 
-  $klein->respond('GET', '/group2/home/select_movie', function ($request, $response, $service){
+  $klein->respond('GET', '/group2/home_page/select_movie', function ($request, $response, $service){
   global $database;
   $conn = $database->getConnection();
 

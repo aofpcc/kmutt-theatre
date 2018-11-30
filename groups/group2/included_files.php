@@ -1,11 +1,11 @@
 <?php
 $included = array(
-  'home',
+  'home_page',
   'select_movie',
   'select_time',
   'select_seat',
   "pay_ment",
-  'done',
+  'done_page',
   'return_ticket',
   'change_ticket'
 );

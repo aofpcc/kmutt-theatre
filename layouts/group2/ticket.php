@@ -15,7 +15,7 @@
 <link href='//fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
 <!-- //Web-Fonts -->
 
-<link rel="stylesheet" href="/layouts/group2/css/ticket/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="/layouts/group2/css/maincss/style.css" type="text/css" media="all" />
 </head>
 
 <!-- Content-Starts-Here -->

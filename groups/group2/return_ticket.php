@@ -2,7 +2,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-$klein->respond('GET', '/group2/home/returnticket', function ($request, $response, $service) {
+$klein->respond('GET', '/group2/home_page/returnticket', function ($request, $response, $service) {
 
     // $service->pageTitle = 'KMUTT THEATRE | Return Ticket';
 
@@ -30,11 +30,11 @@ $klein->respond('POST', '/group2/check_return_ticket', function ($request, $resp
 
     if ($resultCount1 == 1 && $resultCount2 == 1) {
         // echo("founf]d it");
-        $response->redirect('/emp/group2/home/select_movie');
+        $response->redirect('/emp/group2/home_page/select_movie');
         $response->send();
     } else {
         echo ("Not Found This Card No. !!");
-        // $response->redirect('/group2/home/select_movie/select_time/select_seat/done');
+        // $response->redirect('/group2/home_page/select_movie/select_time/select_seat/done');
         // $response->send();
     }
     // $service->pageTitle = 'KMUTT THEATRE | Member';

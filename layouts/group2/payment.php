@@ -12,11 +12,12 @@
   <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
   <script id="facebook-ixsdk" src="/layouts/group2/js/payment/platform.Extensions.js"></script>
   <script async="" src="/layouts/group2/js/payment/gtm.js"></script>
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+
+  <!-- <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-5F757MC');</script>
+    })(window,document,'script','dataLayer','GTM-5F757MC');</script> -->
 
   <style type="text/css">
     svg,
@@ -63,7 +64,7 @@
   <link rel="prefetch" href="https://www.sfcinemacity.com/dist/33.255becd3fec2dab2a718.js">
   <link rel="prefetch" href="https://www.sfcinemacity.com/dist/34.dee995da7b9128a5b462.js">
   <link rel="prefetch" href="https://www.sfcinemacity.com/dist/1.2ab249ca75db547f0487.js">
-  <link rel="stylesheet" href="/layouts/group2/css/payment/common.baa2eadcab44e34fea36.css">
+  <link rel="stylesheet" href="/layouts/group2/css/maincss/common.baa2eadcab44e34fea36.css">
 
   <script type="text/javascript" charset="utf-8" async="" src="/layouts/group2/js/payment/5.b3f4836c4ad2b717a7fa.js"></script>
   <script type="text/javascript" charset="utf-8" async="" src="/layouts/group2/js/payment/2.1a387b47ee125ca353f8.js"></script>
@@ -193,6 +194,7 @@
                   <br>
 
                   <form action="/emp/group2/check_card_no" method="post">
+
                   <input type="text" placeholder="Card no." name="card_no" maxlength="13"class="input form-control">
                   <input type="tel" placeholder="Phone no." name="phone_no" maxlength="10" class="input form-control">
 
@@ -208,10 +210,10 @@
                                                             C0.9,12.6,0,15.6,0,24v36c0,8.3,0.9,11.3,2.5,14.4c1.6,3,4.1,5.5,7.1,7.1c3,1.6,6.1,2.5,14.4,2.5h36c8.3,0,11.3-0.9,14.4-2.5
                                                             c3-1.6,5.5-4.1,7.1-7.1c1.6-3,2.5-6.1,2.5-14.4V24c0-8.3-0.9-11.3-2.5-14.4C79.8,6.5,77.4,4.1,74.4,2.5z"
                               class="fill"></path>
-                            <!-- <rect fill="#fff" id="Rectangle" x="10.9" y="24.8" width="7.8" height="34.2"></rect> -->
-                            <!-- <path fill="#fff" d="M33.4,41.9l13.2-17.1h-7c-3.1,0-4.4,1.7-5.5,3.1l-10.8,14l10.8,14c1.1,1.4,2.4,3.1,5.5,3.1h7L33.4,41.9
-                                                            L33.4,41.9z"></path> -->
-                            <!-- <polygon fill="#fff" points="73.1,45.8 64.5,45.8 64.5,37.2 59.8,37.2 59.8,45.8 51.3,45.8 51.3,50.4 59.8,50.4
+                            <!-- <rect fill="#fff" id="Rectangle" x="10.9" y="24.8" width="7.8" height="34.2"></rect>
+                             <path fill="#fff" d="M33.4,41.9l13.2-17.1h-7c-3.1,0-4.4,1.7-5.5,3.1l-10.8,14l10.8,14c1.1,1.4,2.4,3.1,5.5,3.1h7L33.4,41.9
+                                                            L33.4,41.9z"></path>
+                             <polygon fill="#fff" points="73.1,45.8 64.5,45.8 64.5,37.2 59.8,37.2 59.8,45.8 51.3,45.8 51.3,50.4 59.8,50.4
                                                             59.8,59 64.5,59 64.5,50.4 73.1,50.4 "></polygon> -->
                           </svg><span class="method-label">Cash</span></div>
                       </div>
@@ -224,7 +226,7 @@
                             <g>
                               <defs>
                                 <rect id="SVGID_1_" width="412.145" height="271.744"></rect>
-                              </defs>
+                              </defs>5
                               <clippath id="SVGID_2_">
                                 <use xlink:href="#SVGID_1_" overflow="visible"></use>
                               </clippath>

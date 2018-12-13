@@ -4,23 +4,39 @@
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
       <h1 class="h2">Profile</h1>
+      <hr>
     </div>
 
   <div class="emp-profile">          
         <div class="row">
             <div class="col-md-4">
                 <div class="profile-img">
-                      <img src="/layouts/group11/img/Ppim.jpg" alt=""/>
-                      <div class="file btn btn-lg btn-primary">
-                      Change Photo
-                      <input type="file" name="file"/>
-                      </div>
+                      <img src="/layouts/group11/img/Ppim.jpg" alt=""/>                     
                   </div>
             </div>
             <div class="col-md-6">
                    <div class="profile-head">
-                      <h5>Kshiti Ghelani</h5>
-                      <h6> Web Developer and Designer </h6>
+                      <h5> 
+                <?php
+                $name = $this->profile;
+                //   for($i = 0; $i<count($result); $i++){
+                //     $row = $result[$i];
+                //     echo $row['Firstname'];
+                //     echo('&nbsp;');
+                //     echo $row['Lastname'];
+                //   } 
+                  echo $name[0]['Firstname'];
+                  echo('&nbsp;');
+                  echo $name[0]['Lastname'];
+                ?>
+                      
+                      </h5>
+                      <h6> 
+                        <?php 
+                            $Profession = $this->profile;
+                            echo $Profession[0]['Status'];                                        
+                        ?>
+                      </h6>
                                     
                      <ul class="nav nav-tabs">
                           <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
@@ -29,21 +45,20 @@
                         </div>
                         <!-- asdasdasdsa -->
                         <div class="tab-content">
-                                <div id="home" class="tab-pane fade in active">
-                                <div class="row">
-                                  <div class="col-md-6">
-                                      <label>User Id</label>
-                                  </div>
-                                  <div class="col-md-6">
-                                      <p>Kshiti123</p>
-                                  </div>
-                              </div>
+                                <div id="home" class="tab-pane fade in active">                               
                               <div class="row">
                                   <div class="col-md-6">
                                       <label>Name</label>
                                   </div>
                                   <div class="col-md-6">
-                                      <p>Kshiti Ghelani</p>
+                                      <p>
+                                        <?php 
+                                            $name = $this->profile;
+                                            echo $name[0]['Firstname'];
+                                            echo('&nbsp;');
+                                            echo $name[0]['Lastname'];
+                                        ?>
+                                       </p>
                                   </div>
                               </div>
                               <div class="row">
@@ -51,7 +66,12 @@
                                       <label>Email</label>
                                   </div>
                                   <div class="col-md-6">
-                                      <p>kshitighelani@gmail.com</p>
+                                      <p>
+                                      <?php 
+                                            $email = $this->profile;
+                                            echo $email[0]['Email'];                                        
+                                        ?>
+                                      </p>
                                   </div>
                               </div>
                               <div class="row">
@@ -59,7 +79,28 @@
                                       <label>Phone</label>
                                   </div>
                                   <div class="col-md-6">
-                                      <p>123 456 7890</p>
+                                      <p>
+                                        <?php 
+                                            $phone = $this->profile;
+                                            echo $phone[0]['Tell'];                                        
+                                        ?>
+                                      </p>
+                                  </div>
+                              </div>
+                              <div class="row">
+                                  <div class="col-md-6">
+                                      <label>gender</label>
+                                  </div>
+                                  <div class="col-md-6">
+                                      <p>
+                                        <?php 
+                                            $sex = $this->profile;
+                                            if($sex[0]['Sex'] =='M'){
+                                                echo ('MALE');      
+                                            }else
+                                                echo ('FEMALE');                                        
+                                        ?>
+                                      </p>
                                   </div>
                               </div>
                               <div class="row">

@@ -65,17 +65,49 @@ $klein->respond('GET', '/staff/employee/profile', function($request, $response, 
   //check login
   $data = $app->login->LoginThenGoTo('employee','/emp/staff');
 
+  // connect db
+  global $database;
+  $conn = $database->getConnection();
+
  //select db
-  $service->id = $data['userID'];
+  // $service->$id = $data['userID'];
+  $id = $data['userID'];
+  $profileName = "SELECT * FROM G11_Emp_staff WHERE userID = $id " ;
+  $stmt = $conn->prepare($profileName);
+  $stmt->execute();
+  $service->profile = $stmt->fetchAll(PDO::FETCH_BOTH);
 
-
-
+    // $service->id2 =  $data['userID'];
     $service->nameTag = 'profile.php';
     $service->render('layouts/group11/employee.php');
 
 });
 
-$klein->respond('POSt', 'staff/employee/add', function($request, $response, $service, $app, $validator){
+$klein->respond('GET', '/staff/employee/editprofile', function($request, $response, $service, $app, $validator){
+  error_reporting(E_ALL);
+  ini_set('display_errors', 1);
+
+  //check login
+  $data = $app->login->LoginThenGoTo('employee','/emp/staff');
+
+  // connect db
+  global $database;
+  $conn = $database->getConnection();
+
+ //select db
+  // $service->$id = $data['userID'];
+  $id = $data['userID'];
+  $profileName = "SELECT * FROM G11_Emp_staff WHERE userID = $id " ;
+  $stmt = $conn->prepare($profileName);
+  $stmt->execute();
+  $service->profile = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+    // $service->id2 =  $data['userID'];
+    $service->nameTag = 'editprofile.php';
+    $service->render('layouts/group11/employee.php');
+});
+
+$klein->respond('POST', 'staff/employee/add', function($request, $response, $service, $app, $validator){
   if($request->password != $request->confirmpassword) {
     // redirect
   }

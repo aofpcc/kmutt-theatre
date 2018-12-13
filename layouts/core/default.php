@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-  <title><?=$this->title ?></title>
+  <title><?= ($this->passValue["title"] == "Page")? $this->title: $this->passValue["title"] ?></title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <?php if($this->bootstrap == false){?>
@@ -34,9 +34,9 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Welcome, <?=$this->username ?></a>
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Welcome, <?=$this->passValue["username"] ?></a>
           <ul class="dropdown-menu">
-            <?php foreach ($this->login_menu as $key => $value) { ?>
+            <?php foreach ($this->passValue["login_menu"] as $key => $value) { ?>
               <li> <a href="<?=$value["href"] ?>"><?=$value["name"] ?></a> </li>
             <?php } ?>
           </ul>

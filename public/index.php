@@ -45,7 +45,7 @@ $klein->respond(function ($request, $response, $service, $app, $validator) use (
 $klein->onHttpError(function ($code, $router) {
     switch ($code) {
         case 404:
-          $arr = $router->app()->passValue;
+          $arr = $router->service()->passValue;
           $arr["title"] = "Page Not Found";
           $router->service()->render('layouts/core/notfound.php', $arr);
           die;

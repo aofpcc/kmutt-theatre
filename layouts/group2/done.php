@@ -9,8 +9,6 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-
-
     <!-- <link rel="shortcut icon" href="https://www.sfcinemacity.com/favicon.ico">
     <link rel="icon" type="image/png" sizes="16x16" href="https://www.sfcinemacity.com/assets/favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="https://www.sfcinemacity.com/assets/favicon-32x32.png">

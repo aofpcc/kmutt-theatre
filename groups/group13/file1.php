@@ -1,5 +1,6 @@
 <?php
-$klein->respond('GET', '/emp/fnb', function ($request, $response, $service) {
+$klein->respond('GET', '/fnb', function ($request, $response, $service) {
+  $service->bootstrap3 = false;
   global $database;
   $conn = $database->getConnection();
 
@@ -128,7 +129,7 @@ $klein->respond('POST', '/emp/fnb/checkemp', function ($request, $response, $ser
 
   $empID= $request->empID;
 
-  $sql = "select * from employee where ID = '$empID'";
+  $sql = "select * from employee where EmpID = '$empID'";
   $stmt = $conn->prepare($sql);
   $stmt->execute();
   $num = $stmt->rowCount();

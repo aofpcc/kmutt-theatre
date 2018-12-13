@@ -17,12 +17,10 @@ $klein->with("/emp/teststaff", function () use ($klein) {
 $klein->respond('POST', '/staff/login', function ($request, $response, $service, $app, $validator) {
   $app->login->perform($request->username, $request->password, "/emp/teststaff");
 });
+
 $klein->respond('GET', '/staff', function ($request, $response, $service, $app, $validator) {
-  $err = $service->flashes();
-  if ($err && $err["info"]) {
-      $service->errs = $err["info"];
-  }
-  $service->render('layouts/group11/login.php', $app->passValue);
+  $service->bootstrap3 = false; // means using bootstrap4
+  $service->render('layouts/group11/login.php');
 });
 
 $klein->respond(['GET', 'POST'], '/staff/logout', function ($request, $response, $service, $app, $validator) {

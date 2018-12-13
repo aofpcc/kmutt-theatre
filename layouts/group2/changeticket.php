@@ -12,7 +12,6 @@
 
 </head>
 
-
 	<!-- main -->
 	<div class="main">
 		<h1>KMUTT THEATRE | CHANGE YOUR TICKET</h1>

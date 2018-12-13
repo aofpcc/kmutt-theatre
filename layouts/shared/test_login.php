@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Test Login</title>
   </head>
-  <body>
+  <br>
     <form class="" action="/test/login/action" method="post">
       <label for="">Username</label> <input type="text" name="username" value="">
       <br>
@@ -13,5 +10,3 @@
       <button type="submit" name="button">Submit</button>
     </form>
 
-  </body>
-</html>

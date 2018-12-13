@@ -6,10 +6,11 @@
   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
   <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> -->
+  <link href="/layouts/group1/css/style.css" rel="stylesheet" type="text/css" media="all" />
+  <link rel="stylesheet" href="/layouts/group1/css/onStyle.css">
 
 
-
-  <style>
+  <!-- <style>
 
     body  {
     background-color: #303030;
@@ -20,7 +21,7 @@
   background:rgba(255, 255, 255, 0.88);
   padding: 30px 30px;
 }
-  </style>
+  </style> -->
 </head>
 
 <br><br>

@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="/layouts/group1/css/onStyle.css">
 </head>
 
-<style>
+<!-- <style>
 body{
 background-color: #303030;
 }
@@ -27,7 +27,7 @@ margin: 45px auto;
 background:rgba(255, 255, 255, 0.88);
 padding: 30px 30px;
 }
-</style>
+</style> -->
 
   <!-- <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
  <a class="navbar-brand" href="http://localhost:8000/customer/kmutt_home">KMUTT THEATER</a>

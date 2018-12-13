@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    <link href="/layouts/group1/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="/layouts/group1/css/onStyle.css">
     <title>KMUTT THEATER</title>
 
     <!-- Bootstrap core CSS -->
@@ -15,7 +16,7 @@
 
     <!-- Custom styles for this template -->
     <link href="css/shop-homepage.css" rel="stylesheet">
-    <style>
+    <!-- <style>
     body{
       background-color: #303030;
       }
@@ -47,7 +48,7 @@
           }
           .row.content {height: auto;}
         }
-      </style>
+      </style> -->
 
 
 

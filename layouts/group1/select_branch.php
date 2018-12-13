@@ -11,6 +11,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link href="/layouts/group1/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="/layouts/group1/css/onStyle.css">
 
     <title>Location - Movie</title>
 
@@ -22,7 +24,7 @@
 
 
   </head>
-  <style>
+  <!-- <style>
   body{
     background-color: #303030;
   }
@@ -32,7 +34,7 @@
   background:rgba(255, 255, 255, 0.88);
   padding: 30px 30px;
 }
-  </style>
+  </style> -->
   <body>
 
     Navigation -->

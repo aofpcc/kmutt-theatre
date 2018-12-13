@@ -5,7 +5,8 @@
    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> -->
-
+   <link href="/layouts/group1/css/style.css" rel="stylesheet" type="text/css" media="all" />
+   <link rel="stylesheet" href="/layouts/group1/css/onStyle.css">
 
    <!-- <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
   <a class="navbar-brand" href="http://localhost:8000/customer/kmutt_home">KMUTT THEATER</a>
@@ -19,25 +20,14 @@
   </ul>
 </nav> -->
 
-  <style>
 
-  body{
-    background-color: #303030;
-  }
-  .main{
-  width: 80%;
-  margin: 45px auto;
-  background:rgba(255, 255, 255, 0.88);
-  padding: 30px 30px;
-}
-</style>
 
   <br><br>
   <div class="main">
     <div class="container">
 
       <!-- Page Heading -->
-      <h1 class="my-4"><button type="button" class="btn btn-lg btn-primary">STEP 2</button>
+      <h1 class="my-4"><button type="button" class="btn btn-danger">STEP 2</button>
         <small>Select Showtime</small>
       </h1>
 
@@ -57,7 +47,7 @@
                     <h7>Genre: Fantasy</h7><br>
                     <h7>Rate: G</h7><br>
                     <h7>135 Mins</h7><br><br>
-                    <button type="button" class="btn btn-lg btn-default">MOVIE DETAIL</button>
+                    <!-- <button type="button" class="btn btn-lg btn-default">MOVIE DETAIL</button> -->
                   </div>
               </div>
           </div>
@@ -67,7 +57,7 @@
 
           <ul class="nav nav-pills">
             <li class="nav-item">
-            <a class="nav-link active" href="#">Thu<br><small>15 Nov 2018</small></a>
+            <button type="button" class="btn btn-outline-danger">Thu<br><small>15 Nov 2018</small></a></button>
             <a class="nav-link" href="#">Fri<br><small>16 Nov 2018</small></a>
             <a class="nav-link" href="#">Sat<br><small>17 Nov 2018</small></a>
             <a class="nav-link disabled" href="#">Mon<br><small>18 Nov 2018</small></a>
@@ -95,7 +85,7 @@
 
           ?>
 
-              <button type="button" class="btn btn-outline-primary" style="margin: 1%!important">
+              <button type="button" class="btn btn-danger" style="margin: 1%!important">
                 <?=$this->query[$i]['endTime'] ?></button>
           <?php
               }

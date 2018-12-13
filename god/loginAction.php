@@ -89,11 +89,15 @@ $klein->with("/test", function () use ($klein) {
     });
 
     $klein->respond(['GET', 'POST'], '/home', function ($request, $response, $service, $app, $validator) {
-        $arr = $app->passValue;
+        $arr = $service->passValue;
         $arr["title"] = "Home";
         $arr["content"] = "This is home 1";
+        $service->passValue = $arr;
         $service->bootstrap3 = false;
-        $service->render('layouts/core/home.php', $arr);
+        // $response->dump($service->passValue);
+        // $response->sendBody();
+        // die;
+        $service->render('layouts/core/home.php');
     });
 
     $klein->respond(['GET', 'POST'], '/home2', function ($request, $response, $service, $app, $validator) {

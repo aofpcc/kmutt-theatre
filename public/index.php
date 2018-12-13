@@ -14,6 +14,7 @@ $klein->respond(function ($request, $response, $service, $app, $validator) use (
     $service->layout('layouts/core/default.php');
     $service->pageRole = "THEATRE";
     $service->bootstrap3 = true;
+    $service->bootstrap = true;
     $app->db = $database;
     $app->login = $loginperformer;
     $app->js = new JavaScriptPart;
@@ -34,7 +35,7 @@ $klein->respond(function ($request, $response, $service, $app, $validator) use (
       ];
     }
 
-    $app->passValue = [
+    $service->passValue = [
       "title" => "Page",
       "username" => $username,
       "login_menu" => $login_menu

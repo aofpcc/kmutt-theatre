@@ -1,63 +1,18 @@
 <?php
-$klein->respond('GET', '/fnb', function ($request, $response, $service) {
+$klein->respond('GET', '/fnb/sale', function ($request, $response, $service) {
   $service->bootstrap3 = false;
   global $database;
   $conn = $database->getConnection();
-
-  // $query = "select id, name, price from product_fnb";
-  // $stmt = $conn->prepare($query);
-  // $stmt->execute();
-  //
-  // $num = $stmt->rowCount();
-  // $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
-
-  // $service->allProducts = $arr;
-  // $service->pageTitle = 'Group 13';
-  // $service->render('layouts/group13/viewAll.php');
   $service->render('layouts/group13/index.php');
 });
-//
-// $klein->respond('GET', '/emp/fnb/add', function ($request, $response, $service) {
-//   $service->pageTitle = 'Group 13';
-//   $service->render('layouts/group13/addProduct.php');
-// });
-//
-// $klein->respond('POST', '/emp/fnb/add', function ($request, $response, $service) {
-//   global $database;
-//   $conn = $database->getConnection();
-//
-//   if(empty($request->name)) {
-//     return "error";
-//   }
-//
-//   try {
-//     $sql = "insert into product_fnb(name, price) values ('".$request->name."', ".$request->price.");";
-//     // use exec() because no results are returned
-//     $conn->exec($sql);
-//   } catch (\Exception $e) {
-//     return "error";
-//   }
-//
-//   $service->pageTitle = 'Group 13';
-//   $service->render('layouts/group13/addProduct.php');
-// });
 
-// $klein->respond('GET', '/emp/fnb', function ($request, $response, $service) {
-//   global $database;
-//   $conn = $database->getConnection();
-//
-//   // $query = "select id, name, price from product_fnb";
-//   // $stmt = $conn->prepare($query);
-//   // $stmt->execute();
-//   //
-//   // $num = $stmt->rowCount();
-//   // $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
-//
-//   // $service->allProducts = $arr;
-//   // $service->pageTitle = 'Group 13';
-//   // $service->render('layouts/group13/viewAll.php');
-//   $service->render('layouts/group13/index.php');
-// });
+$klein->respond('GET', '/fnb/stock', function ($request, $response, $service) {
+  $service->bootstrap3 = false;
+  global $database;
+  $conn = $database->getConnection();
+  $service->render('layouts/group13/stock.php');
+});
+
 
 $klein->respond('POST', '/fnb/checkcoupon', function ($request, $response, $service, $app, $validator) {
   global $database;

@@ -90,14 +90,15 @@ $klein->respond('GET', '/group6/setMoney', function ($request, $response, $servi
   echo json_encode([$query]);
 });
 
-$klein->respond('GET', '/group6/checkUniqness', function ($request, $response, $service) {
+$klein->respond('GET', '/androidCheckUniqness', function ($request, $response, $service) {
   global $database;
   $conn = $database->getConnection();
 
-  $user = $_GET['user'];
+  $idCard = $_GET['idcard'];
+  $email = $_GET['email'];
   $phoneno = $_GET['phoneno'];
 
-  $query = "SELECT ID from Membership where Username = '$user' or PhoneNumber = '$phoneno'";
+  $query = "SELECT ID_Card, Email, PhoneNumber from G05_Member_profile where ID_Card = '$idCard' or Email = '$email' or PhoneNumber = '$phoneno'";
   $stmt = $conn->prepare($query);
   $stmt->execute();
 
@@ -137,30 +138,74 @@ $klein->respond('GET', '/group6/max', function ($request, $response, $service) {
   echo json_encode($arr);
 });
 
-$klein->respond('GET', '/regist', function ($request, $response, $service) {
+$klein->respond('GET', '/androidRegist', function ($request, $response, $service, $app, $validator) {
   global $database;
   $conn = $database->getConnection();
-  /*
-  $query = "SELECT * from G05_Member_profile";
+
+  $user = $_GET['user'];  $pass = $_GET['pass'];  $firstname = $_GET['firstname'];
+  $lastname = $_GET['lastname'];  $gender = $_GET['gender'];  $birthdate = $_GET['birthdate'];
+  $email = $_GET['email'];  $phoneno = $_GET['phonenumber'];  $address = $_GET['address'];
+  $district = $_GET['district'];  $province = $_GET['province'];  $postcode = $_GET['postcode'];
+  $identNo = $_GET['idcard']; $subdist = $_GET['subdist'];
+
+  //Initialize array for return values
+  $arr = array();
+
+  //Check uniqeness
+  $query = "SELECT ID_Card, Email, PhoneNumber from G05_Member_profile where ID_Card = '$identNo' or Email = '$email' or PhoneNumber = '$phoneno'";
+  $stmt = $conn->prepare($query);
+  $stmt->execute();
+  $num = $stmt->rowCount();
+  if($num == 0){
+    $validateLink = "/test/verify"; // neeed to have / before  and no / at the end
+    $role = 'customer';
+    $result = $app->login->register($user, $pass, $email, $validateLink, $role);
+    if ($result['created']) {
+        $query = "INSERT INTO G05_Member_profile (MemberID, ID_Card, Fname, Lname, Gender, Birthdate, Email, PhoneNumber)
+                                VALUES ($result["userID"],'$identNo', '$firstname', '$lastname', '$gender', '$birthdate', '$email', '$phoneno');
+                                INSERT INTO G05_Member_address (MemberID, Address, Province, District, SubDistrict, ZipCode)
+                                VALUES ($result["userID"],'$address', '$province', '$district', '$subdist', '$postcode');"
+
+        $stmt = $conn->prepare($query);
+        $stmt->execute();
+        $arr["done"] = true;
+        $arr["note"] = "Account have been created succesfully";
+        $arr["userID"] = $result["userID"];
+
+    } else {
+      $arr["done"] = false;
+      $arr["note"] = $result["data"];
+    }
+
+  }else{
+      $arr["done"] = false;
+      $arr["note"] = "Identification number, phone number, or email already exist."
+  }
+
+  echo json_encode($arr);
+});
+
+$klein->respond('GET', '/androidLogin', function ($request, $response, $service, $app, $validator) {
+  global $database;
+  $conn = $database->getConnection();
+
+  $username = $_GET['user'];
+  $password = $_GET['pass'];
+  //$password = $app->login->md5($password);
+
+  $query = "SELECT userID from core_user_pwd WHERE (password = '$password' and (username = '$username' OR email = '$username'))";
+  //$query = "SELECT * from core_user_pwd WHERE password = '$password' and username = '$username'";
   $stmt = $conn->prepare($query);
   $stmt->execute();
 
-  $num = $stmt->rowCount();
-  $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
-  */
-  $username = $_GET['user'];
-  $password = $_GET['pass'];
-  $email = $_GET['email'];
-  $validateLink = "/test/verify"; // neeed to have / before  and no / at the end
-  $role = 'customer';
-  $result = $app->login->register($username, $password, $email, $validateLink, $role);
 
-  $pass = $app->passValue;
-  if ($result['created']) {
-      $pass["content"] = "The account have been created.";
-  } else {
-      $pass["content"] = "The account cannot be created. Some error occurs!";
+  $num = $stmt->rowCount();
+
+  if($num == 1){
+    $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
+  }else{
+    $arr = array("userID" => -1);
   }
 
-  echo json_encode($pass);
+  echo json_encode($arr);
 });

@@ -133,7 +133,11 @@ $klein->respond('POST', '/fnb/checkemp', function ($request, $response, $service
   $service->validateParam('empID', 'Bad Request')->notNull();
 
   $empID= $request->empID;
-
+  if (!is_numeric($empID)){
+    return $response->json([[
+      "status"   => "N"
+    ]]);
+  }
   $sql = "select * from G11_Emp_staff where Emp_id = '$empID'";
   $stmt = $conn->prepare($sql);
   $stmt->execute();

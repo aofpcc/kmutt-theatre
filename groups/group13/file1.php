@@ -1,72 +1,27 @@
 <?php
-$klein->respond('GET', '/fnb', function ($request, $response, $service) {
+$klein->respond('GET', '/fnb/sale', function ($request, $response, $service) {
   $service->bootstrap3 = false;
   global $database;
   $conn = $database->getConnection();
-
-  // $query = "select id, name, price from product_fnb";
-  // $stmt = $conn->prepare($query);
-  // $stmt->execute();
-  //
-  // $num = $stmt->rowCount();
-  // $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
-
-  // $service->allProducts = $arr;
-  // $service->pageTitle = 'Group 13';
-  // $service->render('layouts/group13/viewAll.php');
   $service->render('layouts/group13/index.php');
 });
-//
-// $klein->respond('GET', '/emp/fnb/add', function ($request, $response, $service) {
-//   $service->pageTitle = 'Group 13';
-//   $service->render('layouts/group13/addProduct.php');
-// });
-//
-// $klein->respond('POST', '/emp/fnb/add', function ($request, $response, $service) {
-//   global $database;
-//   $conn = $database->getConnection();
-//
-//   if(empty($request->name)) {
-//     return "error";
-//   }
-//
-//   try {
-//     $sql = "insert into product_fnb(name, price) values ('".$request->name."', ".$request->price.");";
-//     // use exec() because no results are returned
-//     $conn->exec($sql);
-//   } catch (\Exception $e) {
-//     return "error";
-//   }
-//
-//   $service->pageTitle = 'Group 13';
-//   $service->render('layouts/group13/addProduct.php');
-// });
 
-// $klein->respond('GET', '/emp/fnb', function ($request, $response, $service) {
-//   global $database;
-//   $conn = $database->getConnection();
-//
-//   // $query = "select id, name, price from product_fnb";
-//   // $stmt = $conn->prepare($query);
-//   // $stmt->execute();
-//   //
-//   // $num = $stmt->rowCount();
-//   // $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
-//
-//   // $service->allProducts = $arr;
-//   // $service->pageTitle = 'Group 13';
-//   // $service->render('layouts/group13/viewAll.php');
-//   $service->render('layouts/group13/index.php');
-// });
+$klein->respond('GET', '/fnb/stock', function ($request, $response, $service) {
+  $service->bootstrap3 = false;
+  global $database;
+  $conn = $database->getConnection();
+  $service->render('layouts/group13/stock.php');
+});
 
-$klein->respond('POST', '/emp/fnb/checkcoupon', function ($request, $response, $service, $app, $validator) {
+
+$klein->respond('POST', '/fnb/checkcoupon', function ($request, $response, $service, $app, $validator) {
   global $database;
   $conn = $database->getConnection();
 
   $service->validateParam('couponcode', 'Bad Request')->notNull();
 
   $couponcode= $request->couponcode;
-  $sql = "select * from promotion where codeID = '$couponcode'";
+  $sql = "select * from G08_Promo_code where CodeNo = '$couponcode'";
   $stmt = $conn->prepare($sql);
   $stmt->execute();
   $num = $stmt->rowCount();
@@ -93,14 +48,19 @@ $klein->respond('POST', '/emp/fnb/checkcoupon', function ($request, $response, $
   }
 });
 
-$klein->respond('POST', '/emp/fnb/checkcusid', function ($request, $response, $service, $app, $validator) {
+$klein->respond('POST', '/fnb/checkcusid', function ($request, $response, $service, $app, $validator) {
   global $database;
   $conn = $database->getConnection();
 
   $service->validateParam('CusID', 'Bad Request')->notNull();
 
   $CusID= $request->CusID;
-  $sql = "select * from Membership where ID = '$CusID'";
+  if (!is_numeric($CusID)){
+    return $response->json([[
+      "status"   => "N"
+    ]]);
+  }
+  $sql = "select * from G05_Member_profile where MemberID = ".$CusID;
   $stmt = $conn->prepare($sql);
   $stmt->execute();
   $num = $stmt->rowCount();
@@ -110,26 +70,30 @@ $klein->respond('POST', '/emp/fnb/checkcusid', function ($request, $response, $s
         "status"   => "Y",
       ]
     ];
-    $response->json($someArray);
+    return $response->json($someArray);
   }else{
     $someArray = [
       [
         "status"   => "N"
       ]
     ];
-    $response->json($someArray);
+    return $response->json($someArray);
   }
 });
 
-$klein->respond('POST', '/emp/fnb/checkemp', function ($request, $response, $service, $app, $validator) {
+$klein->respond('POST', '/fnb/checkemp', function ($request, $response, $service, $app, $validator) {
   global $database;
   $conn = $database->getConnection();
 
   $service->validateParam('empID', 'Bad Request')->notNull();
 
   $empID= $request->empID;
-
-  $sql = "select * from employee where EmpID = '$empID'";
+  if (!is_numeric($empID)){
+    return $response->json([[
+      "status"   => "N"
+    ]]);
+  }
+  $sql = "select * from G11_Emp_staff where Emp_id = '$empID'";
   $stmt = $conn->prepare($sql);
   $stmt->execute();
   $num = $stmt->rowCount();
@@ -151,14 +115,14 @@ $klein->respond('POST', '/emp/fnb/checkemp', function ($request, $response, $ser
   }
 });
 
-$klein->respond('POST', '/emp/fnb/getprice', function ($request, $response, $service, $app, $validator) {
+$klein->respond('POST', '/fnb/getprice', function ($request, $response, $service, $app, $validator) {
   global $database;
   $conn = $database->getConnection();
 
   $service->validateParam('productID', 'Bad Request')->notNull();
 
   $productID=$request->productID;
-  $sql = "select * from productList_fnb where productID = '$productID'";
+  $sql = "select * from G13_FNB_ProductList where productID = '$productID'";
   $stmt = $conn->prepare($sql);
   $stmt->execute();
   $num = $stmt->rowCount();
@@ -183,7 +147,7 @@ $klein->respond('POST', '/emp/fnb/getprice', function ($request, $response, $ser
   }
 });
 
-$klein->respond('POST', '/emp/fnb/do_order', function ($request, $response, $service, $app, $validator) {
+$klein->respond('POST', '/fnb/do_order', function ($request, $response, $service, $app, $validator) {
   global $database;
   $conn = $database->getConnection();
 
@@ -199,8 +163,8 @@ $klein->respond('POST', '/emp/fnb/do_order', function ($request, $response, $ser
   $item = $request->item;
   $product= $request->product;
 
-  $sql = "INSERT INTO orderList_fnb(cusID,empID,paymentType,Time,Date) values('$CusID','$empID','$payment',NOW(),NOW())";
-  $order = "SELECT max(receiptID) as receiptID FROM orderList_fnb";
+  $sql = "INSERT INTO G13_FNB_SaleList(cusID,empID,paymentType,Time,Date) values('$CusID','$empID','$payment',NOW(),NOW())";
+  $order = "SELECT max(receiptID) as receiptID FROM G13_FNB_SaleList";
 
   $conn->beginTransaction();
 
@@ -214,7 +178,7 @@ $klein->respond('POST', '/emp/fnb/do_order', function ($request, $response, $ser
 
     $orderID =  $row['receiptID'];
     for($i=0; $i<count($item);$i++){
-      $data ="INSERT INTO detail_fnb (receiptID,productID,unitOfProduct) VALUES('$orderID','$product[$i]','$item[$i]')";
+      $data ="INSERT INTO G13_FNB_detail (receiptID,productID,unitOfProduct) VALUES('$orderID','$product[$i]','$item[$i]')";
       $a = $conn->prepare($data);
       $a->execute();
     }

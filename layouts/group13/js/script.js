@@ -1,9 +1,11 @@
 var item = 1;
-var typechoice = 3;
+var typechoice = 4;
 var flavorchoice = 3;
 var drinkchoice = 5;
 var sizechoice =4;
+var sizechoiceS =2;
 var setchoice =3;
+var snackchoice=2;
 
 
 function removeitem(id) {
@@ -16,7 +18,6 @@ function removeitem(id) {
 
 function additem() {
  var type = $('.typeCheckbox:checked').val();
-
 
  if (type == "PC") {
      var flavor = $('.flavorCheckbox:checked').val();
@@ -33,6 +34,12 @@ function additem() {
 if (type == "PRST") {
     var set = $('.setCheckbox:checked').val();
     var productID = type + set;
+    get_price(productID);
+}
+if (type=="SN") {
+    var snack = $('.snackCheckbox:checked').val();
+    var sizeS = $('.sizeSCheckbox:checked').val();
+    var productID = type + snack + sizeS;
     get_price(productID);
 }
 
@@ -88,6 +95,39 @@ function get_price(productID) {
  }
 
 }
+
+function update_stock(productID) {
+ let formData = new FormData();
+ formData.append("productID", productID);
+ let xhr = new XMLHttpRequest();
+ xhr.open("POST", '/emp/fnb/getprice', true); // or https://example.com/upload/image
+ xhr.send(formData);
+ xhr.onreadystatechange = function() {
+     if (xhr.readyState == 4 && xhr.status == 200) {
+         var data = JSON.parse(xhr.responseText);
+         price = data[0].price;
+         productName = data[0].productName;
+         productID = data[0].productID;
+         const markup = `<tr id="tritem${item}">
+             <td>${productName}</td>
+             <td>${price}</td>
+             <td><input type="number" class="form-control w-25" name="item[]" min="0" onchange="sum_price(${price},this.value,${item})"></td>
+             <td><input class="form-control w-25" id="sum${item}" value="" disabled></td>
+             <td><input class="btn btn-danger" value="Remove" onclick="removeitem(${item})"></td>
+             <td><input type="hidden" class="form-control w-25" name="product[]" value="${productID}"></td>
+
+             </tr>
+             `;
+         $("#items").append(markup);
+         item++;
+         clearall();
+
+
+     }
+ }
+
+}
+
 function checkemp(){
     var empID = $("#empID").val();
     let formData = new FormData();
@@ -149,6 +189,7 @@ function checkcusid(){
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && xhr.status == 200) {
             var data = JSON.parse(xhr.responseText);
+            console.log(data);
             status = data[0].status;
              if(status=="Y"){
                 $("#CusID").prop('readonly', true);
@@ -187,6 +228,8 @@ function select_type(id) {
  if (id == "Check1") {
      $("#drinkbox").hide();
      $("#setbox").hide();
+     $("#sizeboxS").hide();
+     $("#snackbox").hide();
      $("#flavorbox").show();
      $("#sizebox").show();
      clearset();
@@ -198,6 +241,8 @@ function select_type(id) {
      $("#setbox").hide();
      $("#flavorbox").hide();
      $("#sizebox").hide();
+     $("#sizeboxS").hide();
+     $("#snackbox").hide();
      $("#drinkbox").show();
      $("#sizebox").show();
      clearset();
@@ -209,13 +254,26 @@ function select_type(id) {
  } else if (id == "Check3") {
      $("#flavorbox").hide();
      $("#sizebox").hide();
+     $("#sizeboxS").hide();
      $("#drinkbox").hide();
+     $("#snackbox").hide();
      $("#setbox").show();
      clearsize();
      cleardrink();
      clearflavor();
      clearset();
 
+   } else if (id == "Check4") {
+         $("#flavorbox").hide();
+         $("#sizebox").hide();
+         $("#sizeboxS").show();
+         $("#drinkbox").hide();
+         $("#setbox").hide();
+         $("#snackbox").show();
+         clearsize();
+         cleardrink();
+         clearflavor();
+         clearset();
 
  } else {
      $("#flavorbox").hide();
@@ -245,9 +303,23 @@ function select_drink(id) {
  document.getElementById(id).checked = true;
 }
 
+function select_snack(id) {
+ for (var i = 1; i <= drinkchoice; i++) {
+     document.getElementById("snack" + i).checked = false;
+ }
+ document.getElementById(id).checked = true;
+}
+
 function select_size(id) {
  for (var i = 1; i <= sizechoice; i++) {
      document.getElementById("size" + i).checked = false;
+ }
+ document.getElementById(id).checked = true;
+}
+
+function select_sizeS(id) {
+ for (var i = 1; i <= sizechoiceS; i++) {
+     document.getElementById("sizeS" + i).checked = false;
  }
  document.getElementById(id).checked = true;
 }

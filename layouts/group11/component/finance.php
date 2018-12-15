@@ -106,7 +106,7 @@ $("#search_graph").click(function(){
   var endDate = $("#date_to").val();
   var obj = {startDate, endDate};
   console.log(obj);
-  $.post("/emp/staff/finance/queryDate", obj).done(function(data){
+  $.post("/emp/staff/finance/test", obj).done(function(data){
     console.log(data);
     var revenue = data.revenue.total;
     var expenses = data.expenses.total;

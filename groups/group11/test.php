@@ -1,5 +1,5 @@
 <?php
-$klein->respond("/staff/finance/queryDate", function($request, $response, $service, $app, $validator) {
+$klein->respond("/staff/finance/test", function($request, $response, $service, $app, $validator) {
   $startDate = $request->startDate;
   $endDate = $request->endDate;
   $conn = $app->db->getConnection();

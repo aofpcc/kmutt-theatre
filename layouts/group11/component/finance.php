@@ -36,12 +36,8 @@
 
           <h2>Revenue <kbd id="revenue" style="background-color:green"> <?php echo ($this->revenue[0]['total']); ?> Bath</kbd></h2>
           <h2>Expense <kbd id="expense" style="background-color:red"><?php echo ($this->expenses[0]['total']); ?> Bath</kbd></h2>
-          <?php  $profit = $this->revenue[0]['total'] - $this->expenses[0]['total'];
-          if ($profit >= 0) { ?>
-            <h2>Profit <kbd id="profitG" style="background-color:green"><?php echo ($this->revenue[0]['total']- $this->expenses[0]['total'] ) ;?> Bath</kbd></h2>
-          <?php } else {?>
-            <h2>Profit <kbd id="profitR" style="background-color:red"><?php echo (($profit)) ?> Bath</kbd></h2>
-          <?php }?>
+          <?php  $profit = $this->revenue[0]['total'] - $this->expenses[0]['total'];?>
+          <h2>Profit <kbd id="profit"><?php echo (($profit)) ;?> Bath</kbd></h2>
         </div>
       </div>
 
@@ -114,12 +110,7 @@ $("#search_graph").click(function(){
     $("#revenue").text(revenue);
     $("#expense").text(expenses);
     var profit = revenue - expenses;
-    if (profit>=0) {
-      $("#profitG").text(profit);
-    }
-    else {
-      $("#profitR").text(profit);
-    }
+    $("#profit").text(profit);
   });
 });
 </script>

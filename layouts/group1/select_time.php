@@ -55,15 +55,17 @@
         <br><br><hr>
 
 
-          <ul class="nav nav-pills">
-            <li class="nav-item">
-            <button type="button" class="btn btn-outline-danger">Thu<br><small>15 Nov 2018</small></a></button>
-            <a class="nav-link" href="#">Fri<br><small>16 Nov 2018</small></a>
-            <a class="nav-link" href="#">Sat<br><small>17 Nov 2018</small></a>
-            <a class="nav-link disabled" href="#">Mon<br><small>18 Nov 2018</small></a>
-            <a class="nav-link disabled" href="#">Tue<br><small>19 Nov 2018</small></a>
-          </li>
-          </ul>
+        <div class="card card-temp">
+          <div class="container">
+              <form>
+                <br>
+                  <div class="form-group">
+                    <label for="sel1">SELECT DATE</label>
+                    <select class="form-control" id="sel1">
+                      <option>2018-12-14</option>
+                    </select>
+
+                  </div>
 
 
 

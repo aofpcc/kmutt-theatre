@@ -60,7 +60,7 @@
 
                 <td><?=$this->revenueList[$j]['transactionId'] ?></td>
                 <td><?=$this->revenueList[$j]['dName'] ?></td>
-                <td><?=$this->revenueList[$j]['date'] ?></td>
+                <td><?=$this->revenueList[$j]['addDate'] ?></td>
                 <td><?=$this->revenueList[$j]['empFN']." ".$this->revenueList[$j]['empLN']?></td>
                 <td><?=$this->revenueList[$j]['memFN']." ".$this->revenueList[$j]['memLN'];?></td>
                 <td><?=$this->revenueList[$j]['amount'] ?></td>
@@ -92,7 +92,7 @@
 
                 <td><?=$this->revenueList[$j]['transactionId'] ?></td>
                 <td><?=$this->revenueList[$j]['dName'] ?></td>
-                <td><?=$this->revenueList[$j]['date'] ?></td>
+                <td><?=$this->revenueList[$j]['addDate'] ?></td>
                 <td><?=$this->revenueList[$j]['empFN']." ".$this->revenueList[$j]['empLN']?></td>
                 <td><?=$this->revenueList[$j]['memFN']." ".$this->revenueList[$j]['memLN'];?></td>
                 <td><?=$this->revenueList[$j]['amount'] ?></td>
@@ -125,7 +125,7 @@
 
                 <td><?=$this->revenueList[$j]['transactionId'] ?></td>
                 <td><?=$this->revenueList[$j]['dName'] ?></td>
-                <td><?=$this->revenueList[$j]['date'] ?></td>
+                <td><?=$this->revenueList[$j]['addDate'] ?></td>
                 <td><?=$this->revenueList[$j]['empFN']." ".$this->revenueList[$j]['empLN']?></td>
                 <td><?=$this->revenueList[$j]['memFN']." ".$this->revenueList[$j]['memLN'];?></td>
                 <td><?=$this->revenueList[$j]['amount'] ?></td>
@@ -157,7 +157,7 @@
 
                 <td><?=$this->revenueList[$j]['transactionId'] ?></td>
                 <td><?=$this->revenueList[$j]['dName'] ?></td>
-                <td><?=$this->revenueList[$j]['date'] ?></td>
+                <td><?=$this->revenueList[$j]['addDate'] ?></td>
                 <td><?=$this->revenueList[$j]['empFN']." ".$this->revenueList[$j]['empLN']?></td>
                 <td><?=$this->revenueList[$j]['memFN']." ".$this->revenueList[$j]['memLN'];?></td>
                 <td><?=$this->revenueList[$j]['amount'] ?></td>
@@ -189,7 +189,7 @@
 
                 <td><?=$this->revenueList[$j]['transactionId'] ?></td>
                 <td><?=$this->revenueList[$j]['dName'] ?></td>
-                <td><?=$this->revenueList[$j]['date'] ?></td>
+                <td><?=$this->revenueList[$j]['addDate'] ?></td>
                 <td><?=$this->revenueList[$j]['empFN']." ".$this->revenueList[$j]['empLN']?></td>
                 <td><?=$this->revenueList[$j]['memFN']." ".$this->revenueList[$j]['memLN'];?></td>
                 <td><?=$this->revenueList[$j]['amount'] ?></td>

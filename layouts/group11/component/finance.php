@@ -13,42 +13,50 @@
   <!-- month pickup -->
   <div class="container">
     <div class="row">
-      <div class="col-sm">
-        <div class="form-group">
-        </br>
-          <label>Start period :</label>
-          <input type="text" class="form-control form-control-1 input-sm from col-sm-4" placeholder="Month and year start" >
-        </div>
 
-        <div class="form-group">
-          <label>End period :</label>
-          <input type="text" class="form-control form-control-2 input-sm to col-sm-4" placeholder="Month and year end">
-        </div>
 
-        <button type="button" class="btn btn-primary active">Search</button>
+      <div class="col-lg-6" style="padding-top:60px;">
+        <div class="row">
+          <div class="col-lg-6">
+            <label>Start period :</label>
+            <input id="date_from" type="date" class="form-control" placeholder="Month and year start" >
+          </div>
+          <div class="col-lg-6">
+            <label>End period :</label>
+            <input id="date_to" type="date" class="form-control" placeholder="Month and year end">
+          </div>
+        </div>
+        <br>
+        <button id="search_graph" type="button" class="btn btn-primary active">Search</button>
       </div>
-      <div class="col-sm">
-        <div class="container" style="padding-top:30px;">
 
-          <h2>Revenue <kbd style="background-color:green"> <?php echo ($this->revenue[0]['total']); ?> Bath</kbd></h2>
-          <h2>Expense <kbd style="background-color:red"><?php echo ($this->expenses[0]['total']); ?> Bath</kbd></h2>
+      <div class="col-lg-6">
+        <div style="width: inherit!important; min-width: 500px;" class="container" style="padding-top:30px;">
+
+          <h2>Revenue <kbd id="revenue" style="background-color:green"> <?php echo ($this->revenue[0]['total']); ?> Bath</kbd></h2>
+          <h2>Expense <kbd id="expense" style="background-color:red"><?php echo ($this->expenses[0]['total']); ?> Bath</kbd></h2>
           <?php  $profit = $this->revenue[0]['total'] - $this->expenses[0]['total'];
           if ($profit >= 0) { ?>
-            <h2>Profit <kbd style="background-color:green"><?php echo ($this->revenue[0]['total']- $this->expenses[0]['total'] ) ;?> Bath</kbd></h2>
+            <h2>Profit <kbd id="profitG" style="background-color:green"><?php echo ($this->revenue[0]['total']- $this->expenses[0]['total'] ) ;?> Bath</kbd></h2>
           <?php } else {?>
-            <h2>Profit <kbd style="background-color:red"><?php echo (($profit)) ?> Bath</kbd></h2>
+            <h2>Profit <kbd id="profitR" style="background-color:red"><?php echo (($profit)) ?> Bath</kbd></h2>
           <?php }?>
         </div>
       </div>
+
     </div>
   </div>
 
 
-
-
   <!-- month pickup ends -->
+  <div class="container" style="width: inherit!important; min-w`idth: 500px; padding-top:50px; padding-bottom:50px;">
+    <div class="row">
+      <div class="col-lg-12">
+        <canvas class="my-4 w-50" id="sumChart" width="500" height="250"></canvas>
+      </div>
+    </div>
+  </div>
 
-  <canvas class="my-4 w-100" id="sumChart" width="900" height="380"></canvas>
 
 <!-- Stop here -->
 </main>
@@ -92,13 +100,25 @@
     }
   });
 </script>
-<!-- Graphs end -->
-
-<!-- month pickup -->
-<link rel="stylesheet" type="text/css" media="all" href="daterangepicker.css" />
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
-
-<script type="text/javascript" src="daterangepicker.js"></script>
+<script>
+$("#search_graph").click(function(){
+  var startDate = $("#date_from").val();
+  var endDate = $("#date_to").val();
+  var obj = {startDate, endDate};
+  console.log(obj);
+  $.post("/emp/staff/finance/queryDate", obj).done(function(data){
+    console.log(data);
+    var revenue = data.revenue.total;
+    var expenses = data.expenses.total;
+    $("#revenue").text(revenue);
+    $("#expense").text(expenses);
+    var profit = revenue - expenses;
+    if (profit>=0) {
+      $("#profitG").text(profit);
+    }
+    else {
+      $("#profitR").text(profit);
+    }
+  });
+});
+</script>

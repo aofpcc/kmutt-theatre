@@ -45,7 +45,7 @@
 
                 <td><?=$this->expensesList[$j]['transactionId'] ?></td>
                 <td><?=$this->expensesList[$j]['dName'] ?></td>
-                <td><?=$this->expensesList[$j]['date'] ?></td>
+                <td><?=$this->expensesList[$j]['addDate'] ?></td>
                 <td><?=$this->expensesList[$j]['empFN']." ".$this->expensesList[$j]['empLN']?></td>
                 <td><?=$this->expensesList[$j]['memFN']." ".$this->expensesList[$j]['memLN'];?></td>
                 <td><?=$this->expensesList[$j]['amount'] ?></td>
@@ -77,7 +77,7 @@
 
                 <td><?=$this->expensesList[$j]['transactionId'] ?></td>
                 <td><?=$this->expensesList[$j]['dName'] ?></td>
-                <td><?=$this->expensesList[$j]['date'] ?></td>
+                <td><?=$this->expensesList[$j]['addDate'] ?></td>
                 <td><?=$this->expensesList[$j]['empFN']." ".$this->expensesList[$j]['empLN']?></td>
                 <td><?=$this->expensesList[$j]['memFN']." ".$this->expensesList[$j]['memLN'];?></td>
                 <td><?=$this->expensesList[$j]['amount'] ?></td>
@@ -109,7 +109,7 @@
 
                 <td><?=$this->expensesList[$j]['transactionId'] ?></td>
                 <td><?=$this->expensesList[$j]['dName'] ?></td>
-                <td><?=$this->expensesList[$j]['date'] ?></td>
+                <td><?=$this->expensesList[$j]['addDate'] ?></td>
                 <td><?=$this->expensesList[$j]['empFN']." ".$this->expensesList[$j]['empLN']?></td>
                 <td><?=$this->expensesList[$j]['memFN']." ".$this->expensesList[$j]['memLN'];?></td>
                 <td><?=$this->expensesList[$j]['amount'] ?></td>
@@ -141,7 +141,7 @@
 
                 <td><?=$this->expensesList[$j]['transactionId'] ?></td>
                 <td><?=$this->expensesList[$j]['dName'] ?></td>
-                <td><?=$this->expensesList[$j]['date'] ?></td>
+                <td><?=$this->expensesList[$j]['addDate'] ?></td>
                 <td><?=$this->expensesList[$j]['empFN']." ".$this->expensesList[$j]['empLN']?></td>
                 <td><?=$this->expensesList[$j]['memFN']." ".$this->expensesList[$j]['memLN'];?></td>
                 <td><?=$this->expensesList[$j]['amount'] ?></td>
@@ -173,7 +173,7 @@
 
                 <td><?=$this->expensesList[$j]['transactionId'] ?></td>
                 <td><?=$this->expensesList[$j]['dName'] ?></td>
-                <td><?=$this->expensesList[$j]['date'] ?></td>
+                <td><?=$this->expensesList[$j]['addDate'] ?></td>
                 <td><?=$this->expensesList[$j]['empFN']." ".$this->expensesList[$j]['empLN']?></td>
                 <td><?=$this->expensesList[$j]['memFN']." ".$this->expensesList[$j]['memLN'];?></td>
                 <td><?=$this->expensesList[$j]['amount'] ?></td>
@@ -205,7 +205,7 @@
 
                     <td><?=$this->expensesList[$j]['transactionId'] ?></td>
                     <td><?=$this->expensesList[$j]['dName'] ?></td>
-                    <td><?=$this->expensesList[$j]['date'] ?></td>
+                    <td><?=$this->expensesList[$j]['addDate'] ?></td>
                     <td><?=$this->expensesList[$j]['empFN']." ".$this->expensesList[$j]['empLN']?></td>
                     <td><?=$this->expensesList[$j]['memFN']." ".$this->expensesList[$j]['memLN'];?></td>
                     <td><?=$this->expensesList[$j]['amount'] ?></td>

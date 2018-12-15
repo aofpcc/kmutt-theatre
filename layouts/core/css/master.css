@@ -40,16 +40,16 @@
   color: #ffffff;
 }
 
-.navbar-nav > li > a:hover, a:focus {
+.navbar-nav > li > a:hover, .navbar a:focus {
   background-color: #e50914!important;
   color: #000000;
 }
 
-.nav-brand, a:hover, a:focus{
+.nav-brand, .navbar a:hover, .navbar a:focus{
   color: #ffffff;
 }
 
-.nav-brand, a{
+.nav-brand, .navbar a{
   transition-duration: 0.35s;
   font-weight: bold;
   color: #e50914;

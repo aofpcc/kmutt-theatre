@@ -57,7 +57,7 @@
     <div class="container">
 
        <!-- Page Heading  -->
-      <h1 class="my-4"><button type="button" class="btn btn-lg btn-primary">STEP 1</button>
+      <h1 class="my-4"><button type="button" class="btn btn-lg btn-danger">STEP 1</button>
         <small>Choose location</small>
       </h1>
 
@@ -77,7 +77,7 @@
                     <h7>Genre: Fantasy</h7><br>
                     <h7>Rate: G</h7><br>
                     <h7>135 Mins</h7><br><br>
-                    <button type="button" class="btn btn-lg btn-default">MOVIE DETAIL</button>
+                    <!-- <button type="button" class="btn btn-lg btn-default">MOVIE DETAIL</button> -->
                   </div>
               </div>
           </div>

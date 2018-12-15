@@ -174,15 +174,20 @@ $klein->respond('GET', '/androidRegist', function ($request, $response, $service
         $arr["done"] = true;
         $arr["note"] = "Account have been created succesfully";
         $arr["userID"] = $result["userID"];
+        echo json_encode([$arr]);
+        return;
 
     } else {
       $arr["done"] = false;
       $arr["note"] = $result["data"];
+      $arr["userID"] = -1;
     }
 
-  }else{
+  }
+  if($num != 0){
       $arr["done"] = false;
       $arr["note"] = "Identification number, phone number, or email already exist.";
+      $arr["userID"] = -1;
   }
 
   echo json_encode([$arr]);

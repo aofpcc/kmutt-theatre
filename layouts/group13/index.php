@@ -1,6 +1,3 @@
-<!doctype html>
-<html lang="en">
-
 <head>
     <title>Food and beverage</title>
     <!-- Required meta tags -->
@@ -14,8 +11,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
 </head>
 
-<body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <a class="navbar-brand">Brand</a>
     <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse">
         <span class="navbar-toggler-icon"></span>
@@ -27,12 +23,12 @@
             </li>
         </ul>
     </div>
-</nav>
+</nav> -->
 <div class="d-flex justify-content-start">
         <form action="/emp/fnb/do_order" method="post">
             <div class="container-fluid" style="margin-top:100px;">
                 <div class="form-group">
-                    <label for="empID">EmpID</label>
+                    <label for="empID">Employee ID</label>
                     <div class="form-inline" style="margin-top:10px;">
                     <input type="text" class="form-control w-35" name="empID" id="empID" aria-describedby="helpId" placeholder="" required="required">
                     <small style="margin-left:20px;">Check EmpID ?  </small>
@@ -46,7 +42,7 @@
                 </div>
 
                 <div class="form-group">
-                <label for="CusID">CusID</label>
+                <label for="CusID">Membership</label>
                 <div class="form-inline" style="">
                     <input type="text"  class="form-control w-35" name="CusID" id="CusID" aria-describedby="helpId" placeholder="">
                     <small style="margin-left:20px;">Check CusID ?  </small>
@@ -58,26 +54,7 @@
                 </div>
 
                 </div>
-                <div class="form-inline" style="margin-top:10px;">
-                    <div class="form-group">
-                        <label for="my-input" style="margin-right:5px;">Payment</label><i class="icon-ok"></i>
-                        <select id="my-input" style="width:100px;" name="payment" class="custom-select" onchange="couponcheck(this.value)">
-                        <option value="Cash">Cash</option>
-                        <option value="Visa">Visa</option>
-                        <option value="Coupon">Coupon</option>
-                    </select>
 
-                        <div id="couponbox" style="margin-left:10px; display:none;">
-                            <input type="text" class="form-control w-35" name="coupon" id="couponcode" aria-describedby="helpId" placeholder="">
-
-                            <small style="margin-left:5px;">if coupon check valid code ?</small>
-                             <div class="btn btn-primary" onclick="checkcoupon()">
-                                    Check <span class="badge badge-primary"></span>
-                             </div>
-                           <span id="codevalid" style="margin-left:5px; display:none;">  Code Valid <i class="icon ion-md-checkmark" style="font-size:20px; color:green; padding-left:10px;"></i></span>
-                           <span id="codeinvalid" style="display:none;">  Code Invalid <i class="icon ion-md-close" style="font-size:20px; color:red; padding-left:10px;"></i></span>
-                        </div>
-                    </div>
                 </div>
 
             </div>
@@ -97,12 +74,18 @@
             <input type="checkbox" class="form-check-input typeCheckbox" name="type" id="Check2" value="DR" onclick="select_type(this.id)" /> DRINK
           </label>
                     </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+            <input type="checkbox" class="form-check-input typeCheckbox" name="type" id="Check4" value="SN" onclick="select_type(this.id)" /> SNACK
+          </label>
+                    </div>
                     <div class="form-check" id="divsetbox" style="display:none;">
                         <label class="form-check-label">
             <input type="checkbox" class="form-check-input typeCheckbox" name="type" id="Check3" value="PRST" onclick="select_type(this.id)" /> SET
           </label>
                     </div>
                 </div>
+
                 <div id="flavorbox" style="margin-left:15px; display:none;">
                     Flavor
                     <div class="form-check">
@@ -153,6 +136,34 @@
                     </div>
                 </div>
 
+                <div id="snackbox" style="margin-left:15px; display:none;">
+                    Snack
+                    <div class="form-check">
+                        <label class="form-check-label">
+              <input type="checkbox" class="form-check-input snackCheckbox" name="snack" id="snack1" value="FB" onclick="select_snack(this.id)" />  Fisho Bar-B-Q
+              </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+              <input type="checkbox" class="form-check-input snackCheckbox" name="snack" id="snack2" value="FO" onclick="select_snack(this.id)" />  Fisho Original
+              </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+              <input type="checkbox" class="form-check-input snackCheckbox" name="snack" id="snack3" value="LC" onclick="select_snack(this.id)" />  Lay's Cheese and Bacon
+              </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+              <input type="checkbox" class="form-check-input snackCheckbox" name="snack" id="snack4" value="LO" onclick="select_snack(this.id)" />  Lay's Original
+              </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+              <input type="checkbox" class="form-check-input snackCheckbox" name="snack" id="snack5" value="LS" onclick="select_snack(this.id)" /> Lay's Spicy
+              </label>
+                    </div>
+                </div>
 
                 <div id="setbox" style="margin-left:15px; display:none;">
                     Set Promotion
@@ -198,6 +209,20 @@
                     </div>
                 </div>
 
+                <div id="sizeboxS" style="margin-left:25px; display:none; ">
+                    Size
+                    <div class="form-check">
+                        <label class="form-check-label">
+            <input type="checkbox" class="form-check-input sizeSCheckbox" name="sizeS" id="sizeS1" value="0M" onclick="select_sizeS(this.id)" /> M
+          </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+            <input type="checkbox" class="form-check-input sizeSCheckbox" name="sizeS" id="sizeS2" value="0L" onclick="select_sizeS(this.id)" /> L
+          </label>
+                    </div>
+                </div>
+
             </div>
             <div class="container" style="margin-top:15px;">
 
@@ -224,7 +249,30 @@
                     </tbody>
                 </table>
                 <div id="totalprice">Total = ??</div><br>
-                <input type="submit" class="btn btn-primary">
+                <div class="d-flex flex-column">
+
+                <div class="form-inline" style="margin-top:10px;">
+                    <div class="form-group">
+                        <label for="my-input" style="margin-right:5px;">Payment</label><i class="icon-ok"></i>
+                        <select id="my-input" style="width:100px;" name="payment" class="custom-select" onchange="couponcheck(this.value)">
+                        <option value="Cash">Cash</option>
+                        <option value="Visa">Visa</option>
+                        <option value="Coupon">Coupon</option>
+                    </select>
+
+                        <div id="couponbox" style="margin-left:10px; display:none;">
+                            <input type="text" class="form-control w-35" name="coupon" id="couponcode" aria-describedby="helpId" placeholder="">
+
+                            <small style="margin-left:5px;">if coupon check valid code ?</small>
+                             <div class="btn btn-primary" onclick="checkcoupon()">
+                                    Check <span class="badge badge-primary"></span>
+                             </div>
+                           <span id="codevalid" style="margin-left:5px; display:none;">  Code Valid <i class="icon ion-md-checkmark" style="font-size:20px; color:green; padding-left:10px;"></i></span>
+                           <span id="codeinvalid" style="display:none;">  Code Invalid <i class="icon ion-md-close" style="font-size:20px; color:red; padding-left:10px;"></i></span>
+                        </div>
+                    </div>
+                    </div>
+                <input type="submit" class="btn btn-primary"></div>
         </form>
         </div>
 
@@ -237,6 +285,3 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
-</body>
-
-</html>

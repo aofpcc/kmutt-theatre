@@ -10,20 +10,39 @@
   <!-- Button -->
   <?php include('layouts/group11/component/layout/buttons.php'); ?>
   <!-- Button end -->
-
   <!-- month pickup -->
-  <div class="form-group">
-  </br>
-    <label>Start period :</label>
-    <input type="text" class="form-control form-control-1 input-sm from col-sm-4" placeholder="Month and year start" >
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <div class="form-group">
+        </br>
+          <label>Start period :</label>
+          <input type="text" class="form-control form-control-1 input-sm from col-sm-4" placeholder="Month and year start" >
+        </div>
+
+        <div class="form-group">
+          <label>End period :</label>
+          <input type="text" class="form-control form-control-2 input-sm to col-sm-4" placeholder="Month and year end">
+        </div>
+
+        <button type="button" class="btn btn-primary active">Search</button>
+      </div>
+      <div class="col-sm">
+        <div class="container" style="padding-top:30px;">
+
+          <h2>Revenue <kbd style="background-color:green"> <?php echo ($this->revenue[0]['total']); ?> Bath</kbd></h2>
+          <h2>Expense <kbd style="background-color:red"><?php echo ($this->expenses[0]['total']); ?> Bath</kbd></h2>
+          <?php  $profit = $this->revenue[0]['total'] - $this->expenses[0]['total'];
+          if ($profit >= 0) { ?>
+            <h2>Profit <kbd style="background-color:green"><?php echo ($this->revenue[0]['total']- $this->expenses[0]['total'] ) ;?> Bath</kbd></h2>
+          <?php } else {?>
+            <h2>Profit <kbd style="background-color:red"><?php echo (($profit)) ?> Bath</kbd></h2>
+          <?php }?>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="form-group">
-    <label>End period :</label>
-    <input type="text" class="form-control form-control-2 input-sm to col-sm-4" placeholder="Month and year end">
-  </div>
-
-  <button type="button" class="btn btn-primary active">Search</button>
 
   <!-- month pickup ends -->
 
@@ -177,7 +196,7 @@
         pointBackgroundColor: '#007bff'
       },
       {
-        data: [15339, 2135, 1883, 2403, 2389, 2092, 1204],
+        data: [1, 2135, 1883, 2403, 2389, 2092, 1204],
         lineTension: 0,
         backgroundColor: 'transparent',
         borderColor: '#000000',

@@ -28,7 +28,7 @@ nav.horizontal ul li{	display: inline-block;}/* horizontal menu */
 img{max-width:100%;}
 /*-- end reset --*/
 body {
-	background: url(/layouts/group2/images/member/bg2.jpg)repeat -150px 0px;
+	background: url(/layouts/group2/images/bg2.jpg);
     background-attachment: fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -48,18 +48,18 @@ h1 {
     text-transform: uppercase;
 }
 .login-form h2{
-    font-size: 2em;
+	font-size: 2em;
     color: #fff;
     float: left;
     margin-bottom: 1.5em;
     line-height: 0.7em;
     letter-spacing: 0px;
 }
-span.fa.fa-lock {
+i.fa.fa-lock {
     float: right;
-    font-size: 30px;
+    font-size: 20px;
     color: #fff;
-    margin-right: 10px;
+    margin-right: 0px;
 }
 /*-- main --*/
 .main {
@@ -68,18 +68,18 @@ span.fa.fa-lock {
 }
 .main-w3lsrow {
     margin: 0 auto;
-	background:rgba(0, 0, 0, 0.66);
-	width:25%;
+	background:rgba(0, 0, 0, 0.65);
+	width: 40%;
     padding: 3em 2em 2em;
 }
-.login-form input[type="text"], .login-form input[type="password"] {
+.login-form input[type="text"], .login-form input[type="password"], .login-form input[type="number"] {
     outline: none;
     font-size: .9em;
     letter-spacing: 1px;
     color: #666;
     padding: 1em 1em;
     margin: 0;
-    width: 92%;
+    width: 100%;
 	margin-bottom: 1em;
     border: none;
     border: 1px solid rgb(255, 255, 255);
@@ -94,7 +94,7 @@ span.fa.fa-lock {
     margin: 1.5em 0 .8em;
     font-weight: 200;
     letter-spacing: 6px;
-    text-align: left;
+    text-align: right;
 }
 /*-- social-icons --*/
 .social_icons.agileinfo {
@@ -112,7 +112,7 @@ ul.top-links li a i.fa {
 }
 ul.top-links li a {
 	color: #fff;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.65);
 	padding: 10px 20px;
     letter-spacing: 1px;
 	border:1px solid #fff;
@@ -164,7 +164,7 @@ ul.top-links li a {
     padding: .8em 1em;
     letter-spacing: 1px;
     -webkit-appearance: none;
-    width: 100%;
+    width: 50%;
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
@@ -192,7 +192,7 @@ ul.top-links li a {
 }
 .login-agileits-bottom1 h3 {
     color: #fff;
-    font-size: 1em;
+    font-size: 1.5em;
     letter-spacing: 4px;
 }
 .login-agileits-bottom h6 {
@@ -285,7 +285,7 @@ ul.top-links li a {
 }
 @media(max-width:800px){
 	.login-form input[type="text"], .login-form input[type="password"] {
-		width: 90%;
+		width: 100%;
 	}
 	.login-agileits-bottom h6 {
 		letter-spacing: 3px;

@@ -6,8 +6,6 @@ ini_set('display_errors', 1);
 $klein->respond('POST', '/kmutt_home/branch/show_time/select_chair/payment', function ($request, $response, $service)  use($database){
   $service->bootstrap3 = false;
   $conn = $database->getConnection();
-
-
     // Check submitted params
   //  $request->validate('selectedSeats')->notNull();
    //
@@ -95,7 +93,13 @@ $klein->respond('POST', '/kmutt_home/branch/show_time/select_chair/payment', fun
     $service->selectedSeats = $request->selectedSeats;
     $service->seats = $seats;
     // echo json_encode($seats);
+    // $response->redirect('/customer/kmutt_home/branch/show_time/select_chair/payment');
     $service->render('layouts/group1/payment.php');
   });
+
+$klein->respond('GET', '/kmutt_home/branch/show_time/select_chair/payment/action', function ($request, $response, $service, $app) {
+  $service->bootstrap3 = false;
+  $service->render('layouts/group1/payment.php');
+});
 
 ?>

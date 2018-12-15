@@ -19,7 +19,7 @@
 
 <br><br>
   <div class="main">
-    <h1 class="my-4"><button type="button" class="btn btn-lg btn-primary">STEP 4</button>
+    <h1 class="my-4"><button type="button" class="btn btn-lg btn-danger">STEP 4</button>
       <small>Payment</small>
     </h1>
   <div class="card card-temp shadow-lg">

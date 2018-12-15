@@ -1,5 +1,5 @@
 <head>
-  <title><?=$this->passValue["pageTitle"] ?></title>
+  <title><?=$this->passValue["title"] ?></title>
   <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> -->
@@ -20,7 +20,7 @@
 <br><br>
 
   <div class="main">
-    <h1 class="my-4"><button type="button" class="btn btn-lg btn-primary">STEP 3</button>
+    <h1 class="my-4"><button type="button" class="btn btn-lg btn-danger">STEP 3</button>
       <small>Select seats</small>
     </h1>
     <div class="card card-temp shadow-lg">
@@ -79,7 +79,7 @@
     </div>
 
     <!-- <script src="/layouts/group1/js/booking.js" charset="utf-8"></script> -->
-    <?php $this->render("layouts/group1/js/booking.php"); ?>
+    <?php $this->partial("layouts/group1/js/booking.php"); ?>
   </div>
   <script src="/layouts/group1/js/jquery.nicescroll.js"></script>
   <script src="/layouts/group1/js/scripts.js"></script>

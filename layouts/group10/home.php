@@ -57,13 +57,17 @@
         </div>
       </div>
       <div class="ads">
-        <form action="/group10/upload" method="post" class="form" enctype="multipart/form-data">
+        <form action="/emp/group10/upload" method="post" class="form" enctype="multipart/form-data">
           <div class="ads-head">
             <h2>Ads <h2><input type="text" name="id" id="id" readonly></h2></h2>
           </div>
           <div class="form-item" style="margin-top: 0">
             <h4>Name:</h4>
             <input type="text" name="ads-name" id="ads-name" placeholder=" advertisment" required>
+          </div>
+          <div class="form-item" style="margin-top: 0">
+            <h4>URL:</h4>
+            <input type="text" name="link" id="link" placeholder=" .com" required>
           </div>
           <div class="form-upload">
             <h4>Upload:</h4>

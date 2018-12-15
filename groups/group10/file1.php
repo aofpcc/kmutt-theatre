@@ -1,9 +1,16 @@
 <?php
-$klein->respond('GET', '/group10', function ($request, $response, $service) {
+$klein->respond('GET', '/group10', function ($request, $response, $service, $app, $validator) {
+  // $service->bootstrap3 = true;
+  if(empty($_SESSION['login'])) {
+    $userId = $app->login->requireLogin('customer');
+  }
   global $database;
   $conn = $database->getConnection();
 
-  $list = $conn->query("SELECT * FROM advertisement")->fetchAll(PDO::FETCH_BOTH);
+  $list = $conn->query("SELECT a.id AS id, status, name, type, start_date, end_date
+                        FROM G10_Advertisement_info AS a,
+                         G10_Advertisement_banner,
+                         G10_Advertisement_time")->fetchAll(PDO::FETCH_BOTH);
   // $num = $stmt->rowCount();
   // $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
 

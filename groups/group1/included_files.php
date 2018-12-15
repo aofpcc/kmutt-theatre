@@ -6,5 +6,6 @@ $included = array(
   'select_chair',
   'payment_page',
   'tenpeople_page',
-  'ticket_page'
+  'ticket_page',
+  'test'
 );

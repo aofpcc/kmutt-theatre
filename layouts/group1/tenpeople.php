@@ -26,7 +26,7 @@
 
 <br><br>
 <div class="main">
-  <h1 class="my-4"><button type="button" class="btn btn-lg btn-primary">STEP 4</button>
+  <h1 class="my-4"><button type="button" class="btn btn-lg btn-danger">STEP 4</button>
     <small>Payment</small>
   </h1><br>
   <div class="card card-temp shadow-lg">
@@ -68,6 +68,7 @@ foreach ($arry as $result) {
           <button type="button" class="btn btn-lg btn-default">SCB</button>
           <button type="button" class="btn btn-lg btn-default">CREDIT</button>
           <button type="button" class="btn btn-lg btn-default">CLUBCARD</button>
+          <br><br>
         </div>
       </div>
     </div>

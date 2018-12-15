@@ -123,34 +123,19 @@ $klein->respond('GET', '/staff/employee/finance', function($request, $response, 
       $revenue = $conn->query("SELECT sum(amount) as total FROM G03_FIN_Revenue")->fetchAll(PDO::FETCH_BOTH);
       $service->revenue = $revenue;
 
+      $revenueList = $conn->query("SELECT addDate, amount  FROM G03_FIN_Revenue")->fetchAll(PDO::FETCH_BOTH);
+      $service->revenue = $revenueList;
+
       $expenses = $conn->query("SELECT sum(amount) as total FROM G03_FIN_Expenses")->fetchAll(PDO::FETCH_BOTH);
       $service->expenses = $expenses;
+
+      $expensesList = $conn->query("SELECT addDate, amount FROM G03_FIN_Expenses")->fetchAll(PDO::FETCH_BOTH);
+      $service->expenses = $expensesList;
 
       $request;
       $service->render('layouts/group11/employee.php');
 
 });
-
-// // finance date
-// /*$klein->respond('POST', '/staff/employee/finance', function($request, $response, $service, $app, $validator) {
-//
-//       $service->nameTag = 'finance.php';
-//       //test
-//       global $database;
-//       $conn = $database->getConnection();
-//
-//       $startDate = 2016-03-24;
-//       $endDate = 2018-03-24;
-//
-//       $revenue = $conn->query("SELECT sum(amount) as total FROM G03_FIN_Revenue WHERE  addDate >= '".$startDate."' AND addDate <= '".$endDate."'")->fetchAll(PDO::FETCH_BOTH);
-//       $service->revenue = $revenue;
-//
-//       $expenses = $conn->query("SELECT sum(amount) as total FROM G03_FIN_Expenses WHERE  addDate >= '".$startDate."' AND addDate <= '".$endDate."'")->fetchAll(PDO::FETCH_BOTH);
-//       $service->expenses = $expenses;
-//
-//       $service->render('layouts/group11/employee.php');
-//
-// });*/
 
 $klein->respond('GET', '/staff/employee/revenue', function($request, $response, $service, $app, $validator) {
     // connect db

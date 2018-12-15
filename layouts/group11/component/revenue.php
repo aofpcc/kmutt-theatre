@@ -37,20 +37,20 @@
       </tbody>
       <tbody id="group-of-rows-1" class="collapse">
         <?php
-         $wanT = array();
-         while($row = mysqli_fetch_assoc($this->revenueDate)){
-         $wanT[] = $row;
-        }
-         $json = json_encode($wanT);
-         echo "<div id='wanT' style='display:none;'> " . $json . "</div>";
+        //  $wanT = array();
+        //  while($row = mysqli_fetch_assoc($this->revenueDate)){
+        //  $wanT[] = $row;
+        // }
+        //  $json = json_encode($wanT);
+        //  echo "<div id='wanT' style='display:none;'> " . $json . "</div>";
         ?>
         <?php
-         $korMoon = array();
-         while($row = mysqli_fetch_assoc($this->revenueGrahp)){
-          $korMoon[] = $row;
-        }
-         $json = json_encode($korMoon);
-         echo "<div id='korMoon' style='display:none;'> " . $json . "</div>";
+        //  $korMoon = array();
+        //  while($row = mysqli_fetch_assoc($this->revenueGrahp)){
+        //   $korMoon[] = $row;
+        // }
+        //  $json = json_encode($korMoon);
+        //  echo "<div id='korMoon' style='display:none;'> " . $json . "</div>";
         ?>
         <?php
           for($j = 0; $j < count($this->revenueList); $j++) {
@@ -217,14 +217,22 @@ tbody.collapse.in {
 <!-- Graphs -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 <script>
+  <?php $monthName = ["", "January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]; ?>
+  <?php
+  $labels = [];
+  $datas = [];
+  foreach($this->revenueUU as $value){
+    array_push($labels, $monthName[$value["month"]]." ".$value["year"]);
+    array_push($datas, $value["total"]);
+  }
+  ?>
+  var labels = <?php echo json_encode($labels); ?>;
+  var datas = <?php echo json_encode($datas); ?>;
   var ctx = document.getElementById("revChart");
-  var dates = JSON.parse(document.getElementById('wanT').innerHTML);
-  var datas = JSON.parse(document.getElementById('korMoon').innerHTML);
   var revChart = new Chart(ctx, {
     type: 'line',
     data: {
-      //labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-      labels: dates,
+      labels: labels,
       datasets: [{
         //data: [1, 21345, 18483, 24003, 23489, 24092, 12034],
         data: datas,

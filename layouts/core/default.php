@@ -87,7 +87,7 @@
   <script>
   <?php
       $this->xxx = $this->flashes();
-      if ($this->xxx["info"]) foreach ($this->xxx["info"] as $key => $value): ?>
+      if (!empty($this->xxx) && $this->xxx["info"]) foreach ($this->xxx["info"] as $key => $value): ?>
         alert("<?php echo $value; ?>");
       <?php endforeach; ?>
   </script>

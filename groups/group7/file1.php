@@ -29,4 +29,4 @@ $klein->respond('GET', '/group7', function ($request, $response, $service) {
 //     {
 //     echo "Connection failed: " . $e->getMessage();
 //     }
-// ?>
+// 

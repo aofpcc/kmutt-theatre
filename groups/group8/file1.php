@@ -10,7 +10,6 @@ function RandomString()
     
 }
 
-
 // $klein->respond('GET', '/group8', function ($request, $response, $service) {
 //   global $database;
 //   $conn = $database->getConnection();

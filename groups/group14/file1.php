@@ -30,6 +30,7 @@ $klein->respond('GET', '/group14', function ($request, $response, $service) {
 });
 
 $klein->respond('GET', '/group14/map', function ($request, $response, $service) {
+  $service->bootstrap3 = false;
   global $database;
   $conn = $database->getConnection();
 

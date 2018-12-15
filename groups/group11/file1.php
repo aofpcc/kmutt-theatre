@@ -123,34 +123,19 @@ $klein->respond('GET', '/staff/employee/finance', function($request, $response, 
       $revenue = $conn->query("SELECT sum(amount) as total FROM G03_FIN_Revenue")->fetchAll(PDO::FETCH_BOTH);
       $service->revenue = $revenue;
 
+      $revenueList = $conn->query("SELECT addDate, amount  FROM G03_FIN_Revenue")->fetchAll(PDO::FETCH_BOTH);
+      $service->revenue = $revenueList;
+
       $expenses = $conn->query("SELECT sum(amount) as total FROM G03_FIN_Expenses")->fetchAll(PDO::FETCH_BOTH);
       $service->expenses = $expenses;
+
+      $expensesList = $conn->query("SELECT addDate, amount FROM G03_FIN_Expenses")->fetchAll(PDO::FETCH_BOTH);
+      $service->expenses = $expensesList;
 
       $request;
       $service->render('layouts/group11/employee.php');
 
 });
-
-// // finance date
-// /*$klein->respond('POST', '/staff/employee/finance', function($request, $response, $service, $app, $validator) {
-//
-//       $service->nameTag = 'finance.php';
-//       //test
-//       global $database;
-//       $conn = $database->getConnection();
-//
-//       $startDate = 2016-03-24;
-//       $endDate = 2018-03-24;
-//
-//       $revenue = $conn->query("SELECT sum(amount) as total FROM G03_FIN_Revenue WHERE  addDate >= '".$startDate."' AND addDate <= '".$endDate."'")->fetchAll(PDO::FETCH_BOTH);
-//       $service->revenue = $revenue;
-//
-//       $expenses = $conn->query("SELECT sum(amount) as total FROM G03_FIN_Expenses WHERE  addDate >= '".$startDate."' AND addDate <= '".$endDate."'")->fetchAll(PDO::FETCH_BOTH);
-//       $service->expenses = $expenses;
-//
-//       $service->render('layouts/group11/employee.php');
-//
-// });*/
 
 $klein->respond('GET', '/staff/employee/revenue', function($request, $response, $service, $app, $validator) {
     // connect db
@@ -165,17 +150,25 @@ $klein->respond('GET', '/staff/employee/revenue', function($request, $response, 
 
     $service->list = $list;
 
-        $revenueGrahp = $conn->query("  SELECT  sum(amount)
-                                        FROM G03_FIN_Revenue as Revenue, G03_FIN_ID as FinancialID, G05_Member_profile as m, G11_Emp_staff as e
-                                        WHERE Revenue.FinID = FinancialID.ID AND  Revenue.empID = e.Emp_ID AND Revenue.customerID = m.MemberID
-                                        GROUP BY year(addDate),month(addDate)
-                                      ")->fetch(PDO::FETCH_ASSOC);
+        // $revenueGrahp = $conn->query("  SELECT  sum(amount)
+        //                                 FROM G03_FIN_Revenue as Revenue, G03_FIN_ID as FinancialID, G05_Member_profile as m, G11_Emp_staff as e
+        //                                 WHERE Revenue.FinID = FinancialID.ID AND  Revenue.empID = e.Emp_ID AND Revenue.customerID = m.MemberID
+        //                                 GROUP BY year(addDate),month(addDate)
+        //                               ")->fetch(PDO::FETCH_ASSOC);
 
-        $revenueDate = $conn->query("   SELECT  month(addDate) as month , '|' ,year(addDate) as year
-                                        FROM G03_FIN_Revenue as Revenue, G03_FIN_ID as FinancialID, G05_Member_profile as m, G11_Emp_staff as e
-                                        WHERE Revenue.FinID = FinancialID.ID AND  Revenue.empID = e.Emp_ID AND Revenue.customerID = m.MemberID
-                                        GROUP BY year(addDate),month(addDate)
-                                      ")->fetch(PDO::FETCH_ASSOC);
+        // $revenueDate = $conn->query("   SELECT  month(addDate) as month , '|' ,year(addDate) as year
+        //                                 FROM G03_FIN_Revenue as Revenue, G03_FIN_ID as FinancialID, G05_Member_profile as m, G11_Emp_staff as e
+        //                                 WHERE Revenue.FinID = FinancialID.ID AND  Revenue.empID = e.Emp_ID AND Revenue.customerID = m.MemberID
+        //                                 GROUP BY year(addDate),month(addDate)
+        //                               ")->fetch(PDO::FETCH_ASSOC);
+        $service->revenueUU = $conn->query('select year, month, sum(amount) "total" from (select *
+        from G03_FIN_Revenue a join (select transactionID "tran", month(addDate) "month", year(addDate) "year"
+                          from G03_FIN_Revenue) b on a.transactionID = b.tran) a
+        group by month, year
+        order by year, month asc;')->fetchAll(PDO::FETCH_ASSOC);
+
+        // $response->dump($service->revenueUU);
+        // $response->sendBody();
 
 
         $revenueList = $conn->query(" SELECT transactionId, dName, addDate, e.FirstName as empFN, e.LastName as empLN, m.Fname as memFN, m.Lname as memLN, amount

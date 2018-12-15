@@ -185,7 +185,7 @@ $klein->respond('GET', '/androidRegist', function ($request, $response, $service
       $arr["note"] = "Identification number, phone number, or email already exist.";
   }
 
-  echo json_encode($arr);
+  echo json_encode([$arr]);
 });
 
 $klein->respond('GET', '/androidLogin', function ($request, $response, $service, $app, $validator) {

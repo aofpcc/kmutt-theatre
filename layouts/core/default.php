@@ -1,3 +1,5 @@
+<?php if($this->noHeader) { ?>
+<?php } else { ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -95,3 +97,4 @@
   </footer>
 </body>
 </html>
+<?php } ?>

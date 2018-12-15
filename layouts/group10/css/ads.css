@@ -118,7 +118,7 @@ body {
 
 .form-item {
   display: flex;
-  margin: 30px 10px;
+  margin: 20px 10px;
 }
 
 .form-item h4 {
@@ -164,7 +164,7 @@ body {
   display: inline;
   float: right;
   margin-left: 20px;
-  padding: 1% 3%;
+  /* padding: 1% 3%; */
   border-radius: 10px;
 
   color: white;

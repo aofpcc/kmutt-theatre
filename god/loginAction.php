@@ -35,7 +35,7 @@ $klein->with("/test", function () use ($klein) {
     * Register perform at this function
     **/
     $klein->respond('POST', '/register', function ($request, $response, $service, $app, $validator) {
-        
+
         if ($request->password != $request->confirmpassword) {
             $response->redirect('/register');
             $response->sendHeaders();
@@ -163,5 +163,9 @@ $klein->with("/test", function () use ($klein) {
         }
         $service->content = "The password was changed";
         $service->render('layouts/core/home.php');
+    });
+
+    $klein->respond('GET', '/bank', function($request, $response, $service, $app, $validator) {
+      $service->render('layouts/core/bank.php');
     });
 });

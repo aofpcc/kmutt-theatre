@@ -3,9 +3,9 @@ var typechoice = 4;
 var flavorchoice = 3;
 var drinkchoice = 5;
 var sizechoice =4;
-var sizechoiceS =2;
 var setchoice =3;
 var snackchoice=2;
+
 
 
 function removeitem(id) {
@@ -39,7 +39,7 @@ if (type == "PRST") {
 if (type=="SN") {
     var snack = $('.snackCheckbox:checked').val();
     var sizeS = $('.sizeSCheckbox:checked').val();
-    var productID = type + snack + sizeS;
+    var productID = type + snack + '00';
     get_price(productID);
 }
 
@@ -228,7 +228,6 @@ function select_type(id) {
  if (id == "Check1") {
      $("#drinkbox").hide();
      $("#setbox").hide();
-     $("#sizeboxS").hide();
      $("#snackbox").hide();
      $("#flavorbox").show();
      $("#sizebox").show();
@@ -241,7 +240,6 @@ function select_type(id) {
      $("#setbox").hide();
      $("#flavorbox").hide();
      $("#sizebox").hide();
-     $("#sizeboxS").hide();
      $("#snackbox").hide();
      $("#drinkbox").show();
      $("#sizebox").show();
@@ -252,10 +250,9 @@ function select_type(id) {
 
 
  } else if (id == "Check3") {
-     $("#flavorbox").hide();
+     $("#flavorbox").show();
      $("#sizebox").hide();
-     $("#sizeboxS").hide();
-     $("#drinkbox").hide();
+     $("#drinkbox").show();
      $("#snackbox").hide();
      $("#setbox").show();
      clearsize();
@@ -266,7 +263,6 @@ function select_type(id) {
    } else if (id == "Check4") {
          $("#flavorbox").hide();
          $("#sizebox").hide();
-         $("#sizeboxS").show();
          $("#drinkbox").hide();
          $("#setbox").hide();
          $("#snackbox").show();
@@ -313,13 +309,6 @@ function select_snack(id) {
 function select_size(id) {
  for (var i = 1; i <= sizechoice; i++) {
      document.getElementById("size" + i).checked = false;
- }
- document.getElementById(id).checked = true;
-}
-
-function select_sizeS(id) {
- for (var i = 1; i <= sizechoiceS; i++) {
-     document.getElementById("sizeS" + i).checked = false;
  }
  document.getElementById(id).checked = true;
 }

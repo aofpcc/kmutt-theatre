@@ -86,6 +86,27 @@
                     </div>
                 </div>
 
+
+                <div id="setbox" style="margin-left:15px; display:none;">
+                    Set Promotion
+                    <div class="form-check">
+                        <label class="form-check-label">
+                <input type="checkbox" class="form-check-input setCheckbox" name="setpromotion" id="set1" value="01" onclick="select_set(this.id)" />  Couple
+                </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                <input type="checkbox" class="form-check-input setCheckbox" name="setpromotion" id="set2" value="02" onclick="select_set(this.id)" /> Combo
+                </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input setCheckbox" name="setpromotion" id="set3" value="03" onclick="select_set(this.id)" /> Family Set
+                    </label>
+                  </div>
+                </div>
+
+
                 <div id="flavorbox" style="margin-left:15px; display:none;">
                     Flavor
                     <div class="form-check">
@@ -104,7 +125,6 @@
           </label>
                     </div>
                 </div>
-
 
 
                 <div id="drinkbox" style="margin-left:15px; display:none;">
@@ -136,6 +156,7 @@
                     </div>
                 </div>
 
+
                 <div id="snackbox" style="margin-left:15px; display:none;">
                     Snack
                     <div class="form-check">
@@ -165,25 +186,6 @@
                     </div>
                 </div>
 
-                <div id="setbox" style="margin-left:15px; display:none;">
-                    Set Promotion
-                    <div class="form-check">
-                        <label class="form-check-label">
-            <input type="checkbox" class="form-check-input setCheckbox" name="setpromotion" id="set1" value="01" onclick="select_set(this.id)" />  Couple
-          </label>
-                    </div>
-                    <div class="form-check">
-                        <label class="form-check-label">
-            <input type="checkbox" class="form-check-input setCheckbox" name="setpromotion" id="set2" value="02" onclick="select_set(this.id)" /> Combo
-          </label>
-                    </div>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input setCheckbox" name="setpromotion" id="set3" value="03" onclick="select_set(this.id)" /> Family Set
-                    </label>
-                  </div>
-                </div>
-
 
                 <div id="sizebox" style="margin-left:25px; display:none; ">
                     Size
@@ -205,20 +207,6 @@
                     <div class="form-check">
                         <label class="form-check-label">
             <input type="checkbox" class="form-check-input sizeCheckbox" name="size" id="size4" value="XL" onclick="select_size(this.id)" /> XL
-          </label>
-                    </div>
-                </div>
-
-                <div id="sizeboxS" style="margin-left:25px; display:none; ">
-                    Size
-                    <div class="form-check">
-                        <label class="form-check-label">
-            <input type="checkbox" class="form-check-input sizeSCheckbox" name="sizeS" id="sizeS1" value="0M" onclick="select_sizeS(this.id)" /> M
-          </label>
-                    </div>
-                    <div class="form-check">
-                        <label class="form-check-label">
-            <input type="checkbox" class="form-check-input sizeSCheckbox" name="sizeS" id="sizeS2" value="0L" onclick="select_sizeS(this.id)" /> L
           </label>
                     </div>
                 </div>

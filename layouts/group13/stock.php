@@ -4,7 +4,7 @@
   $test="test2";
   global $database;
   $conn = $database->getConnection();
-  $sql = "select s.Remain,p.productName from G13_FNB_Stock as s, G13_FNB_ProductList as p where s.productID = p.productID";
+  $sql = "select Remain,stockName from G13_FNB_Stock";
   $stmt = $conn->prepare($sql);
   $stmt->execute();
   $num = $stmt->rowCount();
@@ -29,7 +29,7 @@
       <tr>
           <td>
             <?php
-              echo $row[$i]["productName"];
+              echo $row[$i]["stockName"];
             ?>
             <!-- test -->
           </td>

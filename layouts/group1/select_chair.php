@@ -14,11 +14,10 @@
   <script src="/layouts/group1/js/jquery.seat-charts.js"></script>
   <link href="/layouts/group1/css/style.css" rel="stylesheet" type="text/css" media="all" />
   <link rel="stylesheet" href="/layouts/group1/css/onStyle.css">
-</head>
+
 </head>
 
-<br><br>
-
+  <br><br>
   <div class="main">
     <h1 class="my-4"><button type="button" class="btn btn-lg btn-danger">STEP 3</button>
       <small>Select seats</small>
@@ -81,5 +80,5 @@
     <!-- <script src="/layouts/group1/js/booking.js" charset="utf-8"></script> -->
     <?php $this->partial("layouts/group1/js/booking.php"); ?>
   </div>
-  <script src="/layouts/group1/js/jquery.nicescroll.js"></script>
-  <script src="/layouts/group1/js/scripts.js"></script>
+<!-- <script src="/layouts/group1/js/jquery.nicescroll.js"></script> -->
+<!-- <script src="/layouts/group1/js/scripts.js"></script> -->

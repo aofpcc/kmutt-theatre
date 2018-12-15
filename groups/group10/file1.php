@@ -9,8 +9,9 @@ $klein->respond('GET', '/group10', function ($request, $response, $service, $app
 
   $list = $conn->query("SELECT a.id AS id, status, name, type, start_date, end_date
                         FROM G10_Advertisement_info AS a,
-                         G10_Advertisement_banner,
-                         G10_Advertisement_time")->fetchAll(PDO::FETCH_BOTH);
+                         G10_Advertisement_banner AS b,
+                         G10_Advertisement_time AS c
+                         WHERE a.id = b.id AND b.id = c.id ")->fetchAll(PDO::FETCH_BOTH);
   // $num = $stmt->rowCount();
   // $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
 

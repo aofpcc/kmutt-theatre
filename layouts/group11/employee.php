@@ -31,7 +31,7 @@
       </ul>
     </div> -->
 
-    <div class="remove-container">
+    <div class="remove-container" style="width: inherit!important;">
       <div class="row">
         <div class="col-md-2 d-none d-md-block bg-light sidebar">
           <div class="sidebar-sticky">
@@ -115,11 +115,11 @@
           </div>
       </div>
         <?php
-       
+
         $this->partial('layouts/group11/component/'.$this->nameTag);
 
         // require('layouts/group11/component/'.$this->nameTag);
-  
+
         ?>
 
       </div>

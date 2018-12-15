@@ -43,7 +43,7 @@ padding: 30px 30px;
 
 <br><br>
   <div class="main">
-    <h1 class="my-4"><button type="button" class="btn btn-lg btn-primary">STEP 5</button>
+    <h1 class="my-4"><button type="button" class="btn btn-lg btn-danger">STEP 5</button>
       <small>Finish</small>
     </h1>
     <button type="button" class="btn btn-primary btn-lg btn-block">BACK TO HOME</button>

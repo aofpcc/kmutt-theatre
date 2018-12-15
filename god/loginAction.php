@@ -16,6 +16,7 @@ $klein->with("/test", function () use ($klein) {
     });
 
     $klein->respond('GET', '/login', function ($request, $response, $service, $app, $validator) {
+        $service->title = "Login Customer";
         $service->bootstrap3 = false;
         $service->render('layouts/shared/test_login.php');
     });

@@ -37,8 +37,7 @@ class MailSender
 /**
  * @author Bunyarit [github.com/aofpcc]
  *
- * The LoginPerformer is a performer of login which
- * can handle about register, perform login, forget password, validateToken
+ * The LoginPerformer is a performer of login which can handle about register, perform login, forget password, validateToken
  */
 class LoginPerformer
 {

@@ -160,11 +160,14 @@ $klein->respond('GET', '/androidRegist', function ($request, $response, $service
     $validateLink = "/test/verify"; // neeed to have / before  and no / at the end
     $role = 'customer';
     $result = $app->login->register($user, $pass, $email, $validateLink, $role);
+    $userID = $result["userID"];
     if ($result['created']) {
         $query = "INSERT INTO G05_Member_profile (MemberID, ID_Card, Fname, Lname, Gender, Birthdate, Email, PhoneNumber)
-                                VALUES ($result["userID"],'$identNo', '$firstname', '$lastname', '$gender', '$birthdate', '$email', '$phoneno');
-                                INSERT INTO G05_Member_address (MemberID, Address, Province, District, SubDistrict, ZipCode)
-                                VALUES ($result["userID"],'$address', '$province', '$district', '$subdist', '$postcode');"
+                                VALUES ('$userID','$identNo', '$firstname', '$lastname', '$gender', '$birthdate', '$email', '$phoneno')";
+        $stmt = $conn->prepare($query);
+        $stmt->execute();
+        $query = "INSERT INTO G05_Member_address (MemberID, Address, Province, District, SubDistrict, ZipCode)
+                                VALUES ('$userID','$address', '$province', '$district', '$subdist', '$postcode')";
 
         $stmt = $conn->prepare($query);
         $stmt->execute();
@@ -179,7 +182,7 @@ $klein->respond('GET', '/androidRegist', function ($request, $response, $service
 
   }else{
       $arr["done"] = false;
-      $arr["note"] = "Identification number, phone number, or email already exist."
+      $arr["note"] = "Identification number, phone number, or email already exist.";
   }
 
   echo json_encode($arr);

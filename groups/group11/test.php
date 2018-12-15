@@ -6,8 +6,8 @@ $klein->respond("/staff/finance/test", function($request, $response, $service, $
 
 
 
-  $revenue = $conn->query("SELECT sum(amount) as total FROM G03_FIN_Revenue WHERE  addDate >= '".$startDate."' AND addDate <= '".$endDate."'")->fetch();
-  $expenses = $conn->query("SELECT sum(amount) as total FROM G03_FIN_Expenses WHERE  addDate >= '".$startDate."' AND addDate <= '".$endDate."'")->fetch();
+  $revenue = $conn->query("SELECT sum(amount) as total FROM G03_FIN_Revenue WHERE  addDate >= '".$startDate." 00:00:00' AND addDate <= '".$endDate." 23:59:59'")->fetch();
+  $expenses = $conn->query("SELECT sum(amount) as total FROM G03_FIN_Expenses WHERE  addDate >= '".$startDate." 00:00:00' AND addDate <= '".$endDate." 23:59:59'")->fetch();
 
   $result = [
     "revenue" => $revenue,

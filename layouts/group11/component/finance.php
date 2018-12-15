@@ -28,6 +28,7 @@
         </div>
         <br>
         <button id="search_graph" type="button" class="btn btn-primary active">Search</button>
+        <button id="refesh_page" type="button" class="btn btn-primary active">Reset</button>
       </div>
 
       <div class="col-lg-6">

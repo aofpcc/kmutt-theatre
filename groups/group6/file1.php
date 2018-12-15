@@ -149,7 +149,7 @@ $klein->respond('GET', '/androidRegist', function ($request, $response, $service
   $identNo = $_GET['idcard']; $subdist = $_GET['subdist'];
 
   //Initialize array for return values
-  $arr[] = array();
+  $arr = array();
 
   //Check uniqeness
   $query = "SELECT ID_Card, Email, PhoneNumber from G05_Member_profile where ID_Card = '$identNo' or Email = '$email' or PhoneNumber = '$phoneno'";
@@ -188,7 +188,7 @@ $klein->respond('GET', '/androidRegist', function ($request, $response, $service
       $arr["userID"] = -1;
   }
 
-  echo json_encode($arr);
+  echo json_encode([$arr]);
 });
 
 $klein->respond('GET', '/androidLogin', function ($request, $response, $service, $app, $validator) {

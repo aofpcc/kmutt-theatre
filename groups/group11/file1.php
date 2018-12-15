@@ -126,6 +126,7 @@ $klein->respond('GET', '/staff/employee/finance', function($request, $response, 
       $expenses = $conn->query("SELECT sum(amount) as total FROM G03_FIN_Expenses")->fetchAll(PDO::FETCH_BOTH);
       $service->expenses = $expenses;
 
+      $request;
       $service->render('layouts/group11/employee.php');
 
 });

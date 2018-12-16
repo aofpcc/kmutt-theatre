@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <title><?=$this->pageTitle ?></title>
-    <link rel="stylesheet" href="/layouts/group10/css/ads.css"">
+    <link rel="stylesheet" type="text/css" href="/layouts/group10/css/ads.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="/layouts/group10/js/ads.js"></script>
   </head>

@@ -70,7 +70,7 @@
 
         <form action="/customer/kmutt_home/branch/show_time/select_chair/payment" method="post">
             <ul id="selectedSeats" class="scrollbar scrollbar1"></ul>
-          <button id="booknow" class="checkout-button">Book Now
+          <button id="booknow" class="checkout-button" name="book_now">Book Now
         </button>
         <div id="legend"></div>
       </div>
@@ -80,5 +80,5 @@
     <!-- <script src="/layouts/group1/js/booking.js" charset="utf-8"></script> -->
     <?php $this->partial("layouts/group1/js/booking.php"); ?>
   </div>
-<!-- <script src="/layouts/group1/js/jquery.nicescroll.js"></script> -->
-<!-- <script src="/layouts/group1/js/scripts.js"></script> -->
+  <script src="/layouts/group1/js/jquery.nicescroll.js"></script>
+  <script src="/layouts/group1/js/scripts.js"></script>

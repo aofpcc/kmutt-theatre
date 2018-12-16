@@ -130,7 +130,7 @@ $klein->respond('POST', '/fnb/getprice', function ($request, $response, $service
   if ($num > 0) {
     $row = $stmt->fetchAll(PDO::FETCH_BOTH);
     $row=$row[0];
-    $price = $row['price_per_unit'];
+    $price = $row['price'];
     $productname = $row['productName'];
     $someArray = [
       [

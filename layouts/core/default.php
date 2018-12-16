@@ -6,6 +6,8 @@
   <title><?= ($this->passValue["title"] == "Page")? $this->title: $this->passValue["title"] ?></title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/png" href="/layouts/core/img/narongrit.png"/>
+  <link rel="shortcut icon" type="image/png" href="/layouts/core/img/narongrit.png"/> 
   <?php if($this->bootstrap == false){?>
     <link rel="stylesheet" href="/layouts/core/css/master4.css">
   <?php }else if($this->bootstrap3) {?>
@@ -49,7 +51,7 @@
   <?php }else{ ?>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top navbar-custom-color">
   <!-- Brand/logo -->
-      <a class="navbar-brand" href="#">KMUTT THEATRE</a>
+    <a class="navbar-brand" href="#"> KMUTT THEATRE</a>
   <!-- Links -->
       <ul class="navbar-nav">
         <li class="nav-item">

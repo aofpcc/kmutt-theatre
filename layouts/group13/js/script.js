@@ -6,8 +6,6 @@ var sizechoice =4;
 var setchoice =3;
 var snackchoice=2;
 
-
-
 function removeitem(id) {
      console.log(id);
      $("#tritem"+id).remove();
@@ -89,8 +87,6 @@ function get_price(productID) {
          $("#items").append(markup);
          item++;
          clearall();
-
-
      }
  }
 
@@ -121,11 +117,8 @@ function update_stock(productID) {
          $("#items").append(markup);
          item++;
          clearall();
-
-
      }
  }
-
 }
 
 function checkemp(){
@@ -149,11 +142,10 @@ function checkemp(){
                  $("#empvalid").hide();
                  $("#empinvalid").show();
              }
-
         }
     }
-
  }
+
 function checkcoupon(){
    var couponcode = $("#couponcode").val();
    let formData = new FormData();
@@ -174,11 +166,11 @@ function checkcoupon(){
                 $("#codevalid").hide();
                 $("#codeinvalid").show();
             }
-
        }
    }
 
 }
+
 function checkcusid(){
     var CusID = $("#CusID").val();
     let formData = new FormData();
@@ -206,6 +198,7 @@ function checkcusid(){
     }
 
  }
+ 
 function couponcheck(type){
     if(type=="Coupon"){
         $("#couponbox").show();

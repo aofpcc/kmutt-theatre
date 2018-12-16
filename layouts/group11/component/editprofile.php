@@ -10,64 +10,93 @@
     
     <div class="emp-profile">          
         <div class="row">
-            <div class="col-md-4">
-                <div class="profile-img">
-                      <img src="/layouts/group11/img/Ppim.jpg" alt=""/>
-                      <div class="file btn btn-lg btn-primary">
-                      Change Photo
-                      <input type="file" name="file"/>
-                      </div>
-                  </div>
-            </div>
-            <div class="col-md-8">
-                    <div class="form-group">
-                        <label class="col-lg-3 control-label edit">First name:</label>
-                        <div class="col-lg-8">
-                        <input class="form-control" type="text" placeholder="Jane">
+            <form action="/emp/staff/employee/editprofile/save" method="post" enctype="multipart/form-data">
+                <div class="col-md-4">
+                    <div class="profile-img">
+                        <img src="
+                            <?php 
+                                    $pic = $this->picture;
+                                    echo '/'.$pic[0]['parth'];                                   
+                            ?>
+                        " alt=""/>
+                        <div class="file btn btn-lg btn-primary">
+                        Change Photo
+                        <input type="file" name="fileToUpload" id="fileToUpload">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="col-lg-3 control-label edit">Last name:</label>
-                        <div class="col-lg-8 edit">
-                        <input class="form-control" type="text" placeholder="Bishop">
+                </div>
+                <div class="col-md-8">
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label edit">First name:</label>
+                            <div class="col-lg-8">
+                            <input class="form-control" type="text" name="firstName" value= 
+                                <?php 
+                                    $name = $this->profile;
+                                    echo $name[0]['Firstname'];                                   
+                                ?>
+                            >
+                            </div>
                         </div>
-                    </div>                   
-                    <div class="form-group">
-                        <label class="col-lg-3 control-label edit-label">Email:</label>
-                        <div class="col-lg-8 edit">
-                        <input class="form-control" type="text" placeholder="janesemail@gmail.com">
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label edit">Last name:</label>
+                            <div class="col-lg-8 edit">
+                            <input class="form-control" type="text" name="lastName" value=
+                                <?php 
+                                    $name = $this->profile;
+                                    echo $name[0]['Lastname'];                                   
+                                ?>
+                            >
+                            </div>
+                        </div>                   
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label edit-label">Email:</label>
+                            <div class="col-lg-8 edit">
+                            <input class="form-control" type="text" name="Email" value=
+                                <?php 
+                                    $name = $this->profile;
+                                    echo $name[0]['Email'];                                   
+                                ?>
+                            >
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label edit-label">Username:</label>
-                        <div class="col-md-8 edit">
-                        <input class="form-control" type="text" placeholder="janeuser">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label edit-label">Username:</label>
+                            <div class="col-md-8 edit">
+                            <input class="form-control" type="text" name="Username" value=
+                                <?php 
+                                    $user = $this->userName;
+                                    echo $user[0]['username'];                                   
+                                ?>
+                            >
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label edit-label">Password:</label>
-                        <div class="col-md-8 edit">
-                        <input class="form-control" type="password" placeholder="11111122333">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label edit-label">Password:</label>
+                            <div class="col-md-8 edit">
+                            <input class="form-control" type="password" name="password" placeholder="******" required>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label edit-label">Confirm password:</label>
-                        <div class="col-md-8 edit">
-                        <input class="form-control" type="password" placeholder="11111122333">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label edit-label">Confirm password:</label>
+                            <div class="col-md-8 edit">
+                            <input class="form-control" type="password" name="confirmpassword" placeholder="******" required>
+                                <div style = "font-size:11px; color:#cc0000; margin-top:10px">
+                                    <?php echo $this->error; ?>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label"></label>
-                        <div class="col-md-8 edit">
-                        <input type="button" class="btn btn-primary" value="Save Changes">
-                        <span></span>
-                        <input type="reset" class="btn btn-default"  value="Cancel">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label"></label>
+                            <div class="col-md-8 edit">
+                            <input type="submit" class="btn btn-primary" value="Save Changes">
+                            <span></span>
+                            <a class="btn btn-default" href="/emp/staff/employee/profile">Cancel</a>
+                            </div>
                         </div>
-                    </div>
-            </div> 
+                </div>
+            </form>  
         </div>                           
-    </div> 
-                  
+    </div>            
      
 </main>
         

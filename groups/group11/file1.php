@@ -75,9 +75,15 @@ $klein->respond('GET', '/staff/employee/profile', function($request, $response, 
   $stmt->execute();
   $service->profile = $stmt->fetchAll(PDO::FETCH_BOTH);
 
-    // $service->id2 =  $data['userID'];
-    $service->nameTag = 'profile.php';
-    $service->render('layouts/group11/employee.php');
+  //select db G11_Emp_picture
+  $user = "SELECT * FROM G11_Emp_picture WHERE userID = $id " ;
+  $stmt = $conn->prepare($user);
+  $stmt->execute();
+  $service->picture = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+  // $service->id2 =  $data['userID'];
+  $service->nameTag = 'profile.php';
+  $service->render('layouts/group11/employee.php');
 
 });
 
@@ -92,16 +98,258 @@ $klein->respond('GET', '/staff/employee/editprofile', function($request, $respon
   global $database;
   $conn = $database->getConnection();
 
- //select db
-  // $service->$id = $data['userID'];
+ //select db G11_Emp_staff
   $id = $data['userID'];
   $profileName = "SELECT * FROM G11_Emp_staff WHERE userID = $id " ;
   $stmt = $conn->prepare($profileName);
   $stmt->execute();
   $service->profile = $stmt->fetchAll(PDO::FETCH_BOTH);
 
-    // $service->id2 =  $data['userID'];
+   //select db core_user_table
+   $user = "SELECT username FROM core_user_table WHERE userID = $id " ;
+   $stmt = $conn->prepare($user);
+   $stmt->execute();
+   $service->userName = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+  //select db G11_Emp_picture
+  $user = "SELECT * FROM G11_Emp_picture WHERE userID = $id " ;
+  $stmt = $conn->prepare($user);
+  $stmt->execute();
+  $service->picture = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+    
     $service->nameTag = 'editprofile.php';
+    $service->render('layouts/group11/employee.php');
+});
+
+$klein->respond('POST', '/staff/employee/editprofile/save', function($request, $response, $service, $app, $validator){
+  error_reporting(E_ALL);
+  ini_set('display_errors', 1);
+
+  //check login
+  $data = $app->login->LoginThenGoTo('employee','/emp/staff');
+
+  // connect db
+  global $database;
+  $conn = $database->getConnection();
+
+      //select db G11_Emp_staff
+      $id = $data['userID'];
+      $profileName = "SELECT * FROM G11_Emp_staff WHERE userID = $id " ;
+      $stmt = $conn->prepare($profileName);
+      $stmt->execute();
+      $service->profile = $stmt->fetchAll(PDO::FETCH_BOTH);
+  
+     //select db core_user_table
+      $user = "SELECT * FROM core_user_table WHERE userID = $id " ;
+      $stmt = $conn->prepare($user);
+      $stmt->execute();
+      $service->userName = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+       //select db G11_Emp_picture
+      $user = "SELECT * FROM G11_Emp_picture WHERE userID = $id " ;
+      $stmt = $conn->prepare($user);
+      $stmt->execute();
+      $service->picture = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+  //password is not same as confirm password
+  if($request->password != $request->confirmpassword) {
+
+    $service->error = 'password is not same as confirm password.';
+    $service->nameTag = 'editprofile.php';
+    $service->render('layouts/group11/employee.php');
+    
+  }
+  //check password incorect
+  if($request->password == $request->confirmpassword){
+    $check = md5($request->password);
+
+    //select db core_password_table
+    $pass = "SELECT `password` FROM core_password_table WHERE userID = $id " ;
+    $stmt = $conn->prepare($pass);
+    $stmt->execute();
+    $passUser = $stmt->fetchAll(PDO::FETCH_BOTH);
+  
+    if($check != $passUser[0]['password']){
+
+        $service->error = 'password incorrect.';
+        $service->nameTag = 'editprofile.php';
+        $service->render('layouts/group11/employee.php');
+    }
+  }
+
+
+  //not null
+  $firstname = $request->firstName;
+  $lastname = $request->lastName;
+  $email = $request->Email;
+  $username = $request->Username;
+  $file = $request->file;
+  //check Email or username has already exists.
+  if($email != $service->profile[0]['Email']){
+  //select db G11_Emp_staff
+    $checkemail = "SELECT * FROM G11_Emp_staff WHERE Email = '$email'" ;
+    $stmt = $conn->prepare($checkemail);
+    $stmt->execute();
+    $countEmail = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+      if(count($countEmail) == 1){
+          $service->error = 'Email has already exists.';
+          $service->nameTag = 'editprofile.php';
+          $service->render('layouts/group11/employee.php');
+      }
+
+
+      if(count($countEmail) == null){
+      //update db G11_Emp_staff
+      $updateProfile = "UPDATE G11_Emp_staff SET Firstname = '$firstname', Lastname = '$lastname', Email = '$email' WHERE userID = $id";
+      $stmt = $conn->prepare($updateProfile);
+      $stmt->execute();
+
+      //update db core_user_table
+      $updateEmail = "UPDATE core_user_table SET email = '$email' WHERE userID = $id";
+      $stmt = $conn->prepare($updateEmail);
+      $stmt->execute();
+    }
+  }
+
+  if($username !=  $service->userName[0]['username']){
+      //select db core_user_table
+      $checkUser = "SELECT * FROM core_user_table WHERE username = '$username'" ;
+      $stmt = $conn->prepare($checkUser);
+      $stmt->execute();
+      $countUser = $stmt->fetchAll(PDO::FETCH_BOTH);
+  
+        if(count($countUser) == 1){
+            $service->error = 'Username has already exists.';
+            $service->nameTag = 'editprofile.php';
+            $service->render('layouts/group11/employee.php');
+        }
+  
+  
+        if(count($countUser) == null){
+        //update db G11_Emp_staff
+        $updateProfile = "UPDATE G11_Emp_staff SET Firstname = '$firstname', Lastname = '$lastname', Email = '$email' WHERE userID = $id";
+        $stmt = $conn->prepare($updateProfile);
+        $stmt->execute();
+  
+        //update db core_user_table
+        $updateUser = "UPDATE core_user_table SET username = '$username' WHERE userID = $id";
+        $stmt = $conn->prepare($updateUser);
+        $stmt->execute();
+      }
+  }
+
+  //update db G11_Emp_staff
+  $updateProfile = "UPDATE G11_Emp_staff SET Firstname = '$firstname', Lastname = '$lastname' WHERE userID = $id";
+  $stmt = $conn->prepare($updateProfile);
+  $stmt->execute();
+
+  //upload picture
+  $fileName = md5(uniqid(rand(),true));
+  $target_dir = "layouts/group11/uploads/";
+  $target_file = $target_dir .$fileName. basename($_FILES["fileToUpload"]["name"]);
+  $uploadOk = 1;
+  $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+  // Check if image file is a actual image or fake image
+  if(isset($_POST["submit"])) {
+      $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+      if($check !== false) {
+          echo "File is an image - " . $check["mime"] . ".";
+          $uploadOk = 1;
+      } else {
+          echo "File is not an image.";
+          $uploadOk = 0;
+      }
+  }
+  // Check if file already exists
+  if (file_exists($target_file)) {
+    echo "Sorry, file already exists.";
+    $uploadOk = 0;
+  }
+  // Check file size
+  if ($_FILES["fileToUpload"]["size"] > 5000000) {
+    echo "Sorry, your file is too large.";
+    $uploadOk = 0;
+  }
+  // Allow certain file formats
+  if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+  && $imageFileType != "gif" ) {
+    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+    $uploadOk = 0;
+  }
+  // Check if $uploadOk is set to 0 by an error
+  if ($uploadOk == 0) {
+    echo "Sorry, your file was not uploaded.";
+  // if everything is ok, try to upload file
+  } else {
+    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+        // echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+        //update db G11_Emp_picture
+        $updatePicture = "UPDATE G11_Emp_picture SET parth = '$target_file' WHERE userID = $id";
+        $stmt = $conn->prepare($updatePicture);
+        $stmt->execute();
+    } else {
+        echo "Sorry, there was an error uploading your file.";
+    }
+  }
+
+
+    $response->redirect('/emp/staff/employee/profile');
+  });
+
+  $klein->respond('POST', '/staff/employee/editprofile/test', function($request, $response, $service, $app, $validator){
+    // $target_dir = "/layouts/group11/uploads/";
+  $fileName = md5(uniqid(rand(),true));
+  $target_dir = "layouts/group11/uploads/";
+  $target_file = $target_dir .$fileName. basename($_FILES["fileToUpload"]["name"]);
+  $uploadOk = 1;
+  $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+  // Check if image file is a actual image or fake image
+  if(isset($_POST["submit"])) {
+      $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+      if($check !== false) {
+          echo "File is an image - " . $check["mime"] . ".";
+          $uploadOk = 1;
+      } else {
+          echo "File is not an image.";
+          $uploadOk = 0;
+      }
+  }
+  // Check if file already exists
+  if (file_exists($target_file)) {
+    echo "Sorry, file already exists.";
+    $uploadOk = 0;
+  }
+  // Check file size
+  if ($_FILES["fileToUpload"]["size"] > 5000000) {
+    echo "Sorry, your file is too large.";
+    $uploadOk = 0;
+  }
+  // Allow certain file formats
+  if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+  && $imageFileType != "gif" ) {
+    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+    $uploadOk = 0;
+  }
+  // Check if $uploadOk is set to 0 by an error
+  if ($uploadOk == 0) {
+    echo "Sorry, your file was not uploaded.";
+  // if everything is ok, try to upload file
+  } else {
+    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+        echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+        //update db G11_Emp_picture
+        $updatePicture = "UPDATE G11_Emp_picture SET parth = '$target_file' WHERE userID = $id";
+        $stmt = $conn->prepare($updatePicture);
+        $stmt->execute();
+    } else {
+        echo "Sorry, there was an error uploading your file.";
+    }
+  }
+
+  // $service->error =
+    $service->nameTag = 'tester.php';
     $service->render('layouts/group11/employee.php');
 });
 

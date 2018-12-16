@@ -24,6 +24,7 @@
   </style> -->
 </head>
 
+<<<<<<< Updated upstream
 <br><br>
 <div class="main">
   <h1 class="my-4"><button type="button" class="btn btn-lg btn-danger">STEP 4</button>
@@ -72,5 +73,36 @@ foreach ($arry as $result) {
         </div>
       </div>
     </div>
+=======
+                    <div class="col-md-8">
+                        <br>
+                        <img src="/layouts/group1/image/ten.jpg"><br><br>
+                        <font size="6">GingerClown</font><br><br>
+                        <font size="4">30 February 2030</font><br><br>
+                        <font size="4">21 : 00</font> &nbsp&nbsp&nbsp  <font size="4"> Theater 5 </font><br><br>
+                        <font size="4">135 Mins</font> <br><br>
+                        <font size="4">จำนวนที่นั่งเลือก</font>
+                        <font size="4">ที่นั่ง</font><br><br>
+                        <font size="4">ราคารวม (ส่วนลด 10%) </font><br><br>
+                        <font size="4">ที่นั่ง </font>
+                        <?php
+                        // for ($i=0; $i < count($this->seats); $i++) {
+                        //   echo json_encode($this->seats);
+                        //
+                        // }
+                        // $arry = json_decode(json_encode($this->seats), true);
+                        // foreach ($arry as $result)
+                        // {
+                        //   echo $result['row'],'-',$result['seat'],'<br/>';
+                        // }
+                          //echo json_encode($this->seats);
+                          //print_r($this->seats);
+                        ?>
+                        <br> <br>
+      <button type="button" class="btn btn-lg btn-default" >KBANK</button>
+      <button type="button" class="btn btn-lg btn-default" >SCB</button>
+      <button type="button" class="btn btn-lg btn-default" >CREDIT</button>
+      <button type="button" class="btn btn-lg btn-default" >CLUBCARD</button>
+>>>>>>> Stashed changes
   </div>
 </div>

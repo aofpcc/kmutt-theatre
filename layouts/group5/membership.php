@@ -54,7 +54,8 @@
     <div class="col-sm-3">
       <p class="gap"></p>
       <!-- <p class="gap set-text"><a href="localhost:8000/change/username">Change username</a></p> -->
-      <p class="gap set-text"><a href="/customer/change/password">Change password</a></p>
+      <!-- <p class="gap set-text"><a href="/customer/change/password">Change password</a></p> -->
+      <p class="gap set-text"><a href="/test/changePassword">Change password</a></p>
       <p class="gap set-text"><a href="/customer/change/phonenumber">Change phone number</a></p>
       <p class="gap set-text"><a href="/customer/change/email">Change e-mail</a></p>
     </div>
@@ -132,16 +133,6 @@
           <?php echo ($this->usr[0]["ID_Card"]) ?>
         </a>
       </p>
-      <!-- <p class="bold field-title gap2">First name : <br/>
-        <a class="unbold field-value">
-          <?php echo ($this->usr[0]["Fname"]) ?>
-        </a>
-      </p> -->
-      <!-- <p class="bold field-title">Last name : <br/>
-        <a class="unbold field-value">
-          <?php echo ($this->usr[0]["Lname"]) ?>
-        </a>
-      </p> -->
       <p class="bold field-title gap2">NAME <br/>
         <a class="unbold field-value">
           <?php echo ($this->usr[0]["Fname"])." ".($this->usr[0]["Lname"]) ?>
@@ -160,7 +151,7 @@
       <p class="bold field-title">AGE <br/>
         <a class="unbold field-value">
           <?php echo $this->age; ?>
-          <!-- years old -->
+          years old
         </a>
       </p>
       <p class="bold field-title">ADDRESS <br/>

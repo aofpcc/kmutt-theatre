@@ -74,7 +74,18 @@ var chart = new CanvasJS.Chart("chartShowtime", {
 	}]
 });
 
-
+<?php
+	$gerne = [];
+	foreach($this->gene as $value){
+		$temp = [
+			"y" => $value["amount"],
+			"label" => $value["label"]
+		  ];
+		array_push($gerne, $temp);
+	}
+	?>
+	var gerne = <?php echo json_encode($gerne); ?>;
+	
 var chart3 = new CanvasJS.Chart("chartGene", {
 	animationEnabled: true,
 	title:{
@@ -88,17 +99,24 @@ var chart3 = new CanvasJS.Chart("chartGene", {
 		indexLabelFontSize: 17,
 		indexLabel: "{label} - #percent%",
 		toolTipContent: "<b>{label}:</b> {y} (#percent%)",
-		dataPoints: [
-			{ y: 67, label: "Inbox" },
-			{ y: 28, label: "Archives" },
-			{ y: 10, label: "Labels" },
-			{ y: 7, label: "Drafts"},
-			{ y: 15, label: "Trash"},
-			{ y: 6, label: "Spam"}
-		]
+		dataPoints: gerne
 	}]
 });
 
+<?php
+	$snack = [];
+	foreach($this->productName as $value){
+		$temp = [
+			"y" => $value["amount"],
+			"label" => $value["label"]
+		  ];
+		array_push($snack, $temp);
+	}
+	?>
+	var snack = <?php echo json_encode($snack); ?>;
+	
+
+	console.log(snack);
 var chart4 = new CanvasJS.Chart("chartSnack", {
 	animationEnabled: true,
 	title:{
@@ -112,14 +130,7 @@ var chart4 = new CanvasJS.Chart("chartSnack", {
 		indexLabelFontSize: 17,
 		indexLabel: "{label} - #percent%",
 		toolTipContent: "<b>{label}:</b> {y} (#percent%)",
-		dataPoints: [
-			{ y: 67, label: "Inbox" },
-			{ y: 28, label: "Archives" },
-			{ y: 10, label: "Labels" },
-			{ y: 7, label: "Drafts"},
-			{ y: 15, label: "Trash"},
-			{ y: 6, label: "Spam"}
-		]
+		dataPoints: snack
 	}]
 });
 chart.render();

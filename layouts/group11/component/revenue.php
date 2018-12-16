@@ -228,6 +228,7 @@ tbody.collapse.in {
   var labels = <?php echo json_encode($labels); ?>;
   var datas = <?php echo json_encode($datas); ?>;
   var ctx = document.getElementById("revChart");
+  console.log(labels);
   var revChart = new Chart(ctx, {
     type: 'line',
     data: {

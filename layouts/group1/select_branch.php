@@ -97,14 +97,10 @@
 
                         ?>
 
-                        <option value="value <?=$this->query[$i]['BranchName'] ?>"><?=$this->query[$i]['BranchName']  ?></option>
+                        <option value="value <?=$this->query[$i]['BranchName'] ?>">
+                          <?=$this->query[$i]['BranchName']  ?></option>
 
-                        <?php } ?>
-
-                        <!-- <option>Emprive' Cineclub Emporium Sukhumvit</option>
-                        <option>SF WORLD CINEMA Central World</option>
-                        <option>SFX CINEMA Central Rama 9</option>
-                        <option>SFX CINEMA Central Plaza Chaengwattana</option> -->
+                      <?php } ?>s
 
                       </select>
 

@@ -80,5 +80,5 @@
     <!-- <script src="/layouts/group1/js/booking.js" charset="utf-8"></script> -->
     <?php $this->partial("layouts/group1/js/booking.php"); ?>
   </div>
-<!-- <script src="/layouts/group1/js/jquery.nicescroll.js"></script> -->
-<!-- <script src="/layouts/group1/js/scripts.js"></script> -->
+  <script src="/layouts/group1/js/jquery.nicescroll.js"></script>
+  <script src="/layouts/group1/js/scripts.js"></script>

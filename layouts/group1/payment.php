@@ -1,5 +1,4 @@
 <head>
-  <title><?=$this->passValue["pageTitle"] ?></title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
@@ -97,7 +96,6 @@
 
               <font size="4"> ราคารวม </font>
               <br/>
-              XXXX
               <p>
 
               </p>

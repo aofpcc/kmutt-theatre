@@ -33,8 +33,8 @@
               <font size="6">
                 <?php echo $this->movie_name; ?>
                 <br>
-              </font> 
-              
+              </font>
+
               <font size="4">
                 <i class="far fa-clock"></i>
                 <?php echo date('d/m/Y', $this->showtime); ?>
@@ -50,26 +50,37 @@
               </font>
               <br>
 
-              <font size="4"> ที่นั่ง </font>
+              <!-- <font size="4"> ที่นั่ง </font>
               <br />
               <?php
                 // for ($i=0; $i < count($this->seats); $i++) {
                 //   echo json_encode($this->seats);
                 //
                 // }
-                $arry = json_decode(json_encode($this->seats), true);
-                foreach ($arry as $result)
-                {
-                  $seat_no = $result['row'].'-'.$result['seat'];
-                  echo "<div class='btn btn-outline-dark btn-sm'><b>$seat_no</b></div>";
-                  echo "&nbsp;";  // add a little space
-                }
+                // $arry = json_decode(json_encode($this->seats), true);
+                // foreach ($arry as $result)
+                // {
+                //   $seat_no = $result['row'].'-'.$result['seat'];
+                //   echo "<div class='btn btn-outline-dark btn-sm'><b>$seat_no</b></div>";
+                //   echo "&nbsp;";  // add a little space
+                // }
                   //echo json_encode($this->seats);
                   //print_r($this->seats);
-              ?>
+              ?> -->
               <br> <br>
 
 
+                    <font size="4"> ที่นั่ง </font><br>
+                    <?php
+
+                    $arry = json_decode(json_encode($this->seats), true);
+                    foreach ($arry as $result)
+                    {
+                      echo 'row : ', $result['row'],'   seat : ', $result['seat'],'<br/>';
+                    }
+
+                    ?>
+                    <br> <br>
 
               <?php
                 if($this->selectedSeats == null){
@@ -93,7 +104,7 @@
               <br>
 
               </p><br> <!--link to ticket-->
-              
+
               <?php $this->partial("layouts/group1/js/countdown.php"); ?>
 
               <button type="button" class="btn btn-lg btn-default" >KBANK</button>
@@ -101,7 +112,7 @@
               <button type="button" class="btn btn-lg btn-default" >CREDIT</button>
               <button type="button" class="btn btn-lg btn-default" >CLUBCARD</button>
 
-              <br>
+              <br><br>
             </div>
           </div>
       </div>

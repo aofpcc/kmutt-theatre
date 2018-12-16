@@ -23,7 +23,6 @@
         img {
             width: 20px;
         }
-
     </style>
     <link rel="preload" href="/layouts/group2/js/selectseat/manifest.86920d2276921dc8f875.js" as="script">
     <link rel="preload" href="/layouts/group2/js/selectseat/vendor.eb91d5bf77b2c769fcc2.js" as="script">
@@ -69,7 +68,6 @@
     <style type="text/css">
         /*# sourceURL=undefined */
         /*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJCdXR0b24udnVlIiwic291cmNlUm9vdCI6IiJ9 */
-
     </style>
 </head>
 
@@ -153,7 +151,7 @@
             <div class="section-select-seat">
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-9">
+                        <!-- <div class="col-sm-9">
                             <div class="theater-info">
                                 <ul class="seat-type">
                                     <li class="theater-box">
@@ -7032,7 +7030,7 @@
                                     </table>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-sm-3">
                             <div class="sidebar-select-seat">
                                 <div class="summary-info">
@@ -7089,7 +7087,8 @@
                                                             </g>
                                                         </svg></span><span class="text">Discount & Promotions</span>
                                                 </button></div>
-                                            <div class="col"><a href="/emp/group2/home_page/select_movie/select_time/select_seat/pay_ment"><button type="button" class="button button-blue button-continue btn-block">Next</button></a></div>
+                                            <div class="col"><a href="/emp/group2/home_page/select_movie/select_time/select_seat/pay_ment"><button
+                                                        type="button" class="button button-blue button-continue btn-block">Next</button></a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -7099,8 +7098,6 @@
                     </div>
                 </div>
 
-                <script src="/layouts/group2/js/selectseat/manifest.86920d2276921dc8f875.js" defer=""></script>
-                <script src="/layouts/group2/js/selectseat/vendor.eb91d5bf77b2c769fcc2.js" defer=""></script>
-                <script src="/layouts/group2/js/selectseat/app.baa2eadcab44e34fea36.js" defer=""></script>
+
 
 </body>

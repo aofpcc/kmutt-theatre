@@ -114,7 +114,7 @@ $klein->respond('GET', '/androidGetInfo', function ($request, $response, $servic
 
   $id = $_GET['id'];
 
-  $query = "SELECT * from G05_Member_profile where MemberID = '$id'";
+  $query = "SELECT * FROM core_user_pwd A, G05_Member_profile B, G05_Member_address C WHERE A.userID = '$id' AND B.MemberID = '$id' AND C.MemberID = '$id'";
   $stmt = $conn->prepare($query);
   $stmt->execute();
 

@@ -63,7 +63,7 @@
                 //   $seat_no = $result['row'].'-'.$result['seat'];
                 //   echo "<div class='btn btn-outline-dark btn-sm'><b>$seat_no</b></div>";
                 //   echo "&nbsp;";  // add a little space
-                //}
+                // }
                   //echo json_encode($this->seats);
                   //print_r($this->seats);
               ?> -->
@@ -78,8 +78,7 @@
                     {
                       echo 'row : ', $result['row'],'   seat : ', $result['seat'],'<br/>';
                     }
-                      //echo json_encode($this->seats);
-                      //print_r($this->seats);
+
                     ?>
                     <br> <br>
 
@@ -113,7 +112,7 @@
               <button type="button" class="btn btn-lg btn-default" >CREDIT</button>
               <button type="button" class="btn btn-lg btn-default" >CLUBCARD</button>
 
-              <br>
+              <br><br>
             </div>
           </div>
       </div>

@@ -25,13 +25,13 @@ $klein->respond('POST', '/kmutt_home/branch/show_time/select_chair/payment', fun
         //
         // booking
         //
-        $ticketID = '3';
-        $status = 'booking';
-        $code = 'a00';
-        $buyer_id = '323';
-
-        $sql = "INSERT INTO G01_Booking (status, deadline, code, buyer_id)
-                values('$status', FROM_UNIXTIME($deadline), '$code', '$buyer_id')";
+        // $ticketID = '3';
+        // $status = 'booking';
+        // $code = 'a00';
+        // $buyer_id = '323';
+        //
+        // $sql = "INSERT INTO G01_Booking (status, deadline, booking_time, code, buyer_id)
+        //         values('$status', FROM_UNIXTIME($deadline), CURRENT_TIMESTAMP, '$code', '$buyer_id')";
 
         $seats = array();
         for ($j=0; $j < count($selectedSeats) ; $j++) {
@@ -56,8 +56,8 @@ $klein->respond('POST', '/kmutt_home/branch/show_time/select_chair/payment', fun
           $row = $result['row'];
           $seat = $result['seat'];
 
-          $sql = "INSERT INTO G01_Booking (status, deadline, code, buyer_id, row_ticket, seat_ticket, theater_no)
-                  values('$status', CURRENT_TIMESTAMP, '$code', '$buyer_id', '$row', '$seat', '2')";
+          $sql = "INSERT INTO G01_Booking (status, deadline, booking_time, code, buyer_id, row_ticket, seat_ticket, theater_no)
+                  values('$status',FROM_UNIXTIME($deadline), CURRENT_TIMESTAMP, '$code', '$buyer_id', '$row', '$seat', '2')";
           $stmt = $conn->prepare($sql);
           $stmt->execute();
         }
@@ -74,8 +74,7 @@ $klein->respond('POST', '/kmutt_home/branch/show_time/select_chair/payment', fun
         $movie_name = 'Horrible Bosses 2';
         $theatre_no = '5';
         $showtime = time();
-        $seats = array();
-
+      
       }
       catch(PDOException $e){
 

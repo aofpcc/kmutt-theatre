@@ -121,117 +121,74 @@
     <div class = "container" id"Showing">
     <div class="container-fluid">
         <div class="row content">
-          <div class="col-sm-9">
-
+          <div class="col-sm-12">
           <div class="row">
-
                     <div class="col-lg-4 col-md-6 mb-4">
                       <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="https://lh3.googleusercontent.com/8Lr1BMoZOxsSLoTZr6IxDZuLDiSc6oMTopLA2B-MhXbwxqpDguDHy8r_zj1430V2augHqTSdHsNjz6MYfbEm=w260" alt=""></a>
+                        <a href="#"><img class="card-img-top" src="https://cdn.cinematerial.com/p/500x/q0wtpndq/homestay-thai-movie-poster.jpg" alt=""></a>
                         <div class="card-body">
                           <h7 class="card-title" >
-                            <a href="#" ><center>2018-11-15</center></a>
+                            <a href="#" ><center>Homestay</center></a>
                           </h7>
-                          <h5 class="card-text"><center>Fantastic Beasts The Crimes of Grindelwald<center></h5>
                         </div>
                       </div>
                     </div>
 
                     <div class="col-lg-4 col-md-6 mb-4">
                       <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="https://lh3.googleusercontent.com/PbOkOCAdbr_QUIkd69e-vyQEGaiQXIpDSVzkcTEti7bgXpGCoFp_RuHzAeUVlLsyB-m0uuFZ9TP5OmFqrrpy=w260" alt=""></a>
+                        <a href="#"><img class="card-img-top" src="https://cdn.flickeringmyth.com/wp-content/uploads/2018/10/Nutcracker-Dolby-poster-600x889.jpg" alt=""></a>
                         <div class="card-body">
                           <h7 class="card-title" >
-                            <a href="#" ><center>2018-10-25</center></a>
+                            <a href="#" ><center>The Nutcracker and the Four Realms</center></a>
                           </h7>
-                          <h4 class="card-text"><center>Homestay<center></h4>
                           </div>
                       </div>
                     </div>
 
                     <div class="col-lg-4 col-md-6 mb-4">
                       <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                        <a href="#"><img class="card-img-top" src="https://m.media-amazon.com/images/M/MV5BNDg2NjIxMDUyNF5BMl5BanBnXkFtZTgwMzEzNTE1NTM@._V1_UX182_CR0,0,182,268_AL_.jpg" alt=""></a>
                         <div class="card-body">
                           <h7 class="card-title" >
-                            <a href="#" ><center>Date coming</center></a>
+                            <a href="#" ><center>Bohemian Rhapsody</center></a>
                           </h7>
-                          <h4 class="card-text"><center>Movie name<center></h4>
                           </div>
                       </div>
                     </div>
 
                     <div class="col-lg-4 col-md-6 mb-4">
                       <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                        <a href="#"><img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/en/4/4f/The_Grinch%2C_final_poster.jpg" alt=""></a>
                         <div class="card-body">
                           <h7 class="card-title" >
-                            <a href="#" ><center>Date coming</center></a>
+                            <a href="#" ><center>The Grinch</center></a>
                           </h7>
-                          <h4 class="card-text"><center>Movie name<center></h4>
                           </div>
                       </div>
                     </div>
 
                     <div class="col-lg-4 col-md-6 mb-4">
                       <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                        <a href="#"><img class="card-img-top" src="https://www.dvdsreleasedates.com/posters/800/O/Overlord-2018-movie-poster.jpg" alt=""></a>
                         <div class="card-body">
                           <h7 class="card-title" >
-                            <a href="#" ><center>Date coming</center></a>
+                            <a href="#" ><center>Overlord</center></a>
                           </h7>
-                          <h4 class="card-text"><center>Movie name<center></h4>
                           </div>
                       </div>
                     </div>
 
                     <div class="col-lg-4 col-md-6 mb-4">
                       <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                        <a href="#"><img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/en/thumb/3/3c/Fantastic_Beasts_-_The_Crimes_of_Grindelwald_Poster.png/220px-Fantastic_Beasts_-_The_Crimes_of_Grindelwald_Poster.png" alt=""></a>
                         <div class="card-body">
                           <h7 class="card-title" >
-                            <a href="#" ><center>Date coming</center></a>
+                            <a href="#" ><center>Fantastic Beasts The Crimes of Grindelwald</center></a>
                           </h7>
-                          <h4 class="card-text"><center>Movie name<center></h4>
                           </div>
                       </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6 mb-4">
-                      <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                        <div class="card-body">
-                          <h7 class="card-title" >
-                            <a href="#" ><center>Date coming</center></a>
-                          </h7>
-                          <h4 class="card-text"><center>Movie name<center></h4>
-                          </div>
-                      </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 mb-4">
-                      <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                        <div class="card-body">
-                          <h7 class="card-title" >
-                            <a href="#" ><center>Date coming</center></a>
-                          </h7>
-                          <h4 class="card-text"><center>Movie name<center></h4>
-                          </div>
-                      </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 mb-4">
-                      <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                        <div class="card-body">
-                          <h7 class="card-title" >
-                            <a href="#" ><center>Date coming</center></a>
-                          </h7>
-                          <h4 class="card-text"><center>Movie name<center></h4>
-                          </div>
-                      </div>
-                    </div>
                   </div>
           </div>
 
@@ -245,15 +202,8 @@
               <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
               <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
             </ol>
-            <div class="carousel-ads" role="listbox">
-                <img class="d-block img-fluid" src="https://lh3.googleusercontent.com/2TcqenCtqNlmWs7drIxs97P0pk8LqkdjBIiWcYy83UztcTrKDMCj66cmo0FA70lboACliZg8AVLg0e2Q_4E=w255"   alt="First slide">
-              </div>
-              <div class="carousel-item">
-                <img class="d-block img-fluid" src="https://lh3.googleusercontent.com/uv4OV-DkL03J8iweShFkznDzWEq3vUxx3mFhcli8jcF6p7kKB3mzM0BnCbWO6NffKb6jHUxQ56a07pEDwJhO=w255"  alt="Second slide">
-              </div>
-              <div class="carousel-item">
-                <img class="d-block img-fluid" src="https://lh3.googleusercontent.com/hh7__BRUcQmLTVQsdfb0rhQD46t9b_rsl-7lXof1nFRud49GlZcDgliMXNuJCNMqKcTWEiAOmHswpihQ8V2wxQ=w255" walt="Third slide">
-              </div>
+
+              
             </a>
           </div>
         </div>

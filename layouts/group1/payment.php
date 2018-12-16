@@ -112,7 +112,7 @@
               <button type="button" class="btn btn-lg btn-default" >CREDIT</button>
               <button type="button" class="btn btn-lg btn-default" >CLUBCARD</button>
 
-              <br>
+              <br><br>
             </div>
           </div>
       </div>

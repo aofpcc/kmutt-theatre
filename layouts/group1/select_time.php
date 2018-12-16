@@ -60,7 +60,7 @@
               <form>
                 <br>
                   <div class="form-group">
-                    <label for="sel1">SELECT DATE</label>
+                    <label for="sel1">SELECT </label>
                     <select class="form-control" id="sel1">
 
                       <?php
@@ -126,12 +126,12 @@
   <hr>
 
   <!-- Project Two -->
-  <div class="row">
+  <!-- <div class="row">
       <div class="col-lg-4 col-md-6 mb-45">
           <br><br>
           <h3><center>Digital Cinema</center></h3>
           <br><br>
-        </div>
+        </div> -->
 
     <!-- <div class="col-md-5">
         <br>

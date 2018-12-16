@@ -73,7 +73,7 @@
       <div class="bold set-text">Remaining Point :
         <a class="set-text">
           <?php echo ($this->usr[0][4]) ?></a>
-        <a class="set-text">Point</a>
+        <a class="set-text">Points</a>
       </div>
     </div>
   </div>

@@ -409,12 +409,16 @@ $klein->respond('GET', '/staff/employee/revenue', function($request, $response, 
         //                                 WHERE Revenue.FinID = FinancialID.ID AND  Revenue.empID = e.Emp_ID AND Revenue.customerID = m.MemberID
         //                                 GROUP BY year(addDate),month(addDate)
         //                               ")->fetch(PDO::FETCH_ASSOC);
-        $service->revenueUU = $conn->query('select year, month, sum(amount) "total" from (select *
-        from G03_FIN_Revenue a join (select transactionID "tran", month(addDate) "month", year(addDate) "year"
-                          from G03_FIN_Revenue) b on a.transactionID = b.tran) a
-        group by month, year
-        order by year, month asc;')->fetchAll(PDO::FETCH_ASSOC);
-
+        $service->revenueUU = $conn->query('select year, month, sum(amount) "total" 
+                                            from (select * 
+                                                  from G03_FIN_Revenue a 
+                                                  join 
+                                                  (select transactionID "tran", month(addDate) "month", year(addDate) "year"
+                                                  from G03_FIN_Revenue) b on a.transactionID = b.tran) a
+                                            group by month, year
+                                            order by year, month asc;')->fetchAll(PDO::FETCH_ASSOC);
+        
+        
         // $response->dump($service->revenueUU);
         // $response->sendBody();
 
@@ -492,6 +496,14 @@ $klein->respond('GET', '/staff/employee/expense', function($request, $response, 
           $service->pageTitle = 'Expense';
           $service->expensesList = $expensesList;
           // echo($service->nameTag);
+          $service->expenseUU = $conn->query('select year, month, sum(amount) "total" 
+                                            from (select *
+                                                  from G03_FIN_Expenses a 
+                                                  join 
+                                                  (select transactionID "tran", month(addDate) "month", year(addDate) "year"
+                                                  from G03_FIN_Expenses) b on a.transactionID = b.tran) a
+                                            group by month, year
+                                            order by year, month asc;')->fetchAll(PDO::FETCH_ASSOC);
          $service->render('layouts/group11/employee.php');
         // echo($service->nameTag);
     });

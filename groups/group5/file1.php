@@ -1,7 +1,7 @@
 <?php
 // member information
 $klein->respond(['GET', 'POST'], '/membership', function ($request, $response, $service, $app, $validator) {    
-    // get login info (send to login page if haven't yet)
+    // get login info (send to login page if not logged in)
     $loginInfo = $app->login->requireLogin('customer');
     $userID = $loginInfo['userID'];
 
@@ -46,7 +46,7 @@ $klein->respond(['GET', 'POST'], '/membership', function ($request, $response, $
 });
 
 $klein->respond('POST', '/change/phonenumber/action', function ($request, $response, $service, $app, $validator) {    
-    // get login info (send to login page if haven't yet)
+    // get login info (send to login page if not logged in)
     $loginInfo = $app->login->requireLogin('customer');
     $userID = $loginInfo['userID'];
 
@@ -71,7 +71,7 @@ $klein->respond('POST', '/change/phonenumber/action', function ($request, $respo
 });
 
 $klein->respond('POST', '/change/email/action', function ($request, $response, $service, $app, $validator) {    
-    // get login info (send to login page if haven't yet)
+    // get login info (send to login page if not logged in)
     $loginInfo = $app->login->requireLogin('customer');
     $userID = $loginInfo['userID'];
 
@@ -156,10 +156,11 @@ $klein->respond('GET', '/register', function ($request, $response, $service, $ap
 });
 // armmm
 $klein->respond('POST', '/editprofile/action', function ($request, $response, $service, $app, $validator) {
-    // get login info (send to login page if haven't yet)
+    // get login info (send to login page if not logged in)
     $loginInfo = $app->login->requireLogin('customer');
-    $userID = $loginInfo['userID'];
+    // $userID = $loginInfo['userID'];
 
+    $MemberID = $request->MemberID;     // extra hidden field
     $fst = $request->Firstname;
     $lst = $request->Lastname;
     $adr = $request->Address;
@@ -167,23 +168,28 @@ $klein->respond('POST', '/editprofile/action', function ($request, $response, $s
     $dist = $request->District;
     $prov = $request->Province;
     $post = $request->Postcode;
+
+    // connect db
     global $database;
     $conn = $database->getConnection();
+    
+    // try to update db value
     try{
       $conn->beginTransaction();
       $conn->exec("UPDATE G05_Member_profile
-            SET Fname = '$fst', Lname = '$lst'
-            WHERE MemberID = 1;");
+            SET Fname = \"$fst\", Lname = \"$lst\"
+            WHERE MemberID = $MemberID;");
           $conn->exec("UPDATE G05_Member_address
-            SET Address = '$adr', Province = '$prov', District = '$dist',
-            SubDistrict = '$Subdist', ZipCode = '$post'
-            WHERE MemberID = 1;");
+            SET Address = \"$adr\", Province = \"$prov\", District = \"$dist\",
+            SubDistrict = \"$Subdist\", ZipCode = \"$post\"
+            WHERE MemberID = $MemberID;");
           $conn->commit();
     }
     catch(PDOException $e)
     {
       $conn->rollback();
-
+      echo('Failed :(');
+      echo $e;
     }
 
     //$service->usr = $data;
@@ -194,7 +200,7 @@ $klein->respond('POST', '/editprofile/action', function ($request, $response, $s
 });
 
 $klein->respond('GET', '/editprofile', function ($request, $response, $service, $app, $validator) {
-    // get login info (send to login page if haven't yet)
+    // get login info (send to login page if not logged in)
     $loginInfo = $app->login->requireLogin('customer');
     $userID = $loginInfo['userID'];
 

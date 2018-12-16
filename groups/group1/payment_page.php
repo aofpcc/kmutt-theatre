@@ -29,8 +29,8 @@ $klein->respond('POST', '/kmutt_home/branch/show_time/select_chair/payment', fun
         $status = 'booking';
         $code = 'a00';
         $buyer_id = '323';
-        
-        $sql = "INSERT INTO G01_Booking (status, deadline, code, buyer_id) 
+
+        $sql = "INSERT INTO G01_Booking (status, deadline, code, buyer_id)
                 values('$status', FROM_UNIXTIME($deadline), '$code', '$buyer_id')";
 
         $seats = array();
@@ -70,6 +70,12 @@ $klein->respond('POST', '/kmutt_home/branch/show_time/select_chair/payment', fun
                 // echo $sql.'<br>';
          }
 
+        $movie_id = '2';
+        $movie_name = 'Horrible Bosses 2';
+        $theatre_no = '5';
+        $showtime = time();
+        $seats = array();
+
       }
       catch(PDOException $e){
 
@@ -77,7 +83,7 @@ $klein->respond('POST', '/kmutt_home/branch/show_time/select_chair/payment', fun
 
       }
     }
-    
+
     // Pass on the params to the page we're gonna render
     $service->selectedSeats = $request->selectedSeats;
     $service->seats = $seats;
@@ -85,7 +91,7 @@ $klein->respond('POST', '/kmutt_home/branch/show_time/select_chair/payment', fun
     $service->movie_name = $movie_name;
     $service->showtime = $showtime;
     $service->theatre_no = $theatre_no;
-    // $service->pageTitle = 'Payment';
+    $service->pageTitle = 'Payment';
     $service->render('layouts/group1/payment.php');
     // $response->redirect('/customer/kmutt_home/branch/show_time/select_chair/payment');
   });

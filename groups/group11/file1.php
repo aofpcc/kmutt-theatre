@@ -380,8 +380,28 @@ $klein->respond('GET', '/staff/employee/finance', function($request, $response, 
       $expensesList = $conn->query("SELECT addDate, amount FROM G03_FIN_Expenses")->fetchAll(PDO::FETCH_BOTH);
       $service->expenses = $expensesList;
 
+      $service->revenueLine = $conn->query('select year, month, sum(amount) "total" 
+                                            from (select * 
+                                                  from G03_FIN_Revenue a 
+                                                  join 
+                                                  (select transactionID "tran", month(addDate) "month", year(addDate) "year"
+                                                  from G03_FIN_Revenue) b on a.transactionID = b.tran) a
+                                            group by month, year
+                                            order by year, month asc;')->fetchAll(PDO::FETCH_ASSOC);
+
+      $service->expenseLine = $conn->query('select year, month, sum(amount) "total" 
+                                            from (select *
+                                                  from G03_FIN_Expenses a 
+                                                  join 
+                                                  (select transactionID "tran", month(addDate) "month", year(addDate) "year"
+                                                  from G03_FIN_Expenses) b on a.transactionID = b.tran) a
+                                            group by month, year
+                                            order by year, month asc;')->fetchAll(PDO::FETCH_ASSOC);
+
+
       $request;
       $service->render('layouts/group11/employee.php');
+
 
 });
 

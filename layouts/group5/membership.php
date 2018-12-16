@@ -21,7 +21,8 @@
   <div class="row">
     <!-- left column -->
     <div class="col-sm-3">
-      <h3 class"set-head">MEMBERSHIP</h3>
+      <p></p>
+      <h3>MEMBERSHIP</h3>
       <a href="#" class="btn btn-secondary my-2 bold set-text">Deactive Account</a>
     </div>
     <!-- middle left-->
@@ -39,11 +40,11 @@
       </p>
       <p class="gap bold set-text">Phone Number :
         <a class="PhoneNumber unbold set-text">
-          <?php echo ($this->usr[0][2]) ?></a>
+          <?php echo ($this->usr[0]["PhoneNumber"]) ?></a>
       </p>
       <p class="gap bold set-text">E-mail :
         <a class="Email unbold set-text">
-          <?php echo ($this->usr[0][3]) ?></a>
+          <?php echo ($this->usr[0]["Email"]) ?></a>
       </p>
     </div>
     <!-- middle right -->
@@ -72,7 +73,16 @@
     <div class="col-sm-9">
       <div class="bold set-text">Remaining Point :
         <a class="set-text">
-          <?php echo ($this->usr[0][4]) ?></a>
+          <?php 
+            $totalPoint = $this->usr[0]["Total_Point"];
+            if ($totalPoint) {
+              echo $totalPoint;
+            }
+            else {
+              echo 0;
+            }
+          ?>
+        </a>
         <a class="set-text">Points</a>
       </div>
     </div>
@@ -111,62 +121,74 @@
   <div class="row">
     <!-- left column -->
     <div class="col-sm-3">
+      <p></p>
       <h3 class"set-head">MY PROFILE</h3>
     </div>
     <!-- right column -->
     <div class="col-sm-9">
       <p class="gap"></p>
-      <p class="bold set-text">National ID :
-        <a class="NationalID unbold set-text">
-          <?php echo ($this->usr[0][5]) ?></a>
-      </p>
-      <p class="bold set-text gap2">First name :
-        <a class="Fname unbold set-text">
-          <?php echo ($this->usr[0][6]) ?></a>
-      </p>
-      <p class="bold set-text">Last name :
-        <a class="Lname unbold set-text">
-          <?php echo ($this->usr[0][7]) ?></a>
-      </p>
-      <p class="bold set-text">Gender :
-        <a class="Gender unbold set-text">
-          <?php echo ($this->usr[0][8]) ?></a>
-      </p>
-      <p class="bold set-text">Birth Date :
-        <a class="BirthDate unbold set-text">
-          <?php echo ($this->usr[0][9]) ?></a>
-      </p>
-      <p class="bold set-text">Age :
-        <a class="Age unbold set-text">
-          <?php echo json_encode($this->age); ?>
-          <a class="unbold set-text">years old</a>
+      <p class="bold set-text">
+        National ID : <br/>
+        <a class="unbold field-value">
+          <?php echo ($this->usr[0]["ID_Card"]) ?>
         </a>
       </p>
-      <p class="bold set-text">Address :
-        <a class="Address unbold set-text">
-          <?php echo($this->usr[0][10])?>
+      <!-- <p class="bold set-text gap2">First name : <br/>
+        <a class="unbold field-value">
+          <?php echo ($this->usr[0]["Fname"]) ?>
+        </a>
+      </p> -->
+      <!-- <p class="bold set-text">Last name : <br/>
+        <a class="unbold field-value">
+          <?php echo ($this->usr[0]["Lname"]) ?>
+        </a>
+      </p> -->
+      <p class="bold set-text gap2">Name : <br/>
+        <a class="unbold field-value">
+          <?php echo ($this->usr[0]["Fname"])." ".($this->usr[0]["Lname"]) ?>
         </a>
       </p>
-      <p class="bold set-text">Sub-District :
-        <a class="Address unbold set-text">
-        <?php echo($this->usr[0][13])?>
-      </a>
+      <p class="bold set-text">Gender : <br/>
+        <a class="unbold field-value">
+          <?php echo ($this->usr[0]["Gender"]) ?>
+        </a>
       </p>
-      <p class="bold set-text">District :
-        <a class="Address unbold set-text">
-        <?php echo($this->usr[0][12])?></a>
+      <p class="bold set-text">Birth Date : <br/>
+        <a class="unbold field-value">
+          <?php echo ($this->usr[0]["BirthDate"]) ?>
+        </a>
+      </p>
+      <p class="bold set-text">Age : <br/>
+        <a class="unbold field-value">
+          <?php echo $this->age; ?>
+          years old
+        </a>
+      </p>
+      <p class="bold set-text">Address : <br/>
+        <a class="unbold field-value">
+          <?php echo($this->usr[0]["Address"])?>
+        </a>
+      </p>
+      <p class="bold set-text">Sub-District : <br/>
+        <a class="unbold field-value">
+          <?php echo($this->usr[0]["SubDistrict"])?>
+        </a>
+      </p>
+      <p class="bold set-text">District : <br/>
+        <a class="unbold field-value">
+          <?php echo($this->usr[0]["District"])?>
+        </a>
       </p>
       <p class="bold set-text">Province :
-        <a class="Address unbold set-text">
-        <?php echo($this->usr[0][11])?>
+        <a class="unbold field-value">
+        <?php echo($this->usr[0]["Province"])?>
       </a>
       </p>
       <p class="bold set-text">Post code :
-        <a class="PostCode unbold set-text">
-        <?php echo($this->usr[0][14])?>
+        <a class="unbold field-value">
+        <?php echo($this->usr[0]["ZipCode"])?>
       </a>
       </p>
-      </br>
       <!-- Button -->
       <div>
         <button type="button" class="btn btn-danger" onclick="location = '/customer/editprofile'">Edit profile</button>

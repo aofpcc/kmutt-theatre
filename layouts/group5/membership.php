@@ -73,7 +73,7 @@
       <div class="bold set-text">Remaining Point :
         <a class="set-text">
           <?php echo ($this->usr[0][4]) ?></a>
-        <a class="set-text">Point</a>
+        <a class="set-text">Points</a>
       </div>
     </div>
   </div>
@@ -143,24 +143,33 @@
         </a>
       </p>
       <p class="bold set-text">Address :
-        <a class="Address unbold set-text">33/71 Soi Kanchanapisek005/1, Laksong, Bangkae, Bangkok</a>
+        <a class="Address unbold set-text">
+          <?php echo($this->usr[0][10])?>
+        </a>
       </p>
       <p class="bold set-text">Sub-District :
-        <a class="Address unbold set-text">Laksong</a>
+        <a class="Address unbold set-text">
+        <?php echo($this->usr[0][13])?>
+      </a>
       </p>
       <p class="bold set-text">District :
-        <a class="Address unbold set-text">Bangkae</a>
+        <a class="Address unbold set-text">
+        <?php echo($this->usr[0][12])?></a>
       </p>
       <p class="bold set-text">Province :
-        <a class="Address unbold set-text">Bangkok</a>
+        <a class="Address unbold set-text">
+        <?php echo($this->usr[0][11])?>
+      </a>
       </p>
       <p class="bold set-text">Post code :
-        <a class="PostCode unbold set-text">10160</a>
+        <a class="PostCode unbold set-text">
+        <?php echo($this->usr[0][14])?>
+      </a>
       </p>
       </br>
       <!-- Button -->
       <div>
-        <button type="button" class="btn btn-danger" onclick="location = '/editprofile'">Edit profile</button>
+        <button type="button" class="btn btn-danger" onclick="location = '/customer/editprofile'">Edit profile</button>
       </div>
     </div>
   </div>

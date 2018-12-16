@@ -1,14 +1,9 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <title><?=$this->pageTitle ?></title>
-    <link rel="stylesheet" type="text/css" href="/layouts/group10/css/ads.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="/layouts/group10/css/ads.css"> -->
     <script src="/layouts/group10/js/ads.js"></script>
   </head>
-  <body>
     <div name="header" class="head">
       <h1>KMUTT Theatre</h1>
     </div>
@@ -99,5 +94,3 @@
         </form>
       </div>
     </div>
-  </body>
-</html>

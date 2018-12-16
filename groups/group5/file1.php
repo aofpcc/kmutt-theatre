@@ -13,10 +13,11 @@ $klein->respond('GET', '/membership', function ($request, $response, $service) {
 
     // query1 Profile
     $sql = "SELECT  pf.MemberID, pw.Password, pf.PhoneNumber, pf.Email, pt.Total_Point,
-          pf.ID_Card, pf.Fname, pf.Lname, pf.Gender, pf.BirthDate
-          FROM G05_Member_profile as pf, G05_Member_password as pw, G05_Member_point as pt
-          WHERE pf.MemberID=pw.MemberID and pf.MemberID=pt.MemberID
-          and pf.MemberID = 1";
+            pf.ID_Card, pf.Fname, pf.Lname, pf.Gender, pf.BirthDate, ads.Address,
+            ads.Province, ads.District, ads.SubDistrict, ads.ZipCode
+            FROM G05_Member_profile as pf, G05_Member_password as pw, G05_Member_point as pt, G05_Member_address as ads
+            WHERE pf.MemberID=pw.MemberID and pf.MemberID=pt.MemberID and pf.MemberID = ads.MemberID
+            and pf.MemberID = 1";
 
     $stmt = $conn->prepare($sql);
     $stmt->execute();

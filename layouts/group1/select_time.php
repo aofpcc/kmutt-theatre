@@ -62,7 +62,29 @@
                   <div class="form-group">
                     <label for="sel1">SELECT DATE</label>
                     <select class="form-control" id="sel1">
-                      <option>2018-12-14</option>
+
+                      <?php
+
+                        //for($i = 0; $i < count($this->query); $i++) {
+
+                      ?>
+
+                      <!-- <option value="value <?//=$this->query[$i]['BranchName'] ?>">
+                        <?//= $this->query[$i]['BranchName']  ?></option> -->
+
+                    <?php //} ?>
+
+                      <?php
+
+                        for($i = 0; $i < count($this->query_date); $i++) {
+
+                      ?>
+
+                      <option value="value <?=$this->query_date[$i]['date(startTime)'] ?>">
+                        <?= $this->query_date[$i]['date(startTime)']  ?></option>
+
+                    <?php } ?>
+
                     </select>
 
                   </div>
@@ -83,12 +105,11 @@
             <br>
           <h4>ENG</h4>
           <?php
-              for ($i=0; $i < count($this->query); $i++) {
-
+              for ($i=0; $i < count($this->query_time); $i++) {
           ?>
 
               <button type="button" class="btn btn-danger" style="margin: 1%!important">
-                <?=$this->query[$i]['endTime'] ?></button>
+                <?=$this->query_time[$i]['time_movie'] ?></button>
           <?php
               }
             ?>

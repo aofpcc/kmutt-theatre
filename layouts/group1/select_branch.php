@@ -100,7 +100,7 @@
                         <option value="value <?=$this->query[$i]['BranchName'] ?>">
                           <?=$this->query[$i]['BranchName']  ?></option>
 
-                      <?php } ?>s
+                      <?php } ?>
 
                       </select>
 

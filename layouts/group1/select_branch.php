@@ -86,7 +86,7 @@
 
     <div class="card card-temp">
             <div class="container">
-                <form>
+                <form action="/customer/kmutt_home/branch/show_time" method="post">
                   <br>
                     <div class="form-group">
                       <label for="sel1">ALL CINEMAS:</label>
@@ -100,14 +100,16 @@
                         <option value="value <?=$this->query[$i]['BranchName'] ?>">
                           <?=$this->query[$i]['BranchName']  ?></option>
 
-                      <?php } ?>s
+                      <?php } ?>
 
                       </select>
 
                     </div>
                     <br>
-                    <button type="button" class="btn btn-primary btn-lg btn-block">SHOW TIME</button>
-                    <br>
+
+                      <button type="submit" id = "showtime" class="btn btn-primary btn-lg btn-block" name = "show_time">SHOW TIME</button>
+                      <br>
+                    
                   </form>
             </div>
           </div>

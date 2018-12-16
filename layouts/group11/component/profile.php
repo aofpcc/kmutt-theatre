@@ -11,7 +11,12 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="profile-img">
-                      <img src="/layouts/group11/img/Ppim.jpg" alt=""/>                     
+                      <img src="
+                        <?php 
+                                $pic = $this->picture;
+                                echo '/'.$pic[0]['parth'];                                   
+                        ?>
+                      " alt=""/>                     
                   </div>
             </div>
             <div class="col-md-6">

@@ -92,17 +92,111 @@ $klein->respond('GET', '/staff/employee/editprofile', function($request, $respon
   global $database;
   $conn = $database->getConnection();
 
- //select db
-  // $service->$id = $data['userID'];
+ //select db G11_Emp_staff
   $id = $data['userID'];
   $profileName = "SELECT * FROM G11_Emp_staff WHERE userID = $id " ;
   $stmt = $conn->prepare($profileName);
   $stmt->execute();
   $service->profile = $stmt->fetchAll(PDO::FETCH_BOTH);
 
-    // $service->id2 =  $data['userID'];
+   //select db core_user_table
+   $user = "SELECT username FROM core_user_table WHERE userID = $id " ;
+   $stmt = $conn->prepare($user);
+   $stmt->execute();
+   $service->userName = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+    
     $service->nameTag = 'editprofile.php';
     $service->render('layouts/group11/employee.php');
+});
+
+$klein->respond('POST', '/staff/employee/editprofile/save', function($request, $response, $service, $app, $validator){
+  error_reporting(E_ALL);
+  ini_set('display_errors', 1);
+
+  //check login
+  $data = $app->login->LoginThenGoTo('employee','/emp/staff');
+
+  // connect db
+  global $database;
+  $conn = $database->getConnection();
+
+      //select db G11_Emp_staff
+      $id = $data['userID'];
+      $profileName = "SELECT * FROM G11_Emp_staff WHERE userID = $id " ;
+      $stmt = $conn->prepare($profileName);
+      $stmt->execute();
+      $service->profile = $stmt->fetchAll(PDO::FETCH_BOTH);
+  
+     //select db core_user_table
+      $user = "SELECT * FROM core_user_table WHERE userID = $id " ;
+      $stmt = $conn->prepare($user);
+      $stmt->execute();
+      $service->userName = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+  //password is not same as confirm password
+  if($request->password != $request->confirmpassword) {
+
+    $service->error = 'password is not same as confirm password.';
+    $service->nameTag = 'editprofile.php';
+    $service->render('layouts/group11/employee.php');
+    
+  }
+  //check password incorect
+  if($request->password == $request->confirmpassword){
+    $check = md5($request->password);
+
+    //select db core_password_table
+    $pass = "SELECT `password` FROM core_password_table WHERE userID = $id " ;
+    $stmt = $conn->prepare($pass);
+    $stmt->execute();
+    $passUser = $stmt->fetchAll(PDO::FETCH_BOTH);
+  
+    if($check != $passUser[0]['password']){
+
+        $service->error = 'password incorrect.';
+        $service->nameTag = 'editprofile.php';
+        $service->render('layouts/group11/employee.php');
+    }
+  }
+
+
+  //not null
+  $firstname = $request->firstName;
+  $lastname = $request->lastName;
+  $email = $request->Email;
+  $username = $request->Username;
+
+  //check Email or username has already exists.
+  if($email != $service->profile[0]['Email']){
+  //select db G11_Emp_staff
+  $checkemail = "SELECT * FROM G11_Emp_staff WHERE Email = '$email'" ;
+  $stmt = $conn->prepare($checkemail);
+  $stmt->execute();
+
+  $countEmail = $stmt->fetchAll(PDO::FETCH_BOTH);
+    if(count($countEmail) == 1){
+        $service->error = 'Email has already exists.';
+        $service->nameTag = 'editprofile.php';
+        $service->render('layouts/group11/employee.php');
+    }
+
+    if(count($countEmail) == null){
+    //update db G11_Emp_staff
+    $updateProfile = "UPDATE G11_Emp_staff SET Firstname = '$firstname' ,Lastname = '$lastname' ,Email = '$email' WHERE userID = $id";
+    $stmt = $conn->prepare($updateProfile);
+    $stmt->execute();
+
+    //update db core_user_table
+    $updateEmail = "UPDATE core_user_table SET email = '$email' WHERE userID = $id";
+    $stmt = $conn->prepare($updateEmail);
+    $stmt->execute();
+  }
+  }
+  
+
+   
+  $response->redirect('/emp/staff/employee/profile');
 });
 
 $klein->respond('POST', 'staff/employee/add', function($request, $response, $service, $app, $validator){

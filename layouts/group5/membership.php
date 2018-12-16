@@ -32,18 +32,18 @@
             <a class="Username unbold"><?php echo ($this->usr[0][0]) ?></a>
           </p> -->
       <p class="gap bold set-text">Password :
-        <a class="Password unbold">********
+        <a class="unbold">********
           <!-- <?php for ($i = 0; $i < strlen($this->usr[0][V]); $i++) {?>
                 <?php echo "*"; ?>
               <?php }?> -->
         </a>
       </p>
-      <p class="gap bold set-text">Phone Number :
-        <a class="PhoneNumber unbold set-text">
+      <p class="gap bold set-text">Phone number :
+        <a class="unbold set-text">
           <?php echo ($this->usr[0]["PhoneNumber"]) ?></a>
       </p>
       <p class="gap bold set-text">E-mail :
-        <a class="Email unbold set-text">
+        <a class="unbold set-text">
           <?php echo ($this->usr[0]["Email"]) ?></a>
       </p>
     </div>
@@ -71,8 +71,8 @@
   <div class="row">
     <div class="col-sm-3"></div>
     <div class="col-sm-9">
-      <div class="bold set-text">Remaining Point :
-        <a class="set-text">
+      <div class="bold field-title" style="margin-bottom: 0">REMAINING POINTS <br/>
+        <a class="field-value">
           <?php 
             $totalPoint = $this->usr[0]["Total_Point"];
             if ($totalPoint) {
@@ -83,7 +83,7 @@
             }
           ?>
         </a>
-        <a class="set-text">Points</a>
+        <a class="field-value">points</a>
       </div>
     </div>
   </div>
@@ -99,7 +99,7 @@
     <div class="col-sm-3"></div>
     <div class="col-sm-6">
       <div class="form-group">
-        <label for="exampleFormControlInput1" class="bold set-text">Redeem gift card promo code</label>
+        <label for="exampleFormControlInput1" class="bold set-text">Redeem a promo code</label>
         <form>
           <div class="form-row">
             <div class="col-7">
@@ -122,78 +122,92 @@
     <!-- left column -->
     <div class="col-sm-3">
       <p></p>
-      <h3 class"set-head">MY PROFILE</h3>
+      <h3>MY PROFILE</h3>
     </div>
     <!-- right column -->
-    <div class="col-sm-9">
+    <div class="col-sm-6">
       <p class="gap"></p>
-      <p class="bold set-text">
-        National ID : <br/>
+      <p class="bold field-title">NATIONAL ID <br/>
         <a class="unbold field-value">
           <?php echo ($this->usr[0]["ID_Card"]) ?>
         </a>
       </p>
-      <!-- <p class="bold set-text gap2">First name : <br/>
+      <!-- <p class="bold field-title gap2">First name : <br/>
         <a class="unbold field-value">
           <?php echo ($this->usr[0]["Fname"]) ?>
         </a>
       </p> -->
-      <!-- <p class="bold set-text">Last name : <br/>
+      <!-- <p class="bold field-title">Last name : <br/>
         <a class="unbold field-value">
           <?php echo ($this->usr[0]["Lname"]) ?>
         </a>
       </p> -->
-      <p class="bold set-text gap2">Name : <br/>
+      <p class="bold field-title gap2">NAME <br/>
         <a class="unbold field-value">
           <?php echo ($this->usr[0]["Fname"])." ".($this->usr[0]["Lname"]) ?>
         </a>
       </p>
-      <p class="bold set-text">Gender : <br/>
+      <p class="bold field-title">GENDER <br/>
         <a class="unbold field-value">
           <?php echo ($this->usr[0]["Gender"]) ?>
         </a>
       </p>
-      <p class="bold set-text">Birth Date : <br/>
+      <p class="bold field-title">DATE OF BIRTH <br/>
         <a class="unbold field-value">
           <?php echo ($this->usr[0]["BirthDate"]) ?>
         </a>
       </p>
-      <p class="bold set-text">Age : <br/>
+      <p class="bold field-title">AGE <br/>
         <a class="unbold field-value">
           <?php echo $this->age; ?>
-          years old
+          <!-- years old -->
         </a>
       </p>
-      <p class="bold set-text">Address : <br/>
+      <p class="bold field-title">ADDRESS <br/>
         <a class="unbold field-value">
-          <?php echo($this->usr[0]["Address"])?>
+          <?php echo $this->usr[0]["Address"]; ?> 
+          <br/>
+          <?php echo ($this->usr[0]["SubDistrict"]).", ".($this->usr[0]["District"]).", "; ?>
+          <br/>
+          <?php echo ($this->usr[0]["Province"])." ".($this->usr[0]["ZipCode"])."."; ?>
         </a>
       </p>
-      <p class="bold set-text">Sub-District : <br/>
+      <!-- <p class="bold field-title">Sub-District : <br/>
         <a class="unbold field-value">
           <?php echo($this->usr[0]["SubDistrict"])?>
         </a>
-      </p>
-      <p class="bold set-text">District : <br/>
+      </p> -->
+      <!-- <p class="bold field-title">District : <br/>
         <a class="unbold field-value">
           <?php echo($this->usr[0]["District"])?>
         </a>
-      </p>
-      <p class="bold set-text">Province :
+      </p> -->
+      <!-- <p class="bold field-title">Province :
         <a class="unbold field-value">
-        <?php echo($this->usr[0]["Province"])?>
-      </a>
-      </p>
-      <p class="bold set-text">Post code :
+          <?php echo($this->usr[0]["Province"])?>
+        </a>
+      </p> -->
+      <!-- <p class="bold field-title">Post code :
         <a class="unbold field-value">
-        <?php echo($this->usr[0]["ZipCode"])?>
-      </a>
-      </p>
+          <?php echo($this->usr[0]["ZipCode"])?>
+        </a>
+      </p> -->
+      
       <!-- Button -->
-      <div>
+      <!-- <div>
         <button type="button" class="btn btn-danger" onclick="location = '/customer/editprofile'">Edit profile</button>
-      </div>
+      </div> -->
+    </div>
+
+    <!-- right -->
+    <div class="col-sm-3">
+      <p class="gap"></p>
+      <p class="gap set-text"><a href="/customer/editprofile">Change personal info</a></p>
     </div>
   </div>
+
+  <!-- line -->
+  <hr>
+
 </div>
 <br>

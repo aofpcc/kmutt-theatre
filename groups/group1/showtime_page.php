@@ -1,5 +1,5 @@
 <?php
-$klein->respond('GET', '/kmutt_home/branch/show_time', function ($request, $response, $service) use ($database) {
+$klein->respond('POST', '/kmutt_home/branch/show_time', function ($request, $response, $service) use ($database) {
     $service->bootstrap3 = false;
     $conn = $database->getConnection();
 

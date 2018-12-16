@@ -9,5 +9,4 @@ $klein->respond('GET', '/kmutt_home/branch', function ($request, $response, $ser
 
     $service->query = $query;
     $service->render('layouts/group1/select_branch.php');
-    $conn = null;
 });

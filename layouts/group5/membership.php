@@ -151,7 +151,7 @@
       <p class="bold field-title">AGE <br/>
         <a class="unbold field-value">
           <?php echo $this->age; ?>
-          years old
+          <!-- years old -->
         </a>
       </p>
       <p class="bold field-title">ADDRESS <br/>

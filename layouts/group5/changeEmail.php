@@ -19,7 +19,7 @@
       <!-- line -->
       <div class="gap"></div>
       <div class="box-name-text" style="margin-left: 97px;">Current Email</div>
-      <div class="gap-less" style="margin-left: 97px;">computer_science18@example.com</div>
+      <div class="gap-less" style="margin-left: 97px;"><?php echo $this->currentEmail; ?></div>
       <div class="gap"></div>
       </br>
       <!-- change form -->

@@ -82,7 +82,7 @@ $klein->respond('POST', '/change/email/action', function ($request, $response, $
     // query4 Email
     $sql4 = "UPDATE G05_Member_profile
            SET Email='$Email'
-           WHERE MemberID='1'";
+           WHERE UserID = $userID";
     $stmt = $conn->prepare($sql4);
     $stmt->execute();
     $response->redirect('/customer/membership');
@@ -90,16 +90,18 @@ $klein->respond('POST', '/change/email/action', function ($request, $response, $
 
 // change password (page)
 $klein->respond('GET', '/change/password', function ($request, $response, $service, $app, $validator) {    
-    //check login
-    $data = $app->login->requireLogin('customer');
+    // get login info (send to login page if not logged in)
+    $loginInfo = $app->login->requireLogin('customer');
+    $userID = $loginInfo['userID'];
 
     $service->render('layouts/group5/changePassword.php');
 });
 
 // change password (actual SQL)
 $klein->respond('POST', '/change/password/action', function ($request, $response, $service, $app, $validator) {    
-    //check login
-    $data = $app->login->requireLogin('customer');
+    // get login info (send to login page if not logged in)
+    $loginInfo = $app->login->requireLogin('customer');
+    $userID = $loginInfo['userID'];
 
     $oldPassword = $request->oldPassword;
     $newPassword1 = $request->newPassword1;
@@ -113,7 +115,7 @@ $klein->respond('POST', '/change/password/action', function ($request, $response
     global $database;
     $conn = $database->getConnection();
     $sql = "UPDATE G05_Member_password
-          SET Password = newPassword1;
+          SET Password = $newPassword1
           WHERE ;";
 
     $stmt = $conn->prepare($sql);
@@ -123,19 +125,49 @@ $klein->respond('POST', '/change/password/action', function ($request, $response
     $service->render('layouts/group5/membership.php');
 });
 
-// Change email
+// Change email (page)
 $klein->respond('GET', '/change/email', function ($request, $response, $service, $app, $validator) {
-    //check login
-    $data = $app->login->requireLogin('customer');
+    // get login info (send to login page if not logged in)
+    $loginInfo = $app->login->requireLogin('customer');
+    $userID = $loginInfo['userID'];
 
+    // connect db
+    global $database;
+    $conn = $database->getConnection();
+
+    // get current phone no.
+    $sql = "SELECT Email
+            FROM G05_Member_profile
+            WHERE userID = $userID";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $data = $stmt->fetchAll();
+
+    // render the page
+    $service->currentEmail = $data[0]['Email'];
     $service->render('layouts/group5/changeEmail.php');
 });
 
-// Change phone number
+// Change phone number (page)
 $klein->respond('GET', '/change/phonenumber', function ($request, $response, $service, $app, $validator) {
-    //check login
-    $data = $app->login->requireLogin('customer');
+    // get login info (send to login page if not logged in)
+    $loginInfo = $app->login->requireLogin('customer');
+    $userID = $loginInfo['userID'];
     
+    // connect db
+    global $database;
+    $conn = $database->getConnection();
+
+    // get current phone no.
+    $sql = "SELECT PhoneNumber
+            FROM G05_Member_profile
+            WHERE userID = $userID";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $data = $stmt->fetchAll();
+
+    // render the page
+    $service->currentPhone = $data[0]['PhoneNumber'];
     $service->render('layouts/group5/changePhoneNumber.php');
 });
 

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Showing Time - Movie</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/1-col-portfolio.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <body>
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+          <div class="container">
+            <a class="navbar-brand navbar-center" href="#">CSC318 MOVIE</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#">Home
+                    <span class="sr-only">(current)</span>
+                  </a>
+                </li>
+                
+                <li class="nav-item">
+                  <a class="nav-link" href="index.html#movies">MOVIES</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">PROMOTION</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">MEMBER CARD</a>
+                </li> 
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span>Log In/Sign Up</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+     
+      <!-- Page Heading -->
+      <br><br><br>
+
+      <div class="card card-temp shadow-lg">
+          <div class="container">
+            <br>
+             <!-- Contact Section -->
+             <section id="add">
+                <div class="container">
+                  <h2 class="text-center text-uppercase text-secondary mb-0">Add Showtime</h2>
+                  <hr class="star-dark mb-5">
+                  <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                      <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
+                      <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
+                      <form name="addShowtime" id="addForm" novalidate="novalidate">
+                        <div class="form-group">
+                          <label for="sel1">Movie id:</label>
+                          <select class="form-control" id="sel1">
+                          <?php while($row1 = mysql_fetch_array($result)):;?>
+                            <option value="><?php echo $row1[0];?>"><?php $row1[1];?></option>
+                            <?php endwhile;?>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label for="sel1">Branch id:</label>
+                          <select class="form-control" id="sel1">
+                            <?php while($row1 = mysql_fetch_array($result)):;?>
+                            <option value="><?php echo $row2[0];?>"><?php $row1[1];?></option>
+                            <?php endwhile;?>
+                          </select>
+                        </div>
+                        <div class="control-group">
+                          <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                            <label>Start Time</label>
+                            <input class="form-control" id="phone" type="tel" placeholder="Start time" required="required" data-validation-required-message="Please enter your phone number.">
+                            <p class="help-block text-danger"></p>
+                          </div>
+                        </div>
+                        <br>
+                        <div id="success"></div>
+                        <div class="form-group">
+                          <button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">Send</button><br><br>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </section>
+                  </div>
+                </div>
+                <br><br>
+              </div>
+        
+            <br><br><br>
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+
+</html>

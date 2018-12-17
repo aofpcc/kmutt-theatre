@@ -77,7 +77,7 @@
                     <div class="invalid-feedback">
                         Valid password is required.
                     </div> --><input
-              type="password" name="password" pattern=".{6,}" id="password" class="form-control" placeholder="Enter your Password..." required="" value="123456">
+              type="password" title="Please include at least 6 characters" name="password" pattern=".{6,}" id="password" class="form-control" placeholder="Enter your Password..." required="" value="123456">
             <div class="invalid-feedback">
               Valid password is required.
             </div>
@@ -103,14 +103,14 @@
         <div class="row">
           <div class="col-md-6 mb-3">
             <label for="firstName">First name</label>
-            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="" value="drive" required>
+            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="" value="" required>
             <div class="invalid-feedback">
               Valid first name is required.
             </div>
           </div>
           <div class="col-md-6 mb-3">
             <label for="lastName">Last name</label>
-            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="" value="zaza" required>
+            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="" value="" required>
             <div class="invalid-feedback">
               Valid last name is required.
             </div>

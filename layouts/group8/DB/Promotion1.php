@@ -42,16 +42,49 @@
 
       <!-- Page Heading -->
       <h1 class="my-4">Promotion List
-        <small>Special offers for you</small>
+        <small>
+        <h4 class="card-title">
+                <a href="/emp/promotion/add" id="m1">+Add</a><br>
+                <a href="/emp/promotion/edit" id="m2">+Edit</a>
+              </h4>
+        </small>
       </h1>
 
       <div class="row">
-        <div class="col-lg-4 col-sm-6 portfolio-item">
+        <?php foreach($this->promotions as $promotion) { ?>
+          <div class="col-lg-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src='/groups/group8<?=$promotion["PromoPic"]?>' alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <?=$promotion["PromoName"] ?><br><br><?=$promotion["StartDate"] ?>
+                <br><?=$promotion["EndDate"] ?><br><br><?=$promotion["Description"] ?>
+                <br><br>CODE = <?=$promotion["PromoCode"] ?><br>one code / person
+              </h4>
+              <p class="card-text">     </p>
+            </div>
+          </div>
+        </div>
+        <?php } ?>
+        
+
+        <!-- <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card">
+          <a href="#"><img class="card-img-top" src='/layouts/group8/DB/Pic/<?=$promotion["PromoPic"]?>' alt=""></a>
+            <div class="card-body">
+            <?=$promotion["PromoName"] ?><br><br><?=$promotion["StartDate"] ?>
+                <br><?=$promotion["EndDate"] ?><br><br><?=$promotion["Description"] ?>
+                <br><br>CODE = <?=$promotion["PromoCode"] ?><br>one code / person
+            </div>
+            
+          </div>
+        </div> -->
+        <!-- <div class="col-lg-4 col-sm-6 portfolio-item">
           <div class="card h-100">
             <a href="#"><img class="card-img-top" src="/layouts/group8/DB2/Pic/Movie1.jpg" alt=""></a>
             <div class="card-body">
               <h4 class="card-title">
-                <a href="/group8M" id="m1">Before 03:00 PM</a>
+                <a href="/emp/group8M" id="m1">Before 03:00 PM</a>
                 
               </h4>
               <p class="card-text">     </p>
@@ -63,7 +96,7 @@
             <a href="#"><img class="card-img-top" src="/layouts/group8/DB2/Pic/Movie2.jpg" alt=""></a>
             <div class="card-body">
               <h4 class="card-title">
-                <a href="/group8M2" >After 03:00 PM</a>
+                <a href="/emp/group8M2" >After 03:00 PM</a>
               </h4>
               <p class="card-text">     </p>
             </div>
@@ -74,7 +107,7 @@
             <a href="#"><img class="card-img-top" src="/layouts/group8/DB2/Pic/Food1.jpg" alt=""></a>
             <div class="card-body">
               <h4 class="card-title">
-                <a href="/group8F">Couple set(Popcorn M + Drink M)</a>
+                <a href="/emp/group8F">Couple set(Popcorn M + Drink M)</a>
               </h4>
               <p class="card-text"></p>
             </div>
@@ -85,7 +118,7 @@
             <a href="#"><img class="card-img-top" src="/layouts/group8/DB2/Pic/Food2.jpg" alt=""></a>
             <div class="card-body">
               <h4 class="card-title">
-                <a href="/group8F2">Couple set(Popcorn L + Drink L)</a>
+                <a href="/emp/group8F2">Couple set(Popcorn L + Drink L)</a>
               </h4>
               <p class="card-text">    </p>
             </div>
@@ -96,12 +129,12 @@
             <a href="#"><img class="card-img-top" src="/layouts/group8/DB2/Pic/Food3.jpg" alt=""></a>
             <div class="card-body">
               <h4 class="card-title">
-                <a href="/group8F3">Family set(Popcorn XL + Drink XL)</a>
+                <a href="group8F3">Family set(Popcorn XL + Drink XL)</a>
               </h4>
               <p class="card-text"></p>
             </div>
           </div>
-        </div>
+        </div> -->
        
       </div>
       <!-- /.row -->

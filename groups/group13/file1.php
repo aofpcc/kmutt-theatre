@@ -260,7 +260,7 @@ function getSize($productID){
     return $size["Size"];
 }
 
-function getStockID($productID):string {
+function getStockID($productID){
     $stockID = substr($productID,0,4);
     return $stockID;
 }
@@ -308,7 +308,3 @@ function updateAllOrderStock($productOrderForStock){
         updateStock($product["stockID"],$product["remain"]-($product["size"]*$product["quantity"]));
     }
 }
-
-
-
-

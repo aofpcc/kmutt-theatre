@@ -10,6 +10,7 @@ class PointManager
         $this->klein = $klein;
     }
 
+    //addPoint
     public function addPoint($input) // type memberID point transactionID
     {
         $result = [
@@ -56,5 +57,32 @@ class PointManager
             $stmt->bindParam(":transaction", $transactionID);
             $stmt->bindParam(":point", $point);
             $stmt->execute();
+    }
+
+    //deletePoint
+    public function subtractPoint($input)
+    {
+        $result = [
+            "result" => false
+        ];
+        // input as array ("TransactionID" => "", )
+        try {
+            $this->conn->beginTransaction();
+            $query = "INSERT INTO G05_Member_Redeem_Transaction(Type, MemberID, Date, Point)
+            Values(:type, :memberID, now(), :point)";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(":type", $input["type"]);
+            $stmt->bindParam(":memberID", $input["memberID"]);
+            $stmt->bindParam(":point", $input["point"]);
+            $stmt->execute();
+            // $pointID = $this->conn->lastInsertId();
+            $this->conn->commit();
+            $result["result"] = true;
+            echo "OHO";
+        } catch (Exception $e) {
+            echo $e->getMessage();
+            $this->conn->rollback();
+        }
+        return $result;
     }
 }

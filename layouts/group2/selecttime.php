@@ -55,15 +55,15 @@
                                 <div class="no">1</div>
                                 <div class="step-name">Showtime</div>
                             </a></li>
-                        <li class="step-item"><a href="#">
+                        <li class="step-item"><a href="HO00000074/9912#">
                                 <div class="no">2</div>
                                 <div class="step-name">Seat Selection</div>
                             </a></li>
-                        <li class="step-item"><a href="#">
+                        <li class="step-item"><a href="HO00000074/9912#">
                                 <div class="no">3</div>
                                 <div class="step-name">Payment</div>
                             </a></li>
-                        <li class="step-item"><a href="#">
+                        <li class="step-item"><a href="HO00000074/9912#">
                                 <div class="no">4</div>
                                 <div class="step-name">Done</div>
                             </a></li>
@@ -81,7 +81,7 @@
                                     <div class="poster"><img src="/layouts/group2/images/selecttime/unnamed.jpg"></div>
                                     <div class="movie-detail">
                                         <div class="main-detail">
-                                            <h1 class="name">Aquaman</h1>
+                                            <h1 class="name">อควาแมน เจ้าสมุทร</h1>
 
                                         </div>
                                         <p class="genre">Genre: Action</p>
@@ -98,7 +98,7 @@
                                                     <line x1="111.89" y1="63.94" x2="106.55" y2="63.94" class="cls-3"></line>
                                                     <line x1="63.44" y1="36.53" x2="63.44" y2="56.36" class="cls-4"></line>
                                                     <line x1="68.64" y1="68.64" x2="84.25" y2="84.25" class="cls-4"></line>
-                                                </svg> 145 min
+                                                </svg> 145 นาที
                                             </li>
                                             <!-- </ul><a href="https://www.sfcinemacity.com/movie/HO00000074" class="button button-gray-trans button-movie-details">Movie Details</a> -->
                                     </div>

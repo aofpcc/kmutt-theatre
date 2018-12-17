@@ -145,7 +145,7 @@
           </div>
           <div class="col-md-6 mb-3">
             <label for="birth">Date of Birth <span class="text-muted"></span></label>
-            <input type="birth" class="form-control" id="birth" name="birth" placeholder="dd/mm/199x">
+            <input type="date" class="form-control" id="birth" name="birth" placeholder="dd/mm/199x">
             <div class="invalid-feedback">
               Please enter a valid Phone Number.
             </div>

@@ -25,30 +25,58 @@ function RandomString()
 //   $service->render('layouts/group8/New.php');
 // });
 
-$klein->respond('GET', '/group8', function ($request, $response, $service) {
-  // $service->boostrap3 = false;
-  $service->render('layouts/group8/DB/Promotion1.php');
-});
-$klein->respond('GET', '/group8M', function ($request, $response, $service) {
 
+//---------------------------------------------------------------------
+
+// Move Move
+$klein->respond('GET', '/group8', function ($request, $response, $service, $app, $validator) {
+ $service->boostrap3 = false;
+ $sql = "select * 
+ from G08_Promo_main
+ where now() between StartDate and EndDate;";
+
+ $conn = $app->db->getConnection();
+ $stmt = $conn->prepare($sql);
+ $stmt->execute();
+ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+//  $response->dump($data);
+//  $response->sendBody();
+$service->promotions = $data;
+
+   $service->render('layouts/group8/DB/Promotion1.php');
+ });
+
+//---------------------------------------------------------------------
+
+
+
+$klein->respond('GET', '/group8M', function ($request, $response, $service) {
+  $service->title = "Movie1";
+  $service->bootstrap3 = false;
   $service->render('layouts/group8/DB2/Movie1.php');
 });
-$klein->respond('GET', '/group8M2', function ($request, $response, $service) {
+
+$klein->respond('GET', '/group8M/[:id]', function ($request, $response, $service) {
+  return $request->id;
+});
+
+$klein->respond('GET', 'emp/group8M2', function ($request, $response, $service) {
 
   $service->render('layouts/group8/DB2/Movie2.php');
 });
-$klein->respond('GET', '/group8F', function ($request, $response, $service) {
+$klein->respond('GET', 'emp/group8F', function ($request, $response, $service) {
 
   $service->render('layouts/group8/DB2/Food1.php');
 });
-$klein->respond('GET', '/group8F2', function ($request, $response, $service) {
+$klein->respond('GET', 'emp/group8F2', function ($request, $response, $service) {
 
   $service->render('layouts/group8/DB2/Food2.php');
 });
-$klein->respond('GET', '/group8F3', function ($request, $response, $service) {
+$klein->respond('GET', 'emp/group8F3', function ($request, $response, $service) {
 
   $service->render('layouts/group8/DB2/Food3.php');
 });
+
 
 $klein->respond('GET', '/group8/N', function ($request, $response, $service) {
   global $database;

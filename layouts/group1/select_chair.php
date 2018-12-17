@@ -32,12 +32,12 @@
                     </div>
                   </div>
 
-                  <div class="col-md-8">
-                      <br><br>
-                      <font size="6.5"><?=$this->name["title"] ?></font><br><br>
-                      <font size="4">Date   : <?=$this->string ?></font><br><br>
-                      <font size="4">Time   : 21:00</font> &nbsp&nbsp&nbsp  <font size="4"> Theater : 5 </font><br><br>
-                      <font size="4">Length : 135 Mins</font> <br><br>
+                  <div class="col-md-7">
+                      <br><br><br><br>
+                      <font size="5" style="font-weight:bold"> Movie Name: <?=$this->name["title"] ?></font><br><br>
+                      <font size="5">Date   : <?=$this->string ?></font><br><br>
+                      <font size="5">Time   : 21:00</font> &nbsp&nbsp&nbsp  <font size="4"> Theater : 5 </font><br><br>
+                      <font size="5">Length : 135 Mins</font> <br><br>
 
                     <br><br> <!--link to ticket-->
 

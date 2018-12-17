@@ -50,7 +50,7 @@
                 alt=""></a>
           </div>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-7">
           <br><br><br><br>
           <font size = "5" style="font-weight:bold"> Movie Name: <?=$this->name["title"] ?></font><br><br>
           <font size = "5">Genre: Fantasy</font><br>

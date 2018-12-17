@@ -53,7 +53,7 @@
               <input type="text" pattern="[0-9]{13}" title="13 digits required" class="form-control" id="id_card" name="id_card" placeholder="Enter your Citizen ID" require>
               <div class="invalid-feedback" style="width: 100%;">
                 Your Citizen ID is required.
-                ) </div>
+                 </div>
             </div>
           </div>
 
@@ -69,7 +69,7 @@
                 ) </div>
             </div>
         </div>
-</div> 
+</div>
         <div class="row">
           <div class="col-md-6 mb-3">
             <label for="Password">Password</label>
@@ -77,7 +77,7 @@
                     <div class="invalid-feedback">
                         Valid password is required.
                     </div> --><input
-              type="password" name="password" pattern=".{6,}" id="password" class="form-control" placeholder="Enter your Password..." required="">
+              type="password" name="password" pattern=".{6,}" id="password" class="form-control" placeholder="Enter your Password..." required="" value="123456">
             <div class="invalid-feedback">
               Valid password is required.
             </div>
@@ -91,14 +91,14 @@
                     <div class="invalid-feedback">
                         Valid password is required.
                     </div> -->
-            <input type="password" name="confirmpassword" pattern=".{6,}" id="password" class="form-control" placeholder="Enter your Password again..."
+            <input type="password" name="confirmpassword" pattern=".{6,}" id="password" class="form-control" value="" placeholder="Enter your Password again..."
               required>
             <div class="invalid-feedback">
               Valid password is required.
             </div>
           </div>
         </div>
-      </div>
+
       <form class="needs-validation" novalidate>
         <div class="row">
           <div class="col-md-6 mb-3">
@@ -117,10 +117,10 @@
           </div>
         </div>
 
-                <div class="row">
+         <div class="row">
           <div class="col-md-6 mb-3">
           <label for="email">Email <span class="text-muted">(Optional)</span></label>
-          <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com">
+          <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com" value="">
           <div class="invalid-feedback">
             Please enter a valid email address for shipping updates.
           </div>
@@ -128,13 +128,15 @@
           <div class="col-md-6 mb-3">
             <label for="gender">Gender</label>
             <select class="custom-select d-block w-100" id="gender" name="gender">
-              <option value="">Male</option>
+              <option value="">Choose...</option>
+              <option>Male</option>
               <option>Female</option>
               <option>Other...</option>
             </select>
           </div>
         </div>
-        
+
+
         <div class="row">
           <div class="col-md-6 mb-3">
             <label for="phone">Phone Number <span class="text-muted"></span></label>
@@ -151,16 +153,17 @@
             </div>
           </div>
         </div>
-        <div class="mb-3">
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
           <label for="address">Address</label>
           <input type="text" class="form-control" id="address" name="address" placeholder="615/47 Phutthabucha, 40 Bangmot">
           <div class="invalid-feedback">
             Please enter your address.
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-5 mb-3">
-            <label for="Province">Province</label>
+          </div>
+          <div class="col-md-6 mb-3">
+          <label for="Province">Province</label>
             <select class="custom-select d-block w-100" id="Province" name="province">
               <option value="">Choose...</option>
               <option>Bangkok</option>
@@ -170,9 +173,25 @@
               Please select a valid Province.
             </div>
           </div>
-          <div class="col-md-4 mb-3">
-            <label for="District">District</label>
+        </div>
+
+
+        <div class="row">
+          <div class="col-md-5 mb-3">
+          <label for="District">District</label>
             <select class="custom-select d-block w-100" id="District" name="district">
+              <option value="">Choose...</option>
+              <option>BangMot</option>
+              <option>ThungKhru</option>
+            </select>
+            <!--<script src="scr2.js"></script>  ****************** Script here ***************************-->
+            <div class="invalid-feedback">
+              Please select a valid District.
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="SubDistrict">Sub District</label>
+            <select class="custom-select d-block w-100" id="SubDistrict" name="SubDistrict">
               <option value="">Choose...</option>
               <option>BangMot</option>
               <option>ThungKhru</option>

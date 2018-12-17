@@ -116,8 +116,8 @@
           <li>Seats :</li>
         </ul>
         <ul class="book-right">
-          <li>: อควาแมน เจ้าสมุทร</li>
-          <li>: 13 ธันวาคม 2018, 13:20</li>
+          <li>: Aquaman</li>
+          <li>: 13 December 2018, 13:20</li>
           <li>: <span id="counter">0</span></li>
           <li>: <b><i>$</i><span id="total">0</span></b></li>
         </ul>

@@ -10,6 +10,14 @@
         box-shadow: 0 3px 20px -1px rgba(0, 0, 0, .3)
     }
 }
+body {
+	background: url(/layouts/group2/images/bg2.jpg);
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+	font-family: 'Raleway', sans-serif;
+}
 
 .slick-slider {
     box-sizing: border-box;

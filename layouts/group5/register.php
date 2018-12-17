@@ -168,7 +168,7 @@
               <option value="">Choose...</option>
               <option>Bangkok</option>
             </select>
-            <!--<script src="scr1.js"></script>  ****************** Script here ***************************-->
+            <script src="scr1.js"></script>
             <div class="invalid-feedback">
               Please select a valid Province.
             </div>
@@ -184,7 +184,7 @@
               <option>BangMot</option>
               <option>ThungKhru</option>
             </select>
-            <!--<script src="scr2.js"></script>  ****************** Script here ***************************-->
+            <script src="scr2.js"></script>
             <div class="invalid-feedback">
               Please select a valid District.
             </div>

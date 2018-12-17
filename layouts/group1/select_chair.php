@@ -20,7 +20,8 @@
   <br>
   <div class="main">
     <h1 class="my-4"><button type="button" class="btn btn-lg btn-danger">STEP 2</button>
-      <small>Select seats</small>
+      <small>Select seats</small> 
+    
     </h1>
     <div class="card card-temp shadow-lg">
             <div class="container">
@@ -38,6 +39,7 @@
                       <font size="4">30 February 2030</font><br><br>
                       <font size="4">21 : 00</font> &nbsp&nbsp&nbsp  <font size="4"> Theater 5 </font><br><br>
                       <font size="4">135 Mins</font> <br><br>
+                      <button type="button" class="btn btn-lg btn-dark">BACK</button> 
 
                     <br><br> <!--link to ticket-->
 

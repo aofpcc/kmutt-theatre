@@ -49,13 +49,13 @@ $klein->respond('GET', '/movies/showtime/all/[:movie_id]/[:show_date]', function
 
     $target = $request->movie_id;
     $show_date = $request->show_date;
-    
-    $query = "select a.branch_id, b.branchname 
+
+    $query = "select a.branch_id, b.branchname
     from (select distinct branch_id
     from available_movies where movie_id = $target and date(startTime) = '$show_date' ) a join G14_Branch b on a.branch_id = b.BranchID ;";
     $stmt = $conn->prepare($query);
     $stmt->execute();
-    
+
     $branches = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $result = [];
 
@@ -94,10 +94,10 @@ $klein->respond('GET', '/movies/showtime/all/[:movie_id]/[:show_date]', function
                 $movie["showtime"] = $datetime->format("H:i");
                 if($datetime >= $now) {
                     if($active){
-                        $movie["status"] = " btn-primary active ";
-                        $active = false; 
+                        $movie["status"] = "btn-primary active";
+                        $active = false;
                     } else{
-                        $movie["status"] = "btn-outline-primary";
+                        $movie["status"] = " btn-dark";//btn-outline-primary
                     }
                 }else{
                     $movie["status"] = " inactive ";
@@ -109,8 +109,7 @@ $klein->respond('GET', '/movies/showtime/all/[:movie_id]/[:show_date]', function
         array_push($result, $b_temp);
     }
 
-    // return $response->json($result);
-    // die;
+    // ret 1
     $service->result = $result;
     $service->partial("layouts/group1/branch_each.php");
 });

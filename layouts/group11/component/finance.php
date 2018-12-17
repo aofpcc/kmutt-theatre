@@ -30,13 +30,12 @@
         <button id="search_graph" type="button" class="btn btn-primary active">Search</button>
         <button id="refesh_page" type="button" class="btn btn-primary active">Reset</button>
       </div>
-
       <div class="col-lg-6">
         <div style="width: inherit!important; min-width: 500px;" class="container" style="padding-top:30px;">
 
-          <h2>Revenue <kbd id="revenue" style="background-color:green"> <?php echo ($this->revenue[0]['0']); ?> Bath</kbd></h2>
-          <h2>Expense <kbd id="expense" style="background-color:red"><?php echo ($this->expenses[0]['0']); ?> Bath</kbd></h2>
-          <?php  $profit = $this->revenue[0]['total'] - $this->expenses[0]['0'];?>
+          <h2>Revenue <kbd id="revenue" style="background-color:green"> <?php echo ($this->revenue[0]['total']); ?> Bath</kbd></h2>
+          <h2>Expense <kbd id="expense" style="background-color:red"><?php echo ($this->expenses[0]['total']); ?> Bath</kbd></h2>
+          <?php  $profit = $this->revenue[0]['total'] - $this->expenses[0]['total'];?>
           <h2>Profit <kbd id="profit"><?php echo (($profit)) ;?> Bath</kbd></h2>
         </div>
       </div>

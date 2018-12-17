@@ -1,12 +1,12 @@
 <?php foreach($this->result as $r) { ?>
 <div class="card card-temp shadow-sm">
-    <div class="row blue-head">
-      <div class="col-xs-12">
-        <center><?=$r["branch_name"]?></center>
+    <!-- <div class="row blue-head">
+      <div class="col-xs-12"> -->
+        <button type="button" class="btn btn-danger"><center><?=$r["branch_name"]?></center></button>
       </div>
     </div>
 
-    <?php $isFirst = true; 
+    <?php $isFirst = true;
     foreach($r["rooms"] as $room) { ?>
     <div class="row">
       <div class="col-lg-4 col-md-6 mb-45">

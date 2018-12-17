@@ -3,9 +3,9 @@ $klein->respond('GET', '/kmutt_home/branch/show_time/select_chair/[:showtime_id]
   $service->bootstrap3 = false;
   $conn = $database->getConnection();
 
-  $x = $request->showtime_id;
-  var_dump($x);
-  die;
+  // $x = $request->showtime_id;
+  // var_dump($x);
+  // die;
   $service->seatMap = [  //Seating chart
     'aaaaaaaaaa',
     'aaaaaaaaaa',
@@ -85,10 +85,9 @@ $klein->respond('GET', '/kmutt_home/branch/show_time/select_chair/[:showtime_id]
     // $service->deadline = $deadline;
     // $service->movie_name = $movie_name;
     // $service->showtime = $showtime;
-    //$service->theatre_no = $theatre_no;
-
-    //$service->pageTitle = 'Payment';
-    //$service->render('layouts/group1/select_chair.php');
+    // $service->theatre_no = $theatre_no;
+    // $service->pageTitle = 'Payment';
+    // $service->render('layouts/group1/select_chair.php');
 
   // $movie_id = '1';
   // $theatre_no = '3';

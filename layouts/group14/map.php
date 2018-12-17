@@ -35,8 +35,8 @@
                         class="btn btn-info btn-lg btn-block">
                         <?php /*echo ($this->guy[$i]['BranchName']) */?>
                         <?php echo ($this->guy[$i]['BranchName']); ?>
-                    </button></li>
-                    <hr style="height:2pt; visibility:hidden; margin-bottom:-1px; margin-top:3px" />
+                    </button>
+                    <hr style="height:1pt; visibility:hidden; margin-bottom:0px; margin-top:1px" /></li>
                 <?php }?>
             </ul>
         </div>

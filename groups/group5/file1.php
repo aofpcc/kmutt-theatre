@@ -265,6 +265,7 @@ $klein->respond('POST', '/register-form', function ($request, $response, $servic
             $id_card = $request->id_card;
             $firstname = $request->firstName;
             $lastname = $request->lastName;
+            $gender = $request->gender;
             $phone = $request->phone;
             $birth = $request->birth;
 
@@ -277,6 +278,8 @@ $klein->respond('POST', '/register-form', function ($request, $response, $servic
             $stmt->bindParam(":Birthdate", $birth);
             $stmt->bindParam(":Email", $email);
             $stmt->bindParam(":PhoneNumber", $phone);
+
+            // echo $stmt;
 
             $stmt->execute();
             // address

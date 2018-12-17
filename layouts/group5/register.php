@@ -77,7 +77,7 @@
                     <div class="invalid-feedback">
                         Valid password is required.
                     </div> --><input
-              type="password" name="password" pattern=".{6,}" id="password" class="form-control" placeholder="Enter your Password..." required="" value="123456">
+              type="password" title="Please include at least 6 characters" name="password" pattern=".{6,}" id="password" class="form-control" placeholder="Enter your Password..." required="" value="123456">
             <div class="invalid-feedback">
               Valid password is required.
             </div>

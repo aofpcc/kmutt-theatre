@@ -17,9 +17,9 @@
 
 </head>
 
-  <br><br>
+  <br>
   <div class="main">
-    <h1 class="my-4"><button type="button" class="btn btn-lg btn-danger">STEP 3</button>
+    <h1 class="my-4"><button type="button" class="btn btn-lg btn-danger">STEP 2</button>
       <small>Select seats</small>
     </h1>
     <div class="card card-temp shadow-lg">
@@ -34,10 +34,10 @@
 
                   <div class="col-md-8">
                       <br><br>
-                      <font size="6">GingerClown</font><br><br>
-                      <font size="4">30 February 2030</font><br><br>
-                      <font size="4">21 : 00</font> &nbsp&nbsp&nbsp  <font size="4"> Theater 5 </font><br><br>
-                      <font size="4">135 Mins</font> <br><br>
+                      <font size="7"><?=$this->name["title"] ?></font><br><br>
+                      <font size="4">Date   : <?=$this->string ?></font><br><br>
+                      <font size="4">Time   : 21:00</font> &nbsp&nbsp&nbsp  <font size="4"> Theater : 5 </font><br><br>
+                      <font size="4">Length : 135 Mins</font> <br><br>
 
                     <br><br> <!--link to ticket-->
 
@@ -61,22 +61,23 @@
           <li>Seats :</li>
         </ul>
         <ul class="book-right">
-          <li>: Gingerclown</li>
+          <li>: <?=$this->name["title"] ?></li>
           <li>: April 3, 21:00</li>
           <li>: <span id="counter">0</span></li>
           <li>: <b><i>$</i><span id="total">0</span></b></li>
         </ul>
         <div class="clear"></div>
 
-          <form action="/customer/kmutt_home/branch/show_time/select_chair/payment" method="post">
             <ul id="selectedSeats" class="scrollbar scrollbar1"></ul>
+            <?php foreach($this->movies as $movie) { ?>
             <form action="selectchair_page.php" method="post">
-          <button id="booknow" class="checkout-button" name="book_now">Book Now
-        </button>
+              <button type = "button" class = "checkout-button"onclick = "/kmutt_home/branch/show_time/select_chair/payment/<?=$movie["id"]?>">Book now
+              </button>
         <div id="legend"></div>
       </div>
       <div style="clear:both"></div>
-      </div> </form></form>
+      </div> </form>
+    <?php } ?>
 
     <!-- <script src="/layouts/group1/js/booking.js" charset="utf-8"></script> -->
     <?php $this->partial("layouts/group1/js/booking.php"); ?>

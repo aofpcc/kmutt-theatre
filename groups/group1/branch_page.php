@@ -1,16 +1,4 @@
 <?php
-$klein->respond('GET', '/kmutt_home/branch', function ($request, $response, $service) use ($database) {
-    $service->bootstrap3 = false;
-    $conn = $database->getConnection();
-
-    //$d = $app->login->requireLogin('customer');
-
-    $query = $conn->query("SELECT BranchName FROM G14_Branch")->fetchAll(PDO::FETCH_BOTH);
-
-    $service->query = $query;
-    $service->render('layouts/group1/select_branch.php');
-});
-
 $klein->respond('GET', '/kmutt_home/branch/[:movie_id]', function ($request, $response, $service) use ($database) {
     $service->bootstrap3 = false;
     $conn = $database->getConnection();
@@ -33,10 +21,13 @@ $klein->respond('GET', '/kmutt_home/branch/[:movie_id]', function ($request, $re
         $status = true;
     }
 
-    // $response->dump($date);
+    $name = $conn->query("select distinct title from G09_Movie where id = '$request->movie_id'")->fetchAll(PDO::FETCH_ASSOC);
+
+    // $response->dump($name);
     // $response->sendBody();
     // die;
 
+    $service->name = $name[0];
     $service->datenow = (new DateTime)->format("Y-m-d");
     $service->query = $date;
     $service->movie_id = $request->movie_id;
@@ -49,13 +40,13 @@ $klein->respond('GET', '/movies/showtime/all/[:movie_id]/[:show_date]', function
 
     $target = $request->movie_id;
     $show_date = $request->show_date;
-    
-    $query = "select a.branch_id, b.branchname 
+
+    $query = "select a.branch_id, b.branchname
     from (select distinct branch_id
     from available_movies where movie_id = $target and date(startTime) = '$show_date' ) a join G14_Branch b on a.branch_id = b.BranchID ;";
     $stmt = $conn->prepare($query);
     $stmt->execute();
-    
+
     $branches = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $result = [];
 
@@ -94,10 +85,10 @@ $klein->respond('GET', '/movies/showtime/all/[:movie_id]/[:show_date]', function
                 $movie["showtime"] = $datetime->format("H:i");
                 if($datetime >= $now) {
                     if($active){
-                        $movie["status"] = " btn-primary active ";
-                        $active = false; 
+                        $movie["status"] = "btn-primary active";
+                        $active = false;
                     } else{
-                        $movie["status"] = "btn-outline-primary";
+                        $movie["status"] = " btn-dark";//btn-outline-primary
                     }
                 }else{
                     $movie["status"] = " inactive ";
@@ -109,8 +100,8 @@ $klein->respond('GET', '/movies/showtime/all/[:movie_id]/[:show_date]', function
         array_push($result, $b_temp);
     }
 
-    // return $response->json($result);
-    // die;
+    // ret 1
     $service->result = $result;
     $service->partial("layouts/group1/branch_each.php");
 });
+?>

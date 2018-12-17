@@ -103,11 +103,11 @@ p.copy_rights a:hover{
 }
 /*-- movie ticket --*/
 .front{
-    margin: 5px 80px 45px 38px;
+    margin: 20px 20px 20px 20px;
     background-color: #D88A04;
     color: #fff;
     text-align: center;
-    padding: 9px 0;
+    padding: 9px ;
     border-radius: 3px;
 	}
 .booking-details {
@@ -174,7 +174,7 @@ div.seatCharts-seat.unavailable {
 	}
 div.seatCharts-container {
     border-right: 1px solid #adadad;
-    width: 54%;
+    width: 43%;
     padding: 0 20px 0 0;
     float: left;
 }
@@ -408,7 +408,7 @@ ul.book-right li {
 		width: 65%;
 	}
 	.front {
-		margin: 5px 6px 36px 6px;
+		margin: 5px 6px 20px 6px;
 	}
 }
 @media (max-width: 568px){
@@ -483,7 +483,7 @@ ul.book-right li {
 	.front {
 		margin: 5px 6px 25px 6px;
 		font-size: 14px;
-		padding: 7px 0;
+		padding: 3px 0;
 	}
 	.content h1 {
 		font-size: 18px;
@@ -521,3 +521,4 @@ ul.book-right li {
 		min-width: 400px;
 	}
 }
+

@@ -4,7 +4,7 @@ $klein->respond('GET', '/kmutt/ticket', function ($request, $response, $service)
   $conn = $database->getConnection();
 
   $movie_id = '2';
-  $movie_name = 'Horrible Bosses 2';
+  $movie_name = 'Fantastic Beast2 : Crimes of Grindelwald';
   $theatre_no = '5';
   $showtime = time();
   $seats = array();

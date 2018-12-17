@@ -96,7 +96,7 @@ class LoginPerformer
 
                 $stmt->bindParam(":userID", $userID);
                 $stmt->execute();
-                
+
             } else {
                 $this->conn->rollback();
                 return [

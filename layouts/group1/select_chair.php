@@ -3,7 +3,7 @@
   <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> -->
-   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> -->
 
@@ -34,7 +34,7 @@
 
                   <div class="col-md-8">
                       <br><br>
-                      <font size="7"><?=$this->name["title"] ?></font><br><br>
+                      <font size="6.5"><?=$this->name["title"] ?></font><br><br>
                       <font size="4">Date   : <?=$this->string ?></font><br><br>
                       <font size="4">Time   : 21:00</font> &nbsp&nbsp&nbsp  <font size="4"> Theater : 5 </font><br><br>
                       <font size="4">Length : 135 Mins</font> <br><br>
@@ -68,16 +68,18 @@
         </ul>
         <div class="clear"></div>
 
-            <ul id="selectedSeats" class="scrollbar scrollbar1"></ul>
-            <?php foreach($this->movies as $movie) { ?>
-            <form action="selectchair_page.php" method="post">
-              <button type = "button" class = "checkout-button"onclick = "/kmutt_home/branch/show_time/select_chair/payment/<?=$movie["id"]?>">Book now
+            <?php //foreach($this->movie_id as $movie_id) { ?>
+            <form action = "/customer/kmutt_home/branch/show_time/select_chair/payment/<?= $this->movie_id["movie_id"]?>" method = "post">
+                <ul id="selectedSeats" class="scrollbar scrollbar1"></ul>
+              <button name = "book_seat" value = "book_seat" id = "book_seat" class = "checkout-button">Book now
               </button>
+
         <div id="legend"></div>
       </div>
       <div style="clear:both"></div>
       </div> </form>
-    <?php } ?>
+    <?php //} ?>
+
 
     <!-- <script src="/layouts/group1/js/booking.js" charset="utf-8"></script> -->
     <?php $this->partial("layouts/group1/js/booking.php"); ?>

@@ -6,7 +6,11 @@
       <span class="close">&times;</span>
       <h2>Ads</h2>
     </div>
-    <div class="modal-body"><img src="<?=$this->linkads ?>" alt="cola" /></div>
+    <div class="modal-body">
+      <a href="<?=$this->link?>" target="_blank">
+      <img src="<?=$this->linkads ?>" alt="ads"/>
+      </a>
+    </div>
     <div class="modal-footer"><h3>Kmutt-Theatre</h3></div>
   </div>
 </div>
@@ -19,5 +23,5 @@
     //     this.parentElement.style.display = "none";
     //   });
     // }
-  </script>
+</script>
   <script src="/layouts/group10/test_ads/main.js"></script>

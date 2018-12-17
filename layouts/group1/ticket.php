@@ -92,5 +92,10 @@ padding: 30px 30px;
                   //print_r($this->seats);
               ?>
               <br> <br>
-    <!-- <button type="button" class="btn btn-primary btn-lg btn-danger">BACK TO HOME</button> -->
+    <button type="button" class="btn btn-primary btn-lg btn-danger">BACK TO HOME</button>
+    </div>
   </div>
+  </div>
+  </div>
+  </div>
+

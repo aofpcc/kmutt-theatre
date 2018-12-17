@@ -19,7 +19,7 @@
       <!-- line -->
       <div class="gap"></div>
       <div class="box-name-text" style="margin-left: 97px;">Current Phone Number</div>
-      <div class="gap-less" style="margin-left: 97px;">099 999 9999</div>
+      <div class="gap-less" style="margin-left: 97px;"><?php echo $this->currentPhone; ?></div>
       <div class="gap"></div>
       </br>
       <!-- change form -->

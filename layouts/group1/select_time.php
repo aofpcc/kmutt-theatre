@@ -20,9 +20,6 @@
   </ul>
 </nav> -->
 
-
-
-  <br><br>
   <div class="main">
     <div class="container">
 
@@ -54,6 +51,13 @@
         </div>
         <br><br><hr>
 
+        <nav class="nav nav-pills nav-fill">
+            <a class="nav-item nav-link active" href="#">Thu<br><small>15 Nov 2018</small></a>
+            <a class="nav-item nav-link" href="#">Fri<br><small>16 Nov 2018</small></a>
+            <a class="nav-item nav-link" href="#">Sat<br><small>17 Nov 2018</small></a>
+            <a class="nav-item nav-link disabled" href="#">Mon<br><small>18 Nov 2018</small></a>
+            <a class="nav-item nav-link disabled" href="#">Tue<br><small>19 Nov 2018</small></a>
+          </nav><hr>
 
         <div class="card card-temp">
           <div class="container">

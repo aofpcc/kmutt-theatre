@@ -59,26 +59,24 @@ $klein->respond('POST', '/change/password/action', function ($request, $response
     $loginInfo = $app->login->requireLogin('customer');
     $userID = $loginInfo['userID'];
 
-    $oldPassword = $request->oldPassword;
-    $newPassword1 = $request->newPassword1;
-    $newPassword2 = $request->newPassword2;
+    $oldPassword = $request->oldpassword;
+    $newPassword1 = $request->newpassword1;
+    $newPassword2 = $request->newpassword2;
 
     if($newPassword1 != $newPassword2) {
       $service->flash("New Password has not matched.");
       $service->back();
+      $response->sendHeaders();
+      return;
     }
 
-    global $database;
-    $conn = $database->getConnection();
-    $sql = "UPDATE G05_Member_password
-          SET Password = $newPassword1
-          WHERE ;";
-
-    $stmt = $conn->prepare($sql);
-    $stmt->execute();
-    $data = $stmt->fetchAll();
-    $service->usr = $data;
-    $service->render('layouts/group5/membership.php');
+    $result = $app->login->changePassword($oldPassword, $newPassword1);
+    if (!$result["change"]) {
+        $service->flash("The old password incorrect");
+        $service->back();
+        $response->sendHeaders();
+    }
+    $response->redirect("/customer/membership");
 });
 
 // // Change email
@@ -106,9 +104,34 @@ $klein->respond('GET', '/change/phonenumber', function ($request, $response, $se
     $stmt->execute();
     $data = $stmt->fetchAll();
 
-    // render the page
-    $service->currentPhone = $data[0]['PhoneNumber'];
-    $service->render('layouts/group5/changePhoneNumber.php');
+    // echo $userID;
+    $pnb = $data[0]["PhoneNumber"];
+});
+
+// change phone number (SQL)
+$klein->respond('POST', '/change/phonenumber/action', function ($request, $response, $service, $app, $validator) {
+    // get login info (send to login page if not logged in)
+    $loginInfo = $app->login->requireLogin('customer');
+    $userID = $loginInfo['userID'];
+
+    global $database;
+    $conn = $database->getConnection();
+    $PhoneNumber = $request->PhoneNumber;
+
+    //Check Password
+    // $query = "SELECT * from movies";
+    // $stmt = $conn->prepare($query);
+    // $stmt->execute();
+    //
+    // $num = $stmt->rowCount();
+
+    // query3 Phone Number
+    $sql3 = "UPDATE G05_Member_profile
+           SET PhoneNumber='$PhoneNumber'
+           WHERE MemberID = $userID";
+    $stmt = $conn->prepare($sql3);
+    $stmt->execute();
+    $response->redirect('/customer/membership');
 });
 
 // member information

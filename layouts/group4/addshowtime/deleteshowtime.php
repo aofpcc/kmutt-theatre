@@ -1,0 +1,73 @@
+<br>
+<h2>Basic Table</h2> 
+<div class="container-fluid">
+  <div class="row">
+  		<div class="col-md-6"></div>
+        <div class="col-md-6 text-right">
+            <input type="button" class="btn btn-primary btn-lg custom-button-width .navbar-right"  value="  Add  " onclick=" add_page()"></button>
+    	</div>
+  </div>
+</div>
+<br>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+        <td>Showtime id</td>
+        <td>Branch</td>
+        <td>Room no</td>
+        <td>Movie title</td>
+        <td>Language</td>
+        <td>Date</td>
+        <td>Start Time</td>
+        <td>End Time</td>
+        <td>Action</td>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach($this->data as $d) { ?>
+            <tr>
+                <td><?=$d['showtime_id']?></td>
+                <td><?=$d['BranchName']?></td>
+                <td><?=$d['room_no']?></td>
+                <td><?=$d['title']?></td>
+                <td><?=$d['language']?></td>
+                <td><?=$d['date(s.startTime)']?></td>
+                <td><?=$d['time(s.startTime)']?></td>
+                <td><?=$d['time(s.endTime)']?></td>
+                <td>
+                    <button type="button" class="btn btn-success">Edit</button>
+                    <button type="button" class="btn btn-danger" onClick="del(<?=$d['showtime_id']?>);">Delete</button>
+                </td>
+            </tr>
+        <?php } ?>
+    </tbody>
+</table>
+<script>
+    function del(e) {
+        if(!confirm("Confirm Delete")) {
+            return;
+        }
+        $.post("/emp/g04/showTime/del/"+e).done(function(data){
+            // console.log(data);
+            if(!data.err){
+                alert(data.message);
+                location.reload();
+            }else{
+                alert("Fail to Delete");
+                console.log(data.err);
+            }
+        }).fail(function(err){
+            console.log(err);
+            
+        });
+    }
+
+    function add_page()
+    {
+        location.href = "/emp/add_showtime";
+    } 
+
+</script>

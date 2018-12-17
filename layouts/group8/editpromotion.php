@@ -1,6 +1,6 @@
 <br>
 <h2>Edit Promotion</h1>
-<form action="/emp/promotion/edit" method="post">
+<form action="/emp/promotion/edit" method="post" enctype="multipart/form-data">
 
  <div class="form-group">
     <label for="" class="form-label">Promotion Name</label>

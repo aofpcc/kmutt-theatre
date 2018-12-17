@@ -1,4 +1,11 @@
 <?php
+$klein->respond('GET', '/fnb', function ($request, $response, $service) {
+  $service->bootstrap3 = false;
+  global $database;
+  $conn = $database->getConnection();
+  $service->render('layouts/group13/main.php');
+});
+
 $klein->respond('GET', '/fnb/sale', function ($request, $response, $service) {
   $service->bootstrap3 = false;
   global $database;
@@ -12,7 +19,6 @@ $klein->respond('GET', '/fnb/stock', function ($request, $response, $service) {
   $conn = $database->getConnection();
   $service->render('layouts/group13/stock.php');
 });
-
 
 $klein->respond('POST', '/fnb/checkcoupon', function ($request, $response, $service, $app, $validator) {
   global $database;
@@ -256,7 +262,7 @@ function getSize($productID){
     return $size["Size"];
 }
 
-function getStockID($productID){
+function getStockID($productID) {
     $stockID = substr($productID,0,4);
     return $stockID;
 }

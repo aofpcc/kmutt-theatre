@@ -81,22 +81,22 @@
         <label class="col-xs-3" for="exampleFormControlInput1">Gerne</label>
         <div class="form-check-inline">
             <label class="form-check-label">
-              <input type="checkbox" class="form-check-input" name="Gerne[]" value="Action"> Action
+              <input type="checkbox" class="form-check-input" name="gerne[]" value="Action"> Action
             </label>
           </div>
           <div class="form-check-inline">
             <label class="form-check-label">
-              <input type="checkbox" class="form-check-input" name="Gerne[]" value="Adult"> Adult
+              <input type="checkbox" class="form-check-input" name="gerne[]" value="Adult"> Adult
             </label>
           </div>
           <div class="form-check-inline">
             <label class="form-check-label">
-              <input type="checkbox" class="form-check-input" name="Gerne[]" value="Fantasy"> Fantasy
+              <input type="checkbox" class="form-check-input" name="gerne[]" value="Fantasy"> Fantasy
             </label>
           </div>
           <div class="form-check-inline">
             <label class="form-check-label">
-              <input type="checkbox" class="form-check-input" name="Gerne[]" value="Scifi"> Sci-fi
+              <input type="checkbox" class="form-check-input" name="gerne[]" value="Scifi"> Sci-fi
             </label>
           </div>
     <div class="form-group">
@@ -105,12 +105,11 @@
     </div>
     <div class="form-group">
       <label for="exampleFormControlInput1">Studio</label>
-      <select class="form-control" id="exampleFormControlSelect1">
-      <option>Marvel</option>
-      <option>a</option>
-      <option>DC</option>
-      <option>Krit</option>
-      <option>5</option>
+      <select class="form-control" id="exampleFormControlSelect1" name = "studio_name">
+      <option value = "marvel">Marvel</option>
+      <option value = "a">a</option>
+      <option value = "DC">DC</option>
+      <option value = "universal">Universal</option>
     </select>
     </div>
     <div class="form-group">

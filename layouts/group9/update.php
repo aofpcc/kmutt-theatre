@@ -11,10 +11,10 @@
 
     /* Add a gray background color and some padding to the footer */
 
-    footer {
+    /* footer {
       background-color: #f2f2f2;
       padding: 25px;
-    }
+    } */
   </style>
 </head>
 
@@ -33,13 +33,13 @@
 <br>
 <div class="container">
   <?php echo $this->sqlResult; ?>
-  <form action="/group9/action/update" method="POST">
+  <form action="/emp/group9/action/update" method="POST">
     <div class="form-group">
       <label for="exampleFormControlInput1">ID</label>
       <input type="text" class="form-control" id="exampleFormControlInput1" name="id" placeholder="Name" value="<?php echo $this->id; ?>"
         required disabled>
     </div>
-    <input type="hidden" name="id" value="<?=$this->id ?>">
+    <input type="hidden" name="id" value="<?=$this->id?>">
     <div class="form-group">
       <label for="exampleFormControlInput1">Title</label>
       <input type="text" class="form-control" id="exampleFormControlInput1" name="title" placeholder="Name" value="" required>
@@ -133,8 +133,10 @@
         <label for="exampleFormControlTextarea1">Describetion</label>
         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="des" placeholder="add Describetion"></textarea>
       </div>
-      <button class="btn btn-primary" type="submit">Update</button>
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit">Update</button>
+      </div>
+    </div>
   </form>
-  <br>
-  </div>
-  </div>
+</div>
+<br>

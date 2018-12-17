@@ -24,7 +24,7 @@
 </div>
 
     <div class="container text-center">
-      <button onclick = "location.href = '/group9/action888'" type="button" class="btn btn-primary btn-lg">Home</button>
+      <button onclick = "location.href = '/emp/group9/action888'" type="button" class="btn btn-primary btn-lg">Home</button>
       <button onclick = "location.href = '/emp/group9/add'" type="button" class="btn btn-secondary btn-lg">Add Movie</button>
     </div>
 
@@ -77,9 +77,9 @@
         ?>
 
     <script>
-      function showDeleteDialog(id, name) {
-        if (confirm("Are you sure you want to delete '" + name + "'?")) {
-          location.href = '/group9/action/delete/' + id;
+      function showDeleteDialog(id, title) {
+        if (confirm("Are you sure you want to delete '" + title + "'?")) {
+          location.href = '/emp/group9/action/delete/' + id;
           // txt = "You pressed OK!";
         }
         // } else {

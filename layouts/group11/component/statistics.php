@@ -81,12 +81,12 @@ var chart = new CanvasJS.Chart("chartShowtime", {
 	foreach($this->gene as $value){
 		$temp = [
 			"y" => $value["amount"],
-			"label" => $value["label"]
+			"label" => $value["Genre"]
 		  ];
 		array_push($gerne, $temp);
 	}
 	?>
-	var gerne = <?php// echo json_encode($gerne); ?>;
+	var gerne = <?php echo json_encode($gerne); ?>;
 
 var chart3 = new CanvasJS.Chart("chartGene", {
 	animationEnabled: true,

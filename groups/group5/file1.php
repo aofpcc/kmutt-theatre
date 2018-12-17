@@ -106,6 +106,10 @@ $klein->respond('GET', '/change/phonenumber', function ($request, $response, $se
 
     // echo $userID;
     $pnb = $data[0]["PhoneNumber"];
+
+    // render the page
+    $service->currentPhone = $data[0]['PhoneNumber'];
+    $service->render('layouts/group5/changePhoneNumber.php');
 });
 
 // change phone number (SQL)
@@ -155,7 +159,7 @@ $klein->respond('GET', '/register', function ($request, $response, $service) {
 $klein->respond('POST', '/editprofile/action', function ($request, $response, $service, $app, $validator) {
     // get login info (send to login page if not logged in)
     $loginInfo = $app->login->requireLogin('customer');
-    // $userID = $loginInfo['userID'];
+    $userID = $loginInfo['userID'];
 
     $MemberID = $request->MemberID;     // extra hidden field
     $fst = $request->Firstname;

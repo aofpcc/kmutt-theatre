@@ -107,7 +107,18 @@
                         </div>
                     </div>
                 </div>
-                <div class="showtime-date-slide">
+                <hr>
+
+        <nav class="nav nav-pills nav-fill">
+            <a class="nav-item nav-link active" href="#">Thu<br><small>15 Nov 2018</small></a>
+            <a class="nav-item nav-link" href="#">Fri<br><small>16 Nov 2018</small></a>
+            <a class="nav-item nav-link" href="#">Sat<br><small>17 Nov 2018</small></a>
+            <a class="nav-item nav-link disabled" href="#">Mon<br><small>18 Nov 2018</small></a>
+            <a class="nav-item nav-link disabled" href="#">Tue<br><small>19 Nov 2018</small></a>
+          </nav><hr>
+
+          
+                <!-- <div class="showtime-date-slide">
                     <div class="container">
                         <div class="slick-initialized slick-slider"><button class="slick-prev slick-arrow slick-disabled"
                                 aria-disabled="true" style="display: inline-block;"><svg class="sf-icon prev-arrow"
@@ -116,7 +127,7 @@
                                     <title>prev</title>
                                     <polyline class="cls-1" points="33.53 4 5.47 34.06 33.53 64.12"></polyline>
                                 </svg></button>
-                            <!-- <div class="slick-list"> -->
+                             <div class="slick-list">
                                 <nav class="nav nav-pills nav-fill">
                                     <a class="nav-item nav-link" href="#">Thu<br><small>15 Nov 2018</small></a>
                                     <a class="nav-item nav-link" href="#">Fri<br><small>16 Nov 2018</small></a>
@@ -124,7 +135,7 @@
                                     <a class="nav-item nav-link" href="#">Mon<br><small>18 Nov 2018</small></a>
                                     <a class="nav-item nav-link" href="#">Tue<br><small>19 Nov 2018</small></a>
                                 </nav>
-                            <!-- </div> -->
+                            </div>
                             <button class="slick-next slick-arrow" style="" aria-disabled="false"><svg class="sf-icon next-arrow"
                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 37.53 68.12">
                                     <defs></defs>
@@ -133,7 +144,7 @@
                                 </svg></button>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="container">
                     <div class="showtime-box">
                         <div class="showtime-list">

@@ -10,13 +10,18 @@
     
     <div class="emp-profile">          
         <div class="row">
-            <form action="/emp/staff/employee/editprofile/save" method="post">
+            <form action="/emp/staff/employee/editprofile/save" method="post" enctype="multipart/form-data">
                 <div class="col-md-4">
                     <div class="profile-img">
-                        <img src="/layouts/group11/img/Ppim.jpg" alt=""/>
+                        <img src="
+                            <?php 
+                                    $pic = $this->picture;
+                                    echo '/'.$pic[0]['parth'];                                   
+                            ?>
+                        " alt=""/>
                         <div class="file btn btn-lg btn-primary">
                         Change Photo
-                        <input type="file" name="file"/>
+                        <input type="file" name="fileToUpload" id="fileToUpload">
                         </div>
                     </div>
                 </div>
@@ -91,8 +96,7 @@
                 </div>
             </form>  
         </div>                           
-    </div> 
-                  
+    </div>            
      
 </main>
         

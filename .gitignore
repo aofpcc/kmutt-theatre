@@ -1,3 +1,15 @@
 */.DS_Store
 vendor/*
 run\.bat
+
+\.idea/kmutt-theatre\.iml
+
+\.idea/misc\.xml
+
+\.idea/modules\.xml
+
+\.idea/php\.xml
+
+\.idea/vcs\.xml
+
+\.idea/workspace\.xml

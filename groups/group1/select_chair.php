@@ -3,9 +3,9 @@ $klein->respond('GET', '/kmutt_home/branch/show_time/select_chair/[:showtime_id]
   $service->bootstrap3 = false;
   $conn = $database->getConnection();
 
-  $x = $request->showtime_id;
-  var_dump($x);
-  die;
+  // $x = $request->showtime_id;
+  // var_dump($x);
+  // die;
   $service->seatMap = [  //Seating chart
     'aaaaaaaaaa',
     'aaaaaaaaaa',

@@ -18,7 +18,7 @@ $klein->respond('GET', '/kmutt_home/branch2', function ($request, $response, $se
     $query = $conn->query("SELECT BranchName FROM G14_Branch")->fetchAll(PDO::FETCH_BOTH);
 
     $service->query = $query;
-    $service->render('layouts/group1/select_branch2.php');
+    $service->render('layouts/group1/showtime318.php');
 });
 
 $klein->respond('GET', '/movies/showtime/all/[:movie_id]', function ($request, $response, $service, $app, $validator) {

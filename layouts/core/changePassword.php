@@ -20,7 +20,7 @@
       <div class="row">
         <div class="col-sm-1"></div>
         <div class="col-sm-6">
-          <form action="/change/password/action" method="post">
+          <form action="/customer/change/password/action" method="post">
             <!-- Current Password -->
             <div class="form-group">
               <label class="box-name-text gap" for="usr">Current Password</label>
@@ -29,12 +29,12 @@
             <!-- New Password -->
             <div class="form-group">
               <label class="box-name-text gap" for="usr">New password (8-20 characters)</label>
-              <input type="password" class="form-control form-control-lg" id="usr" name="newpassword" required>
+              <input type="password" class="form-control form-control-lg" id="usr" name="newpassword1" required>
             </div>
             <!-- Confirm New Password -->
             <div class="form-group">
               <label class="box-name-text gap" for="usr">Confirm new password</label>
-              <input type="password" class="form-control form-control-lg" id="usr" name="newpassword" required>
+              <input type="password" class="form-control form-control-lg" id="usr" name="newpassword2" required>
             </div>
             <!-- Button -->
             <div class="gap-more"></div>

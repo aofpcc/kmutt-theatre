@@ -1,5 +1,6 @@
 <?php
 $included = array(
   'file1',
-  'gen'
+  'gen',
+  'promotionManagement'
 );

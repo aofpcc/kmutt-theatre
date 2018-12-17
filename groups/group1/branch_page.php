@@ -94,10 +94,10 @@ $klein->respond('GET', '/movies/showtime/all/[:movie_id]/[:show_date]', function
                 $movie["showtime"] = $datetime->format("H:i");
                 if($datetime >= $now) {
                     if($active){
-                        $movie["status"] = " btn-primary active ";
+                        $movie["status"] = "btn-primary active";
                         $active = false;
                     } else{
-                        $movie["status"] = "btn-outline-primary";
+                        $movie["status"] = " btn-dark";//btn-outline-primary
                     }
                 }else{
                     $movie["status"] = " inactive ";
@@ -109,8 +109,7 @@ $klein->respond('GET', '/movies/showtime/all/[:movie_id]/[:show_date]', function
         array_push($result, $b_temp);
     }
 
-    return $response->json($result);
-    die;
+    // ret 1
     $service->result = $result;
     $service->partial("layouts/group1/branch_each.php");
 });

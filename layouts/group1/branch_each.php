@@ -21,7 +21,7 @@
         <br>
         <h4>ENG</h4>
         <?php foreach($room["movies"] as $movie) { ?>
-            <a class="btn btn-dark<?=$movie["status"] ?>" href="/customer/kmutt_home/branch/show_time/select_chair/<?=$movie["id"]?>"><?=$movie["showtime"]?></a>
+            <a class="btn <?=$movie["status"] ?>" href="/customer/kmutt_home/branch/show_time/select_chair/<?=$movie["id"]?>"><?=$movie["showtime"]?></a>
         <?php } ?>
       </div>
     </div>

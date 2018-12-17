@@ -1,0 +1,11 @@
+.blue-head {
+    background-color: #2e66cf;
+    border: 1px solid #2e66cf;
+    color: #fff;
+    margin: -1px -1px 0;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1;
+    position: relative;
+}

@@ -29,7 +29,8 @@ $klein->respond(function ($request, $response, $service, $app, $validator) use (
       ];
     } else {
         $login_menu = [
-        ["name" => "View Profile", "href" => "#"],
+        // ["name" => "View Profile", "href" => ""],
+        ["name" => "Account", "href" => "/customer/membership"],
         ["name" => "Change Password", "href" => "/test/changePassword"],
         ["name" => "Log out", "href" => "/test/logout"],
       ];

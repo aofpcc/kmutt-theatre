@@ -5,76 +5,30 @@
 <head>
     <!-- <title>movie name | KMUTT Theatre</title> -->
 
-    <!-- GA -->
-    <script id="facebook-ixsdk" src="/layouts/group2/js/selecttime/platform.Extensions.js"></script>
-    <script async="" src="/layouts/group2/js/selecttime/gtm.js"></script>
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-5F757MC');</script>
-
-    <style type="text/css">
+<style type="text/css">
         svg,
         img {
             width: 20px;
         }
 
-    </style
+    </style>
     <link rel="preload" href="/layouts/group2/js/selecttime/manifest.86920d2276921dc8f875.js" as="script">
     <link rel="preload" href="/layouts/group2/js/selecttime/vendor.eb91d5bf77b2c769fcc2.js" as="script">
     <link rel="preload" href="/layouts/group2/js/selecttime/app.baa2eadcab44e34fea36.js" as="script">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/0.d54eb28f06766c18886b.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/2.1a387b47ee125ca353f8.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/3.310d8e09a8e11022f96c.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/4.4089fb97707e61615e08.js">
+    
     <link rel="prefetch" href="/layouts/group2/js/selecttime/5.b3f4836c4ad2b717a7fa.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/6.0c5ddb655a6df41f903e.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/7.0be5a5a737fe3c9c67c8.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/8.2b0c9359bb4aa063d6fe.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/9.822c13efc123e063e24d.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/10.987717e1c3ebf00f8944.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/11.fc4f6eb2b7528126fcc6.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/12.bd899a775f669b15a9dc.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/13.6e7aa54f66746afc1ae2.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/14.59297b724b7ba00eb529.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/15.cd6e47c5451463e15ec3.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/16.fc3c2639efa97e67ce52.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/17.fb8feabdf1a94457631a.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/18.48f2ab9a05f45567e297.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/19.b56814c42af505112560.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/20.43a8abd0f9f8d863b0da.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/21.eea8dee28cd86c4d57f9.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/22.98a761fbe7b02dd5747a.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/23.9bd0f90459dd80467fc2.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/24.fd99349df3b76ee0a7ec.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/25.3278c47bf066f59e17f9.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/26.1a8dbc3f1c68f6da6f4f.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/27.c47a077c0be3cedaffda.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/28.5f5b3aeb7ab5558122bd.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/29.8fca79989b07bbc5c213.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/30.f06c4e4134d149b8f562.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/31.0ba10920cd94e81a4544.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/32.9849c8ba6e8199de38c0.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/33.255becd3fec2dab2a718.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/34.dee995da7b9128a5b462.js">
+    
     <link rel="prefetch" href="/layouts/group2/js/selecttime/1.2ab249ca75db547f0487.js">
     <link rel="stylesheet" href="/layouts/group2/css/maincss/common.baa2eadcab44e34fea36.css">
     <script type="text/javascript" charset="utf-8" async="" src="/layouts/group2/js/selecttime/1.2ab249ca75db547f0487.js"></script>
     <style type="text/css">
-        /*# sourceURL=undefined */
-        /*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJCb3hPZmZpY2UudnVlIiwic291cmNlUm9vdCI6IiJ9 */
-
+        
     </style>
     <style type="text/css">
-        /*# sourceURL=undefined */
-        /*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJNb3ZpZUNhcmQudnVlIiwic291cmNlUm9vdCI6IiJ9 */
-
+       
     </style>
     <style type="text/css">
-        /*# sourceURL=undefined */
-        /*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJCdXR0b24udnVlIiwic291cmNlUm9vdCI6IiJ9 */
-
+        
     </style>
 
     <script type="text/javascript" charset="utf-8" async="" src="/layouts/group2/js/selecttime/5.b3f4836c4ad2b717a7fa.js"></script>

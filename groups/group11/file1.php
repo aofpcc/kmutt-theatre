@@ -409,12 +409,16 @@ $klein->respond('GET', '/staff/employee/revenue', function($request, $response, 
         //                                 WHERE Revenue.FinID = FinancialID.ID AND  Revenue.empID = e.Emp_ID AND Revenue.customerID = m.MemberID
         //                                 GROUP BY year(addDate),month(addDate)
         //                               ")->fetch(PDO::FETCH_ASSOC);
-        $service->revenueUU = $conn->query('select year, month, sum(amount) "total" from (select *
-        from G03_FIN_Revenue a join (select transactionID "tran", month(addDate) "month", year(addDate) "year"
-                          from G03_FIN_Revenue) b on a.transactionID = b.tran) a
-        group by month, year
-        order by year, month asc;')->fetchAll(PDO::FETCH_ASSOC);
-
+        $service->revenueUU = $conn->query('select year, month, sum(amount) "total" 
+                                            from (select * 
+                                                  from G03_FIN_Revenue a 
+                                                  join 
+                                                  (select transactionID "tran", month(addDate) "month", year(addDate) "year"
+                                                  from G03_FIN_Revenue) b on a.transactionID = b.tran) a
+                                            group by month, year
+                                            order by year, month asc;')->fetchAll(PDO::FETCH_ASSOC);
+        
+        
         // $response->dump($service->revenueUU);
         // $response->sendBody();
 
@@ -492,6 +496,14 @@ $klein->respond('GET', '/staff/employee/expense', function($request, $response, 
           $service->pageTitle = 'Expense';
           $service->expensesList = $expensesList;
           // echo($service->nameTag);
+          $service->expenseUU = $conn->query('select year, month, sum(amount) "total" 
+                                            from (select *
+                                                  from G03_FIN_Expenses a 
+                                                  join 
+                                                  (select transactionID "tran", month(addDate) "month", year(addDate) "year"
+                                                  from G03_FIN_Expenses) b on a.transactionID = b.tran) a
+                                            group by month, year
+                                            order by year, month asc;')->fetchAll(PDO::FETCH_ASSOC);
          $service->render('layouts/group11/employee.php');
         // echo($service->nameTag);
     });
@@ -535,13 +547,13 @@ $klein->respond('GET', '/staff/employee/statistics', function($request, $respons
 
 
         // // NO movie table in the new DB yet..
-        // $gene = $conn->query("SELECT Gene, COUNT(*)
-        //                       FROM G02_Ticket_history as ticket, movies
-        //                       WHERE ticket.movie_id = movies.ID
-        //                       GROUP BY  Gene")->fetchAll(PDO::FETCH_BOTH);
-        // $service->gene = $gene;
+         $gene = $conn->query(" SELECT gerne as label, COUNT(*) as amount
+                                FROM G02_Ticket_history as ticket, G09_Movie as movies
+                                WHERE ticket.movie_id = movies.ID
+                                GROUP BY  gerne")->fetchAll(PDO::FETCH_BOTH);
+         $service->gene = $gene;
 
-        $productName = $conn->query("SELECT productName, COUNT(*)
+        $productName = $conn->query("SELECT productName as label, COUNT(*) as amount
                                      FROM G13_FNB_detail as detail_fnb, G13_FNB_ProductList as productList_fnb
                                      WHERE productList_fnb.ProductID  = detail_fnb.ProductID
                                      GROUP BY  detail_fnb.ProductID, productName ")->fetchAll(PDO::FETCH_BOTH);
@@ -569,6 +581,29 @@ $klein->respond('GET', '/staff/employee/statistics', function($request, $respons
 
     $service->render('layouts/group11/employee.php');
 
+});
+
+$klein->respond('GET', '/staff/kuy', function($request, $response, $service, $app, $validator) {
+  $arr = [
+    [
+      "id" => 1,
+      "name" => "kuy"
+    ],
+    [
+      "id" => 2,
+      "name" => "hee"
+    ]    
+  ];
+
+  $arr2= [];
+  foreach($arr as $v) {
+    $temp = [
+      "master_id" => $v["id"],
+      "master_name" => $v["name"]
+    ];
+    array_push($arr2, $temp);
+  }
+  return$response->json($arr2);
 });
 
 // stat with date

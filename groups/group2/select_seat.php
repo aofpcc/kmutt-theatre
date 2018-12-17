@@ -5,6 +5,18 @@
   $klein->respond('GET', '/group2/home_page/select_movie/select_time/select_seat', function ($request, $response, $service){
   global $database;
   $conn = $database->getConnection();
+  $service->seatMap = [  //Seating chart
+    'aaaaaaaaaa',
+    'aaaaaaaaaa',
+    '__________',
+    '__aaaaaa__',
+    'aaaaaaaaaa',
+    'aaaaaaaaaa',
+    'aaaaaaaaaa',
+    'aaaaaaaaaa',
+    'aaaaaaaaaa',
+    '__aaaaaa__'
+  ];
 
   // $query = "SELECT seat_no from G02_Ticket_history";
   // $stmt = $conn->prepare($query);
@@ -15,7 +27,7 @@
   //
   // $service->allMovies = $arr;
   // $service->pageTitle = 'KMUTT THEATRE | Seat Selection';
-
+  $service->soldSeat = ['1_2','4_4'];
   $service->render('layouts/group2/selectseat.php');
 });
 

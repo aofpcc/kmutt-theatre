@@ -57,7 +57,7 @@
       <!-- <p class="gap set-text"><a href="/customer/change/password">Change password</a></p> -->
       <p class="gap set-text"><a href="/test/changePassword">Change password</a></p>
       <p class="gap set-text"><a href="/customer/change/phonenumber">Change phone number</a></p>
-      <p class="gap set-text"><a href="/customer/change/email">Change e-mail</a></p>
+      <!-- <p class="gap set-text"><a href="/customer/change/email">Change e-mail</a></p> -->
     </div>
   </div>
   <!-- middle line -->
@@ -74,7 +74,7 @@
     <div class="col-sm-9">
       <div class="bold field-title" style="margin-bottom: 0">REMAINING POINTS <br/>
         <a class="field-value">
-          <?php 
+          <?php
             $totalPoint = $this->usr[0]["Total_Point"];
             if ($totalPoint) {
               echo $totalPoint;
@@ -156,7 +156,7 @@
       </p>
       <p class="bold field-title">ADDRESS <br/>
         <a class="unbold field-value">
-          <?php echo $this->usr[0]["Address"]; ?> 
+          <?php echo $this->usr[0]["Address"]; ?>
           <br/>
           <?php echo ($this->usr[0]["SubDistrict"]).", ".($this->usr[0]["District"]).", "; ?>
           <br/>
@@ -183,7 +183,7 @@
           <?php echo($this->usr[0]["ZipCode"])?>
         </a>
       </p> -->
-      
+
       <!-- Button -->
       <!-- <div>
         <button type="button" class="btn btn-danger" onclick="location = '/customer/editprofile'">Edit profile</button>

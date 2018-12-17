@@ -1,6 +1,6 @@
 <?php
 // member information
-$klein->respond(['GET', 'POST'], '/membership', function ($request, $response, $service, $app, $validator) {    
+$klein->respond(['GET', 'POST'], '/membership', function ($request, $response, $service, $app, $validator) {
     // get login info (send to login page if not logged in)
     $loginInfo = $app->login->requireLogin('customer');
     $userID = $loginInfo['userID'];
@@ -16,14 +16,14 @@ $klein->respond(['GET', 'POST'], '/membership', function ($request, $response, $
     //         FROM G05_Member_profile as pf, G05_Member_password as pw, G05_Member_point as pt, G05_Member_address as ads
     //         WHERE pf.MemberID=pw.MemberID and pf.MemberID=pt.MemberID and pf.MemberID = ads.MemberID
     //         and pf.userID = $userID";
-    
+
     $sql = "SELECT  pf.MemberID, pf.PhoneNumber, pf.Email, pt.Total_Point,
             pf.ID_Card, pf.Fname, pf.Lname, pf.Gender, pf.BirthDate, addr.Address,
             addr.Province, addr.District, addr.SubDistrict, addr.ZipCode
             FROM G05_Member_profile as pf
             LEFT JOIN G05_Member_point as pt ON pf.MemberID=pt.MemberID
             LEFT JOIN G05_Member_address as addr ON pf.MemberID = addr.MemberID
-            WHERE pf.userID = $userID";
+            WHERE pf.MemberID = $userID";
     // echo $sql;
 
     $stmt = $conn->prepare($sql);
@@ -41,55 +41,11 @@ $klein->respond(['GET', 'POST'], '/membership', function ($request, $response, $
     $service->title = "Member Information";
     $service->bootstrap3 = false;
     $service->usr = $data;
-    $service->age = $age[0]["age"];
     $service->render('layouts/group5/membership.php');
 });
 
-$klein->respond('POST', '/change/phonenumber/action', function ($request, $response, $service, $app, $validator) {    
-    // get login info (send to login page if not logged in)
-    $loginInfo = $app->login->requireLogin('customer');
-    $userID = $loginInfo['userID'];
-
-    global $database;
-    $conn = $database->getConnection();
-    $PhoneNumber = $request->PhoneNumber;
-
-    //Check Password
-    // $query = "SELECT * from movies";
-    // $stmt = $conn->prepare($query);
-    // $stmt->execute();
-    //
-    // $num = $stmt->rowCount();
-
-    // query3 Phone Number
-    $sql3 = "UPDATE G05_Member_profile
-           SET PhoneNumber='$PhoneNumber'
-           WHERE UserID = $userID";
-    $stmt = $conn->prepare($sql3);
-    $stmt->execute();
-    $response->redirect('/customer/membership');
-});
-
-$klein->respond('POST', '/change/email/action', function ($request, $response, $service, $app, $validator) {    
-    // get login info (send to login page if not logged in)
-    $loginInfo = $app->login->requireLogin('customer');
-    $userID = $loginInfo['userID'];
-
-    global $database;
-    $conn = $database->getConnection();
-    $Email = $request->Email;
-
-    // query4 Email
-    $sql4 = "UPDATE G05_Member_profile
-           SET Email='$Email'
-           WHERE UserID = $userID";
-    $stmt = $conn->prepare($sql4);
-    $stmt->execute();
-    $response->redirect('/customer/membership');
-});
-
 // change password (page)
-$klein->respond('GET', '/change/password', function ($request, $response, $service, $app, $validator) {    
+$klein->respond('GET', '/change/password', function ($request, $response, $service, $app, $validator) {
     // get login info (send to login page if not logged in)
     $loginInfo = $app->login->requireLogin('customer');
     $userID = $loginInfo['userID'];
@@ -98,7 +54,7 @@ $klein->respond('GET', '/change/password', function ($request, $response, $servi
 });
 
 // change password (actual SQL)
-$klein->respond('POST', '/change/password/action', function ($request, $response, $service, $app, $validator) {    
+$klein->respond('POST', '/change/password/action', function ($request, $response, $service, $app, $validator) {
     // get login info (send to login page if not logged in)
     $loginInfo = $app->login->requireLogin('customer');
     $userID = $loginInfo['userID'];
@@ -125,35 +81,19 @@ $klein->respond('POST', '/change/password/action', function ($request, $response
     $service->render('layouts/group5/membership.php');
 });
 
-// Change email (page)
-$klein->respond('GET', '/change/email', function ($request, $response, $service, $app, $validator) {
-    // get login info (send to login page if not logged in)
-    $loginInfo = $app->login->requireLogin('customer');
-    $userID = $loginInfo['userID'];
-
-    // connect db
-    global $database;
-    $conn = $database->getConnection();
-
-    // get current phone no.
-    $sql = "SELECT Email
-            FROM G05_Member_profile
-            WHERE userID = $userID";
-    $stmt = $conn->prepare($sql);
-    $stmt->execute();
-    $data = $stmt->fetchAll();
-
-    // render the page
-    $service->currentEmail = $data[0]['Email'];
-    $service->render('layouts/group5/changeEmail.php');
-});
+// // Change email
+// $klein->respond('GET', '/change/email', function ($request, $response, $service) {
+//     $service->title = "Change Email";
+//     $service->bootstrap3 = false;
+//     $service->render('layouts/group5/changeEmail.php');
+// });
 
 // Change phone number (page)
 $klein->respond('GET', '/change/phonenumber', function ($request, $response, $service, $app, $validator) {
     // get login info (send to login page if not logged in)
     $loginInfo = $app->login->requireLogin('customer');
     $userID = $loginInfo['userID'];
-    
+
     // connect db
     global $database;
     $conn = $database->getConnection();
@@ -161,7 +101,7 @@ $klein->respond('GET', '/change/phonenumber', function ($request, $response, $se
     // get current phone no.
     $sql = "SELECT PhoneNumber
             FROM G05_Member_profile
-            WHERE userID = $userID";
+            WHERE MemberID = $userID";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $data = $stmt->fetchAll();
@@ -180,7 +120,9 @@ $klein->respond('GET', '/login', function ($request, $response, $service, $app, 
 });
 
 // Drive-Register
-$klein->respond('GET', '/register', function ($request, $response, $service, $app, $validator) {
+$klein->respond('GET', '/register', function ($request, $response, $service) {
+    $service->title = "Register New Member";
+    $service->bootstrap3 = false;
     global $database;
     $conn = $database->getConnection();
     $service->pageTitle = 'Fish and Chips';
@@ -204,17 +146,17 @@ $klein->respond('POST', '/editprofile/action', function ($request, $response, $s
     // connect db
     global $database;
     $conn = $database->getConnection();
-    
+
     // try to update db value
     try{
       $conn->beginTransaction();
       $conn->exec("UPDATE G05_Member_profile
             SET Fname = \"$fst\", Lname = \"$lst\"
-            WHERE MemberID = $MemberID;");
+            WHERE MemberID = $userID;");
           $conn->exec("UPDATE G05_Member_address
             SET Address = \"$adr\", Province = \"$prov\", District = \"$dist\",
             SubDistrict = \"$Subdist\", ZipCode = \"$post\"
-            WHERE MemberID = $MemberID;");
+            WHERE MemberID = $userID;");
           $conn->commit();
     }
     catch(PDOException $e)
@@ -252,7 +194,7 @@ $klein->respond('GET', '/editprofile', function ($request, $response, $service, 
             FROM G05_Member_profile as pf
             LEFT JOIN G05_Member_point as pt ON pf.MemberID=pt.MemberID
             LEFT JOIN G05_Member_address as addr ON pf.MemberID = addr.MemberID
-            WHERE pf.userID = $userID";
+            WHERE pf.MemberID = $userID";
 
     $stmt = $conn->prepare($sql);
     $stmt->execute();
@@ -294,4 +236,78 @@ $klein->respond('POST', '/kong/action', function ($request, $response, $service,
     // $stmt = $conn->prepare($sql4);
     // $stmt->execute();
     $response->redirect('/customer/membership');
+});
+
+// Drive-php-register
+
+$klein->respond('POST', '/register-form', function ($request, $response, $service, $app, $validator) {
+    if ($request->password != $request->confirmpassword) {
+        $service->flash("MTF Password has not matched");
+        $response->redirect('/customer/register');
+        $response->sendHeaders();
+        die;
+    }
+    $conn = $app->db->getConnection();
+    try {
+        $conn->beginTransaction();
+
+        $username = $request->username;
+        $password = $request->password;
+        $password = $request->confirmpassword;
+        $email = $request->email;
+        $validateLink = "/test/verify"; // neeed to have / before  and no / at the end
+        $role = 'customer';
+        $result = $app->login->register($username, $password, $email, $validateLink, $role);
+        if ($result['created']) {
+            $userID = $result['userID'];
+            $query = "insert into G05_Member_profile(MemberID, ID_Card, FName, Lname, Gender, Birthdate, Email, PhoneNumber)
+            values(:userID, :ID_Card, :FName, :Lname, :Gender, :Birthdate, :Email, :PhoneNumber);";
+            $id_card = $request->id_card;
+            $firstname = $request->firstName;
+            $lastname = $request->lastName;
+            $phone = $request->phone;
+            $birth = $request->birth;
+
+            $stmt = $conn->prepare($query);
+            $stmt->bindParam(":userID", $userID);
+            $stmt->bindParam(":ID_Card", $id_card);
+            $stmt->bindParam(":FName", $firstname);
+            $stmt->bindParam(":Lname", $lastname);
+            $stmt->bindParam(":Gender", $gender);
+            $stmt->bindParam(":Birthdate", $birth);
+            $stmt->bindParam(":Email", $email);
+            $stmt->bindParam(":PhoneNumber", $phone);
+
+            $stmt->execute();
+            // address
+
+            $query = "insert into G05_Member_address(MemberID, Address, Province, District, ZipCode)
+            values(:userID, :Address, :Province, :District, :ZipCode);";
+
+            $address = $request->address;
+            $province = $request->province;
+            $district = $request->district;
+            // $subDistrict = $request->phone;
+            $zip = $request->zip;
+
+            $stmt = $conn->prepare($query);
+            $stmt->bindParam(":userID", $userID);
+            $stmt->bindParam(":Address", $address);
+            $stmt->bindParam(":Province", $province);
+            $stmt->bindParam(":District", $district);
+            // $stmt->bindParam(":SubDistrict", $SubDistrict);
+            $stmt->bindParam(":ZipCode", $zip);
+            $stmt->execute();
+
+            $conn->commit();
+            $service->flash("User created");
+            $app->login->loginPage();
+        } else {
+            echo "Failed\n";
+            echo $result["data"];
+        }
+    } catch (Exception $e) {
+        echo $e->getMessage();
+        $conn->rollback();
+    }
 });

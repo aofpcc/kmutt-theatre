@@ -30,7 +30,6 @@
         <button id="search_graph" type="button" class="btn btn-primary active">Search</button>
         <button id="refesh_page" type="button" class="btn btn-primary active">Reset</button>
       </div>
-
       <div class="col-lg-6">
         <div style="width: inherit!important; min-width: 500px;" class="container" style="padding-top:30px;">
 

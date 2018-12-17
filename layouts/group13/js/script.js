@@ -257,7 +257,7 @@ function checkcusid(){
     }
 
  }
- 
+
 function couponcheck(type){
     if(type=="Coupon"){
         $("#couponbox").show();

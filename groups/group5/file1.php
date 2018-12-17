@@ -132,7 +132,7 @@ $klein->respond('GET', '/register', function ($request, $response, $service) {
 $klein->respond('POST', '/editprofile/action', function ($request, $response, $service, $app, $validator) {
     // get login info (send to login page if not logged in)
     $loginInfo = $app->login->requireLogin('customer');
-    // $userID = $loginInfo['userID'];
+    $userID = $loginInfo['userID'];
 
     $MemberID = $request->MemberID;     // extra hidden field
     $fst = $request->Firstname;
@@ -265,6 +265,7 @@ $klein->respond('POST', '/register-form', function ($request, $response, $servic
             $id_card = $request->id_card;
             $firstname = $request->firstName;
             $lastname = $request->lastName;
+            $gender = $request->gender;
             $phone = $request->phone;
             $birth = $request->birth;
 
@@ -277,6 +278,8 @@ $klein->respond('POST', '/register-form', function ($request, $response, $servic
             $stmt->bindParam(":Birthdate", $birth);
             $stmt->bindParam(":Email", $email);
             $stmt->bindParam(":PhoneNumber", $phone);
+
+            // echo $stmt;
 
             $stmt->execute();
             // address

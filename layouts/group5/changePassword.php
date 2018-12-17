@@ -23,19 +23,23 @@
           <form action="/change/password/action" method="post">
             <!-- Current Password -->
             <div class="form-group">
-              <label class="box-name-text gap" for="exampleInputPassword1">Current Password</label>
-              <!-- <small class="right"><a href="localhost:8000/chage/password">Forget password?</a></small> -->
-              <input name="oldPassword" type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="">
+              <label class="box-name-text gap" for="usr">Current Password</label>
+              <input type="password" class="form-control form-control-lg" id="usr" name="oldpassword" required>
             </div>
             <!-- New Password -->
             <div class="form-group">
-              <label class="box-name-text gap" for="exampleInputPassword1">New password (8-20 characters)</label>
-              <input name="newPassword1" type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="">
+              <label for="usr">New Password:</label>
+              <input type="password" class="form-control" id="usr" name="newpassword" required>
+            </div>
+
+            <div class="form-group">
+              <label class="box-name-text gap" for="usr">New password (8-20 characters)</label>
+              <input type="password" class="form-control form-control-lg" id="usr" name="newpassword" required>
             </div>
             <!-- Confirm New Password -->
             <div class="form-group">
-              <label class="box-name-text gap" for="exampleInputPassword1">Confirm new password</label>
-              <input name="newPassword2" type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="">
+              <label class="box-name-text gap" for="usr">Confirm new password</label>
+              <input name="newPassword2" type="password" class="form-control form-control-lg" id="usr" name="newpassword" required>
             </div>
             <!-- Button -->
             <div class="gap-more"></div>

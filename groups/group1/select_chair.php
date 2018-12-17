@@ -6,7 +6,6 @@ $klein->respond('GET', '/kmutt_home/branch/show_time/select_chair/[:showtime_id]
   // $x = $request->showtime_id;
   // var_dump($x);
   // die;
-
   $service->seatMap = [  //Seating chart
     'aaaaaaaaaa',
     'aaaaaaaaaa',

@@ -75,18 +75,18 @@
         <ol class="carousel-indicators">
           <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
           <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          <!-- <li data-target="#carouselExampleIndicators" data-slide-to="2"></li> -->
         </ol>
         <div class="carousel-inner" role="listbox">
           <div class="carousel-item active">
-            <img class="d-block img-fluid" href = src="https://lh3.googleusercontent.com/YAgJl12AHInNly31iG0jwemy8nMNWEMJ0nloSIamTMRm2RFkhzsx-tAJuhhqsw-lRGFRp0O8oM8mrlHmwTimvw=w888" width="100%" height="auto"  alt="First slide">
+            <img class="d-block img-fluid" src="https://scontent.fbkk8-3.fna.fbcdn.net/v/t1.15752-9/48366339_507296259680179_2667174501837438976_n.jpg?_nc_cat=100&_nc_ht=scontent.fbkk8-3.fna&oh=51f35432eddb58c73176b9cefbdeb3ab&oe=5C9442BC" width="100%" height="auto"  alt="First slide">
           </div>
           <div class="carousel-item">
-            <img class="d-block img-fluid" src="https://lh3.googleusercontent.com/MVC-TRPxpg4iK9BM-bQ5cMuy_yVKruaVwCgDoJ1Gsj0F7yyWdgBmtyxaEN24WSkY2QaJXDovH4jPRGLvciw=w888" width="100%" height="auto" alt="Second slide">
+            <img class="d-block img-fluid" src="https://scontent.fbkk12-1.fna.fbcdn.net/v/l/t1.15752-9/48368332_435728496963374_3243513792465731584_n.jpg?_nc_cat=106&_nc_ht=scontent.fbkk12-1.fna&oh=c788c72201b4d5a55e6d67005c027d23&oe=5C9C0C9D" width="100%" height="auto" alt="Second slide">
           </div>
-          <div class="carousel-item">
+          <!-- <div class="carousel-item">
             <img class="d-block img-fluid" src="https://lh3.googleusercontent.com/akC5mSFQk3JINWvxia45R-NemWnNP--ktHeAa0HB7xawyYW3Js1wxqDOPvIJrEFwn0aREV7O1UIYzpfAnLnDlw=w888" width="100%" height="auto" walt="Third slide">
-          </div>
+          </div> -->
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>

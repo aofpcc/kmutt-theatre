@@ -6,6 +6,7 @@ $klein->respond('GET', '/kmutt_home/branch/show_time/select_chair/[:showtime_id]
   // $x = $request->showtime_id;
   // var_dump($x);
   // die;
+
   $service->seatMap = [  //Seating chart
     'aaaaaaaaaa',
     'aaaaaaaaaa',
@@ -65,9 +66,9 @@ $klein->respond('GET', '/kmutt_home/branch/show_time/select_chair/[:showtime_id]
           // echo $sql.'<br>';
         }
 
-        $movie_id = '2';
-        $movie_name = 'Horrible Bosses 2';
-        $theatre_no = '5';
+        // $movie_id = '2';
+        // $movie_name = 'Horrible Bosses 2';
+        // $theatre_no = '5';
         $showtime = time();
 
 
@@ -79,8 +80,19 @@ $klein->respond('GET', '/kmutt_home/branch/show_time/select_chair/[:showtime_id]
       }
     }
 
+    $movie_id = $conn->query("select movie_id from G04_MSRnB_showingroom where id = '$request->showtime_id';")->fetchAll(PDO::FETCH_ASSOC);
+    $name = $conn->query("select title from G09_Movie where id = '".$movie_id[0]["movie_id"]."';")->fetchAll(PDO::FETCH_ASSOC);
+
+    $date = $conn->query("select date(startTime) as startDate from G04_MSRnB_showingroom where id = '".$movie_id[0]["movie_id"]."';")
+    ->fetchAll(PDO::FETCH_ASSOC);
+
+    $temp = new DateTime($date[0]["startDate"]);
+    $month = $temp->format("F");
+    $service->string = $temp->format("d")." ".$month." ".$temp->format("Y");
+
     // Pass on the params to the page we're gonna render
     $service->selectedSeats = $request->selectedSeats;
+    $service->name = $name[0];
     // $service->seats = $seats;
     // $service->deadline = $deadline;
     // $service->movie_name = $movie_name;

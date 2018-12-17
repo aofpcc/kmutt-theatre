@@ -27,7 +27,7 @@ $klein->respond('POST', '/fnb/checkcoupon', function ($request, $response, $serv
   $num = $stmt->rowCount();
 
   if ($num > 0) {
-    $row = $result->fetch_assoc();
+//    $row = $result->fetch_assoc();
     $status = $row['status'];
     $someArray = [
       [
@@ -115,6 +115,39 @@ $klein->respond('POST', '/fnb/checkemp', function ($request, $response, $service
   }
 });
 
+$klein->respond('POST', '/fnb/get_points_and_name', function ($request, $response, $service, $app, $validator) {
+    global $database;
+    $conn = $database->getConnection();
+
+    $service->validateParam('CusID', 'Bad Request')->notNull();
+
+
+    $cusID = $request->CusID;
+    $sql = "select SUM(Point) as hisPoint,Lname,Fname  from G13_FNB_Point as p,G05_Member_profile as m where p.CusID = '$cusID' AND m.MemberID = '$cusID'";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $num = $stmt->rowCount();
+
+    if ($num > 0) {
+        $row = $stmt->fetchAll(PDO::FETCH_BOTH);
+        $row=$row[0];
+        $hisPoints = $row['hisPoint'];
+        $fname = $row['Fname'];
+        $lname = $row['Lname'];
+        $someArray = [
+            [
+                "hisPoint" => $hisPoints,
+                "name" => $fname." ".$lname,
+            ]
+        ];
+        $response->json($someArray);
+    }else{
+        $response->body("error");
+        $response->sendBody();
+    }
+});
+
+
 $klein->respond('POST', '/fnb/getprice', function ($request, $response, $service, $app, $validator) {
   global $database;
   $conn = $database->getConnection();
@@ -125,6 +158,7 @@ $klein->respond('POST', '/fnb/getprice', function ($request, $response, $service
   $sql = "select * from G13_FNB_ProductList where productID = '$productID'";
   $stmt = $conn->prepare($sql);
   $stmt->execute();
+//    $row = $stmt->fetchAll(PDO::FETCH_BOTH);
   $num = $stmt->rowCount();
 
   if ($num > 0) {
@@ -152,50 +186,125 @@ $klein->respond('POST', '/fnb/do_order', function ($request, $response, $service
   $conn = $database->getConnection();
 
   $service->validateParam('empID', 'Bad Request')->notNull();
-  $service->validateParam('CusID', 'Bad Request');
   $service->validateParam('payment', 'Bad Request')->notNull();
   $service->validateParam('item', 'Bad Request')->notNull();
   $service->validateParam('product', 'Bad Request')->notNull();
+  $service->validateParam('total', 'Bad Request')->notNull();
 
-  $empID = $request->empID;
-  $CusID = $request->CusID;
-  $payment = $request->payment;
-  $item = $request->item;
-  $product= $request->product;
+    $empID = $request->empID;
+    $cusID = $request->cusID;
+    $payment = $request->payment;
+    $item = $request->item;
+    $product = $request->product;
+    $coupon = $request->couponID;
+    $total = $request->total;
+    $items = explode(",",$item);
+    $products =explode(",",$product);
 
-  $sql = "INSERT INTO G13_FNB_SaleList(cusID,empID,paymentType,Time,Date) values('$CusID','$empID','$payment',NOW(),NOW())";
+
+//    $data =[
+//        [
+//            "empID" => $empID,
+//            "cusID" => $cusID,
+//            "payment" => $payment,
+//            "item" => $item,
+//            "product" => $product,
+//            "coupon" => $coupon,
+//            "total" =>$total,
+//        ]
+//    ];
+//    return $response->json($data);
+  $sql = "INSERT INTO G13_FNB_SaleList(cusID,empID,paymentType,codeID,total,Time,Date) values('$cusID','$empID','$payment','$coupon','$total',NOW(),NOW())";
   $order = "SELECT max(receiptID) as receiptID FROM G13_FNB_SaleList";
-
+//  $stock = "UPDATE G13_FNB_Stock as s SET Remain = $xxx WHERE s.StockID=$StockID";
   $conn->beginTransaction();
 
   try {
+      $productsOrderStock = getProductOrderForStock($products,$items);
+      updateAllOrderStock($productsOrderStock);
+      return $response->json(["result"=>"success","productOrderForStock"=>$productsOrderStock]);
     $conn->exec($sql);
-
     $orderresult = $conn->prepare($order);
     $orderresult->execute();
     $row = $orderresult->fetchAll(PDO::FETCH_BOTH);
     $row = $row[0];
-
-    $orderID =  $row['receiptID'];
+    $receiptID =  $row['receiptID'];
     for($i=0; $i<count($item);$i++){
-      $data ="INSERT INTO G13_FNB_detail (receiptID,productID,unitOfProduct) VALUES('$orderID','$product[$i]','$item[$i]')";
-      $a = $conn->prepare($data);
-      $a->execute();
+        $data ="INSERT INTO realtheatre.`G13_FNB_detail` (receiptID,productID,quantity) VALUES('$receiptID','$products[$i]','$items[$i]')";
+        $a = $conn->prepare($data);
+        $a->execute();
     }
-    $conn->commit();
-    echo '<script type="text/javascript">',
-    'alert("Success");',
-    '</script>';
-    // $response->redirect("/emp/fnb");
-    // $response->sendHeaders();
-    // echo $orderID;
 
+//    updateAllOrderStock($productsOrderStock);
+    $conn->commit();
+    return $response->json(["result"=>"success","message"=>"all :".count($items)." item[s]"]);
   } catch(PDOException $e) {
     $conn->rollback();
-    echo '<script type="text/javascript">',
-    'alert("Error '.$e->getMessage().'");',
-    '</script>';
-    // $response->redirect("/emp/fnb");
-    // $response->sendHeaders();
+     return $response->json(
+        [
+             "result"=>"failed",
+             "error"=>$e->getMessage(),
+        ]
+     );
   }
 });
+
+function getSize($productID){
+    global $database;
+    $conn = $database->getConnection();
+    $sizeSql = "select Size from G13_FNB_ProductList where productID = '$productID'";
+    $sizeResult = $conn->prepare($sizeSql);
+    $sizeResult->execute();
+    $size = $sizeResult->fetchAll(PDO::FETCH_BOTH);
+    $size = $size[0];
+    return $size["Size"];
+}
+
+function getStockID($productID){
+    $stockID = substr($productID,0,4);
+    return $stockID;
+}
+
+function getProductOrderForStock($productOrderList,$quantityList){
+    $productOrderStock = [];
+    foreach ($productOrderList as $k =>$product) {
+        array_push($productOrderStock,[
+            "stockID"=>getStockID($product),
+            "size"=>getSize($product),
+            "quantity"=>$quantityList[$k],
+            "remain"=>getRemain(getStockID($product))
+        ]);
+    }
+    return $productOrderStock;
+}
+function getStockTable(){
+    global $database;
+    $conn = $database->getConnection();
+    $selectStock = "SELECT Remain, StockID FROM G13_FNB_Stock";
+    $selectStockResult = $conn->prepare($selectStock);
+    $selectStockResult->execute();
+    $stockTable = $selectStockResult->fetchAll(PDO::FETCH_BOTH);
+    return $stockTable;
+}
+function getRemain($stockID){
+    global $database;
+    $conn = $database->getConnection();
+    $remainSql = "SELECT Remain FROM G13_FNB_Stock WHERE StockID = '$stockID'";
+    $remainResult = $conn->prepare($remainSql);
+    $remainResult->execute();
+    $remain = $remainResult->fetchAll(PDO::FETCH_BOTH);
+    return $remain[0]["Remain"];
+}
+function updateStock($stockID,$remain){
+    global $database;
+    $conn = $database->getConnection();
+    $stockUpdateSql = "UPDATE G13_FNB_Stock as s SET Remain = $remain WHERE s.StockID='$stockID'";
+    $stockUpdate = $conn->prepare($stockUpdateSql);
+    $stockUpdate->execute();
+}
+
+function updateAllOrderStock($productOrderForStock){
+    foreach ($productOrderForStock as $product){
+        updateStock($product["stockID"],$product["remain"]-($product["size"]*$product["quantity"]));
+    }
+}

@@ -1,34 +1,38 @@
-<?php
-
-?>
-
 <head>
-    <!-- <title>movie name | KMUTT Theatre</title> -->
-
-<style type="text/css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <link href="/layouts/group1/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="/layouts/group1/css/onStyle.css">
+    <style type="text/css">
         svg,
         img {
             width: 20px;
         }
-
     </style>
-    <link rel="preload" href="/layouts/group2/js/selecttime/manifest.86920d2276921dc8f875.js" as="script">
-    <link rel="preload" href="/layouts/group2/js/selecttime/vendor.eb91d5bf77b2c769fcc2.js" as="script">
-    <link rel="preload" href="/layouts/group2/js/selecttime/app.baa2eadcab44e34fea36.js" as="script">
-    
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+
+    <link href="/layouts/group1/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="/layouts/group1/css/onStyle.css">
+
+
     <link rel="prefetch" href="/layouts/group2/js/selecttime/5.b3f4836c4ad2b717a7fa.js">
-    
+
     <link rel="prefetch" href="/layouts/group2/js/selecttime/1.2ab249ca75db547f0487.js">
     <link rel="stylesheet" href="/layouts/group2/css/maincss/common.baa2eadcab44e34fea36.css">
     <script type="text/javascript" charset="utf-8" async="" src="/layouts/group2/js/selecttime/1.2ab249ca75db547f0487.js"></script>
     <style type="text/css">
-        
+
     </style>
     <style type="text/css">
-       
+
     </style>
     <style type="text/css">
-        
+
     </style>
 
     <script type="text/javascript" charset="utf-8" async="" src="/layouts/group2/js/selecttime/5.b3f4836c4ad2b717a7fa.js"></script>
@@ -47,15 +51,15 @@
                                 <div class="no">1</div>
                                 <div class="step-name">Showtime</div>
                             </a></li>
-                        <li class="step-item"><a href="#">
+                        <li class="step-item"><a href="HO00000074/9912#">
                                 <div class="no">2</div>
                                 <div class="step-name">Seat Selection</div>
                             </a></li>
-                        <li class="step-item"><a href="#">
+                        <li class="step-item"><a href="HO00000074/9912#">
                                 <div class="no">3</div>
                                 <div class="step-name">Payment</div>
                             </a></li>
-                        <li class="step-item"><a href="#">
+                        <li class="step-item"><a href="HO00000074/9912#">
                                 <div class="no">4</div>
                                 <div class="step-name">Done</div>
                             </a></li>
@@ -99,6 +103,9 @@
                         </div>
                     </div>
                 </div>
+
+
+
                 <div class="showtime-date-slide">
                     <div class="container">
                         <div class="slick-initialized slick-slider"><button class="slick-prev slick-arrow slick-disabled"
@@ -108,9 +115,19 @@
                                     <title>prev</title>
                                     <polyline class="cls-1" points="33.53 4 5.47 34.06 33.53 64.12"></polyline>
                                 </svg></button>
-                            <div class="slick-list">
-                                <div class="slick-track" style="opacity: 1; width: 5700px; transform: translate3d(0px, 0px, 0px);">
-                                    <div class="slick-slide slick-current slick-active" data-slick-index="0"
+                            <!-- <div class="slick-list"> -->
+                            <!-- <div class="slick-track" style="opacity: 1; width: 5700px; transform: translate3d(0px, 0px, 0px);"> -->
+                            
+                            <nav class="nav nav-pills nav-fill">
+                                <a class="nav-item nav-link active" href="#">Thu<br><small><?$this->query_date ?> Nov 2018</small></a>
+                                <a class="nav-item nav-link" href="#">Fri<br><small>16 Nov 2018</small></a>
+                                <a class="nav-item nav-link" href="#">Sat<br><small>17 Nov 2018</small></a>
+                                <a class="nav-item nav-link" href="#">Mon<br><small>18 Nov 2018</small></a>
+                                <a class="nav-item nav-link" href="#">Tue<br><small>19 Nov 2018</small></a>
+                            </nav>
+                            
+                            
+                            <!-- <div class="slick-slide slick-current slick-active" data-slick-index="0"
                                         aria-hidden="false" style="width: 190px;">
                                         <div>
                                             <div class="selected" style="width: 100%; display: inline-block;">
@@ -379,9 +396,10 @@
                                                 <p class="date">11 ม.ค. 2019</p>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div><button class="slick-next slick-arrow" style="" aria-disabled="false"><svg class="sf-icon next-arrow"
+                                    </div> -->
+                            <!-- </div>
+                            </div> -->
+                            <button class="slick-next slick-arrow" style="" aria-disabled="false"><svg class="sf-icon next-arrow"
                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 37.53 68.12">
                                     <defs></defs>
                                     <title>next</title>
@@ -454,10 +472,14 @@
                                                 </li>
                                             </ul>
                                             <ul class="time-list">
-                                                <li class="time-item" ><a href="/emp/group2/home_page/select_movie/select_time/select_seat"><button class="button button-showtime">13:20</button></a></li>
-                                                <li class="time-item"><a href="/emp/group2/home_page/select_movie/select_time/select_seat"><button class="button button-showtime">16:20</button></a></li>
-                                                <li class="time-item"><a href="/emp/group2/home_page/select_movie/select_time/select_seat"><button class="button button-showtime">19:20</button></a></li>
-                                                <li class="time-item"><a href="/emp/group2/home_page/select_movie/select_time/select_seat"></a><button class="button button-showtime">22:20</button></a></li>
+                                                <li class="time-item"><a href="/emp/group2/home_page/select_movie/select_time/select_seat"><button
+                                                            class="button button-showtime">13:20</button></a></li>
+                                                <li class="time-item"><a href="/emp/group2/home_page/select_movie/select_time/select_seat"><button
+                                                            class="button button-showtime">16:20</button></a></li>
+                                                <li class="time-item"><a href="/emp/group2/home_page/select_movie/select_time/select_seat"><button
+                                                            class="button button-showtime">19:20</button></a></li>
+                                                <li class="time-item"><a href="/emp/group2/home_page/select_movie/select_time/select_seat"></a><button
+                                                        class="button button-showtime">22:20</button></a></li>
                                             </ul>
                                         </div>
                                     </div>

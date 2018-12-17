@@ -1,5 +1,5 @@
 <?php
-function generateRandomString($length = 10)
+function generateRandomString($length = 6)
 {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $charactersLength = strlen($characters);
@@ -13,22 +13,19 @@ function generateRandomString($length = 10)
 $klein->respond('GET', '/group8/gen', function ($request, $response, $service) {
     global $database;
     $conn = $database->getConnection();
-    $rand = RandomString();
-    $query = "SELECT PromoName from Promotion where PromoID = 10 ";
-    $stmt = $conn->prepare($query);
-    $stmt->execute();
-    $num = $stmt->rowCount();
-    $arr = $stmt->fetch(PDO::FETCH_ASSOC);
+    $rand = generateRandomString();
+
     // echo ($arr["PromoName"])."<br>";
     // echo $rand ;
 
     try {
-        $sql = "INSERT INTO CodeID (Code, Status)
+        $sql = "INSERT INTO G08_Promo_code (Code, Status)
           VALUES ('$rand', '1')";
         // use exec() because no results are returned
         $conn->exec($sql);
     } catch (PDOException $e) {
-        echo $sql . "<br>" . $e->getMessage();
+        $service->flash("Failed to add promotion");
+        //echo $sql . "<br>" . $e->getMessage();
     }
     $service->rand = $rand;
     $service->pageTitle = 'Hello';

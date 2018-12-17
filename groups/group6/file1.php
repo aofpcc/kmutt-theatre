@@ -64,6 +64,13 @@ $klein->respond('GET', '/androidUpdate', function ($request, $response, $service
   //Initialize array for return values
   $arr = array();
 
+  //Check if anything changed
+  $query = "SELECT * from G05_Member_profile A, G05_Member_address B where A.MemberID = '$userID' and A.Fname = '$firstname' and A.Lname = '$lastname' and A.Gender = '$gender' and A.Birthdate = '$birthdate' and A.PhoneNumber = '$phoneno'
+            and B.Address = '$address' and B.Province = '$province' and B.District = '$district' and B.SubDistrict = '$subdist' and B.ZipCode = '$postcode' ";
+  $stmt = $conn->prepare($query);
+  $stmt->execute();
+  $num1 = $stmt->rowCount();
+
   //Confirm Password
   $query = "SELECT * from core_user_pwd where userID = '$userID' and password = '$pass'";
   $stmt = $conn->prepare($query);
@@ -74,26 +81,32 @@ $klein->respond('GET', '/androidUpdate', function ($request, $response, $service
   $query = "SELECT PhoneNumber from G05_Member_profile where PhoneNumber = '$phoneno'";
   $stmt = $conn->prepare($query);
   $stmt->execute();
-  $num1 = $stmt->rowCount();
-  if($num2 == 1){
-    if($num1 == 0){
-          //$query = "INSERT INTO G05_Member_profile (MemberID, ID_Card, Fname, Lname, Gender, Birthdate, Email, PhoneNumber)
-                            //      VALUES ('$userID', '$identNo', '$firstname', '$lastname', '$gender', '$birthdate', '$email', '$phoneno')";
-          $query = "UPDATE G05_Member_profile SET Fname = '$firstname', Lname = '$lastname', Gender = '$gender', Birthdate = '$birthdate', PhoneNumber = '$phoneno' WHERE MemberID = '$userID'";
-          $stmt = $conn->prepare($query);
-          $stmt->execute();
-          $query = "UPDATE G05_Member_address SET Address = '$address', Province = '$province', District = '$district', SubDistrict = '$subdist', ZipCode = '$postcode' WHERE MemberID = '$userID'";
-          $stmt = $conn->prepare($query);
-          $stmt->execute();
-          $arr["done"] = true;
-          $arr["note"] = "Profile update succesfully";
+  $num3 = $stmt->rowCount();
+
+  if($num1 == 0){
+    if($num2 == 1){
+      if($num3 == 0){
+            //$query = "INSERT INTO G05_Member_profile (MemberID, ID_Card, Fname, Lname, Gender, Birthdate, Email, PhoneNumber)
+                              //      VALUES ('$userID', '$identNo', '$firstname', '$lastname', '$gender', '$birthdate', '$email', '$phoneno')";
+            $query = "UPDATE G05_Member_profile SET Fname = '$firstname', Lname = '$lastname', Gender = '$gender', Birthdate = '$birthdate', PhoneNumber = '$phoneno' WHERE MemberID = '$userID'";
+            $stmt = $conn->prepare($query);
+            $stmt->execute();
+            $query = "UPDATE G05_Member_address SET Address = '$address', Province = '$province', District = '$district', SubDistrict = '$subdist', ZipCode = '$postcode' WHERE MemberID = '$userID'";
+            $stmt = $conn->prepare($query);
+            $stmt->execute();
+            $arr["done"] = true;
+            $arr["note"] = "Profile update succesfully";
+      }else{
+          $arr["done"] = false;
+          $arr["note"] = "Phone number already exist";
+      }
     }else{
-        $arr["done"] = false;
-        $arr["note"] = "Phone number already exist";
+      $arr["done"] = false;
+      $arr["note"] = "Invalid Password";
     }
   }else{
     $arr["done"] = false;
-    $arr["note"] = "Invalid Password";
+    $arr["note"] = "Nothing have been changed";
   }
   echo json_encode([$arr]);
 });

@@ -75,12 +75,11 @@
             </div>
             <!-- Button -->
             <div class="gap-more"></div>
-              <input type="submit" class="cancel-block gap" value="Save">
-              <button type="button" class="cancel-block gap" onclick="location = '/customer/membership'">Cancel</button>
+              <button type="submit" class="block gap">Save</button>
+              <button type="submit" class="cancel-block gap">Cancel</button>
             </br>
             </br>
             </br>
-
           </form>
         </div>
         <div class="col-sm-5"></div>

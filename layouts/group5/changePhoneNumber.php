@@ -17,12 +17,11 @@
         <h2 style="margin-left: 110px;">Change Phone Number</h2>
       </div>
       <!-- line -->
-    </br>
       <div class="gap"></div>
-      <label class="box-name-text"  style="margin-left: 118px;">Current Mobile Phone Number</label>
+      <div class="box-name-text" style="margin-left: 118px;">Current Phone Number</div>
       <div class="gap-less" style="margin-left: 130px;"><?php echo $this->currentPhone; ?></div>
       <div class="gap"></div>
-    </br>
+      </br>
       <!-- change form -->
       <div class="row">
         <div class="col-sm-1"></div>
@@ -34,11 +33,12 @@
             </div>
             <!-- <div class="form-group">
               <label class="box-name-text gap" for="exampleInputPassword1">Current Password</label>
+              <small class="right"><a href="localhost:8000/chage/password">Forget password?</a></small>
               <input type="password" class="form-control form-control-lg" id="Password" name="Password" placeholder="">
             </div> -->
             <div class="gap-more"></div>
 
-              <input type="submit" class="cancel-block gap" value="Save">
+              <input type="submit" class="cancel-block gap" value="Submit">
               <button type="button" class="cancel-block gap" onclick="location = '/customer/membership'">Cancel</button>
 
           </form>

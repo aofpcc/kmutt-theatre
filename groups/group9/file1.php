@@ -170,7 +170,7 @@ $klein->respond('GET', '/group9/action888', function ($request, $response, $serv
     global $database;
     $conn = $database->getConnection();
 
-    $query = "SELECT * FROM movies";
+    $query = "SELECT * FROM G09_Movie";
     echo $query;
     $stmt = $conn->prepare($query);
     $stmt->execute();
@@ -229,7 +229,7 @@ $klein->respond('POST', '/group9/action/update', function ($request, $response, 
     $RELEASE_DATE = $request->bought_date;
     $END_DATE = $request->expired_date;
 
-    $query = "UPDATE G09_Movies SET title = '$title' ,detail = '$describtion' ,director = '$director' WHERE movies.ID = '$id'";
+    $query = "UPDATE G09_Movie SET title = '$title' ,detail = '$describtion' ,director = '$director' WHERE id = '$id'";
     //echo "Here is an query code >>>>>>> " .$query ."<<<<<<<<";
     $stmt = $conn->prepare($query);
     $stmt->execute();
@@ -256,9 +256,28 @@ $klein->respond('GET', '/group9/action/delete/[:id]', function ($request, $respo
     global $database;
     $conn = $database->getConnection();
 
-    $ID = $request->id;
+    $id = $request->id;
 
-    $query = "DELETE FROM movies WHERE movies.ID = '$ID'";
+    $query = "DELETE FROM G09_Length WHERE id = '$id'";
+    //echo "Here is an query code >>>>>>> " .$query ."<<<<<<<<";
+    $stmt = $conn->prepare($query);
+    $stmt->execute();
+
+    $query = "DELETE FROM G09_Soundtrack WHERE id = '$id'";
+    //echo "Here is an query code >>>>>>> " .$query ."<<<<<<<<";
+    $stmt = $conn->prepare($query);
+    $stmt->execute();
+
+    $query = "DELETE FROM G09_Subtitle WHERE id = '$id'";
+    //echo "Here is an query code >>>>>>> " .$query ."<<<<<<<<";
+    $stmt = $conn->prepare($query);
+
+    $stmt->execute();$query = "DELETE FROM G09_Gerne WHERE id = '$id'";
+    //echo "Here is an query code >>>>>>> " .$query ."<<<<<<<<";
+    $stmt = $conn->prepare($query);
+    $stmt->execute();
+
+    $query = "DELETE FROM G09_Movie WHERE id = '$id'";
     //echo "Here is an query code >>>>>>> " .$query ."<<<<<<<<";
     $stmt = $conn->prepare($query);
     $stmt->execute();
@@ -274,7 +293,7 @@ $klein->respond('GET', '/group9/action/delete/[:id]', function ($request, $respo
 
     // echo 'success';
     // $service->sqlResult = 'DATA INSERTED';
-    $response->redirect("/group9/action888");
+    $response->redirect("/emp/group9/action888");
     // $response->redirect('javascript://history.go(-1);');
     // $response->redirect('javascript://location.reload();');
 });

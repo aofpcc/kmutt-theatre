@@ -23,15 +23,13 @@
   </div>
 </div>
 
-<div class="container text-center">
-  <button onclick="location.href = '/emp/group9/action888'" type="button" class="btn btn-primary btn-lg">Home</button>
-  <button onclick="location.href = '/emp/group9/add'" type="button" class="btn btn-secondary btn-lg">Add Movie</button>
-</div>
-
-<br>
+    <div class="container text-center">
+      <button onclick = "location.href = '/group9/action888'" type="button" class="btn btn-primary btn-lg">Home</button>
+      <button onclick = "location.href = '/emp/group9/add'" type="button" class="btn btn-secondary btn-lg">Add Movie</button>
+    </div>
 
 <div class="container text-center">
-  <form action="/group9/action2" method="POST">
+  <form action="/emp/group9/action2" method="POST">
     <div class="form-group">
       <label for="exampleFormControlInput1">Enter Movie Name</label>
       <input type="text" class="form-control" id="exampleFormControlInput1" name="Mname" placeholder="Name" value="<?php echo $this->searchKeyword; ?>"
@@ -43,20 +41,17 @@
 
 <br>
 
-<table class="table">
-  <!-- Head of the tables -->
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Detail</th>
-      <th scope="col">Length</th>
-      <th scope="col">Language</th>
-      <th scope="col">Release Date</th>
-      <th scope="col">End Date</th>
-      <th scope="col" />
-    </tr>
-  </thead>
+    <table class="table">
+      <!-- Head of the tables -->
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Title</th>
+          <th scope="col">Director</th>
+          <th scope="col">Studio</th>
+          <th scope="col"/>
+        </tr>
+      </thead>
 
   <!-- rows -->
   <tbody>
@@ -67,16 +62,14 @@
             $row = $result[$i];
             
             echo '<tr>';
-            echo '<th scope="row">'.$row['ID'].'</th>';
-            echo '<td>'.$row['NAME'].'</td>';
-            echo '<td>'.$row['DETAIL'].'</td>';
-            echo '<td>'.$row['LENGTH'].'</td>';
-            echo '<td>'.$row['LNG'].'</td>';
-            echo '<td>'.$row['RELEASE_DATE'].'</td>';
-            echo '<td>'.$row['END_DATE'].'</td>';
+            echo '<th scope="row">'.$row['id'].'</th>';
+            echo '<td>'.$row['title'].'</td>';
+            echo '<td>'.$row['director'].'</td>';
+            echo '<td>'.$row['studio_name'].'</td>';
+            
             echo '<td>';
-            echo '<button onclick = "location.href = \'/group9/update/'.$row['ID'].'\'" type="button" class="btn btn-success">Update</button>';
-            echo '<button onclick = "showDeleteDialog('.$row['ID'].', \''.$row['NAME'].'\')" type="button" class="btn btn-danger ml-1">Delete</button>';
+            echo '<button onclick = "location.href = \'/emp/group9/update/'.$row['id'].'\'" type="button" class="btn btn-success">Update</button>';
+            echo '<button onclick = "showDeleteDialog('.$row['id'].', \''.$row['title'].'\')" type="button" class="btn btn-danger ml-1">Delete</button>';
             echo '</td>';
             // echo $row['NAME'];
             echo '</tr>';

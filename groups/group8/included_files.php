@@ -2,5 +2,6 @@
 $included = array(
   'file1',
   'gen',
-  'promotionManagement'
+  'promotionManagement',
+  'promotionEditManagement'
 );

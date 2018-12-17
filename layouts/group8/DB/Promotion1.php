@@ -44,7 +44,7 @@
       <h1 class="my-4">Promotion List
         <small>
         <h4 class="card-title">
-                <a href="/emp/promotion/add" id="m1">+Add</a><br>
+                <a href="/emp/promotion/add" id="m1">+Add</a>  
                 <a href="/emp/promotion/edit" id="m2">+Edit</a>
               </h4>
         </small>
@@ -60,6 +60,7 @@
                 <?=$promotion["PromoName"] ?><br><br><?=$promotion["StartDate"] ?>
                 <br><?=$promotion["EndDate"] ?><br><br><?=$promotion["Description"] ?>
                 <br><br>CODE = <?=$promotion["PromoCode"] ?><br>one code / person
+                <button type = "button" class="">
               </h4>
               <p class="card-text">     </p>
             </div>

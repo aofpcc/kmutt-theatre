@@ -124,6 +124,7 @@
           <div class="col-sm-12">
           <div class="row">
             <?php foreach($this->movies as $movie) { ?>
+
                     <div class="col-lg-4 col-md-6 mb-4">
                       <div class="card h-100">
                         <a href="/customer/kmutt_home/branch/<?=$movie["id"]?>"><img class="card-img-top"  src="<?=$movie["Image"] ?>"" alt=""></a>

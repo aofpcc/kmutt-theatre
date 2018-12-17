@@ -33,9 +33,9 @@
       <div class="col-lg-6">
         <div style="width: inherit!important; min-width: 500px;" class="container" style="padding-top:30px;">
 
-          <h2>Revenue <kbd id="revenue" style="background-color:green"> <?php echo ($this->revenue[0]['0']); ?> Bath</kbd></h2>
-          <h2>Expense <kbd id="expense" style="background-color:red"><?php echo ($this->expenses[0]['0']); ?> Bath</kbd></h2>
-          <?php  $profit = $this->revenue[0]['total'] - $this->expenses[0]['0'];?>
+          <h2>Revenue <kbd id="revenue" style="background-color:green"> <?php echo ($this->revenue[0]['total']); ?> Bath</kbd></h2>
+          <h2>Expense <kbd id="expense" style="background-color:red"><?php echo ($this->expenses[0]['total']); ?> Bath</kbd></h2>
+          <?php  $profit = $this->revenue[0]['total'] - $this->expenses[0]['total'];?>
           <h2>Profit <kbd id="profit"><?php echo (($profit)) ;?> Bath</kbd></h2>
         </div>
       </div>
@@ -60,13 +60,29 @@
 <!-- Graphs -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 <script>
+  <?php $monthName = ["", "January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]; 
+  $labels1 = [];
+  $datas1 = [];
+  $labels2 = [];
+  $datas2 = [];
+  foreach($this->revenueLine as $value){
+    array_push($labels1, $monthName[$value["month"]]." ".$value["year"]);
+    array_push($datas1, $value["total"]);
+  }
+  foreach($this->expenseLine as $value){
+    array_push($datas2, $value["total"]);
+  }
+  ?>
+  var labels1 =  <?php echo json_encode($labels1); ?>;
+  var datas1 = <?php echo json_encode($datas1); ?>;
+  var datas2 = <?php echo json_encode($datas2); ?>;
   var ctx = document.getElementById("sumChart");
   var sumChart = new Chart(ctx, {
     type: 'line',
     data: {
-      labels: ["January", "Februry", "March", "April", "May", "June", "July"],
+      labels: labels1,
       datasets: [{
-        data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
+        data: datas1,
         lineTension: 0,
         backgroundColor: 'transparent',
         borderColor: '#007bff',
@@ -74,7 +90,7 @@
         pointBackgroundColor: '#007bff'
       },
       {
-        data: [1, 2135, 1883, 2403, 2389, 2092, 1204],
+        data: datas2,
         lineTension: 0,
         backgroundColor: 'transparent',
         borderColor: '#000000',
@@ -95,8 +111,7 @@
       }
     }
   });
-</script>
-<script>
+
 $("#search_graph").click(function(){
   var startDate = $("#date_from").val();
   var endDate = $("#date_to").val();
@@ -110,6 +125,24 @@ $("#search_graph").click(function(){
     $("#expense").text(expenses);
     var profit = revenue - expenses;
     $("#profit").text(profit);
+    var revenueLine = data.revenueLine;
+    console.log(revenueLine);
+    console.log(revenueLine[0][2]);
+    var expenseLine = data.expensesLine;
+    for(var i = 0; i < revenueLine.length ; i++ ){
+       sumChart.data.datasets[0].data[i] = revenueLine[i][2];
+       //sumChart.data.datasets[1].data[i] = expenseLine[i][2];
+       window.sumChart.update();
+    }
+    for(var o = 0; o < expenseLine.length ; o++ ){
+       sumChart.data.datasets[1].data[o] = expenseLine[o][2];
+       window.sumChart.update();
+    }
+    
+
+    window.sumChart.update();
+    
   });
+  
 });
 </script>

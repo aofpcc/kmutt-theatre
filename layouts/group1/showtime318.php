@@ -51,15 +51,11 @@
           </div>
         </div>
         <div class="col-md-8">
-            <br><br>
-            <font size="6">Fantastic Beasts2: The Crimes of Grindelwald</font><br><br>
-            <font size="4">30 February 2030</font><br><br>
-            <font size="4">21 : 00</font> &nbsp&nbsp&nbsp  <font size="4"> Theater 5 </font><br><br>
-            <font size="4">135 Mins</font> <br><br>
-            <button type="button" class="btn btn-lg btn-dark">BACK</button> 
-            <br><br> <!--link to ticket-->
-
-
+          <br><br><br><br>
+          <h4>Movie Name: <?=$this->name["title"] ?></h4>
+          <h7>Genre: Fantasy</h7><br>
+          <h7>Rate: G</h7><br>
+          <h7>135 Mins</h7><br><br>
         </div>
       </div>
     </div>

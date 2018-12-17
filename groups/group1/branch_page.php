@@ -21,13 +21,14 @@ $klein->respond('GET', '/kmutt_home/branch/[:movie_id]', function ($request, $re
         $status = true;
     }
 
-    $name = $conn->query("select distinct title from G09_Movie where id = '$request->movie_id'")->fetchAll(PDO::FETCH_ASSOC);
+    $name = $conn->query("select distinct title, Image from G09_Movie where id = '$request->movie_id'")->fetchAll(PDO::FETCH_ASSOC);
 
     // $response->dump($name);
     // $response->sendBody();
     // die;
 
     $service->name = $name[0];
+    $service->photo = $name[0];
     $service->datenow = (new DateTime)->format("Y-m-d");
     $service->query = $date;
     $service->movie_id = $request->movie_id;

@@ -52,11 +52,10 @@
         </div>
         <div class="col-md-8">
           <br><br><br><br>
-          <h4>Fantastic Beasts The Crimes of Grindelwald</h4>
+          <h4>Movie Name: <?=$this->name["title"] ?></h4>
           <h7>Genre: Fantasy</h7><br>
           <h7>Rate: G</h7><br>
           <h7>135 Mins</h7><br><br>
-          <button type="button" class="btn btn-lg btn-default">MOVIE DETAIL</button>
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-$klein->respond('POST', '/kmutt_home/branch/show_time/select_chair/payment', function ($request, $response, $service)  use($database){
+$klein->respond('POST', '/kmutt_home/branch/show_time/select_chair/payment/[:showtime_id]', function ($request, $response, $service)  use($database){
   $service->bootstrap3 = false;
   $conn = $database->getConnection();
     // Check submitted params

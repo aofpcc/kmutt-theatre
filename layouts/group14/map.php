@@ -10,7 +10,7 @@
             padding-right: 15px;
             padding-left: 15px;
         }
-        
+
     </style>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,12 +22,12 @@
 </head>
 <!-- <div id="map"></div> -->
 <div class="container" style="width: 70%">
-    
+
     <div id="map"></div>
     <hr style="height:2pt; visibility:hidden; margin-bottom:-1px; margin-top:5px" />
     <div><input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search" style="width: 100%"/></div>
     <hr style="height:2pt; visibility:hidden; margin-bottom:-1px; margin-top:5px" />
-    <div class="scrollable scrollbar-near-moon" style='height: 200px'>
+    <div class="scrollable scrollbar-danger" style='height: 200px'>
         <div class="force-overflow" id="BtnContainer">
             <ul id="myUL">
                 <?php for ($i = 0; $i < count($this->guy); $i++) {?>
@@ -110,7 +110,7 @@
             })(marker, i));
         }
 
-        
+
     }
 
     function changePos(setLoc) {
@@ -135,6 +135,6 @@
     }
   }
 }
-    
+
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVya5jGbVLcFvCfHrR8yNKU7CPJhZ1eVI&callback=initMap"></script>

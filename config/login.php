@@ -312,6 +312,12 @@ class LoginPerformer
     public function requireLogin($role) {
         return $this->LoginThenGoTo($role, '/test/login');
     }
+
+    public function loginPage(){
+        $this->klein->response()->redirect("/test/login");
+        $this->klein->response()->sendHeaders();
+    }
+
     public function LoginThenGoTo($role,$back)
     {
         if (empty($_SESSION['login']) || $_SESSION['login'] != true || $_SESSION['role'] != $role) {

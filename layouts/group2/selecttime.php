@@ -1,12 +1,9 @@
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="Use Bootstrap’s custom button styles for actions in forms, dialogs, and more with support for multiple sizes, states, and more.">
-<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Jekyll v3.7.0">
-
-
 <head>
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <link href="/layouts/group1/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="/layouts/group1/css/onStyle.css">
     <style type="text/css">
         svg,
         img {
@@ -40,6 +37,7 @@
 
     <script type="text/javascript" charset="utf-8" async="" src="/layouts/group2/js/selecttime/5.b3f4836c4ad2b717a7fa.js"></script>
 </head>
+
 <body>
 
     <div id="app" class="is-grayscale">
@@ -118,15 +116,18 @@
                                     <polyline class="cls-1" points="33.53 4 5.47 34.06 33.53 64.12"></polyline>
                                 </svg></button>
                             <!-- <div class="slick-list"> -->
-                                 <!-- <div class="slick-track" style="opacity: 1; width: 5700px; transform: translate3d(0px, 0px, 0px);"> -->
-                                    <nav class="nav nav-pills nav-fill btn-dark">
-                                        <a class="nav-item nav-link active" href="#">Thu<br><small>15 Nov 2018</small></a>
-                                        <a class="nav-item nav-link" href="#">Fri<br><small>16 Nov 2018</small></a>
-                                        <a class="nav-item nav-link" href="#">Sat<br><small>17 Nov 2018</small></a>
-                                        <a class="nav-item nav-link disabled" href="#">Mon<br><small>18 Nov 2018</small></a>
-                                        <a class="nav-item nav-link disabled" href="#">Tue<br><small>19 Nov 2018</small></a>
-                                    </nav>
-                                    <!-- <div class="slick-slide slick-current slick-active" data-slick-index="0"
+                            <!-- <div class="slick-track" style="opacity: 1; width: 5700px; transform: translate3d(0px, 0px, 0px);"> -->
+                            
+                            <nav class="nav nav-pills nav-fill">
+                                <a class="nav-item nav-link active" href="#">Thu<br><small><?$this->query_date ?> Nov 2018</small></a>
+                                <a class="nav-item nav-link" href="#">Fri<br><small>16 Nov 2018</small></a>
+                                <a class="nav-item nav-link" href="#">Sat<br><small>17 Nov 2018</small></a>
+                                <a class="nav-item nav-link" href="#">Mon<br><small>18 Nov 2018</small></a>
+                                <a class="nav-item nav-link" href="#">Tue<br><small>19 Nov 2018</small></a>
+                            </nav>
+                            
+                            
+                            <!-- <div class="slick-slide slick-current slick-active" data-slick-index="0"
                                         aria-hidden="false" style="width: 190px;">
                                         <div>
                                             <div class="selected" style="width: 100%; display: inline-block;">
@@ -396,7 +397,7 @@
                                             </div>
                                         </div>
                                     </div> -->
-                                <!-- </div>
+                            <!-- </div>
                             </div> -->
                             <button class="slick-next slick-arrow" style="" aria-disabled="false"><svg class="sf-icon next-arrow"
                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 37.53 68.12">

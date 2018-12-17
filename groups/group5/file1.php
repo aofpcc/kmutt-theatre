@@ -339,7 +339,7 @@ $klein->respond('POST', '/register-form', function ($request, $response, $servic
     }
 });
 
-//transaction 
+//transaction
 $klein->respond('GET', '/transaction_point', function ($request, $response, $service) {
     $service->title = "Point History";
     $service->bootstrap3 = false;
@@ -347,4 +347,13 @@ $klein->respond('GET', '/transaction_point', function ($request, $response, $ser
     $conn = $database->getConnection();
     $service->pageTitle = 'Fish and Chips';
     $service->render('layouts/group5/transcation_point.php');
+});
+
+$klein->respond('GET', '/g05/test_point', function ($request, $response, $service, $app, $validator) {
+  $app->point->addPoint([
+    "type" => "Ticket",
+    "memberID" => "151",
+    "point" => "300",
+    "transactionID" => "X01AB"
+  ]);
 });

@@ -5,30 +5,38 @@
 <head>
     <!-- <title>movie name | KMUTT Theatre</title> -->
 
-<style type="text/css">
+
+
+    <style type="text/css">
         svg,
         img {
             width: 20px;
         }
-
     </style>
-    <link rel="preload" href="/layouts/group2/js/selecttime/manifest.86920d2276921dc8f875.js" as="script">
-    <link rel="preload" href="/layouts/group2/js/selecttime/vendor.eb91d5bf77b2c769fcc2.js" as="script">
-    <link rel="preload" href="/layouts/group2/js/selecttime/app.baa2eadcab44e34fea36.js" as="script">
-    
+
+    <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+
+   <link href="/layouts/group1/css/style.css" rel="stylesheet" type="text/css" media="all" />
+   <link rel="stylesheet" href="/layouts/group1/css/onStyle.css">
+   <link rel="stylesheet" href="/layouts/group1/css/showtime.css">
+
+
     <link rel="prefetch" href="/layouts/group2/js/selecttime/5.b3f4836c4ad2b717a7fa.js">
-    
+
     <link rel="prefetch" href="/layouts/group2/js/selecttime/1.2ab249ca75db547f0487.js">
     <link rel="stylesheet" href="/layouts/group2/css/maincss/common.baa2eadcab44e34fea36.css">
     <script type="text/javascript" charset="utf-8" async="" src="/layouts/group2/js/selecttime/1.2ab249ca75db547f0487.js"></script>
     <style type="text/css">
-        
+
     </style>
     <style type="text/css">
-       
+
     </style>
     <style type="text/css">
-        
+
     </style>
 
     <script type="text/javascript" charset="utf-8" async="" src="/layouts/group2/js/selecttime/5.b3f4836c4ad2b717a7fa.js"></script>
@@ -108,280 +116,16 @@
                                     <title>prev</title>
                                     <polyline class="cls-1" points="33.53 4 5.47 34.06 33.53 64.12"></polyline>
                                 </svg></button>
-                            <div class="slick-list">
-                                <div class="slick-track" style="opacity: 1; width: 5700px; transform: translate3d(0px, 0px, 0px);">
-                                    <div class="slick-slide slick-current slick-active" data-slick-index="0"
-                                        aria-hidden="false" style="width: 190px;">
-                                        <div>
-                                            <div class="selected" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">พฤหัส</h1>
-                                                <p class="date">13 ธ.ค. 2018</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="slick-slide slick-active" data-slick-index="1" aria-hidden="false"
-                                        style="width: 190px;">
-                                        <div>
-                                            <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">ศุกร์</h1>
-                                                <p class="date">14 ธ.ค. 2018</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="slick-slide slick-active" data-slick-index="2" aria-hidden="false"
-                                        style="width: 190px;">
-                                        <div>
-                                            <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">เสาร์</h1>
-                                                <p class="date">15 ธ.ค. 2018</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="slick-slide slick-active" data-slick-index="3" aria-hidden="false"
-                                        style="width: 190px;">
-                                        <div>
-                                            <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">อาทิตย์</h1>
-                                                <p class="date">16 ธ.ค. 2018</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="slick-slide slick-active" data-slick-index="4" aria-hidden="false"
-                                        style="width: 190px;">
-                                        <div>
-                                            <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">จันทร์</h1>
-                                                <p class="date">17 ธ.ค. 2018</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="slick-slide slick-active" data-slick-index="5" aria-hidden="false"
-                                        style="width: 190px;">
-                                        <div>
-                                            <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">อังคาร</h1>
-                                                <p class="date">18 ธ.ค. 2018</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="slick-slide" data-slick-index="6" aria-hidden="true" style="width: 190px;"
-                                        tabindex="-1">
-                                        <div>
-                                            <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">พุธ</h1>
-                                                <p class="date">19 ธ.ค. 2018</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="slick-slide" data-slick-index="7" aria-hidden="true" style="width: 190px;"
-                                        tabindex="-1">
-                                        <div>
-                                            <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">พฤหัส</h1>
-                                                <p class="date">20 ธ.ค. 2018</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="slick-slide" data-slick-index="8" aria-hidden="true" style="width: 190px;"
-                                        tabindex="-1">
-                                        <div>
-                                            <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">ศุกร์</h1>
-                                                <p class="date">21 ธ.ค. 2018</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="slick-slide" data-slick-index="9" aria-hidden="true" style="width: 190px;"
-                                        tabindex="-1">
-                                        <div>
-                                            <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">เสาร์</h1>
-                                                <p class="date">22 ธ.ค. 2018</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="slick-slide" data-slick-index="10" aria-hidden="true" style="width: 190px;"
-                                        tabindex="-1">
-                                        <div>
-                                            <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">อาทิตย์</h1>
-                                                <p class="date">23 ธ.ค. 2018</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="slick-slide" data-slick-index="11" aria-hidden="true" style="width: 190px;"
-                                        tabindex="-1">
-                                        <div>
-                                            <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">จันทร์</h1>
-                                                <p class="date">24 ธ.ค. 2018</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="slick-slide" data-slick-index="12" aria-hidden="true" style="width: 190px;"
-                                        tabindex="-1">
-                                        <div>
-                                            <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">อังคาร</h1>
-                                                <p class="date">25 ธ.ค. 2018</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="slick-slide" data-slick-index="13" aria-hidden="true" style="width: 190px;"
-                                        tabindex="-1">
-                                        <div>
-                                            <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">พุธ</h1>
-                                                <p class="date">26 ธ.ค. 2018</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="slick-slide" data-slick-index="14" aria-hidden="true" style="width: 190px;"
-                                        tabindex="-1">
-                                        <div>
-                                            <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">พฤหัส</h1>
-                                                <p class="date">27 ธ.ค. 2018</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="slick-slide" data-slick-index="15" aria-hidden="true" style="width: 190px;"
-                                        tabindex="-1">
-                                        <div>
-                                            <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">ศุกร์</h1>
-                                                <p class="date">28 ธ.ค. 2018</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="slick-slide" data-slick-index="16" aria-hidden="true" style="width: 190px;"
-                                        tabindex="-1">
-                                        <div>
-                                            <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">เสาร์</h1>
-                                                <p class="date">29 ธ.ค. 2018</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="slick-slide" data-slick-index="17" aria-hidden="true" style="width: 190px;"
-                                        tabindex="-1">
-                                        <div>
-                                            <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">อาทิตย์</h1>
-                                                <p class="date">30 ธ.ค. 2018</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="slick-slide" data-slick-index="18" aria-hidden="true" style="width: 190px;"
-                                        tabindex="-1">
-                                        <div>
-                                            <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">จันทร์</h1>
-                                                <p class="date">31 ธ.ค. 2018</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="slick-slide" data-slick-index="19" aria-hidden="true" style="width: 190px;"
-                                        tabindex="-1">
-                                        <div>
-                                            <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">อังคาร</h1>
-                                                <p class="date">01 ม.ค. 2019</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="slick-slide" data-slick-index="20" aria-hidden="true" style="width: 190px;"
-                                        tabindex="-1">
-                                        <div>
-                                            <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">พุธ</h1>
-                                                <p class="date">02 ม.ค. 2019</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="slick-slide" data-slick-index="21" aria-hidden="true" style="width: 190px;"
-                                        tabindex="-1">
-                                        <div>
-                                            <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">พฤหัส</h1>
-                                                <p class="date">03 ม.ค. 2019</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="slick-slide" data-slick-index="22" aria-hidden="true" style="width: 190px;"
-                                        tabindex="-1">
-                                        <div>
-                                            <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">ศุกร์</h1>
-                                                <p class="date">04 ม.ค. 2019</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="slick-slide" data-slick-index="23" aria-hidden="true" style="width: 190px;"
-                                        tabindex="-1">
-                                        <div>
-                                            <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">เสาร์</h1>
-                                                <p class="date">05 ม.ค. 2019</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="slick-slide" data-slick-index="24" aria-hidden="true" style="width: 190px;"
-                                        tabindex="-1">
-                                        <div>
-                                            <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">อาทิตย์</h1>
-                                                <p class="date">06 ม.ค. 2019</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="slick-slide" data-slick-index="25" aria-hidden="true" style="width: 190px;"
-                                        tabindex="-1">
-                                        <div>
-                                            <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">จันทร์</h1>
-                                                <p class="date">07 ม.ค. 2019</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="slick-slide" data-slick-index="26" aria-hidden="true" style="width: 190px;"
-                                        tabindex="-1">
-                                        <div>
-                                            <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">อังคาร</h1>
-                                                <p class="date">08 ม.ค. 2019</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="slick-slide" data-slick-index="27" aria-hidden="true" style="width: 190px;"
-                                        tabindex="-1">
-                                        <div>
-                                            <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">พุธ</h1>
-                                                <p class="date">09 ม.ค. 2019</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="slick-slide" data-slick-index="28" aria-hidden="true" style="width: 190px;"
-                                        tabindex="-1">
-                                        <div>
-                                            <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">พฤหัส</h1>
-                                                <p class="date">10 ม.ค. 2019</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="slick-slide" data-slick-index="29" aria-hidden="true" style="width: 190px;"
-                                        tabindex="-1">
-                                        <div>
-                                            <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">ศุกร์</h1>
-                                                <p class="date">11 ม.ค. 2019</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><button class="slick-next slick-arrow" style="" aria-disabled="false"><svg class="sf-icon next-arrow"
+                            <!-- <div class="slick-list"> -->
+                                <nav class="nav nav-pills nav-fill">
+                                    <a class="nav-item nav-link" href="#">Thu<br><small>15 Nov 2018</small></a>
+                                    <a class="nav-item nav-link" href="#">Fri<br><small>16 Nov 2018</small></a>
+                                    <a class="nav-item nav-link" href="#">Sat<br><small>17 Nov 2018</small></a>
+                                    <a class="nav-item nav-link" href="#">Mon<br><small>18 Nov 2018</small></a>
+                                    <a class="nav-item nav-link" href="#">Tue<br><small>19 Nov 2018</small></a>
+                                </nav>
+                            <!-- </div> -->
+                            <button class="slick-next slick-arrow" style="" aria-disabled="false"><svg class="sf-icon next-arrow"
                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 37.53 68.12">
                                     <defs></defs>
                                     <title>next</title>
@@ -454,10 +198,14 @@
                                                 </li>
                                             </ul>
                                             <ul class="time-list">
-                                                <li class="time-item" ><a href="/emp/group2/home_page/select_movie/select_time/select_seat"><button class="button button-showtime">13:20</button></a></li>
-                                                <li class="time-item"><a href="/emp/group2/home_page/select_movie/select_time/select_seat"><button class="button button-showtime">16:20</button></a></li>
-                                                <li class="time-item"><a href="/emp/group2/home_page/select_movie/select_time/select_seat"><button class="button button-showtime">19:20</button></a></li>
-                                                <li class="time-item"><a href="/emp/group2/home_page/select_movie/select_time/select_seat"></a><button class="button button-showtime">22:20</button></a></li>
+                                                <li class="time-item"><a href="/emp/group2/home_page/select_movie/select_time/select_seat"><button
+                                                            class="button button-showtime">13:20</button></a></li>
+                                                <li class="time-item"><a href="/emp/group2/home_page/select_movie/select_time/select_seat"><button
+                                                            class="button button-showtime">16:20</button></a></li>
+                                                <li class="time-item"><a href="/emp/group2/home_page/select_movie/select_time/select_seat"><button
+                                                            class="button button-showtime">19:20</button></a></li>
+                                                <li class="time-item"><a href="/emp/group2/home_page/select_movie/select_time/select_seat"></a><button
+                                                        class="button button-showtime">22:20</button></a></li>
                                             </ul>
                                         </div>
                                     </div>

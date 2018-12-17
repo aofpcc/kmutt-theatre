@@ -28,10 +28,7 @@
   <button onclick="location.href = '/emp/group9/add'" type="button" class="btn btn-secondary btn-lg">Add Movie</button>
 </div>
 
-    <div class="container text-center">
-      <button onclick = "location.href = '/group9/action888'" type="button" class="btn btn-primary btn-lg">Home</button>
-      <button onclick = "location.href = '/emp/group9/add'" type="button" class="btn btn-secondary btn-lg">Add Movie</button>
-    </div>
+<br>
 
 <div class="container text-center">
   <form action="/group9/action2" method="POST">
@@ -46,23 +43,20 @@
 
 <br>
 
-    <table class="table">
-      <!-- Head of the tables -->
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Title</th>
-          <th scope="col">Detail</th>
-          <th scope="col">Director</th>
-          <th scope="col">Length</th>
-          <th scope="col">Language</th>
-          <th scope="col">Gerne</th>
-          <th scope="col">Studio</th>
-          <th scope="col">Brought Date</th>
-          <th scope="col">End Date</th>
-          <th scope="col"/>
-        </tr>
-      </thead>
+<table class="table">
+  <!-- Head of the tables -->
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Detail</th>
+      <th scope="col">Length</th>
+      <th scope="col">Language</th>
+      <th scope="col">Release Date</th>
+      <th scope="col">End Date</th>
+      <th scope="col" />
+    </tr>
+  </thead>
 
   <!-- rows -->
   <tbody>

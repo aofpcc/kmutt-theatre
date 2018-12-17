@@ -47,15 +47,15 @@
                                 <div class="no">1</div>
                                 <div class="step-name">Showtime</div>
                             </a></li>
-                        <li class="step-item"><a href="#">
+                        <li class="step-item"><a href="HO00000074/9912#">
                                 <div class="no">2</div>
                                 <div class="step-name">Seat Selection</div>
                             </a></li>
-                        <li class="step-item"><a href="#">
+                        <li class="step-item"><a href="HO00000074/9912#">
                                 <div class="no">3</div>
                                 <div class="step-name">Payment</div>
                             </a></li>
-                        <li class="step-item"><a href="#">
+                        <li class="step-item"><a href="HO00000074/9912#">
                                 <div class="no">4</div>
                                 <div class="step-name">Done</div>
                             </a></li>
@@ -73,7 +73,7 @@
                                     <div class="poster"><img src="/layouts/group2/images/selecttime/unnamed.jpg"></div>
                                     <div class="movie-detail">
                                         <div class="main-detail">
-                                            <h1 class="name">Aquaman</h1>
+                                            <h1 class="name">อควาแมน เจ้าสมุทร</h1>
 
                                         </div>
                                         <p class="genre">Genre: Action</p>
@@ -90,7 +90,7 @@
                                                     <line x1="111.89" y1="63.94" x2="106.55" y2="63.94" class="cls-3"></line>
                                                     <line x1="63.44" y1="36.53" x2="63.44" y2="56.36" class="cls-4"></line>
                                                     <line x1="68.64" y1="68.64" x2="84.25" y2="84.25" class="cls-4"></line>
-                                                </svg> 145 min
+                                                </svg> 145 นาที
                                             </li>
                                             <!-- </ul><a href="https://www.sfcinemacity.com/movie/HO00000074" class="button button-gray-trans button-movie-details">Movie Details</a> -->
                                     </div>
@@ -114,17 +114,17 @@
                                         aria-hidden="false" style="width: 190px;">
                                         <div>
                                             <div class="selected" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">Thu</h1>
-                                                <p class="date">13 Dec 2018</p>
+                                                <h1 class="day">พฤหัส</h1>
+                                                <p class="date">13 ธ.ค. 2018</p>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="slick-slide slick-active" data-slick-index="1" 
-                                    aria-hidden="false" style="width: 190px;">
+                                    <div class="slick-slide slick-active" data-slick-index="1" aria-hidden="false"
+                                        style="width: 190px;">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">Fri</h1>
-                                                <p class="date">14 Dec 2018</p>
+                                                <h1 class="day">ศุกร์</h1>
+                                                <p class="date">14 ธ.ค. 2018</p>
                                             </div>
                                         </div>
                                     </div>
@@ -132,8 +132,8 @@
                                         style="width: 190px;">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">Sat</h1>
-                                                <p class="date">15 Dec 2018</p>
+                                                <h1 class="day">เสาร์</h1>
+                                                <p class="date">15 ธ.ค. 2018</p>
                                             </div>
                                         </div>
                                     </div>
@@ -141,8 +141,8 @@
                                         style="width: 190px;">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">Sun</h1>
-                                                <p class="date">16 Dec 2018</p>
+                                                <h1 class="day">อาทิตย์</h1>
+                                                <p class="date">16 ธ.ค. 2018</p>
                                             </div>
                                         </div>
                                     </div>
@@ -150,8 +150,8 @@
                                         style="width: 190px;">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">Mon</h1>
-                                                <p class="date">17 Dec 2018</p>
+                                                <h1 class="day">จันทร์</h1>
+                                                <p class="date">17 ธ.ค. 2018</p>
                                             </div>
                                         </div>
                                     </div>
@@ -159,8 +159,8 @@
                                         style="width: 190px;">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">Tue</h1>
-                                                <p class="date">18 Dec 2018</p>
+                                                <h1 class="day">อังคาร</h1>
+                                                <p class="date">18 ธ.ค. 2018</p>
                                             </div>
                                         </div>
                                     </div>
@@ -168,8 +168,8 @@
                                         tabindex="-1">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">Wed</h1>
-                                                <p class="date">19 Dec 2018</p>
+                                                <h1 class="day">พุธ</h1>
+                                                <p class="date">19 ธ.ค. 2018</p>
                                             </div>
                                         </div>
                                     </div>
@@ -177,8 +177,8 @@
                                         tabindex="-1">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">Thu</h1>
-                                                <p class="date">20 Dec 2018</p>
+                                                <h1 class="day">พฤหัส</h1>
+                                                <p class="date">20 ธ.ค. 2018</p>
                                             </div>
                                         </div>
                                     </div>
@@ -186,8 +186,8 @@
                                         tabindex="-1">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">Fri</h1>
-                                                <p class="date">21 Dec 2018</p>
+                                                <h1 class="day">ศุกร์</h1>
+                                                <p class="date">21 ธ.ค. 2018</p>
                                             </div>
                                         </div>
                                     </div>
@@ -195,8 +195,8 @@
                                         tabindex="-1">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">Sat</h1>
-                                                <p class="date">22 Dec 2018</p>
+                                                <h1 class="day">เสาร์</h1>
+                                                <p class="date">22 ธ.ค. 2018</p>
                                             </div>
                                         </div>
                                     </div>
@@ -204,8 +204,8 @@
                                         tabindex="-1">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">Sun</h1>
-                                                <p class="date">23 Dec 2018</p>
+                                                <h1 class="day">อาทิตย์</h1>
+                                                <p class="date">23 ธ.ค. 2018</p>
                                             </div>
                                         </div>
                                     </div>
@@ -213,8 +213,8 @@
                                         tabindex="-1">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">Mon</h1>
-                                                <p class="date">24 Dec 2018</p>
+                                                <h1 class="day">จันทร์</h1>
+                                                <p class="date">24 ธ.ค. 2018</p>
                                             </div>
                                         </div>
                                     </div>
@@ -222,8 +222,8 @@
                                         tabindex="-1">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">Thu</h1>
-                                                <p class="date">25 Dec 2018</p>
+                                                <h1 class="day">อังคาร</h1>
+                                                <p class="date">25 ธ.ค. 2018</p>
                                             </div>
                                         </div>
                                     </div>
@@ -231,8 +231,8 @@
                                         tabindex="-1">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">Wed</h1>
-                                                <p class="date">26 Dec 2018</p>
+                                                <h1 class="day">พุธ</h1>
+                                                <p class="date">26 ธ.ค. 2018</p>
                                             </div>
                                         </div>
                                     </div>
@@ -240,8 +240,8 @@
                                         tabindex="-1">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">Thu</h1>
-                                                <p class="date">27 Dec 2018</p>
+                                                <h1 class="day">พฤหัส</h1>
+                                                <p class="date">27 ธ.ค. 2018</p>
                                             </div>
                                         </div>
                                     </div>
@@ -249,8 +249,8 @@
                                         tabindex="-1">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">Fri</h1>
-                                                <p class="date">28 Dec 2018</p>
+                                                <h1 class="day">ศุกร์</h1>
+                                                <p class="date">28 ธ.ค. 2018</p>
                                             </div>
                                         </div>
                                     </div>
@@ -258,8 +258,8 @@
                                         tabindex="-1">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">Sat</h1>
-                                                <p class="date">29 Dec 2018</p>
+                                                <h1 class="day">เสาร์</h1>
+                                                <p class="date">29 ธ.ค. 2018</p>
                                             </div>
                                         </div>
                                     </div>
@@ -267,8 +267,8 @@
                                         tabindex="-1">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">Sun</h1>
-                                                <p class="date">30 Dec 2018</p>
+                                                <h1 class="day">อาทิตย์</h1>
+                                                <p class="date">30 ธ.ค. 2018</p>
                                             </div>
                                         </div>
                                     </div>
@@ -276,8 +276,8 @@
                                         tabindex="-1">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">Mon</h1>
-                                                <p class="date">31 Dec 2018</p>
+                                                <h1 class="day">จันทร์</h1>
+                                                <p class="date">31 ธ.ค. 2018</p>
                                             </div>
                                         </div>
                                     </div>
@@ -285,7 +285,7 @@
                                         tabindex="-1">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">Tue</h1>
+                                                <h1 class="day">อังคาร</h1>
                                                 <p class="date">01 ม.ค. 2019</p>
                                             </div>
                                         </div>
@@ -294,7 +294,7 @@
                                         tabindex="-1">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">Wed</h1>
+                                                <h1 class="day">พุธ</h1>
                                                 <p class="date">02 ม.ค. 2019</p>
                                             </div>
                                         </div>
@@ -303,7 +303,7 @@
                                         tabindex="-1">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">Thu</h1>
+                                                <h1 class="day">พฤหัส</h1>
                                                 <p class="date">03 ม.ค. 2019</p>
                                             </div>
                                         </div>
@@ -312,7 +312,7 @@
                                         tabindex="-1">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">Fri</h1>
+                                                <h1 class="day">ศุกร์</h1>
                                                 <p class="date">04 ม.ค. 2019</p>
                                             </div>
                                         </div>
@@ -321,7 +321,7 @@
                                         tabindex="-1">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">Sat</h1>
+                                                <h1 class="day">เสาร์</h1>
                                                 <p class="date">05 ม.ค. 2019</p>
                                             </div>
                                         </div>
@@ -330,7 +330,7 @@
                                         tabindex="-1">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">Sun</h1>
+                                                <h1 class="day">อาทิตย์</h1>
                                                 <p class="date">06 ม.ค. 2019</p>
                                             </div>
                                         </div>
@@ -339,7 +339,7 @@
                                         tabindex="-1">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">Mon</h1>
+                                                <h1 class="day">จันทร์</h1>
                                                 <p class="date">07 ม.ค. 2019</p>
                                             </div>
                                         </div>
@@ -348,7 +348,7 @@
                                         tabindex="-1">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">Tue</h1>
+                                                <h1 class="day">อังคาร</h1>
                                                 <p class="date">08 ม.ค. 2019</p>
                                             </div>
                                         </div>

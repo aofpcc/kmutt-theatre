@@ -349,11 +349,21 @@ $klein->respond('GET', '/transaction_point', function ($request, $response, $ser
     $service->render('layouts/group5/transcation_point.php');
 });
 
-$klein->respond('GET', '/g05/test_point', function ($request, $response, $service, $app, $validator) {
+//add
+  $klein->respond('GET', '/g05/test_add_point', function ($request, $response, $service, $app, $validator) {
   $app->point->addPoint([
     "type" => "Ticket",
     "memberID" => "151",
     "point" => "300",
     "transactionID" => "X01AB"
   ]);
+});
+
+  //subtract
+  $klein->respond('GET', '/g05/test_subtract_point', function ($request, $response, $service, $app, $validator) {
+    $app->point->subtractPoint([
+      "type" => "Ticket",
+      "memberID" => "151",
+      "point" => "150"
+    ]);
 });

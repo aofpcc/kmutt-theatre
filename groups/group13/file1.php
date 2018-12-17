@@ -201,7 +201,6 @@ $klein->respond('POST', '/fnb/do_order', function ($request, $response, $service
     $items = explode(",",$item);
     $products =explode(",",$product);
 
-
 //    $data =[
 //        [
 //            "empID" => $empID,
@@ -214,28 +213,25 @@ $klein->respond('POST', '/fnb/do_order', function ($request, $response, $service
 //        ]
 //    ];
 //    return $response->json($data);
-  $sql = "INSERT INTO G13_FNB_SaleList(cusID,empID,paymentType,codeID,total,Time,Date) values('$cusID','$empID','$payment','$coupon','$total',NOW(),NOW())";
+  $insertSalelistSql = "INSERT INTO G13_FNB_SaleList(cusID,empID,paymentType,codeID,total,Time,Date) values('$cusID','$empID','$payment','$coupon','$total',NOW(),NOW())";
   $order = "SELECT max(receiptID) as receiptID FROM G13_FNB_SaleList";
 //  $stock = "UPDATE G13_FNB_Stock as s SET Remain = $xxx WHERE s.StockID=$StockID";
   $conn->beginTransaction();
 
   try {
-      $productsOrderStock = getProductOrderForStock($products,$items);
-      updateAllOrderStock($productsOrderStock);
-      return $response->json(["result"=>"success","productOrderForStock"=>$productsOrderStock]);
-    $conn->exec($sql);
+    $conn->exec($insertSalelistSql);
     $orderresult = $conn->prepare($order);
     $orderresult->execute();
     $row = $orderresult->fetchAll(PDO::FETCH_BOTH);
     $row = $row[0];
     $receiptID =  $row['receiptID'];
-    for($i=0; $i<count($item);$i++){
-        $data ="INSERT INTO realtheatre.`G13_FNB_detail` (receiptID,productID,quantity) VALUES('$receiptID','$products[$i]','$items[$i]')";
-        $a = $conn->prepare($data);
+    for($i=0; $i<count($items);$i++){
+        $updateDetailSql ="INSERT INTO realtheatre.`G13_FNB_detail` (receiptID,productID,quantity) VALUES('$receiptID','$products[$i]','$items[$i]')";
+        $a = $conn->prepare($updateDetailSql);
         $a->execute();
     }
-
-//    updateAllOrderStock($productsOrderStock);
+    $productsOrderStock = getProductOrderForStock($products,$items);
+    updateAllOrderStock($productsOrderStock);
     $conn->commit();
     return $response->json(["result"=>"success","message"=>"all :".count($items)." item[s]"]);
   } catch(PDOException $e) {

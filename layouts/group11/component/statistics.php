@@ -26,31 +26,38 @@
 window.onload = function () {
 
 <?php
-	$MorningRound = [];
+	$Round = [];
 	foreach($this->morning as $value){
-		array_push($MorningRound, $value["morning"]);
+		$temp = [
+			"y" => $value["morning"],
+			"label" => 'morning'
+		  ];
+		array_push($Round, $temp);
 	}
-	$AfternoonRound = [];
 	foreach($this->afternoon as $value){
-		array_push($AfternoonRound, $value["afternoon"]);
+		$temp = [
+			"y" => $value["afternoon"],
+			"label" => 'afternoon'
+		  ];
+		array_push($Round, $temp);
 	}
-	$EveningRound = [];
 	foreach($this->evening as $value){
-		array_push($EveningRound, $value["evening"]);
+		$temp = [
+			"y" => $value["evening"],
+			"label" => 'evening'
+		  ];
+		array_push($Round, $temp);
 	}
-	$MidnightRound = [];
 	foreach($this->midnight as $value){
-		array_push($MidnightRound, $value["midnight"]);
+		$temp = [
+			"y" => $value["midnight"],
+			"label" => 'midnight'
+		  ];
+		array_push($Round, $temp);
 	}
 	?>
-	var morning = <?php echo json_encode($MorningRound); ?>;
-	var afternoon = <?php echo json_encode($AfternoonRound); ?>;
-	var evening = <?php echo json_encode($EveningRound); ?>;
-	var midnight = <?php echo json_encode($MidnightRound); ?>;
-	console.log(morning);
-	console.log(afternoon);
-	console.log(evening);
-	console.log(midnight)
+	var round = <?php echo json_encode($Round); ?>;
+	console.log(round);
 var chart = new CanvasJS.Chart("chartShowtime", {
 
 	animationEnabled: true,
@@ -65,12 +72,7 @@ var chart = new CanvasJS.Chart("chartShowtime", {
 		indexLabelFontSize: 17,
 		indexLabel: "{label} - #percent%",
 		toolTipContent: "<b>{label}:</b> {y} (#percent%)",
-		dataPoints: [
-			{ y: morning, label: "Morning" },
-			{ y: afternoon, label: "Afternoon" },
-			{ y: evening, label: "Evening" },
-			{ y: midnight, label: "Midnight"},
-		]
+		dataPoints: round
 	}]
 });
 
@@ -79,7 +81,7 @@ var chart = new CanvasJS.Chart("chartShowtime", {
 	foreach($this->gene as $value){
 		$temp = [
 			"y" => $value["amount"],
-			"label" => $value["label"]
+			"label" => $value["Genre"]
 		  ];
 		array_push($gerne, $temp);
 	}

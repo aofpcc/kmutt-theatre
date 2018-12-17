@@ -35,7 +35,7 @@
 
                   <div class="col-md-8">
                       <br><br>
-                      <font size="6">GingerClown</font><br><br>
+                      <font size="6">Fantastic Beasts2: The Crimes of Grindelwald</font><br><br>
                       <font size="4">30 February 2030</font><br><br>
                       <font size="4">21 : 00</font> &nbsp&nbsp&nbsp  <font size="4"> Theater 5 </font><br><br>
                       <font size="4">135 Mins</font> <br><br>
@@ -56,15 +56,15 @@
       </div>
       <div class="booking-details">
         <ul class="book-left">
-          <li>Movie </li>
-          <li>Time </li>
+          <!-- <li>Movie </li>
+          <li>Time </li> -->
           <li>Tickets</li>
           <li>Total</li>
           <li>Seats :</li>
         </ul>
         <ul class="book-right">
-          <li>: Gingerclown</li>
-          <li>: April 3, 21:00</li>
+          <!-- <li>: Fantastic Beasts2: The Crimes of Grindelwald</li>
+          <li>: April 3, 21:00</li> -->
           <li>: <span id="counter">0</span></li>
           <li>: <b><i>$</i><span id="total">0</span></b></li>
         </ul>

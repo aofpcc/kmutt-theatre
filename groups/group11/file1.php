@@ -376,19 +376,19 @@ $klein->respond('GET', '/staff/employee/finance', function($request, $response, 
       $service->expenses = $expenses;
 
 
-      $service->revenueLine = $conn->query('select year, month, sum(amount) "total" 
-                                            from (select * 
-                                                  from G03_FIN_Revenue a 
-                                                  join 
+      $service->revenueLine = $conn->query('select year, month, sum(amount) "total"
+                                            from (select *
+                                                  from G03_FIN_Revenue a
+                                                  join
                                                   (select transactionID "tran", month(addDate) "month", year(addDate) "year"
                                                   from G03_FIN_Revenue) b on a.transactionID = b.tran) a
                                             group by month, year
                                             order by year, month asc;')->fetchAll(PDO::FETCH_ASSOC);
 
-      $service->expenseLine = $conn->query('select year, month, sum(amount) "total" 
+      $service->expenseLine = $conn->query('select year, month, sum(amount) "total"
                                             from (select *
-                                                  from G03_FIN_Expenses a 
-                                                  join 
+                                                  from G03_FIN_Expenses a
+                                                  join
                                                   (select transactionID "tran", month(addDate) "month", year(addDate) "year"
                                                   from G03_FIN_Expenses) b on a.transactionID = b.tran) a
                                             group by month, year
@@ -563,10 +563,10 @@ $klein->respond('GET', '/staff/employee/statistics', function($request, $respons
 
 
         // // NO movie table in the new DB yet..
-         $gene = $conn->query(" SELECT gerne as label, COUNT(*) as amount
-                                FROM G02_Ticket_history as ticket, G09_Movie as movies
-                                WHERE ticket.movie_id = movies.ID
-                                GROUP BY  gerne")->fetchAll(PDO::FETCH_BOTH);
+         $gene = $conn->query(" SELECT genre as Genre, COUNT(*) as amount
+                                FROM G02_Ticket_history as ticket, G09_Movie as movies , G09_Gerne
+                                WHERE ticket.movie_id = movies.ID AND movies.id = G09_Gerne.id
+                                GROUP BY  genre")->fetchAll(PDO::FETCH_BOTH);
          $service->gene = $gene;
 
         $productName = $conn->query("SELECT productName as label, COUNT(*) as amount

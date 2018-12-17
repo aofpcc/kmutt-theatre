@@ -46,16 +46,16 @@
       <div class="row">
         <div class="col-lg-4 col-md-6 mb-4">
           <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="https://lh3.googleusercontent.com/8Lr1BMoZOxsSLoTZr6IxDZuLDiSc6oMTopLA2B-MhXbwxqpDguDHy8r_zj1430V2augHqTSdHsNjz6MYfbEm=w260"
+            <a href="#"><img class="card-img-top" src="<?=$this->photo["Image"]?>"
                 alt=""></a>
           </div>
         </div>
         <div class="col-md-8">
           <br><br><br><br>
-          <h4>Movie Name: <?=$this->name["title"] ?></h4>
-          <h7>Genre: Fantasy</h7><br>
-          <h7>Rate: G</h7><br>
-          <h7>135 Mins</h7><br><br>
+          <font size = "5" style="font-weight:bold"> Movie Name: <?=$this->name["title"] ?></font><br><br>
+          <font size = "5">Genre: Fantasy</font><br>
+          <font size = "5">Rate: G</font><br>
+          <font size = "5">135 Mins</font><br><br>
         </div>
       </div>
     </div>

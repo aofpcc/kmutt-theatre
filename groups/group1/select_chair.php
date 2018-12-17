@@ -1,8 +1,11 @@
 <?php
-$klein->respond('GET', '/kmutt_home/branch/show_time/select_chair', function ($request, $response, $service)  use($database){
+$klein->respond('GET', '/kmutt_home/branch/show_time/select_chair/[:showtime_id]', function ($request, $response, $service)  use($database){
   $service->bootstrap3 = false;
   $conn = $database->getConnection();
 
+  $x = $request->showtime_id;
+  var_dump($x);
+  die;
   $service->seatMap = [  //Seating chart
     'aaaaaaaaaa',
     'aaaaaaaaaa',

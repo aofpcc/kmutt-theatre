@@ -60,13 +60,12 @@
 <!-- Graphs -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 <script>
-  <?php $monthName = ["", "January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]; 
+  <?php 
   $labels1 = [];
   $datas1 = [];
-  $labels2 = [];
   $datas2 = [];
   foreach($this->revenueLine as $value){
-    array_push($labels1, $monthName[$value["month"]]." ".$value["year"]);
+    array_push($labels1, $value["month"]." ".$value["year"]);
     array_push($datas1, $value["total"]);
   }
   foreach($this->expenseLine as $value){
@@ -126,8 +125,6 @@ $("#search_graph").click(function(){
     var profit = revenue - expenses;
     $("#profit").text(profit);
     var revenueLine = data.revenueLine;
-    console.log(revenueLine);
-    console.log(revenueLine[0][2]);
     var expenseLine = data.expensesLine;
     for(var i = 0; i < revenueLine.length ; i++ ){
        sumChart.data.datasets[0].data[i] = revenueLine[i][2];
@@ -138,7 +135,14 @@ $("#search_graph").click(function(){
        sumChart.data.datasets[1].data[o] = expenseLine[o][2];
        window.sumChart.update();
     }
-    
+    var tempLabel = data.label;
+    var newLabel = [];
+    for(var c = 0; c < tempLabel.length ; c++ ){
+      newLabel.push(tempLabel[c][0])
+    }
+    console.log(tempLabel[0][0]);
+    console.log(newLabel);
+    sumChart.data.labels = newLabel;
 
     window.sumChart.update();
     

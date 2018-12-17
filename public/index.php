@@ -1,29 +1,32 @@
 <?php
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../config/pointManager.php';
 require_once __DIR__ . '/../config/login.php';
 require_once __DIR__ . '/../config/js.php';
 
 $klein = new \Klein\Klein();
 $database = new \Database();
 $loginperformer = new \LoginPerformer($database, $klein);
+$pointmanager = new \PointManager($database, $klein);
 
 session_start();
 
-$klein->respond(function ($request, $response, $service, $app, $validator) use ($database, $loginperformer) {
+$klein->respond(function ($request, $response, $service, $app, $validator) use ($database, $loginperformer, $pointmanager) {
     $service->layout('layouts/core/default.php');
     $service->pageRole = "THEATRE";
     $service->bootstrap3 = true;
     $service->bootstrap = true;
     $app->db = $database;
     $app->login = $loginperformer;
+    $app->point = $pointmanager;
     $app->js = new JavaScriptPart;
 
     $username = (empty($_SESSION['username']) ? "Guest" : $_SESSION['username']);
 
     if ($username == 'Guest') {
         $login_menu = [
-        ["name" => "Log in", "href" => "/test/login"],
+        ["name" => "Log in", "href" => "/customer/login"],
         ["name" => "Register", "href" => "/test/register"],
         ["name" => "Forget Password", "href" => "/test/forgetPassword"]
       ];

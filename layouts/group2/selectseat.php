@@ -109,24 +109,23 @@
       </div>
       <div class="booking-details">
         <ul class="book-left">
-          <li>Movie </li>
-          <li>Time </li>
-          <li>Tickets</li>
-          <li>Total</li>
+          <li>Movie :</li>
+          <li>Time :</li>
+          <li>Tickets :</li>
+          <li>Total :</li>
           <li>Seats :</li>
         </ul>
         <ul class="book-right">
-          <li>: อควาแมน เจ้าสมุทร</li>
-          <li>: 13 ธันวาคม 2018, 13:20</li>
-          <li>: <span id="counter">0</span></li>
-          <li>: <b><i>$</i><span id="total">0</span></b></li>
+          <li> Aquaman</li>
+          <li> 13 December 2018, 13:20</li>
+          <li><span id="counter">0</span></li>
+          <li><b><i>$</i><span id="total">0</span></b></li>
         </ul>
         <div class="clear"></div>
 
-        <form action="/emp/group2/gopayment" method="post">
+        <form action="/emp/group2/home_page/select_movie/select_time/select_seat" method="post">
             <ul id="selectedSeats" class="scrollbar scrollbar1"></ul>
-          <button id="booknow" class="checkout-button" name="book_now">Book Now
-        </button>
+          <button id="booknow" class="checkout-button" name="book_now"> Book Now </button>
         <div id="legend"></div>
       </div>
       <div style="clear:both"></div>
@@ -7014,7 +7013,7 @@
                                 </div>
                             </div>
                         </div> -->
-                        <div class="col-sm-3">
+                        <!-- <div class="col-sm-3">
                             <div class="sidebar-select-seat">
                                 <div class="summary-info">
                                     <h2 class="movie-name">อควาแมน เจ้าสมุทร</h2>
@@ -7023,7 +7022,7 @@
                                         <li>13:20</li>
                                     </ul>
                                     <h3 class="theater">Theatre no. 4</h3>
-                                    <!-- <h3 class="location">เอส เอฟ ซีเนม่า เดอะมอลล์ ท่าพระ</h3> -->
+                                     <h3 class="location">เอส เอฟ ซีเนม่า เดอะมอลล์ ท่าพระ</h3>
                                 </div>
                                 <div class="summary-selected">
                                     <div class="inner">
@@ -7077,7 +7076,7 @@
                                 </div>
 
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
 

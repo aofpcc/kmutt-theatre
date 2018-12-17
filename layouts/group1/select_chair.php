@@ -32,12 +32,12 @@
                     </div>
                   </div>
 
-                  <div class="col-md-8">
-                      <br><br>
-                      <font size="6.5"><?=$this->name["title"] ?></font><br><br>
-                      <font size="4">Date   : <?=$this->string ?></font><br><br>
-                      <font size="4">Time   : 21:00</font> &nbsp&nbsp&nbsp  <font size="4"> Theater : 5 </font><br><br>
-                      <font size="4">Length : 135 Mins</font> <br><br>
+                  <div class="col-md-7">
+                      <br><br><br><br>
+                      <font size="5" style="font-weight:bold"> Movie Name: <?=$this->name["title"] ?></font><br><br>
+                      <font size="5">Date   : <?=$this->string ?></font><br><br>
+                      <font size="5">Time   : 21:00</font> &nbsp&nbsp&nbsp  <font size="4"> Theater : 5 </font><br><br>
+                      <font size="5">Length : 135 Mins</font> <br><br>
 
                     <br><br> <!--link to ticket-->
 
@@ -54,14 +54,14 @@
       </div>
       <div class="booking-details">
         <ul class="book-left">
-          <li>Movie </li>
-          <li>Time </li>
+          <!-- <li>Movie </li>
+          <li>Time </li> -->
           <li>Tickets</li>
           <li>Total</li>
           <li>Seats :</li>
         </ul>
         <ul class="book-right">
-          <li>: <?=$this->name["title"] ?></li>
+          <li>: Gingerclown</li>
           <li>: April 3, 21:00</li>
           <li>: <span id="counter">0</span></li>
           <li>: <b><i>$</i><span id="total">0</span></b></li>

@@ -1,37 +1,21 @@
-<html>
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="layouts/group5/css/login.css">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script type="text/javascript"src="layouts/group5/css/login.js"></script>
-    <title>LOGIN</title>
-  </head>
-  <body>
-    <div class="login-page">
-      <div class="form">
-        <form class="register-form">
-          <input type="text" placeholder="username"/>
-          <input type="password" placeholder="email"/>
-          <input type="text" placeholder="ID card"/>
-          <button>RESET PASSWORD</button>
-          </br>
-          <p class="message">Remember? <a href="#">Sign In</a></p>
-        </form>
-        <form class="login-form" action="/membership" method="post">
-          <input type="text" name="name" id="name" placeholder="username"/>
-          <input type="password" placeholder="password"/>
-          <button onclick=""><
-            <!-- <a href="http://localhost:8000/membership"></a> -->
-
-            login</button>
-
-          <p class="message">Forgot password? <a href="#">Reset password</a></p>
-          </br>
-
-        </form>
-        <p class="message2">Don't have an account? <a href="/register">Resgister</a></p>
-      </div>
+<head>
+  <meta charset="utf-8">
+</head>
+<br>
+<h2>Login Page</h2>
+  <form action="/test/login/action" method="POST">
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
     </div>
-  </body>
-</html>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
+    </div>
+    <div class="form-group form-check">
+      <label class="form-check-label">
+        <input class="form-check-input" type="checkbox" name="remember"> Remember me
+      </label>
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+  </form>

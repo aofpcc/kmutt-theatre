@@ -235,13 +235,25 @@ tbody.collapse.in {
 <!-- Graphs -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 <script>
+  <?php $monthName = ["", "January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]; 
+  $labels = [];
+  $datas = [];
+  foreach($this->expenseUU as $value){
+    array_push($labels, $monthName[$value["month"]]." ".$value["year"]);
+    array_push($datas, $value["total"]);
+  }
+  ?>
+  var labels = <?php echo json_encode($labels); ?>;
+  var datas = <?php echo json_encode($datas); ?>;
+  console.log(labels);
+  console.log(datas);
   var ctx = document.getElementById("expChart");
   var expChart = new Chart(ctx, {
     type: 'line',
     data: {
-      labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      labels: labels,
       datasets: [{
-        data: [1, 21345, 18483, 24003, 23489, 24092, 12034],
+        data: datas,
         lineTension: 0,
         backgroundColor: 'transparent',
         borderColor: '#007bff',

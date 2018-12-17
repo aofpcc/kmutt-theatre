@@ -19,7 +19,7 @@
       <!-- line -->
       <div class="gap"></div>
       <div class="box-name-text" style="margin-left: 97px;">Current Email</div>
-      <div class="gap-less" style="margin-left: 97px;">computer_science18@example.com</div>
+      <div class="gap-less" style="margin-left: 97px;"><?php echo $this->currentEmail; ?></div>
       <div class="gap"></div>
       </br>
       <!-- change form -->
@@ -39,7 +39,7 @@
             <div class="gap-more"></div>
 
             <input type="submit" class="cancel-block gap" value="Submit">
-            <button type="button" class="cancel-block gap" onclick="location = 'customer/membership'">Cancel</button>
+            <button type="button" class="cancel-block gap" onclick="location = '/customer/membership'">Cancel</button>
 
           </form>
         </div>

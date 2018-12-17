@@ -20,9 +20,6 @@
   </ul>
 </nav> -->
 
-
-
-  <br><br>
   <div class="main">
     <div class="container">
 
@@ -54,76 +51,76 @@
         </div>
         <br><br><hr>
 
+        <nav class="nav nav-pills nav-fill">
+            <a class="nav-item nav-link active" href="#">Thu<br><small>15 Nov 2018</small></a>
+            <a class="nav-item nav-link" href="#">Fri<br><small>16 Nov 2018</small></a>
+            <a class="nav-item nav-link" href="#">Sat<br><small>17 Nov 2018</small></a>
+            <a class="nav-item nav-link disabled" href="#">Mon<br><small>18 Nov 2018</small></a>
+            <a class="nav-item nav-link disabled" href="#">Tue<br><small>19 Nov 2018</small></a>
+          </nav><hr>
 
         <div class="card card-temp">
           <div class="container">
               <form>
                 <br>
                   <div class="form-group">
-                    <label for="sel1">SELECT </label>
+                    <label for="sel1">SELECT DATE </label><br>
                     <select class="form-control" id="sel1">
-
                       <?php
-
                         //for($i = 0; $i < count($this->query); $i++) {
-
                       ?>
-
                       <!-- <option value="value <?//=$this->query[$i]['BranchName'] ?>">
                         <?//= $this->query[$i]['BranchName']  ?></option> -->
-
                     <?php //} ?>
-
                       <?php
-
                         for($i = 0; $i < count($this->query_date); $i++) {
-
                       ?>
-
                       <option value="value <?=$this->query_date[$i]['date(startTime)'] ?>">
                         <?= $this->query_date[$i]['date(startTime)']  ?></option>
-
                     <?php } ?>
-
                     </select>
-
                   </div>
 
 
 
-         <hr>
       <!-- Project One -->
       <div class="card card-temp shadow-sm">
       <div class="row">
         <div class="col-lg-4 col-md-6 mb-4">
-          <a href="#">
             <br><br>
-            <center><img class="img-fluid rounded mb-3 mb-md-0" src="https://lh3.googleusercontent.com/1fVPsPOjLnZ3tNzeLrlcr-QKvV_9DUnRgEPXYWqkcmRpr6EPjAjanHquRzgLQZPJG9V78tzQ6sfL08Ma4S9W=h59" alt=""></center>
+            <h4><center>THEATER 1</center></h4>
+            <center><img class="img-fluid rounded mb-3 mb-md-0" src="https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/122015/untitled-1_31.png?itok=lrK--dNU" alt=""></center>
           </a>
         </div>
         <div class="col-md-5">
-            <br>
+            <br><br>
           <h4>ENG</h4>
           <?php
               for ($i=0; $i < count($this->query_time); $i++) {
           ?>
-
-              <button type="button" class="btn btn-danger" style="margin: 1%!important">
+              <button type="button" class="btn btn-danger" name ="movie_time" style="margin: 1%!important">
                 <?=$this->query_time[$i]['time_movie'] ?></button>
           <?php
               }
             ?>
-
-          <!-- <a class="btn btn-outline-primary" href="#">10:20</a>
-          <a class="btn btn-outline-primary" href="#">12:20</a>
-          <a class="btn btn-outline-primary" href="#">15:20</a>
-          <a class="btn btn-outline-primary" href="#">17:20</a>
-          <a class="btn btn-outline-primary" href="#">21:20</a> -->
         </div>
+
+
+        <div class="col-lg-4 col-md-6 mb-4">
+          <hr>
+            <br><br>
+            <h4><center>THEATER 2</center></h4>
+            <center><img class="img-fluid rounded mb-3 mb-md-0" src="https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/122015/untitled-1_31.png?itok=lrK--dNU" alt=""></center>
+        </div>
+        <div class="col-md-5">
+          <hr>
+            <br><br>
+          <h4>ENG</h4>
+
+        </div>
+
       </div>
   </div>
-
-  <hr>
 
   <!-- Project Two -->
   <!-- <div class="row">

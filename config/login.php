@@ -310,7 +310,7 @@ class LoginPerformer
         }
     }
     public function requireLogin($role) {
-        $this->LoginThenGoTo($role, '/test/login');
+        return $this->LoginThenGoTo($role, '/test/login');
     }
     public function LoginThenGoTo($role,$back)
     {

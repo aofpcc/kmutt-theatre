@@ -166,8 +166,9 @@ $klein->respond('GET', '/androidRegist', function ($request, $response, $service
                                 VALUES ('$identNo', '$firstname', '$lastname', '$gender', '$birthdate', '$email', '$phoneno', '$userID')";
         $stmt = $conn->prepare($query);
         $stmt->execute();
+        $memberID = $conn->lastInsertId();
         $query = "INSERT INTO G05_Member_address (MemberID, Address, Province, District, SubDistrict, ZipCode)
-                                VALUES ('$userID','$address', '$province', '$district', '$subdist', '$postcode')";
+                                VALUES ('$memberID','$address', '$province', '$district', '$subdist', '$postcode')";
 
         $stmt = $conn->prepare($query);
         $stmt->execute();

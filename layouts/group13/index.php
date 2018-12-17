@@ -24,9 +24,9 @@
         </ul>
     </div>
 </nav> -->
-test
+<form action="/emp/fnb/do_order" method="post">
 <div class="d-flex justify-content-start">
-        <form action="/emp/fnb/do_order" method="post">
+
             <div class="container-fluid" style="margin-top:100px;">
                 <div class="form-group">
                     <label for="empID">Employee ID</label>
@@ -225,13 +225,13 @@ test
                 <div class="form-inline" style="margin-top:10px;">
                     <div class="form-group">
                         <label for="my-input" style="margin-right:5px;">Payment</label><i class="icon-ok"></i>
-                        <select id="my-input" style="width:100px;" name="payment" class="custom-select" onchange="couponcheck(this.value)">
+                        <select id="payment" style="width:100px;" name="payment" class="custom-select" onchange="couponcheck(this.value)">
                             <option value="Cash">Cash</option>
                             <option value="Visa">Visa</option>
                             <option value="Coupon">Coupon</option>
                         </select>
                         <div id="couponbox" style="margin-left:10px; display:none;">
-                            <input type="text" class="form-control w-35" name="coupon" id="couponcode" aria-describedby="helpId" placeholder="">
+                            <input type="text" class="form-control w-35" name="coupon" id="coupon" aria-describedby="helpId" placeholder="">
                             <small style="margin-left:5px;">if coupon check valid code ?</small>
                             <div class="btn btn-primary" onclick="checkcoupon()">
                                 Check <span class="badge badge-primary"></span>
@@ -241,10 +241,49 @@ test
                         </div>
                     </div>
                 </div>
-                <input type="submit" class="btn btn-primary"></div>
-        </form>
+                <button type="button" class="btn btn-primary"  onclick="updateOrder()">test</button>
+<!--                data-toggle="modal" data-target="#exampleModalCenter"-->
+            </div>
     </div>
 </div>
+
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Success</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="nameModal">
+                    name :
+                </div>
+
+                <div id="totalModal">
+                    Total : mock 2,500 bath
+                </div>
+
+                <div id="PointNowModal">
+                    Point : mock 1,500 points
+                </div>
+                <hr>
+                <div id="hisPoint">
+                    History points : mock 1500 points
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" >Ok</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+<input type="hidden" id="points" name="points">
+</form>
+
 
 <script src="/layouts/group13/js/script.js"></script>
 <!-- Optional JavaScript -->

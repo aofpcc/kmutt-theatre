@@ -23,7 +23,7 @@
     <div class="col-sm-3">
       <p></p>
       <h3>MEMBERSHIP</h3>
-      <a href="#" class="btn btn-secondary my-2 bold set-text">Show Transaction</a>
+      <a href="#" class="btn btn-secondary my-2 bold set-text">Deactive Account</a>
     </div>
     <!-- middle left-->
     <div class="col-sm-4">
@@ -129,33 +129,33 @@
     <div class="col-sm-6">
       <p class="gap"></p>
       <p class="bold field-title">NATIONAL ID <br/>
-        <a class="unbold set-text field-value">
+        <a class="unbold field-value">
           <?php echo ($this->usr[0]["ID_Card"]) ?>
         </a>
       </p>
       <p class="bold field-title gap2">NAME <br/>
-        <a class="unbold set-text field-value">
+        <a class="unbold field-value">
           <?php echo ($this->usr[0]["Fname"])." ".($this->usr[0]["Lname"]) ?>
         </a>
       </p>
       <p class="bold field-title">GENDER <br/>
-        <a class="unbold set-text field-value">
+        <a class="unbold field-value">
           <?php echo ($this->usr[0]["Gender"]) ?>
         </a>
       </p>
       <p class="bold field-title">DATE OF BIRTH <br/>
-        <a class="unbold set-text field-value">
+        <a class="unbold field-value">
           <?php echo ($this->usr[0]["BirthDate"]) ?>
         </a>
       </p>
       <p class="bold field-title">AGE <br/>
-        <a class="unbold set-text field-value">
+        <a class="unbold field-value">
           <?php echo $this->age; ?>
           <!-- years old -->
         </a>
       </p>
       <p class="bold field-title">ADDRESS <br/>
-        <a class="unbold set-text field-value">
+        <a class="unbold field-value">
           <?php echo $this->usr[0]["Address"]; ?>
           <br/>
           <?php echo ($this->usr[0]["SubDistrict"]).", ".($this->usr[0]["District"]).", "; ?>

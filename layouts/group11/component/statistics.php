@@ -52,7 +52,7 @@ window.onload = function () {
 	console.log(evening);
 	console.log(midnight)
 var chart = new CanvasJS.Chart("chartShowtime", {
-	
+
 	animationEnabled: true,
 	title:{
 		text: "Movie showtime",
@@ -85,11 +85,11 @@ var chart = new CanvasJS.Chart("chartShowtime", {
 	}
 	?>
 	var gerne = <?php echo json_encode($gerne); ?>;
-	
+
 var chart3 = new CanvasJS.Chart("chartGene", {
 	animationEnabled: true,
 	title:{
-		text: "Movie gene",
+		text: "Movie genre",
 		horizontalAlign: "left"
 	},
 	data: [{
@@ -114,7 +114,7 @@ var chart3 = new CanvasJS.Chart("chartGene", {
 	}
 	?>
 	var snack = <?php echo json_encode($snack); ?>;
-	
+
 
 	console.log(snack);
 var chart4 = new CanvasJS.Chart("chartSnack", {

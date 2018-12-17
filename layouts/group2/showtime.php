@@ -1,37 +1,3 @@
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-  <!-- Custom fonts for this template -->
-  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-
-  <!-- Plugin CSS -->
-  <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
-
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>Showing Time - Movie</title>
-
-  <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Custom styles for this template -->
-  <link href="css/1-col-portfolio.css" rel="stylesheet">
-  <link rel="stylesheet" href="/layouts/group1/css/showtime.css">
-  <link href="/layouts/group1/css/style.css" rel="stylesheet" type="text/css" media="all" />
-  <link rel="stylesheet" href="/layouts/group1/css/onStyle.css">
-
-</head>
-
-<!-- Page Content -->
 <div class = "main">
 
   <!-- Page Heading -->
@@ -52,10 +18,11 @@
         </div>
         <div class="col-md-8">
           <br><br><br><br>
-          <h4>Movie Name: <?=$this->name["title"] ?></h4>
+          <h4>Fantastic Beasts The Crimes of Grindelwald</h4>
           <h7>Genre: Fantasy</h7><br>
           <h7>Rate: G</h7><br>
           <h7>135 Mins</h7><br><br>
+          <button type="button" class="btn btn-lg btn-default">MOVIE DETAIL</button>
         </div>
       </div>
     </div>
@@ -71,7 +38,7 @@
     <a class="nav-item nav-link disabled" href="#">Mon<br><small>18 Nov 2018</small></a>
     <a class="nav-item nav-link disabled" href="#">Tue<br><small>19 Nov 2018</small></a> -->
     <?php foreach($this->query as $q) { ?>
-      <a class="btn-dark nav-item nav-link <?=$q["status"]?>" href="/customer/movies/showtime/all/<?=$this->movie_id?>/<?=$q["value"]?>"><?=$q["date"] ?><br><small><?=$q["str"] ?></small></a>
+      <a class="btn-dark nav-item nav-link <?=$q["status"]?>" href="/emp/group2/home_page/select_movie/select_time/select_seat/all/<?=$this->movie_id?>/<?=$q["value"]?>"><?=$q["date"] ?><br><small><?=$q["str"] ?></small></a>
     <?php } ?>
   </nav>
   <hr>
@@ -81,17 +48,16 @@
 
 </div>
 
-<br><br><br>
-<!-- Footer -->
 
-<!-- Bootstrap core JavaScript -->
+
+
 <script src="vendor/jquery/jquery.min.js"></script>
-<!-- <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
+
 <script>
   $(document).ready(function(){
     var movie_id = "<?=$this->movie_id?>";
     var date = "<?=$this->datenow?>";
-    $.get("/customer/movies/showtime/all/"+movie_id+"/"+date).done(function(data){
+    $.get("/emp/group2/home_page/select_movie/select_time/select_seat/all/"+movie_id+"/"+date).done(function(data){
       $("#showtime").html(data);
     });
   });

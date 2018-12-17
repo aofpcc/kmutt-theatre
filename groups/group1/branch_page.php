@@ -1,16 +1,4 @@
 <?php
-$klein->respond('GET', '/kmutt_home/branch', function ($request, $response, $service) use ($database) {
-    $service->bootstrap3 = false;
-    $conn = $database->getConnection();
-
-    //$d = $app->login->requireLogin('customer');
-
-    $query = $conn->query("SELECT BranchName FROM G14_Branch")->fetchAll(PDO::FETCH_BOTH);
-
-    $service->query = $query;
-    $service->render('layouts/group1/select_branch.php');
-});
-
 $klein->respond('GET', '/kmutt_home/branch/[:movie_id]', function ($request, $response, $service) use ($database) {
     $service->bootstrap3 = false;
     $conn = $database->getConnection();
@@ -33,10 +21,13 @@ $klein->respond('GET', '/kmutt_home/branch/[:movie_id]', function ($request, $re
         $status = true;
     }
 
-    // $response->dump($date);
+    $name = $conn->query("select distinct title from G09_Movie where id = '$request->movie_id'")->fetchAll(PDO::FETCH_ASSOC);
+
+    // $response->dump($name);
     // $response->sendBody();
     // die;
 
+    $service->name = $name[0];
     $service->datenow = (new DateTime)->format("Y-m-d");
     $service->query = $date;
     $service->movie_id = $request->movie_id;
@@ -113,3 +104,4 @@ $klein->respond('GET', '/movies/showtime/all/[:movie_id]/[:show_date]', function
     $service->result = $result;
     $service->partial("layouts/group1/branch_each.php");
 });
+?>

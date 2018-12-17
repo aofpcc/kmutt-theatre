@@ -1,22 +1,9 @@
 <?php
 $klein->respond('GET', '/group9', function ($request, $response, $service) {
-  global $database;
-  $conn = $database->getConnection();
-
-  $query = "SELECT * from G09_Movie ";
-  $stmt = $conn->prepare($query);
-  $stmt->execute();
-
-  $num = $stmt->rowCount();
-  $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
-
-  $service->allMovies = $arr;
-  $service->pageTitle = 'Fuck';
   $service->render('layouts/group9/home.php');
 });
 
 $klein->respond('GET', '/group9/add', function ($request, $response, $service) {
-  $service->bootstrap3 = false;
   $service->render('layouts/group9/add.php');
 });
 
@@ -59,32 +46,28 @@ $klein->respond('GET', '/group9/update/[:id]', function ($request, $response, $s
 });
 
 $klein->respond('POST', '/group9/action', function ($request, $response, $service) {
+  error_reporting(E_ALL); 
+  ini_set('display_errors', 1);
+
   global $database;
   $conn = $database->getConnection();
 
-  $title = $request->title;
-  $director = $request->director;
-  $language = $request->lang;
-  $gerne = $request->gerne;
-  $time = $request->time;
-  $studio_name = $request->studio_name;
-  $license = $request->license_price;
-  $describtion = $request->des;
-  $subtitle = $request->sub;
+  $NAME = $request->title;
+  $DETAIL = $request->des;
+  $LENGTH = $request->time;
+  $LNG = $request->lang;
+  $DATE = $request->date;
+  $MONTH = $request->month;
+  $YEAR = $request->year;
+  $EDATE = $request->edate;
+  $EMONTH = $request->emonth;
+  $EYEAR = $request->eyear;
 
-  $RELEASE_DATE = $request->bought_date;
-  $END_DATE = $request->expired_date;
-
-  $response->dump($request->language);
-  $response->sendBody();
-  die;
+  $RELEASE_DATE = $YEAR.'-'.$MONTH.'-'.$DATE;
+  $END_DATE = $EYEAR.'-'.$EMONTH.'-'.$EDATE;
   
-  $query = "INSERT INTO G09_Movie (title,detail,director,gerne,studio_name) VALUES ('$title','$describtion','$director','$gerne','$studio_name')";
-  $query = "INSERT INTO G09_Length (length) VALUES ('$time')";
-  $query = "INSERT INTO G09_Soundtrack (soundtrack) VALUES ($language)";
-  $query = "INSERT INTO G09_Subtitle (subtitle) VALUES ($subtitle)";
-  // echo $query;
-  // die;
+  $query = "INSERT INTO movies (NAME,DETAIL,LENGTH,LNG,RELEASE_DATE,END_DATE) VALUES ('$NAME','$DETAIL','$LENGTH','$LNG','$RELEASE_DATE','$END_DATE')";
+  echo $query;
   $stmt = $conn->prepare($query);
   $stmt->execute();
 

@@ -146,7 +146,7 @@ $klein->with("/test", function () use ($klein) {
     $klein->respond('GET', '/changePassword', function ($request, $response, $service, $app, $validator) {
         $result = $app->login->requireLogin('customer');
         $newOne = $service->passValue;
-        $newOne["userID"] = $result["userID"];
+        $service->passValue["userID"] = $result["userID"];
         $service->passValue = $newOne;
         $service->render('layouts/core/changePassword.php');
     });
@@ -161,7 +161,6 @@ $klein->with("/test", function () use ($klein) {
         if (!$result["change"]) {
             $service->flash("The old password incorrect");
             $service->back();
-            $response->sendHeaders();
         }
         $service->content = "The password was changed";
         $service->render('layouts/core/home.php');

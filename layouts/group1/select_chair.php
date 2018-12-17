@@ -20,8 +20,7 @@
   <br>
   <div class="main">
     <h1 class="my-4"><button type="button" class="btn btn-lg btn-danger">STEP 2</button>
-      <small>Select seats</small> 
-    
+      <small>Select seats</small>
     </h1>
     <div class="card card-temp shadow-lg">
             <div class="container">

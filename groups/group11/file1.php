@@ -75,9 +75,15 @@ $klein->respond('GET', '/staff/employee/profile', function($request, $response, 
   $stmt->execute();
   $service->profile = $stmt->fetchAll(PDO::FETCH_BOTH);
 
-    // $service->id2 =  $data['userID'];
-    $service->nameTag = 'profile.php';
-    $service->render('layouts/group11/employee.php');
+  //select db G11_Emp_picture
+  $user = "SELECT * FROM G11_Emp_picture WHERE userID = $id " ;
+  $stmt = $conn->prepare($user);
+  $stmt->execute();
+  $service->picture = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+  // $service->id2 =  $data['userID'];
+  $service->nameTag = 'profile.php';
+  $service->render('layouts/group11/employee.php');
 
 });
 
@@ -105,7 +111,13 @@ $klein->respond('GET', '/staff/employee/editprofile', function($request, $respon
    $stmt->execute();
    $service->userName = $stmt->fetchAll(PDO::FETCH_BOTH);
 
-    
+  //select db G11_Emp_picture
+  $user = "SELECT * FROM G11_Emp_picture WHERE userID = $id " ;
+  $stmt = $conn->prepare($user);
+  $stmt->execute();
+  $service->picture = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+
     $service->nameTag = 'editprofile.php';
     $service->render('layouts/group11/employee.php');
 });
@@ -127,12 +139,18 @@ $klein->respond('POST', '/staff/employee/editprofile/save', function($request, $
       $stmt = $conn->prepare($profileName);
       $stmt->execute();
       $service->profile = $stmt->fetchAll(PDO::FETCH_BOTH);
-  
+
      //select db core_user_table
       $user = "SELECT * FROM core_user_table WHERE userID = $id " ;
       $stmt = $conn->prepare($user);
       $stmt->execute();
       $service->userName = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+       //select db G11_Emp_picture
+      $user = "SELECT * FROM G11_Emp_picture WHERE userID = $id " ;
+      $stmt = $conn->prepare($user);
+      $stmt->execute();
+      $service->picture = $stmt->fetchAll(PDO::FETCH_BOTH);
 
   //password is not same as confirm password
   if($request->password != $request->confirmpassword) {
@@ -140,7 +158,7 @@ $klein->respond('POST', '/staff/employee/editprofile/save', function($request, $
     $service->error = 'password is not same as confirm password.';
     $service->nameTag = 'editprofile.php';
     $service->render('layouts/group11/employee.php');
-    
+
   }
   //check password incorect
   if($request->password == $request->confirmpassword){
@@ -151,7 +169,7 @@ $klein->respond('POST', '/staff/employee/editprofile/save', function($request, $
     $stmt = $conn->prepare($pass);
     $stmt->execute();
     $passUser = $stmt->fetchAll(PDO::FETCH_BOTH);
-  
+
     if($check != $passUser[0]['password']){
 
         $service->error = 'password incorrect.';
@@ -166,37 +184,173 @@ $klein->respond('POST', '/staff/employee/editprofile/save', function($request, $
   $lastname = $request->lastName;
   $email = $request->Email;
   $username = $request->Username;
-
+  $file = $request->file;
   //check Email or username has already exists.
   if($email != $service->profile[0]['Email']){
   //select db G11_Emp_staff
-  $checkemail = "SELECT * FROM G11_Emp_staff WHERE Email = '$email'" ;
-  $stmt = $conn->prepare($checkemail);
+    $checkemail = "SELECT * FROM G11_Emp_staff WHERE Email = '$email'" ;
+    $stmt = $conn->prepare($checkemail);
+    $stmt->execute();
+    $countEmail = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+      if(count($countEmail) == 1){
+          $service->error = 'Email has already exists.';
+          $service->nameTag = 'editprofile.php';
+          $service->render('layouts/group11/employee.php');
+      }
+
+
+      if(count($countEmail) == null){
+      //update db G11_Emp_staff
+      $updateProfile = "UPDATE G11_Emp_staff SET Firstname = '$firstname', Lastname = '$lastname', Email = '$email' WHERE userID = $id";
+      $stmt = $conn->prepare($updateProfile);
+      $stmt->execute();
+
+      //update db core_user_table
+      $updateEmail = "UPDATE core_user_table SET email = '$email' WHERE userID = $id";
+      $stmt = $conn->prepare($updateEmail);
+      $stmt->execute();
+    }
+  }
+
+  if($username !=  $service->userName[0]['username']){
+      //select db core_user_table
+      $checkUser = "SELECT * FROM core_user_table WHERE username = '$username'" ;
+      $stmt = $conn->prepare($checkUser);
+      $stmt->execute();
+      $countUser = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+        if(count($countUser) == 1){
+            $service->error = 'Username has already exists.';
+            $service->nameTag = 'editprofile.php';
+            $service->render('layouts/group11/employee.php');
+        }
+
+
+        if(count($countUser) == null){
+        //update db G11_Emp_staff
+        $updateProfile = "UPDATE G11_Emp_staff SET Firstname = '$firstname', Lastname = '$lastname', Email = '$email' WHERE userID = $id";
+        $stmt = $conn->prepare($updateProfile);
+        $stmt->execute();
+
+        //update db core_user_table
+        $updateUser = "UPDATE core_user_table SET username = '$username' WHERE userID = $id";
+        $stmt = $conn->prepare($updateUser);
+        $stmt->execute();
+      }
+  }
+
+  //update db G11_Emp_staff
+  $updateProfile = "UPDATE G11_Emp_staff SET Firstname = '$firstname', Lastname = '$lastname' WHERE userID = $id";
+  $stmt = $conn->prepare($updateProfile);
   $stmt->execute();
 
-  $countEmail = $stmt->fetchAll(PDO::FETCH_BOTH);
-    if(count($countEmail) == 1){
-        $service->error = 'Email has already exists.';
-        $service->nameTag = 'editprofile.php';
-        $service->render('layouts/group11/employee.php');
+  //upload picture
+  $fileName = md5(uniqid(rand(),true));
+  $target_dir = "layouts/group11/uploads/";
+  $target_file = $target_dir .$fileName. basename($_FILES["fileToUpload"]["name"]);
+  $uploadOk = 1;
+  $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+  // Check if image file is a actual image or fake image
+  if(isset($_POST["submit"])) {
+      $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+      if($check !== false) {
+          echo "File is an image - " . $check["mime"] . ".";
+          $uploadOk = 1;
+      } else {
+          echo "File is not an image.";
+          $uploadOk = 0;
+      }
+  }
+  // Check if file already exists
+  if (file_exists($target_file)) {
+    echo "Sorry, file already exists.";
+    $uploadOk = 0;
+  }
+  // Check file size
+  if ($_FILES["fileToUpload"]["size"] > 5000000) {
+    echo "Sorry, your file is too large.";
+    $uploadOk = 0;
+  }
+  // Allow certain file formats
+  if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+  && $imageFileType != "gif" ) {
+    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+    $uploadOk = 0;
+  }
+  // Check if $uploadOk is set to 0 by an error
+  if ($uploadOk == 0) {
+    echo "Sorry, your file was not uploaded.";
+  // if everything is ok, try to upload file
+  } else {
+    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+        // echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+        //update db G11_Emp_picture
+        $updatePicture = "UPDATE G11_Emp_picture SET parth = '$target_file' WHERE userID = $id";
+        $stmt = $conn->prepare($updatePicture);
+        $stmt->execute();
+    } else {
+        echo "Sorry, there was an error uploading your file.";
     }
-
-    if(count($countEmail) == null){
-    //update db G11_Emp_staff
-    $updateProfile = "UPDATE G11_Emp_staff SET Firstname = '$firstname' ,Lastname = '$lastname' ,Email = '$email' WHERE userID = $id";
-    $stmt = $conn->prepare($updateProfile);
-    $stmt->execute();
-
-    //update db core_user_table
-    $updateEmail = "UPDATE core_user_table SET email = '$email' WHERE userID = $id";
-    $stmt = $conn->prepare($updateEmail);
-    $stmt->execute();
   }
-  }
-  
 
-   
-  $response->redirect('/emp/staff/employee/profile');
+
+    $response->redirect('/emp/staff/employee/profile');
+  });
+
+  $klein->respond('POST', '/staff/employee/editprofile/test', function($request, $response, $service, $app, $validator){
+    // $target_dir = "/layouts/group11/uploads/";
+  $fileName = md5(uniqid(rand(),true));
+  $target_dir = "layouts/group11/uploads/";
+  $target_file = $target_dir .$fileName. basename($_FILES["fileToUpload"]["name"]);
+  $uploadOk = 1;
+  $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+  // Check if image file is a actual image or fake image
+  if(isset($_POST["submit"])) {
+      $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+      if($check !== false) {
+          echo "File is an image - " . $check["mime"] . ".";
+          $uploadOk = 1;
+      } else {
+          echo "File is not an image.";
+          $uploadOk = 0;
+      }
+  }
+  // Check if file already exists
+  if (file_exists($target_file)) {
+    echo "Sorry, file already exists.";
+    $uploadOk = 0;
+  }
+  // Check file size
+  if ($_FILES["fileToUpload"]["size"] > 5000000) {
+    echo "Sorry, your file is too large.";
+    $uploadOk = 0;
+  }
+  // Allow certain file formats
+  if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+  && $imageFileType != "gif" ) {
+    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+    $uploadOk = 0;
+  }
+  // Check if $uploadOk is set to 0 by an error
+  if ($uploadOk == 0) {
+    echo "Sorry, your file was not uploaded.";
+  // if everything is ok, try to upload file
+  } else {
+    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+        echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+        //update db G11_Emp_picture
+        $updatePicture = "UPDATE G11_Emp_picture SET parth = '$target_file' WHERE userID = $id";
+        $stmt = $conn->prepare($updatePicture);
+        $stmt->execute();
+    } else {
+        echo "Sorry, there was an error uploading your file.";
+    }
+  }
+
+  // $service->error =
+    $service->nameTag = 'tester.php';
+    $service->render('layouts/group11/employee.php');
 });
 
 $klein->respond('POST', 'staff/employee/add', function($request, $response, $service, $app, $validator){
@@ -217,17 +371,33 @@ $klein->respond('GET', '/staff/employee/finance', function($request, $response, 
       $revenue = $conn->query("SELECT sum(amount) as total FROM G03_FIN_Revenue")->fetchAll(PDO::FETCH_BOTH);
       $service->revenue = $revenue;
 
-      $revenueList = $conn->query("SELECT addDate, amount  FROM G03_FIN_Revenue")->fetchAll(PDO::FETCH_BOTH);
-      $service->revenue = $revenueList;
 
-      $expenses = $conn->query("SELECT sum(amount) as total FROM G03_FIN_Expenses")->fetchAll(PDO::FETCH_BOTH);
+      $expenses = $conn->query("SELECT sum(amount) as total FROM G03_FIN_Expenses ")->fetchAll(PDO::FETCH_BOTH);
       $service->expenses = $expenses;
 
-      $expensesList = $conn->query("SELECT addDate, amount FROM G03_FIN_Expenses")->fetchAll(PDO::FETCH_BOTH);
-      $service->expenses = $expensesList;
+
+      $service->revenueLine = $conn->query('select year, month, sum(amount) "total"
+                                            from (select *
+                                                  from G03_FIN_Revenue a
+                                                  join
+                                                  (select transactionID "tran", month(addDate) "month", year(addDate) "year"
+                                                  from G03_FIN_Revenue) b on a.transactionID = b.tran) a
+                                            group by month, year
+                                            order by year, month asc;')->fetchAll(PDO::FETCH_ASSOC);
+
+      $service->expenseLine = $conn->query('select year, month, sum(amount) "total"
+                                            from (select *
+                                                  from G03_FIN_Expenses a
+                                                  join
+                                                  (select transactionID "tran", month(addDate) "month", year(addDate) "year"
+                                                  from G03_FIN_Expenses) b on a.transactionID = b.tran) a
+                                            group by month, year
+                                            order by year, month asc;')->fetchAll(PDO::FETCH_ASSOC);
+
 
       $request;
       $service->render('layouts/group11/employee.php');
+
 
 });
 
@@ -255,11 +425,15 @@ $klein->respond('GET', '/staff/employee/revenue', function($request, $response, 
         //                                 WHERE Revenue.FinID = FinancialID.ID AND  Revenue.empID = e.Emp_ID AND Revenue.customerID = m.MemberID
         //                                 GROUP BY year(addDate),month(addDate)
         //                               ")->fetch(PDO::FETCH_ASSOC);
-        $service->revenueUU = $conn->query('select year, month, sum(amount) "total" from (select *
-        from G03_FIN_Revenue a join (select transactionID "tran", month(addDate) "month", year(addDate) "year"
-                          from G03_FIN_Revenue) b on a.transactionID = b.tran) a
-        group by month, year
-        order by year, month asc;')->fetchAll(PDO::FETCH_ASSOC);
+        $service->revenueUU = $conn->query('select year, month, sum(amount) "total"
+                                            from (select *
+                                                  from G03_FIN_Revenue a
+                                                  join
+                                                  (select transactionID "tran", month(addDate) "month", year(addDate) "year"
+                                                  from G03_FIN_Revenue) b on a.transactionID = b.tran) a
+                                            group by month, year
+                                            order by year, month asc;')->fetchAll(PDO::FETCH_ASSOC);
+
 
         // $response->dump($service->revenueUU);
         // $response->sendBody();
@@ -338,6 +512,14 @@ $klein->respond('GET', '/staff/employee/expense', function($request, $response, 
           $service->pageTitle = 'Expense';
           $service->expensesList = $expensesList;
           // echo($service->nameTag);
+          $service->expenseUU = $conn->query('select year, month, sum(amount) "total"
+                                            from (select *
+                                                  from G03_FIN_Expenses a
+                                                  join
+                                                  (select transactionID "tran", month(addDate) "month", year(addDate) "year"
+                                                  from G03_FIN_Expenses) b on a.transactionID = b.tran) a
+                                            group by month, year
+                                            order by year, month asc;')->fetchAll(PDO::FETCH_ASSOC);
          $service->render('layouts/group11/employee.php');
         // echo($service->nameTag);
     });
@@ -381,13 +563,13 @@ $klein->respond('GET', '/staff/employee/statistics', function($request, $respons
 
 
         // // NO movie table in the new DB yet..
-        // $gene = $conn->query("SELECT Gene, COUNT(*)
-        //                       FROM G02_Ticket_history as ticket, movies
-        //                       WHERE ticket.movie_id = movies.ID
-        //                       GROUP BY  Gene")->fetchAll(PDO::FETCH_BOTH);
-        // $service->gene = $gene;
+         $gene = $conn->query(" SELECT genre as Genre, COUNT(*) as amount
+                                FROM G02_Ticket_history as ticket, G09_Movie as movies , G09_Gerne
+                                WHERE ticket.movie_id = movies.ID AND movies.id = G09_Gerne.id
+                                GROUP BY  genre")->fetchAll(PDO::FETCH_BOTH);
+         $service->gene = $gene;
 
-        $productName = $conn->query("SELECT productName, COUNT(*)
+        $productName = $conn->query("SELECT productName as label, COUNT(*) as amount
                                      FROM G13_FNB_detail as detail_fnb, G13_FNB_ProductList as productList_fnb
                                      WHERE productList_fnb.ProductID  = detail_fnb.ProductID
                                      GROUP BY  detail_fnb.ProductID, productName ")->fetchAll(PDO::FETCH_BOTH);
@@ -415,6 +597,29 @@ $klein->respond('GET', '/staff/employee/statistics', function($request, $respons
 
     $service->render('layouts/group11/employee.php');
 
+});
+
+$klein->respond('GET', '/staff/kuy', function($request, $response, $service, $app, $validator) {
+  $arr = [
+    [
+      "id" => 1,
+      "name" => "kuy"
+    ],
+    [
+      "id" => 2,
+      "name" => "hee"
+    ]
+  ];
+
+  $arr2= [];
+  foreach($arr as $v) {
+    $temp = [
+      "master_id" => $v["id"],
+      "master_name" => $v["name"]
+    ];
+    array_push($arr2, $temp);
+  }
+  return$response->json($arr2);
 });
 
 // stat with date

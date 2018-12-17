@@ -1,79 +1,37 @@
-<?php
-
-?>
-
 <head>
-    <!-- <title>movie name | KMUTT Theatre</title> -->
-
-    <!-- GA -->
-    <script id="facebook-ixsdk" src="/layouts/group2/js/selecttime/platform.Extensions.js"></script>
-    <script async="" src="/layouts/group2/js/selecttime/gtm.js"></script>
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-5F757MC');</script>
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <link href="/layouts/group1/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="/layouts/group1/css/onStyle.css">
     <style type="text/css">
         svg,
         img {
             width: 20px;
         }
+    </style>
 
-    </style
-    <link rel="preload" href="/layouts/group2/js/selecttime/manifest.86920d2276921dc8f875.js" as="script">
-    <link rel="preload" href="/layouts/group2/js/selecttime/vendor.eb91d5bf77b2c769fcc2.js" as="script">
-    <link rel="preload" href="/layouts/group2/js/selecttime/app.baa2eadcab44e34fea36.js" as="script">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/0.d54eb28f06766c18886b.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/2.1a387b47ee125ca353f8.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/3.310d8e09a8e11022f96c.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/4.4089fb97707e61615e08.js">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+
+    <link href="/layouts/group1/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="/layouts/group1/css/onStyle.css">
+
+
     <link rel="prefetch" href="/layouts/group2/js/selecttime/5.b3f4836c4ad2b717a7fa.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/6.0c5ddb655a6df41f903e.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/7.0be5a5a737fe3c9c67c8.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/8.2b0c9359bb4aa063d6fe.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/9.822c13efc123e063e24d.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/10.987717e1c3ebf00f8944.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/11.fc4f6eb2b7528126fcc6.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/12.bd899a775f669b15a9dc.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/13.6e7aa54f66746afc1ae2.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/14.59297b724b7ba00eb529.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/15.cd6e47c5451463e15ec3.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/16.fc3c2639efa97e67ce52.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/17.fb8feabdf1a94457631a.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/18.48f2ab9a05f45567e297.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/19.b56814c42af505112560.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/20.43a8abd0f9f8d863b0da.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/21.eea8dee28cd86c4d57f9.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/22.98a761fbe7b02dd5747a.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/23.9bd0f90459dd80467fc2.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/24.fd99349df3b76ee0a7ec.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/25.3278c47bf066f59e17f9.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/26.1a8dbc3f1c68f6da6f4f.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/27.c47a077c0be3cedaffda.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/28.5f5b3aeb7ab5558122bd.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/29.8fca79989b07bbc5c213.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/30.f06c4e4134d149b8f562.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/31.0ba10920cd94e81a4544.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/32.9849c8ba6e8199de38c0.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/33.255becd3fec2dab2a718.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/34.dee995da7b9128a5b462.js">
+
     <link rel="prefetch" href="/layouts/group2/js/selecttime/1.2ab249ca75db547f0487.js">
     <link rel="stylesheet" href="/layouts/group2/css/maincss/common.baa2eadcab44e34fea36.css">
     <script type="text/javascript" charset="utf-8" async="" src="/layouts/group2/js/selecttime/1.2ab249ca75db547f0487.js"></script>
     <style type="text/css">
-        /*# sourceURL=undefined */
-        /*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJCb3hPZmZpY2UudnVlIiwic291cmNlUm9vdCI6IiJ9 */
 
     </style>
     <style type="text/css">
-        /*# sourceURL=undefined */
-        /*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJNb3ZpZUNhcmQudnVlIiwic291cmNlUm9vdCI6IiJ9 */
 
     </style>
     <style type="text/css">
-        /*# sourceURL=undefined */
-        /*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJCdXR0b24udnVlIiwic291cmNlUm9vdCI6IiJ9 */
 
     </style>
 
@@ -119,7 +77,7 @@
                                     <div class="poster"><img src="/layouts/group2/images/selecttime/unnamed.jpg"></div>
                                     <div class="movie-detail">
                                         <div class="main-detail">
-                                            <h1 class="name">อควาแมน เจ้าสมุทร</h1>
+                                            <h1 class="name">Aquaman</h1>
 
                                         </div>
                                         <p class="genre">Genre: Action</p>
@@ -136,7 +94,7 @@
                                                     <line x1="111.89" y1="63.94" x2="106.55" y2="63.94" class="cls-3"></line>
                                                     <line x1="63.44" y1="36.53" x2="63.44" y2="56.36" class="cls-4"></line>
                                                     <line x1="68.64" y1="68.64" x2="84.25" y2="84.25" class="cls-4"></line>
-                                                </svg> 145 นาที
+                                                </svg> 145 min
                                             </li>
                                             <!-- </ul><a href="https://www.sfcinemacity.com/movie/HO00000074" class="button button-gray-trans button-movie-details">Movie Details</a> -->
                                     </div>
@@ -145,6 +103,9 @@
                         </div>
                     </div>
                 </div>
+
+
+
                 <div class="showtime-date-slide">
                     <div class="container">
                         <div class="slick-initialized slick-slider"><button class="slick-prev slick-arrow slick-disabled"
@@ -154,23 +115,33 @@
                                     <title>prev</title>
                                     <polyline class="cls-1" points="33.53 4 5.47 34.06 33.53 64.12"></polyline>
                                 </svg></button>
-                            <div class="slick-list">
-                                <div class="slick-track" style="opacity: 1; width: 5700px; transform: translate3d(0px, 0px, 0px);">
-                                    <div class="slick-slide slick-current slick-active" data-slick-index="0"
+                            <!-- <div class="slick-list"> -->
+                            <!-- <div class="slick-track" style="opacity: 1; width: 5700px; transform: translate3d(0px, 0px, 0px);"> -->
+                            
+                            <nav class="nav nav-pills nav-fill">
+                                <a class="nav-item nav-link active" href="#">Thu<br><small><?$this->query_date ?> Nov 2018</small></a>
+                                <a class="nav-item nav-link" href="#">Fri<br><small>16 Nov 2018</small></a>
+                                <a class="nav-item nav-link" href="#">Sat<br><small>17 Nov 2018</small></a>
+                                <a class="nav-item nav-link" href="#">Mon<br><small>18 Nov 2018</small></a>
+                                <a class="nav-item nav-link" href="#">Tue<br><small>19 Nov 2018</small></a>
+                            </nav>
+                            
+                            
+                            <!-- <div class="slick-slide slick-current slick-active" data-slick-index="0"
                                         aria-hidden="false" style="width: 190px;">
                                         <div>
                                             <div class="selected" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">พฤหัส</h1>
-                                                <p class="date">13 ธ.ค. 2018</p>
+                                                <h1 class="day">Thu</h1>
+                                                <p class="date">13 Dec 2018</p>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="slick-slide slick-active" data-slick-index="1" aria-hidden="false"
-                                        style="width: 190px;">
+                                    <div class="slick-slide slick-active" data-slick-index="1" 
+                                    aria-hidden="false" style="width: 190px;">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">ศุกร์</h1>
-                                                <p class="date">14 ธ.ค. 2018</p>
+                                                <h1 class="day">Fri</h1>
+                                                <p class="date">14 Dec 2018</p>
                                             </div>
                                         </div>
                                     </div>
@@ -178,8 +149,8 @@
                                         style="width: 190px;">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">เสาร์</h1>
-                                                <p class="date">15 ธ.ค. 2018</p>
+                                                <h1 class="day">Sat</h1>
+                                                <p class="date">15 Dec 2018</p>
                                             </div>
                                         </div>
                                     </div>
@@ -187,8 +158,8 @@
                                         style="width: 190px;">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">อาทิตย์</h1>
-                                                <p class="date">16 ธ.ค. 2018</p>
+                                                <h1 class="day">Sun</h1>
+                                                <p class="date">16 Dec 2018</p>
                                             </div>
                                         </div>
                                     </div>
@@ -196,8 +167,8 @@
                                         style="width: 190px;">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">จันทร์</h1>
-                                                <p class="date">17 ธ.ค. 2018</p>
+                                                <h1 class="day">Mon</h1>
+                                                <p class="date">17 Dec 2018</p>
                                             </div>
                                         </div>
                                     </div>
@@ -205,8 +176,8 @@
                                         style="width: 190px;">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">อังคาร</h1>
-                                                <p class="date">18 ธ.ค. 2018</p>
+                                                <h1 class="day">Tue</h1>
+                                                <p class="date">18 Dec 2018</p>
                                             </div>
                                         </div>
                                     </div>
@@ -214,8 +185,8 @@
                                         tabindex="-1">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">พุธ</h1>
-                                                <p class="date">19 ธ.ค. 2018</p>
+                                                <h1 class="day">Wed</h1>
+                                                <p class="date">19 Dec 2018</p>
                                             </div>
                                         </div>
                                     </div>
@@ -223,8 +194,8 @@
                                         tabindex="-1">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">พฤหัส</h1>
-                                                <p class="date">20 ธ.ค. 2018</p>
+                                                <h1 class="day">Thu</h1>
+                                                <p class="date">20 Dec 2018</p>
                                             </div>
                                         </div>
                                     </div>
@@ -232,8 +203,8 @@
                                         tabindex="-1">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">ศุกร์</h1>
-                                                <p class="date">21 ธ.ค. 2018</p>
+                                                <h1 class="day">Fri</h1>
+                                                <p class="date">21 Dec 2018</p>
                                             </div>
                                         </div>
                                     </div>
@@ -241,8 +212,8 @@
                                         tabindex="-1">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">เสาร์</h1>
-                                                <p class="date">22 ธ.ค. 2018</p>
+                                                <h1 class="day">Sat</h1>
+                                                <p class="date">22 Dec 2018</p>
                                             </div>
                                         </div>
                                     </div>
@@ -250,8 +221,8 @@
                                         tabindex="-1">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">อาทิตย์</h1>
-                                                <p class="date">23 ธ.ค. 2018</p>
+                                                <h1 class="day">Sun</h1>
+                                                <p class="date">23 Dec 2018</p>
                                             </div>
                                         </div>
                                     </div>
@@ -259,8 +230,8 @@
                                         tabindex="-1">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">จันทร์</h1>
-                                                <p class="date">24 ธ.ค. 2018</p>
+                                                <h1 class="day">Mon</h1>
+                                                <p class="date">24 Dec 2018</p>
                                             </div>
                                         </div>
                                     </div>
@@ -268,8 +239,8 @@
                                         tabindex="-1">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">อังคาร</h1>
-                                                <p class="date">25 ธ.ค. 2018</p>
+                                                <h1 class="day">Thu</h1>
+                                                <p class="date">25 Dec 2018</p>
                                             </div>
                                         </div>
                                     </div>
@@ -277,8 +248,8 @@
                                         tabindex="-1">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">พุธ</h1>
-                                                <p class="date">26 ธ.ค. 2018</p>
+                                                <h1 class="day">Wed</h1>
+                                                <p class="date">26 Dec 2018</p>
                                             </div>
                                         </div>
                                     </div>
@@ -286,8 +257,8 @@
                                         tabindex="-1">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">พฤหัส</h1>
-                                                <p class="date">27 ธ.ค. 2018</p>
+                                                <h1 class="day">Thu</h1>
+                                                <p class="date">27 Dec 2018</p>
                                             </div>
                                         </div>
                                     </div>
@@ -295,8 +266,8 @@
                                         tabindex="-1">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">ศุกร์</h1>
-                                                <p class="date">28 ธ.ค. 2018</p>
+                                                <h1 class="day">Fri</h1>
+                                                <p class="date">28 Dec 2018</p>
                                             </div>
                                         </div>
                                     </div>
@@ -304,8 +275,8 @@
                                         tabindex="-1">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">เสาร์</h1>
-                                                <p class="date">29 ธ.ค. 2018</p>
+                                                <h1 class="day">Sat</h1>
+                                                <p class="date">29 Dec 2018</p>
                                             </div>
                                         </div>
                                     </div>
@@ -313,8 +284,8 @@
                                         tabindex="-1">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">อาทิตย์</h1>
-                                                <p class="date">30 ธ.ค. 2018</p>
+                                                <h1 class="day">Sun</h1>
+                                                <p class="date">30 Dec 2018</p>
                                             </div>
                                         </div>
                                     </div>
@@ -322,8 +293,8 @@
                                         tabindex="-1">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">จันทร์</h1>
-                                                <p class="date">31 ธ.ค. 2018</p>
+                                                <h1 class="day">Mon</h1>
+                                                <p class="date">31 Dec 2018</p>
                                             </div>
                                         </div>
                                     </div>
@@ -331,7 +302,7 @@
                                         tabindex="-1">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">อังคาร</h1>
+                                                <h1 class="day">Tue</h1>
                                                 <p class="date">01 ม.ค. 2019</p>
                                             </div>
                                         </div>
@@ -340,7 +311,7 @@
                                         tabindex="-1">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">พุธ</h1>
+                                                <h1 class="day">Wed</h1>
                                                 <p class="date">02 ม.ค. 2019</p>
                                             </div>
                                         </div>
@@ -349,7 +320,7 @@
                                         tabindex="-1">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">พฤหัส</h1>
+                                                <h1 class="day">Thu</h1>
                                                 <p class="date">03 ม.ค. 2019</p>
                                             </div>
                                         </div>
@@ -358,7 +329,7 @@
                                         tabindex="-1">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">ศุกร์</h1>
+                                                <h1 class="day">Fri</h1>
                                                 <p class="date">04 ม.ค. 2019</p>
                                             </div>
                                         </div>
@@ -367,7 +338,7 @@
                                         tabindex="-1">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">เสาร์</h1>
+                                                <h1 class="day">Sat</h1>
                                                 <p class="date">05 ม.ค. 2019</p>
                                             </div>
                                         </div>
@@ -376,7 +347,7 @@
                                         tabindex="-1">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">อาทิตย์</h1>
+                                                <h1 class="day">Sun</h1>
                                                 <p class="date">06 ม.ค. 2019</p>
                                             </div>
                                         </div>
@@ -385,7 +356,7 @@
                                         tabindex="-1">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">จันทร์</h1>
+                                                <h1 class="day">Mon</h1>
                                                 <p class="date">07 ม.ค. 2019</p>
                                             </div>
                                         </div>
@@ -394,7 +365,7 @@
                                         tabindex="-1">
                                         <div>
                                             <div class="" style="width: 100%; display: inline-block;">
-                                                <h1 class="day">อังคาร</h1>
+                                                <h1 class="day">Tue</h1>
                                                 <p class="date">08 ม.ค. 2019</p>
                                             </div>
                                         </div>
@@ -425,9 +396,10 @@
                                                 <p class="date">11 ม.ค. 2019</p>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div><button class="slick-next slick-arrow" style="" aria-disabled="false"><svg class="sf-icon next-arrow"
+                                    </div> -->
+                            <!-- </div>
+                            </div> -->
+                            <button class="slick-next slick-arrow" style="" aria-disabled="false"><svg class="sf-icon next-arrow"
                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 37.53 68.12">
                                     <defs></defs>
                                     <title>next</title>
@@ -500,10 +472,14 @@
                                                 </li>
                                             </ul>
                                             <ul class="time-list">
-                                                <li class="time-item" ><a href="/emp/group2/home_page/select_movie/select_time/select_seat"><button class="button button-showtime">13:20</button></a></li>
-                                                <li class="time-item"><a href="/emp/group2/home_page/select_movie/select_time/select_seat"><button class="button button-showtime">16:20</button></a></li>
-                                                <li class="time-item"><a href="/emp/group2/home_page/select_movie/select_time/select_seat"><button class="button button-showtime">19:20</button></a></li>
-                                                <li class="time-item"><a href="/emp/group2/home_page/select_movie/select_time/select_seat"></a><button class="button button-showtime">22:20</button></a></li>
+                                                <li class="time-item"><a href="/emp/group2/home_page/select_movie/select_time/select_seat"><button
+                                                            class="button button-showtime">13:20</button></a></li>
+                                                <li class="time-item"><a href="/emp/group2/home_page/select_movie/select_time/select_seat"><button
+                                                            class="button button-showtime">16:20</button></a></li>
+                                                <li class="time-item"><a href="/emp/group2/home_page/select_movie/select_time/select_seat"><button
+                                                            class="button button-showtime">19:20</button></a></li>
+                                                <li class="time-item"><a href="/emp/group2/home_page/select_movie/select_time/select_seat"></a><button
+                                                        class="button button-showtime">22:20</button></a></li>
                                             </ul>
                                         </div>
                                     </div>

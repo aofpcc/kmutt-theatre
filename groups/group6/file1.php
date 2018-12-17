@@ -51,61 +51,64 @@ $klein->respond('GET', '/group6/regis', function ($request, $response, $service)
   echo json_encode([$query]);
 });
 
-$klein->respond('GET', '/group6/update', function ($request, $response, $service) {
+$klein->respond('GET', '/androidUpdate', function ($request, $response, $service) {
   global $database;
   $conn = $database->getConnection();
 
-  $id = $_GET['id'];
-  $pass = $_GET['pass'];  $firstname = $_GET['firstname'];
+  $userID = $_GET['userID'];  $pass = $_GET['pass'];  $firstname = $_GET['firstname'];
   $lastname = $_GET['lastname'];  $gender = $_GET['gender'];  $birthdate = $_GET['birthdate'];
-  $email = $_GET['email'];  $phonenumber = $_GET['phonenumber'];  $address = $_GET['address'];
+  $phoneno = $_GET['phonenumber'];  $address = $_GET['address'];
   $district = $_GET['district'];  $province = $_GET['province'];  $postcode = $_GET['postcode'];
+  $subdist = $_GET['subdist'];
 
+  //Initialize array for return values
+  $arr = array();
 
-  $query = "UPDATE Membership SET Password='$pass', FirstName='$firstname', LastName='$lastname', Gender='$gender', Birthdate='$birthdate', Email='$email', PhoneNumber='$phonenumber', Address='$address', District='$district', Province='$province', Postcode='$postcode' WHERE ID=$id";
-
+  //Check if anything changed
+  $query = "SELECT * from G05_Member_profile A, G05_Member_address B where A.MemberID = '$userID' and A.Fname = '$firstname' and A.Lname = '$lastname' and A.Gender = '$gender' and A.Birthdate = '$birthdate' and A.PhoneNumber = '$phoneno'
+            and B.Address = '$address' and B.Province = '$province' and B.District = '$district' and B.SubDistrict = '$subdist' and B.ZipCode = '$postcode' ";
   $stmt = $conn->prepare($query);
   $stmt->execute();
+  $num1 = $stmt->rowCount();
 
-  $num = $stmt->rowCount();
-  $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
-
-  echo json_encode([$query]);
-});
-
-$klein->respond('GET', '/group6/setMoney', function ($request, $response, $service) {
-  global $database;
-  $conn = $database->getConnection();
-
-  $id = $_GET['id'];
-  $money = $_GET['money'];
-
-  $query = "UPDATE Membership SET Money=$money WHERE ID = $id";
+  //Confirm Password
+  $query = "SELECT * from core_user_pwd where userID = '$userID' and password = '$pass'";
   $stmt = $conn->prepare($query);
   $stmt->execute();
+  $num2 = $stmt->rowCount();
 
-  $num = $stmt->rowCount();
-  $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
-
-  echo json_encode([$query]);
-});
-
-$klein->respond('GET', '/androidCheckUniqness', function ($request, $response, $service) {
-  global $database;
-  $conn = $database->getConnection();
-
-  $idCard = $_GET['idcard'];
-  $email = $_GET['email'];
-  $phoneno = $_GET['phoneno'];
-
-  $query = "SELECT ID_Card, Email, PhoneNumber from G05_Member_profile where ID_Card = '$idCard' or Email = '$email' or PhoneNumber = '$phoneno'";
+  //Check uniqeness
+  $query = "SELECT PhoneNumber from G05_Member_profile where PhoneNumber = '$phoneno'";
   $stmt = $conn->prepare($query);
   $stmt->execute();
+  $num3 = $stmt->rowCount();
 
-  $num = $stmt->rowCount();
-  $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
-
-  echo json_encode($arr);
+  if($num1 == 0){
+    if($num2 == 1){
+      if($num3 == 0){
+            //$query = "INSERT INTO G05_Member_profile (MemberID, ID_Card, Fname, Lname, Gender, Birthdate, Email, PhoneNumber)
+                              //      VALUES ('$userID', '$identNo', '$firstname', '$lastname', '$gender', '$birthdate', '$email', '$phoneno')";
+            $query = "UPDATE G05_Member_profile SET Fname = '$firstname', Lname = '$lastname', Gender = '$gender', Birthdate = '$birthdate', PhoneNumber = '$phoneno' WHERE MemberID = '$userID'";
+            $stmt = $conn->prepare($query);
+            $stmt->execute();
+            $query = "UPDATE G05_Member_address SET Address = '$address', Province = '$province', District = '$district', SubDistrict = '$subdist', ZipCode = '$postcode' WHERE MemberID = '$userID'";
+            $stmt = $conn->prepare($query);
+            $stmt->execute();
+            $arr["done"] = true;
+            $arr["note"] = "Profile update succesfully";
+      }else{
+          $arr["done"] = false;
+          $arr["note"] = "Phone number already exist";
+      }
+    }else{
+      $arr["done"] = false;
+      $arr["note"] = "Invalid Password";
+    }
+  }else{
+    $arr["done"] = false;
+    $arr["note"] = "Nothing have been changed";
+  }
+  echo json_encode([$arr]);
 });
 
 $klein->respond('GET', '/androidGetInfo', function ($request, $response, $service) {
@@ -115,20 +118,6 @@ $klein->respond('GET', '/androidGetInfo', function ($request, $response, $servic
   $id = $_GET['id'];
 
   $query = "SELECT * FROM core_user_pwd A, G05_Member_profile B, G05_Member_address C WHERE A.userID = '$id' AND B.MemberID = '$id' AND C.MemberID = '$id'";
-  $stmt = $conn->prepare($query);
-  $stmt->execute();
-
-  $num = $stmt->rowCount();
-  $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
-
-  echo json_encode($arr);
-});
-
-$klein->respond('GET', '/group6/max', function ($request, $response, $service) {
-  global $database;
-  $conn = $database->getConnection();
-
-  $query = "SELECT ID from Membership";
   $stmt = $conn->prepare($query);
   $stmt->execute();
 
@@ -160,15 +149,21 @@ $klein->respond('GET', '/androidRegist', function ($request, $response, $service
     $validateLink = "/test/verify"; // neeed to have / before  and no / at the end
     $role = 'customer';
     $result = $app->login->register($user, $pass, $email, $validateLink, $role);
-    $userID = $result["userID"];
+
     if ($result['created']) {
+        $userID = $result["userID"];
         $query = "INSERT INTO G05_Member_profile (MemberID, ID_Card, Fname, Lname, Gender, Birthdate, Email, PhoneNumber)
-                                VALUES ('$userID','$identNo', '$firstname', '$lastname', '$gender', '$birthdate', '$email', '$phoneno')";
+                                VALUES ('$userID', '$identNo', '$firstname', '$lastname', '$gender', '$birthdate', '$email', '$phoneno')";
         $stmt = $conn->prepare($query);
         $stmt->execute();
+        //$memberID = $conn->lastInsertId();
         $query = "INSERT INTO G05_Member_address (MemberID, Address, Province, District, SubDistrict, ZipCode)
                                 VALUES ('$userID','$address', '$province', '$district', '$subdist', '$postcode')";
 
+        $stmt = $conn->prepare($query);
+        $stmt->execute();
+        $query = "INSERT INTO G05_Member_point (MemberID, Total_Point)
+                                VALUES ('$userID', 0)";
         $stmt = $conn->prepare($query);
         $stmt->execute();
         $arr["done"] = true;
@@ -200,7 +195,8 @@ $klein->respond('GET', '/androidLogin', function ($request, $response, $service,
   //$password = $app->login->md5($password);
 
   $query = "SELECT userID from core_user_pwd WHERE (password = '$password' and (username = '$username' OR email = '$username'))";
-  //$query = "SELECT * from core_user_pwd WHERE password = '$password' and username = '$username'";
+  //$query = "SELECT A.userID, B.MemberID from core_user_pwd A, G05_Member_profile B WHERE (A.password = '$password' and (A.username = '$username' OR A.email = '$username')) and B.userID = (
+	//           SELECT userID from core_user_pwd WHERE (password = '$password' and (username = '$username' OR email = '$username')) )";
   $stmt = $conn->prepare($query);
   $stmt->execute();
 
@@ -210,7 +206,7 @@ $klein->respond('GET', '/androidLogin', function ($request, $response, $service,
   if($num == 1){
     $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
   }else{
-    $arr[] = array("userID" => -1);
+    $arr[] = array("userID" => -1,);
   }
 
   echo json_encode($arr);

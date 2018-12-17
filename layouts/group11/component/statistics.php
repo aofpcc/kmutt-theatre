@@ -13,8 +13,6 @@
 
   <div id="chartShowtime" style="height: 300px; width: 100%;"></div>
 
-  <div id="chartWeek" style="height: 300px; width: 100%;"></div>
-
   <div id="chartGene" style="height: 300px; width: 100%;"></div>
 
   <div id="chartSnack" style="height: 300px; width: 100%;"></div>
@@ -27,7 +25,41 @@
 <script>
 window.onload = function () {
 
+<?php
+	$Round = [];
+	foreach($this->morning as $value){
+		$temp = [
+			"y" => $value["morning"],
+			"label" => 'morning'
+		  ];
+		array_push($Round, $temp);
+	}
+	foreach($this->afternoon as $value){
+		$temp = [
+			"y" => $value["afternoon"],
+			"label" => 'afternoon'
+		  ];
+		array_push($Round, $temp);
+	}
+	foreach($this->evening as $value){
+		$temp = [
+			"y" => $value["evening"],
+			"label" => 'evening'
+		  ];
+		array_push($Round, $temp);
+	}
+	foreach($this->midnight as $value){
+		$temp = [
+			"y" => $value["midnight"],
+			"label" => 'midnight'
+		  ];
+		array_push($Round, $temp);
+	}
+	?>
+	var round = <?php echo json_encode($Round); ?>;
+	console.log(round);
 var chart = new CanvasJS.Chart("chartShowtime", {
+
 	animationEnabled: true,
 	title:{
 		text: "Movie showtime",
@@ -40,45 +72,26 @@ var chart = new CanvasJS.Chart("chartShowtime", {
 		indexLabelFontSize: 17,
 		indexLabel: "{label} - #percent%",
 		toolTipContent: "<b>{label}:</b> {y} (#percent%)",
-		dataPoints: [
-			{ y: 67, label: "Inbox" },
-			{ y: 28, label: "Archives" },
-			{ y: 10, label: "Labels" },
-			{ y: 7, label: "Drafts"},
-			{ y: 15, label: "Trash"},
-			{ y: 6, label: "Spam"}
-		]
+		dataPoints: round
 	}]
 });
 
-var chart2 = new CanvasJS.Chart("chartWeek", {
-	animationEnabled: true,
-	title:{
-		text: "Day",
-		horizontalAlign: "left"
-	},
-	data: [{
-		type: "doughnut",
-		startAngle: 60,
-		//innerRadius: 60,
-		indexLabelFontSize: 17,
-		indexLabel: "{label} - #percent%",
-		toolTipContent: "<b>{label}:</b> {y} (#percent%)",
-		dataPoints: [
-			{ y: 67, label: "Inbox" },
-			{ y: 28, label: "Archives" },
-			{ y: 10, label: "Labels" },
-			{ y: 7, label: "Drafts"},
-			{ y: 15, label: "Trash"},
-			{ y: 6, label: "Spam"}
-		]
-	}]
-});
+<?php
+	$gerne = [];
+	foreach($this->gene as $value){
+		$temp = [
+			"y" => $value["amount"],
+			"label" => $value["Genre"]
+		  ];
+		array_push($gerne, $temp);
+	}
+	?>
+	var gerne = <?php echo json_encode($gerne); ?>;
 
 var chart3 = new CanvasJS.Chart("chartGene", {
 	animationEnabled: true,
 	title:{
-		text: "Movie gene",
+		text: "Movie genre",
 		horizontalAlign: "left"
 	},
 	data: [{
@@ -88,17 +101,24 @@ var chart3 = new CanvasJS.Chart("chartGene", {
 		indexLabelFontSize: 17,
 		indexLabel: "{label} - #percent%",
 		toolTipContent: "<b>{label}:</b> {y} (#percent%)",
-		dataPoints: [
-			{ y: 67, label: "Inbox" },
-			{ y: 28, label: "Archives" },
-			{ y: 10, label: "Labels" },
-			{ y: 7, label: "Drafts"},
-			{ y: 15, label: "Trash"},
-			{ y: 6, label: "Spam"}
-		]
+		dataPoints: gerne
 	}]
 });
 
+<?php
+	$snack = [];
+	foreach($this->productName as $value){
+		$temp = [
+			"y" => $value["amount"],
+			"label" => $value["label"]
+		  ];
+		array_push($snack, $temp);
+	}
+	?>
+	var snack = <?php echo json_encode($snack); ?>;
+
+
+	console.log(snack);
 var chart4 = new CanvasJS.Chart("chartSnack", {
 	animationEnabled: true,
 	title:{
@@ -112,18 +132,10 @@ var chart4 = new CanvasJS.Chart("chartSnack", {
 		indexLabelFontSize: 17,
 		indexLabel: "{label} - #percent%",
 		toolTipContent: "<b>{label}:</b> {y} (#percent%)",
-		dataPoints: [
-			{ y: 67, label: "Inbox" },
-			{ y: 28, label: "Archives" },
-			{ y: 10, label: "Labels" },
-			{ y: 7, label: "Drafts"},
-			{ y: 15, label: "Trash"},
-			{ y: 6, label: "Spam"}
-		]
+		dataPoints: snack
 	}]
 });
 chart.render();
-chart2.render();
 chart3.render();
 chart4.render();
 

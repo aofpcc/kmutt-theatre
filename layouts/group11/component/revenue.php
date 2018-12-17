@@ -217,18 +217,18 @@ tbody.collapse.in {
 <!-- Graphs -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 <script>
-  <?php $monthName = ["", "January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]; ?>
-  <?php
+  <?php 
   $labels = [];
   $datas = [];
   foreach($this->revenueUU as $value){
-    array_push($labels, $monthName[$value["month"]]." ".$value["year"]);
+    array_push($labels, $value["month"]." / ".$value["year"]);
     array_push($datas, $value["total"]);
   }
   ?>
   var labels = <?php echo json_encode($labels); ?>;
   var datas = <?php echo json_encode($datas); ?>;
   var ctx = document.getElementById("revChart");
+  console.log(labels);
   var revChart = new Chart(ctx, {
     type: 'line',
     data: {

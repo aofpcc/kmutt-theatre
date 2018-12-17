@@ -75,18 +75,18 @@
         <ol class="carousel-indicators">
           <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
           <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          <!-- <li data-target="#carouselExampleIndicators" data-slide-to="2"></li> -->
         </ol>
         <div class="carousel-inner" role="listbox">
           <div class="carousel-item active">
-            <img class="d-block img-fluid" src="https://lh3.googleusercontent.com/YAgJl12AHInNly31iG0jwemy8nMNWEMJ0nloSIamTMRm2RFkhzsx-tAJuhhqsw-lRGFRp0O8oM8mrlHmwTimvw=w888" width="100%" height="auto"  alt="First slide">
+            <img class="d-block img-fluid" src="https://scontent.fbkk8-3.fna.fbcdn.net/v/t1.15752-9/48366339_507296259680179_2667174501837438976_n.jpg?_nc_cat=100&_nc_ht=scontent.fbkk8-3.fna&oh=51f35432eddb58c73176b9cefbdeb3ab&oe=5C9442BC" width="100%" height="auto"  alt="First slide">
           </div>
           <div class="carousel-item">
-            <img class="d-block img-fluid" src="https://lh3.googleusercontent.com/MVC-TRPxpg4iK9BM-bQ5cMuy_yVKruaVwCgDoJ1Gsj0F7yyWdgBmtyxaEN24WSkY2QaJXDovH4jPRGLvciw=w888" width="100%" height="auto" alt="Second slide">
+            <img class="d-block img-fluid" src="https://scontent.fbkk12-1.fna.fbcdn.net/v/l/t1.15752-9/48368332_435728496963374_3243513792465731584_n.jpg?_nc_cat=106&_nc_ht=scontent.fbkk12-1.fna&oh=c788c72201b4d5a55e6d67005c027d23&oe=5C9C0C9D" width="100%" height="auto" alt="Second slide">
           </div>
-          <div class="carousel-item">
+          <!-- <div class="carousel-item">
             <img class="d-block img-fluid" src="https://lh3.googleusercontent.com/akC5mSFQk3JINWvxia45R-NemWnNP--ktHeAa0HB7xawyYW3Js1wxqDOPvIJrEFwn0aREV7O1UIYzpfAnLnDlw=w888" width="100%" height="auto" walt="Third slide">
-          </div>
+          </div> -->
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -121,117 +121,21 @@
     <div class = "container" id"Showing">
     <div class="container-fluid">
         <div class="row content">
-          <div class="col-sm-9">
-
+          <div class="col-sm-12">
           <div class="row">
+            <?php foreach($this->movies as $movie) { ?>
 
                     <div class="col-lg-4 col-md-6 mb-4">
                       <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="https://lh3.googleusercontent.com/8Lr1BMoZOxsSLoTZr6IxDZuLDiSc6oMTopLA2B-MhXbwxqpDguDHy8r_zj1430V2augHqTSdHsNjz6MYfbEm=w260" alt=""></a>
+                        <a href="/customer/kmutt_home/branch/<?=$movie["id"]?>"><img class="card-img-top" src="https://cdn.cinematerial.com/p/500x/q0wtpndq/homestay-thai-movie-poster.jpg" alt=""></a>
                         <div class="card-body">
                           <h7 class="card-title" >
-                            <a href="#" ><center>2018-11-15</center></a>
+                            <a href="/customer/kmutt_home/branch/<?=$movie["id"]?>" ><center><?=$movie["title"] ?></center></a>
                           </h7>
-                          <h5 class="card-text"><center>Fantastic Beasts The Crimes of Grindelwald<center></h5>
                         </div>
                       </div>
                     </div>
-
-                    <div class="col-lg-4 col-md-6 mb-4">
-                      <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="https://lh3.googleusercontent.com/PbOkOCAdbr_QUIkd69e-vyQEGaiQXIpDSVzkcTEti7bgXpGCoFp_RuHzAeUVlLsyB-m0uuFZ9TP5OmFqrrpy=w260" alt=""></a>
-                        <div class="card-body">
-                          <h7 class="card-title" >
-                            <a href="#" ><center>2018-10-25</center></a>
-                          </h7>
-                          <h4 class="card-text"><center>Homestay<center></h4>
-                          </div>
-                      </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 mb-4">
-                      <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                        <div class="card-body">
-                          <h7 class="card-title" >
-                            <a href="#" ><center>Date coming</center></a>
-                          </h7>
-                          <h4 class="card-text"><center>Movie name<center></h4>
-                          </div>
-                      </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 mb-4">
-                      <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                        <div class="card-body">
-                          <h7 class="card-title" >
-                            <a href="#" ><center>Date coming</center></a>
-                          </h7>
-                          <h4 class="card-text"><center>Movie name<center></h4>
-                          </div>
-                      </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 mb-4">
-                      <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                        <div class="card-body">
-                          <h7 class="card-title" >
-                            <a href="#" ><center>Date coming</center></a>
-                          </h7>
-                          <h4 class="card-text"><center>Movie name<center></h4>
-                          </div>
-                      </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 mb-4">
-                      <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                        <div class="card-body">
-                          <h7 class="card-title" >
-                            <a href="#" ><center>Date coming</center></a>
-                          </h7>
-                          <h4 class="card-text"><center>Movie name<center></h4>
-                          </div>
-                      </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 mb-4">
-                      <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                        <div class="card-body">
-                          <h7 class="card-title" >
-                            <a href="#" ><center>Date coming</center></a>
-                          </h7>
-                          <h4 class="card-text"><center>Movie name<center></h4>
-                          </div>
-                      </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 mb-4">
-                      <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                        <div class="card-body">
-                          <h7 class="card-title" >
-                            <a href="#" ><center>Date coming</center></a>
-                          </h7>
-                          <h4 class="card-text"><center>Movie name<center></h4>
-                          </div>
-                      </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 mb-4">
-                      <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                        <div class="card-body">
-                          <h7 class="card-title" >
-                            <a href="#" ><center>Date coming</center></a>
-                          </h7>
-                          <h4 class="card-text"><center>Movie name<center></h4>
-                          </div>
-                      </div>
-                    </div>
+                    <?php } ?>
                   </div>
           </div>
 
@@ -245,15 +149,8 @@
               <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
               <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
             </ol>
-            <div class="carousel-ads" role="listbox">
-                <img class="d-block img-fluid" src="https://lh3.googleusercontent.com/2TcqenCtqNlmWs7drIxs97P0pk8LqkdjBIiWcYy83UztcTrKDMCj66cmo0FA70lboACliZg8AVLg0e2Q_4E=w255"   alt="First slide">
-              </div>
-              <div class="carousel-item">
-                <img class="d-block img-fluid" src="https://lh3.googleusercontent.com/uv4OV-DkL03J8iweShFkznDzWEq3vUxx3mFhcli8jcF6p7kKB3mzM0BnCbWO6NffKb6jHUxQ56a07pEDwJhO=w255"  alt="Second slide">
-              </div>
-              <div class="carousel-item">
-                <img class="d-block img-fluid" src="https://lh3.googleusercontent.com/hh7__BRUcQmLTVQsdfb0rhQD46t9b_rsl-7lXof1nFRud49GlZcDgliMXNuJCNMqKcTWEiAOmHswpihQ8V2wxQ=w255" walt="Third slide">
-              </div>
+
+
             </a>
           </div>
         </div>

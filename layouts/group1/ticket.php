@@ -16,35 +16,66 @@
   <link rel="stylesheet" href="/layouts/group1/css/onStyle.css">
 </head>
 
-<!-- <style>
-body{
-background-color: #303030;
-}
 
-.main{
-width: 80%;
-margin: 45px auto;
-background:rgba(255, 255, 255, 0.88);
-padding: 30px 30px;
-}
-</style> -->
-
-  <!-- <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
- <a class="navbar-brand" href="http://localhost:8000/customer/kmutt_home">KMUTT THEATER</a>
- <ul class="navbar-nav">
-   <li class="nav-item">
-     <a class="nav-link" href="http://localhost:8000/customer/kmutt_home">home</a>
-   </li>
-   <li class="nav-item">
-     <a class="nav-link" href="#">promotion</a>
-   </li>
- </ul>
-</nav> -->
-
-<br><br>
+<br>
   <div class="main">
-    <h1 class="my-4"><button type="button" class="btn btn-lg btn-danger">STEP 5</button>
+    <h1 class="my-4"><button type="button" class="btn btn-lg btn-danger">STEP 4</button>
       <small>Finish</small>
     </h1>
-    <button type="button" class="btn btn-primary btn-lg btn-block">BACK TO HOME</button>
+    <div class="card card-temp shadow-lg">
+      <div class="container">
+        <br>
+        <div class="row">
+          <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card">
+                <!-- <a href="#"> -->
+                  <img class="card-img-top" src="https://lh3.googleusercontent.com/8Lr1BMoZOxsSLoTZr6IxDZuLDiSc6oMTopLA2B-MhXbwxqpDguDHy8r_zj1430V2augHqTSdHsNjz6MYfbEm=w260" alt="">
+                <!-- </a> -->
+              </div>
+            </div>
+
+            <div class="col-md-8">
+              <font size="6">
+                <?php echo $this->movie_name; ?>
+                <br>
+              </font>
+
+              <font size="4">
+                <i class="far fa-clock"></i>
+                <?php echo date('d/m/Y', $this->showtime); ?>
+                <b><?php echo date('H:i', $this->showtime); ?></b> (135 Mins)
+                <br>
+              </font>
+
+              <font size="4">
+                <i class="fas fa-building"></i> THEATRE <?php echo $this->theatre_no; ?> <br>
+              </font>
+              <br>
+
+              <font size="4"> ที่นั่ง </font>
+              <br />
+              <?php
+                // for ($i=0; $i < count($this->seats); $i++) {
+                //   echo json_encode($this->seats);
+                //
+                // }
+                $arry = json_decode(json_encode($this->seats), true);
+                foreach ($arry as $result)
+                {
+                  $seat_no = $result['row'].'-'.$result['seat'];
+                  echo "<div class='btn btn-outline-dark btn-sm'><b>$seat_no</b></div>";
+                  echo "&nbsp;";  // add a little space
+                }
+                  //echo json_encode($this->seats);
+                  //print_r($this->seats);
+              ?>
+              <br> <br>
+              <!-- <from action = '/kmutt_home' method = 'post'>
+    <button type="button" class="btn btn-primary btn-lg btn-danger" >BACK TO HOME</button>
+  </from> -->
   </div>
+</div>
+</div>
+</div>
+</div>
+

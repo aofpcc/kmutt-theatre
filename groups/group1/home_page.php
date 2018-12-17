@@ -1,8 +1,10 @@
 <?php
 $klein->respond('GET', '/kmutt_home', function ($request, $response, $service) use ($database) {
-  $service->bootstrap3 = false;  
+  $service->bootstrap3 = false;
   $conn = $database->getConnection();
-    //$d = $app->login->requireLogin('customer');
+  $query = "select distinct id, title from G09_Movie";
+  $movie = $conn->query($query)->fetchAll(PDO::FETCH_ASSOC);
 
-    $service->render('layouts/group1/kmutt_home.php');
+  $service->movies =  $movie;
+  $service->render('layouts/group1/kmutt_home.php');
 });

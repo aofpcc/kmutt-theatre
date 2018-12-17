@@ -2,31 +2,8 @@
 
 ?>
 
-<!DOCTYPE html>
-
-<html lang="en" class="gr__sfcinemacity_com">
-
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-    <!-- <link rel="shortcut icon" href="https://www.sfcinemacity.com/favicon.ico">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://www.sfcinemacity.com/assets/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://www.sfcinemacity.com/assets/favicon-32x32.png">
-    <link rel="icon" sizes="128x128" href="https://www.sfcinemacity.com/assets/logo-128x128.png">
-    <link rel="icon" sizes="192x192" href="https://www.sfcinemacity.com/assets/logo-192x192.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="https://www.sfcinemacity.com/assets/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="https://www.sfcinemacity.com/assets/logo-152x152.png">
-    <link rel="apple-touch-icon" sizes="167x167" href="https://www.sfcinemacity.com/assets/logo-167x167.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://www.sfcinemacity.com/assets/logo-180x180.png">
-    <link rel="mask-icon" href="https://www.sfcinemacity.com/assets/safari-pinned-tab.svg" color="#ffffff">
-    <meta name="application-name" content="SF Cinema">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-config" content="/assets/browserconfig.xml">
-    <link rel="manifest" href="https://www.sfcinemacity.com/assets/manifest.json">
-    <meta name="theme-color" content="#2d64cf"> -->
-
-
-    <!-- GA -->
+  
     <script id="facebook-ixsdk" src="/layouts/group2/js/done/platform.Extensions.js"></script>
     <script async="" src="/layouts/group2/js/done/gtm.js"></script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -45,40 +22,11 @@
     <link rel="preload" href="/layouts/group2/js/done/vendor.eb91d5bf77b2c769fcc2.js" as="script">
     <link rel="preload" href="/layouts/group2/js/done/app.baa2eadcab44e34fea36.js" as="script">
     <link rel="prefetch" href="/layouts/group2/js/done/0.d54eb28f06766c18886b.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/2.1a387b47ee125ca353f8.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/3.310d8e09a8e11022f96c.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/4.4089fb97707e61615e08.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/5.b3f4836c4ad2b717a7fa.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/6.0c5ddb655a6df41f903e.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/7.0be5a5a737fe3c9c67c8.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/8.2b0c9359bb4aa063d6fe.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/9.822c13efc123e063e24d.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/10.987717e1c3ebf00f8944.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/11.fc4f6eb2b7528126fcc6.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/12.bd899a775f669b15a9dc.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/13.6e7aa54f66746afc1ae2.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/14.59297b724b7ba00eb529.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/15.cd6e47c5451463e15ec3.js">
+   
     <link rel="prefetch" href="/layouts/group2/js/done/16.fc3c2639efa97e67ce52.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/17.fb8feabdf1a94457631a.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/18.48f2ab9a05f45567e297.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/19.b56814c42af505112560.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/20.43a8abd0f9f8d863b0da.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/21.eea8dee28cd86c4d57f9.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/22.98a761fbe7b02dd5747a.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/23.9bd0f90459dd80467fc2.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/24.fd99349df3b76ee0a7ec.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/25.3278c47bf066f59e17f9.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/26.1a8dbc3f1c68f6da6f4f.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/27.c47a077c0be3cedaffda.js">
+    
     <link rel="prefetch" href="/layouts/group2/js/done/28.5f5b3aeb7ab5558122bd.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/29.8fca79989b07bbc5c213.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/30.f06c4e4134d149b8f562.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/31.0ba10920cd94e81a4544.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/32.9849c8ba6e8199de38c0.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/33.255becd3fec2dab2a718.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/34.dee995da7b9128a5b462.js">
-    <link rel="prefetch" href="https://www.sfcinemacity.com/dist/1.2ab249ca75db547f0487.js">
+    
     <link rel="stylesheet" href="/layouts/group2/css/maincss/common.baa2eadcab44e34fea36.css">
 
     <script type="text/javascript" charset="utf-8" async="" src="/layouts/group2/js/done/28.5f5b3aeb7ab5558122bd.js"></script>
@@ -551,12 +499,10 @@
             cursor: not-allowed
         }
 
-        sourceURL=/var/www/html/web-tmp/sf-web/node_modules/cropperjs/dist/cropper.css
-        /*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi92YXIvd3d3L2h0bWwvd2ViLXRtcC9zZi13ZWIvbm9kZV9tb2R1bGVzL2Nyb3BwZXJqcy9kaXN0L2Nyb3BwZXIuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBOzs7Ozs7OztHQVFHLEFBRUgsbUJBQ0UsY0FBZSxBQUNmLFlBQWEsQUFDYixjQUFlLEFBQ2Ysa0JBQW1CLEFBQ25CLHNCQUF1QixBQUN2QixrQkFBbUIsQUFDbkIseUJBQTBCLEFBQzFCLHNCQUF1QixBQUN2QixxQkFBc0IsQUFDdEIsZ0JBQWtCLENBQ25CLEFBRUQsdUJBQ0UsY0FBZSxBQUNmLFlBQWEsQUFDYix1QkFBd0IsQUFDeEIsMEJBQTRCLEFBQzVCLHlCQUEyQixBQUMzQix1QkFBeUIsQUFDekIsc0JBQXdCLEFBQ3hCLFVBQVksQ0FDYixBQUVELHFGQUtFLFNBQVUsQUFDVixPQUFRLEFBQ1Isa0JBQW1CLEFBQ25CLFFBQVMsQUFDVCxLQUFPLENBQ1IsQUFFRCxrQ0FFRSxlQUFpQixDQUNsQixBQUVELGtCQUNFLHNCQUF1QixBQUN2QixTQUFXLENBQ1osQUFFRCxlQUNFLHNCQUF1QixBQUN2QixVQUFZLENBQ2IsQUFFRCxrQkFDRSxjQUFlLEFBQ2YsWUFBYSxBQUNiLG1DQUF3QyxBQUN4Qyx1QkFBd0IsQUFDeEIsZ0JBQWlCLEFBQ2pCLFVBQVksQ0FDYixBQUVELGdCQUNFLHFCQUFzQixBQUN0QixjQUFlLEFBQ2YsV0FBWSxBQUNaLGlCQUFtQixDQUNwQixBQUVELHlCQUNFLHdCQUF5QixBQUN6QixxQkFBc0IsQUFDdEIsaUJBQXVCLEFBQ3ZCLE9BQVEsQUFDUixjQUFvQixBQUNwQixVQUFZLENBQ2IsQUFFRCx5QkFDRSxzQkFBdUIsQUFDdkIsdUJBQXdCLEFBQ3hCLFlBQWEsQUFDYixlQUFxQixBQUNyQixNQUFPLEFBQ1AsZUFBc0IsQ0FDdkIsQUFFRCxnQkFDRSxjQUFlLEFBQ2YsU0FBVSxBQUNWLFNBQVUsQUFDVixZQUFhLEFBQ2Isa0JBQW1CLEFBQ25CLFFBQVMsQUFDVCxPQUFTLENBQ1YsQUFFRCw2Q0FFRSxzQkFBdUIsQUFDdkIsWUFBYSxBQUNiLGNBQWUsQUFDZixpQkFBbUIsQ0FDcEIsQUFFRCx1QkFDRSxXQUFZLEFBQ1osVUFBVyxBQUNYLE1BQU8sQUFDUCxTQUFXLENBQ1osQUFFRCxzQkFDRSxXQUFZLEFBQ1osT0FBUSxBQUNSLFNBQVUsQUFDVixTQUFXLENBQ1osQUFFRCwyQ0FHRSxjQUFlLEFBQ2YsWUFBYSxBQUNiLFdBQVksQUFDWixrQkFBbUIsQUFDbkIsVUFBWSxDQUNiLEFBRUQsY0FDRSxzQkFBdUIsQUFDdkIsT0FBUSxBQUNSLEtBQU8sQ0FDUixBQUVELGNBQ0UscUJBQXVCLENBQ3hCLEFBRUQscUJBQ0UsaUJBQWtCLEFBQ2xCLFdBQVksQUFDWixNQUFPLEFBQ1AsU0FBVyxDQUNaLEFBRUQscUJBQ0UsaUJBQWtCLEFBQ2xCLFdBQVksQUFDWixPQUFRLEFBQ1IsUUFBVSxDQUNYLEFBRUQscUJBQ0UsaUJBQWtCLEFBQ2xCLFVBQVcsQUFDWCxNQUFPLEFBQ1AsU0FBVyxDQUNaLEFBRUQscUJBQ0UsWUFBYSxBQUNiLGlCQUFrQixBQUNsQixXQUFZLEFBQ1osTUFBUSxDQUNULEFBRUQsZUFDRSxzQkFBdUIsQUFDdkIsV0FBWSxBQUNaLFlBQWEsQUFDYixTQUFXLENBQ1osQUFFRCx1QkFDRSxpQkFBa0IsQUFDbEIsZ0JBQWlCLEFBQ2pCLFdBQVksQUFDWixPQUFTLENBQ1YsQUFFRCx1QkFDRSxpQkFBa0IsQUFDbEIsU0FBVSxBQUNWLGlCQUFrQixBQUNsQixRQUFVLENBQ1gsQUFFRCx1QkFDRSxpQkFBa0IsQUFDbEIsVUFBVyxBQUNYLGdCQUFpQixBQUNqQixPQUFTLENBQ1YsQUFFRCx1QkFDRSxZQUFhLEFBQ2IsZ0JBQWlCLEFBQ2pCLFNBQVUsQUFDVixnQkFBa0IsQ0FDbkIsQUFFRCx3QkFDRSxtQkFBb0IsQUFDcEIsV0FBWSxBQUNaLFFBQVUsQ0FDWCxBQUVELHdCQUNFLG1CQUFvQixBQUNwQixVQUFXLEFBQ1gsUUFBVSxDQUNYLEFBRUQsd0JBQ0UsWUFBYSxBQUNiLG1CQUFvQixBQUNwQixTQUFXLENBQ1osQUFFRCx3QkFDRSxZQUFhLEFBQ2IsbUJBQW9CLEFBQ3BCLFlBQWEsQUFDYixVQUFXLEFBQ1gsV0FBWSxBQUNaLFVBQVksQ0FDYixBQUVELHlCQUNFLHdCQUNFLFlBQWEsQUFDYixVQUFZLENBQ2IsQ0FDRixBQUVELHlCQUNFLHdCQUNFLFlBQWEsQUFDYixVQUFZLENBQ2IsQ0FDRixBQUVELDBCQUNFLHdCQUNFLFdBQVksQUFDWixZQUFhLEFBQ2IsU0FBVyxDQUNaLENBQ0YsQUFFRCwrQkFDRSxzQkFBdUIsQUFDdkIsWUFBYSxBQUNiLFlBQWEsQUFDYixjQUFlLEFBQ2YsWUFBYSxBQUNiLFVBQVcsQUFDWCxrQkFBbUIsQUFDbkIsV0FBWSxBQUNaLFVBQVksQ0FDYixBQUVELG1CQUNFLFNBQVcsQ0FDWixBQUVELFlBQ0UsOFFBQWdSLENBQ2pSLEFBRUQsY0FDRSxjQUFlLEFBQ2YsU0FBVSxBQUNWLGtCQUFtQixBQUNuQixPQUFTLENBQ1YsQUFFRCxnQkFDRSxzQkFBeUIsQ0FDMUIsQUFFRCxjQUNFLFdBQWEsQ0FDZCxBQUVELGNBQ0UsZ0JBQWtCLENBQ25CLEFBRUQscUlBSUUsa0JBQW9CLENBQ3JCIiwiZmlsZSI6ImNyb3BwZXIuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLyohXG4gKiBDcm9wcGVyLmpzIHYxLjQuMVxuICogaHR0cHM6Ly9mZW5neXVhbmNoZW4uZ2l0aHViLmlvL2Nyb3BwZXJqc1xuICpcbiAqIENvcHlyaWdodCAyMDE1LXByZXNlbnQgQ2hlbiBGZW5neXVhblxuICogUmVsZWFzZWQgdW5kZXIgdGhlIE1JVCBsaWNlbnNlXG4gKlxuICogRGF0ZTogMjAxOC0wNy0xNVQwOTo1NDo0My4xNjdaXG4gKi9cblxuLmNyb3BwZXItY29udGFpbmVyIHtcbiAgZGlyZWN0aW9uOiBsdHI7XG4gIGZvbnQtc2l6ZTogMDtcbiAgbGluZS1oZWlnaHQ6IDA7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgLW1zLXRvdWNoLWFjdGlvbjogbm9uZTtcbiAgdG91Y2gtYWN0aW9uOiBub25lO1xuICAtd2Via2l0LXVzZXItc2VsZWN0OiBub25lO1xuICAtbW96LXVzZXItc2VsZWN0OiBub25lO1xuICAtbXMtdXNlci1zZWxlY3Q6IG5vbmU7XG4gIHVzZXItc2VsZWN0OiBub25lO1xufVxuXG4uY3JvcHBlci1jb250YWluZXIgaW1nIHtcbiAgZGlzcGxheTogYmxvY2s7XG4gIGhlaWdodDogMTAwJTtcbiAgaW1hZ2Utb3JpZW50YXRpb246IDBkZWc7XG4gIG1heC1oZWlnaHQ6IG5vbmUgIWltcG9ydGFudDtcbiAgbWF4LXdpZHRoOiBub25lICFpbXBvcnRhbnQ7XG4gIG1pbi1oZWlnaHQ6IDAgIWltcG9ydGFudDtcbiAgbWluLXdpZHRoOiAwICFpbXBvcnRhbnQ7XG4gIHdpZHRoOiAxMDAlO1xufVxuXG4uY3JvcHBlci13cmFwLWJveCxcbi5jcm9wcGVyLWNhbnZhcyxcbi5jcm9wcGVyLWRyYWctYm94LFxuLmNyb3BwZXItY3JvcC1ib3gsXG4uY3JvcHBlci1tb2RhbCB7XG4gIGJvdHRvbTogMDtcbiAgbGVmdDogMDtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICByaWdodDogMDtcbiAgdG9wOiAwO1xufVxuXG4uY3JvcHBlci13cmFwLWJveCxcbi5jcm9wcGVyLWNhbnZhcyB7XG4gIG92ZXJmbG93OiBoaWRkZW47XG59XG5cbi5jcm9wcGVyLWRyYWctYm94IHtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2ZmZjtcbiAgb3BhY2l0eTogMDtcbn1cblxuLmNyb3BwZXItbW9kYWwge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjMDAwO1xuICBvcGFjaXR5OiAuNTtcbn1cblxuLmNyb3BwZXItdmlldy1ib3gge1xuICBkaXNwbGF5OiBibG9jaztcbiAgaGVpZ2h0OiAxMDAlO1xuICBvdXRsaW5lLWNvbG9yOiByZ2JhKDUxLCAxNTMsIDI1NSwgMC43NSk7XG4gIG91dGxpbmU6IDFweCBzb2xpZCAjMzlmO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICB3aWR0aDogMTAwJTtcbn1cblxuLmNyb3BwZXItZGFzaGVkIHtcbiAgYm9yZGVyOiAwIGRhc2hlZCAjZWVlO1xuICBkaXNwbGF5OiBibG9jaztcbiAgb3BhY2l0eTogLjU7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbn1cblxuLmNyb3BwZXItZGFzaGVkLmRhc2hlZC1oIHtcbiAgYm9yZGVyLWJvdHRvbS13aWR0aDogMXB4O1xuICBib3JkZXItdG9wLXdpZHRoOiAxcHg7XG4gIGhlaWdodDogY2FsYygxMDAlIC8gMyk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogY2FsYygxMDAlIC8gMyk7XG4gIHdpZHRoOiAxMDAlO1xufVxuXG4uY3JvcHBlci1kYXNoZWQuZGFzaGVkLXYge1xuICBib3JkZXItbGVmdC13aWR0aDogMXB4O1xuICBib3JkZXItcmlnaHQtd2lkdGg6IDFweDtcbiAgaGVpZ2h0OiAxMDAlO1xuICBsZWZ0OiBjYWxjKDEwMCUgLyAzKTtcbiAgdG9wOiAwO1xuICB3aWR0aDogY2FsYygxMDAlIC8gMyk7XG59XG5cbi5jcm9wcGVyLWNlbnRlciB7XG4gIGRpc3BsYXk6IGJsb2NrO1xuICBoZWlnaHQ6IDA7XG4gIGxlZnQ6IDUwJTtcbiAgb3BhY2l0eTogLjc1O1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIHRvcDogNTAlO1xuICB3aWR0aDogMDtcbn1cblxuLmNyb3BwZXItY2VudGVyOmJlZm9yZSxcbi5jcm9wcGVyLWNlbnRlcjphZnRlciB7XG4gIGJhY2tncm91bmQtY29sb3I6ICNlZWU7XG4gIGNvbnRlbnQ6ICcgJztcbiAgZGlzcGxheTogYmxvY2s7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbn1cblxuLmNyb3BwZXItY2VudGVyOmJlZm9yZSB7XG4gIGhlaWdodDogMXB4O1xuICBsZWZ0OiAtM3B4O1xuICB0b3A6IDA7XG4gIHdpZHRoOiA3cHg7XG59XG5cbi5jcm9wcGVyLWNlbnRlcjphZnRlciB7XG4gIGhlaWdodDogN3B4O1xuICBsZWZ0OiAwO1xuICB0b3A6IC0zcHg7XG4gIHdpZHRoOiAxcHg7XG59XG5cbi5jcm9wcGVyLWZhY2UsXG4uY3JvcHBlci1saW5lLFxuLmNyb3BwZXItcG9pbnQge1xuICBkaXNwbGF5OiBibG9jaztcbiAgaGVpZ2h0OiAxMDAlO1xuICBvcGFjaXR5OiAuMTtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICB3aWR0aDogMTAwJTtcbn1cblxuLmNyb3BwZXItZmFjZSB7XG4gIGJhY2tncm91bmQtY29sb3I6ICNmZmY7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbn1cblxuLmNyb3BwZXItbGluZSB7XG4gIGJhY2tncm91bmQtY29sb3I6ICMzOWY7XG59XG5cbi5jcm9wcGVyLWxpbmUubGluZS1lIHtcbiAgY3Vyc29yOiBldy1yZXNpemU7XG4gIHJpZ2h0OiAtM3B4O1xuICB0b3A6IDA7XG4gIHdpZHRoOiA1cHg7XG59XG5cbi5jcm9wcGVyLWxpbmUubGluZS1uIHtcbiAgY3Vyc29yOiBucy1yZXNpemU7XG4gIGhlaWdodDogNXB4O1xuICBsZWZ0OiAwO1xuICB0b3A6IC0zcHg7XG59XG5cbi5jcm9wcGVyLWxpbmUubGluZS13IHtcbiAgY3Vyc29yOiBldy1yZXNpemU7XG4gIGxlZnQ6IC0zcHg7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDVweDtcbn1cblxuLmNyb3BwZXItbGluZS5saW5lLXMge1xuICBib3R0b206IC0zcHg7XG4gIGN1cnNvcjogbnMtcmVzaXplO1xuICBoZWlnaHQ6IDVweDtcbiAgbGVmdDogMDtcbn1cblxuLmNyb3BwZXItcG9pbnQge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjMzlmO1xuICBoZWlnaHQ6IDVweDtcbiAgb3BhY2l0eTogLjc1O1xuICB3aWR0aDogNXB4O1xufVxuXG4uY3JvcHBlci1wb2ludC5wb2ludC1lIHtcbiAgY3Vyc29yOiBldy1yZXNpemU7XG4gIG1hcmdpbi10b3A6IC0zcHg7XG4gIHJpZ2h0OiAtM3B4O1xuICB0b3A6IDUwJTtcbn1cblxuLmNyb3BwZXItcG9pbnQucG9pbnQtbiB7XG4gIGN1cnNvcjogbnMtcmVzaXplO1xuICBsZWZ0OiA1MCU7XG4gIG1hcmdpbi1sZWZ0OiAtM3B4O1xuICB0b3A6IC0zcHg7XG59XG5cbi5jcm9wcGVyLXBvaW50LnBvaW50LXcge1xuICBjdXJzb3I6IGV3LXJlc2l6ZTtcbiAgbGVmdDogLTNweDtcbiAgbWFyZ2luLXRvcDogLTNweDtcbiAgdG9wOiA1MCU7XG59XG5cbi5jcm9wcGVyLXBvaW50LnBvaW50LXMge1xuICBib3R0b206IC0zcHg7XG4gIGN1cnNvcjogcy1yZXNpemU7XG4gIGxlZnQ6IDUwJTtcbiAgbWFyZ2luLWxlZnQ6IC0zcHg7XG59XG5cbi5jcm9wcGVyLXBvaW50LnBvaW50LW5lIHtcbiAgY3Vyc29yOiBuZXN3LXJlc2l6ZTtcbiAgcmlnaHQ6IC0zcHg7XG4gIHRvcDogLTNweDtcbn1cblxuLmNyb3BwZXItcG9pbnQucG9pbnQtbncge1xuICBjdXJzb3I6IG53c2UtcmVzaXplO1xuICBsZWZ0OiAtM3B4O1xuICB0b3A6IC0zcHg7XG59XG5cbi5jcm9wcGVyLXBvaW50LnBvaW50LXN3IHtcbiAgYm90dG9tOiAtM3B4O1xuICBjdXJzb3I6IG5lc3ctcmVzaXplO1xuICBsZWZ0OiAtM3B4O1xufVxuXG4uY3JvcHBlci1wb2ludC5wb2ludC1zZSB7XG4gIGJvdHRvbTogLTNweDtcbiAgY3Vyc29yOiBud3NlLXJlc2l6ZTtcbiAgaGVpZ2h0OiAyMHB4O1xuICBvcGFjaXR5OiAxO1xuICByaWdodDogLTNweDtcbiAgd2lkdGg6IDIwcHg7XG59XG5cbkBtZWRpYSAobWluLXdpZHRoOiA3NjhweCkge1xuICAuY3JvcHBlci1wb2ludC5wb2ludC1zZSB7XG4gICAgaGVpZ2h0OiAxNXB4O1xuICAgIHdpZHRoOiAxNXB4O1xuICB9XG59XG5cbkBtZWRpYSAobWluLXdpZHRoOiA5OTJweCkge1xuICAuY3JvcHBlci1wb2ludC5wb2ludC1zZSB7XG4gICAgaGVpZ2h0OiAxMHB4O1xuICAgIHdpZHRoOiAxMHB4O1xuICB9XG59XG5cbkBtZWRpYSAobWluLXdpZHRoOiAxMjAwcHgpIHtcbiAgLmNyb3BwZXItcG9pbnQucG9pbnQtc2Uge1xuICAgIGhlaWdodDogNXB4O1xuICAgIG9wYWNpdHk6IC43NTtcbiAgICB3aWR0aDogNXB4O1xuICB9XG59XG5cbi5jcm9wcGVyLXBvaW50LnBvaW50LXNlOmJlZm9yZSB7XG4gIGJhY2tncm91bmQtY29sb3I6ICMzOWY7XG4gIGJvdHRvbTogLTUwJTtcbiAgY29udGVudDogJyAnO1xuICBkaXNwbGF5OiBibG9jaztcbiAgaGVpZ2h0OiAyMDAlO1xuICBvcGFjaXR5OiAwO1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIHJpZ2h0OiAtNTAlO1xuICB3aWR0aDogMjAwJTtcbn1cblxuLmNyb3BwZXItaW52aXNpYmxlIHtcbiAgb3BhY2l0eTogMDtcbn1cblxuLmNyb3BwZXItYmcge1xuICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoJ2RhdGE6aW1hZ2UvcG5nO2Jhc2U2NCxpVkJPUncwS0dnb0FBQUFOU1VoRVVnQUFBQkFBQUFBUUFRTUFBQUFsUFcwaUFBQUFBM05DU1ZRSUNBamI0VS9nQUFBQUJsQk1WRVhNek16Ly8vL1RqUlYyQUFBQUNYQklXWE1BQUFyckFBQUs2d0dDaXcxYUFBQUFISFJGV0hSVGIyWjBkMkZ5WlFCQlpHOWlaU0JHYVhKbGQyOXlhM01nUTFNMjZMeXlqQUFBQUJGSlJFRlVDSmxqK00vQWdCVmhGLzBQQUg2L0QvSGtEeE9HQUFBQUFFbEZUa1N1UW1DQycpO1xufVxuXG4uY3JvcHBlci1oaWRlIHtcbiAgZGlzcGxheTogYmxvY2s7XG4gIGhlaWdodDogMDtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICB3aWR0aDogMDtcbn1cblxuLmNyb3BwZXItaGlkZGVuIHtcbiAgZGlzcGxheTogbm9uZSAhaW1wb3J0YW50O1xufVxuXG4uY3JvcHBlci1tb3ZlIHtcbiAgY3Vyc29yOiBtb3ZlO1xufVxuXG4uY3JvcHBlci1jcm9wIHtcbiAgY3Vyc29yOiBjcm9zc2hhaXI7XG59XG5cbi5jcm9wcGVyLWRpc2FibGVkIC5jcm9wcGVyLWRyYWctYm94LFxuLmNyb3BwZXItZGlzYWJsZWQgLmNyb3BwZXItZmFjZSxcbi5jcm9wcGVyLWRpc2FibGVkIC5jcm9wcGVyLWxpbmUsXG4uY3JvcHBlci1kaXNhYmxlZCAuY3JvcHBlci1wb2ludCB7XG4gIGN1cnNvcjogbm90LWFsbG93ZWQ7XG59XHJcbiJdLCJzb3VyY2VSb290IjoiIn0= */
+        
     </style>
     <style type="text/css">
-        /*# sourceURL=undefined */
-        /*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJDcm9wcGVyLnZ1ZSIsInNvdXJjZVJvb3QiOiIifQ== */
+        
     </style>
 </head>
 
@@ -732,17 +678,9 @@
                                                         <!---->
                                                     </div>
                                                 </div>
-                                                <!-- <div class="logo-wrapper"><img src="/layouts/group2/images/done/unnamed.png"></div> -->
                                             </div>
                                             <div class="cinema-section">
-                                                <!-- <div class="location"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 82.97 119.39"
-                                                        class="sf-icon location">
-                                                        <defs></defs>
-                                                         <title>location</title> -->
-                                                        <!-- <path d="M74.77,59.56C77.18,53.12,79,46.69,79,39,79,19.67,60.82,4,41.49,4S4,19.67,4,39c0,8.08,2.27,14.46,4.87,21.45l33.55,54.93Z"
-                                                            class="cls-1"></path> 
-                                                        <circle cx="41.49" cy="40.25" r="7.85" class="cls-2"></circle>
-                                                    </svg><span class="name">เอส เอฟ ซีเนม่า เดอะมอลล์ ท่าพระ</span></div> -->
+                                               
                                                 <div class="cinema-wrapper">
                                                     <div class="cinema-col">
                                                         <div class="cinema-label">โรงภาพยนตร์</div>
@@ -767,53 +705,14 @@
                                                         <div class="desc-data">200 บาท</div>
                                                     </div>
                                                 </div>
-                                                <div class="code-group">
-                                                    <div class="code-title">รหัสการจอง</div>
-                                                    <div class="code">WLG4GGL</div>
-                                                    <div class="term"><a href="https://www.sfcinemacity.com/booking-history#">ข้อกำหนดและเงื่อนไข</a></div>
-                                                    <!-- <div class="ticket-ribbon reserve clearfix">
-                                                        <div class="pull-left"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                                                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                                viewBox="0 0 31.2 38.2" xml:space="preserve" class="sf-icon reserve-ticket">
-                                                                <g>
-                                                                    <path d="M19.7,14.1v-9c0-0.6-0.5-1.1-1.1-1.1H5.3C4.7,4,4.2,4.5,4.2,5.1v27.4c0,0.5,0.4,1,0.9,1.1V34
-            c0,0.2,0.1,0.3,0.3,0.3h13.2c0.2,0,0.3-0.1,0.3-0.3v-0.4c0.5-0.1,0.9-0.6,0.9-1.1v-12l-1.8-1.6v4.4c0,0.2-0.2,0.4-0.4,0.4H6.4
-            c-0.2,0-0.4-0.2-0.4-0.4V6.3C6,6,6.2,5.9,6.4,5.9h11.1c0.2,0,0.4,0.2,0.4,0.4v6.4L19.7,14.1z M6.5,25.4h4c0.2,0,0.5,0.2,0.5,0.5
-            v1.4c0,0.2-0.2,0.5-0.5,0.5h-4c-0.2,0-0.5-0.2-0.5-0.5v-1.4C6,25.6,6.2,25.4,6.5,25.4z"
-                                                                        class="st0"></path>
-                                                                    <g>
-                                                                        <path d="M26.9,13.2h-4.8c-0.5,0-0.9,0.3-1,0.8L20,16.2l-2.6-2.2c-0.5-0.4-1.2-0.3-1.6,0.1c-0.4,0.5-0.3,1.2,0.1,1.6
-                l3.7,3.2c0.5,0.4,1.2,0.3,1.6-0.1c0,0,0,0,0-0.1l0.3,4.8c0,0.4,0.2,0.8,0.5,0.9v9.4c0,0.3,0.2,0.5,0.5,0.5h1.2
-                c0.3,0,0.5-0.2,0.5-0.5v-9.3h0.5v9.3c0,0.3,0.2,0.5,0.5,0.5h1.2c0.3,0,0.5-0.2,0.5-0.5v-9.4c0.3-0.2,0.5-0.5,0.5-0.9l0.5-9.2
-                C27.9,13.7,27.5,13.2,26.9,13.2z"
-                                                                            class="st0"></path>
-                                                                        <circle cx="24.5" cy="10.1" r="2.4" class="st0"></circle>
-                                                                    </g>
-                                                                </g>
-                                                            </svg></div>
-                                                        <div class="pull-left">
-                                                            <div>ชำระที่ตู้จำหน่ายตั๋ว</div>
-                                                            <div>(200 บาท)</div>
-                                                        </div>
-                                                    </div> -->
-                                                </div>
+                                                
                                             </div>
                                         </div>
                                         <!---->
                                         <div class="extra-info ticket-reserve">
                                             <div class="box-wrapper">
                                                 <div class="row">
-                                                    <div class="col-md-6 col-md-offset-3">
-                                                        <p>กรุณาชำระเงินและรับบัตรชมภาพยนตร์ก่อนรอบฉาย 60 นาที
-                                                            หากมีรายการจองที่ยังไม่ได้มารับเกิน 3 รายการ บริษัทฯ
-                                                            ขอสงวนสิทธิ์การจองในครั้งต่อไป</p>
-                                                        <div class="action">
-                                                            <div class="row">
-                                                                <div class="col-xs-6"><button type="button" class="button button-black-trans">ยกเลิกการจอง</button></div>
-                                                                <div class="col-xs-6"><button type="button" class="button button-black">ชำระเงิน</button></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -827,187 +726,16 @@
                                             <div value="9912|WLG4GGL" level="L" background="#fff" foreground="#000"
                                                 class=""><canvas height="350" width="350" style="width: 175px; height: 175px;"></canvas></div>
                                         </div>
-                                        <div class="code-group">
-                                            <div class="code-title">รหัสการจอง</div>
-                                            <div class="code">WLG4GGL</div>
-                                        </div>
-                                        <div class="cinema-section">
-                                            <div class="location"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 82.97 119.39"
-                                                    class="sf-icon location">
-                                                    <defs></defs>
-                                                    <title>location</title>
-                                                    <path d="M74.77,59.56C77.18,53.12,79,46.69,79,39,79,19.67,60.82,4,41.49,4S4,19.67,4,39c0,8.08,2.27,14.46,4.87,21.45l33.55,54.93Z"
-                                                        class="cls-1"></path>
-                                                    <circle cx="41.49" cy="40.25" r="7.85" class="cls-2"></circle>
-                                                </svg><span class="name">เอส เอฟ ซีเนม่า เดอะมอลล์ ท่าพระ</span></div>
-                                            <div class="cinema-wrapper">
-                                                <div class="cinema-col">
-                                                    <div class="cinema-label">โรงภาพยนตร์</div>
-                                                    <div class="cinema-data">3</div>
-                                                </div>
-                                                <div class="cinema-col">
-                                                    <div class="cinema-label">เลขที่นั่ง</div>
-                                                    <div class="cinema-data">E17</div>
-                                                </div>
-                                            </div>
-                                            <div class="cinema-wrapper">
-                                                <div class="desc-col">
-                                                    <div class="cinema-label">วันที่</div>
-                                                    <div class="desc-data">29 พ.ย. 2018</div>
-                                                </div>
-                                                <div class="desc-col">
-                                                    <div class="cinema-label">เวลา</div>
-                                                    <div class="desc-data">17:00</div>
-                                                </div>
-                                                <div class="desc-col">
-                                                    <div class="cinema-label">ราคา</div>
-                                                    <div class="desc-data">200 บาท</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="ticket-ribbon reserve"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 31.2 38.2"
-                                                xml:space="preserve" class="sf-icon reserve-ticket">
-                                                <g>
-                                                    <path d="M19.7,14.1v-9c0-0.6-0.5-1.1-1.1-1.1H5.3C4.7,4,4.2,4.5,4.2,5.1v27.4c0,0.5,0.4,1,0.9,1.1V34
-            c0,0.2,0.1,0.3,0.3,0.3h13.2c0.2,0,0.3-0.1,0.3-0.3v-0.4c0.5-0.1,0.9-0.6,0.9-1.1v-12l-1.8-1.6v4.4c0,0.2-0.2,0.4-0.4,0.4H6.4
-            c-0.2,0-0.4-0.2-0.4-0.4V6.3C6,6,6.2,5.9,6.4,5.9h11.1c0.2,0,0.4,0.2,0.4,0.4v6.4L19.7,14.1z M6.5,25.4h4c0.2,0,0.5,0.2,0.5,0.5
-            v1.4c0,0.2-0.2,0.5-0.5,0.5h-4c-0.2,0-0.5-0.2-0.5-0.5v-1.4C6,25.6,6.2,25.4,6.5,25.4z"
-                                                        class="st0"></path>
-                                                    <g>
-                                                        <path d="M26.9,13.2h-4.8c-0.5,0-0.9,0.3-1,0.8L20,16.2l-2.6-2.2c-0.5-0.4-1.2-0.3-1.6,0.1c-0.4,0.5-0.3,1.2,0.1,1.6
-                l3.7,3.2c0.5,0.4,1.2,0.3,1.6-0.1c0,0,0,0,0-0.1l0.3,4.8c0,0.4,0.2,0.8,0.5,0.9v9.4c0,0.3,0.2,0.5,0.5,0.5h1.2
-                c0.3,0,0.5-0.2,0.5-0.5v-9.3h0.5v9.3c0,0.3,0.2,0.5,0.5,0.5h1.2c0.3,0,0.5-0.2,0.5-0.5v-9.4c0.3-0.2,0.5-0.5,0.5-0.9l0.5-9.2
-                C27.9,13.7,27.5,13.2,26.9,13.2z"
-                                                            class="st0"></path>
-                                                        <circle cx="24.5" cy="10.1" r="2.4" class="st0"></circle>
-                                                    </g>
-                                                </g>
-                                            </svg><span>ชำระที่ตู้จำหน่ายตั๋ว (200 บาท)</span></div>
-                                        <div class="movie-section">
-                                            <div class="poster-wrapper"><img src="/layouts/group2/images/done/unnamed.jpg"></div>
-                                            <div class="detail-wrapper">
-                                                <div class="title">ราล์ฟตะลุยโลกอินเทอร์เน็ต วายร้ายหัวใจฮีโร่ 2</div>
-                                                <div class="movie-detail">
-                                                    <div class="sound"><svg viewBox="0 0 405.88 359.77" class="sf-icon sound">
-                                                            <defs></defs>
-                                                            <title>sound</title>
-                                                            <path d="M226.08,359.77a11.5,11.5,0,0,1-6.9-2.3L112.91,277.7C107.14,274,93,264.48,93,248.58V111.87c0-14.3,10.53-23.39,19.81-29.72L219.17,2.3a11.5,11.5,0,0,1,6.9-2.3,26.53,26.53,0,0,1,26.5,26.5V333.27A26.53,26.53,0,0,1,226.08,359.77ZM228.55,24L126.4,100.7,126,101c-6.7,4.55-10,8.11-10,10.85V248.58c0,1.39,1.27,4.53,9.76,10,0.22,0.14.44,0.29,0.65,0.45l102.15,76.67a3.49,3.49,0,0,0,1-2.48V26.5A3.49,3.49,0,0,0,228.55,24Z"
-                                                                class="cls-1"></path>
-                                                            <path d="M104.5,261.94h-78C11.89,261.94,0,251.41,0,238.47V121.3c0-12.94,11.89-23.47,26.5-23.47h78a11.5,11.5,0,0,1,11.5,11.5V250.44A11.5,11.5,0,0,1,104.5,261.94ZM23,237.9a5.59,5.59,0,0,0,3.5,1H93V120.82H26.5a5.59,5.59,0,0,0-3.5,1v116Z"
-                                                                class="cls-1"></path>
-                                                            <path d="M323.7,313.84a11.5,11.5,0,0,1-6-21.3,136.47,136.47,0,0,0,5-229.53A11.5,11.5,0,1,1,335.6,43.94a159.44,159.44,0,0,1-5.9,268.2A11.45,11.45,0,0,1,323.7,313.84Z"
-                                                                class="cls-1"></path>
-                                                            <path d="M289.25,269.35a11.5,11.5,0,0,1-5.35-21.69,80.75,80.75,0,0,0,7.68-138.47,11.5,11.5,0,1,1,12.88-19.06A103.75,103.75,0,0,1,294.58,268,11.45,11.45,0,0,1,289.25,269.35Z"
-                                                                class="cls-1"></path>
-                                                        </svg><span>TH</span></div>
-                                                    <!---->
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!---->
-                                        <div class="extra-info ticket-reserve">
-                                            <div class="box-wrapper">
-                                                <p>กรุณาชำระเงินและรับบัตรชมภาพยนตร์ก่อนรอบฉาย 60 นาที
-                                                    หากมีรายการจองที่ยังไม่ได้มารับเกิน 3 รายการ บริษัทฯ
-                                                    ขอสงวนสิทธิ์การจองในครั้งต่อไป</p>
-                                                <div class="action">
-                                                    <div class="row">
-                                                        <div class="col-xs-6"><button type="button" class="button button-black-trans">ยกเลิกการจอง</button></div>
-                                                        <div class="col-xs-6"><button type="button" class="button button-black">ชำระเงิน</button></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!---->
+                                        
                                     </div>
-                                </div>
-                                <div class="ticket-border border-bottom"><img src="/layouts/group2/images/done/ticket-border-bottom.png"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!---->
-            <div class="account-wrapper">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <div class="account-sidebar">
-                                <div class="avatar"><a href="https://www.sfcinemacity.com/booking-history#"><img src="/layouts/group2/images/done/unnamed(1).jpg"
-                                            alt="">
-                                        <div class="change-profile-picture"><span>เปลี่ยนรูปภาพ</span></div>
-                                    </a></div>
-                                <ul class="account-menu">
-                                    <li><a href="https://www.sfcinemacity.com/booking-history" class="router-link-exact-active active">ประวัติการจอง/ซื้อ</a></li>
-                                    <li><a href="https://www.sfcinemacity.com/profile" class="">ข้อมูลส่วนตัว</a></li>
-                                    <!---->
-                                    <li class="logout"><a href="https://www.sfcinemacity.com/booking-history" class="button button-logout">ออกจากระบบ</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-sm-9">
-                            <div class="account-welcome">
-                                <div class="avatar"><a href="https://www.sfcinemacity.com/booking-history#"><img src="/layouts/group2/images/done/unnamed(1).jpg"
-                                            alt="">
-                                        <div class="change-profile-picture"><span>เปลี่ยนรูปภาพ</span></div>
-                                    </a></div>
-                                <div class="info-wrapper">
-                                    <h1><span class="text">สวัสดี, </span><span class="name">Panusron Phansod</span></h1>
-                                </div>
-                                <ul class="account-menu">
-                                    <li><a href="https://www.sfcinemacity.com/profile" class="">ข้อมูลส่วนตัว</a></li>
-                                    <li><a href="https://www.sfcinemacity.com/booking-history" class="router-link-exact-active active">ประวัติการจอง/ซื้อ</a></li>
-                                    <!---->
-                                </ul>
-                            </div>
-                            <!---->
-                            <div class="account-box booking-history pagi-anchor">
-                                <div class="account-box-header">
-                                    ประวัติการจอง/ซื้อ
-                                </div>
-                                <div class="account-box-body booking-list">
-                                    <div class="page-list">
-                                        <div class="booking-item"><a href="https://www.sfcinemacity.com/booking-history#"
-                                                class="overlay-button"></a>
-                                            <div class="booking-poster">
-                                                <div class="poster">
-                                                    <div class="image" style="background-image: url(&quot;https://lh3.googleusercontent.com/b-583wIXL0TxKsSWgGs7Bv5e00ZpG524WgIIXNIjdordeJuPsjWjRpu1DdNhRqEO0_XUPJdiSLhrY60oTu90&quot;);"></div>
-                                                </div>
-                                            </div>
-                                            <div class="booking-info">
-                                                <h1 class="name">ราล์ฟตะลุยโลกอินเทอร์เน็ต วายร้ายหัวใจฮีโร่ 2</h1>
-                                                <div class="info-wrapper">
-                                                    <div class="booking-showtime">
-                                                        <h3 class="cinema-location"><svg xmlns="http://www.w3.org/2000/svg"
-                                                                viewBox="0 0 82.97 119.39" class="sf-icon location">
-                                                                <defs></defs>
-                                                                <title>location</title>
-                                                                <path d="M74.77,59.56C77.18,53.12,79,46.69,79,39,79,19.67,60.82,4,41.49,4S4,19.67,4,39c0,8.08,2.27,14.46,4.87,21.45l33.55,54.93Z"
-                                                                    class="cls-1"></path>
-                                                                <circle cx="41.49" cy="40.25" r="7.85" class="cls-2"></circle>
-                                                            </svg> เอส เอฟ ซีเนม่า เดอะมอลล์ ท่าพระ</h3>
-                                                        <ul>
-                                                            <li><span>วันที่</span> 29 พฤศจิกายน 2018</li>
-                                                            <li><span>เวลา</span> 17:00</li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="action"><button type="button" class="button button-default button-view-ticket">ดูรายละเอียด</button></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <ul class="paginate-links booking_history">
-                                        <li class="left-arrow disabled"><a>«</a></li>
-                                        <li class="number active"><a>1</a></li>
-                                        <li class="right-arrow disabled"><a>»</a></li>
-                                    </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+      
+            <div class="account-wrapper"></div>
         </div>
         <div id="footer">
             <div class="brands-wrapper">
@@ -1022,64 +750,9 @@
                     </div>
                 </div>
             </div>
-            <div class="footbar">
-                <div class="container">
-                    <div class="footbar-inner">
-                        <div class="footbar-top">
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-4 call-center">
-                                    <div class="inner">
-                                        <h2 class="tel">SF Call Center : <a href="tel:6622688888">02 268 8888</a></h2>
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-8 footer-menu">
-                                    <div class="inner">
-                                        <ul>
-                                            <li><a href="https://www.sfcinemacity.com/about-sf" class="">เกี่ยวกับ SF</a></li>
-                                            <li><a href="https://www.sfcinemacity.com/branches" class="">สาขา</a></li>
-                                            <li><a href="https://www.sfcinemacity.com/system-type" class="">ระบบในการรับชมภาพยนตร์</a></li>
-                                            <li><a href="https://www.sfcinemacity.com/how-to-buy" class="">วิธีการซื้อ</a></li>
-                                            <li><a href="https://www.sfcinemacity.com/work-with-us" class="">ร่วมงานกับเรา</a></li>
-                                            <li><a href="https://www.sfcinemacity.com/contact-us" class="">ติดต่อเรา</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="footbar-bottom">
-                            <div class="row">
-                                <div class="col-sm-4 social-media">
-                                    <div class="inner">
-                                        <ul class="social-list">
-                                            <li class="facebook"><a href="https://www.facebook.com/WeLoveSF" target="_blank"><img
-                                                        src="/layouts/group2/images/done/icon-facebook.svg" alt="Facebook"></a></li>
-                                            <li class="twitter"><a href="https://twitter.com/WeLoveSF" target="_blank"><img
-                                                        src="/layouts/group2/images/done/icon-twitter.svg" alt="Twitter"></a></li>
-                                            <li class="instagram"><a href="https://www.instagram.com/welove_sf" target="_blank"><img
-                                                        src="/layouts/group2/images/done/icon-instagram.svg" alt="Instagram"></a></li>
-                                            <li class="youtube"><a href="https://www.youtube.com/WeLoveSF" target="_blank"><img
-                                                        src="/layouts/group2/images/done/icon-youtube.svg" alt="Youtube"></a></li>
-                                            <li class="line"><a href="https://line.me/R/ti/p/@welovesf" target="_blank"><img
-                                                        src="/layouts/group2/images/done/icon-line.svg" alt="LINE"></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-sm-8 site-credit">
-                                    <div class="inner">
-                                        <p class="credit">Copyright © 2018 SF Group. All rights reserved.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+           
         </div>
-        <!---->
-        <!---->
-        <!---->
-        <!---->
-        <!---->
+        
         <div id="loading" style="display: none;">
             <div id="loading-item"></div>
         </div>
@@ -1088,36 +761,4 @@
     <script src="/layouts/group2/js/done/vendor.eb91d5bf77b2c769fcc2.js" defer=""></script>
     <script src="/layouts/group2/js/done/app.baa2eadcab44e34fea36.js" defer=""></script>
 
-
-    <div class="adgurd-alert adguard-assistant-button-fixed adguard-assistant-button-bottom adguard-assistant-button-right">
-        <div class="adgurd-alert-wrap">
-            <div class="adgurd-alert-logo-big"></div>
-            <div class="adgurd-alert-cont" style="opacity: 0; display: none;">
-                <div class="adgurd-alert-tail"></div>
-                <div class="adgurd-alert-head"></div>
-                <div class="adgurd-alert-text"></div>
-                <div class="adgurd-alert-more"></div>
-            </div>
-        </div>
-    </div>
-    <div class="alertify  ajs-movable ajs-closable ajs-pinnable ajs-pulse ajs-out ajs-hidden">
-        <div class="ajs-dimmer"></div>
-        <div class="ajs-modal" tabindex="0">
-            <div class="ajs-dialog" tabindex="0"><button class="ajs-reset"></button>
-                <div class="ajs-commands"><button class="ajs-pin"></button><button class="ajs-maximize"></button><button
-                        class="ajs-close"></button></div>
-                <div class="ajs-header"></div>
-                <div class="ajs-body">
-                    <div class="ajs-content">Not response VISTA</div>
-                </div>
-                <div class="ajs-footer">
-                    <div class="ajs-auxiliary ajs-buttons"></div>
-                    <div class="ajs-primary ajs-buttons"><button class="ajs-button ajs-ok">OK</button></div>
-                </div>
-                <div class="ajs-handle"></div><button class="ajs-reset"></button>
-            </div>
-        </div>
-    </div>
 </body>
-
-</html>

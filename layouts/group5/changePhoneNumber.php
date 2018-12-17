@@ -18,8 +18,8 @@
       </div>
       <!-- line -->
       <div class="gap"></div>
-      <div class="box-name-text" style="margin-left: 97px;">Current Phone Number</div>
-      <div class="gap-less" style="margin-left: 97px;">099 999 9999</div>
+      <div class="box-name-text" style="margin-left: 118px;">Current Phone Number</div>
+      <div class="gap-less" style="margin-left: 130px;"><?php echo $this->currentPhone; ?></div>
       <div class="gap"></div>
       </br>
       <!-- change form -->
@@ -31,15 +31,15 @@
               <label class="box-name-text" for="exampleInputEmail1">New Mobile Phone Number</label>
               <input type="text" class="form-control form-control-lg" id="PhoneNumber" name="PhoneNumber" placeholder="">
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
               <label class="box-name-text gap" for="exampleInputPassword1">Current Password</label>
-              <!-- <small class="right"><a href="localhost:8000/chage/password">Forget password?</a></small> -->
+              <small class="right"><a href="localhost:8000/chage/password">Forget password?</a></small>
               <input type="password" class="form-control form-control-lg" id="Password" name="Password" placeholder="">
-            </div>
+            </div> -->
             <div class="gap-more"></div>
 
               <input type="submit" class="cancel-block gap" value="Submit">
-              <button type="button" class="cancel-block gap" onclick="location = 'customer/membership'">Cancel</button>
+              <button type="button" class="cancel-block gap" onclick="location = '/customer/membership'">Cancel</button>
 
           </form>
         </div>

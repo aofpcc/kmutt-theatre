@@ -2,7 +2,8 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 $klein->respond('GET', '/group2/home_page/select_movie/select_time/select_seat/pay_ment', function ($request, $response, $service) {
-    $service->render('layouts/group2/payment.php');
+    
+$service->render('layouts/group2/payment.php');
 });
 
 $klein->respond('POST', '/group2/check_card_no', function ($request, $response, $service) {
@@ -36,4 +37,12 @@ $klein->respond('POST', '/group2/check_card_no', function ($request, $response, 
     // $service->pageTitle = 'KMUTT THEATRE | Member';
 
     // $service->render('layouts/group2/returnticket.php');
+});
+
+$klein->respond('POST', '/group2/gopayment', function ($request, $response, $service) {
+    global $database;
+    $conn = $database->getConnection();
+
+    $response->redirect('/emp/group2/home_page/select_movie/select_time/select_seat/pay_ment');
+    $response->send();
 });

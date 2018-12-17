@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="/layouts/group5/css/change.css">
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
     <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script> -->
-    <title>Change Email</title>
+    <!-- <title></title> -->
 </head>
 
 <body class="body-bg">
@@ -21,7 +21,7 @@
       <div class="box-name-text" style="margin-left: 97px;">Current Email</div>
       <div class="gap-less" style="margin-left: 97px;"><?php echo $this->currentEmail; ?></div>
       <div class="gap"></div>
-      </br>
+      <br>
       <!-- change form -->
       <div class="row">
         <div class="col-sm-1"></div>

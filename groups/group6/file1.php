@@ -83,9 +83,9 @@ $klein->respond('GET', '/androidUpdate', function ($request, $response, $service
   $stmt->execute();
   $num3 = $stmt->rowCount();
 
-  if($num1 == 1){
+  if($num1 == 0){
     if($num2 == 1){
-      if($num1 == 0){
+      if($num3 == 0){
             //$query = "INSERT INTO G05_Member_profile (MemberID, ID_Card, Fname, Lname, Gender, Birthdate, Email, PhoneNumber)
                               //      VALUES ('$userID', '$identNo', '$firstname', '$lastname', '$gender', '$birthdate', '$email', '$phoneno')";
             $query = "UPDATE G05_Member_profile SET Fname = '$firstname', Lname = '$lastname', Gender = '$gender', Birthdate = '$birthdate', PhoneNumber = '$phoneno' WHERE MemberID = '$userID'";

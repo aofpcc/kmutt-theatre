@@ -68,14 +68,15 @@
         </ul>
         <div class="clear"></div>
 
-        <form action="/customer/kmutt_home/branch/show_time/select_chair/payment" method="post">
+          <form action="/customer/kmutt_home/branch/show_time/select_chair/payment" method="post">
             <ul id="selectedSeats" class="scrollbar scrollbar1"></ul>
+            <form action="selectchair_page.php" method="post">
           <button id="booknow" class="checkout-button" name="book_now">Book Now
         </button>
         <div id="legend"></div>
       </div>
       <div style="clear:both"></div>
-    </div>
+      </div> </form></form>
 
     <!-- <script src="/layouts/group1/js/booking.js" charset="utf-8"></script> -->
     <?php $this->partial("layouts/group1/js/booking.php"); ?>

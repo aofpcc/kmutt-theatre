@@ -41,7 +41,7 @@
           <form action="/customer/editprofile/action" method="post">
             <!-- HIDDEN FIELD: MemberID -->
             <input type="hidden" name="MemberID" value="<?php echo($this->usr[0]['MemberID'])?>" />
-            
+
             <!-- Current Password -->
             <div class="form-group">
               <label class="box-name-text gap" for="exampleInputPassword1">First Name</label>
@@ -77,7 +77,9 @@
             <div class="gap-more"></div>
               <button type="submit" class="block gap">Save</button>
               <button type="submit" class="cancel-block gap">Cancel</button>
-
+            </br>
+            </br>
+            </br>
           </form>
         </div>
         <div class="col-sm-5"></div>

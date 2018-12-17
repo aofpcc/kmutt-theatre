@@ -121,6 +121,33 @@ $klein->respond('POST', '/fnb/checkemp', function ($request, $response, $service
   }
 });
 
+$klein->respond('POST', '/fnb/update_point', function ($request, $response, $service, $app, $validator) {
+    global $database;
+    $conn = $database->getConnection();
+
+    $service->validateParam('CusID', 'Bad Request')->notNull();
+//    $service->validateParam('points', 'Bad Request')->notNull();
+//    $service->validateParam('hisPoints', 'Bad Request')->notNull();
+
+    $cusID = $request->CusID;
+    $points = $request->points;
+    $hisPoints = $request->hisPoints;
+    return $response->json(
+        [
+            "CusID"=>$cusID,
+            "points"=>$points,
+            "hisPoints"=>$hisPoints,
+        ]
+    );
+
+    $sql = "select SUM(Point) as hisPoint,Lname,Fname  from G13_FNB_Point as p,G05_Member_profile as m where p.CusID = '$cusID' AND m.MemberID = '$cusID'";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $num = $stmt->rowCount();
+
+});
+
+
 $klein->respond('POST', '/fnb/get_points_and_name', function ($request, $response, $service, $app, $validator) {
     global $database;
     $conn = $database->getConnection();
@@ -188,14 +215,14 @@ $klein->respond('POST', '/fnb/getprice', function ($request, $response, $service
 });
 
 $klein->respond('POST', '/fnb/do_order', function ($request, $response, $service, $app, $validator) {
-  global $database;
-  $conn = $database->getConnection();
+    global $database;
+    $conn = $database->getConnection();
 
-  $service->validateParam('empID', 'Bad Request')->notNull();
-  $service->validateParam('payment', 'Bad Request')->notNull();
-  $service->validateParam('item', 'Bad Request')->notNull();
-  $service->validateParam('product', 'Bad Request')->notNull();
-  $service->validateParam('total', 'Bad Request')->notNull();
+    $service->validateParam('empID', 'Bad Request')->notNull();
+    $service->validateParam('payment', 'Bad Request')->notNull();
+    $service->validateParam('item', 'Bad Request')->notNull();
+    $service->validateParam('product', 'Bad Request')->notNull();
+    $service->validateParam('total', 'Bad Request')->notNull();
 
     $empID = $request->empID;
     $cusID = $request->cusID;
@@ -204,51 +231,53 @@ $klein->respond('POST', '/fnb/do_order', function ($request, $response, $service
     $product = $request->product;
     $coupon = $request->couponID;
     $total = $request->total;
+    $drinkSet = $request->drinkSet;
+    $flavorSet = $request->flavorSet;
     $items = explode(",",$item);
     $products =explode(",",$product);
+    $drinkSet =explode(",",$drinkSet);
+    $flavorSet =explode(",",$flavorSet);
 
-//    $data =[
+//    return $response->json(
 //        [
-//            "empID" => $empID,
-//            "cusID" => $cusID,
-//            "payment" => $payment,
-//            "item" => $item,
-//            "product" => $product,
-//            "coupon" => $coupon,
-//            "total" =>$total,
+//            "result"=>"success",
+//            "flavorSet"=>$flavorSet,
+//            "drinkSet"=>$drinkSet,
+//            "items"=>$items,
+//            "products"=>$products,
+//            "productsOrderStock"=>$productsOrderStock,
 //        ]
-//    ];
-//    return $response->json($data);
-  $insertSalelistSql = "INSERT INTO G13_FNB_SaleList(cusID,empID,paymentType,codeID,total,Time,Date) values('$cusID','$empID','$payment','$coupon','$total',NOW(),NOW())";
-  $order = "SELECT max(receiptID) as receiptID FROM G13_FNB_SaleList";
-//  $stock = "UPDATE G13_FNB_Stock as s SET Remain = $xxx WHERE s.StockID=$StockID";
-  $conn->beginTransaction();
+//    );
 
-  try {
-    $conn->exec($insertSalelistSql);
-    $orderresult = $conn->prepare($order);
-    $orderresult->execute();
-    $row = $orderresult->fetchAll(PDO::FETCH_BOTH);
-    $row = $row[0];
-    $receiptID =  $row['receiptID'];
-    for($i=0; $i<count($items);$i++){
-        $updateDetailSql ="INSERT INTO realtheatre.`G13_FNB_detail` (receiptID,productID,quantity) VALUES('$receiptID','$products[$i]','$items[$i]')";
-        $a = $conn->prepare($updateDetailSql);
-        $a->execute();
+    $insertSalelistSql = "INSERT INTO G13_FNB_SaleList(cusID,empID,paymentType,codeID,total,Time,Date) values('$cusID','$empID','$payment','$coupon','$total',NOW(),NOW())";
+    $order = "SELECT max(receiptID) as receiptID FROM G13_FNB_SaleList";
+    $conn->beginTransaction();
+
+    try {
+        $conn->exec($insertSalelistSql);
+        $orderresult = $conn->prepare($order);
+        $orderresult->execute();
+        $row = $orderresult->fetchAll(PDO::FETCH_BOTH);
+        $row = $row[0];
+        $receiptID =  $row['receiptID'];
+        for($i=0; $i<count($items);$i++){
+            $updateDetailSql ="INSERT INTO realtheatre.`G13_FNB_detail` (receiptID,productID,quantity) VALUES('$receiptID','$products[$i]','$items[$i]')";
+            $a = $conn->prepare($updateDetailSql);
+            $a->execute();
+        }
+        $productsOrderStock = getProductOrderForStock($products,$items,$flavorSet,$drinkSet);
+        updateAllOrderStock($productsOrderStock);
+        $conn->commit();
+        return $response->json(["result"=>"success","message"=>"all :".count($items)." item[s]"]);
+    } catch(PDOException $e) {
+        $conn->rollback();
+         return $response->json(
+            [
+                 "result"=>"failed",
+                 "error"=>$e->getMessage(),
+            ]
+         );
     }
-    $productsOrderStock = getProductOrderForStock($products,$items);
-    updateAllOrderStock($productsOrderStock);
-    $conn->commit();
-    return $response->json(["result"=>"success","message"=>"all :".count($items)." item[s]"]);
-  } catch(PDOException $e) {
-    $conn->rollback();
-     return $response->json(
-        [
-             "result"=>"failed",
-             "error"=>$e->getMessage(),
-        ]
-     );
-  }
 });
 
 function getSize($productID){
@@ -267,18 +296,54 @@ function getStockID($productID) {
     return $stockID;
 }
 
-function getProductOrderForStock($productOrderList,$quantityList){
+function getProductOrderForStock($productOrderList,$quantityList,$flavorSet,$drinkSet){
     $productOrderStock = [];
-    foreach ($productOrderList as $k =>$product) {
-        array_push($productOrderStock,[
-            "stockID"=>getStockID($product),
-            "size"=>getSize($product),
-            "quantity"=>$quantityList[$k],
-            "remain"=>getRemain(getStockID($product))
-        ]);
+    foreach ($productOrderList as $k =>$productID) {
+        if(substr($productID,0,4)!="PRST" ){
+            array_push($productOrderStock,[
+                "stockID"=>getStockID($productID),
+                "size"=>getSize($productID),
+                "quantity"=>$quantityList[$k],
+                "remain"=>getRemain(getStockID($productID))
+            ]);
+        } else{
+            $productIDFormPRST = getProductIDWithPRST($productID,$flavorSet[$k],$drinkSet[$k]);
+            foreach ($productIDFormPRST as $productID){
+                array_push($productOrderStock,[
+                    "stockID"=>getStockID($productID),
+                    "size"=>getSize($productID),
+                    "quantity"=>$quantityList[$k],
+                    "remain"=>getRemain(getStockID($productID))
+                ]);
+            }
+        }
+
+
+            /*************************
+            *  1.get real productID form PRST FORM combine_SET (2 product id[s])
+            *  2.use method get_size form product id that get form 1.
+            *  3.get stock Id form real product ID
+            *  4.
+            *
+            *****************************/
+
     }
     return $productOrderStock;
 }
+
+function getProductIDWithPRST($promotionSetID,$flavorSet,$drinkSet){
+    $tableSize=[
+        "01"=>"0M",
+        "02"=>"0L",
+        "03"=>"XL",
+    ];
+    $productIDs=[];
+    $size = substr($promotionSetID,4,2);
+    array_push($productIDs,"PC".$flavorSet.$tableSize[$size]);
+    array_push($productIDs,"DR".$drinkSet.$tableSize[$size]);
+    return $productIDs;
+}
+
 function getStockTable(){
     global $database;
     $conn = $database->getConnection();

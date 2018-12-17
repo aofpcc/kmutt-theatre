@@ -17,34 +17,32 @@ function removeitem(id) {
  }
 
 function additem() {
- var type = $('.typeCheckbox:checked').val();
+    var type = $('.typeCheckbox:checked').val();
 
- if (type == "PC") {
-     var flavor = $('.flavorCheckbox:checked').val();
-     var size = $('.sizeCheckbox:checked').val();
-     var productID = type + flavor + size;
-     get_price(productID);
- }
- if (type == "DR") {
-    var drink = $('.drinkCheckbox:checked').val();
-    var size = $('.sizeCheckbox:checked').val();
-    var productID = type + drink + size;
-    get_price(productID);
-}
-if (type == "PRST") {
-    var set = $('.setCheckbox:checked').val();
-    var productID = type + set;
-    get_price(productID);
-}
-if (type=="SN") {
-    var snack = $('.snackCheckbox:checked').val();
-    var sizeS = $('.sizeSCheckbox:checked').val();
-    var productID = type + snack + '00';
-    get_price(productID);
-}
+    if (type == "PC") {
+         var flavor = $('.flavorCheckbox:checked').val();
+         var size = $('.sizeCheckbox:checked').val();
+         var productID = type + flavor + size;
+         get_price(productID);
+    }
+    if (type == "DR") {
+        var drink = $('.drinkCheckbox:checked').val();
+        var size = $('.sizeCheckbox:checked').val();
+        var productID = type + drink + size;
+        get_price(productID);
+    }
+    if (type == "PRST") {
+        var set = $('.setCheckbox:checked').val();
+        var productID = type + set;
 
-
-
+        get_price(productID);
+    }
+    if (type=="SN") {
+        var snack = $('.snackCheckbox:checked').val();
+        var sizeS = $('.sizeSCheckbox:checked').val();
+        var productID = type + snack + '00';
+        get_price(productID);
+    }
 
 }
 function sum_price(price,unit,id){
@@ -65,6 +63,9 @@ function total_price(){
 
 function get_price(productID) {
  let formData = new FormData();
+ let flavorSet = $('.flavorCheckbox:checked').val();
+ let drinkSet = $('.drinkCheckbox:checked').val();
+ console.log(flavorSet,drinkSet);
  formData.append("productID", productID);
  let xhr = new XMLHttpRequest();
  xhr.open("POST", '/emp/fnb/getprice', true); // or https://example.com/upload/image
@@ -75,15 +76,24 @@ function get_price(productID) {
          price = data[0].price;
          productName = data[0].productName;
          productID = data[0].productID;
-         const markup = `<tr id="tritem${item}">
+         let markup = `<tr id="tritem${item}">
              <td>${productName}</td>
              <td>${price}</td>
              <td><input id="unit${item}" type="number" class="form-control w-25" name="item[]" min="0" onchange="sum_price(${price},this.value,${item})"></td>
              <td><input class="form-control w-25" id="sum${item}" value="" disabled></td>
              <td><input class="btn btn-danger" value="Remove" onclick="removeitem(${item})"></td>
-             <td><input type="hidden" class="form-control w-25" name="product[]" value="${productID}"></td>
-             </tr>
-             `;
+             <td><input type="hidden" class="form-control w-25" name="product[]" value="${productID}"></td>`;
+        if(flavorSet && drinkSet){
+            markup+=`<input type="hidden" name="flavorSet[]" value="${flavorSet}" >
+                     <input type="hidden" name="drinkSet[]" value="${drinkSet}" >
+                     </tr>
+                     `;
+        } else{
+            markup+=`<input type="hidden" name="flavorSet[]" value="" >
+                     <input type="hidden" name="drinkSet[]" value="" >
+                     </tr>
+                     `;
+        }
          $("#items").append(markup);
          // let check = document.getElementById("unit").value;
          // console.log(check);
@@ -91,7 +101,6 @@ function get_price(productID) {
          clearall();
      }
  }
-
 }
 
 // function update_stock(productID) {
@@ -130,6 +139,8 @@ function updateOrder(){
     let payment = $("#payment").val();
     let item = $("input[name='item[]']").map(function(){return $(this).val();}).get();
     let product = $("input[name='product[]']").map(function(){return $(this).val();}).get();
+    let flavorSet = $("input[name='flavorSet[]']").map(function(){return $(this).val();}).get();
+    let drinkSet = $("input[name='drinkSet[]']").map(function(){return $(this).val();}).get();
     let formData = new FormData();
     formData.append("cusID", null);
     formData.append("empID", empId);
@@ -138,6 +149,8 @@ function updateOrder(){
     formData.append("item", item);
     formData.append("product", product);
     formData.append("total", total);
+    formData.append("flavorSet", flavorSet);
+    formData.append("drinkSet", drinkSet);
     let xhr = new XMLHttpRequest();
     xhr.open("POST", '/emp/fnb/do_order', true); // or https://example.com/upload/image
     xhr.send(formData);
@@ -145,11 +158,11 @@ function updateOrder(){
         if (xhr.readyState == 4 && xhr.status == 200) {
             let data = JSON.parse(xhr.responseText);
             if (data.result=="success"){
-                alert(`update order success`);
                 console.log(data);
                 total_price();
                 clearall();
-                clearProductOrder();
+                // clearProductOrder();
+                getPointAndName();
             }else{
                 alert("update order failed "+data.error);
             }
@@ -169,14 +182,14 @@ function getPointAndName(){
         if (xhr.readyState == 4 && xhr.status == 200) {
             var data = JSON.parse(xhr.responseText);
             let name = data[0].name;
-            let hisPoint = data[0].hisPoint;
+            let hisPoint = (data[0].hisPoint)?data[0].hisPoint:0;
             $('#nameModal').text("Name : " +name );
-            $('#hisPoint').text("History points : " +hisPoint + " points" );
+            $('#hisPointModal').text("History points : " +hisPoint + " points" );
             $('#PointNowModal').text("This time points : " +points + " points" );
             $('#points').val(points);
+            $('#hisPoints').val(hisPoint);
             $('#totalModal').text("Total : " +total + " baht" );
             $('#exampleModalCenter').modal('show')
-            updateOrder();
         }
     }
 }
@@ -197,7 +210,6 @@ function checkemp(){
                  $("#empinvalid").hide();
                  $("#empID").prop('readonly', true);
                  $("#sellbox").show();
-
              }else{
                  $("#empvalid").hide();
                  $("#empinvalid").show();

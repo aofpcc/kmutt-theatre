@@ -38,7 +38,7 @@
     <a class="nav-item nav-link disabled" href="#">Mon<br><small>18 Nov 2018</small></a>
     <a class="nav-item nav-link disabled" href="#">Tue<br><small>19 Nov 2018</small></a> -->
     <?php foreach($this->query as $q) { ?>
-      <a class="btn-dark nav-item nav-link <?=$q["status"]?>" href="/emp/group2/home_page/select_movie/select_time/select_seat/all/<?=$this->movie_id?>/<?=$q["value"]?>"><?=$q["date"] ?><br><small><?=$q["str"] ?></small></a>
+      <a class="btn-dark nav-item nav-link <?=$q["status"]?>" href="/emp/group2/home_page/select_movie/select_time/all/<?=$this->movie_id?>/<?=$q["value"]?>"><?=$q["date"] ?><br><small><?=$q["str"] ?></small></a>
     <?php } ?>
   </nav>
   <hr>
@@ -57,7 +57,7 @@
   $(document).ready(function(){
     var movie_id = "<?=$this->movie_id?>";
     var date = "<?=$this->datenow?>";
-    $.get("/emp/group2/home_page/select_movie/select_time/select_seat/all/"+movie_id+"/"+date).done(function(data){
+    $.get("/emp/group2/home_page/select_movie/select_time/all/"+movie_id+"/"+date).done(function(data){
       $("#showtime").html(data);
     });
   });

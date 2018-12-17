@@ -5,6 +5,8 @@ var drinkchoice = 5;
 var sizechoice =4;
 var setchoice =3;
 var snackchoice=2;
+var total = 0;
+
 
 function removeitem(id) {
      console.log(id);
@@ -52,14 +54,13 @@ function sum_price(price,unit,id){
 
 }
 function total_price(){
-    var total = 0;
+    total = 0;
     $("#totalprice").text("");
 
     for (var i = 1; i < item; i++) {
         total += Number($("#sum"+i).val());
-        console.log(total);
     }
-    $("#totalprice").append("Total = "+total);
+    $("#totalprice").text("Total = "+total);
 }
 
 function get_price(productID) {
@@ -77,14 +78,15 @@ function get_price(productID) {
          const markup = `<tr id="tritem${item}">
              <td>${productName}</td>
              <td>${price}</td>
-             <td><input type="number" class="form-control w-25" name="item[]" min="0" onchange="sum_price(${price},this.value,${item})"></td>
+             <td><input id="unit${item}" type="number" class="form-control w-25" name="item[]" min="0" onchange="sum_price(${price},this.value,${item})"></td>
              <td><input class="form-control w-25" id="sum${item}" value="" disabled></td>
              <td><input class="btn btn-danger" value="Remove" onclick="removeitem(${item})"></td>
              <td><input type="hidden" class="form-control w-25" name="product[]" value="${productID}"></td>
-
              </tr>
              `;
          $("#items").append(markup);
+         // let check = document.getElementById("unit").value;
+         // console.log(check);
          item++;
          clearall();
      }
@@ -92,33 +94,91 @@ function get_price(productID) {
 
 }
 
-function update_stock(productID) {
- let formData = new FormData();
- formData.append("productID", productID);
- let xhr = new XMLHttpRequest();
- xhr.open("POST", '/emp/fnb/getprice', true); // or https://example.com/upload/image
- xhr.send(formData);
- xhr.onreadystatechange = function() {
-     if (xhr.readyState == 4 && xhr.status == 200) {
-         var data = JSON.parse(xhr.responseText);
-         price = data[0].price;
-         productName = data[0].productName;
-         productID = data[0].productID;
-         const markup = `<tr id="tritem${item}">
-             <td>${productName}</td>
-             <td>${price}</td>
-             <td><input type="number" class="form-control w-25" name="item[]" min="0" onchange="sum_price(${price},this.value,${item})"></td>
-             <td><input class="form-control w-25" id="sum${item}" value="" disabled></td>
-             <td><input class="btn btn-danger" value="Remove" onclick="removeitem(${item})"></td>
-             <td><input type="hidden" class="form-control w-25" name="product[]" value="${productID}"></td>
+// function update_stock(productID) {
+//  let formData = new FormData();
+//  formData.append("productID", productID);
+//  let xhr = new XMLHttpRequest();
+//  xhr.open("POST", '/emp/fnb/getprice', true); // or https://example.com/upload/image
+//  xhr.send(formData);
+//  xhr.onreadystatechange = function() {
+//      if (xhr.readyState == 4 && xhr.status == 200) {
+//          var data = JSON.parse(xhr.responseText);
+//          price = data[0].price;
+//          productName = data[0].productName;
+//          productID = data[0].productID;
+//          const markup = `<tr id="tritem${item}">
+//              <td>${productName}</td>
+//              <td>${price}</td>
+//              <td><input  type="number" class="form-control w-25" name="item[]" min="0" onchange="sum_price(${price},this.value,${item})"></td>
+//              <td><input class="form-control w-25" id="sum${item}" value="" disabled></td>
+//              <td><input class="btn btn-danger" value="Remove" onclick="removeitem(${item})"></td>
+//              <td><input type="hidden" class="form-control w-25" name="product[]" value="${productID}"></td>
+//              </tr>
+//              `;
+//          $("#items").append(markup);
+//
+//          item++;
+//          clearall();
+//      }
+//  }
+// }
 
-             </tr>
-             `;
-         $("#items").append(markup);
-         item++;
-         clearall();
-     }
- }
+function updateOrder(){
+    let cusID = $("#CusID").val();
+    let empId = $("#empID").val();
+    let couponID = $("#coupon").val();
+    let payment = $("#payment").val();
+    let item = $("input[name='item[]']").map(function(){return $(this).val();}).get();
+    let product = $("input[name='product[]']").map(function(){return $(this).val();}).get();
+    let formData = new FormData();
+    formData.append("cusID", null);
+    formData.append("empID", empId);
+    formData.append("couponID", couponID);
+    formData.append("payment", payment);
+    formData.append("item", item);
+    formData.append("product", product);
+    formData.append("total", total);
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", '/emp/fnb/do_order', true); // or https://example.com/upload/image
+    xhr.send(formData);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            let data = JSON.parse(xhr.responseText);
+            if (data.result=="success"){
+                alert(`update order success`);
+                console.log(data);
+                total_price();
+                clearall();
+                clearProductOrder();
+            }else{
+                alert("update order failed "+data.error);
+            }
+        }
+    }
+}
+
+function getPointAndName(){
+    var cusID = $("#CusID").val();
+    var points = Math.floor(total/100);
+    let formData = new FormData();
+    formData.append("CusID", cusID);
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", '/emp/fnb/get_points_and_name', true); // or https://example.com/upload/image
+    xhr.send(formData);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            var data = JSON.parse(xhr.responseText);
+            let name = data[0].name;
+            let hisPoint = data[0].hisPoint;
+            $('#nameModal').text("Name : " +name );
+            $('#hisPoint').text("History points : " +hisPoint + " points" );
+            $('#PointNowModal').text("This time points : " +points + " points" );
+            $('#points').val(points);
+            $('#totalModal').text("Total : " +total + " baht" );
+            $('#exampleModalCenter').modal('show')
+            updateOrder();
+        }
+    }
 }
 
 function checkemp(){
@@ -181,7 +241,6 @@ function checkcusid(){
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && xhr.status == 200) {
             var data = JSON.parse(xhr.responseText);
-            console.log(data);
             status = data[0].status;
              if(status=="Y"){
                 $("#CusID").prop('readonly', true);
@@ -355,4 +414,12 @@ function clearall() {
  for (var i = 1; i <= setchoice; i++) {
      document.getElementById("set" + i).checked = false;
  }
+}
+
+function clearProductOrder(){
+    let orderList = document.getElementById("items");
+    while (orderList.firstChild)
+    {
+        orderList.removeChild(orderList.firstChild);
+    }
 }

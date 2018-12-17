@@ -1,6 +1,5 @@
 <?php
 // member information
-<<<<<<< Updated upstream
 $klein->respond(['GET', 'POST'], '/membership', function ($request, $response, $service, $app, $validator) {    
     // get login info (send to login page if not logged in)
     $loginInfo = $app->login->requireLogin('customer');
@@ -41,73 +40,10 @@ $klein->respond(['GET', 'POST'], '/membership', function ($request, $response, $
     // send some params and render the page
     $service->title = "Member Information";
     $service->bootstrap3 = false;
-=======
-$klein->respond('POST', '/membership', function ($request, $response, $service) {
-    $response->redirect('/membership');
-});
-
-$klein->respond('GET', '/membership', function ($request, $response, $service) {
-    global $database;
-    $conn = $database->getConnection();
-    $sql = "SELECT  pf.MemberID, pw.Password, pf.PhoneNumber, pf.Email, pt.Total_Point,
-          pf.ID_Card, pf.Fname, pf.Lname, pf.Gender, pf.BirthDate
-          FROM G05_Member_profile as pf, G05_Member_password as pw, G05_Member_point as pt
-          WHERE pf.MemberID=pw.MemberID and pf.MemberID=pt.MemberID
-          and pf.MemberID = 1";
-    $stmt = $conn->prepare($sql);
-    $stmt->execute();
-    $data = $stmt->fetchAll();
->>>>>>> Stashed changes
     $service->usr = $data;
     $service->render('layouts/group5/membership.php');
 });
 
-<<<<<<< Updated upstream
-$klein->respond('POST', '/change/phonenumber/action', function ($request, $response, $service, $app, $validator) {    
-    // get login info (send to login page if not logged in)
-    $loginInfo = $app->login->requireLogin('customer');
-    $userID = $loginInfo['userID'];
-
-    global $database;
-    $conn = $database->getConnection();
-    $PhoneNumber = $request->PhoneNumber;
-
-    //Check Password
-    // $query = "SELECT * from movies";
-    // $stmt = $conn->prepare($query);
-    // $stmt->execute();
-    //
-    // $num = $stmt->rowCount();
-
-    // query3 Phone Number
-    $sql3 = "UPDATE G05_Member_profile
-           SET PhoneNumber='$PhoneNumber'
-           WHERE UserID = $userID";
-    $stmt = $conn->prepare($sql3);
-    $stmt->execute();
-    $response->redirect('/customer/membership');
-});
-
-$klein->respond('POST', '/change/email/action', function ($request, $response, $service, $app, $validator) {    
-    // get login info (send to login page if not logged in)
-    $loginInfo = $app->login->requireLogin('customer');
-    $userID = $loginInfo['userID'];
-
-    global $database;
-    $conn = $database->getConnection();
-    $Email = $request->Email;
-
-    // query4 Email
-    $sql4 = "UPDATE G05_Member_profile
-           SET Email='$Email'
-           WHERE UserID = $userID";
-    $stmt = $conn->prepare($sql4);
-    $stmt->execute();
-    $response->redirect('/customer/membership');
-});
-
-=======
->>>>>>> Stashed changes
 // change password (page)
 $klein->respond('GET', '/change/password', function ($request, $response, $service, $app, $validator) {    
     // get login info (send to login page if not logged in)
@@ -145,33 +81,10 @@ $klein->respond('POST', '/change/password/action', function ($request, $response
     $service->render('layouts/group5/membership.php');
 });
 
-<<<<<<< Updated upstream
-// Change email (page)
-$klein->respond('GET', '/change/email', function ($request, $response, $service, $app, $validator) {
-    // get login info (send to login page if not logged in)
-    $loginInfo = $app->login->requireLogin('customer');
-    $userID = $loginInfo['userID'];
-
-    // connect db
-    global $database;
-    $conn = $database->getConnection();
-
-    // get current phone no.
-    $sql = "SELECT Email
-            FROM G05_Member_profile
-            WHERE userID = $userID";
-    $stmt = $conn->prepare($sql);
-    $stmt->execute();
-    $data = $stmt->fetchAll();
-
-    // render the page
-    $service->currentEmail = $data[0]['Email'];
-=======
 // Change email
 $klein->respond('GET', '/change/email', function ($request, $response, $service) {
     $service->title = "Change Email";
     $service->bootstrap3 = false;
->>>>>>> Stashed changes
     $service->render('layouts/group5/changeEmail.php');
 });
 
@@ -207,13 +120,9 @@ $klein->respond('GET', '/login', function ($request, $response, $service, $app, 
 });
 
 // Drive-Register
-<<<<<<< Updated upstream
-$klein->respond('GET', '/register', function ($request, $response, $service, $app, $validator) {
-=======
 $klein->respond('GET', '/register', function ($request, $response, $service) {
     $service->title = "Register New Member";
     $service->bootstrap3 = false;
->>>>>>> Stashed changes
     global $database;
     $conn = $database->getConnection();
     $service->pageTitle = 'Fish and Chips';

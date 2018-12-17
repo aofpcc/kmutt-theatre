@@ -123,7 +123,7 @@
         </ul>
         <div class="clear"></div>
 
-        <form action="/emp/group2/gopayment" method="post">
+        <form action="/emp/group2/home_page/select_movie/select_time/select_seat" method="post">
             <ul id="selectedSeats" class="scrollbar scrollbar1"></ul>
           <button id="booknow" class="checkout-button" name="book_now"> Book Now </button>
         <div id="legend"></div>

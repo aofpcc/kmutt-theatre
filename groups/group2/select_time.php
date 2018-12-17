@@ -14,7 +14,7 @@
   // $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
   //
   // $service->allMovies = $arr;
-  $service->pageTitle = 'KMUTT THEATRE | Showtimes';
+  // $service->pageTitle = 'KMUTT THEATRE | Showtimes';
 
   $service->render('layouts/group2/selecttime.php');
 });

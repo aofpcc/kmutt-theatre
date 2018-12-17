@@ -1,1 +1,1 @@
-php -S localhost:8000 ./config/config.php
+php -S localhost:8000 config/config.php

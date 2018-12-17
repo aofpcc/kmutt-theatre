@@ -20,18 +20,19 @@ class PointManager
             $this->conn->beginTransaction();
             $query = "INSERT INTO G05_Member_Point_Transaction(Type, MemberID, Date)
             Values(:type, :memberID, now())";
-            $stmt = $conn->prepare($query);
+            $stmt = $this->conn->prepare($query);
             $stmt->bindParam(":type", $input["type"]);
             $stmt->bindParam(":memberID", $input["memberID"]);
             $stmt->execute();
             $pointID = $this->conn->lastInsertId();
             switch ($input["type"]) {
-                case "FNB": addPointToFNB($pointID, $input["transactionID"], $input["point"]);
-                case "Ticket":; addPointToTicket($pointID, $input["transactionID"], $input["point"]);
+                case "FNB": $this->addPointToFNB($pointID, $input["transactionID"], $input["point"]); break;
+                case "Ticket":; $this->addPointToTicket($pointID, $input["transactionID"], $input["point"]); break;
             }
             $this->conn->commit();
             $result["result"] = true;
         } catch (Exception $e) {
+            echo $e->getMessage();
             $this->conn->rollback();
         }
         return $result;
@@ -39,9 +40,8 @@ class PointManager
 
     private function addPointToFNB($pointID, $transactionID, $point)
     {
-        $query = "INSERT INTO G05_Member_FNB_transaction(PointID, FNBTransactionNo, Point)
-            Values(:pointID, :transaction, :point";
-            $stmt = $conn->prepare($query);
+        $query = "INSERT INTO G05_Member_FNB_transaction(PointID, FNBTransactionNo, Point) Values(:pointID, :transaction, :point)";
+            $stmt = $this->conn->prepare($query);
             $stmt->bindParam(":pointID", $pointID);
             $stmt->bindParam(":transaction", $transactionID);
             $stmt->bindParam(":point", $point);
@@ -50,9 +50,8 @@ class PointManager
 
     private function addPointToTicket($pointID, $transactionID, $point)
     {
-        $query = "INSERT INTO G05_Member_Ticket_transaction(PointID, TicketTransactionNo, Point)
-            Values(:pointID, :transaction, :point";
-            $stmt = $conn->prepare($query);
+        $query = "INSERT INTO G05_Member_Ticket_transaction(PointID, TicketTransactionNo, Point) Values(:pointID, :transaction, :point)";
+            $stmt = $this->conn->prepare($query);
             $stmt->bindParam(":pointID", $pointID);
             $stmt->bindParam(":transaction", $transactionID);
             $stmt->bindParam(":point", $point);

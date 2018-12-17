@@ -1,6 +1,6 @@
 <?php
 
-$klein->respond('GET', '/group2/home_page/select_movie/select_time/select_seat/done', function ($request, $response, $service) {
+$klein->respond('GET', '/group2/home_page/select_movie/select_time/select_seat/pay_ment/done', function ($request, $response, $service) {
     global $database;
     $conn = $database->getConnection();
     $newOne = $service->passValue;

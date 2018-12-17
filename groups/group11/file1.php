@@ -117,7 +117,7 @@ $klein->respond('GET', '/staff/employee/editprofile', function($request, $respon
   $stmt->execute();
   $service->picture = $stmt->fetchAll(PDO::FETCH_BOTH);
 
-    
+
     $service->nameTag = 'editprofile.php';
     $service->render('layouts/group11/employee.php');
 });
@@ -139,7 +139,7 @@ $klein->respond('POST', '/staff/employee/editprofile/save', function($request, $
       $stmt = $conn->prepare($profileName);
       $stmt->execute();
       $service->profile = $stmt->fetchAll(PDO::FETCH_BOTH);
-  
+
      //select db core_user_table
       $user = "SELECT * FROM core_user_table WHERE userID = $id " ;
       $stmt = $conn->prepare($user);
@@ -158,7 +158,7 @@ $klein->respond('POST', '/staff/employee/editprofile/save', function($request, $
     $service->error = 'password is not same as confirm password.';
     $service->nameTag = 'editprofile.php';
     $service->render('layouts/group11/employee.php');
-    
+
   }
   //check password incorect
   if($request->password == $request->confirmpassword){
@@ -169,7 +169,7 @@ $klein->respond('POST', '/staff/employee/editprofile/save', function($request, $
     $stmt = $conn->prepare($pass);
     $stmt->execute();
     $passUser = $stmt->fetchAll(PDO::FETCH_BOTH);
-  
+
     if($check != $passUser[0]['password']){
 
         $service->error = 'password incorrect.';
@@ -219,20 +219,20 @@ $klein->respond('POST', '/staff/employee/editprofile/save', function($request, $
       $stmt = $conn->prepare($checkUser);
       $stmt->execute();
       $countUser = $stmt->fetchAll(PDO::FETCH_BOTH);
-  
+
         if(count($countUser) == 1){
             $service->error = 'Username has already exists.';
             $service->nameTag = 'editprofile.php';
             $service->render('layouts/group11/employee.php');
         }
-  
-  
+
+
         if(count($countUser) == null){
         //update db G11_Emp_staff
         $updateProfile = "UPDATE G11_Emp_staff SET Firstname = '$firstname', Lastname = '$lastname', Email = '$email' WHERE userID = $id";
         $stmt = $conn->prepare($updateProfile);
         $stmt->execute();
-  
+
         //update db core_user_table
         $updateUser = "UPDATE core_user_table SET username = '$username' WHERE userID = $id";
         $stmt = $conn->prepare($updateUser);
@@ -371,17 +371,33 @@ $klein->respond('GET', '/staff/employee/finance', function($request, $response, 
       $revenue = $conn->query("SELECT sum(amount) as total FROM G03_FIN_Revenue")->fetchAll(PDO::FETCH_BOTH);
       $service->revenue = $revenue;
 
-      $revenueList = $conn->query("SELECT addDate, amount  FROM G03_FIN_Revenue")->fetchAll(PDO::FETCH_BOTH);
-      $service->revenue = $revenueList;
 
-      $expenses = $conn->query("SELECT sum(amount) as total FROM G03_FIN_Expenses")->fetchAll(PDO::FETCH_BOTH);
+      $expenses = $conn->query("SELECT sum(amount) as total FROM G03_FIN_Expenses ")->fetchAll(PDO::FETCH_BOTH);
       $service->expenses = $expenses;
 
-      $expensesList = $conn->query("SELECT addDate, amount FROM G03_FIN_Expenses")->fetchAll(PDO::FETCH_BOTH);
-      $service->expenses = $expensesList;
+
+      $service->revenueLine = $conn->query('select year, month, sum(amount) "total" 
+                                            from (select * 
+                                                  from G03_FIN_Revenue a 
+                                                  join 
+                                                  (select transactionID "tran", month(addDate) "month", year(addDate) "year"
+                                                  from G03_FIN_Revenue) b on a.transactionID = b.tran) a
+                                            group by month, year
+                                            order by year, month asc;')->fetchAll(PDO::FETCH_ASSOC);
+
+      $service->expenseLine = $conn->query('select year, month, sum(amount) "total" 
+                                            from (select *
+                                                  from G03_FIN_Expenses a 
+                                                  join 
+                                                  (select transactionID "tran", month(addDate) "month", year(addDate) "year"
+                                                  from G03_FIN_Expenses) b on a.transactionID = b.tran) a
+                                            group by month, year
+                                            order by year, month asc;')->fetchAll(PDO::FETCH_ASSOC);
+
 
       $request;
       $service->render('layouts/group11/employee.php');
+
 
 });
 
@@ -409,11 +425,15 @@ $klein->respond('GET', '/staff/employee/revenue', function($request, $response, 
         //                                 WHERE Revenue.FinID = FinancialID.ID AND  Revenue.empID = e.Emp_ID AND Revenue.customerID = m.MemberID
         //                                 GROUP BY year(addDate),month(addDate)
         //                               ")->fetch(PDO::FETCH_ASSOC);
-        $service->revenueUU = $conn->query('select year, month, sum(amount) "total" from (select *
-        from G03_FIN_Revenue a join (select transactionID "tran", month(addDate) "month", year(addDate) "year"
-                          from G03_FIN_Revenue) b on a.transactionID = b.tran) a
-        group by month, year
-        order by year, month asc;')->fetchAll(PDO::FETCH_ASSOC);
+        $service->revenueUU = $conn->query('select year, month, sum(amount) "total"
+                                            from (select *
+                                                  from G03_FIN_Revenue a
+                                                  join
+                                                  (select transactionID "tran", month(addDate) "month", year(addDate) "year"
+                                                  from G03_FIN_Revenue) b on a.transactionID = b.tran) a
+                                            group by month, year
+                                            order by year, month asc;')->fetchAll(PDO::FETCH_ASSOC);
+
 
         // $response->dump($service->revenueUU);
         // $response->sendBody();
@@ -492,6 +512,14 @@ $klein->respond('GET', '/staff/employee/expense', function($request, $response, 
           $service->pageTitle = 'Expense';
           $service->expensesList = $expensesList;
           // echo($service->nameTag);
+          $service->expenseUU = $conn->query('select year, month, sum(amount) "total"
+                                            from (select *
+                                                  from G03_FIN_Expenses a
+                                                  join
+                                                  (select transactionID "tran", month(addDate) "month", year(addDate) "year"
+                                                  from G03_FIN_Expenses) b on a.transactionID = b.tran) a
+                                            group by month, year
+                                            order by year, month asc;')->fetchAll(PDO::FETCH_ASSOC);
          $service->render('layouts/group11/employee.php');
         // echo($service->nameTag);
     });
@@ -535,13 +563,13 @@ $klein->respond('GET', '/staff/employee/statistics', function($request, $respons
 
 
         // // NO movie table in the new DB yet..
-        // $gene = $conn->query("SELECT Gene, COUNT(*)
-        //                       FROM G02_Ticket_history as ticket, movies
-        //                       WHERE ticket.movie_id = movies.ID
-        //                       GROUP BY  Gene")->fetchAll(PDO::FETCH_BOTH);
-        // $service->gene = $gene;
+         $gene = $conn->query(" SELECT gerne as label, COUNT(*) as amount
+                                FROM G02_Ticket_history as ticket, G09_Movie as movies
+                                WHERE ticket.movie_id = movies.ID
+                                GROUP BY  gerne")->fetchAll(PDO::FETCH_BOTH);
+         $service->gene = $gene;
 
-        $productName = $conn->query("SELECT productName, COUNT(*)
+        $productName = $conn->query("SELECT productName as label, COUNT(*) as amount
                                      FROM G13_FNB_detail as detail_fnb, G13_FNB_ProductList as productList_fnb
                                      WHERE productList_fnb.ProductID  = detail_fnb.ProductID
                                      GROUP BY  detail_fnb.ProductID, productName ")->fetchAll(PDO::FETCH_BOTH);
@@ -569,6 +597,29 @@ $klein->respond('GET', '/staff/employee/statistics', function($request, $respons
 
     $service->render('layouts/group11/employee.php');
 
+});
+
+$klein->respond('GET', '/staff/kuy', function($request, $response, $service, $app, $validator) {
+  $arr = [
+    [
+      "id" => 1,
+      "name" => "kuy"
+    ],
+    [
+      "id" => 2,
+      "name" => "hee"
+    ]
+  ];
+
+  $arr2= [];
+  foreach($arr as $v) {
+    $temp = [
+      "master_id" => $v["id"],
+      "master_name" => $v["name"]
+    ];
+    array_push($arr2, $temp);
+  }
+  return$response->json($arr2);
 });
 
 // stat with date

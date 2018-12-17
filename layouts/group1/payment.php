@@ -1,5 +1,4 @@
 <head>
-  <title><?=$this->passValue["pageTitle"] ?></title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
@@ -11,9 +10,9 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 </head>
 
-  <br><br>
+  <br>
   <div class="main">
-    <h1 class="my-4"><button type="button" class="btn btn-lg btn-danger">STEP 4</button>
+    <h1 class="my-4"><button type="button" class="btn btn-lg btn-danger">STEP 3</button>
       <small>Payment</small>
     </h1>
 
@@ -97,7 +96,6 @@
 
               <font size="4"> ราคารวม </font>
               <br/>
-              XXXX
               <p>
 
               </p>

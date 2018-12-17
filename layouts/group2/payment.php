@@ -96,17 +96,17 @@
                         <p>
                           <?php
 
-$arry = json_decode(json_encode($this->seats), true);
+                          $arry = json_decode(json_encode($this->seats), true);
 
-var_dump($this->seats);
+// var_dump($this->seats);
 
 foreach ($arry as $result)
 {
-  echo 'row : ', $result['row'],'   seat : ', $result['seat'],'<br/>';
+  // $seat_no = $result['row'].'_'.$result['seat'];
+  echo 'row: ', $result['row'],'   seat: ', $result['seat'],'<br/>';
 }
 
 ?>
-
                         </p>
                       </div>
                       <div class="selected-seat-total">

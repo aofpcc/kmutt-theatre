@@ -54,7 +54,7 @@
         <?php foreach($this->promotions as $promotion) { ?>
           <div class="col-lg-4 col-sm-6 portfolio-item">
           <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="/layouts/group8/DB2/Pic/Movie1.jpg" alt=""></a>
+            <a href="#"><img class="card-img-top" src='/groups/group8<?=$promotion["PromoPic"]?>' alt=""></a>
             <div class="card-body">
               <h4 class="card-title">
                 <?=$promotion["PromoName"] ?><br><br><?=$promotion["StartDate"] ?>
@@ -66,6 +66,19 @@
           </div>
         </div>
         <?php } ?>
+        
+
+        <!-- <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card">
+          <a href="#"><img class="card-img-top" src='/layouts/group8/DB/Pic/<?=$promotion["PromoPic"]?>' alt=""></a>
+            <div class="card-body">
+            <?=$promotion["PromoName"] ?><br><br><?=$promotion["StartDate"] ?>
+                <br><?=$promotion["EndDate"] ?><br><br><?=$promotion["Description"] ?>
+                <br><br>CODE = <?=$promotion["PromoCode"] ?><br>one code / person
+            </div>
+            
+          </div>
+        </div> -->
         <!-- <div class="col-lg-4 col-sm-6 portfolio-item">
           <div class="card h-100">
             <a href="#"><img class="card-img-top" src="/layouts/group8/DB2/Pic/Movie1.jpg" alt=""></a>

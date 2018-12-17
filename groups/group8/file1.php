@@ -42,6 +42,8 @@ $klein->respond('GET', '/group8', function ($request, $response, $service, $app,
 //  $response->dump($data);
 //  $response->sendBody();
 $service->promotions = $data;
+// var_dump($data);
+// die;
 
    $service->render('layouts/group8/DB/Promotion1.php');
  });

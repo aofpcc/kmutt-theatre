@@ -32,7 +32,7 @@ body {
     -webkit-tap-highlight-color: transparent
 }
 
-.slick-list,
+/* .slick-list,
 .slick-slider {
     position: relative;
     display: block
@@ -56,7 +56,7 @@ body {
 .slick-slider .slick-list,
 .slick-slider .slick-track {
     transform: translateZ(0)
-}
+} */
 
 .slick-track {
     position: relative;
@@ -15997,9 +15997,9 @@ body.sd-opened .home .showtime-bar:before {
     padding-top: 80px
 }
 
-.page-cinema .section-seat-type .seat-slide .slick-list {
+/* .page-cinema .section-seat-type .seat-slide .slick-list {
     height: 230px
-}
+} */
 
 .page-cinema .section-seat-type .seat-slide .seat-item {
     display: inline-block;

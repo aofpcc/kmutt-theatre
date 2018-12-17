@@ -65,7 +65,6 @@
   $datas1 = [];
   $labels2 = [];
   $datas2 = [];
-  $datas3 = [];
   foreach($this->revenueLine as $value){
     array_push($labels1, $monthName[$value["month"]]." ".$value["year"]);
     array_push($datas1, $value["total"]);
@@ -74,7 +73,7 @@
     array_push($datas2, $value["total"]);
   }
   ?>
-  var labels1 = <?php echo json_encode($labels1); ?>;
+  var labels1 =  <?php echo json_encode($labels1); ?>;
   var datas1 = <?php echo json_encode($datas1); ?>;
   var datas2 = <?php echo json_encode($datas2); ?>;
   var ctx = document.getElementById("sumChart");
@@ -127,6 +126,61 @@ $("#search_graph").click(function(){
     $("#expense").text(expenses);
     var profit = revenue - expenses;
     $("#profit").text(profit);
+    var revenueLine = data.revenueLine;
+    console.log(revenueLine);
+    var expenseLine = data.expenseLine;
+    <?php $monthName = ["", "January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]; 
+  $labels1 = [];
+  $datas1 = [];
+  $labels2 = [];
+  $datas2 = [];
+  foreach($this->revenueLine as $value){
+    array_push($labels1, $monthName[$value["month"]]." ".$value["year"]);
+    array_push($datas1, $value["total"]);
+  }
+  foreach($this->expenseLine as $value){
+    array_push($datas2, $value["total"]);
+  }
+  ?>
+  var labels1 =  <?php echo json_encode($labels1); ?>;
+  var datas1 = <?php echo json_encode($datas1); ?>;
+  var datas2 = <?php echo json_encode($datas2); ?>;
+  var ctx = document.getElementById("sumChart");
+  var sumChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: labels1,
+      datasets: [{
+        data: datas1,
+        lineTension: 0,
+        backgroundColor: 'transparent',
+        borderColor: '#007bff',
+        borderWidth: 4,
+        pointBackgroundColor: '#007bff'
+      },
+      {
+        data: datas2,
+        lineTension: 0,
+        backgroundColor: 'transparent',
+        borderColor: '#000000',
+        borderWidth: 4,
+        pointBackgroundColor: '#007bff'
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: false
+          }
+        }]
+      },
+      legend: {
+        display: false,
+      }
+    }
   });
+  });
+  
 });
 </script>

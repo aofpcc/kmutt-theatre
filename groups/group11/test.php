@@ -8,14 +8,30 @@ $klein->respond("/staff/finance/test", function($request, $response, $service, $
 
   $revenue = $conn->query("SELECT sum(amount) as total FROM G03_FIN_Revenue WHERE  addDate >= '".$startDate." 00:00:00' AND addDate <= '".$endDate." 23:59:59' ")->fetch();
   $expenses = $conn->query("SELECT sum(amount) as total FROM G03_FIN_Expenses WHERE  addDate >= '".$startDate." 00:00:00' AND addDate <= '".$endDate." 23:59:59'")->fetch();
-  $revenueList = $conn->query("SELECT year(addDate),month(addDate), sum(amount)  FROM G03_FIN_Revenue WHERE  addDate >= '".$startDate." 00:00:00' AND addDate <= '".$endDate." 23:59:59' GROUP by year(addDate),month(addDate)")->fetch();
-  $expensesList = $conn->query("SELECT year(addDate),month(addDate), sum(amount) FROM G03_FIN_Expenses WHERE  addDate >= '".$startDate." 00:00:00' AND addDate <= '".$endDate." 23:59:59' GROUP by year(addDate),month(addDate)")->fetch();
+  $revenueLine = $conn->query("select year, month, sum(amount) \"total\" 
+                                from (select * 
+                                      from G03_FIN_Revenue a 
+                                      join 
+                                      (select transactionID \"tran\", month(addDate) \"month\", year(addDate) \"year\"
+                                      from G03_FIN_Revenue) b on a.transactionID = b.tran) a
+                                      WHERE  addDate >= '".$startDate." 00:00:00' AND addDate <= '".$endDate." 23:59:59'
+                                  group by month, year
+                                  order by year, month asc;")->fetch();
+  $expensesLine = $conn->query("select year, month, sum(amount) \"total\" 
+  from (select *
+        from G03_FIN_Expenses a 
+        join 
+        (select transactionID \"tran\", month(addDate) \"month\", year(addDate) \"year\"
+        from G03_FIN_Expenses) b on a.transactionID = b.tran) a
+        WHERE  addDate >= '".$startDate." 00:00:00' AND addDate <= '".$endDate." 23:59:59'
+  group by month, year
+  order by year, month asc;")->fetch();
 
   $result = [
     "revenue" => $revenue,
     "expenses" => $expenses,
-    "revenueList" => $revenueList,
-    "expensesList" => $expensesList
+    "revenueLine" => $revenueLine,
+    "expensesLine" => $expensesLine
   ];
   return $response->json($result);
 });

@@ -371,14 +371,10 @@ $klein->respond('GET', '/staff/employee/finance', function($request, $response, 
       $revenue = $conn->query("SELECT sum(amount) as total FROM G03_FIN_Revenue")->fetchAll(PDO::FETCH_BOTH);
       $service->revenue = $revenue;
 
-      $revenueList = $conn->query("SELECT year(addDate), month(addDate), sum(amount)  FROM G03_FIN_Revenue GROUP by year(addDate), month(addDate)")->fetchAll(PDO::FETCH_BOTH);
-      $service->revenueList = $revenueList;
 
       $expenses = $conn->query("SELECT sum(amount) as total FROM G03_FIN_Expenses ")->fetchAll(PDO::FETCH_BOTH);
       $service->expenses = $expenses;
 
-      $expensesList = $conn->query("SELECT year(addDate), month(addDate), sum(amount)  FROM G03_FIN_Expenses GROUP by year(addDate), month(addDate)")->fetchAll(PDO::FETCH_BOTH);
-      $service->expensesList = $expensesList;
 
       $service->revenueLine = $conn->query('select year, month, sum(amount) "total" 
                                             from (select * 

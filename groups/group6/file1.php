@@ -162,14 +162,18 @@ $klein->respond('GET', '/androidRegist', function ($request, $response, $service
     $result = $app->login->register($user, $pass, $email, $validateLink, $role);
     $userID = $result["userID"];
     if ($result['created']) {
-        $query = "INSERT INTO G05_Member_profile (ID_Card, Fname, Lname, Gender, Birthdate, Email, PhoneNumber, userID)
-                                VALUES ('$identNo', '$firstname', '$lastname', '$gender', '$birthdate', '$email', '$phoneno', '$userID')";
+        $query = "INSERT INTO G05_Member_profile (MemberID, ID_Card, Fname, Lname, Gender, Birthdate, Email, PhoneNumber)
+                                VALUES ('$userID', '$identNo', '$firstname', '$lastname', '$gender', '$birthdate', '$email', '$phoneno')";
         $stmt = $conn->prepare($query);
         $stmt->execute();
-        $memberID = $conn->lastInsertId();
+        //$memberID = $conn->lastInsertId();
         $query = "INSERT INTO G05_Member_address (MemberID, Address, Province, District, SubDistrict, ZipCode)
-                                VALUES ('$memberID','$address', '$province', '$district', '$subdist', '$postcode')";
+                                VALUES ('$userID','$address', '$province', '$district', '$subdist', '$postcode')";
 
+        $stmt = $conn->prepare($query);
+        $stmt->execute();
+        $query = "INSERT INTO G05_Member_point (MemberID, Total_Point)
+                                VALUES ('$userID', 0)";
         $stmt = $conn->prepare($query);
         $stmt->execute();
         $arr["done"] = true;
@@ -201,7 +205,8 @@ $klein->respond('GET', '/androidLogin', function ($request, $response, $service,
   //$password = $app->login->md5($password);
 
   $query = "SELECT userID from core_user_pwd WHERE (password = '$password' and (username = '$username' OR email = '$username'))";
-  //$query = "SELECT * from core_user_pwd WHERE password = '$password' and username = '$username'";
+  //$query = "SELECT A.userID, B.MemberID from core_user_pwd A, G05_Member_profile B WHERE (A.password = '$password' and (A.username = '$username' OR A.email = '$username')) and B.userID = (
+	//           SELECT userID from core_user_pwd WHERE (password = '$password' and (username = '$username' OR email = '$username')) )";
   $stmt = $conn->prepare($query);
   $stmt->execute();
 
@@ -211,7 +216,7 @@ $klein->respond('GET', '/androidLogin', function ($request, $response, $service,
   if($num == 1){
     $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
   }else{
-    $arr[] = array("userID" => -1);
+    $arr[] = array("userID" => -1,);
   }
 
   echo json_encode($arr);

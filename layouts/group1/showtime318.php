@@ -26,14 +26,16 @@
   <!-- Custom styles for this template -->
   <link href="css/1-col-portfolio.css" rel="stylesheet">
   <link rel="stylesheet" href="/layouts/group1/css/showtime.css">
+  <link href="/layouts/group1/css/style.css" rel="stylesheet" type="text/css" media="all" />
+  <link rel="stylesheet" href="/layouts/group1/css/onStyle.css">
 
 </head>
 
 <!-- Page Content -->
-<div class="container">
+<div class = "main">
 
   <!-- Page Heading -->
-  <h1 class="my-4"><button type="button" class="btn btn-lg btn-primary">STEP 2</button>
+  <h1 class="my-4"><button type="button" class="btn btn-lg btn-danger">STEP 1</button>
     <small>Select Showtime</small>
   </h1>
 
@@ -62,21 +64,22 @@
   <br><br>
   <hr>
 
-  <nav class="nav nav-pills nav-fill" id="movie-links">
+
+  <nav class="nav nav-pills nav-fill btn-dark" id="movie-links">
     <!-- <a class="nav-item nav-link active" href="#">Thu<br><small>15 Nov 2018</small></a>
     <a class="nav-item nav-link" href="#">Fri<br><small>16 Nov 2018</small></a>
     <a class="nav-item nav-link" href="#">Sat<br><small>17 Nov 2018</small></a>
     <a class="nav-item nav-link disabled" href="#">Mon<br><small>18 Nov 2018</small></a>
     <a class="nav-item nav-link disabled" href="#">Tue<br><small>19 Nov 2018</small></a> -->
     <?php foreach($this->query as $q) { ?>
-    <a class="nav-item nav-link <?=$q["status"]?>" href="/customer/movies/showtime/all/<?=$this->movie_id?>/<?=$q["value"]?>"><?=$q["date"] ?><br><small><?=$q["str"] ?></small></a>
+      <a class="btn-dark nav-item nav-link <?=$q["status"]?>" href="/customer/movies/showtime/all/<?=$this->movie_id?>/<?=$q["value"]?>"><?=$q["date"] ?><br><small><?=$q["str"] ?></small></a>
     <?php } ?>
   </nav>
   <hr>
   <!-- Project One -->
   <!-- OverHere -->
   <div id="showtime"></div>
-    
+
 </div>
 
 <br><br><br>

@@ -162,8 +162,8 @@ $klein->respond('GET', '/androidRegist', function ($request, $response, $service
     $result = $app->login->register($user, $pass, $email, $validateLink, $role);
     $userID = $result["userID"];
     if ($result['created']) {
-        $query = "INSERT INTO G05_Member_profile (MemberID, ID_Card, Fname, Lname, Gender, Birthdate, Email, PhoneNumber)
-                                VALUES ('$userID','$identNo', '$firstname', '$lastname', '$gender', '$birthdate', '$email', '$phoneno')";
+        $query = "INSERT INTO G05_Member_profile (ID_Card, Fname, Lname, Gender, Birthdate, Email, PhoneNumber, userID)
+                                VALUES ('$identNo', '$firstname', '$lastname', '$gender', '$birthdate', '$email', '$phoneno', '$userID')";
         $stmt = $conn->prepare($query);
         $stmt->execute();
         $query = "INSERT INTO G05_Member_address (MemberID, Address, Province, District, SubDistrict, ZipCode)

@@ -69,7 +69,7 @@
         <div class="clear"></div>
 
             <?php //foreach($this->movie_id as $movie_id) { ?>
-            <form action = "/customer/kmutt_home/branch/show_time/select_chair/payment/<?= $this->movie_id["movie_id"]?>" method = "post">
+            <form action = "/customer/kmutt_home/branch/show_time/select_chair/payment/<?= $this->showtime_id?>" method = "post">
                 <ul id="selectedSeats" class="scrollbar scrollbar1"></ul>
               <button name = "book_seat" value = "book_seat" id = "book_seat" class = "checkout-button">Book now
               </button>

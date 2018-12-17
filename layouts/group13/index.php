@@ -241,10 +241,16 @@
                         </div>
                     </div>
                 </div>
-                <button type="button" class="btn btn-primary"  onclick="updateOrder()">test</button>
+                <button type="button" class="btn btn-primary" style='margin:30px' onclick="updateOrder()">Sent Order</button>
 <!--                data-toggle="modal" data-target="#exampleModalCenter"-->
             </div>
     </div>
+</div>
+
+<div class='d-flex flex-column justify-content-center align-items-center' style='margin:20px' >
+  <div class='col-6'>
+    <a class='btn btn-warning w-100' href="/emp/fnb/stock">Stock</a>
+  </div>
 </div>
 
 

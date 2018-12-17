@@ -1,7 +1,5 @@
-
 <h1>Stock</h1>
 <?php
-  $test="test2";
   global $database;
   $conn = $database->getConnection();
   $sql = "select Remain,stockName,StockID from G13_FNB_Stock";
@@ -60,5 +58,10 @@
         }
       ?>
     </tbody>
-
 </table>
+
+<div class='d-flex flex-column justify-content-center align-items-center' style='margin:20px' >
+  <div class='col-6'>
+    <a class='btn btn-danger w-100' href="/emp/fnb/sale">Sales Order</a>
+  </div>
+</div>

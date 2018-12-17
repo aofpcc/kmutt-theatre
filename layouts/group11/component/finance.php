@@ -60,13 +60,12 @@
 <!-- Graphs -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 <script>
-  <?php $monthName = ["", "January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]; 
+  <?php 
   $labels1 = [];
   $datas1 = [];
-  $labels2 = [];
   $datas2 = [];
   foreach($this->revenueLine as $value){
-    array_push($labels1, $monthName[$value["month"]]." ".$value["year"]);
+    array_push($labels1, $value["month"]." ".$value["year"]);
     array_push($datas1, $value["total"]);
   }
   foreach($this->expenseLine as $value){

@@ -161,9 +161,9 @@ $klein->respond('POST', '/editprofile/action', function ($request, $response, $s
     $fst = $request->Firstname;
     $lst = $request->Lastname;
     $adr = $request->Address;
-    $prov = $request->Province;
-    $dist = $request->District;
     $Subdist = $request->Subdistrict;
+    $dist = $request->District;
+    $prov = $request->Province;
     $post = $request->Postcode;
 
     // connect db
@@ -304,13 +304,13 @@ $klein->respond('POST', '/register-form', function ($request, $response, $servic
             $stmt->execute();
             // address
 
-            $query = "insert into G05_Member_address(MemberID, Address, Province, District, SubDistrict, ZipCode)
-            values(:userID, :Address, :Province, :District, :SubDistrict, :ZipCode);";
+            $query = "insert into G05_Member_address(MemberID, Address, Province, District, ZipCode)
+            values(:userID, :Address, :Province, :District, :ZipCode);";
 
             $address = $request->address;
             $province = $request->province;
             $district = $request->district;
-            $subdistrict = $request->SubDistrict;
+            // $subDistrict = $request->phone;
             $zip = $request->zip;
 
             $stmt = $conn->prepare($query);
@@ -318,7 +318,7 @@ $klein->respond('POST', '/register-form', function ($request, $response, $servic
             $stmt->bindParam(":Address", $address);
             $stmt->bindParam(":Province", $province);
             $stmt->bindParam(":District", $district);
-            $stmt->bindParam(":SubDistrict", $subdistrict);
+            // $stmt->bindParam(":SubDistrict", $SubDistrict);
             $stmt->bindParam(":ZipCode", $zip);
             $stmt->execute();
 

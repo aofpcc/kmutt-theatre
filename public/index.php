@@ -15,7 +15,7 @@ session_start();
 $klein->respond(function ($request, $response, $service, $app, $validator) use ($database, $loginperformer, $pointmanager) {
     $service->layout('layouts/core/default.php');
     $service->pageRole = "THEATRE";
-    $service->bootstrap3 = true;
+    $service->bootstrap3 = false;
     $service->bootstrap = true;
     $app->db = $database;
     $app->login = $loginperformer;

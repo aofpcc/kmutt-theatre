@@ -2,7 +2,7 @@
 <?php
   global $database;
   $conn = $database->getConnection();
-  $sql = "select Remain,stockName,StockID from G13_FNB_Stock";
+  $sql = "SELECT Remain,stockName,s.StockID FROM G13_v_Stock as s, G13_FNB_StockName as n WHERE s.StockID = n.StockID;";
   $stmt = $conn->prepare($sql);
   $stmt->execute();
   $num = $stmt->rowCount();

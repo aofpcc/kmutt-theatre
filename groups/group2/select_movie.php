@@ -7,10 +7,10 @@
   $conn = $database->getConnection();
 
   $movieid = $conn->query("SELECT id FROM G09_Movie")->fetchAll(PDO::FETCH_BOTH);
-  $movietitle = $conn->query("SELECT title FROM G09_Movie")->fetchAll(PDO::FETCH_BOTH);
+  $movietitle = $conn->query("SELECT title FROM G09_Movie ")->fetchAll(PDO::FETCH_BOTH);
 
   $service->movieid=$movieid;
-  $service->movietitle=$movietitle;
+  $service->movietitle=$movietitle[1];
 
   $service->render('layouts/group2/selectmovie.php');
 });?>

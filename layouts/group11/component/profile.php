@@ -113,7 +113,12 @@
                                       <label>Profession</label>
                                   </div>
                                   <div class="col-md-6">
-                                      <p>Web Developer and Designer</p>
+                                      <p>
+                                        <?php 
+                                                $department = $this->department;
+                                                echo $department[0]['Profession'];                                        
+                                        ?>
+                                      </p>
                                   </div>
                               </div>
                     </div>
@@ -123,31 +128,38 @@
                                       <label>Experience</label>
                                   </div>
                                   <div class="col-md-6">
-                                      <p>Expert</p>
+                                      <p>
+                                        <?php 
+                                                $department = $this->department;
+                                                echo $department[0]['experience'];                                        
+                                        ?>
+                                      </p>
                                   </div>
                               </div>
                               <div class="row">
                                   <div class="col-md-6">
-                                      <label>Hourly Rate</label>
+                                      <label>O.T. Rate</label>
                                   </div>
                                   <div class="col-md-6">
-                                      <p>10$/hr</p>
+                                      <p>
+                                         <?php 
+                                                $department = $this->department;
+                                                echo $department[0]['ot_rate'].'฿/hr';                                        
+                                        ?>
+                                      </p>
                                   </div>
-                              </div>
-                              <div class="row">
-                                  <div class="col-md-6">
-                                      <label>Total Projects</label>
-                                  </div>
-                                  <div class="col-md-6">
-                                      <p>230</p>
-                                  </div>
-                              </div>
+                              </div>                           
                               <div class="row">
                                   <div class="col-md-6">
                                       <label>English Level</label>
                                   </div>
                                   <div class="col-md-6">
-                                      <p>Expert</p>
+                                      <p>
+                                        <?php 
+                                                $department = $this->department;
+                                                echo $department[0]['eng_lv'];                                        
+                                        ?>
+                                      </p>
                                   </div>
                               </div>
                               <div class="row">
@@ -155,7 +167,12 @@
                                       <label>Availability</label>
                                   </div>
                                   <div class="col-md-6">
-                                      <p>6 months</p>
+                                    <p>
+                                      <?php 
+                                                $depTime = $this->depTime;
+                                                echo $depTime[0]['time'].'years';                                        
+                                        ?>
+                                    </p>
                                   </div>
                               </div>
             </div> 

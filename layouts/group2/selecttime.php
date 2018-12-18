@@ -76,9 +76,11 @@
                                     <div class="poster-land visible-xs" style="background-image: url(&quot;https://lh3.googleusercontent.com/QrTuw1pi5t3S6UGw9DpHGxzKUR5hUUMNpFA9pzqOP2SSmTDBXHTDXbBYl8c1S_vGONEeF4gvIpaGXxDm2bnL=w400-fSoften=0,10,0&quot;);"></div>
                                     <div class="poster"><img src="/layouts/group2/images/selecttime/unnamed.jpg"></div>
                                     <div class="movie-detail">
-                                        <div class="main-detail">
-                                            <h1 class="name">Aquaman</h1>
-
+                                    
+                                    <div class="main-detail">
+                                    <?php foreach($this->movietitle as $movietitle) { ?>
+                                        <h1 class="name"><?=$movietitle?></h1>
+                                        <?php } ?>
                                         </div>
                                         <p class="genre">Genre: Action</p>
                                         <ul class="movie-detail-list">
@@ -96,8 +98,9 @@
                                                     <line x1="68.64" y1="68.64" x2="84.25" y2="84.25" class="cls-4"></line>
                                                 </svg> 145 min
                                             </li>
-                                            <!-- </ul><a href="https://www.sfcinemacity.com/movie/HO00000074" class="button button-gray-trans button-movie-details">Movie Details</a> -->
+                                            
                                     </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -200,14 +203,16 @@
                                                 </li>
                                             </ul>
                                             <ul class="time-list">
+                                                <?php foreach($this->query_time as $query_time) { ?>
                                                 <li class="time-item"><a href="/emp/group2/home_page/select_movie/select_time/select_seat"><button
-                                                            class="button button-showtime">13:20</button></a></li>
+                                                            class="button button-showtime"><?=$query_time[3]?></button></a></li>
                                                 <li class="time-item"><a href="/emp/group2/home_page/select_movie/select_time/select_seat"><button
-                                                            class="button button-showtime">16:20</button></a></li>
+                                                            class="button button-showtime"><?=$query_time[1]?></button></a></li>
                                                 <li class="time-item"><a href="/emp/group2/home_page/select_movie/select_time/select_seat"><button
-                                                            class="button button-showtime">19:20</button></a></li>
+                                                            class="button button-showtime"><?=$query_time[2]?></button></a></li>
                                                 <li class="time-item"><a href="/emp/group2/home_page/select_movie/select_time/select_seat"></a><button
-                                                        class="button button-showtime">22:20</button></a></li>
+                                                        class="button button-showtime"><?=$query_time[3]?></button></a></li>
+                                                <?php } ?>
                                             </ul>
                                         </div>
                                     </div>

@@ -8,14 +8,57 @@ $klein->respond('GET', '/invitations/[:code]', function ($request, $response, $s
   $userID = $app->login->requireLogin('customer')["userID"]."";
   $conn = $app->db->getConnection();
 
-  // check user id in invitation code
+  $code = $request->code;
+
   // check invitation code valid
-  $query = "";
+  $query = "SELECT * From G07_invitation WHERE invitation_code =:code";
+  $stmt = $conn->prepare($query);
+  $stmt->bindParam(":code", $code);
+  $stmt->execute();
+  $num = $stmt->rowCount();
+
+  if($num == 0) {
+    $service->flash("Invalid invitation code");
+    $service->back();
+    return;
+  }
+
+  $temp = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  $invitation_id = $temp[0]["invitation_id"];
+  
+  // $response->dump();
+  // $response->sendBody();
+  // die;
+
+  // check user id in invitation code
+  $query = "SELECT * 
+  From G07_invitation a 
+  natural join G07_group b
+  WHERE member_id=:member_id";
+  $stmt = $conn->prepare($query);
+  $stmt->bindParam(":member_id", $userID);
+  $stmt->execute();
+  $num = $stmt->rowCount();
+
+  if($num == 0) {
+    try {
+      $query = "INSERT into G07_group(invitation_id, member_id) 
+      values(:invitation_id, :member_id)";
+      $stmt = $conn->prepare($query);
+      $stmt->bindParam(":member_id", $userID);
+      $stmt->bindParam(":invitation_id", $invitation_id);
+      $stmt->execute();
+    }catch(Exception $e) {
+      $service->flash("Error invitation insert U, Please Contact Us");
+      $service->back();
+      return;
+    }
+  }
   
   $service->title = "Invitation Page";
   $service->bootstrap3 = false;
   $service->id = $request->code;
-  $code = $request->code;
+  
   $invite_data = [
     
   ];

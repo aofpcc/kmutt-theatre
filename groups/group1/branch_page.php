@@ -38,7 +38,7 @@ $klein->respond('GET', '/kmutt_home/branch/[:movie_id]', function ($request, $re
     $service->name = $name[0];
     $service->photo = $name[0];
     // $service->detail = $name[0];
-    $service->datenow = ($isFirst)->format("Y-m-d");
+    $service->datenow = $isFirst->format("Y-m-d");
     $service->query = $date;
     $service->length = $name[0]["length"];
     $service->movie_id = $request->movie_id;

@@ -6,15 +6,10 @@
   
   $conn = $database->getConnection();
 
-  $movieid = $conn->query("SELECT id FROM G09_Movie")->fetchAll(PDO::FETCH_BOTH);
-  $movietitle = $conn->query("SELECT title FROM G09_Movie ")->fetchAll(PDO::FETCH_BOTH);
-  // for($movieid =0 ;$movieid <= 3; $movieid++){
+  $query = "select distinct id, title , Image from G09_Movie";
+  $movie = $conn->query($query)->fetchAll(PDO::FETCH_ASSOC);
 
-
-  // }
-  
-  $service->movieid=$movieid;
-  $service->movietitle=$movietitle[1];
+  $service->movies =  $movie;
 
   $service->render('layouts/group2/selectmovie.php');
 });?>

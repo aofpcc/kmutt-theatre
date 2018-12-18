@@ -7,6 +7,7 @@ $included = array(
   "pay_ment",
   'done_page',
   'return_ticket',
-  'change_ticket'
+  'change_ticket',
+  'each_branch'
 );
 ?>

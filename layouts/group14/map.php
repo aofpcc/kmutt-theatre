@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="/layouts/group14/map.css">
 </head>
 <!-- <div id="map"></div> -->
-<div class="container" style="width: 95%;">
+<div class="container" style="width: 70%;">
 
     <div id="map"></div>
     <hr style="height:2pt; visibility:hidden; margin-bottom:-1px; margin-top:3px" />
@@ -35,7 +35,7 @@
             <div class="force-overflow" id="BtnContainer">
                 <ul id="myUL">
                     <?php for ($i = 0; $i < count($this->guy); $i++) {?>
-                        <li style="height: 60 px;"><button id="bttn" type="button" onclick="bttnFunc(<?php echo ($i) ?>);" class="btn button btn-lg btn-block">
+                        <li><button id="bttn" type="button" onclick="bttnFunc(<?php echo ($i) ?>);" class="btn button btn-lg btn-block">
                             <?php echo ($this->guy[$i]['BranchName']); ?>
                         </button>
                         <hr style="height:1pt; visibility:hidden; margin-bottom:0px; margin-top:1px" /></li>

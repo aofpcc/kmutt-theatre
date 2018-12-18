@@ -2,9 +2,10 @@
   error_reporting(E_ALL);
   ini_set('display_errors', 1);
 
-  $klein->respond('GET', '/group2/home_page/select_movie/select_time/select_seat', function ($request, $response, $service){
-  global $database;
+  $klein->respond('GET', '/group2/home_page/select_movie/select_time/select_seat', function ($request, $response, $service)  use($database){
+  $service->bootstrap3 = false;
   $conn = $database->getConnection();
+  
   $service->seatMap = [  //Seating chart
     'aaaaaaaaaa',
     'aaaaaaaaaa',
@@ -24,10 +25,11 @@
   
 
 
-    $service->selectedSeats = $request->selectedSeats;
+  $service->selectedSeats = $request->selectedSeats;
 
 
-    
+    // $soldSeat = $conn->query("select seat_ticket from G02_Ticket_history where movie_id = $id;")
+    // ->fetchAll(PDO::FETCH_ASSOC);
     
   // $service->soldSeat = ['1_2','4_4','4_5','4_6'];
 

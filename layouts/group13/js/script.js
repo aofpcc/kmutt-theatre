@@ -13,8 +13,8 @@ function removeitem(id) {
      $("#tritem"+id).remove();
      item--;
      total_price();
-
  }
+
 
 function additem() {
     var type = $('.typeCheckbox:checked').val();
@@ -43,14 +43,17 @@ function additem() {
         var productID = type + snack + '00';
         get_price(productID);
     }
-
 }
+
+
 function sum_price(price,unit,id){
     var sum = price*unit;
     $("#sum"+id).val(sum);
     total_price();
 
 }
+
+
 function total_price(){
     total = 0;
     $("#totalprice").text("");
@@ -60,6 +63,7 @@ function total_price(){
     }
     $("#totalprice").text("Total = "+total);
 }
+
 
 function get_price(productID) {
  let formData = new FormData();
@@ -133,7 +137,7 @@ function get_price(productID) {
 // }
 
 function updateOrder(){
-    let cusID = $("#CusID").val();
+    let cusID = $("#cusID").val();
     let empId = $("#empID").val();
     let couponID = $("#coupon").val();
     let payment = $("#payment").val();
@@ -142,7 +146,7 @@ function updateOrder(){
     let flavorSet = $("input[name='flavorSet[]']").map(function(){return $(this).val();}).get();
     let drinkSet = $("input[name='drinkSet[]']").map(function(){return $(this).val();}).get();
     let formData = new FormData();
-    formData.append("cusID", null);
+    formData.append("cusID", cusID);
     formData.append("empID", empId);
     formData.append("couponID", couponID);
     formData.append("payment", payment);
@@ -162,7 +166,7 @@ function updateOrder(){
                 total_price();
                 clearall();
                 // clearProductOrder();
-                getPointAndName();
+                summary();
             }else{
                 alert("update order failed "+data.error);
             }
@@ -170,24 +174,22 @@ function updateOrder(){
     }
 }
 
-function getPointAndName(){
-    var cusID = $("#CusID").val();
+function summary(){
+    var cusID = $("#cusID").val();
     var points = Math.floor(total/25);
     let formData = new FormData();
-    formData.append("CusID", cusID);
+    formData.append("cusID", cusID);
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", '/emp/fnb/get_points_and_name', true); // or https://example.com/upload/image
+    xhr.open("POST", '/emp/fnb/checkCusIDAndGetPointRecommend', true); // or https://example.com/upload/image
     xhr.send(formData);
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && xhr.status == 200) {
             var data = JSON.parse(xhr.responseText);
-            let name = data[0].name;
-            let hisPoint = (data[0].hisPoint)?data[0].hisPoint:0;
-            $('#nameModal').text("Name : " +name );
-            $('#hisPointModal').text("History points : " +hisPoint + " points" );
+            if(data.status=="Y"){
+                $('#nameModal').text("Name : " +data.name );
+            }
             $('#PointNowModal').text("This time points : " +points + " points" );
             $('#points').val(points);
-            $('#hisPoints').val(hisPoint);
             $('#totalModal').text("Total : " +total + " baht" );
             $('#exampleModalCenter').modal('show')
         }
@@ -244,30 +246,36 @@ function checkcoupon(){
 }
 
 function checkcusid(){
-    var CusID = $("#CusID").val();
+    var cusID = $("#cusID").val();
     let formData = new FormData();
-    formData.append("CusID", CusID);
+    formData.append("cusID", cusID);
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", '/emp/fnb/checkcusid', true); // or https://example.com/upload/image
+    xhr.open("POST", '/emp/fnb/checkCusIDAndGetPointRecommend', true); // or https://example.com/upload/image
     xhr.send(formData);
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && xhr.status == 200) {
-            var data = JSON.parse(xhr.responseText);
-            status = data[0].status;
+            let data = JSON.parse(xhr.responseText);
+            status = data.status;
              if(status=="Y"){
                 $("#CusID").prop('readonly', true);
                  $("#divsetbox").show();
                  $("#membervalid").show();
                  $("#memberinvalid").hide();
+                showCusIDDetail(data);
              }else{
                  $("#divsetbox").hide();
                  $("#memberinvalid").show();
                  $("#membervalid").hide();
              }
-
         }
     }
 
+ }
+
+ function showCusIDDetail(data){
+     $("#nameCusID").text("Name: "+data.name);
+     $("#pointCusID").text("Point: "+data.point);
+     $("#recommendCusID").text("Recommend menu: "+data.recommend);
  }
 
 function couponcheck(type){

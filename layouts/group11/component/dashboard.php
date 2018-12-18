@@ -26,6 +26,11 @@
                   <th>Surname</th>
                   <th>Email</th>
                   <th>Call</th>
+                  <?php
+                   if($this->permission[0]['finance'] == 1){
+                    echo ' <th></th>';
+                    } 
+                  ?>                 
                 </tr>
               </thead>
               <tbody>              
@@ -38,10 +43,13 @@
                     echo '<td>'.$row['Firstname'].'</td>';
                     echo '<td>'.$row['Lastname'].'</td>';
                     echo '<td>'.$row['Email'].'</td>';
-                    echo '<td>'.$row['Tell'].'</td>';      
-                    echo '</tr>';
+                    echo '<td>'.$row['Tell'].'</td>';
+                    if($this->permission[0]['finance'] == 1){
+                    echo '<td><a href ="/emp/staff/employee/editemp/'.$row['userID'].'">edit</a></td>';
+                    }  
+                    echo '</tr>';                        
                   } 
-                ?>                
+                ?>                           
               </tbody>
             </table>
           </div>

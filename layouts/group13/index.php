@@ -24,7 +24,7 @@
         </ul>
     </div>
 </nav> -->
-<form action="/emp/fnb/update_point" method="post">
+<form action="/emp/fnb/add_point" method="get">
 <div class="d-flex justify-content-start">
     <div class="container-fluid" style="margin-top:100px;">
         <div class="form-group">
@@ -42,9 +42,9 @@
         </div>
 
         <div class="form-group">
-            <label for="CusID">Membership</label>
+            <label for="cusID">Membership</label>
             <div class="form-inline" style="">
-                <input type="text"  class="form-control w-35" name="CusID" id="CusID" aria-describedby="helpId" placeholder="">
+                <input type="text"  class="form-control w-35" name="cusID" id="cusID" aria-describedby="helpId" placeholder="">
                 <small style="margin-left:20px;">Check CusID ?  </small>
                  <div style="margin-left:5px;" class="btn btn-primary" onclick="checkcusid()">
                         Check <span class="badge badge-primary"></span>
@@ -53,6 +53,18 @@
                <span id="memberinvalid" style="margin-left:5px; display:none;">  Member Invalid <i class="icon ion-md-close" style="font-size:20px; color:red; padding-left:10px;"></i></span>
             </div>
         </div>
+    </div>
+</div>
+
+<div>
+    <div id="nameCusID">
+
+    </div>
+    <div id="pointCusID">
+
+    </div>
+    <div id="recommendCusID">
+
     </div>
 </div>
 
@@ -254,7 +266,6 @@
 
 
     <input type="hidden" id="points" name="points">
-    <input type="hidden" id="hisPoints" name="hisPoints" >
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -264,6 +275,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+
             <div class="modal-body">
                 <div id="nameModal">
                     name :
@@ -277,9 +289,6 @@
                     Point : mock 1,500 points
                 </div>
                 <hr>
-                <div id="hisPointModal">
-                    History points : mock 1500 points
-                </div>
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary" >Ok</button>

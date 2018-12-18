@@ -27,14 +27,14 @@ $klein->respond(function ($request, $response, $service, $app, $validator) use (
     if ($username == 'Guest') {
         $login_menu = [
         ["name" => "Log in", "href" => "/customer/login"],
-        ["name" => "Register", "href" => "/test/register"],
-        ["name" => "Forget Password", "href" => "/test/forgetPassword"]
+        ["name" => "Register", "href" => "/customer/register"],
+        ["name" => "Forget Password", "href" => "/customer/forgetPassword"]
       ];
     } else {
         $login_menu = [
         // ["name" => "View Profile", "href" => ""],
         ["name" => "Account", "href" => "/customer/membership"],
-        ["name" => "Change Password", "href" => "/test/changePassword"],
+        ["name" => "Change Password", "href" => "/customer/change/password"],
         ["name" => "Log out", "href" => "/test/logout"],
       ];
     }

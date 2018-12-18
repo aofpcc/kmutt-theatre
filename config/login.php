@@ -232,7 +232,7 @@ class LoginPerformer
 
             $mail = new MailSender;
             $mail->SMTPDebug = 2;
-            $mail->sent($email, "Reset Password", "Please click <a href='http://" . $_SERVER['HTTP_HOST'] . "/test/forgetPassword/reset/$base64'>this</a> to reset your password");
+            $mail->sent($email, "Reset Password", "Please click <a href='http://" . $_SERVER['HTTP_HOST'] . "/customer/forgetPassword/reset/$base64'>this</a> to reset your password");
             return [
                 "sent" => true,
             ];
@@ -299,7 +299,7 @@ class LoginPerformer
                 $_SESSION['role'] = $result[0]["role"];
                 $_SESSION['userID'] = $result[0]["userID"];
                 $_SESSION['username'] = $result[0]["username"];
-                
+
                 if(isset($_SESSION['callback'])) {
                     $call = $_SESSION['callback'];
                     $_SESSION["callback"] = null;
@@ -309,20 +309,27 @@ class LoginPerformer
                 }
                 $this->klein->response()->sendHeaders();
             } else {
-                throw new \Exception("Incorrect Username of Password", 1);
+                throw new \Exception("Incorrect Username or password", 1);
             }
         } catch (Exception $e) {
-            $this->klein->service()->flash('Shit Wrong password or username');
+            $this->klein->service()->flash('Username or password was wrong');
             $this->klein->service()->back();
         }
     }
     public function requireLogin($role) {
         $_SESSION['callback'] = $this->klein->request()->uri();
-        return $this->LoginThenGoTo($role, '/test/login');
+        return $this->LoginThenGoTo($role, '/customer/login');
+    }
+
+    public function requireNotLogin($link) {
+        if (!empty($_SESSION['login']) && $_SESSION['login'] == true) {
+            $this->klein->response()->redirect($link);
+            $this->klein->response()->sendHeaders();
+        }
     }
 
     public function loginPage(){
-        $this->klein->response()->redirect("/test/login");
+        $this->klein->response()->redirect("/customer/login");
         $this->klein->response()->sendHeaders();
     }
 

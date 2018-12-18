@@ -78,9 +78,9 @@
                                     <div class="movie-detail">
                                     
                                     <div class="main-detail">
-                                    <?php foreach($this->movietitle as $movietitle) { ?>
-                                        <h1 class="name"><?=$movietitle?></h1>
-                                        <?php } ?>
+                                    
+                                        <h1 class="name"><?=$this->movietitle["title"]?></h1>
+                                       
                                         </div>
                                         <p class="genre">Genre: Action</p>
                                         <ul class="movie-detail-list">
@@ -128,6 +128,53 @@
                                 <a class="nav-item nav-link" href="#">Mon<br><small>18 Nov 2018</small></a>
                                 <a class="nav-item nav-link" href="#">Tue<br><small>19 Nov 2018</small></a>
                             </nav>
+
+                            <div class="card card-temp">
+          <div class="container">
+              <form>
+                <br>
+                  <div class="form-group">
+                    <label for="sel1">SELECT DATE </label><br>
+                    <select class="form-control" id="sel1">
+                      <?php
+                        //for($i = 0; $i < count($this->query); $i++) {
+                      ?>
+                      <!-- <option value="value <?//=$this->query[$i]['BranchName'] ?>">
+                        <?//= $this->query[$i]['BranchName']  ?></option> -->
+                    <?php //} ?>
+                      <?php
+                        for($i = 0; $i < count($this->query_date); $i++) {
+                      ?>
+                      <option value="value <?=$this->query_date[$i]['date(startTime)'] ?>">
+                        <?= $this->query_date[$i]['date(startTime)']  ?></option>
+                    <?php } ?>
+                    </select>
+                  </div>
+
+
+
+      
+
+  <!-- Project Two -->
+  <!-- <div class="row">
+      <div class="col-lg-4 col-md-6 mb-45">
+          <br><br>
+          <h3><center>Digital Cinema</center></h3>
+          <br><br>
+        </div> -->
+
+    <!-- <div class="col-md-5">
+        <br>
+      <h4>TH</h4>
+      <a class="btn btn-outline-primary" href="#">15:00</a>
+      <a class="btn btn-outline-primary" href="#">17:45</a>
+      <a class="btn btn-outline-primary" href="#">21:15</a>
+
+    </div> -->
+  </div>
+  <!-- /.row -->
+  </div>
+</div>
                       
                             
                             <button class="slick-next slick-arrow" style="" aria-disabled="false"><svg class="sf-icon next-arrow"
@@ -202,18 +249,18 @@
 
                                                 </li>
                                             </ul>
-                                            <ul class="time-list">
-                                                <?php foreach($this->query_time as $query_time) { ?>
+                                            <!-- <ul class="time-list">
+                                               
                                                 <li class="time-item"><a href="/emp/group2/home_page/select_movie/select_time/select_seat"><button
-                                                            class="button button-showtime"><?=$query_time[3]?></button></a></li>
+                                                            class="button button-showtime"></button></a></li>
                                                 <li class="time-item"><a href="/emp/group2/home_page/select_movie/select_time/select_seat"><button
-                                                            class="button button-showtime"><?=$query_time[1]?></button></a></li>
+                                                            class="button button-showtime"></button></a></li>
                                                 <li class="time-item"><a href="/emp/group2/home_page/select_movie/select_time/select_seat"><button
-                                                            class="button button-showtime"><?=$query_time[2]?></button></a></li>
+                                                            class="button button-showtime"></button></a></li>
                                                 <li class="time-item"><a href="/emp/group2/home_page/select_movie/select_time/select_seat"></a><button
-                                                        class="button button-showtime"><?=$query_time[3]?></button></a></li>
-                                                <?php } ?>
-                                            </ul>
+                                                        class="button button-showtime"></button></a></li>
+                                                
+                                            </ul> -->
                                         </div>
                                     </div>
                                 </div>

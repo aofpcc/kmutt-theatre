@@ -351,12 +351,17 @@ $klein->respond('GET', '/transaction_point', function ($request, $response, $ser
 
 //add
   $klein->respond('GET', '/g05/test_add_point', function ($request, $response, $service, $app, $validator) {
-  $app->point->addPoint([
-    "type" => "Ticket", //FNB
-    "memberID" => "151",
-    "point" => "300",
-    "transactionID" => "X01AB"
-  ]);
+    $x = $app->point->addPoint([
+        "type" => "Ticket", //FNB
+        "memberID" => "151",
+        "point" => "300",
+        "transactionID" => "X01AB"
+    ]);
+    if($x["result"]) {
+        // ok
+    }else{
+        // not ok
+    }
 });
 
   //subtract

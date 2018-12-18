@@ -8,7 +8,11 @@
 
   $movieid = $conn->query("SELECT id FROM G09_Movie")->fetchAll(PDO::FETCH_BOTH);
   $movietitle = $conn->query("SELECT title FROM G09_Movie ")->fetchAll(PDO::FETCH_BOTH);
+  // for($movieid =0 ;$movieid <= 3; $movieid++){
 
+
+  // }
+  
   $service->movieid=$movieid;
   $service->movietitle=$movietitle[1];
 

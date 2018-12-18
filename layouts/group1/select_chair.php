@@ -41,7 +41,7 @@
                       <font size="5">Date   : <?=$this->string ?></font><br><br>
 
                       <font size="5">Time   : <?=$this->date_time ?></font> &nbsp&nbsp&nbsp  <font size="5"> Theater : <?=$this->movie_id["room_id"] ?></font><br><br>
-                      <font size="5">Length : <?=$this->length["length"] ?></font> <br>
+                      <font size="5">Length : <?=$this->length ?></font> <br>
 
                     <br> <!--link to ticket-->
                     <button type="button" class="btn btn-lg btn-danger"

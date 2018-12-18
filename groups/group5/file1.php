@@ -364,12 +364,29 @@ $klein->respond('POST', '/register-form', function ($request, $response, $servic
 });
 
 //transaction
-$klein->respond('GET', '/transaction_point', function ($request, $response, $service) {
+$klein->respond('GET', '/transaction_point', function ($request, $response, $service, $app, $validate) {
+    $userID = $app->login->requireLogin('customer')["userID"];
     $service->title = "Point History";
     $service->bootstrap3 = false;
     global $database;
     $conn = $database->getConnection();
-    $service->pageTitle = 'Fish and Chips';
+
+    $query = "select MemberID, date(date) as date, time(date) as time, type, point, prefix
+    from G05_v_point_type_member_date
+    where MemberID = :MemberID
+    order by date";
+    $stmt = $conn->prepare($query);
+    $stmt->bindParam(":MemberID", $userID);
+    $stmt->execute();
+    
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    // $response->dump($result);
+    // $response->sendBody();
+    // die;
+    
+
+    $service->title = 'Fish and Chips';
+    $service->list = $result;
     $service->render('layouts/group5/transcation_point.php');
 });
 

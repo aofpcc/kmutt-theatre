@@ -4,6 +4,9 @@ $klein->respond('GET', '/add_roomtype', function ($request, $response, $service,
     $service->bootstrap3 = false;
     $conn = $app->db->getConnection();
 
+    $query = "SELECT * From G04_MSRnB_seattype";
+    $service->seat_types = $conn->query($query)->fetchAll(PDO::FETCH_ASSOC);
+
     $service->render("layouts/group4/addshowtime/addroomType.php");
 });
 
@@ -20,13 +23,14 @@ $klein->respond('POST', '/g04/roomType/add', function ($request, $response, $ser
 
     // insert data into db using PDO, again PDO , PDO, PDO, PDO
     try {
-        $stmt = $conn->prepare("insert into G04_MSRnB_roomtype(roomtype, roomInfo) values(:roomtype, :roomInfo);");
+        $stmt = $conn->prepare("insert into G04_MSRnB_roomtype(roomtype, roomInfo, seattype_id) values(:roomtype, :roomInfo, :seattype_id);");
         $rtype = $request->roomtype;
         $info = $request->info;
+        $seattype_id = $request->seattype_id;
 
         $stmt->bindParam(':roomtype', $rtype);
         $stmt->bindParam(':roomInfo', $info);
-
+        $stmt->bindParam(':seattype_id', $seattype_id);
         $stmt->execute();
 
         $service->flash("Add Room Type Success");

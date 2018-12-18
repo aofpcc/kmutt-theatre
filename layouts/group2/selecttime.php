@@ -205,13 +205,13 @@
                                             <ul class="time-list">
                                                 <?php foreach($this->query_time as $query_time) { ?>
                                                 <li class="time-item"><a href="/emp/group2/home_page/select_movie/select_time/select_seat"><button
-                                                            class="button button-showtime"><?=$query_time[3]?></button></a></li>
+                                                            class="button button-showtime"><?=$query_time?></button></a></li>
                                                 <li class="time-item"><a href="/emp/group2/home_page/select_movie/select_time/select_seat"><button
-                                                            class="button button-showtime"><?=$query_time[1]?></button></a></li>
+                                                            class="button button-showtime"><?=$query_time?></button></a></li>
                                                 <li class="time-item"><a href="/emp/group2/home_page/select_movie/select_time/select_seat"><button
-                                                            class="button button-showtime"><?=$query_time[2]?></button></a></li>
+                                                            class="button button-showtime"><?=$query_time?></button></a></li>
                                                 <li class="time-item"><a href="/emp/group2/home_page/select_movie/select_time/select_seat"></a><button
-                                                        class="button button-showtime"><?=$query_time[3]?></button></a></li>
+                                                        class="button button-showtime"><?=$query_time?></button></a></li>
                                                 <?php } ?>
                                             </ul>
                                         </div>

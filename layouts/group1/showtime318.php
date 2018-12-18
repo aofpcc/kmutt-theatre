@@ -41,7 +41,7 @@
           <font size = "5" style="font-weight:bold"> Movie Name: <?=$this->name["title"] ?></font><br><br>
           <font size = "5">Genre: <?=$this->genre["genre"] ?></font><br>
           <!-- <font size = "5">Rate: G</font><br> -->
-          <font size = "5">Length: <?=$this->length["length"] ?> Mins</font><br>
+          <font size = "5">Length: <?=$this->length ?></font><br>
           <!-- <font size = "5">Detail : <?=$this->details["datail"] ?></font><br><br> -->
           <?php
 // var_dump($this->details["datail"]);

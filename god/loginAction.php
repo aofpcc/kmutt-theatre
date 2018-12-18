@@ -128,6 +128,7 @@ $klein->with("/test", function () use ($klein) {
     });
 
     $klein->respond('POST', '/resetPassword', function ($request, $response, $service, $app, $validator) {
+      // die("Hoi");
         $service->validateParam('newpassword', 'New Password cannot be null')->notNull();
         $service->validateParam('confirmpassword', 'Confirm Password cannot be null')->notNull();
         if ($request->newpassword != $request->confirmpassword) {
@@ -135,15 +136,18 @@ $klein->with("/test", function () use ($klein) {
             $service->back();
         }
         $result = $app->login->setNewPassword($request->newpassword);
+        // $p = $service->passValue;
         if ($result["update"]) {
-            $service->passValue["content"] = "Password was reseted";
+            $service->flash("Password was reseted");
         } else {
-            $service->passValue["content"] = "Password was not reseted. Please Contact Us";
+            $service->flash("Password was not reseted. Please Contact Us");
         }
-        $response->redirect("/test/logout");
+         // $service->passValue = $p;
+        $response->redirect("/customer/login");
+        $response->sendHeaders();
     });
 
-    $klein->respond('GET', '/changePassword', function ($request, $response, $service, $app, $validator) {
+    $klein->respond('GET', '/change/password', function ($request, $response, $service, $app, $validator) {
         $result = $app->login->requireLogin('customer');
         $newOne = $service->passValue;
         $service->passValue["userID"] = $result["userID"];

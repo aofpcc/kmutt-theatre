@@ -93,11 +93,11 @@ $klein->respond('POST', '/kmutt_home/branch/show_time/select_chair/payment/[:sho
                 $service->back();
               }
             }
-            $seat = $select_seat[$j];
-              $sql = "INSERT INTO G01_Booking (status, deadline, selected_seat, booking_time, code, buyer_id, row_ticket, room_id, movie_id)
-                 values('$status',FROM_UNIXTIME($deadline), '$seat', CURRENT_TIMESTAMP, '$code', '$buyer_id', '$row', '$theatre_no', '$movie_id')";
-                $stmt = $conn->prepare($sql);
-                $stmt->execute();
+            //$seat = $select_chair[$j];
+              // $sql = "INSERT INTO G01_Booking (status, deadline, selected_seat, booking_time, code, buyer_id, row_ticket, room_id, movie_id)
+              //    values('$status',FROM_UNIXTIME($deadline), '$seat', CURRENT_TIMESTAMP, '$code', '$buyer_id', '$row', '$theatre_no', '$movie_id')";
+              //   $stmt = $conn->prepare($sql);
+              //   $stmt->execute();
           }
         }
         $conn->commit();
@@ -116,7 +116,7 @@ $klein->respond('POST', '/kmutt_home/branch/show_time/select_chair/payment/[:sho
   //$service->selectedSeats = $request->selectedSeats;
   // $service->pageTitle = 'Payment';
   // $service->seats = $seats;
-  // $service->render('layouts/group1/payment.php');
+  $service->render('layouts/group1/payment.php');
 
   // var_dump($seats[0]);
   // die;

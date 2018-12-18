@@ -89,7 +89,7 @@ $klein->respond('GET', '/kmutt_home/branch/show_time/select_chair/[:showtime_id]
   // $service->price = $price[0];
   // $service->type_seat = $type_seat[0];
   // $service->seat_info = $seat_info[0];
-  // $service->showtime_id = $request->showtime_id;
+  $service->showtime_id = $request->showtime_id;
 
   // $service->theatre_no = $theatre_no;
   // $service->pageTitle = 'Payment';

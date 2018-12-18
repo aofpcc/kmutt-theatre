@@ -42,6 +42,9 @@
                       <front size = "5">Information about seat : <?=$this->seat_info ?></front><br><br>
                       <front size = "5">Price of seat : <?=$this->price?></front><br><br>
 
+                      <font size="5">Time   : <?=$this->date_time ?></font> &nbsp&nbsp&nbsp  <font size="5"> Theater : <?=$this->movie_id["room_id"] ?></font><br><br>
+                      <font size="5">Length : <?=$this->length ?></font> <br>
+
                     <br> <!--link to ticket-->
                     <button type="button" class="btn btn-lg btn-danger"
                     onclick="location.href = '/customer/invitation/showtime/<?=$this->showtime_id?>'">INVITED FRIEND

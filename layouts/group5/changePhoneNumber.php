@@ -29,14 +29,8 @@
           <form action="/customer/change/phonenumber/action" method="post">
             <div class="form-group">
               <label class="box-name-text" for="exampleInputEmail1">New Mobile Phone Number</label>
-              <input type="text" class="form-control form-control-lg" id="PhoneNumber" name="PhoneNumber" placeholder="">
+              <input type="text" class="form-control form-control-lg" id="PhoneNumber" name="PhoneNumber" pattern="[0-9]{10}" required>
             </div>
-            <!-- <div class="form-group">
-              <label class="box-name-text gap" for="exampleInputPassword1">Current Password</label>
-              <small class="right"><a href="localhost:8000/chage/password">Forget password?</a></small>
-              <input type="password" class="form-control form-control-lg" id="Password" name="Password" placeholder="">
-            </div> -->
-            <!-- <div class="gap-more"></div> -->
 
               <input type="submit" class="cancel-block gap red-block white-font" value="Submit">
               <button type="button" class="cancel-block gap" onclick="location = '/customer/membership'">Cancel</button>

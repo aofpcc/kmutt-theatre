@@ -31,9 +31,11 @@ $klein->respond('GET', '/kmutt_home/branch/show_time/select_chair/[:showtime_id]
   // Pass on the params to the page we're gonna render
   $service->selectedSeats = $request->selectedSeats;
 
-  //select soldSeat
-   $id = $movie_id[0]["movie_id"];
-  $soldSeat = $conn->query("select seat_ticket from G02_Ticket_history where movie_id = $id;")
+  $movie_id = $conn->query("select movie_id , room_id from G04_MSRnB_showingroom where id = '$request->showtime_id';")->
+  fetchAll(PDO::FETCH_ASSOC);
+  $name = $conn->query("select title, Image,length from G09_Movie where id = '".$movie_id[0]["movie_id"]."';")->fetchAll(PDO::FETCH_ASSOC);
+
+  $date = $conn->query("select date(startTime) as startDate from G04_MSRnB_showingroom where id = '$request->showtime_id';")
   ->fetchAll(PDO::FETCH_ASSOC);
 
   $movie_id = $conn->query("select movie_id from G04_MSRnB_showingroom where id = '$request->showtime_id';")->
@@ -42,8 +44,8 @@ $klein->respond('GET', '/kmutt_home/branch/show_time/select_chair/[:showtime_id]
   ->fetchAll(PDO::FETCH_ASSOC);
   $name = $conn->query("select title from G09_Movie where id = '".$movie_id[0]["movie_id"]."';")->fetchAll(PDO::FETCH_ASSOC);
 
-  $date = $conn->query("select date(startTime) as startDate from G04_MSRnB_showingroom where id = '$request->showtime_id';")
-  ->fetchAll(PDO::FETCH_ASSOC);
+  $date_time = date('g:ia', strtotime($dateTime[0]["start_time"]));
+
 
   $temp = new DateTime($date[0]["startDate"]);
   $month = $temp->format("F");
@@ -69,6 +71,7 @@ $klein->respond('GET', '/kmutt_home/branch/show_time/select_chair/[:showtime_id]
 
   // Pass on the params to the page we're gonna render
   $service->selectedSeats = $request->selectedSeats;
+  $service->length = $name[0]["length"];
   $service->name = $name[0];
   $service->movie_id = $movie_id[0];
   $service->price = $price[0];

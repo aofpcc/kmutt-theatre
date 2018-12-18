@@ -7,10 +7,14 @@ $klein->respond('GET', '/add_roomtype', function ($request, $response, $service,
     $service->render("layouts/group4/addshowtime/addroomType.php");
 });
 
+$klein->respond('GET', '/g04/roomType/test', function ($request, $response, $service, $app, $validator) {
+    $response->redirect("/customer/login");
+    $response->sendHeaders();
+});
+
 $klein->respond('POST', '/g04/roomType/add', function ($request, $response, $service, $app, $validator) {
     $conn = $app->db->getConnection();
     // receive all data need
-
 
     // insert data into db using PDO, again PDO , PDO, PDO, PDO
     try {
@@ -18,17 +22,17 @@ $klein->respond('POST', '/g04/roomType/add', function ($request, $response, $ser
         $rtype = $request->roomtype;
         $info = $request->info;
 
-
         $stmt->bindParam(':roomtype', $rtype);
         $stmt->bindParam(':roomInfo', $info);
 
         $stmt->execute();
 
         $service->flash("Add Room Type Success");
+        // var_dump("Success");
     } catch (PDOException $e) {
+        // var_dump($e->getMessage());
         $service->flash("Add Room Type Failed Beacuzs" . $e->getMessage());
     }
-
     $response->redirect("/emp/add_roomtype");
     $response->sendHeaders();
 });

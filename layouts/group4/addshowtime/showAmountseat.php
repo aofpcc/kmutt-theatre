@@ -4,7 +4,7 @@
   <div class="row">
   		<div class="col-md-6"></div>
         <div class="col-md-6 text-right">
-            <input type="button" class="btn btn-primary btn-lg custom-button-width .navbar-right"  value="  Add  " onclick=" add_page()"></button>
+            <input type="button" class="btn btn-primary btn-lg custom-button-width .navbar-right"  value="  Add Room  " onclick=" add_page()"></button>
     	</div>
   </div>
 </div>
@@ -16,22 +16,24 @@
     <thead>
         <tr>
         <td>Id</td>
-        <td>Seat Type</td>
-        <td>Seat Price</td>
-        <td>Seat Type Information</td>
+        <td>Branch</td>
+        <td>Room No</td>
+        <td>Amount of seat per Row</td>
+        <td>Amount of seat per column</td>
         <td>Action</td>
         </tr>
     </thead>
     <tbody>
-        <?php foreach($this->Sdata as $rt) { ?>
+        <?php foreach($this->SRdata as $sr) { ?>
             <tr>
-                <td><?=$rt['id']?></td>
-                <td><?=$rt['seattype']?></td>
-                <td><?=$rt['seat_price']?></td>
-                <td><?=$rt['seatInfo']?></td>
+                <td><?=$sr['id']?></td>
+                <td><?=$sr['BranchName']?></td>
+                <td><?=$sr['room_no']?></td>
+                <td><?=$sr['all_seat_row']?></td>
+                <td><?=$sr['all_seat_no']?></td>
                 <td>
-                    <button type="button" class="btn btn-success" onClick="location.href='/emp/edit_seattype/<?=$rt['id']?>';">Edit</button>
-                    <button type="button" class="btn btn-danger" onClick="del(<?=$rt['id']?>);">Delete</button>
+                    <button type="button" class="btn btn-success" onClick="location.href='/emp/edit_amountseat/<?=$sr['id']?>';">Edit</button>
+                    <button type="button" class="btn btn-danger" onClick="del(<?=$sr['id']?>);">Delete</button>
                 </td>
             </tr>
         <?php } ?>
@@ -58,7 +60,7 @@
 
     function add_page()
     {
-        location.href = "/emp/add_seattype";
+        location.href = "/emp/add_amountseat";
     } 
 
 </script>

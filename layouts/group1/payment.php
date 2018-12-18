@@ -49,30 +49,13 @@
               </font>
               <br>
 
-              <!-- <font size="4"> ที่นั่ง </font>
-              <br />
-              <?php
-                // for ($i=0; $i < count($this->seats); $i++) {
-                //   echo json_encode($this->seats);
-                //
-                // }
-                // $arry = json_decode(json_encode($this->seats), true);
-                // foreach ($arry as $result)
-                // {
-                //   $seat_no = $result['row'].'-'.$result['seat'];
-                //   echo "<div class='btn btn-outline-dark btn-sm'><b>$seat_no</b></div>";
-                //   echo "&nbsp;";  // add a little space
-                // }
-                  //echo json_encode($this->seats);
-                  //print_r($this->seats);
-              ?> -->
-              <br> <br>
-
-
                     <font size="4"> ที่นั่ง </font><br>
                     <?php
 
                     $arry = json_decode(json_encode($this->seats), true);
+
+                    var_dump($this->seats);
+                    die;
                     foreach ($arry as $result)
                     {
                       echo 'row : ', $result['row'],'   seat : ', $result['seat'],'<br/>';

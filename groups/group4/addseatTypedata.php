@@ -10,26 +10,26 @@ $klein->respond('GET', '/add_seattype', function ($request, $response, $service,
 $klein->respond('POST', '/g04/seatType/add', function ($request, $response, $service, $app, $validator) {
     $conn = $app->db->getConnection();
     // receive all data need
-    $seattype = $_POST['seattype'];
-    $seat_price = $_POST['seatprice'];
-    $seatInfo = $_POST['info'];
+    //$seattype = $_POST['seattype'];
+    //$seat_price = $_POST['seatprice'];
+    //$seatInfo = $_POST['info'];
 
 
     // insert data into db using PDO, again PDO , PDO, PDO, PDO
     try {
-        //$stmt = $conn->prepare("insert into G04_MSRnB_seattype(seattype, seat_price, seatInfo) values("$seattype", :seat_price, :seatInfo);");
-        $conn->exec("INSERT INTO G04_MSRnB_seattype(seattype, seat_price, seatInfo) 
-                      VALUES('$seattype', '$seat_price', '$seatInfo')");
+        $stmt = $conn->prepare("insert into G04_MSRnB_seattype(seattype, seat_price, seatInfo) values(:seattype, :seat_price, :seatInfo);");
+        //$conn->exec("INSERT INTO G04_MSRnB_seattype(seattype, seat_price, seatInfo) 
+                      //VALUES('$seattype', '$seat_price', '$seatInfo')");
         $stype = $request->seattype;
         $sprice = $request->seatprice;
         $info = $request->info;
 
 
-        // $stmt->bindParam(':seattype', $stype);
-        // $stmt->bindParam(':seat_price', $sprice);
-        // $stmt->bindParam(':seatInfo', $info);
+        $stmt->bindParam(':seattype', $stype);
+        $stmt->bindParam(':seat_price', $sprice);
+        $stmt->bindParam(':seatInfo', $info);
 
-        // $stmt->execute();
+        $stmt->execute();
 
         $service->flash("Add Room Type Success");
     } catch (PDOException $e) {
@@ -40,36 +40,38 @@ $klein->respond('POST', '/g04/seatType/add', function ($request, $response, $ser
     $response->sendHeaders();
 });
 
-$klein->respond('GET', '/edit_roomtype/[:roomtype_id]', function ($request, $response, $service, $app, $validator) {
+$klein->respond('GET', '/edit_seattype/[:seattype_id]', function ($request, $response, $service, $app, $validator) {
     $conn = $app->db->getConnection();
     // receive all data need
-    $roomtype_id = $request->roomtype_id;
+    $seattype_id = $request->seattype_id;
     // var_dump($roomtype_id);
     // die;
-    $query = "select * from G04_MSRnB_roomtype WHERE id = $roomtype_id";
+    $query = "select * from G04_MSRnB_seattype WHERE id = $seattype_id";
     $data = $conn->query($query)->fetchAll(PDO::FETCH_ASSOC);
 
     $service->title = "Showing Time - Movie";
     $service->bootstrap3 = false;
-    $service->roomdata = $data[0];
-    $service->render("layouts/group4/addshowtime/editRoomTypedata.php");
+    $service->seatdata = $data[0];
+    $service->render("layouts/group4/addshowtime/editSeatTypedata.php");
 });
 
-$klein->respond('POST', '/g04/roomType/edit', function ($request, $response, $service, $app, $validator) {
+$klein->respond('POST', '/g04/seatType/edit', function ($request, $response, $service, $app, $validator) {
     $conn = $app->db->getConnection();
     // receive all data need
     // insert data into db using PDO, again PDO , PDO, PDO, PDO
     try {
-        $stmt = $conn->prepare("update G04_MSRnB_roomtype 
-        set roomtype =:roomtype, roomInfo=:roomInfo
+        $stmt = $conn->prepare("update G04_MSRnB_seattype 
+        set seattype =:seattype, seat_price =:seatprice, seatInfo=:seatInfo
         WHERE id=:id");
         $id = $request->id;
-        $rtype = $request->roomtype;
+        $stype = $request->seattype;
+        $sprice = $request->seatprice;
         $info = $request->info;
 
         $stmt->bindParam(':id', $id);
-        $stmt->bindParam(':roomtype', $rtype);
-        $stmt->bindParam(':roomInfo', $info);
+        $stmt->bindParam(':seattype', $stype);
+        $stmt->bindParam(':seatprice', $sprice);
+        $stmt->bindParam(':seatInfo', $info);
 
         $stmt->execute();
 
@@ -78,6 +80,6 @@ $klein->respond('POST', '/g04/roomType/edit', function ($request, $response, $se
         $service->flash("Edit Room Type Failed Beacuzs" . $e->getMessage());
     }
 
-    $response->redirect("/emp/showRoomtype");
+    $response->redirect("/emp/showSeattype");
     $response->sendHeaders();
 });

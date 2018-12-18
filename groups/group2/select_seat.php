@@ -81,7 +81,11 @@
     $service->selectedSeats = $request->selectedSeats;
 
 
-  $service->soldSeat = ['1_2','4_4','4_5','4_6'];
+    
+    
+  // $service->soldSeat = ['1_2','4_4','4_5','4_6'];
+
+  // $service->soldSeat = $soldSeat[0];
   $service->render('layouts/group2/selectseat.php');
 });
 

@@ -126,7 +126,7 @@
 </script>
 
 <?php
-  $total_price = "<script> document.write($total) </script>"
+  //*$total_price = "<script> document.write($total) </script>"
 
   //$this->total = $total_price;
  ?>

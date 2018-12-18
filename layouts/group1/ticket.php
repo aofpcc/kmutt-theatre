@@ -64,9 +64,9 @@
                 ?>
                 <br> <br>
 
-              <!-- <from action = '/kmutt_home' method = 'post'>
-    <button type="button" class="btn btn-primary btn-lg btn-danger" >BACK TO HOME</button>
-  </from> -->
+                <from action = '/cutomer/kmutt/ticket/barcode/<?= $this->showtime_id?>' method = 'post'>
+                  <button type="button" class="btn btn-primary btn-lg btn-danger" >GO TO BARCODE</button>
+                </from>
   </div>
 </div>
 </div>

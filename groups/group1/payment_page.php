@@ -12,6 +12,8 @@ function randomCode1($length = 4) {
 }
 
 $klein->respond('POST', '/kmutt_home/branch/show_time/select_chair/payment/[:showtime_id]', function ($request, $response, $service, $app, $validator) {
+  // var_dump($request);
+  // die;
   $userID = "".$app->login->requireLogin('customer')["userID"];
   $service->bootstrap3 = false;
   $conn = $app->db->getConnection();
@@ -119,13 +121,12 @@ $klein->respond('POST', '/kmutt_home/branch/show_time/select_chair/payment/[:sho
         $theatre_no = $room_no[0]["room_id"];
         $movie_id = $id_movie[0]["movie_id"];
 
-
         // $array = json_decode(json_encode($seats), true);
         // foreach ($array as $result) {
         //   $row = $result['row'];
         //   $seat = $result['seat'];
 
-          $select_chair = $conn->query("select selected_seat from G01_Booking where movie_id = $movie_id and showtime_id = $request->showtime_id;")
+          $select_chair = $conn->query("select seat_ticket as selected_seat from G02_Ticket_history where showtime_id = $request->showtime_id and return_ticket=0 and paid=1;")
           ->fetchAll(PDO::FETCH_ASSOC);
 
           $result = [];
@@ -196,11 +197,30 @@ $klein->respond('POST', '/kmutt_home/branch/show_time/select_chair/payment/[:sho
     }
   }
 
+  $seat_price = $conn->query("
+    select distinct seat_price
+    from G04_MSRnB_showingroom a
+    join G04_MSRnB_room b
+    on a.room_id = b.id
+    join G04_MSRnB_theaterInfo c
+    on b.theaterinfo_id = c.id
+    join G04_MSRnB_seattype d
+    on c.seattype_id = d.id
+    WHERE a.id = $request->showtime_id")->fetchAll(PDO::FETCH_ASSOC)[0]["seat_price"];
+
   // var_dump($seats[0]);
   // die;
   // // Pass on the params to the page we're gonna render
   //$service->selectedSeats = $request->selectedSeats;
   // $service->pageTitle = 'Payment';
+
+  $num = count($request->selectedSeats);
+  // var_dump($num);
+  $sp = $seat_price;
+  // var_dump($sp);
+  // die;
+
+  $service->total_price = $sp * $num;
   $service->seats = $seats;
   $service->render('layouts/group1/payment.php');
 
@@ -209,4 +229,7 @@ $klein->respond('POST', '/kmutt_home/branch/show_time/select_chair/payment/[:sho
   // $response->redirect('/customer/kmutt_home/branch/show_time/select_chair/payment');
 });
 
-?>
+$klein->respond('GET', '/kmutt_home/branch/show_time/select_chair/payment/[:showtime_id]', function ($request, $response, $service, $app, $validator) {
+  $response->redirect("/customer/kmutt_home/branch".$request->showtime_id);
+  $response->sendHeaders();
+});

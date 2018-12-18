@@ -78,16 +78,19 @@
               <font size="4"> ราคารวม </font>
               <br/>
               <p>
-                <li>: <b><i>$</i><span id="total">0</span></b></li>
+                <li>: <b><i>$</i><span id="total"><?=$this->total_price?></span></b></li>
               </p>
               <br>
 
               </p><br>
 
-              <?php $this->partial("layouts/group1/js/countdown.php");
+              <?php //$this->partial("layouts/group1/js/countdown.php");
               // var_dump($this->showtime_id);
               // die; ?>
               <form action = "/customer/kmutt/ticket/<?= $this->showtime_id?>" method = "post">
+                <?php foreach($this->selectedSeats as $seat) { ?>
+                  <input type="hidden" name="seat[]" value="<?=$seat?>">
+                <?php } ?>
                 <button name = Kbank value="Kbank" id="Kbank" class="btn btn-lg btn-default" >KBANK</button>
                 <!-- <button name =  class="btn btn-lg btn-default" >SCB</button>
                 <button type="button" class="btn btn-lg btn-default" >CREDIT</button>

@@ -4,17 +4,23 @@ $klein->respond('GET', '/group7', function ($request, $response, $service, $app,
   $service->render('layouts/group7/home.php');
 });
 
-$klein->respond('GET', '/invitations/[:id]', function ($request, $response, $service, $app, $validator) {
+$klein->respond('GET', '/invitations/[:code]', function ($request, $response, $service, $app, $validator) {
+  $userID = $app->login->requireLogin('customer')["userID"]."";
   $conn = $app->db->getConnection();
+
+  // check user id in invitation code
+  // check invitation code valid
+  $query = "";
+  
   $service->title = "Invitation Page";
   $service->bootstrap3 = false;
-  $service->id = $request->id;
-  $id = $request->id;
+  $service->id = $request->code;
+  $code = $request->code;
   $invite_data = [
     
   ];
 
-  $data = $conn->query("SELECT * from G07_invitation WHERE invitation_code = '$id'")->fetchAll(PDO::FETCH_ASSOC);
+  $data = $conn->query("SELECT * from G07_invitation WHERE invitation_code = '$code'")->fetchAll(PDO::FETCH_ASSOC);
   $data = $data[0];
 
     $invite_data["code"] = $data["invitation_code"];
@@ -49,7 +55,7 @@ $klein->respond('GET', '/invitation/showtime/[:showtime_id]', function ($request
     $data = $conn->query("SELECT * from G07_v_allgroups WHERE member_id = $userID and showtime_id = $request->showtime_id")->fetchAll(PDO::FETCH_ASSOC);
     if(count($data) == 0) {
       // do something
-      $stmt = $conn->prepare("insert into G07_invitation(showtime_id, member_id, invitation_code)
+      $stmt = $conn->prepare("insert into G07_invitation(showtime_id, header_id, invitation_code)
         values(:showtime_id, :member_id, :invitation_code);");
       $stmt->bindParam(":showtime_id", $showtime_id);
       $stmt->bindParam(":member_id", $userID);
@@ -69,10 +75,12 @@ $klein->respond('GET', '/invitation/showtime/[:showtime_id]', function ($request
       $response->redirect("/customer/invitations/$invite_code");
     }
     $conn->commit();
+    $response->redirect("/customer/invitations/$code");
   } catch (Exception $e) {
     //throw $th;
     $conn->rollback();
-    $service->flash("Err " + $e->getMessage());
+    $service->flash("Err " . $e->getMessage());
+    $service->back();
   }
 
   // $code = uniqid();

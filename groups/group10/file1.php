@@ -1,8 +1,8 @@
 <?php
-$klein->respond('GET', '/group10', function ($request, $response, $service, $app, $validator) {
+$klein->respond('GET', '/group10/ads', function ($request, $response, $service, $app, $validator) {
   // $service->bootstrap3 = true;
   if(empty($_SESSION['login'])) {
-    $userId = $app->login->requireLogin('customer');
+    $userId = $app->login->requireLogin('employee');
   }
   global $database;
   $conn = $database->getConnection();
@@ -16,8 +16,8 @@ $klein->respond('GET', '/group10', function ($request, $response, $service, $app
   // $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
 
   // $service->allMovies = $arr;
-  $service->pageTitle = 'Advertisement';
   $service->list = $list;
+  $service->isManagementPage = true;
   $service->render('layouts/group10/home.php');
   $conn = null;
 });

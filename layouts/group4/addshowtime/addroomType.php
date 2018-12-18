@@ -33,6 +33,14 @@
                         <label for="info">Room Type Information</label>
                         <textarea class="form-control" id="info" name="info" rows="3" required></textarea>
                     </div>
+                    <div class="form-group">
+                        <label for="info">Seat Type</label>
+                        <select name="seattype_id" id="" class="form-control">
+                          <?php foreach($this->seat_types as $seat) { ?>
+                            <option value="<?=$seat["id"]?>"><?=$seat["seattype"]?></option>
+                          <?php } ?>
+                        </select>
+                    </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                     <input type="button" class="btn btn-success btn-xl custom-button-width .navbar-right"  value="  Back  " onclick=" showRoomtype_page()"></button>
                     <br><br>

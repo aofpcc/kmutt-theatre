@@ -15,30 +15,24 @@
 <table class="table">
     <thead>
         <tr>
-        <td>Id</td>
         <td>Seat Pic</td>
         <td>Room Type</td>
         <td>Room Info</td>
         <td>Seat Type</td>
         <td>Seat Info</td>
         <td>Seat Price</td>
-        <td>Action</td>
         </tr>
     </thead>
     <tbody>
         <?php foreach($this->RIdata as $ri) { ?>
             <tr>
-                <td><?=$ri['id']?></td>
-                <td><?=$ri['seatpic']?></td>
+                <td><img src="<?='/layouts/group4'.$ri['seatpic']?>" alt="Smiley face" height="42" width="42"></td>
                 <td><?=$ri['roomtype']?></td>
                 <td><?=$ri['roomInfo']?></td>
                 <td><?=$ri['seattype']?></td>
                 <td><?=$ri['seatInfo']?></td>
                 <td><?=$ri['seat_price']?></td>
                 <td>
-                    <button type="button" class="btn btn-success" onClick="location.href='/emp/edit_roomtype/<?=$ri['id']?>';">Edit</button>
-                    <button type="button" class="btn btn-danger" onClick="del(<?=$ri['id']?>);">Delete</button>
-                </td>
             </tr>
         <?php } ?>
     </tbody>

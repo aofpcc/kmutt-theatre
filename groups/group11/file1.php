@@ -36,6 +36,7 @@ $klein->respond('GET', '/staff/employee', function($request, $response, $service
 $klein->respond('GET', '/staff/employee/dashboard', function ($request, $response, $service, $app, $validator) {
   error_reporting(E_ALL);
   ini_set('display_errors', 1);
+  $service->bootstrap3 = true;
   //check login
    $data = $app->login->LoginThenGoTo('employee','/emp/staff');
   //  echo($data['userID']);

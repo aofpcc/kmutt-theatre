@@ -54,36 +54,38 @@ $klein->respond('POST', '/fnb/checkcoupon', function ($request, $response, $serv
   }
 });
 
-$klein->respond('POST', '/fnb/checkcusid', function ($request, $response, $service, $app, $validator) {
+$klein->respond('POST', '/fnb/checkCusIDAndGetPointRecommend', function ($request, $response, $service, $app, $validator) {
   global $database;
   $conn = $database->getConnection();
 
-  $service->validateParam('CusID', 'Bad Request')->notNull();
+  $service->validateParam('cusID', 'Bad Request')->notNull();
 
-  $CusID= $request->CusID;
-  if (!is_numeric($CusID)){
+  $cusID= $request->cusID;
+  if (!is_numeric($cusID)){
     return $response->json([[
       "status"   => "N"
     ]]);
   }
-  $sql = "select * from G05_Member_profile where MemberID = ".$CusID;
+
+  $sql = "select * from G05_Member_profile where MemberID = ".$cusID;
   $stmt = $conn->prepare($sql);
   $stmt->execute();
   $num = $stmt->rowCount();
   if ($num > 0) {
-    $someArray = [
-      [
-        "status"   => "Y",
-      ]
+    $recommend = getRecommend($cusID);
+    $nameAndPoint= getPointName($cusID);
+    $data = [
+        "status"=> "Y",
+        "recommend"=>$recommend,
+        "name"=>$nameAndPoint["name"],
+        "point"=>$nameAndPoint["points"],
     ];
-    return $response->json($someArray);
+    return $response->json($data);
   }else{
-    $someArray = [
-      [
+    $data = [
         "status"   => "N"
-      ]
     ];
-    return $response->json($someArray);
+    return $response->json($data);
   }
 });
 
@@ -124,7 +126,6 @@ $klein->respond('POST', '/fnb/checkemp', function ($request, $response, $service
 $klein->respond('POST', '/fnb/update_point', function ($request, $response, $service, $app, $validator) {
     global $database;
     $conn = $database->getConnection();
-
     $service->validateParam('CusID', 'Bad Request')->notNull();
 //    $service->validateParam('points', 'Bad Request')->notNull();
 //    $service->validateParam('hisPoints', 'Bad Request')->notNull();
@@ -146,6 +147,86 @@ $klein->respond('POST', '/fnb/update_point', function ($request, $response, $ser
     $num = $stmt->rowCount();
 
 });
+
+$klein->respond('get', '/fnb/add_point', function ($request, $response, $service, $app, $validator){
+
+    $cusID = $request->cusID;
+    $points = $request->points;
+    $receiptID = getMaxReceiptID();
+//    print_r($receiptID);
+    $x = $app->point->addPoint([
+        "type" => "FNB",
+        "memberID" => $cusID,
+        "point" => $points,
+        "transactionID" => $receiptID,
+    ]);
+    if($x["result"]) {
+        echo "add point success";
+//        $x["redeemID"];
+    }else{
+        echo "add point failed";
+
+    }
+});
+
+
+
+$klein->respond('get', '/fnb/redeem_point', function ($request, $response, $service, $app, $validator){
+
+    $cusID = $request->cusID;
+    $points = $request->total;
+    $receiptID = getMaxReceiptID();
+
+    $x = $app->point->subtractPoint([
+        "type" => "FNB",
+        "memberID" => $cusID,
+        "point" => $points,
+        "transactionID" => $receiptID,
+    ]);
+    if($x["result"]) {
+        echo "redeem point success";
+//        $x["redeemID"];
+    }else{
+        echo "redeem point failed";
+
+    }
+});
+
+function getMaxReceiptID()
+{
+    global $database;
+    $conn = $database->getConnection();
+  $receiptSql = "SELECT max(receiptID) as receiptID FROM G13_FNB_SaleList";
+  $receiptID = $conn->prepare($receiptSql);
+  $receiptID->execute();
+  $receiptID = $receiptID->fetchAll(PDO::FETCH_BOTH);
+    $receiptID = $receiptID[0]["receiptID"];
+    return $receiptID;
+}
+function getMaxPOID()
+{
+    global $database;
+    $conn = $database->getConnection();
+    $POIDSql = "SELECT max(POID) as POID FROM G13_FNB_POmain";
+    $POID = $conn->prepare($POIDSqlSql);
+    $POID->execute();
+    $POID = $POID->fetchAll(PDO::FETCH_BOTH);
+    $POID = $POID[0]["POID"];
+    return $POID;
+}
+
+function getStock(){
+    global $database;
+    $conn = $database->getConnection();
+    $stockSql = "SELECT StockID, Remain FROM G13_v_Stock";
+    $stockID = $conn->prepare($stockSql);
+    $stockID->execute();
+    $stockID = $stockID->fetchAll(PDO:: FETCH_BOTH);
+    return $stockID;
+
+}
+
+
 
 
 $klein->respond('POST', '/fnb/get_points_and_name', function ($request, $response, $service, $app, $validator) {
@@ -225,7 +306,6 @@ $klein->respond('POST', '/fnb/do_order', function ($request, $response, $service
     $service->validateParam('total', 'Bad Request')->notNull();
 
     $empID = $request->empID;
-    $cusID = $request->cusID;
     $payment = $request->payment;
     $item = $request->item;
     $product = $request->product;
@@ -237,6 +317,11 @@ $klein->respond('POST', '/fnb/do_order', function ($request, $response, $service
     $products =explode(",",$product);
     $drinkSet =explode(",",$drinkSet);
     $flavorSet =explode(",",$flavorSet);
+    $cusID = $request->cusID;
+    if($cusID==0){
+        $cusID=null;
+    }
+
 
 //    return $response->json(
 //        [
@@ -265,8 +350,13 @@ $klein->respond('POST', '/fnb/do_order', function ($request, $response, $service
             $a = $conn->prepare($updateDetailSql);
             $a->execute();
         }
+        //update stock
+
         $productsOrderStock = getProductOrderForStock($products,$items,$flavorSet,$drinkSet);
         updateAllOrderStock($receiptID,$productsOrderStock);
+//        $stock  = getStock();
+//        CreatePO($stock);
+
         $conn->commit();
         return $response->json(["result"=>"success","message"=>"all :".count($items)." item[s]"]);
     } catch(PDOException $e) {
@@ -279,6 +369,72 @@ $klein->respond('POST', '/fnb/do_order', function ($request, $response, $service
          );
     }
 });
+function orderPO($stockID){
+    $supProduct = getSupProduct($stockID);
+    $supID = $supProduct["supID"];
+    $cost = $supProduct["cost"];
+    $unit =$supProduct["unit"];
+    $totalPaid = ($cost * 10)/$unit;
+
+    global $database;
+    $conn = $database->getConnection();
+    $orderPOSql = "INSERT INTO G13_FNB_POmain (supID,Date,Time,totalPaid) VALUES ('$supID',NOW(),NOW(),$totalPaid)";
+    $orderPO = $conn->prepare($orderPOSql);
+    $orderPO->execute();
+    $conn->commit();
+
+    $POID = getMaxPOID();
+    $amount = $unit*10;
+    $POdetailSql = "INSERT INTO G13_FNB_POdetail (POID,stockID,amount) VALUES ($POID,$stockID,$amount)";
+    $POdetail = $conn->prepare($POdetailSql);
+    $POdetail->execute();
+    $conn->commit();
+
+    updateStockPO($POID,$stockID,$amount);
+}
+
+
+function getSupProduct($stockID){
+    global $database;
+    $conn = $database->getConnection();
+    $supProductIDSql = "SELECT * FROM G13_FNB_SupProduct WHERE StockID='$stockID'";
+    $supProduct = $conn->prepare($supProductIDSql);
+    $supProduct->execute();
+    $supProduct = $supProduct->fetchAll(PDO::FETCH_BOTH);
+    $supID = $supProduct[0]["supID"];
+    $unit = $supProduct[0]["unit"];
+    $cost = $supProduct[0]["cost_per_unit"];
+    $supProduct["supID"]=$supID;
+    $supProduct["unit"]=$unit;
+    $supProduct["cost"]=$cost;
+    return $supProduct;
+}
+//หยิ่งไม่รับด้วยว่ะะะะ
+function CreatePO($stockItems){
+    $conditionTable = [
+        "PC"=>5000,
+        "DR"=>970,
+        "SN"=>50,
+    ];
+    foreach ($stockItems as $stockItem) {
+        $typeID = substr($stockItem["StockID"],0,2);
+        if($typeID=="PC"){
+            if($stockItem["Remain"]<$conditionTable["PC"]){
+                orderPO($stockItem["StockID"]);
+            }
+        }
+        else if($typeID=="DR"){
+            if($stockItem["Remain"]<$conditionTable["DR"]){
+                orderPO($stockItem["StockID"]);
+            }
+        }
+        else if($typeID=="SN"){
+            if($stockItem["Remain"]<$conditionTable["SN"]){
+                orderPO($stockItem["StockID"]);
+            }
+        }
+    }
+}
 
 function getSize($productID){
     global $database;
@@ -341,15 +497,6 @@ function getProductIDWithPRST($promotionSetID,$flavorSet,$drinkSet){
     return $productIDs;
 }
 
-function getStockTable(){
-    global $database;
-    $conn = $database->getConnection();
-    $selectStock = "SELECT Remain, StockID FROM G13_v_Stock";
-    $selectStockResult = $conn->prepare($selectStock);
-    $selectStockResult->execute();
-    $stockTable = $selectStockResult->fetchAll(PDO::FETCH_BOTH);
-    return $stockTable;
-}
 function getRemain($stockID){
     global $database;
     $conn = $database->getConnection();
@@ -366,6 +513,14 @@ function updateStock($receiptID,$stockID,$amount){
     $stockUpdate = $conn->prepare($stockInsertSql);
     $stockUpdate->execute();
 }
+function updateStockPO($POID,$stockID,$amount){
+    global $database;
+    $conn = $database->getConnection();
+    $stockInsertSql = "INSERT INTO G13_FNB_Stock_Transaction (POID,stockID,amount) VALUES ('$POID','$stockID','$amount')";
+    $stockUpdate = $conn->prepare($stockInsertSql);
+    $stockUpdate->execute();
+}
+
 
 // $klein->respond('GET', '/g05/test_add_point', function ($request, $response, $service, $app, $validator) {
 // $app->point->addPoint([
@@ -383,4 +538,52 @@ function updateAllOrderStock($receiptID,$productOrderForStock){
     foreach ($productOrderForStock as $product){
         updateStock($receiptID,$product["stockID"],$product["size"]*$product["quantity"]*-1);
       }
+}
+function getRecommend ($cusID){
+    global $database;
+    $conn = $database->getConnection();
+//    $service->validateParam('cusID', 'Bad Request')->notNull();
+//    $cusID=$request->cusID;
+    $recommendSql = "SELECT productName FROM G13_FNB_ProductList as s, G13_v_recommend_product as r WHERE r.cusID = '$cusID' and s.productID = r.productID ";
+    $recommendResult = $conn->prepare($recommendSql);
+    $recommendResult->execute();
+    $recommend = $recommendResult->fetchAll(PDO::FETCH_BOTH);
+    if(!(bool)$recommend)
+        return "nothing";
+    $recommend = $recommend[0];
+  return $recommend["productName"];
+}
+
+
+function getPointName ($cusID){
+    global $database;
+    $conn = $database->getConnection();
+    $PointSql = "SELECT totalpoint FROM G05_totalpoint WHERE MemberID=$cusID";
+    $Points = $conn->prepare($PointSql);
+    $Points->execute();
+    $Points = $Points->fetchAll(PDO:: FETCH_BOTH);
+    if(!(bool)$Points)
+        $Points=0;
+    else
+    {
+        $Points = $Points[0];
+        $Points = $Points["totalpoint"];
+    }
+
+
+
+    $NameSql = "SELECT Lname,Fname FROM G05_Member_profile WHERE MemberID=$cusID";
+    $Name = $conn->prepare($NameSql);
+    $Name->execute();
+    $Name = $Name->fetchAll(PDO:: FETCH_BOTH);
+    if(!(bool)$Name)
+        $Name="Not Member";
+    else{
+        $Name = $Name[0];
+        $Name = $Name["Fname"].' '.$Name["Lname"];
+    }
+
+    $data["name"] = $Name;
+    $data["points"]=$Points;
+    return $data;
 }

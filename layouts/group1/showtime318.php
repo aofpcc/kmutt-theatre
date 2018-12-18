@@ -37,12 +37,12 @@
           </div>
         </div>
         <div class="col-md-7">
-          <br><br><br><br>
+          <br>
           <font size = "5" style="font-weight:bold"> Movie Name: <?=$this->title ?></font><br><br>
-          <font size = "5">Genre: <?=$this->genre ?></font><br>
+          <font size = "5" style="font-weight:bold"> Genre: </font> <font size ="4"> <?=$this->genre ?></font><br>
           <!-- <font size = "5">Rate: G</font><br> -->
-          <font size = "5">Length: <?=$this->length ?></font><br>
-          <font size = "5">Detail : <?=$this->detail ?></font><br><br>
+          <font size = "5" style="font-weight:bold"> Length: </font> <font size ="4"> <?=$this->length ?></font><br>
+          <font size = "5" style="font-weight:bold"> Detail : </font> <font size = "4"> <?=$this->detail ?></font><br><br>
           <?php
 // var_dump($this->details["datail"]);
 // die;
@@ -62,7 +62,7 @@
     <a class="nav-item nav-link disabled" href="#">Mon<br><small>18 Nov 2018</small></a>
     <a class="nav-item nav-link disabled" href="#">Tue<br><small>19 Nov 2018</small></a> -->
     <?php
-    if(count($this->query) != 0) {
+    if(count($this->query) !=  0) {
     foreach($this->query as $q) { ?>
       <a class="btn-dark nav-item nav-link <?=$q["status"]?>" href="/customer/movies/showtime/all/<?=$this->movie_id?>/<?=$q["value"]?>"><?=$q["date"] ?><br><small><?=$q["str"] ?></small></a>
     <?php }

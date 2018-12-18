@@ -4,7 +4,8 @@
   <div class="row">
   		<div class="col-md-6"></div>
         <div class="col-md-6 text-right">
-            <input type="button" class="btn btn-primary btn-lg custom-button-width .navbar-right"  value="  Add  " onclick=" add_page()"></button>
+            <input type="button" class="btn btn-warning btn-lg custom-button-width .navbar-right"  value=" Room Management  " onclick=" roomadd_page()"></button>
+            <input type="button" class="btn btn-warning btn-lg custom-button-width .navbar-right"  value=" Seat Management  " onclick=" seatadd_page()"></button>
     	</div>
   </div>
 </div>
@@ -15,24 +16,24 @@
 <table class="table">
     <thead>
         <tr>
-        <td>Seat Pic</td>
         <td>Room Type</td>
         <td>Room Info</td>
         <td>Seat Type</td>
         <td>Seat Info</td>
         <td>Seat Price</td>
+      
         </tr>
     </thead>
     <tbody>
         <?php foreach($this->RIdata as $ri) { ?>
             <tr>
-                <td><img src="<?='/layouts/group4'.$ri['seatpic']?>" alt="Smiley face" height="42" width="42"></td>
                 <td><?=$ri['roomtype']?></td>
                 <td><?=$ri['roomInfo']?></td>
                 <td><?=$ri['seattype']?></td>
                 <td><?=$ri['seatInfo']?></td>
                 <td><?=$ri['seat_price']?></td>
                 <td>
+                
             </tr>
         <?php } ?>
     </tbody>
@@ -56,9 +57,12 @@
         });
     }
 
-    function add_page()
+    function roomadd_page()
     {
-        location.href = "/emp/add_roominfo";
+        location.href = "/emp/showRoomtype";
     } 
-
+    function seatadd_page()
+    {
+        location.href = "/emp/showSeattype";
+    } 
 </script>

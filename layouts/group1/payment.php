@@ -37,7 +37,7 @@
               <font size="4">
                 <i class="far fa-clock"></i>
                 <?php echo $this->date; ?>
-                <b><?php echo $this->time; ?></b> (135 Mins)
+                <b><?php echo $this->time; ?></b> (<?= $this->length ?> Hours)
                 <!-- 30 February 2030
 
                 21 : 00 &nbsp&nbsp&nbsp <br> -->
@@ -49,7 +49,7 @@
               </font>
               <br>
 
-                    <font size="4"> ที่นั่ง </font><br>
+                    <font size="4"> SEAT : </font><br>
                     <?php
 
                     $arry = json_decode(json_encode($this->seats), true);
@@ -78,18 +78,67 @@
               <font size="4"> ราคารวม </font>
               <br/>
               <p>
-
+                <li>: <b><i>$</i><span id="total">0</span></b></li>
               </p>
               <br>
 
+              <!-- <p id = "demo"></p> -->
+
               </p><br>
 
-              <?php $this->partial("layouts/group1/js/countdown.php"); ?>
+              <script>
+              // Set the date we're counting down to
+              var countDownDate = new Date("<?= $this->d_dead ?>"+" "+"<?= $this->t_dead ?>").getTime();
 
-              <button type="button" class="btn btn-lg btn-default" >KBANK</button>
+              // var_dump($this->showtime_id);
+              // die; ?>
+
+              // Update the count down every 1 second
+              var x = setInterval(function() {
+
+                // Get todays date and time
+                var now = new Date().getTime();
+
+                // Find the distance between now and the count down date
+                var distance = countDownDate - now;
+
+                // Time calculations for days, hours, minutes and seconds
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Output the result in an element with id="demo"
+                document.getElementById("demo").innerHTML = days + "d " + hours + "h "+ minutes + "m " + seconds + "s ";
+
+                // If the count down is over, write some text
+                if (distance < 0) {
+                  // clearInterval(x);
+                  // document.getElementById("demo").innerHTML = "EXPIRED";
+                  <?php echo 'window.location.href = "http://localhost:8000/customer/kmutt_home"' ?>
+                }
+              }, 1000);
+            </script>
+
+            <form action = "/customer/kmutt/ticket/<?= $this->showtime_id?>" method = "post">
+              <button name = Kbank value="Kbank" id="Kbank" class="btn btn-lg btn-default" >KBANK</button>
+              <button name = Scb value="Scb" id="Scb" class="btn btn-lg btn-default" >SCB</button>
+              <button name = Credit value="Credit" id="Credit" class="btn btn-lg btn-default" >CREDIT</button>
+              <button name = Club value="Club" id="Club" class="btn btn-lg btn-default" >CLUBCARD</button>
+              <!-- <button name =  class="btn btn-lg btn-default" >SCB</button>
+              <button type="button" class="btn btn-lg btn-default" >CREDIT</button>
+              <button type="button" class="btn btn-lg btn-default" >CLUBCARD</button> -->
+              <!-- <button name = "book_seat" value = "book_seat" id = "book_seat" class = "checkout-button">Book now
+              </button>
+ -->
+        <div id="legend"></div>
+      </div>
+      <div style="clear:both"></div>
+      </div> </form>
+              <!-- <button type="button" class="btn btn-lg btn-default" >KBANK</button>
               <button type="button" class="btn btn-lg btn-default" >SCB</button>
               <button type="button" class="btn btn-lg btn-default" >CREDIT</button>
-              <button type="button" class="btn btn-lg btn-default" >CLUBCARD</button>
+              <button type="button" class="btn btn-lg btn-default" >CLUBCARD</button> -->
 
               <br><br>
             </div>
@@ -101,4 +150,5 @@
 
 
   <!-- <script src="/layouts/group1/js/jquery.nicescroll.js"></script> -->
+  <?php $this->partial("layouts/group1/js/booking.php");  ?>
   <script src="/layouts/group1/js/scripts.js"></script>

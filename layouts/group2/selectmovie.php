@@ -56,8 +56,8 @@
                                             </div>
                                             <div class="info">
                                                 <p class="release-date"><span class="text">วันที่เข้าฉาย: </span><span
-                                                        class="date">2018-12-13</span></p>
-                                                <h2 class="name">อควาแมน เจ้าสมุทร</h2>
+                                                        class="date"><?php $this->movieid=1?></span></p>
+                                                <h2 class="name"><?php $this->movietitle?></h2>
                                             </div>
                                         </a></div>
                                     <div class="movie-card flex-item" type="now-showing"><a href="#/HO00000370" class=""

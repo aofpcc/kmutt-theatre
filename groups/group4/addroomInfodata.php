@@ -1,42 +1,43 @@
 <?php
-$klein->respond('GET', '/add_roomtype', function ($request, $response, $service, $app, $validator) {
+$klein->respond('GET', '/add_roominfo', function ($request, $response, $service, $app, $validator) {
     $service->title = "Showing Time - Movie";
     $service->bootstrap3 = false;
     $conn = $app->db->getConnection();
 
-    $query = "SELECT * From G04_MSRnB_seattype";
-    $service->seat_types = $conn->query($query)->fetchAll(PDO::FETCH_ASSOC);
-
-    $service->render("layouts/group4/addshowtime/addroomType.php");
+    $service->render("layouts/group4/addshowtime/addRoominfo.php");
 });
 
-$klein->respond('GET', '/g04/roomType/test', function ($request, $response, $service, $app, $validator) {
-    // $response->redirect("/customer/login");
-    // $response->sendHeaders();
-    header( "location: http://www.ireallyhost.com" );
-    exit(0);
-});
 
-$klein->respond('POST', '/g04/roomType/add', function ($request, $response, $service, $app, $validator) {
+$klein->respond('POST', '/g04/roominfo/add', function ($request, $response, $service, $app, $validator) {
     $conn = $app->db->getConnection();
     // receive all data need
 
     // insert data into db using PDO, again PDO , PDO, PDO, PDO
     try {
-        $stmt = $conn->prepare("insert into G04_MSRnB_roomtype(roomtype, roomInfo, seattype_id) values(:roomtype, :roomInfo, :seattype_id);");
+        $conn->beginTransaction();
+        $stmt = $conn->prepare("insert into G04_MSRnB_roomtype(roomtype, roomInfo) values(:roomtype, :roomInfo);
+        insert into G04_MSRnB_seattype(seattype, seat_price, seatInfo) values(:seattype, :seat_price, :seatInfo);");
+        
         $rtype = $request->roomtype;
-        $info = $request->info;
-        $seattype_id = $request->seattype_id;
+        $roomInfo = $request->roomInfo;
+        $stype = $request->seattype;
+        $sprice = $request->seatprice;
+        $seatInfo = $request->seatInfo;
 
         $stmt->bindParam(':roomtype', $rtype);
-        $stmt->bindParam(':roomInfo', $info);
-        $stmt->bindParam(':seattype_id', $seattype_id);
+        $stmt->bindParam(':roomInfo', $roomInfo);
+        $stmt->bindParam(':seattype', $stype);
+        $stmt->bindParam(':seat_price', $sprice);
+        $stmt->bindParam(':seatInfo', $seatInfo);
+
         $stmt->execute();
 
+        $conn->commit();
         $service->flash("Add Room Type Success");
         // var_dump("Success");
     } catch (PDOException $e) {
         // var_dump($e->getMessage());
+        $conn->rollback();
         $service->flash("Add Room Type Failed Beacuzs" . $e->getMessage());
     }
     $response->redirect("/emp/add_roomtype");

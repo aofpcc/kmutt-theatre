@@ -14,5 +14,8 @@ $included = array(
   'deleteseatTypedata',
   'amountseatData',
   'addAmountseatdata',
-  'deleteAmountseatdata'
+  'deleteAmountseatdata',
+  'roomInfodetail',
+  'addroomInfodata',
+  'main'
 );

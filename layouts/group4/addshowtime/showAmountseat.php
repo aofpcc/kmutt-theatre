@@ -1,5 +1,5 @@
 <br>
-<h2>Room Type</h2> 
+<h2>Room</h2> 
 <div class="container-fluid">
   <div class="row">
   		<div class="col-md-6"></div>
@@ -18,6 +18,9 @@
         <td>Id</td>
         <td>Branch</td>
         <td>Room No</td>
+        <td>Room Type</td>
+        <td>Seat Type</td>
+        <td>Seat Price</td>
         <td>Amount of seat per Row</td>
         <td>Amount of seat per column</td>
         <td>Action</td>
@@ -29,6 +32,9 @@
                 <td><?=$sr['id']?></td>
                 <td><?=$sr['BranchName']?></td>
                 <td><?=$sr['room_no']?></td>
+                <td><?=$sr['roomtype']?></td>
+                <td><?=$sr['seattype']?></td>
+                <td><?=$sr['seat_price']?></td>
                 <td><?=$sr['all_seat_row']?></td>
                 <td><?=$sr['all_seat_no']?></td>
                 <td>
@@ -44,7 +50,7 @@
         if(!confirm("Confirm Delete")) {
             return;
         }
-        $.post("/emp/g04/seatType/del/"+e).done(function(data){
+        $.post("/emp/g04/Amountseat/del/"+e).done(function(data){
             // console.log(data);
             if(!data.err){
                 alert(data.message);

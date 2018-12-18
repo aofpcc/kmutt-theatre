@@ -164,12 +164,19 @@ $klein->respond('GET', '/androidRegist', function ($request, $response, $service
                                 VALUES ('$userID','$address', '$province', '$district', '$subdist', '$postcode')";
         $stmt = $conn->prepare($query);
         $stmt->execute();
-        /*
-        $query = "INSERT INTO G05_Member_point (MemberID, Total_Point)
-                                VALUES ('$userID', 0)";
+
+        //******* POINT *****************************************************
+        $query = "INSERT INTO G05_Member_Point_Transactionoint (MemberID, Date, Type)
+                                VALUES ('$userID', NOW(), "Ticket")";
         $stmt = $conn->prepare($query);
         $stmt->execute();
-        */
+
+        $query = "INSERT INTO G05_Member_Point_Transactionoint (MemberID, Date, Type)
+                                VALUES ('$userID', NOW(), "FNB")";
+        $stmt = $conn->prepare($query);
+        $stmt->execute();
+        //***** POINT ******************************************************
+
         $arr["done"] = true;
         $arr["note"] = "Account have been created succesfully";
         $arr["userID"] = $result["userID"];

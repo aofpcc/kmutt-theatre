@@ -262,7 +262,7 @@ span.seatCharts-legendDescription {
 }
 ul.book-left {
     float: left;
-    width: 20%;
+    width: 30%;
 }
 ul.book-right {
     float: right;
@@ -521,4 +521,3 @@ ul.book-right li {
 		min-width: 400px;
 	}
 }
-

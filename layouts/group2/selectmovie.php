@@ -41,16 +41,18 @@
                         <div class="tab-list">
                             <ul>
                                 <li><a href="#" class="active">Now Showing</a></li>
-                                <li><a href="#" class="">Pre Booking</a></li>
+                                <!-- <li><a href="#" class="">Pre Booking</a></li> -->
                             </ul>
                         </div>
+
+
                         <div class="row">
                             <?php foreach($this->movies as $movie) { ?>
 
                             <div class="col-sm equal-column column-movie grid-movies" style="min-height: 2741.91px;">
                                 <div class="flex-wrapper movies-wrapper movies-now-showing">
 
-                                    <div class="movie-card flex-item" type="now-showing"><a href="/customer/kmutt_home/branch/<?=$movie["id"]?>"
+                                    <div class="movie-card flex-item" type="now-showing"><a href="/emp/group2/home_page/select_movie/branch/<?=$movie["id"]?>"
                                             class="" title="อควาแมน เจ้าสมุทร">
                                             <div class="poster">
                                                 <div class="image" style="background-image: );" src="<?=$movie["Image"] ?>"></div>

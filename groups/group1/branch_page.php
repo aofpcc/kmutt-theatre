@@ -7,6 +7,14 @@ $klein->respond('GET', '/kmutt_home/branch/[:movie_id]', function ($request, $re
     $query = $conn->query("select distinct date(startTime) as start_date from available_movies where movie_id = '$request->movie_id'
     order by start_date asc;")->fetchAll(PDO::FETCH_ASSOC);
 
+    $num = count($query);
+    if($num == 0) {
+      $service->flash("No any showtime available");
+      $response->redirect("/customer/kmutt_home");
+      $response->sendHeaders();
+      return;
+    }
+
     $date = [];
     $status = false;
     $isFirst = null;
@@ -23,24 +31,37 @@ $klein->respond('GET', '/kmutt_home/branch/[:movie_id]', function ($request, $re
         $status = true;
     }
 
-    $name = $conn->query("select distinct title, Image, detail,length from G09_Movie where id = '$request->movie_id'")->fetchAll(PDO::FETCH_ASSOC);
+    $query_movie = $conn->query("select distinct title, Image, detail, length from G09_Movie where id = '$request->movie_id'")->fetchAll(PDO::FETCH_ASSOC);
 
-    $details = $conn->query("select detail from G09_Movie where id = '$request->movie_id'")->fetchAll(PDO::FETCH_ASSOC);
+    // $details = $conn->query("select detail from G09_Movie where id = '$request->movie_id'")->fetchAll(PDO::FETCH_ASSOC);
 
-    $genre = $conn->query("select distinct genre from G09_Genre_Movie where id = '$request->movie_id'")->fetchAll(PDO::FETCH_ASSOC);
+    $gen = $conn->query("select distinct genre from G09_Genre_Movie where id = '$request->movie_id'")->fetchAll(PDO::FETCH_ASSOC);
 
+    $title = $query_movie[0]["title"];
+    $image = $query_movie[0]["Image"];
+    $detail = $query_movie[0]["detail"];
+    $length = $query_movie[0]["length"];
+    $genre = $gen[0]["genre"];
+
+    $service->title = $title;
+    $service->image = $image;
+    $service->detail = $detail;
+    $service->length = $length;
+    $service->genre = $genre;
     // $response->dump($name);
     // $response->sendBody();
     // die;
-    // var_dump($name);
+    // var_dump($genre);
     // die;
 
-    $service->name = $name[0];
-    $service->photo = $name[0];
+    // $service->name = $name[0];
+    // $service->photo = $name[0];
     // $service->detail = $name[0];
-    $service->datenow = $isFirst->format("Y-m-d");
+    $service->datenow = empty($isFirst)? (new DateTime())->format("Y-m-d") :$isFirst->format("Y-m-d");
     $service->query = $date;
-    $service->length = $name[0]["length"];
+    // var_dump($date);
+    // die;
+    // $service->length = $name[0]["length"];
     $service->movie_id = $request->movie_id;
     // var_dump($service->detail);
     // die;

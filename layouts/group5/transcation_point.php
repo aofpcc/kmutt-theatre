@@ -45,7 +45,8 @@
             </table>
 
             <div 
-            <div class="py-5 text-center"><button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button></div>
+            <div class="py-5 text-center" style="margin: auto; width: 15%;">
+            <button style="width:100%; background-color: #DC143C; color: #FFFFFF" class="btn btn-primary" onclick="location='/customer/membership'" type="submit">Back</button></div>
           </div>
 
 </body>

@@ -1,4 +1,5 @@
 <head>
+  <title><?=$this->passValue["title"] ?></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Custom fonts for this template -->
@@ -39,16 +40,16 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="https://lh3.googleusercontent.com/8Lr1BMoZOxsSLoTZr6IxDZuLDiSc6oMTopLA2B-MhXbwxqpDguDHy8r_zj1430V2augHqTSdHsNjz6MYfbEm=w260"
-                                alt=""></a>
+                        <a href="#"><img class="card-img-top" src="<?= $this->image ?>" alt=""></a>
                     </div>
                 </div>
                 <div class="col-md-8">
                     <br>
-                    <h4>Movie Name: XXX</h4><br>
-                    <h6>Genre: Fantasy</h6><br>
-                    <h6>Rate: G</h6><br>
-                    <h6>135 Mins</h6><br><br>
+                    <h4>Movie Name: <?= $this->title ?></h4>
+                    <h6>Date: <?= $this->startDate ?></h6>
+                    <h6>Time: <?= $this->startTime ?></h6>
+                    <h6>Genre: <?= $this->genre ?></h6>
+                    <h6>Length: <?=$this->length ?></h6><br><br>
                     <div class="container col-xs-10">
                         <h2>List</h2>
                         <div class="table-wrapper-scroll-y ">
@@ -62,8 +63,8 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    
-                                    <?php 
+
+                                    <?php
                                     $count = 1;
                                     foreach($this->invite_data["list"] as $person) { ?>
                                     <tr>
@@ -72,7 +73,7 @@
                                         <td><?=$person["Phone"]?></td>
                                         <td><?=$person["Email"]?></td>
                                     </tr>
-                                    <?php 
+                                    <?php
                                     $count++;
                                     } ?>
                                 </tbody>

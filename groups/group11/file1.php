@@ -100,6 +100,12 @@ $klein->respond('GET', '/staff/employee/profile', function($request, $response, 
   $stmt = $conn->prepare($depart);
   $stmt->execute();
   $service->department = $stmt->fetchAll(PDO::FETCH_BOTH);
+  $branchID = $service->department[0]['branchID'];
+    // select db branch
+    $bran = "SELECT * FROM G14_Branch WHERE BranchID = $branchID " ;
+    $stmt = $conn->prepare($bran);
+    $stmt->execute();
+    $service->Branch = $stmt->fetchAll(PDO::FETCH_BOTH);
 
    //select db G11_Emp_department Availability
    $time = "SELECT YEAR(CURRENT_DATE) - YEAR(`availability`) AS 'time' from G11_Emp_department  WHERE userID = $id " ;
@@ -414,6 +420,11 @@ $klein->respond('POST', '/staff/employee/editprofile/save', function($request, $
      $stmt->execute();
      $service->showstatus = $stmt->fetchAll(PDO::FETCH_BOTH);
 
+     $bran = "SELECT * FROM G14_Branch" ;
+     $stmt = $conn->prepare($bran);
+     $stmt->execute();
+     $service->branch = $stmt->fetchAll(PDO::FETCH_BOTH);
+
       $service->nameTag = 'newprofile.php';
       $service->render('layouts/group11/employee.php');
   });
@@ -455,6 +466,11 @@ $klein->respond('POST', '/staff/employee/editprofile/save', function($request, $
       $service->nameTag = 'newprofile.php';
       $service->render('layouts/group11/employee.php');
     }
+
+    $bran = "SELECT * FROM G14_Branch" ;
+    $stmt = $conn->prepare($bran);
+    $stmt->execute();
+    $service->branch = $stmt->fetchAll(PDO::FETCH_BOTH);
    
     $username = $request->Username;
     $password = $request->password;
@@ -485,6 +501,7 @@ $klein->respond('POST', '/staff/employee/editprofile/save', function($request, $
      $ot_rate = $request->ot_rate;
      $eng_lv = $request->eng_lv;
      $availability = $request->availability;
+     $branch = $request->branch;
 
      if($request->password == $request->confirmpassword) {
      $users = $user[0]['userID'];
@@ -495,8 +512,8 @@ $klein->respond('POST', '/staff/employee/editprofile/save', function($request, $
      $stmt->execute();
 
        //insert db G11_Emp_department
-       $newdepart = "INSERT INTO G11_Emp_department (userID, experience, Profession, ot_rate , eng_lv, `availability`) 
-                                            VALUES ('$users','$experience','$Profession','$ot_rate','$eng_lv','$availability')";
+       $newdepart = "INSERT INTO G11_Emp_department (userID, experience, Profession, ot_rate , eng_lv, `availability`, branchID) 
+                                            VALUES ('$users','$experience','$Profession','$ot_rate','$eng_lv','$availability', '$branch')";
        $stmt = $conn->prepare($newdepart);
        $stmt->execute();
      }

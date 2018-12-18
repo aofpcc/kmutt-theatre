@@ -12,11 +12,35 @@ $klein->respond('GET', '/group9', function ($request, $response, $service) {
 
     $service->allMovies = $arr;
     $service->pageTitle = 'Fuck';
-    $service->render('layouts/group9/home.php');
+    // $service->render('layouts/group9/home.php');
+    $response->redirect('/emp/group9/action888');
 });
 
-$klein->respond('GET', '/group9/add', function ($request, $response, $service) {
+$klein->respond('GET', '/group9/add', function ($request, $response, $service, $app) {
+    $conn = $app->db->getConnection();
+    $query = "SELECT * from G09_Director";
+    $data = $conn->query($query)->fetchAll(PDO::FETCH_ASSOC);
+    // $response->dump($data);
+    // $response->sendBody();
+    // die;
+    $query = "SELECT * from G09_Subtitle";
+    $service->subtitles = $conn->query($query)->fetchAll(PDO::FETCH_ASSOC);
+
+    $query = "SELECT * from G09_Soundtrack";
+    $service->soundtracks = $conn->query($query)->fetchAll(PDO::FETCH_ASSOC);
+
+    $query = "SELECT * from G09_Studio";
+    $service->studio_name = $conn->query($query)->fetchAll(PDO::FETCH_ASSOC);
+
+    // $response->dump($service->soundtracks);
+    // $response->sendBody();
+    // die;
+
+    $query = "SELECT * from G09_Genre";
+    $service->genre = $conn->query($query)->fetchAll(PDO::FETCH_ASSOC);
+
     $service->bootstrap3 = false;
+    $service->directors = $data;
     $service->render('layouts/group9/add.php');
 });
 
@@ -29,7 +53,7 @@ $klein->respond('GET', '/group9/delete', function ($request, $response, $service
 });
 
 $klein->respond('GET', '/group9/update/[:id]', function ($request, $response, $service) {
-  $service->bootstrap3 = false;
+    $service->bootstrap3 = false;
     // error_reporting(E_ALL);
     // ini_set('display_errors', 1);
 
@@ -56,12 +80,11 @@ $klein->respond('GET', '/group9/update/[:id]', function ($request, $response, $s
     $service->render('layouts/group9/update.php');
 });
 
-$klein->respond('POST', '/group9/action', function ($request, $response, $service) {
-    global $database;
-    $conn = $database->getConnection();
+$klein->respond('POST', '/group9/action', function ($request, $response, $service, $app) {
+    $conn = $app->db->getConnection();
 
     $title = $request->title;
-    $director = $request->director;
+    $director = $request->director_id;
     $languages = $request->language;
     $gerne = $request->gerne;
     $time = $request->time;
@@ -75,49 +98,73 @@ $klein->respond('POST', '/group9/action', function ($request, $response, $servic
 
     // $response->dump($request);
     // $response->sendBody();
-    //echo $_POST['studio_name'];
-    //die;
+    // echo $_POST['studio_name'];
+    // die;
 
     try {
-      $conn->beginTransaction();
-
-        $query = "INSERT INTO G09_Movie (title,detail,director,studio_name) VALUES ('$title','$describtion','$director','$studio_name')";
+        $conn->beginTransaction();
+        $time = gmdate("H:i:s", $time*60);
+        $query = "INSERT INTO G09_Movie (title,detail,director_id,studio_name, length) VALUES ('$title','$describtion','$director','$studio_name', '$time')";
         $stmt = $conn->prepare($query);
         $stmt->execute();
 
         $movie_id = $conn->lastInsertId();
-        $query = "INSERT INTO G09_Length (id,length) VALUES ($movie_id,'$time')";
-        // var_dump($query);
-        // die;
-        $stmt = $conn->prepare($query);
-        $stmt->execute();
         // $query = "INSERT INTO G09_Subtitle_copy (subtitle) VALUES ($subtitle)";
         // echo $query;
         // die;
 
-        foreach ($languages as $language) {
-            $query = "INSERT INTO G09_Soundtrack (id, soundtrack) VALUES ($movie_id, '$language')";
+        $path = $_FILES['image']['name'];
+        $ext = pathinfo($path, PATHINFO_EXTENSION);
+        $target_file = "/layouts/group9/image/$movie_id." . $ext;
+
+        // $query = "SELECT * from G09_Movie_Name";
+        // $x = $conn->query($query)->fetchAll(PDO::FETCH_ASSOC);
+        // var_dump($x);
+        // $conn->rollback();
+        // die;
+
+        $query = "UPDATE G09_Movie
+        set image =:image
+        WHERE id=:id";
+        $stmt = $conn->prepare($query);
+        $stmt->bindParam(":id", $movie_id);
+        $stmt->bindParam(":image", $target_file);
+        $stmt->execute();
+
+        
+
+        array_push($subtitle, null);
+        foreach ($languages as $lng) {
+            $query = "INSERT INTO G09_Soundtrack_Movie (id, soundtrack) VALUES ($movie_id, '$lng')";
             $stmt = $conn->prepare($query);
             $stmt->execute();
-            // echo $language[$i];
         }
-        foreach ($subtitle as $subtitle) {
-            $query = "INSERT INTO G09_Subtitle (id, subtitle) VALUES ($movie_id, '$subtitle')";
+
+        foreach ($subtitle as $sub) {
+            $query = "INSERT INTO G09_Subtitle_Movie (id, subtitle) VALUES ($movie_id, '$sub')";
             $stmt = $conn->prepare($query);
             $stmt->execute();
-            // echo $language[$i];
         }
-        foreach ($gerne as $gerne) {
-            $query = "INSERT INTO G09_Gerne (id, genre) VALUES ($movie_id, '$gerne')";
+
+        foreach ($gerne as $g) {
+            $query = "INSERT INTO G09_Genre_Movie (id, genre) VALUES ($movie_id, '$g')";
             $stmt = $conn->prepare($query);
             $stmt->execute();
             // echo $language[$i];
         }
 
+        // image section
+        
+        $target_file = "/../..".$target_file;
+        if (move_uploaded_file($_FILES['image']['tmp_name'], __DIR__ . $target_file)) {
+            
+        } else {
+            throw new Exception("Kuy");
+        }
         $conn->commit();
     } catch (Exception $e) {
         $conn->rollback();
-        $response->dump($e);
+        $response->dump($e->getMessage());
         $response->sendBody();
         die;
         var_dump($e->getMessage());
@@ -171,7 +218,7 @@ $klein->respond('GET', '/group9/action888', function ($request, $response, $serv
     $conn = $database->getConnection();
 
     $query = "SELECT * FROM G09_Movie";
-    echo $query;
+    // echo $query;
     $stmt = $conn->prepare($query);
     $stmt->execute();
 
@@ -190,7 +237,7 @@ $klein->respond('GET', '/group9/action888', function ($request, $response, $serv
     $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
 
     $service->sqlResult = $arr;
-    $service->searchKeyword = $Mname;
+    $service->searchKeyword = (isset($Mname)) ? $Mname : '';
     $service->render('layouts/group9/search.php');
 });
 
@@ -272,7 +319,7 @@ $klein->respond('GET', '/group9/action/delete/[:id]', function ($request, $respo
     //echo "Here is an query code >>>>>>> " .$query ."<<<<<<<<";
     $stmt = $conn->prepare($query);
 
-    $stmt->execute();$query = "DELETE FROM G09_Gerne WHERE id = '$id'";
+    $stmt->execute(); $query = "DELETE FROM G09_Gerne WHERE id = '$id'";
     //echo "Here is an query code >>>>>>> " .$query ."<<<<<<<<";
     $stmt = $conn->prepare($query);
     $stmt->execute();

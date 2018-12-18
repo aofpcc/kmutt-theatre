@@ -10,18 +10,11 @@ $klein->respond(['GET', 'POST'], '/membership', function ($request, $response, $
     $conn = $database->getConnection();
 
     // query1 Profile
-    // $sql = "SELECT  pf.MemberID, pw.Password, pf.PhoneNumber, pf.Email, pt.Total_Point,
-    //         pf.ID_Card, pf.Fname, pf.Lname, pf.Gender, pf.BirthDate, ads.Address,
-    //         ads.Province, ads.District, ads.SubDistrict, ads.ZipCode
-    //         FROM G05_Member_profile as pf, G05_Member_password as pw, G05_Member_point as pt, G05_Member_address as ads
-    //         WHERE pf.MemberID=pw.MemberID and pf.MemberID=pt.MemberID and pf.MemberID = ads.MemberID
-    //         and pf.userID = $userID";
-
-    $sql = "SELECT  pf.MemberID, pf.PhoneNumber, pf.Email, pt.TotalPoint,
+    $sql = "SELECT  pf.MemberID, pf.PhoneNumber, pf.Email, pt.totalpoint,
             pf.ID_Card, pf.Fname, pf.Lname, pf.Gender, pf.BirthDate, addr.Address,
             addr.Province, addr.District, addr.SubDistrict, addr.ZipCode
             FROM G05_Member_profile as pf
-            LEFT JOIN G05_v_totalpoint_pereach as pt ON pf.MemberID=pt.MemberID
+            LEFT JOIN G05_totalpoint as pt ON pf.MemberID=pt.MemberID
             LEFT JOIN G05_Member_address as addr ON pf.MemberID = addr.MemberID
             WHERE pf.MemberID = $userID";
     // echo $sql;
@@ -48,10 +41,22 @@ $klein->respond(['GET', 'POST'], '/membership', function ($request, $response, $
 // change password (page)
 $klein->respond('GET', '/change/password', function ($request, $response, $service, $app, $validator) {
     // get login info (send to login page if not logged in)
+    // $loginInfo = $app->login->requireLogin('customer');
+    // $userID = $loginInfo['userID'];
+    $result = $app->login->requireLogin('customer');
+    $newOne = $service->passValue;
+    $service->passValue["userID"] = $result["userID"];
+    $service->passValue = $newOne;
+    $service->render('layouts/group5/changePassword.php');
+});
+
+//forget password (page)
+$klein->respond('GET', '/change/password', function ($request, $response, $service, $app, $validator) {
+    // get login info (send to login page if not logged in)
     $loginInfo = $app->login->requireLogin('customer');
     $userID = $loginInfo['userID'];
 
-    $service->render('layouts/group5/changePassword.php');
+    $service->render('layouts/group5/ForgetPassword.php');
 });
 
 // change password (actual SQL)
@@ -79,13 +84,6 @@ $klein->respond('POST', '/change/password/action', function ($request, $response
     }
     $response->redirect("/customer/membership");
 });
-
-// // Change email
-// $klein->respond('GET', '/change/email', function ($request, $response, $service) {
-//     $service->title = "Change Email";
-//     $service->bootstrap3 = false;
-//     $service->render('layouts/group5/changeEmail.php');
-// });
 
 // Change phone number (page)
 $klein->respond('GET', '/change/phonenumber', function ($request, $response, $service, $app, $validator) {
@@ -260,7 +258,6 @@ $klein->respond('POST', '/kong/action', function ($request, $response, $service,
 });
 
 // Drive-php-register
-
 $klein->respond('POST', '/register-form', function ($request, $response, $service, $app, $validator) {
     if ($request->password != $request->confirmpassword) {
         $service->flash("MTF Password has not matched");

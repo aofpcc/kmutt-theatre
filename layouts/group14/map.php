@@ -5,13 +5,15 @@
             padding: 0;
         }
         #map {
-            height:350px;
+            height:100%;
             width: 100%;
             padding-right: 15px;
             padding-left: 15px;
         }
-        body{
+        html, body{
           background-color: #212529;
+          height:100%;
+          width:100%;
         }
 
     </style>
@@ -24,14 +26,14 @@
     <link rel="stylesheet" href="/layouts/group14/map.css">
 </head>
 <!-- <div id="map"></div> -->
-<div class="container" style="width: 70%;">
+<div class="container" style="width: 75%; height: 300px;">
 
-    <div id="map"></div>
+    <div id="map" style="height=25%;"></div>
     <hr style="height:2pt; visibility:hidden; margin-bottom:-1px; margin-top:3px" />
-    <form action="/group14/map/action" method="post">
+    <div action="/group14/map/action" method="post">
         <div class="input-group stylish-input-group"><input class="form-control" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search location..." style="width: 100%"/></div>
         <hr style="height:2pt; visibility:hidden; margin-bottom:-1px; margin-top:3px" />
-        <div class="scrollable scrollbar-danger" style='height: 200px'>
+        <div class="scrollable scrollbar-danger" style='height: 215px'>
             <div class="force-overflow" id="BtnContainer">
                 <ul id="myUL">
                     <?php for ($i = 0; $i < count($this->guy); $i++) {?>
@@ -45,7 +47,7 @@
         </div>
         <hr style="height:2pt; visibility:hidden; margin-bottom:-1px; margin-top:5px" />
         <div><button id="confirmLoc" type="submit" name="" value="" class="btn btn-success btn-lg btn-block" >Confirm</button></div>
-    </form>
+    </div>
 </div>
 <br>
 
@@ -53,7 +55,7 @@
     var map, infoWindow, test, locations;
     var collect = new Array();
     var locations = <?php echo json_encode($this -> guy); ?>;
-
+    var selected = null;
     function initMap() {
         map = new google.maps.Map(document.getElementById("map"), {
             zoom: 16,
@@ -107,14 +109,13 @@
                 return function(){
                     infowindow.setContent('<h2 id="firstHeading" class="firstHeading">'+locations[i][0]+'</h2>'+
             '<div><p>'+locations[i][4]+', '+locations[i][5]+', '+locations[i][6]+', '+locations[i][7]+', '+locations[i][8]+'</p></div>'+
-            '<button type="submit" value="'+locations[i][3]+'">Confirm Location</button>');
+            '<button id="confirmLoc" type="submit" style="float: right" onclick="bttnFunc('+i+');" value="'+locations[i][3]+'">Select Location</button>');
                     infowindow.open(map, marker);
                     changePos(i);
                 }
             })(marker, i));
         }
     }
-
     function changePos(setLoc) {
         map.setCenter(new google.maps.LatLng(locations[setLoc][1], locations[setLoc][2]));
     }
@@ -138,11 +139,27 @@
     }
     var z,w;
     function bttnFunc(z){
+        selected = z;
         changePos(z);
         document.getElementById("confirmLoc").value = locations[z][3];
         document.getElementById("confirmLoc").name = locations[z][3];
         console.log(document.getElementById("confirmLoc").value);
         console.log(document.getElementById("confirmLoc").name);
     }
+
+    $("#confirmLoc").click(function(e){
+        if(selected == null) {
+            alert("Please Choose Branch");
+            return;
+        }
+        // console.log(locations[selected])
+        var branchID = locations[selected]["BranchID"];
+        var branchName = locations[selected]["BranchName"];
+        // console.log(branchID);
+        if(!confirm("Confirm select branch " + branchName)) {
+            return;
+        }
+        location.href = "/customer/group14/booking/92/" + branchID;
+    });
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVya5jGbVLcFvCfHrR8yNKU7CPJhZ1eVI&callback=initMap"></script>

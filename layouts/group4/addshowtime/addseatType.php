@@ -54,9 +54,9 @@
                function showSeattype_page()
                 {
                     location.href = "/emp/showSeattype";
-                } 
+                }
           </script>
 
-        
+
 
         <br><br><br>

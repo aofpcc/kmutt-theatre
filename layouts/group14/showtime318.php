@@ -37,12 +37,12 @@
           </div>
         </div>
         <div class="col-md-7">
-          <br>
+          <br><br><br><br>
           <font size = "5" style="font-weight:bold"> Movie Name: <?=$this->title ?></font><br><br>
-          <font size = "5" style="font-weight:bold"> Genre: </font> <font size ="4"> <?=$this->genre ?></font><br>
+          <font size = "5">Genre: <?=$this->genre ?></font><br>
           <!-- <font size = "5">Rate: G</font><br> -->
-          <font size = "5" style="font-weight:bold"> Length: </font> <font size ="4"> <?=$this->length ?></font><br>
-          <font size = "5" style="font-weight:bold"> Detail : </font> <font size = "4"> <?=$this->detail ?></font><br><br>
+          <font size = "5">Length: <?=$this->length ?></font><br>
+          <font size = "5">Detail : <?=$this->detail ?></font><br><br>
           <?php
 // var_dump($this->details["datail"]);
 // die;
@@ -62,9 +62,9 @@
     <a class="nav-item nav-link disabled" href="#">Mon<br><small>18 Nov 2018</small></a>
     <a class="nav-item nav-link disabled" href="#">Tue<br><small>19 Nov 2018</small></a> -->
     <?php
-    if(count($this->query) !=  0) {
+    if(count($this->query) != 0) {
     foreach($this->query as $q) { ?>
-      <a class="btn-dark nav-item nav-link <?=$q["status"]?>" href="/customer/movies/showtime/all/<?=$this->movie_id?>/<?=$q["value"]?>"><?=$q["date"] ?><br><small><?=$q["str"] ?></small></a>
+      <a class="btn-dark nav-item nav-link <?=$q["status"]?>" href="/customer/group14/showtime/all/<?=$this->movie_id?>/<?=$q["value"]?>/<?=$this->branch_id?>"><?=$q["date"] ?><br><small><?=$q["str"] ?></small></a>
     <?php }
       }else{
       echo "No any showtime";
@@ -86,10 +86,12 @@
 <script>
   $(document).ready(function(){
     var movie_id = "<?=$this->movie_id?>";
+    var branch_id = "<?=$this->branch_id?>";
     var date = "<?=$this->datenow?>";
     if(<?=count($this->query) == 0? "false" : "true" ?>){
-      $.get("/customer/movies/showtime/all/"+movie_id+"/"+date).done(function(data){
+      $.get("/customer/group14/showtime/all/"+movie_id+"/"+date+"/"+branch_id).done(function(data){
         $("#showtime").html(data);
+        // alert('fnjoldjskfndjsk');
       });
     }
   });

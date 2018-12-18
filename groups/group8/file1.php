@@ -38,47 +38,19 @@ $klein->respond('GET', '/group8', function ($request, $response, $service, $app,
  $conn = $app->db->getConnection();
  $stmt = $conn->prepare($sql);
  $stmt->execute();
- $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+ $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
 //  $response->dump($data);
 //  $response->sendBody();
-$service->promotions = $data;
-// var_dump($data);
-// die;
+$service->list = $list;
+$service->isManagementPage = true;
+$service->promotions = $list;
+  // var_dump($list);
+  // die;
 
    $service->render('layouts/group8/DB/Promotion1.php');
  });
 
 //---------------------------------------------------------------------
-
-
-
-$klein->respond('GET', '/group8M', function ($request, $response, $service) {
-  $service->title = "Movie1";
-  $service->bootstrap3 = false;
-  $service->render('layouts/group8/DB2/Movie1.php');
-});
-
-$klein->respond('GET', '/group8M/[:id]', function ($request, $response, $service) {
-  return $request->id;
-});
-
-$klein->respond('GET', 'emp/group8M2', function ($request, $response, $service) {
-
-  $service->render('layouts/group8/DB2/Movie2.php');
-});
-$klein->respond('GET', 'emp/group8F', function ($request, $response, $service) {
-
-  $service->render('layouts/group8/DB2/Food1.php');
-});
-$klein->respond('GET', 'emp/group8F2', function ($request, $response, $service) {
-
-  $service->render('layouts/group8/DB2/Food2.php');
-});
-$klein->respond('GET', 'emp/group8F3', function ($request, $response, $service) {
-
-  $service->render('layouts/group8/DB2/Food3.php');
-});
-
 
 $klein->respond('GET', '/group8/N', function ($request, $response, $service) {
   global $database;
@@ -98,11 +70,55 @@ $klein->respond('GET', '/group8/N', function ($request, $response, $service) {
     $conn->exec($sql);
     }
 catch(PDOException $e)
-    {
+    { 
     echo $sql."<br>". $e->getMessage();
     }
+  $service->bootstrap3 = false;
   $service->allMovies = $arr;
   $service->pageTitle = 'Hello';
   $service->render('layouts/group8/New.php');
+});
+$klein->respond('GET', '/promotion/[:ID]/[:PromoID]', function ($request, $response, $service,$app,$validator) {
+  global $database;
+  $conn = $database->getConnection();
+
+  //
+  // CURRENT POINTS
+  //
+  $sql = "SELECT totalpoint FROM G05_totalpoint where MemberId = $request->ID";
+  $stmt = $conn->prepare($sql);
+  $stmt->execute();
+  $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+  // echo json_encode($list);
+  $currentPoint = $list[0]["totalpoint"];
+
+  //
+  // REQUIRED POINTS
+  //
+  $sql2 = "SELECT PointUsed FROM G08_Promo_main where PromoID = $request->PromoID";
+  $stmt2 = $conn->prepare($sql2);
+  $stmt2->execute();
+  $list = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+  
+  // echo json_encode($list);
+  $requiredPoint = $list[0]["PointUsed"];
+  // $getpoint = $request->getpoint($stmt);
+  // $point = $app->point->getPoint("151");
+
+  // $point= $request->$sql2;
+  if($currentPoint>=$requiredPoint){
+    $newpoint = $currentPoint-$requiredPoint;
+    $sql = "INSERT INTO G05_Member_Redeem_Transaction(MemberID,Point)
+    VALUES('$request->ID','$newpoint')";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    echo "success";
+  }
+  else{
+    echo "you have not enough point";
+    ;
+  }
 });
 ?>

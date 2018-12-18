@@ -28,6 +28,8 @@
     var $cart = $('#selectedSeats'), //Sitting Area
     $counter = $('#counter'), //Votes
     $total = $('#total'); //Total money
+    
+
 
     var sc = $('#seat-map').seatCharts({
       // map: [  //Seating chart

@@ -48,7 +48,7 @@ $klein->respond('GET', '/kmutt_home/branch/show_time/select_chair/[:showtime_id]
   $image = $query_movie[0]["Image"];
   $length = $query_movie[0]["length"];
 
-  $soldSeat = $conn->query("select seat_ticket from G02_Ticket_history where movie_id = $id_movie")->
+  $soldSeat = $conn->query("select seat_ticket from G02_Ticket_history where showtime_id = '$request->showtime_id'")->
   fetchAll(PDO::FETCH_ASSOC);
 
   $date_time = date('g:ia', strtotime($startTime));

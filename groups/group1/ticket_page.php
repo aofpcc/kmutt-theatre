@@ -1,5 +1,6 @@
 <?php
-$klein->respond('GET', '/kmutt/ticket', function ($request, $response, $service) use ($database) {
+$klein->respond('POST', '/kmutt/ticket/[:showtime_id]', function ($request, $response, $service, $app, $validator) use($database) { 
+  $userID = "".$app->login->requireLogin('customer')["userID"];
   $service->bootstrap3 = false;
   $conn = $database->getConnection();
 

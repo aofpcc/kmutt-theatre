@@ -55,14 +55,15 @@ $klein->respond('POST', '/promotion/add', function ($request, $response, $servic
         $start_date = $_POST['promotion_start'];
         $end_date = $_POST['promotion_end'];
         $code = $_POST['promotion_code'];
+        $point = $_POST['promotion_point'];
         $imgContent = $target_dir . $_FILES["promotion_pic"]["name"];
         // $link = $_POST['link'];
 
         global $database;
         $conn = $database->getConnection();
 
-        $conn->exec("INSERT INTO G08_Promo_main(PromoName,Description,Discount,PromoCode,StartDate,EndDate,PromoPic)
-                          VALUES('$name','$des','$dis','$code','$start_date','$end_date','$imgContent')");
+        $conn->exec("INSERT INTO G08_Promo_main(PromoName,Description,Discount,PromoCode,StartDate,EndDate,PromoPic,PointUsed)
+                          VALUES('$name','$des','$dis','$code','$start_date','$end_date','$imgContent','$point')");
 
         //   else {
         //     $stmt = "UPDATE advertisement

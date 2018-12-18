@@ -1,10 +1,10 @@
 <?php
-$klein->respond('GET','/promotion/edit', function($request, $response, $service, $app, $valiator) {
-    $service->title = "Edit Promotion";
-    $service->bootstrap3 = false;
-    $service->render("layouts/group8/searchpromotion.php");
+// $klein->respond('GET','/promotion/edit', function($request, $response, $service, $app, $valiator) {
+//     $service->title = "Edit Promotion";
+//     $service->bootstrap3 = false;
+//     $service->render("layouts/group8/searchpromotion.php");
     
-});
+// });
 
 
 // $klein->respond('POST', '/promotion/edit', function($request, $response, $service, $app, $valiator) {
@@ -30,18 +30,18 @@ $klein->respond('GET','/promotion/edit', function($request, $response, $service,
 //     // $response->redirect("/emp/promotion/add");
 //     // $response->sendHeaders();
 // });
-$klein->respond('POST','/promotion/edit2', function($request, $response, $service, $app, $valiator) {
-
-    $service->render("layouts/group8/editpromotion.php");
-    $name = $request->PromoNameEdit;
+$klein->respond('GET','/promotion/edit/[:promo_id]', function($request, $response, $service, $app, $valiator) {
     global $database;
     $conn = $database->getConnection();
-    $sql = "SELECT * FROM G08_Promo_Main WHERE 'PromoName' ='$name'";
-    $conn->exec($sql);
+    $sql = "SELECT * FROM G08_Promo_main WHERE PromoID = :promo_id";
+    $stmt = $conn->prepare($sql);
+    $promo_id = $request->promo_id; 
+    $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->bindParam(":promo_id", $promo_id);
+    $stmt->execute();
 
-    echo $sql ;
+    $service->title = "Edit Promotion [:promo_name]";
+    $service->bootstrap3 = false; 
+    $service->render =("layouts/group8/editpromotion.php");
 
-    
-    // $response->redirect("/emp/promotion/add");
-    // $response->sendHeaders();
 });

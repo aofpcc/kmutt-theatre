@@ -119,13 +119,13 @@
                             <!-- <div class="slick-track" style="opacity: 1; width: 5700px; transform: translate3d(0px, 0px, 0px);"> -->
                             
                             <nav class="nav nav-pills nav-fill">
-                                <a class="nav-item nav-link active" href="#">Thu<br><small><?$this->query_date ?> Nov 2018</small></a>
+                                <a class="nav-item nav-link active" href="#">Thu<br><small>15 Nov 2018</small></a>
                                 <a class="nav-item nav-link" href="#">Fri<br><small>16 Nov 2018</small></a>
                                 <a class="nav-item nav-link" href="#">Sat<br><small>17 Nov 2018</small></a>
                                 <a class="nav-item nav-link" href="#">Mon<br><small>18 Nov 2018</small></a>
                                 <a class="nav-item nav-link" href="#">Tue<br><small>19 Nov 2018</small></a>
                             </nav>
-                            
+                      
                             
                             <!-- <div class="slick-slide slick-current slick-active" data-slick-index="0"
                                         aria-hidden="false" style="width: 190px;">

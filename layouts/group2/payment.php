@@ -31,7 +31,7 @@
 
 <body>
 
- 
+
 
   <div id="app" class="is-grayscale">
 
@@ -94,16 +94,20 @@
                       <div class="selected-seat">
                         <h3 class="heading">Seat no.</h3>
                         <p>
-                        <?php
+                          <?php
 
-                    $arry = json_decode(json_encode($this->seats), true);
-                    foreach ($arry as $result)
-                    {
-                      echo 'row : ', $result['row'],'   seat : ', $result['seat'],'<br/>';
-                    }
+                          $arry = json_decode(json_encode($this->seats), true);
 
-                    ?>
-                      </p>
+// var_dump($this->seats);
+
+foreach ($arry as $result)
+{
+  // $seat_no = $result['row'].'_'.$result['seat'];
+  echo 'row: ', $result['row'],'   seat: ', $result['seat'],'<br/>';
+}
+
+?>
+                        </p>
                       </div>
                       <div class="selected-seat-total">
                         <h3 class="heading">Total</h3>

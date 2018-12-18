@@ -17,22 +17,22 @@ $klein->respond(['GET', 'POST'], '/membership', function ($request, $response, $
     //         WHERE pf.MemberID=pw.MemberID and pf.MemberID=pt.MemberID and pf.MemberID = ads.MemberID
     //         and pf.userID = $userID";
 
-    $sql = "SELECT  pf.MemberID, pf.PhoneNumber, pf.Email, pt.Total_Point,
+    $sql = "SELECT  pf.MemberID, pf.PhoneNumber, pf.Email, pt.TotalPoint,
             pf.ID_Card, pf.Fname, pf.Lname, pf.Gender, pf.BirthDate, addr.Address,
             addr.Province, addr.District, addr.SubDistrict, addr.ZipCode
             FROM G05_Member_profile as pf
-            LEFT JOIN G05_Member_point as pt ON pf.MemberID=pt.MemberID
+            LEFT JOIN G05_v_totalpoint_pereach as pt ON pf.MemberID=pt.MemberID
             LEFT JOIN G05_Member_address as addr ON pf.MemberID = addr.MemberID
             WHERE pf.MemberID = $userID";
     // echo $sql;
-
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $data = $stmt->fetchAll();
 
     // query2 Age
-    $sql2 = "SELECT year(current_date)-year(pf.BirthDate) as age
-           FROM G05_Member_profile as pf";
+    $sql2 = "SELECT (year(current_date)-year(pf.BirthDate)) as Age
+             FROM G05_Member_profile as pf
+             WHERE pf.MemberID = $userID";
     $stmt = $conn->prepare($sql2);
     $stmt->execute();
     $age = $stmt->fetchAll();
@@ -41,6 +41,7 @@ $klein->respond(['GET', 'POST'], '/membership', function ($request, $response, $
     $service->title = "Member Information";
     $service->bootstrap3 = false;
     $service->usr = $data;
+    $service->ages = $age;
     $service->render('layouts/group5/membership.php');
 });
 
@@ -209,17 +210,10 @@ $klein->respond('GET', '/editprofile', function ($request, $response, $service, 
     $conn = $database->getConnection();
 
     // query1 Profile
-    // $sql = "SELECT  pf.MemberID, pw.Password, pf.PhoneNumber, pf.Email, pt.Total_Point,
-    //         pf.ID_Card, pf.Fname, pf.Lname, pf.Gender, pf.BirthDate, ads.Address,
-    //         ads.Province, ads.District, ads.SubDistrict, ads.ZipCode
-    //         FROM G05_Member_profile as pf, G05_Member_password as pw, G05_Member_point as pt, G05_Member_address as ads
-    //         WHERE pf.MemberID=pw.MemberID and pf.MemberID=pt.MemberID and pf.MemberID = ads.MemberID
-    //         and pf.MemberID = 1";
-    $sql = "SELECT  pf.MemberID, pf.PhoneNumber, pf.Email, pt.Total_Point,
-            pf.ID_Card, pf.Fname, pf.Lname, pf.Gender, pf.BirthDate, addr.Address,
+    $sql = "SELECT  pf.MemberID, pf.PhoneNumber, pf.Email, pf.ID_Card,
+            pf.Fname, pf.Lname, pf.Gender, pf.BirthDate, addr.Address,
             addr.Province, addr.District, addr.SubDistrict, addr.ZipCode
             FROM G05_Member_profile as pf
-            LEFT JOIN G05_Member_point as pt ON pf.MemberID=pt.MemberID
             LEFT JOIN G05_Member_address as addr ON pf.MemberID = addr.MemberID
             WHERE pf.MemberID = $userID";
 
@@ -237,7 +231,7 @@ $klein->respond('GET', '/editprofile', function ($request, $response, $service, 
 
 
     $service->usr = $data;
-    $service->age = $age[0]["age"];
+    $service->age = $age;
     $service->render('layouts/group5/editprofile.php');
 
 
@@ -352,7 +346,7 @@ $klein->respond('GET', '/transaction_point', function ($request, $response, $ser
 //add
   $klein->respond('GET', '/g05/test_add_point', function ($request, $response, $service, $app, $validator) {
   $app->point->addPoint([
-    "type" => "Ticket",
+    "type" => "Ticket", //FNB
     "memberID" => "151",
     "point" => "300",
     "transactionID" => "X01AB"
@@ -361,9 +355,16 @@ $klein->respond('GET', '/transaction_point', function ($request, $response, $ser
 
   //subtract
   $klein->respond('GET', '/g05/test_subtract_point', function ($request, $response, $service, $app, $validator) {
-    $app->point->subtractPoint([
+    $x = $app->point->subtractPoint([
       "type" => "Ticket",
       "memberID" => "151",
       "point" => "150"
     ]);
+    if($x["result"]) {
+      // create transaction
+      $x["redeemID"];
+    }else{
+      //
+
+    }
 });

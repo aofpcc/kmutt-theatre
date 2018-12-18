@@ -4,22 +4,21 @@
 
 
 <head>
-    
+
     <style type="text/css">
         svg,
         img {
             width: 20px;
         }
-
     </style>
     <link rel="preload" href="/layouts/group2/js/selectmovie/manifest.86920d2276921dc8f875.js" as="script">
     <link rel="preload" href="/layouts/group2/js/selectmovie/vendor.eb91d5bf77b2c769fcc2.js" as="script">
     <link rel="preload" href="/layouts/group2/js/selectmovie/app.baa2eadcab44e34fea36.js" as="script">
-    
+
     <link rel="prefetch" href="/layouts/group2/js/selectmovie/1.2ab249ca75db547f0487.js">
     <link rel="stylesheet" href="/layouts/group2/css/maincss/common.baa2eadcab44e34fea36.css">
     <script type="text/javascript" charset="utf-8" async="" src="/layouts/group2/js/selectmovie/1.2ab249ca75db547f0487.js"></script>
-    
+
 
 </head>
 
@@ -48,7 +47,7 @@
                         <div class="row">
                             <div class="col-sm equal-column column-movie grid-movies" style="min-height: 2741.91px;">
                                 <div class="flex-wrapper movies-wrapper movies-now-showing">
-                                <?php foreach($this->movietitle as $movietitle){ ?>
+                                    <?php foreach($this->movietitle as $movietitle){ ?>
                                     <div class="movie-card flex-item" type="now-showing"><a href="/emp/group2/home_page/select_movie/select_time"
                                             class="" title="อควาแมน เจ้าสมุทร">
                                             <div class="poster">
@@ -56,11 +55,14 @@
                                                 <div class="ribbon advance-ticket" style=""><span>Advance Ticket</span></div>
                                             </div>
                                             <div class="info">
-                                            
-                                                <p class="release-date"><span class="text">Date: </span><span
-                                                        class="date">2018-12-13</span></p>
-                                                <h2 class="name"><?=$movietitle?></h2>
-                                                          
+
+                                                <p class="release-date"><span class="text">Date: </span><span class="date">2018-12-13</span></p>
+                                                <h2 class="name">
+
+                                                    <?=$movietitle ?>
+                                                   
+                                                </h2>
+
                                             </div>
                                         </a></div>
                                     <div class="movie-card flex-item" type="now-showing"><a href="#/HO00000370" class=""
@@ -70,9 +72,10 @@
                                                 <div class="ribbon advance-ticket" style=""><span>Advance Ticket</span></div>
                                             </div>
                                             <div class="info">
-                                                <p class="release-date"><span class="text">Date: </span><span
-                                                        class="date">2018-12-01</span></p>
-                                                <h2 class="name"><?=$movietitle?></h2>
+                                                <p class="release-date"><span class="text">Date: </span><span class="date">2018-12-01</span></p>
+                                                <h2 class="name">
+                                                    <?=$movietitle?>
+                                                </h2>
                                             </div>
                                         </a></div>
                                     <div class="movie-card flex-item" type="now-showing"><a href="#/HO00000338" class=""
@@ -82,9 +85,10 @@
                                                 <div class="ribbon advance-ticket" style=""><span>Advance Ticket</span></div>
                                             </div>
                                             <div class="info">
-                                                <p class="release-date"><span class="text">Date: </span><span
-                                                        class="date">2018-11-29</span></p>
-                                                <h2 class="name"><?=$movietitle?></h2>
+                                                <p class="release-date"><span class="text">Date: </span><span class="date">2018-11-29</span></p>
+                                                <h2 class="name">
+                                                    <?=$movietitle?>
+                                                </h2>
                                             </div>
                                         </a></div>
                                     <div class="movie-card flex-item" type="now-showing"><a href="#/HO00000158" class=""
@@ -94,9 +98,10 @@
                                                 <div class="ribbon advance-ticket"><span>Advance Ticket</span></div>
                                             </div>
                                             <div class="info">
-                                                <p class="release-date"><span class="text">Date: </span><span
-                                                        class="date">2018-11-29</span></p>
-                                                <h2 class="name"><?=$movietitle?></h2>
+                                                <p class="release-date"><span class="text">Date: </span><span class="date">2018-11-29</span></p>
+                                                <h2 class="name">
+                                                    <?=$movietitle?>
+                                                </h2>
                                             </div>
                                         </a></div>
                                     <div class="movie-card flex-item" type="now-showing"><a href="#/HO00000311" class=""
@@ -106,9 +111,10 @@
 
                                             </div>
                                             <div class="info">
-                                                <p class="release-date"><span class="text">Date: </span><span
-                                                        class="date">2018-11-24</span></p>
-                                                <h2 class="name"><?=$movietitle?></h2>
+                                                <p class="release-date"><span class="text">Date: </span><span class="date">2018-11-24</span></p>
+                                                <h2 class="name">
+                                                    <?=$movietitle?>
+                                                </h2>
                                             </div>
                                         </a></div>
                                     <div class="movie-card flex-item" type="now-showing"><a href="#/HO00000346" class=""
@@ -118,9 +124,10 @@
 
                                             </div>
                                             <div class="info">
-                                                <p class="release-date"><span class="text">Date: </span><span
-                                                        class="date">2018-11-22</span></p>
-                                                <h2 class="name"><?=$movietitle?></h2>
+                                                <p class="release-date"><span class="text">Date: </span><span class="date">2018-11-22</span></p>
+                                                <h2 class="name">
+                                                    <?=$movietitle?>
+                                                </h2>
                                             </div>
                                         </a></div>
                                     <div class="movie-card flex-item" type="now-showing"><a href="#/HO00000329" class=""
@@ -130,9 +137,10 @@
 
                                             </div>
                                             <div class="info">
-                                                <p class="release-date"><span class="text">Date: </span><span
-                                                        class="date">2018-11-22</span></p>
-                                                <h2 class="name"><?=$movietitle?></h2>
+                                                <p class="release-date"><span class="text">Date: </span><span class="date">2018-11-22</span></p>
+                                                <h2 class="name">
+                                                    <?=$movietitle?>
+                                                </h2>
                                             </div>
                                         </a></div>
                                     <div class="movie-card flex-item" type="now-showing"><a href="#/HO00000195" class=""
@@ -141,9 +149,10 @@
                                                 <div class="image" style="background-image: url(&quot;https://lh3.googleusercontent.com/umVM-4MK3MLAYHp2nYE3V07KzHmV_8PQ2N1CF7x1F_-trIcYA_qqW5DxxEowqBAaMGRIA11BrGn9EEErRVM=w215&quot;);"></div>
                                             </div>
                                             <div class="info">
-                                                <p class="release-date"><span class="text">Date: </span><span
-                                                        class="date">2018-11-22</span></p>
-                                                <h2 class="name"><?=$movietitle?></h2>
+                                                <p class="release-date"><span class="text">Date: </span><span class="date">2018-11-22</span></p>
+                                                <h2 class="name">
+                                                    <?=$movietitle?>
+                                                </h2>
                                             </div>
                                         </a></div>
                                     <div class="movie-card flex-item" type="now-showing"><a href="#/HO00000079" class=""
@@ -152,9 +161,10 @@
                                                 <div class="image" style="background-image: url(&quot;https://lh3.googleusercontent.com/8Lr1BMoZOxsSLoTZr6IxDZuLDiSc6oMTopLA2B-MhXbwxqpDguDHy8r_zj1430V2augHqTSdHsNjz6MYfbEm=w215&quot;);"></div>
                                             </div>
                                             <div class="info">
-                                                <p class="release-date"><span class="text">Date: </span><span
-                                                        class="date">2018-11-15</span></p>
-                                                <h2 class="name"><?=$movietitle?></h2>
+                                                <p class="release-date"><span class="text">Date: </span><span class="date">2018-11-15</span></p>
+                                                <h2 class="name">
+                                                    <?=$movietitle?>
+                                                </h2>
                                             </div>
                                         </a></div>
                                     <div class="movie-card flex-item" type="now-showing"><a href="#/HO00000157" class=""
@@ -164,9 +174,10 @@
 
                                             </div>
                                             <div class="info">
-                                                <p class="release-date"><span class="text">Date: </span><span
-                                                        class="date">2018-11-08</span></p>
-                                                <h2 class="name"><?=$movietitle?></h2>
+                                                <p class="release-date"><span class="text">Date: </span><span class="date">2018-11-08</span></p>
+                                                <h2 class="name">
+                                                    <?=$movietitle?>
+                                                </h2>
                                             </div>
                                         </a></div>
                                     <div class="movie-card flex-item" type="now-showing"><a href="#/HO00000127" class=""
@@ -176,9 +187,10 @@
 
                                             </div>
                                             <div class="info">
-                                                <p class="release-date"><span class="text">Date: </span><span
-                                                        class="date">2018-11-08</span></p>
-                                                <h2 class="name"><?=$movietitle?></h2>
+                                                <p class="release-date"><span class="text">Date: </span><span class="date">2018-11-08</span></p>
+                                                <h2 class="name">
+                                                    <?=$movietitle?>
+                                                </h2>
                                             </div>
                                         </a></div>
                                     <div class="movie-card flex-item" type="now-showing"><a href="#/HO00000265" class=""
@@ -188,9 +200,10 @@
 
                                             </div>
                                             <div class="info">
-                                                <p class="release-date"><span class="text">Date: </span><span
-                                                        class="date">2018-11-08</span></p>
-                                                <h2 class="name"><?=$movietitle?></h2>
+                                                <p class="release-date"><span class="text">Date: </span><span class="date">2018-11-08</span></p>
+                                                <h2 class="name">
+                                                    <?=$movietitle?>
+                                                </h2>
                                             </div>
                                         </a></div>
                                     <div class="movie-card flex-item" type="now-showing"><a href="#/HO00000103" class=""
@@ -200,9 +213,10 @@
 
                                             </div>
                                             <div class="info">
-                                                <p class="release-date"><span class="text">Date: </span><span
-                                                        class="date">2018-11-01</span></p>
-                                                <h2 class="name"><?=$movietitle?></h2>
+                                                <p class="release-date"><span class="text">Date: </span><span class="date">2018-11-01</span></p>
+                                                <h2 class="name">
+                                                    <?=$movietitle?>
+                                                </h2>
                                             </div>
                                         </a></div>
                                     <div class="movie-card flex-item" type="now-showing"><a href="#/HO00000303" class=""
@@ -212,9 +226,10 @@
 
                                             </div>
                                             <div class="info">
-                                                <p class="release-date"><span class="text">Date: </span><span
-                                                        class="date">2018-11-01</span></p>
-                                                <h2 class="name"><?=$movietitle?></h2>
+                                                <p class="release-date"><span class="text">Date: </span><span class="date">2018-11-01</span></p>
+                                                <h2 class="name">
+                                                    <?=$movietitle?>
+                                                </h2>
                                             </div>
                                         </a></div>
                                     <div class="movie-card flex-item" type="now-showing"><a href="#/HO00000156" class=""
@@ -224,9 +239,10 @@
 
                                             </div>
                                             <div class="info">
-                                                <p class="release-date"><span class="text">Date: </span><span
-                                                        class="date">2018-11-01</span></p>
-                                                <h2 class="name"><?=$movietitle?></h2>
+                                                <p class="release-date"><span class="text">Date: </span><span class="date">2018-11-01</span></p>
+                                                <h2 class="name">
+                                                    <?=$movietitle?>
+                                                </h2>
                                             </div>
                                         </a></div>
                                     <div class="movie-card flex-item" type="now-showing"><a href="#/HO00000190" class=""
@@ -236,9 +252,10 @@
 
                                             </div>
                                             <div class="info">
-                                                <p class="release-date"><span class="text">Date: </span><span
-                                                        class="date">2018-10-25</span></p>
-                                                <h2 class="name"><?=$movietitle?></h2>
+                                                <p class="release-date"><span class="text">Date: </span><span class="date">2018-10-25</span></p>
+                                                <h2 class="name">
+                                                    <?=$movietitle?>
+                                                </h2>
                                             </div>
                                         </a></div>
                                     <div class="movie-card flex-item" type="now-showing"><a href="#/HO00000318" class=""
@@ -248,12 +265,13 @@
 
                                             </div>
                                             <div class="info">
-                                                <p class="release-date"><span class="text">Date: </span><span
-                                                        class="date">2018-10-25</span></p>
-                                                <h2 class="name"><?=$movietitle?></h2>
+                                                <p class="release-date"><span class="text">Date: </span><span class="date">2018-10-25</span></p>
+                                                <h2 class="name">
+                                                    <?=$movietitle?>
+                                                </h2>
                                             </div>
                                         </a></div>
-                                        <?php } ?> 
+                                    <?php } ?>
                                 </div>
                             </div>
 

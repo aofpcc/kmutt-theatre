@@ -20,7 +20,7 @@ $klein->respond('POST', '/kmutt_home/branch/show_time/select_chair/payment/[:sho
     $service->back();
     return;
   }
-
+  $service->showtime_id = $request->showtime_id;
   $query_showtime = $conn->query("select movie_id, room_id, date(startTime) as startDate,
   time(startTime) as startTime from G04_MSRnB_showingroom where id = '$request->showtime_id';")->
   fetchAll(PDO::FETCH_ASSOC);
@@ -28,6 +28,13 @@ $klein->respond('POST', '/kmutt_home/branch/show_time/select_chair/payment/[:sho
 
   $query_movie = $conn->query("select title, Image,length from G09_Movie where id = '".$id_movie."';")
   ->fetchAll(PDO::FETCH_ASSOC);
+
+  $daedline = $conn->query("select distinct date(deadline) as dead_date, time(deadline) as dead_time from G01_Booking where buyer_id = '".$userID."'; ")
+  ->fetchAll(PDO::FETCH_ASSOC);
+
+  // var_dump($daedline);
+  // die;
+
 
   //$date = DateTime::createFromFormat('Y-m-d', $query_showtime[0]["startDate"]);
   //$date = date_format($query_showtime[0]["startDate"], 'd-m-y');;
@@ -40,6 +47,8 @@ $klein->respond('POST', '/kmutt_home/branch/show_time/select_chair/payment/[:sho
   $title = $query_movie[0]["title"];
   $image = $query_movie[0]["Image"];
   $length = $query_movie[0]["length"];
+  $d_dead = $daedline[0]["dead_date"];
+  $t_dead = $daedline[0]["dead_time"];
   $theatre_no = $query_showtime[0]["room_id"];
   // $dates = $date;
   // $times = $time;
@@ -47,6 +56,8 @@ $klein->respond('POST', '/kmutt_home/branch/show_time/select_chair/payment/[:sho
   $service->title = $title;
   $service->image = $image;
   $service->length = $length;
+  $service->d_dead = $d_dead;
+  $service->t_dead = $t_dead;
   $service->theatre_no = $theatre_no;
   $service->date = $dates;
   $service->time = $times;
@@ -99,8 +110,7 @@ $klein->respond('POST', '/kmutt_home/branch/show_time/select_chair/payment/[:sho
         $status = 'booking';
         $code = $str ;
         $buyer_id = $userID;
-        // var_dump($buyer_id);
-        // die;
+        // $showtime = $this->showtime_id;
         $deadline = strtotime('now + 10 minutes');
 
         // $response->dump($room_no);
@@ -110,33 +120,75 @@ $klein->respond('POST', '/kmutt_home/branch/show_time/select_chair/payment/[:sho
         $movie_id = $id_movie[0]["movie_id"];
 
 
-        $array = json_decode(json_encode($seats), true);
-        foreach ($array as $result) {
-          $row = $result['row'];
-          $seat = $result['seat'];
+        // $array = json_decode(json_encode($seats), true);
+        // foreach ($array as $result) {
+        //   $row = $result['row'];
+        //   $seat = $result['seat'];
 
           $select_chair = $conn->query("select selected_seat from G01_Booking where movie_id = $movie_id and showtime_id = $request->showtime_id;")
           ->fetchAll(PDO::FETCH_ASSOC);
-          for($j = 0;$j < count($selectedSeats);$j++){
-            for($i = 0;$i < count($select_chair);$i++){
-              if(strcmp($selectedSeats[$i], $select_chair[$j]) == 0){
-                $service->flash("unavailable seat");
-                $service->back();
-              }
-            }
-            //$seat = $select_chair[$j];
-              // $sql = "INSERT INTO G01_Booking (status, deadline, selected_seat, booking_time, code, buyer_id, row_ticket, room_id, movie_id)
-              //    values('$status',FROM_UNIXTIME($deadline), '$seat', CURRENT_TIMESTAMP, '$code', '$buyer_id', '$row', '$theatre_no', '$movie_id')";
-              //   $stmt = $conn->prepare($sql);
-              //   $stmt->execute();
+
+          $result = [];
+          foreach ($select_chair as $value) {
+            $str = $value["selected_seat"];
+            array_push($result, $str);
           }
-        }
+
+          // var_dump($result);
+          // die;
+
+
+
+          // $response->dump($movie_id);
+          // $response->dump($request->showtime_id);
+          // $response->dump($select_chair);
+          // $response->dump($selectedSeats);
+          // $response->sendBody();
+          // die;
+
+          for($j = 0;$j < count($selectedSeats);$j++){
+            for($i = 0;$i < count($result);$i++){
+              echo "selectedSeats[$i] = select_chair[$j] ? <br/>";
+              if(strcmp($selectedSeats[$j], $result[$i]) == 0){
+                throw new Exception("unavailable seat");
+                // echo "unavailable seat";
+
+                //echo "$selectedSeats[$i] = $select_chair[$j] ? <br/>";
+                // echo "yep <br/>";
+                //  $service->flash("unavailable seat");
+                // $service->back();
+
+              }
+              //echo "nope <br/>";
+
+          }
+            // $seatInfo = explode('_', $selectedSeats[$j]);
+            // // $s = [
+              $row = $seatInfo[0];
+              $seat_tic = $seatInfo[1];
+            // // ];
+            // // var_dump($seat);
+            // // die;
+            //
+            $seat = $selectedSeats[$j];
+              $sql = "INSERT INTO G01_Booking (status, deadline, selected_seat, booking_time, code, buyer_id, row_ticket, seat_ticket, room_id, movie_id, showtime_id)
+                 values('$status',FROM_UNIXTIME($deadline), '$seat', CURRENT_TIMESTAMP, '$code', '$buyer_id', '$row', '$seat_tic', '$theatre_no', '$movie_id', '$request->showtime_id')";
+                $stmt = $conn->prepare($sql);
+                $stmt->execute();
+          }
+
         $conn->commit();
       }
       catch(PDOException $e){
-        $conn->rollback();
-        echo $sql."<br>", $e->getMessage();
-
+        //$conn->rollback();
+        $service->flash($e->getMessage());
+        //window.history.back();
+        $service->back();
+      }
+      catch(Exception $e){
+        //$conn->rollback();
+        $service->flash($e->getMessage());
+        $service->back();
       }
     }
   }

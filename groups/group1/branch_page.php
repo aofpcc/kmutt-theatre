@@ -96,6 +96,7 @@ $klein->respond('GET', '/movies/showtime/all/[:movie_id]/[:show_date]', function
         join G04_MSRnB_theaterInfo c on a.theaterinfo_id = c.id
         join G04_MSRnB_roomtype b
         on c.roomtype_id = b.id where a.movie_id = $target and date(startTime) = '$show_date'  and a.branch_id = ".$branch["branch_id"];
+        
         $stmt = $conn->prepare($query);
         $stmt->execute();
         $rooms = $stmt->fetchAll(PDO::FETCH_ASSOC);

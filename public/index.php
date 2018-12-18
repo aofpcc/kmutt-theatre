@@ -80,11 +80,11 @@ foreach ($included as $key => $value) {
 // );
 
 $customer = [
-    'group1', 'group5', 'group6', 'group12', 'group14' 
+    'group1', 'group5', 'group6', 'group12', 'group14', 'group7'
 ];
 
 $employees = array(
-      'group2','group3','group4','group7','group8','group9','group10',
+      'group2','group3','group4','group8','group9','group10',
       'group11','group13'
 );
 

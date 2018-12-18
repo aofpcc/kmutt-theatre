@@ -18,19 +18,19 @@
 
   <div class="form-group">
     <label for="" class="form-label">Start Date</label>
-    <input name="promotion_start" type="datetime-local" class="form-control" id='promotion_start' placeholder="dd/mm/yy" >
+    <input name="promotion_start" type="datetime-local" class="form-control" id='promotion_start' placeholder="dd/mm/yy" required>
   </div>
 
   <div class="form-group">
     <label for="" class="form-label">End Date</label>
-    <input name="promotion_end" type="datetime-local" class="form-control" id='promotion_end' placeholder="dd/mm/yy" >
+    <input name="promotion_end" type="datetime-local" class="form-control" id='promotion_end' placeholder="dd/mm/yy" required>
   </div>
   <div class="form-group">
     <label for="" class="form-label">Code Promotion</label>
-    <input name="promotion_code" type="text" class="form-control" id='promotion_code' placeholder="Movie30฿" >
+    <input name="promotion_code" type="text" class="form-control" id='promotion_code' placeholder="Movie30฿" required>
   </div>
   <div class="form-group">
-  <input type="file" name="promotion_pic" id='promotion_pic' >
+  <input type="file" name="promotion_pic" id='promotion_pic' required>
   </div>
   <div class="form-group">
   <button class="btn btn-primary" type="submit">Add</button>

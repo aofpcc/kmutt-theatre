@@ -1,10 +1,10 @@
 <br>
 <h2>Edit Promotion</h1>
-<form action="/emp/promotion/edit" method="post" enctype="multipart/form-data">
+<form action="/emp/promotion/edit/[:promo_id]" method="post" enctype="multipart/form-data">
 
     <div class="form-group">
     <label for="" class="form-label">Promotion Name</label>
-    <input name="promotion_name" type="text" class="form-control" value = "<?=$promotion["PromoName"] ?>">
+    <input name="promotion_name" type="text" class="form-control" value="kuy.<?=$this->data["PromoName"] ?>haha">
   </div>
 
   <div class="form-group">

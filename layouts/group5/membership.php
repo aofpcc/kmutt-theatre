@@ -75,7 +75,7 @@
       <div class="bold field-title" style="margin-bottom: 0">REMAINING POINTS <br/>
         <a class="field-value">
           <?php
-            $totalPoint = $this->usr[0]["Total_Point"];
+            $totalPoint = $this->usr[0]["TotalPoint"];
             if ($totalPoint) {
               echo $totalPoint;
             }
@@ -150,8 +150,8 @@
       </p>
       <p class="bold field-title">AGE <br/>
         <a class="unbold field-value">
-          <?php echo $this->age; ?>
-          <!-- years old -->
+          <?php echo $this->ages[0]["Age"]; ?>
+          years old
         </a>
       </p>
       <p class="bold field-title">ADDRESS <br/>

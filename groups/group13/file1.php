@@ -148,25 +148,38 @@ $klein->respond('POST', '/fnb/update_point', function ($request, $response, $ser
 
 });
 
-$klein->respond('GET', '/fnb/add_point', function ($request, $response, $service, $app, $validator) {
+$klein->respond('get', '/fnb/add_point', function ($request, $response, $service, $app, $validator){
 
     $cusID = $request->cusID;
     $points = $request->points;
-
+    $receiptID = getMaxReceiptID();
+//    print_r($receiptID);
     $x = $app->point->addPoint([
         "type" => "FNB",
         "memberID" => $cusID,
         "point" => $points,
+        "transactionID" => $receiptID,
     ]);
     if($x["result"]) {
-        // create transaction
-        $x["redeemID"];
+        echo "add point success";
+//        $x["redeemID"];
     }else{
+        echo "add point failed";
 
     }
 });
 
-
+function getMaxReceiptID()
+{
+    global $database;
+    $conn = $database->getConnection();
+  $receiptSql = "SELECT max(receiptID) as receiptID FROM G13_FNB_SaleList";
+  $receiptID = $conn->prepare($receiptSql);
+  $receiptID->execute();
+  $receiptID = $receiptID->fetchAll(PDO::FETCH_BOTH);
+    $receiptID = $receiptID[0]["receiptID"];
+    return $receiptID;
+}
 $klein->respond('POST', '/fnb/get_points_and_name', function ($request, $response, $service, $app, $validator) {
     global $database;
     $conn = $database->getConnection();

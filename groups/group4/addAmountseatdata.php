@@ -36,6 +36,12 @@ $klein->respond('GET', '/g04/add_amountseat/[:branch_id]', function ($request, $
     $stmt->execute();
 
     $data = $stmt->fetchAll();
+    if(count($data) == 0){
+        return json_encode([[
+            0 => 0,
+            "roomno" => 0
+        ]]);
+    }
     return json_encode($data);
 });
 
@@ -74,6 +80,21 @@ $klein->respond('POST', '/g04/Amountseat/add', function ($request, $response, $s
 
     $response->redirect("/emp/add_amountseat");
     $response->sendHeaders();
+});
+
+$klein->respond('GET', '/add_amountseat/roomtype/[:id]', function ($request, $response, $service, $app, $validator) {
+    $conn = $app->db->getConnection();
+    // receive all data need
+    $id = $request->id;
+    // var_dump($roomtype_id);
+    // die;
+    $query = "select * from G04_MSRnB_seatPerRoom WHERE id = $id";
+    $data = $conn->query($query)->fetchAll(PDO::FETCH_ASSOC);
+
+    $service->title = "Showing Time - Movie";
+    $service->bootstrap3 = false;
+    $service->data = $data[0];
+    $service->render("layouts/group4/addshowtime/editAmountseatdata.php");
 });
 
 $klein->respond('GET', '/edit_amountseat/[:id]', function ($request, $response, $service, $app, $validator) {

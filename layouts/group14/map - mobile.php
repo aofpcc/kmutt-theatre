@@ -33,7 +33,7 @@
     <div action="/group14/map/action" method="post">
         <div class=""><input class="" type="text" id="myInput" onkeyup="myFunction()" placeholder="  Search location..." style="width: 100%; height: 42px; border: none; border-radius: 6px; font-size: 17px; "/></div>
         <hr style="height:2pt; visibility:hidden; margin-bottom:-1px; margin-top:3px" />
-        <div class="scrollable scrollbar-danger" style='height: 29%'>
+        <div class="scrollable scrollbar-danger" style='height: 25%'>
             <div class="force-overflow" id="BtnContainer">
                 <ul id="myUL" style="line-height: 10%">
                     <?php for ($i = 0; $i < count($this->guy); $i++) {?>

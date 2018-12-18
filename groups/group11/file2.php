@@ -48,6 +48,11 @@ $klein->respond('GET', '/staff/employee/editemp/[:userID]', function ($request, 
     $stmt = $conn->prepare($checkstatus);
     $stmt->execute();
     $service->permission = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+    $bran = "SELECT * FROM G14_Branch" ;
+    $stmt = $conn->prepare($bran);
+    $stmt->execute();
+    $service->branch = $stmt->fetchAll(PDO::FETCH_BOTH);
     
   $service->nameTag = 'editemployee.php';
   $service->render('layouts/group11/employee.php');
@@ -72,6 +77,11 @@ $klein->respond('POST', '/staff/employee/editemp/save', function ($request, $res
    $stmt = $conn->prepare($query);
    $stmt->execute();
    $service->employee = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+   $bran = "SELECT * FROM G14_Branch" ;
+   $stmt = $conn->prepare($bran);
+   $stmt->execute();
+   $service->branch = $stmt->fetchAll(PDO::FETCH_BOTH);
 
    //select G11_Emp_department
    $dep = "SELECT * from G11_Emp_department WHERE userID = $request->userID" ;
@@ -106,25 +116,25 @@ $klein->respond('POST', '/staff/employee/editemp/save', function ($request, $res
       $service->permission = $stmt->fetchAll(PDO::FETCH_BOTH);
   
      //checkpass
-     if($request->password != $request->confirmpassword) {
-        //select db G11_Emp_status
-       $status = "SELECT * FROM G11_Emp_status"  ;
-       $stmt = $conn->prepare($status);
-       $stmt->execute();
-       $service->showstatus = $stmt->fetchAll(PDO::FETCH_BOTH);
+    //  if($request->password != $request->confirmpassword) {
+    //     //select db G11_Emp_status
+    //    $status = "SELECT * FROM G11_Emp_status"  ;
+    //    $stmt = $conn->prepare($status);
+    //    $stmt->execute();
+    //    $service->showstatus = $stmt->fetchAll(PDO::FETCH_BOTH);
  
-       $service->error = 'password is not same as confirm password.';
-       $service->nameTag = 'editemployee.php';
-       $service->render('layouts/group11/employee.php');
-     }
+    //    $service->error = 'password is not same as confirm password.';
+    //    $service->nameTag = 'editemployee.php';
+    //    $service->render('layouts/group11/employee.php');
+    //  }
     
      $username = $request->Username;
-     $password = $request->password;
+    //  $password = $request->password;
      $email = $request->Email;
      $validateLink = 0;
-     $role = 'employee';
+    //  $role = 'employee';
      //create user
-     $app->login->register($username, $password, $email, $validateLink, $role);
+    //  $app->login->register($username, $password, $email, $validateLink, $role);
  
       //select db core_user_table
     //   $userID = "SELECT userID FROM core_user_table WHERE username = '$username' AND email = '$email' "  ;
@@ -147,8 +157,8 @@ $klein->respond('POST', '/staff/employee/editemp/save', function ($request, $res
       $ot_rate = $request->ot_rate;
       $eng_lv = $request->eng_lv;
       $availability = $request->availability;
- 
-      if($request->password == $request->confirmpassword) {
+      $branch = $request->branch;
+     
        //update db G11_Emp_staff
       $newprofile = "UPDATE G11_Emp_staff SET Firstname = '$firstName', Lastname = '$lastName', Sex = '$gender',
                                             `Status` = '$Status' , Email = '$email', `Address` = '$address', Salary = '$Salary', Super_emp = '$Super_emp', Tell = '$Tell'
@@ -157,11 +167,16 @@ $klein->respond('POST', '/staff/employee/editemp/save', function ($request, $res
       $stmt->execute();
  
         //update db G11_Emp_department
-        $newdepart = "UPDATE G11_Emp_department SET experience = '$experience', Profession = '$Profession', ot_rate = '$ot_rate' , eng_lv = '$eng_lv', `availability` = '$availability'
+        $newdepart = "UPDATE G11_Emp_department SET experience = '$experience', Profession = '$Profession', ot_rate = '$ot_rate' , eng_lv = '$eng_lv', `availability` = '$availability', branchID = '$branch'
                                             WHERE userID = $users";
       $stmt = $conn->prepare($newdepart);
       $stmt->execute();
-      }
+
+      //update db core_user_table
+      $newprofile = "UPDATE core_user_table SET username = '$username', email = '$email' WHERE userID = $users";
+      $stmt = $conn->prepare($newprofile);
+      $stmt->execute();
+      
  
         //upload picture
    $fileName = md5(uniqid(rand(),true));
@@ -212,5 +227,43 @@ $klein->respond('POST', '/staff/employee/editemp/save', function ($request, $res
    }
    
      $response->redirect('/emp/staff/employee/dashboard');
+  });
+
+  $klein->respond('POST', '/staff/employee/dashboard/search', function ($request, $response, $service, $app, $validator) {
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+    $service->bootstrap3 = true;
+    //check login
+     $data = $app->login->LoginThenGoTo('employee','/emp/staff');
+    //  echo($data['userID']);
+  
+     // connect db
+     global $database;
+     $conn = $database->getConnection();
+     
+    $tell =  $request->tell;
+    //select
+    $query = "SELECT * from G11_Emp_staff WHERE Tell LIKE '%$tell%' OR `Status` LIKE '%$tell%' OR Firstname LIKE '%$tell%'  OR Lastname LIKE '%$tell%' OR Email LIKE '%$tell%' " ;
+      $stmt = $conn->prepare($query);
+      $stmt->execute();
+      $service->employee = $stmt->fetchAll(PDO::FETCH_BOTH);
+      $id = $data['userID'];
+  
+      $checks = "SELECT * from G11_Emp_staff where userID = $id" ;
+      $stmt = $conn->prepare($checks);
+      $stmt->execute();
+      $service->state = $stmt->fetchAll(PDO::FETCH_BOTH);
+      $status = $service->state[0]['Status'];
+  
+       //select G11_Emp_permission
+    $checkstatus = "SELECT * from G11_Emp_permission where `status` = '$status'" ;
+    $stmt = $conn->prepare($checkstatus);
+    $stmt->execute();
+    $service->permission = $stmt->fetchAll(PDO::FETCH_BOTH);
+  
+  
+    $service->nameTag = 'dashboard.php';
+    $service->render('layouts/group11/employee.php');
+  
   });
 ?>

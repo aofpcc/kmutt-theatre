@@ -169,6 +169,29 @@ $klein->respond('get', '/fnb/add_point', function ($request, $response, $service
     }
 });
 
+
+
+$klein->respond('get', '/fnb/redeem_point', function ($request, $response, $service, $app, $validator){
+
+    $cusID = $request->cusID;
+    $points = $request->total;
+    $receiptID = getMaxReceiptID();
+
+    $x = $app->point->subtractPoint([
+        "type" => "FNB",
+        "memberID" => $cusID,
+        "point" => $points,
+        "transactionID" => $receiptID,
+    ]);
+    if($x["result"]) {
+        echo "redeem point success";
+//        $x["redeemID"];
+    }else{
+        echo "redeem point failed";
+
+    }
+});
+
 function getMaxReceiptID()
 {
     global $database;
@@ -180,6 +203,32 @@ function getMaxReceiptID()
     $receiptID = $receiptID[0]["receiptID"];
     return $receiptID;
 }
+function getMaxPOID()
+{
+    global $database;
+    $conn = $database->getConnection();
+    $POIDSql = "SELECT max(POID) as POID FROM G13_FNB_POmain";
+    $POID = $conn->prepare($POIDSqlSql);
+    $POID->execute();
+    $POID = $POID->fetchAll(PDO::FETCH_BOTH);
+    $POID = $POID[0]["POID"];
+    return $POID;
+}
+
+function getStock(){
+    global $database;
+    $conn = $database->getConnection();
+    $stockSql = "SELECT StockID, Remain FROM G13_v_Stock";
+    $stockID = $conn->prepare($stockSql);
+    $stockID->execute();
+    $stockID = $stockID->fetchAll(PDO:: FETCH_BOTH);
+    return $stockID;
+
+}
+
+
+
+
 $klein->respond('POST', '/fnb/get_points_and_name', function ($request, $response, $service, $app, $validator) {
     global $database;
     $conn = $database->getConnection();
@@ -301,8 +350,13 @@ $klein->respond('POST', '/fnb/do_order', function ($request, $response, $service
             $a = $conn->prepare($updateDetailSql);
             $a->execute();
         }
+        //update stock
+
         $productsOrderStock = getProductOrderForStock($products,$items,$flavorSet,$drinkSet);
         updateAllOrderStock($receiptID,$productsOrderStock);
+//        $stock  = getStock();
+//        CreatePO($stock);
+
         $conn->commit();
         return $response->json(["result"=>"success","message"=>"all :".count($items)." item[s]"]);
     } catch(PDOException $e) {
@@ -315,6 +369,72 @@ $klein->respond('POST', '/fnb/do_order', function ($request, $response, $service
          );
     }
 });
+function orderPO($stockID){
+    $supProduct = getSupProduct($stockID);
+    $supID = $supProduct["supID"];
+    $cost = $supProduct["cost"];
+    $unit =$supProduct["unit"];
+    $totalPaid = ($cost * 10)/$unit;
+
+    global $database;
+    $conn = $database->getConnection();
+    $orderPOSql = "INSERT INTO G13_FNB_POmain (supID,Date,Time,totalPaid) VALUES ('$supID',NOW(),NOW(),$totalPaid)";
+    $orderPO = $conn->prepare($orderPOSql);
+    $orderPO->execute();
+    $conn->commit();
+
+    $POID = getMaxPOID();
+    $amount = $unit*10;
+    $POdetailSql = "INSERT INTO G13_FNB_POdetail (POID,stockID,amount) VALUES ($POID,$stockID,$amount)";
+    $POdetail = $conn->prepare($POdetailSql);
+    $POdetail->execute();
+    $conn->commit();
+
+    updateStockPO($POID,$stockID,$amount);
+}
+
+
+function getSupProduct($stockID){
+    global $database;
+    $conn = $database->getConnection();
+    $supProductIDSql = "SELECT * FROM G13_FNB_SupProduct WHERE StockID='$stockID'";
+    $supProduct = $conn->prepare($supProductIDSql);
+    $supProduct->execute();
+    $supProduct = $supProduct->fetchAll(PDO::FETCH_BOTH);
+    $supID = $supProduct[0]["supID"];
+    $unit = $supProduct[0]["unit"];
+    $cost = $supProduct[0]["cost_per_unit"];
+    $supProduct["supID"]=$supID;
+    $supProduct["unit"]=$unit;
+    $supProduct["cost"]=$cost;
+    return $supProduct;
+}
+//หยิ่งไม่รับด้วยว่ะะะะ
+function CreatePO($stockItems){
+    $conditionTable = [
+        "PC"=>5000,
+        "DR"=>970,
+        "SN"=>50,
+    ];
+    foreach ($stockItems as $stockItem) {
+        $typeID = substr($stockItem["StockID"],0,2);
+        if($typeID=="PC"){
+            if($stockItem["Remain"]<$conditionTable["PC"]){
+                orderPO($stockItem["StockID"]);
+            }
+        }
+        else if($typeID=="DR"){
+            if($stockItem["Remain"]<$conditionTable["DR"]){
+                orderPO($stockItem["StockID"]);
+            }
+        }
+        else if($typeID=="SN"){
+            if($stockItem["Remain"]<$conditionTable["SN"]){
+                orderPO($stockItem["StockID"]);
+            }
+        }
+    }
+}
 
 function getSize($productID){
     global $database;
@@ -377,15 +497,6 @@ function getProductIDWithPRST($promotionSetID,$flavorSet,$drinkSet){
     return $productIDs;
 }
 
-function getStockTable(){
-    global $database;
-    $conn = $database->getConnection();
-    $selectStock = "SELECT Remain, StockID FROM G13_v_Stock";
-    $selectStockResult = $conn->prepare($selectStock);
-    $selectStockResult->execute();
-    $stockTable = $selectStockResult->fetchAll(PDO::FETCH_BOTH);
-    return $stockTable;
-}
 function getRemain($stockID){
     global $database;
     $conn = $database->getConnection();
@@ -402,6 +513,14 @@ function updateStock($receiptID,$stockID,$amount){
     $stockUpdate = $conn->prepare($stockInsertSql);
     $stockUpdate->execute();
 }
+function updateStockPO($POID,$stockID,$amount){
+    global $database;
+    $conn = $database->getConnection();
+    $stockInsertSql = "INSERT INTO G13_FNB_Stock_Transaction (POID,stockID,amount) VALUES ('$POID','$stockID','$amount')";
+    $stockUpdate = $conn->prepare($stockInsertSql);
+    $stockUpdate->execute();
+}
+
 
 // $klein->respond('GET', '/g05/test_add_point', function ($request, $response, $service, $app, $validator) {
 // $app->point->addPoint([

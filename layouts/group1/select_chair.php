@@ -61,7 +61,7 @@
         <ul class="book-left">
           <!-- <li>Movie </li>
           <li>Time </li> -->
-          <li>Tickets</li>
+          <li>Number of tickets</li>
           <li>Total</li>
           <li>Seats :</li>
         </ul>

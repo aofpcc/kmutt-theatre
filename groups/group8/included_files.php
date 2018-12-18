@@ -3,5 +3,6 @@ $included = array(
   'file1',
   'gen',
   'promotionManagement',
-  'promotionEditManagement'
+  'promotionEditManagement',
+  'file2'
 );

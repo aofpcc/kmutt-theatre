@@ -118,7 +118,7 @@
 
          <div class="row">
           <div class="col-md-6 mb-3">
-          <label for="email">Email <span class="text-muted">(Optional)</span></label>
+          <label for="email">Email <span class="text-muted"></span></label>
           <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com" value="">
           <div class="invalid-feedback">
             Please enter a valid email address for shipping updates.

@@ -63,14 +63,14 @@ $klein->with("/test", function () use ($klein) {
         // die;
         if ($result["validated"]) {
           $service->flash("validated");
-            $response->redirect("/test/login");
+            $response->redirect("/customer/login");
         } else {
           if($result["already"]){
             $service->flash("Already validated, Cannot use again");
-            $response->redirect("/test/login");
+            $response->redirect("/customer/login");
           }else{
             $service->flash("Invalid Token");
-            $response->redirect("/test");
+            $response->redirect("/");
           }
         }
     });
@@ -132,7 +132,7 @@ $klein->with("/test", function () use ($klein) {
         $service->validateParam('newpassword', 'New Password cannot be null')->notNull();
         $service->validateParam('confirmpassword', 'Confirm Password cannot be null')->notNull();
         if ($request->newpassword != $request->confirmpassword) {
-            $service->flash('Shit Not the same');
+            $service->flash('Password not the same');
             $service->back();
         }
         $result = $app->login->setNewPassword($request->newpassword);

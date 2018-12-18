@@ -116,6 +116,8 @@ $klein->respond('POST', '/kmutt_home/branch/show_time/select_chair/payment/[:sho
 
           $select_chair = $conn->query("select selected_seat from G01_Booking where movie_id = $movie_id and showtime_id = $request->showtime_id;")
           ->fetchAll(PDO::FETCH_ASSOC);
+          $chair = $select_chair[0]["selected_seat"];
+
 
           // $response->dump($movie_id);
           // $response->dump($request->showtime_id);

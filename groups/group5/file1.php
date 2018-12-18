@@ -17,11 +17,11 @@ $klein->respond(['GET', 'POST'], '/membership', function ($request, $response, $
     //         WHERE pf.MemberID=pw.MemberID and pf.MemberID=pt.MemberID and pf.MemberID = ads.MemberID
     //         and pf.userID = $userID";
 
-    $sql = "SELECT  pf.MemberID, pf.PhoneNumber, pf.Email, pt.TotalPoint,
+    $sql = "SELECT  pf.MemberID, pf.PhoneNumber, pf.Email, pt.totalpoint,
             pf.ID_Card, pf.Fname, pf.Lname, pf.Gender, pf.BirthDate, addr.Address,
             addr.Province, addr.District, addr.SubDistrict, addr.ZipCode
             FROM G05_Member_profile as pf
-            LEFT JOIN G05_v_totalpoint_pereach as pt ON pf.MemberID=pt.MemberID
+            LEFT JOIN G05_totalpoint as pt ON pf.MemberID=pt.MemberID
             LEFT JOIN G05_Member_address as addr ON pf.MemberID = addr.MemberID
             WHERE pf.MemberID = $userID";
     // echo $sql;

@@ -1,5 +1,5 @@
 <br>
-<h2>Basic Table</h2> 
+<h2>Movie Showtime</h2> 
 <div class="container-fluid">
   <div class="row">
   		<div class="col-md-6"></div>
@@ -40,7 +40,7 @@
                 <td><?=$d['time(s.startTime)']?></td>
                 <td><?=$d['time(s.endTime)']?></td>
                 <td>
-                    <button type="button" class="btn btn-success">Edit</button>
+                    <button type="button" class="btn btn-success" onClick="location.href='/emp/edit_showtime/">Edit</button>
                     <button type="button" class="btn btn-danger" onClick="del(<?=$d['showtime_id']?>);">Delete</button>
                 </td>
             </tr>

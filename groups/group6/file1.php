@@ -166,13 +166,15 @@ $klein->respond('GET', '/androidRegist', function ($request, $response, $service
         $stmt->execute();
 
         //******* POINT *****************************************************
-        $query = "INSERT INTO G05_Member_Point_Transactionoint (MemberID, Date, Type)
-                                VALUES ('$userID', NOW(), "Ticket")";
+        $type = "Ticket";
+        $query = "INSERT INTO G05_Member_Point_Transaction (MemberID, Date, Type)
+                                VALUES ('$userID', NOW(), '$type')";
         $stmt = $conn->prepare($query);
         $stmt->execute();
 
-        $query = "INSERT INTO G05_Member_Point_Transactionoint (MemberID, Date, Type)
-                                VALUES ('$userID', NOW(), "FNB")";
+        $type = "FNB";
+        $query = "INSERT INTO G05_Member_Point_Transaction (MemberID, Date, Type)
+                                VALUES ('$userID', NOW(), 'FNB')";
         $stmt = $conn->prepare($query);
         $stmt->execute();
         //***** POINT ******************************************************

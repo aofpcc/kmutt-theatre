@@ -3,6 +3,8 @@
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <link rel="stylesheet" href="/layouts/group10/css/ads.css">
     <script src="/layouts/group10/js/ads.js"></script>
+    <script src="/layouts/group10/js/jquery.dataTables.min.js"></script>
+    <script src="/layouts/group10/js/dataTables.autoFill.min.js"></script>
   </head>
     <div name="header" class="head">
       <h1>KMUTT Theatre</h1>
@@ -14,7 +16,7 @@
         <div class="list">
           <h2>Advertisement List</h2>
           <div class="table-scroll">
-            <table>
+            <table id="ads-table">
               <thead>
                 <tr>
                   <th class="list-id">ID</th>

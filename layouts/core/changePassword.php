@@ -28,13 +28,13 @@
             </div>
             <!-- New Password -->
             <div class="form-group">
-              <label class="box-name-text gap" for="usr">New password (8-20 characters)</label>
-              <input type="password" class="form-control form-control-lg" id="usr" name="newpassword1" required>
+              <label class="box-name-text gap" for="usr">New password (Please include at least 6 characters)</label>
+              <input type="password" class="form-control form-control-lg" id="usr" name="newpassword1" pattern=".{6,}" required>
             </div>
             <!-- Confirm New Password -->
             <div class="form-group">
               <label class="box-name-text gap" for="usr">Confirm new password</label>
-              <input type="password" class="form-control form-control-lg" id="usr" name="newpassword2" required>
+              <input type="password" class="form-control form-control-lg" id="usr" name="newpassword2" pattern=".{6,}" required>
             </div>
             <!-- Button -->
             <div class="gap-more"></div>

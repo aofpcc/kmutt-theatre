@@ -11,8 +11,8 @@
     $movietitle = $conn->query("SELECT title FROM G09_Movie")->fetchAll(PDO::FETCH_BOTH);;
 
     $service->query_date = $query_date;
-    $service->query_time = $query_time[3];
-    $service->movietitle = $movietitle[0];
+    $service->query_time = $query_time;
+    $service->movietitle = $movietitle[1];
     $service->render('layouts/group2/selecttime.php');
     // $conn = null;
 

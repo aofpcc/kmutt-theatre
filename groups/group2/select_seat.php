@@ -24,7 +24,7 @@
   
 
 
-    $service->selectedSeats = $request->selectedSeats;
+    // $service->selectedSeats = $request->selectedSeats;
 
 
     

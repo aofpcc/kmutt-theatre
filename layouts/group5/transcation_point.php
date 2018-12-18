@@ -15,31 +15,33 @@
   </div>
 <div class="table-responsive">
             <table class="table table-striped table-sm">
+              <!-- head -->
               <thead>
                 <tr>
-                  <th></th>
+                  <th>#</th>
                   <th>Date</th>
+                  <th>Time</th>
                   <th>Transaction</th>
-                  <th>Type</th>
                   <th>Point</th>
                 </tr>
               </thead>
+              <!-- end head -->
+
+              <!-- body -->
               <tbody>
-                <tr>
-                  <td></td>
-                  <td>17-12-2018</td>
-                  <td>Paid: Fantastic Beast 2</td>
-                  <td>Ticket</td>
-                  <td>+100</td>
+                <?php 
+                $count = 1;
+                foreach($this->list as $list) { ?>
+                <tr class="<?=$list['prefix'] == "+" ? "table-success" : "table-danger" ?>">
+                  <td><?=$count++?></td>
+                  <td><?=$list["date"]?></td>
+                  <td><?=$list["time"]?></td>
+                  <td><?=$list["type"]?></td>
+                  <td><?=$list["point"]?></td>
                 </tr>
-                <tr>
-                  <td></td>
-                  <td>18-04-2018</td>
-                  <td>Redeem: Brown Bear Glass Set</td>
-                  <td>Reward</td>
-                  <td>-60</td>
-                </tr>
+                <?php } ?>
               </tbody>
+              <!-- end body -->
             </table>
 
             <div 

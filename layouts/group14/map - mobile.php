@@ -1,18 +1,22 @@
+<html>
 <head>
     <style>
         *{
             margin: auto;
             padding: 0;
         }
-        #map {
+        /* #map {
             height:350px;
             width: 100%;
             padding-right: 15px;
             padding-left: 15px;
-        }
-        body{
+        } */
+        html, body{
           background-color: #212529;
+          height: 100%;
+          width: 100%;
         }
+        
 
     </style>
     <meta charset="utf-8">
@@ -24,28 +28,28 @@
     <link rel="stylesheet" href="/layouts/group14/map.css">
 </head>
 <!-- <div id="map"></div> -->
-<div class="container" style="width: 70%;">
+<div class="container" style="width: 95%; height:100%">
 
-    <div id="map"></div>
-    <hr style="height:2pt; visibility:hidden; margin-bottom:-1px; margin-top:5px" />
-    <div class="input-group stylish-input-group"><input class="form-control" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search location..." style="width: 100%"/></div>
-    <hr style="height:2pt; visibility:hidden; margin-bottom:-1px; margin-top:5px" />
-    <div class="scrollable scrollbar-danger" style='height: 200px'>
-        <div class="force-overflow" id="BtnContainer">
-            <ul id="myUL">
-                <?php for ($i = 0; $i < count($this->guy); $i++) {?>
-                    <li><button id="bttn" type="button" onclick="changePos(<?php echo ($i) ?>);"
-                        class="btn button btn-lg btn-block">
-                        <?php /*echo ($this->guy[$i]['BranchName']) */?>
-                        <?php echo ($this->guy[$i]['BranchName']); ?>
-                    </button>
-                    <hr style="height:1pt; visibility:hidden; margin-bottom:0px; margin-top:1px" /></li>
-                <?php }?>
-            </ul>
+    <div id="map" style="margin-top: 8px; height: 50%; width: 100%;"></div>
+    <hr style="height:2pt; visibility:hidden; margin-bottom:-1px; margin-top:3px" />
+    <form action="/group14/map/action" method="post">
+        <div class="input-group stylish-input-group"><input class="form-control" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search location..." style="width: 100%"/></div>
+        <hr style="height:2pt; visibility:hidden; margin-bottom:-1px; margin-top:3px" />
+        <div class="scrollable scrollbar-danger" style='height: 20%'>
+            <div class="force-overflow" id="BtnContainer">
+                <ul id="myUL" style="line-height: 10%">
+                    <?php for ($i = 0; $i < count($this->guy); $i++) {?>
+                        <li style="padding: 0px; margin: 0px;"><button id="bttn" type="button" onclick="bttnFunc(<?php echo ($i) ?>);" class="btn button btn-lg btn-block">
+                            <?php echo ($this->guy[$i]['BranchName']); ?>
+                        </button>
+                        <hr style="height:1pt; visibility:hidden; margin-bottom:0px; margin-top:1px" /></li>
+                    <?php }?>
+                </ul>
+            </div>
         </div>
-    </div>
-    <hr style="height:2pt; visibility:hidden; margin-bottom:-1px; margin-top:5px" />
-    <div><button type="submit" class="btn btn-success btn-lg btn-block">Confirm</button></div>
+        <hr style="height:2pt; visibility:hidden; margin-bottom:-1px; margin-top:2px" />
+        <div><button id="confirmLoc" type="submit" name="" value="" class="btn button btn-lg btn-block" >Confirm</button></div>
+    </form>
 </div>
 <br>
 
@@ -100,9 +104,9 @@
                 title: locations[i][0],
                 icon: { url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png" }
             });
-            marker.addListener('click', function() {
-                infowindow.open(map, marker);
-            });
+            // marker.addListener('click', function() {
+            //     infowindow.open(map, marker);
+            // });
             google.maps.event.addListener(marker, 'click', (function(marker, i) {
                 return function(){
                     infowindow.setContent('<h2 id="firstHeading" class="firstHeading">'+locations[i][0]+'</h2>'+
@@ -136,34 +140,14 @@
         }
       }
     }
-    function find_closest_marker( lat1, lon1 ) {
-      var pi = Math.PI;
-      var R = 6371; //equatorial radius
-      var distances = [];
-      var closest = -1;
-
-      for( i=0;i<markers.length; i++ ) {
-          var lat2 = collect[i].position.lat();
-          var lon2 = collect[i].position.lng();
-          var chLat = lat2-lat1;
-          var chLon = lon2-lon1;
-          var dLat = chLat*(pi/180);
-          var dLon = chLon*(pi/180);
-          var rLat1 = lat1*(pi/180);
-          var rLat2 = lat2*(pi/180);
-          var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-                  Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(rLat1) * Math.cos(rLat2);
-          var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-          var d = R * c;
-          distances[i] = d;
-          if ( closest == -1 || d < distances[closest] ) {
-            closest = i;
-          }
-        }
-
-    // (debug) The closest marker is:
-    console.log(markers[closest]);
-  }
-
+    var z,w;
+    function bttnFunc(z){
+        changePos(z);
+        document.getElementById("confirmLoc").value = locations[z][3];
+        document.getElementById("confirmLoc").name = locations[z][3];
+        console.log(document.getElementById("confirmLoc").value);
+        console.log(document.getElementById("confirmLoc").name);
+    }
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVya5jGbVLcFvCfHrR8yNKU7CPJhZ1eVI&callback=initMap"></script>
+</html>

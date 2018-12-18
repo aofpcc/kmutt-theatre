@@ -63,15 +63,19 @@ $klein->respond('POST', '/resetPassword', function ($request, $response, $servic
   // die("Hoi");
   $service->validateParam('newpassword', 'New Password cannot be null')->notNull();
   $service->validateParam('confirmpassword', 'Confirm Password cannot be null')->notNull();
+  // $response->dump($request->newpassword);
+  // $response->dump($request->confirmpassword);
+  // // $response->sendBody();
+  // return;
   if ($request->newpassword != $request->confirmpassword) {
-    $service->flash('Shit Not the same');
+    $service->flash('Password does not match');
     $service->back();
+    return;
   }
   $result = $app->login->setNewPassword($request->newpassword);
   // $p = $service->passValue;
   if ($result["update"]) {
     $service->flash("Password was reseted");
-
   } else {
     $service->flash("Password was not reseted. Please Contact Us");
   }

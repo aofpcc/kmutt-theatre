@@ -10,29 +10,22 @@ $klein->respond(['GET', 'POST'], '/membership', function ($request, $response, $
     $conn = $database->getConnection();
 
     // query1 Profile
-    // $sql = "SELECT  pf.MemberID, pw.Password, pf.PhoneNumber, pf.Email, pt.Total_Point,
-    //         pf.ID_Card, pf.Fname, pf.Lname, pf.Gender, pf.BirthDate, ads.Address,
-    //         ads.Province, ads.District, ads.SubDistrict, ads.ZipCode
-    //         FROM G05_Member_profile as pf, G05_Member_password as pw, G05_Member_point as pt, G05_Member_address as ads
-    //         WHERE pf.MemberID=pw.MemberID and pf.MemberID=pt.MemberID and pf.MemberID = ads.MemberID
-    //         and pf.userID = $userID";
-
-    $sql = "SELECT  pf.MemberID, pf.PhoneNumber, pf.Email, pt.Total_Point,
+    $sql = "SELECT  pf.MemberID, pf.PhoneNumber, pf.Email, pt.totalpoint,
             pf.ID_Card, pf.Fname, pf.Lname, pf.Gender, pf.BirthDate, addr.Address,
             addr.Province, addr.District, addr.SubDistrict, addr.ZipCode
             FROM G05_Member_profile as pf
-            LEFT JOIN G05_Member_point as pt ON pf.MemberID=pt.MemberID
+            LEFT JOIN G05_totalpoint as pt ON pf.MemberID=pt.MemberID
             LEFT JOIN G05_Member_address as addr ON pf.MemberID = addr.MemberID
             WHERE pf.MemberID = $userID";
     // echo $sql;
-
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $data = $stmt->fetchAll();
 
     // query2 Age
-    $sql2 = "SELECT year(current_date)-year(pf.BirthDate) as age
-           FROM G05_Member_profile as pf";
+    $sql2 = "SELECT (year(current_date)-year(pf.BirthDate)) as Age
+             FROM G05_Member_profile as pf
+             WHERE pf.MemberID = $userID";
     $stmt = $conn->prepare($sql2);
     $stmt->execute();
     $age = $stmt->fetchAll();
@@ -41,16 +34,29 @@ $klein->respond(['GET', 'POST'], '/membership', function ($request, $response, $
     $service->title = "Member Information";
     $service->bootstrap3 = false;
     $service->usr = $data;
+    $service->ages = $age;
     $service->render('layouts/group5/membership.php');
 });
 
 // change password (page)
 $klein->respond('GET', '/change/password', function ($request, $response, $service, $app, $validator) {
     // get login info (send to login page if not logged in)
+    // $loginInfo = $app->login->requireLogin('customer');
+    // $userID = $loginInfo['userID'];
+    $result = $app->login->requireLogin('customer');
+    $newOne = $service->passValue;
+    $service->passValue["userID"] = $result["userID"];
+    $service->passValue = $newOne;
+    $service->render('layouts/group5/changePassword.php');
+});
+
+//forget password (page)
+$klein->respond('GET', '/change/password', function ($request, $response, $service, $app, $validator) {
+    // get login info (send to login page if not logged in)
     $loginInfo = $app->login->requireLogin('customer');
     $userID = $loginInfo['userID'];
 
-    $service->render('layouts/group5/changePassword.php');
+    $service->render('layouts/group5/ForgetPassword.php');
 });
 
 // change password (actual SQL)
@@ -78,13 +84,6 @@ $klein->respond('POST', '/change/password/action', function ($request, $response
     }
     $response->redirect("/customer/membership");
 });
-
-// // Change email
-// $klein->respond('GET', '/change/email', function ($request, $response, $service) {
-//     $service->title = "Change Email";
-//     $service->bootstrap3 = false;
-//     $service->render('layouts/group5/changeEmail.php');
-// });
 
 // Change phone number (page)
 $klein->respond('GET', '/change/phonenumber', function ($request, $response, $service, $app, $validator) {
@@ -209,17 +208,10 @@ $klein->respond('GET', '/editprofile', function ($request, $response, $service, 
     $conn = $database->getConnection();
 
     // query1 Profile
-    // $sql = "SELECT  pf.MemberID, pw.Password, pf.PhoneNumber, pf.Email, pt.Total_Point,
-    //         pf.ID_Card, pf.Fname, pf.Lname, pf.Gender, pf.BirthDate, ads.Address,
-    //         ads.Province, ads.District, ads.SubDistrict, ads.ZipCode
-    //         FROM G05_Member_profile as pf, G05_Member_password as pw, G05_Member_point as pt, G05_Member_address as ads
-    //         WHERE pf.MemberID=pw.MemberID and pf.MemberID=pt.MemberID and pf.MemberID = ads.MemberID
-    //         and pf.MemberID = 1";
-    $sql = "SELECT  pf.MemberID, pf.PhoneNumber, pf.Email, pt.Total_Point,
-            pf.ID_Card, pf.Fname, pf.Lname, pf.Gender, pf.BirthDate, addr.Address,
+    $sql = "SELECT  pf.MemberID, pf.PhoneNumber, pf.Email, pf.ID_Card,
+            pf.Fname, pf.Lname, pf.Gender, pf.BirthDate, addr.Address,
             addr.Province, addr.District, addr.SubDistrict, addr.ZipCode
             FROM G05_Member_profile as pf
-            LEFT JOIN G05_Member_point as pt ON pf.MemberID=pt.MemberID
             LEFT JOIN G05_Member_address as addr ON pf.MemberID = addr.MemberID
             WHERE pf.MemberID = $userID";
 
@@ -237,7 +229,7 @@ $klein->respond('GET', '/editprofile', function ($request, $response, $service, 
 
 
     $service->usr = $data;
-    $service->age = $age[0]["age"];
+    $service->age = $age;
     $service->render('layouts/group5/editprofile.php');
 
 
@@ -266,7 +258,6 @@ $klein->respond('POST', '/kong/action', function ($request, $response, $service,
 });
 
 // Drive-php-register
-
 $klein->respond('POST', '/register-form', function ($request, $response, $service, $app, $validator) {
     if ($request->password != $request->confirmpassword) {
         $service->flash("MTF Password has not matched");
@@ -292,6 +283,7 @@ $klein->respond('POST', '/register-form', function ($request, $response, $servic
             $id_card = $request->id_card;
             $firstname = $request->firstName;
             $lastname = $request->lastName;
+            $gender = $request->gender;
             $phone = $request->phone;
             $birth = $request->birth;
 
@@ -336,5 +328,41 @@ $klein->respond('POST', '/register-form', function ($request, $response, $servic
     } catch (Exception $e) {
         echo $e->getMessage();
         $conn->rollback();
+    }
+});
+
+//transaction
+$klein->respond('GET', '/transaction_point', function ($request, $response, $service) {
+    $service->title = "Point History";
+    $service->bootstrap3 = false;
+    global $database;
+    $conn = $database->getConnection();
+    $service->pageTitle = 'Fish and Chips';
+    $service->render('layouts/group5/transcation_point.php');
+});
+
+//add
+  $klein->respond('GET', '/g05/test_add_point', function ($request, $response, $service, $app, $validator) {
+  $app->point->addPoint([
+    "type" => "Ticket", //FNB
+    "memberID" => "151",
+    "point" => "300",
+    "transactionID" => "X01AB"
+  ]);
+});
+
+  //subtract
+  $klein->respond('GET', '/g05/test_subtract_point', function ($request, $response, $service, $app, $validator) {
+    $x = $app->point->subtractPoint([
+      "type" => "Ticket",
+      "memberID" => "151",
+      "point" => "150"
+    ]);
+    if($x["result"]) {
+      // create transaction
+      $x["redeemID"];
+    }else{
+      //
+
     }
 });

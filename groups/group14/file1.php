@@ -1,6 +1,6 @@
 <?php
 $klein->respond('GET', '/group14', function ($request, $response, $service) {
-  
+
   global $database;
   $conn = $database->getConnection();
 
@@ -34,9 +34,11 @@ $klein->respond('GET', '/group14/map', function ($request, $response, $service) 
   global $database;
   $conn = $database->getConnection();
 
-  $sql = "SELECT  b.BranchName, c.Longitude, c.Latitude, b.BranchID 
-          FROM G14_Branch as b , G14_BranchCoords as c
-          where b.LatLngID = c.CoordID";
+  $sql = "SELECT  b.BranchName, c.Longitude, c.Latitude, b.BranchID, a.street,
+          a.Province, a.City, a.District, a.Postalcode
+          FROM G14_Branch as b , G14_BranchCoords as c, G14_BranchAddress as a
+          where b.LatLngID = c.CoordID and b.AddressID = a.branchAddressID
+          order by b.BranchName Asc";
   $stmt = $conn->prepare($sql);
   $stmt->execute();
   $data = $stmt->fetchAll();

@@ -31,7 +31,7 @@
 
 <body>
 
- 
+
 
   <div id="app" class="is-grayscale">
 
@@ -39,7 +39,7 @@
       <div class="step-bar">
         <div class="container">
           <ul class="desktop">
-            <li class="step-item pass"><a href="/emp/group2/home_page/select_movie/select_showtime">
+            <li class="step-item pass"><a href="/emp/group2/home_page/select_movie">
                 <div class="no">1</div>
                 <div class="step-name">Showtime</div>
               </a></li>
@@ -93,7 +93,21 @@
                     <div class="summary-selected-seat">
                       <div class="selected-seat">
                         <h3 class="heading">Seat no.</h3>
-                        <p>L10, L9</p>
+                        <p>
+                          <?php
+
+                          $arry = json_decode(json_encode($this->seats), true);
+
+// var_dump($this->seats);
+
+foreach ($arry as $result)
+{
+  // $seat_no = $result['row'].'_'.$result['seat'];
+  echo 'row: ', $result['row'],'   seat: ', $result['seat'],'<br/>';
+}
+
+?>
+                        </p>
                       </div>
                       <div class="selected-seat-total">
                         <h3 class="heading">Total</h3>

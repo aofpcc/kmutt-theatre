@@ -1,20 +1,52 @@
 .scrollable {
-    height: 100px; /* or any value */
+    height: 80px; /* or any value */
     overflow-y: auto;
 }
 
-.scrollbar-near-moon::-webkit-scrollbar-track {
+.scrollbar-danger::-webkit-scrollbar-track {
 -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
-background-color: #F5F5F5;
+background-color: #212529;
 border-radius: 10px; }
 
-.scrollbar-near-moon::-webkit-scrollbar {
+.scrollbar-danger::-webkit-scrollbar {
 width: 12px;
-background-color: #F5F5F5; }
+background-color: #212529; }
 
-.scrollbar-near-moon::-webkit-scrollbar-thumb {
+.scrollbar-danger::-webkit-scrollbar-thumb {
 border-radius: 10px;
 -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
-background-image: -webkit-gradient(linear, left bottom, left top, from(#5ee7df), to(#b490ca));
-background-image: -webkit-linear-gradient(bottom, #5ee7df 0%, #b490ca 100%);
-background-image: linear-gradient(to top, #5ee7df 0%, #b490ca 100%); }
+background-color: #ea0015; }
+
+.button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #656565;
+}
+
+.button {background-color: black;}
+.button {border-radius: 8px;}
+.button {width: 99%;}
+
+.stylish-input-group .input-group-addon{
+    background: white !important;
+}
+.stylish-input-group .form-control{
+	border-right:0;
+	box-shadow:0 0 0;
+	border-color:#ccc;
+}
+.stylish-input-group button{
+    border:0;
+    background:transparent;
+}

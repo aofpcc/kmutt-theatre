@@ -10,6 +10,10 @@
             padding-right: 15px;
             padding-left: 15px;
         }
+        body{
+          background-color: #212529;
+        }
+
     </style>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,34 +24,39 @@
     <link rel="stylesheet" href="/layouts/group14/map.css">
 </head>
 <!-- <div id="map"></div> -->
-<div class="container">
-    <div id="map"></div>
-    <br>
-    <div class="scrollable scrollbar-near-moon" style='height: 220px'>
-        <div class="force-overflow">
-            <?php for ($i = 0; $i < count($this->guy); $i++) {?>
-            <button id="<?php echo ($this->guy[$i]['BranchID']) ?>" type="button" onclick="changePos(<?php echo ($i) ?>);"
-                class="btn btn-info btn-lg btn-block">
+<div class="container" style="width: 70%;">
 
-                <?php echo ($this->guy[$i]['BranchName']); ?>
-            </button>
-            <?php }?>
+    <div id="map"></div>
+    <hr style="height:2pt; visibility:hidden; margin-bottom:-1px; margin-top:5px" />
+    <div class="input-group stylish-input-group"><input class="form-control" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search location..." style="width: 100%"/></div>
+    <hr style="height:2pt; visibility:hidden; margin-bottom:-1px; margin-top:5px" />
+    <div class="scrollable scrollbar-danger" style='height: 200px'>
+        <div class="force-overflow" id="BtnContainer">
+            <ul id="myUL">
+                <?php for ($i = 0; $i < count($this->guy); $i++) {?>
+                    <li><button id="bttn" type="button" onclick="changePos(<?php echo ($i) ?>);"
+                        class="btn button btn-lg btn-block">
+                        <?php /*echo ($this->guy[$i]['BranchName']) */?>
+                        <?php echo ($this->guy[$i]['BranchName']); ?>
+                    </button>
+                    <hr style="height:1pt; visibility:hidden; margin-bottom:0px; margin-top:1px" /></li>
+                <?php }?>
+            </ul>
         </div>
     </div>
+    <hr style="height:2pt; visibility:hidden; margin-bottom:-1px; margin-top:5px" />
+    <div><button type="submit" class="btn btn-success btn-lg btn-block">Confirm</button></div>
 </div>
 <br>
-<div class="container"><button onclick="location.href='something.php';" type="button" class="btn btn-success btn-lg btn-block">Confirm</button></div>
+
 <script type="text/javascript">
     var map, infoWindow, test, locations;
-
+    var collect = new Array();
     var locations = <?php echo json_encode($this -> guy); ?>;
 
     function initMap() {
-        //[[13.651480,100.493436,"Tuk wit wah"],[13.650818, 100.494278,"common room"]];
-        //{lat:13.651359,lng:100.4938318}
-
         map = new google.maps.Map(document.getElementById("map"), {
-            zoom: 17,
+            zoom: 16,
             center: { lat: 13.651359, lng: 100.4938318 }
         });
         if (navigator.geolocation) {
@@ -58,6 +67,7 @@
                 };
                 map.setCenter(pos);
                 addMarker(pos);
+
             }, function () {
                 handleLocationError(true, infoWindow, map.getCenter());
             });
@@ -77,30 +87,83 @@
                 position: (posi),
                 map: map,
                 title: "Your are here",
-                icon: { url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png" }
+                icon: { url: "http://maps.google.com/mapfiles/ms/icons/green-dot.png" }
             })
         }
-        var marker, i;
-
+        var marker ,i;
+        var infowindow = new google.maps.InfoWindow();
         for (i = 0; i < locations.length; i++) {
+
             marker = new google.maps.Marker({
                 position: new google.maps.LatLng(locations[i][1], locations[i][2]),
                 map: map,
                 title: locations[i][0],
-                icon: { url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png" }
+                icon: { url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png" }
             });
-        }
-
-        for (i = 0; i < location.length; i++) {
-            document.getElementById('#' + locations[i][3]).click(function () {
-                map.changePos(google.maps.LatLng(locations[i][1], locations[i][2]));
+            marker.addListener('click', function() {
+                infowindow.open(map, marker);
             });
+            google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                return function(){
+                    infowindow.setContent('<h2 id="firstHeading" class="firstHeading">'+locations[i][0]+'</h2>'+
+            '<div><p>'+locations[i][4]+', '+locations[i][5]+', '+locations[i][6]+', '+locations[i][7]+', '+locations[i][8]+'</p></div>'+
+            '<button type="submit" value="'+locations[i][3]+'">Confirm Location</button>');
+                    infowindow.open(map, marker);
+                    changePos(i);
+                }
+            })(marker, i));
         }
     }
 
     function changePos(setLoc) {
-
         map.setCenter(new google.maps.LatLng(locations[setLoc][1], locations[setLoc][2]));
     }
+    function myFunction() {
+      // Declare variables
+      var input, filter, ul, li, btt, i, txtValue;
+      input = document.getElementById('myInput');
+      filter = input.value.toUpperCase();
+      ul = document.getElementById("myUL");
+      li = ul.getElementsByTagName('li');
+      // Loop through all list items, and hide those who don't match the search query
+      for (i = 0; i < li.length; i++) {
+        btt = li[i].getElementsByTagName("button")[0];
+        txtValue = btt.textContent || btt.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          li[i].style.display = "";
+        } else {
+          li[i].style.display = "none";
+        }
+      }
+    }
+    function find_closest_marker( lat1, lon1 ) {
+      var pi = Math.PI;
+      var R = 6371; //equatorial radius
+      var distances = [];
+      var closest = -1;
+
+      for( i=0;i<markers.length; i++ ) {
+          var lat2 = collect[i].position.lat();
+          var lon2 = collect[i].position.lng();
+          var chLat = lat2-lat1;
+          var chLon = lon2-lon1;
+          var dLat = chLat*(pi/180);
+          var dLon = chLon*(pi/180);
+          var rLat1 = lat1*(pi/180);
+          var rLat2 = lat2*(pi/180);
+          var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                  Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(rLat1) * Math.cos(rLat2);
+          var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+          var d = R * c;
+          distances[i] = d;
+          if ( closest == -1 || d < distances[closest] ) {
+            closest = i;
+          }
+        }
+
+    // (debug) The closest marker is:
+    console.log(markers[closest]);
+  }
+
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVya5jGbVLcFvCfHrR8yNKU7CPJhZ1eVI&callback=initMap"></script>

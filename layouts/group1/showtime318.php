@@ -1,31 +1,17 @@
 <head>
+  <title><?=$this->passValue["title"] ?></title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-  <!-- Custom fonts for this template -->
-  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-
-  <!-- Plugin CSS -->
-  <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+   <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> -->
 
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>Showing Time - Movie</title>
-
-  <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Custom styles for this template -->
-  <link href="css/1-col-portfolio.css" rel="stylesheet">
-  <link rel="stylesheet" href="/layouts/group1/css/showtime.css">
+  <link href='https://fonts.googleapis.com/css?family=Kotta+One' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+  <script src="/layouts/group1/js/jquery-1.11.0.min.js"></script>
+  <script src="/layouts/group1/js/jquery.seat-charts.js"></script>
   <link href="/layouts/group1/css/style.css" rel="stylesheet" type="text/css" media="all" />
   <link rel="stylesheet" href="/layouts/group1/css/onStyle.css">
 
@@ -36,7 +22,7 @@
 
   <!-- Page Heading -->
   <h1 class="my-4"><button type="button" class="btn btn-lg btn-danger">STEP 1</button>
-    <small>Select Showtime</small>
+    <small style="font-weight:bold">Select Showtime</small>
   </h1>
 
   <div class="card card-temp shadow-lg">
@@ -46,16 +32,21 @@
       <div class="row">
         <div class="col-lg-4 col-md-6 mb-4">
           <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="https://lh3.googleusercontent.com/8Lr1BMoZOxsSLoTZr6IxDZuLDiSc6oMTopLA2B-MhXbwxqpDguDHy8r_zj1430V2augHqTSdHsNjz6MYfbEm=w260"
+            <a href="#"><img class="card-img-top" src="<?=$this->photo["Image"]?>"
                 alt=""></a>
           </div>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-7">
           <br><br><br><br>
-          <h4>Movie Name: <?=$this->name["title"] ?></h4>
-          <h7>Genre: Fantasy</h7><br>
-          <h7>Rate: G</h7><br>
-          <h7>135 Mins</h7><br><br>
+          <font size = "5" style="font-weight:bold"> Movie Name: <?=$this->name["title"] ?></font><br><br>
+          <font size = "5">Genre: <?=$this->genre["genre"] ?></font><br>
+          <!-- <font size = "5">Rate: G</font><br> -->
+          <font size = "5">Length: <?=$this->length["length"] ?> Mins</font><br>
+          <!-- <font size = "5">Detail : <?=$this->details["datail"] ?></font><br><br> -->
+          <?php
+// var_dump($this->details["datail"]);
+// die;
+           ?>
         </div>
       </div>
     </div>

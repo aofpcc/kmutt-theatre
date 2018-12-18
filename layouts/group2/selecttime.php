@@ -1,12 +1,9 @@
-<?php
-
-?>
-
 <head>
-    <!-- <title>movie name | KMUTT Theatre</title> -->
-
-
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <link href="/layouts/group1/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="/layouts/group1/css/onStyle.css">
     <style type="text/css">
         svg,
         img {
@@ -15,13 +12,12 @@
     </style>
 
     <meta charset="utf-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-   <link href="/layouts/group1/css/style.css" rel="stylesheet" type="text/css" media="all" />
-   <link rel="stylesheet" href="/layouts/group1/css/onStyle.css">
-   <link rel="stylesheet" href="/layouts/group1/css/showtime.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+
+    <link href="/layouts/group1/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="/layouts/group1/css/onStyle.css">
 
 
     <link rel="prefetch" href="/layouts/group2/js/selecttime/5.b3f4836c4ad2b717a7fa.js">
@@ -80,9 +76,11 @@
                                     <div class="poster-land visible-xs" style="background-image: url(&quot;https://lh3.googleusercontent.com/QrTuw1pi5t3S6UGw9DpHGxzKUR5hUUMNpFA9pzqOP2SSmTDBXHTDXbBYl8c1S_vGONEeF4gvIpaGXxDm2bnL=w400-fSoften=0,10,0&quot;);"></div>
                                     <div class="poster"><img src="/layouts/group2/images/selecttime/unnamed.jpg"></div>
                                     <div class="movie-detail">
-                                        <div class="main-detail">
-                                            <h1 class="name">อควาแมน เจ้าสมุทร</h1>
-
+                                    
+                                    <div class="main-detail">
+                                    <?php foreach($this->movietitle as $movietitle) { ?>
+                                        <h1 class="name"><?=$movietitle?></h1>
+                                        <?php } ?>
                                         </div>
                                         <p class="genre">Genre: Action</p>
                                         <ul class="movie-detail-list">
@@ -98,27 +96,20 @@
                                                     <line x1="111.89" y1="63.94" x2="106.55" y2="63.94" class="cls-3"></line>
                                                     <line x1="63.44" y1="36.53" x2="63.44" y2="56.36" class="cls-4"></line>
                                                     <line x1="68.64" y1="68.64" x2="84.25" y2="84.25" class="cls-4"></line>
-                                                </svg> 145 นาที
+                                                </svg> 145 min
                                             </li>
-                                            <!-- </ul><a href="https://www.sfcinemacity.com/movie/HO00000074" class="button button-gray-trans button-movie-details">Movie Details</a> -->
+                                            
                                     </div>
+                                    
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <hr>
 
-        <nav class="nav nav-pills nav-fill">
-            <a class="nav-item nav-link active" href="#">Thu<br><small>15 Nov 2018</small></a>
-            <a class="nav-item nav-link" href="#">Fri<br><small>16 Nov 2018</small></a>
-            <a class="nav-item nav-link" href="#">Sat<br><small>17 Nov 2018</small></a>
-            <a class="nav-item nav-link disabled" href="#">Mon<br><small>18 Nov 2018</small></a>
-            <a class="nav-item nav-link disabled" href="#">Tue<br><small>19 Nov 2018</small></a>
-          </nav><hr>
 
-          
-                <!-- <div class="showtime-date-slide">
+
+                <div class="showtime-date-slide">
                     <div class="container">
                         <div class="slick-initialized slick-slider"><button class="slick-prev slick-arrow slick-disabled"
                                 aria-disabled="true" style="display: inline-block;"><svg class="sf-icon prev-arrow"
@@ -127,15 +118,18 @@
                                     <title>prev</title>
                                     <polyline class="cls-1" points="33.53 4 5.47 34.06 33.53 64.12"></polyline>
                                 </svg></button>
-                             <div class="slick-list">
-                                <nav class="nav nav-pills nav-fill">
-                                    <a class="nav-item nav-link" href="#">Thu<br><small>15 Nov 2018</small></a>
-                                    <a class="nav-item nav-link" href="#">Fri<br><small>16 Nov 2018</small></a>
-                                    <a class="nav-item nav-link" href="#">Sat<br><small>17 Nov 2018</small></a>
-                                    <a class="nav-item nav-link" href="#">Mon<br><small>18 Nov 2018</small></a>
-                                    <a class="nav-item nav-link" href="#">Tue<br><small>19 Nov 2018</small></a>
-                                </nav>
-                            </div>
+                            <!-- <div class="slick-list"> -->
+                            <!-- <div class="slick-track" style="opacity: 1; width: 5700px; transform: translate3d(0px, 0px, 0px);"> -->
+                            
+                            <nav class="nav nav-pills nav-fill">
+                                <a class="nav-item nav-link active" href="#">Thu<br><small>15 Nov 2018</small></a>
+                                <a class="nav-item nav-link" href="#">Fri<br><small>16 Nov 2018</small></a>
+                                <a class="nav-item nav-link" href="#">Sat<br><small>17 Nov 2018</small></a>
+                                <a class="nav-item nav-link" href="#">Mon<br><small>18 Nov 2018</small></a>
+                                <a class="nav-item nav-link" href="#">Tue<br><small>19 Nov 2018</small></a>
+                            </nav>
+                      
+                            
                             <button class="slick-next slick-arrow" style="" aria-disabled="false"><svg class="sf-icon next-arrow"
                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 37.53 68.12">
                                     <defs></defs>
@@ -144,7 +138,7 @@
                                 </svg></button>
                         </div>
                     </div>
-                </div> -->
+                </div>
                 <div class="container">
                     <div class="showtime-box">
                         <div class="showtime-list">
@@ -209,14 +203,16 @@
                                                 </li>
                                             </ul>
                                             <ul class="time-list">
+                                                <?php foreach($this->query_time as $query_time) { ?>
                                                 <li class="time-item"><a href="/emp/group2/home_page/select_movie/select_time/select_seat"><button
-                                                            class="button button-showtime">13:20</button></a></li>
+                                                            class="button button-showtime"><?=$query_time[3]?></button></a></li>
                                                 <li class="time-item"><a href="/emp/group2/home_page/select_movie/select_time/select_seat"><button
-                                                            class="button button-showtime">16:20</button></a></li>
+                                                            class="button button-showtime"><?=$query_time[1]?></button></a></li>
                                                 <li class="time-item"><a href="/emp/group2/home_page/select_movie/select_time/select_seat"><button
-                                                            class="button button-showtime">19:20</button></a></li>
+                                                            class="button button-showtime"><?=$query_time[2]?></button></a></li>
                                                 <li class="time-item"><a href="/emp/group2/home_page/select_movie/select_time/select_seat"></a><button
-                                                        class="button button-showtime">22:20</button></a></li>
+                                                        class="button button-showtime"><?=$query_time[3]?></button></a></li>
+                                                <?php } ?>
                                             </ul>
                                         </div>
                                     </div>

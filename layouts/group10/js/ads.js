@@ -44,4 +44,9 @@ $(document).ready(function () {
       });
 
   });
+  
+  $('#ads-table').DataTable( {
+    autoFill: true,
+    paging: false
+  });
 });

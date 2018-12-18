@@ -166,9 +166,8 @@
           <label for="Province">Province</label>
             <select class="custom-select d-block w-100" id="Province" name="province">
               <option value="">Choose...</option>
-              <option>Bangkok</option>
             </select>
-            <!--<script src="scr1.js"></script>  ****************** Script here ***************************-->
+            <script src="/layouts/group5/scr1.js"></script>
             <div class="invalid-feedback">
               Please select a valid Province.
             </div>
@@ -181,10 +180,8 @@
           <label for="District">District</label>
             <select class="custom-select d-block w-100" id="District" name="district">
               <option value="">Choose...</option>
-              <option>BangMot</option>
-              <option>ThungKhru</option>
             </select>
-            <!--<script src="scr2.js"></script>  ****************** Script here ***************************-->
+            <script src="/layouts/group5/scr2.js"></script>
             <div class="invalid-feedback">
               Please select a valid District.
             </div>
@@ -193,10 +190,8 @@
             <label for="SubDistrict">Sub District</label>
             <select class="custom-select d-block w-100" id="SubDistrict" name="SubDistrict">
               <option value="">Choose...</option>
-              <option>BangMot</option>
-              <option>ThungKhru</option>
             </select>
-            <!--<script src="scr2.js"></script>  ****************** Script here ***************************-->
+            <script src="/layouts/group5/scr3.js"></script>
             <div class="invalid-feedback">
               Please select a valid District.
             </div>

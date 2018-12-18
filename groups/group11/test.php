@@ -16,22 +16,32 @@ $klein->respond("/staff/finance/test", function($request, $response, $service, $
                                       from G03_FIN_Revenue) b on a.transactionID = b.tran) a
                                       WHERE  addDate >= '".$startDate." 00:00:00' AND addDate <= '".$endDate." 23:59:59'
                                   group by month, year
-                                  order by year, month asc;")->fetch();
+                                  order by year, month asc;")->fetchAll();
   $expensesLine = $conn->query("select year, month, sum(amount) \"total\" 
-  from (select *
-        from G03_FIN_Expenses a 
-        join 
-        (select transactionID \"tran\", month(addDate) \"month\", year(addDate) \"year\"
-        from G03_FIN_Expenses) b on a.transactionID = b.tran) a
-        WHERE  addDate >= '".$startDate." 00:00:00' AND addDate <= '".$endDate." 23:59:59'
-  group by month, year
-  order by year, month asc;")->fetch();
+                                from (select *
+                                from G03_FIN_Expenses a 
+                                join 
+                                (select transactionID \"tran\", month(addDate) \"month\", year(addDate) \"year\"
+                                from G03_FIN_Expenses) b on a.transactionID = b.tran) a
+                                WHERE  addDate >= '".$startDate." 00:00:00' AND addDate <= '".$endDate." 23:59:59'
+                                group by month, year
+                                order by year, month asc;")->fetchAll();
+   $label = $conn->query("select  CONCAT(month,CONCAT(\"/\",year) ) \"label\"
+                                from (select * 
+                                      from G03_FIN_Revenue a 
+                                      join 
+                                      (select transactionID \"tran\", month(addDate) \"month\", year(addDate) \"year\"
+                                      from G03_FIN_Revenue) b on a.transactionID = b.tran) a
+                                      WHERE  addDate >=  '".$startDate." 00:00:00' AND addDate <= '".$endDate." 23:59:59'
+                                  group by month, year
+                                  order by year, month asc;")->fetchAll();
 
   $result = [
     "revenue" => $revenue,
     "expenses" => $expenses,
     "revenueLine" => $revenueLine,
-    "expensesLine" => $expensesLine
+    "expensesLine" => $expensesLine,
+    "label" => $label
   ];
   return $response->json($result);
 });

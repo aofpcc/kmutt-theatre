@@ -3,7 +3,7 @@
   <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> -->
-   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> -->
 
@@ -28,19 +28,25 @@
               <div class="row">
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="card h-100">
-                      <a href="#"><img class="card-img-top" src="https://lh3.googleusercontent.com/8Lr1BMoZOxsSLoTZr6IxDZuLDiSc6oMTopLA2B-MhXbwxqpDguDHy8r_zj1430V2augHqTSdHsNjz6MYfbEm=w260" alt=""></a>
+                      <a href="#"><img class="card-img-top" src="<?=$this->name["Image"] ?>" alt=""></a>
                     </div>
                   </div>
+                  <?php
+                  // var_dump($this->date_time);
+                  // die;
+                   ?>
+                  <div class="col-md-7">
+                      <br><br><br><br>
+                      <font size="5" style="font-weight:bold"> Movie Name: <?=$this->name["title"] ?></font><br><br>
+                      <font size="5">Date   : <?=$this->string ?></font><br><br>
 
-                  <div class="col-md-8">
-                      <br><br>
-                      <font size="7"><?=$this->name["title"] ?></font><br><br>
-                      <font size="4">Date   : <?=$this->string ?></font><br><br>
-                      <font size="4">Time   : 21:00</font> &nbsp&nbsp&nbsp  <font size="4"> Theater : 5 </font><br><br>
-                      <font size="4">Length : 135 Mins</font> <br><br>
+                      <font size="5">Time   : <?=$this->date_time ?></font> &nbsp&nbsp&nbsp  <font size="5"> Theater : <?=$this->movie_id["room_id"] ?></font><br><br>
+                      <font size="5">Length : <?=$this->length["length"] ?></font> <br>
 
-                    <br><br> <!--link to ticket-->
-
+                    <br> <!--link to ticket-->
+                    <button type="button" class="btn btn-lg btn-danger"
+                    onclick="location.href = '/customer/invitation/showtime/<?=$this->showtime_id?>'">INVITED FRIEND
+                  </button>
 
                     </div>
                 </div>
@@ -54,30 +60,32 @@
       </div>
       <div class="booking-details">
         <ul class="book-left">
-          <li>Movie </li>
-          <li>Time </li>
+          <!-- <li>Movie </li>
+          <li>Time </li> -->
           <li>Tickets</li>
           <li>Total</li>
           <li>Seats :</li>
         </ul>
         <ul class="book-right">
-          <li>: <?=$this->name["title"] ?></li>
-          <li>: April 3, 21:00</li>
+          <!-- <li>: Gingerclown</li>
+          <li>: April 3, 21:00</li> -->
           <li>: <span id="counter">0</span></li>
           <li>: <b><i>$</i><span id="total">0</span></b></li>
         </ul>
         <div class="clear"></div>
 
-            <ul id="selectedSeats" class="scrollbar scrollbar1"></ul>
-            <?php foreach($this->movies as $movie) { ?>
-            <form action="selectchair_page.php" method="post">
-              <button type = "button" class = "checkout-button"onclick = "/kmutt_home/branch/show_time/select_chair/payment/<?=$movie["id"]?>">Book now
+            <?php //foreach($this->movie_id as $movie_id) { ?>
+            <form action = "/customer/kmutt_home/branch/show_time/select_chair/payment/<?= $this->showtime_id?>" method = "post">
+                <ul id="selectedSeats" class="scrollbar scrollbar1"></ul>
+              <button name = "book_seat" value = "book_seat" id = "book_seat" class = "checkout-button">Book now
               </button>
+
         <div id="legend"></div>
       </div>
       <div style="clear:both"></div>
       </div> </form>
-    <?php } ?>
+    <?php //} ?>
+
 
     <!-- <script src="/layouts/group1/js/booking.js" charset="utf-8"></script> -->
     <?php $this->partial("layouts/group1/js/booking.php"); ?>

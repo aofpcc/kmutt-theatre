@@ -73,7 +73,7 @@ $klein->respond('GET', '/staff/employee/dashboard', function ($request, $respons
 $klein->respond('GET', '/staff/employee/profile', function($request, $response, $service, $app, $validator) {
   error_reporting(E_ALL);
   ini_set('display_errors', 1);
-
+  $service->bootstrap3 = true;
   //check login
   $data = $app->login->LoginThenGoTo('employee','/emp/staff');
 
@@ -130,7 +130,7 @@ $klein->respond('GET', '/staff/employee/profile', function($request, $response, 
 $klein->respond('GET', '/staff/employee/editprofile', function($request, $response, $service, $app, $validator){
   error_reporting(E_ALL);
   ini_set('display_errors', 1);
-
+  $service->bootstrap3 = true;
   //check login
   $data = $app->login->LoginThenGoTo('employee','/emp/staff');
 
@@ -178,7 +178,7 @@ $klein->respond('GET', '/staff/employee/editprofile', function($request, $respon
 $klein->respond('POST', '/staff/employee/editprofile/save', function($request, $response, $service, $app, $validator){
   error_reporting(E_ALL);
   ini_set('display_errors', 1);
-
+  $service->bootstrap3 = true;
   //check login
   $data = $app->login->LoginThenGoTo('employee','/emp/staff');
 
@@ -367,7 +367,7 @@ $klein->respond('POST', '/staff/employee/editprofile/save', function($request, $
   $klein->respond('GET', '/staff/employee/createprofile', function($request, $response, $service, $app, $validator){
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
-  
+    $service->bootstrap3 = true;
     //check login
     $data = $app->login->LoginThenGoTo('employee','/emp/staff');
   
@@ -402,7 +402,7 @@ $klein->respond('POST', '/staff/employee/editprofile/save', function($request, $
   $klein->respond('POST', '/staff/employee/createprofile/save', function($request, $response, $service, $app, $validator){
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
-  
+    $service->bootstrap3 = true;
     //check login
     $data = $app->login->LoginThenGoTo('employee','/emp/staff');
   
@@ -553,7 +553,7 @@ $klein->respond('GET', '/staff/employee/finance', function($request, $response, 
       //test
       global $database;
       $conn = $database->getConnection();
-
+      $service->bootstrap3 = true;
       
 
       $revenue = $conn->query("SELECT sum(amount) as total FROM G03_FIN_Revenue")->fetchAll(PDO::FETCH_BOTH);

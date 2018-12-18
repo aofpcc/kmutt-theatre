@@ -4,7 +4,7 @@
 </head>
 <br>
 
-<div class="container ">
+<div class="container py-5">
   <div class="py-3 text-center">
     <p class="mb-1"></p>
     <h2>Please sign in</h2>
@@ -30,7 +30,7 @@
 
 </div>
 <div style="margin: auto; width: 15%;">
-    <button type="submit" class="btn color-box" style="margin-top: 5%; width:100%">Login</button>
+    <button type="submit" class="btn color-box" style="margin-top: 5%; width:100%; background-color: #DC143C; color: #FFFFFF">Login</button>
 </div>
 
 <div class="text-center mb-2 mt-5"> 

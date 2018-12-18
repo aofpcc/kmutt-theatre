@@ -54,6 +54,15 @@ $klein->respond('GET', '/change/password', function ($request, $response, $servi
     $service->render('layouts/group5/changePassword.php');
 });
 
+//forget password (page)
+$klein->respond('GET', '/change/password', function ($request, $response, $service, $app, $validator) {
+    // get login info (send to login page if not logged in)
+    $loginInfo = $app->login->requireLogin('customer');
+    $userID = $loginInfo['userID'];
+
+    $service->render('layouts/group5/ForgetPassword.php');
+});
+
 // change password (actual SQL)
 $klein->respond('POST', '/change/password/action', function ($request, $response, $service, $app, $validator) {
     // get login info (send to login page if not logged in)

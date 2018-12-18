@@ -140,7 +140,7 @@ $klein->respond('POST', '/fnb/update_point', function ($request, $response, $ser
         ]
     );
 
-    $sql = "select SUM(Point) as hisPoint,Lname,Fname  from G13_FNB_Point as p,G05_Member_profile as m where p.CusID = '$cusID' AND m.MemberID = '$cusID'";
+    $sql = "SELECT totalpoint as hisPoint,Lname,Fname FROM G05_totalpoint as p ,G05_Member_profile as m WHERE p.MemberID = '$cusID' AND m.MemberID = '$cusID'";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $num = $stmt->rowCount();
@@ -266,7 +266,7 @@ $klein->respond('POST', '/fnb/do_order', function ($request, $response, $service
             $a->execute();
         }
         $productsOrderStock = getProductOrderForStock($products,$items,$flavorSet,$drinkSet);
-        updateAllOrderStock($productsOrderStock);
+        updateAllOrderStock($receiptID,$productsOrderStock);
         $conn->commit();
         return $response->json(["result"=>"success","message"=>"all :".count($items)." item[s]"]);
     } catch(PDOException $e) {
@@ -317,8 +317,6 @@ function getProductOrderForStock($productOrderList,$quantityList,$flavorSet,$dri
                 ]);
             }
         }
-
-
             /*************************
             *  1.get real productID form PRST FORM combine_SET (2 product id[s])
             *  2.use method get_size form product id that get form 1.
@@ -326,7 +324,6 @@ function getProductOrderForStock($productOrderList,$quantityList,$flavorSet,$dri
             *  4.
             *
             *****************************/
-
     }
     return $productOrderStock;
 }
@@ -347,7 +344,7 @@ function getProductIDWithPRST($promotionSetID,$flavorSet,$drinkSet){
 function getStockTable(){
     global $database;
     $conn = $database->getConnection();
-    $selectStock = "SELECT Remain, StockID FROM G13_FNB_Stock";
+    $selectStock = "SELECT Remain, StockID FROM G13_v_Stock";
     $selectStockResult = $conn->prepare($selectStock);
     $selectStockResult->execute();
     $stockTable = $selectStockResult->fetchAll(PDO::FETCH_BOTH);
@@ -356,22 +353,32 @@ function getStockTable(){
 function getRemain($stockID){
     global $database;
     $conn = $database->getConnection();
-    $remainSql = "SELECT Remain FROM G13_FNB_Stock WHERE StockID = '$stockID'";
+    $remainSql = "SELECT Remain FROM G13_v_Stock WHERE StockID = '$stockID'";
     $remainResult = $conn->prepare($remainSql);
     $remainResult->execute();
     $remain = $remainResult->fetchAll(PDO::FETCH_BOTH);
     return $remain[0]["Remain"];
 }
-function updateStock($stockID,$remain){
+function updateStock($receiptID,$stockID,$amount){
     global $database;
     $conn = $database->getConnection();
-    $stockUpdateSql = "UPDATE G13_FNB_Stock as s SET Remain = $remain WHERE s.StockID='$stockID'";
-    $stockUpdate = $conn->prepare($stockUpdateSql);
+    $stockInsertSql = "INSERT INTO G13_FNB_Stock_Transaction (receiptID,stockID,amount) VALUES ('$receiptID','$stockID','$amount')";
+    $stockUpdate = $conn->prepare($stockInsertSql);
     $stockUpdate->execute();
 }
+// $klein->respond('GET', '/g05/test_add_point', function ($request, $response, $service, $app, $validator) {
+// $app->point->addPoint([
+//   "type" => "Ticket",
+//   "memberID" => "151",
+//   "point" => "300",
+//   "transactionID" => "X01AB"
+// ]);
+// // });
+// $recommend = "SELECT productName FROM G13_FNB_ProductList as s, G13_v_recommend_product as r WHERE r.cusID = '$cusID' and s.productID = r.productID "
+// $addPoint = "INSERT INTO G05_Member_FNB_transaction (FNBTransactionNo,Point) VALUES ('$receiptID','$')"
+// $redeemPoint = "INSERT INTO G05_Member_Redeem_Transaction (MemberID,Date,Type,Point) VALUES ('$cusID',NOW(),'$','$','$')"
 
-function updateAllOrderStock($productOrderForStock){
+function updateAllOrderStock($receiptID,$productOrderForStock){
     foreach ($productOrderForStock as $product){
-        updateStock($product["stockID"],$product["remain"]-($product["size"]*$product["quantity"]));
-    }
+        updateStock($receiptID,$product["stockID"],$product["size"]*$product["quantity"]*-1);
 }

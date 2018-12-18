@@ -172,7 +172,7 @@ function updateOrder(){
 
 function getPointAndName(){
     var cusID = $("#CusID").val();
-    var points = Math.floor(total/100);
+    var points = Math.floor(total/25);
     let formData = new FormData();
     formData.append("CusID", cusID);
     let xhr = new XMLHttpRequest();

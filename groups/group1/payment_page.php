@@ -11,11 +11,15 @@ function randomCode1($length = 4) {
   return $str;
 }
 
-$klein->respond('POST', '/kmutt_home/branch/show_time/select_chair/payment/[:showtime_id]',
-function ($request, $response, $service)  use($database){
+$klein->respond('POST', '/kmutt_home/branch/show_time/select_chair/payment/[:showtime_id]', function ($request, $response, $service, $app, $validator) {
+  $userID = "".$app->login->requireLogin('customer')["userID"];
   $service->bootstrap3 = false;
-
-  $conn = $database->getConnection();
+  $conn = $app->db->getConnection();
+  if(!$request->selectedSeats) {
+    $service->flash("Please Select Chair");
+    $service->back();
+    return;
+  }
   // Check submitted params
   //  $request->validate('selectedSeats')->notNull();
 
@@ -36,7 +40,7 @@ function ($request, $response, $service)  use($database){
   if(isset($_POST['book_seat'])){
     if($request->selectedSeats){
       try{
-
+        $conn->beginTransaction();
         $seats = array();
         for ($j=0; $j < count($selectedSeats) ; $j++) {
           $seatInfo = explode('_', $selectedSeats[$j]);
@@ -47,6 +51,9 @@ function ($request, $response, $service)  use($database){
 
           array_push($seats, $s);
         }
+
+        // var_dump($selectedSeats);
+        // die;
         //echo json_encode($seats);
         $id_movie = $conn->query("select movie_id from G04_MSRnB_showingroom where id = $request->showtime_id;")->
         fetchAll(PDO::FETCH_ASSOC);
@@ -54,12 +61,15 @@ function ($request, $response, $service)  use($database){
         fetchAll(PDO::FETCH_ASSOC);
 
         $str = randomCode1();
-        // var_dump($str);
+
+        // var_dump($userID);
         // die;
 
         $status = 'booking';
         $code = $str ;
-        $buyer_id = '323';
+        $buyer_id = $userID;
+        // var_dump($buyer_id);
+        // die;
         $deadline = strtotime('now + 10 minutes');
 
         // $response->dump($room_no);
@@ -74,26 +84,26 @@ function ($request, $response, $service)  use($database){
           $row = $result['row'];
           $seat = $result['seat'];
 
-
-          //$seat = array();
-          // $soldSeat = $conn->query("select seat_ticket from G02_Ticket_history where movie_id = $id;")
-          // ->fetchAll(PDO::FETCH_ASSOC);
-          for ($i=0; $i < count($selectedSeats); $i++) {
-            $seat = $selectedSeats[$i];
-            // var_dump($seat);
-            // die;
-            $sql = "INSERT INTO G01_Booking (status, deadline, selected_seat, booking_time, code, buyer_id, row_ticket, seat_ticket, room_id, movie_id)
-            values('$status',FROM_UNIXTIME($deadline), $seat, CURRENT_TIMESTAMP, '$code', '$buyer_id', '$row', '$seat', '$theatre_no', '$movie_id')";
-            $stmt = $conn->prepare($sql);
-            $stmt->execute();
+          $select_chair = $conn->query("select selected_seat from G01_Booking where movie_id = $movie_id and showtime_id = $request->showtime_id;")
+          ->fetchAll(PDO::FETCH_ASSOC);
+          for($j = 0;$j < count($selectedSeats);$j++){
+            for($i = 0;$i < count($select_chair);$i++){
+              if(strcmp($selectedSeats[$i], $select_chair[$j]) == 0){
+                $service->flash("unavailable seat");
+                $service->back();
+              }
+            }
+            $seat = $select_seat[$j];
+              $sql = "INSERT INTO G01_Booking (status, deadline, selected_seat, booking_time, code, buyer_id, row_ticket, room_id, movie_id)
+                 values('$status',FROM_UNIXTIME($deadline), '$seat', CURRENT_TIMESTAMP, '$code', '$buyer_id', '$row', '$theatre_no', '$movie_id')";
+                $stmt = $conn->prepare($sql);
+                $stmt->execute();
           }
-          // var_dump($selectedSeats[1]);
-          // die;
         }
-
+        $conn->commit();
       }
       catch(PDOException $e){
-
+        $conn->rollback();
         echo $sql."<br>", $e->getMessage();
 
       }
@@ -105,8 +115,8 @@ function ($request, $response, $service)  use($database){
   // // Pass on the params to the page we're gonna render
   //$service->selectedSeats = $request->selectedSeats;
   // $service->pageTitle = 'Payment';
-  $service->seats = $seats;
-  $service->render('layouts/group1/payment.php');
+  // $service->seats = $seats;
+  // $service->render('layouts/group1/payment.php');
 
   // var_dump($seats[0]);
   // die;

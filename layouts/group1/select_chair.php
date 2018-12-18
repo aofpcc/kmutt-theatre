@@ -38,6 +38,9 @@
                       <font size="5">Date   : <?=$this->string ?></font><br><br>
                       <font size="5">Time   : 21:00</font> &nbsp&nbsp&nbsp  <font size="5"> Theater : 5 </font><br><br>
                       <font size="5">Length : 135 Mins</font> <br>
+                      <front size = "5">Type of seat : <?=$this->type_seat ?></front><br><br>
+                      <front size = "5">Information about seat : <?=$this->seat_info ?></front><br><br>
+                      <front size = "5">Price of seat : <?=$this->price?></front><br><br>
 
                     <br> <!--link to ticket-->
                     <button type="button" class="btn btn-lg btn-danger"

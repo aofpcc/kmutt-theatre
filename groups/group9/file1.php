@@ -69,7 +69,10 @@ $klein->respond('GET', '/group9/update/[:id]', function ($request, $response, $s
 
     $num = $stmt->rowCount();
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
-    extract($row);
+    // $service->movies = $row;
+    // var_dump($row);
+    // die;
+    // extract($row);
 
     // echo json_encode($row);
     // echo $NAME;
@@ -131,9 +134,6 @@ $klein->respond('POST', '/group9/action', function ($request, $response, $servic
         $stmt->bindParam(":image", $target_file);
         $stmt->execute();
 
-        
-
-        array_push($subtitle, null);
         foreach ($languages as $lng) {
             $query = "INSERT INTO G09_Soundtrack_Movie (id, soundtrack) VALUES ($movie_id, '$lng')";
             $stmt = $conn->prepare($query);
@@ -208,7 +208,7 @@ $klein->respond('POST', '/group9/action2', function ($request, $response, $servi
     $num = $stmt->rowCount();
     $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
 
-    $service->sqlResult = $arr;
+    $service->movies = $arr;
     $service->searchKeyword = $MNAME;
     $service->render('layouts/group9/search.php');
 });
@@ -236,7 +236,7 @@ $klein->respond('GET', '/group9/action888', function ($request, $response, $serv
     $num = $stmt->rowCount();
     $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
 
-    $service->sqlResult = $arr;
+    $service->movies = $arr;
     $service->searchKeyword = (isset($Mname)) ? $Mname : '';
     $service->render('layouts/group9/search.php');
 });
@@ -305,21 +305,21 @@ $klein->respond('GET', '/group9/action/delete/[:id]', function ($request, $respo
 
     $id = $request->id;
 
-    $query = "DELETE FROM G09_Length WHERE id = '$id'";
+    //$query = "DELETE FROM G09_Length WHERE id = '$id'";
     //echo "Here is an query code >>>>>>> " .$query ."<<<<<<<<";
-    $stmt = $conn->prepare($query);
-    $stmt->execute();
+   // $stmt = $conn->prepare($query);
+   // $stmt->execute();
 
-    $query = "DELETE FROM G09_Soundtrack WHERE id = '$id'";
+    //$query = "DELETE FROM G09_Soundtrack WHERE id = '$id'";
     //echo "Here is an query code >>>>>>> " .$query ."<<<<<<<<";
-    $stmt = $conn->prepare($query);
-    $stmt->execute();
+    //$stmt = $conn->prepare($query);
+    //$stmt->execute();
 
-    $query = "DELETE FROM G09_Subtitle WHERE id = '$id'";
+    //$query = "DELETE FROM G09_Subtitle WHERE id = '$id'";
     //echo "Here is an query code >>>>>>> " .$query ."<<<<<<<<";
-    $stmt = $conn->prepare($query);
+    //$stmt = $conn->prepare($query);
 
-    $stmt->execute(); $query = "DELETE FROM G09_Gerne WHERE id = '$id'";
+    $query = "DELETE FROM G09_Genre_Movie WHERE id = '$id'";
     //echo "Here is an query code >>>>>>> " .$query ."<<<<<<<<";
     $stmt = $conn->prepare($query);
     $stmt->execute();
@@ -345,6 +345,60 @@ $klein->respond('GET', '/group9/action/delete/[:id]', function ($request, $respo
     // $response->redirect('javascript://location.reload();');
 });
 
+$klein->respond('GET', '/group9/edit/[:id]', function ($request, $response, $service, $app) {
+    $conn = $app->db->getConnection();
+    $query = "SELECT * from G09_Director";
+    $data = $conn->query($query)->fetchAll(PDO::FETCH_ASSOC);
+    // $response->dump($data);
+    // $response->sendBody();
+    // die;
+    $query = "SELECT * from G09_Subtitle";
+    $service->subtitles = $conn->query($query)->fetchAll(PDO::FETCH_ASSOC);
+
+    $query = "SELECT * from G09_Soundtrack";
+    $service->soundtracks = $conn->query($query)->fetchAll(PDO::FETCH_ASSOC);
+
+    $query = "SELECT * from G09_Studio";
+    $service->studio_name = $conn->query($query)->fetchAll(PDO::FETCH_ASSOC);
+
+    // $response->dump($service->soundtracks);
+    // $response->sendBody();
+    // die;
+
+    $query = "SELECT * from G09_Genre";
+    $service->genre = $conn->query($query)->fetchAll(PDO::FETCH_ASSOC);
+
+    $service->bootstrap3 = false;
+    $service->directors = $data;
+    $service->render('layouts/group9/add.php');
+});
+$klein->respond('POST', '/group9/edit/[:id]', function ($request, $response, $service, $app) {
+    $conn = $app->db->getConnection();
+    $query = "SELECT * from G09_Director";
+    $data = $conn->query($query)->fetchAll(PDO::FETCH_ASSOC);
+    // $response->dump($data);
+    // $response->sendBody();
+    // die;
+    $query = "SELECT * from G09_Subtitle";
+    $service->subtitles = $conn->query($query)->fetchAll(PDO::FETCH_ASSOC);
+
+    $query = "SELECT * from G09_Soundtrack";
+    $service->soundtracks = $conn->query($query)->fetchAll(PDO::FETCH_ASSOC);
+
+    $query = "SELECT * from G09_Studio";
+    $service->studio_name = $conn->query($query)->fetchAll(PDO::FETCH_ASSOC);
+
+    // $response->dump($service->soundtracks);
+    // $response->sendBody();
+    // die;
+
+    $query = "SELECT * from G09_Genre";
+    $service->genre = $conn->query($query)->fetchAll(PDO::FETCH_ASSOC);
+
+    $service->bootstrap3 = false;
+    $service->directors = $data;
+    $service->render('layouts/group9/add.php');
+});
 // $klein->respond('POST', '/group9/daction', function ($request, $response, $service) {
 //   global $database;
 //   $conn = $database->getConnection();

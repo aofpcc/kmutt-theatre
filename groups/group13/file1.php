@@ -366,6 +366,7 @@ function updateStock($receiptID,$stockID,$amount){
     $stockUpdate = $conn->prepare($stockInsertSql);
     $stockUpdate->execute();
 }
+
 // $klein->respond('GET', '/g05/test_add_point', function ($request, $response, $service, $app, $validator) {
 // $app->point->addPoint([
 //   "type" => "Ticket",

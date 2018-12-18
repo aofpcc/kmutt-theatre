@@ -51,15 +51,37 @@
         <tr>
           <th scope="col">#</th>
           <th scope="col">Title</th>
-          <th scope="col">Director</th>
+          <th scope="col">Detail</th>
           <th scope="col">Studio</th>
-          <th scope="col"></th>
+          <th scope="col">Action</th>
         </tr>
       </thead>
 
   <!-- rows -->
   <tbody>
-
- 
+    <?php 
+    $count = 1;
+    foreach($this->movies as $movie) { ?>
+      <tr>
+        <td><?=$count?></td>
+        <td><?=$movie["title"]?></td>
+        <td><?=$movie["detail"]?></td>
+        <td><?=$movie["studio_name"]?></td>
+        <td>
+          <button class="btn btn-secondary" onclick="location.href='/emp/group9/edit/<?=$movie['id']?>';">Edit</button>
+          <button class="btn btn-danger" onclick="del(<?=$movie['id']?>);">Delete</button>
+        </td>
+      </tr>
+    <?php
+    $count++;
+    } ?>
   </tbody>
+  <script>
+    function del(e) {
+        if(confirm("Are you sure!!")) {
+          location.href='/emp/group9/action/delete/'+e;
+
+        }
+    }
+  </script>
 </table>

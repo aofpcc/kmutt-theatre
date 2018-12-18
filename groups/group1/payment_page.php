@@ -29,15 +29,7 @@ $klein->respond('POST', '/kmutt_home/branch/show_time/select_chair/payment/[:sho
   $query_movie = $conn->query("select title, Image,length from G09_Movie where id = '".$id_movie."';")
   ->fetchAll(PDO::FETCH_ASSOC);
 
-<<<<<<< Updated upstream
   $daedline = $conn->query("select distinct date(deadline) as dead_date, time(deadline) as dead_time from G01_Booking where buyer_id = '".$userID."'; ")
-=======
-  // var_dump($userID);
-  // die;
-
-  $daedline = $conn->query("select distinct date(deadline) as dead_date, time(deadline) as dead_time
-  from G01_Booking where buyer_id = $userID; ")
->>>>>>> Stashed changes
   ->fetchAll(PDO::FETCH_ASSOC);
 
   // var_dump($daedline);
@@ -87,7 +79,6 @@ $klein->respond('POST', '/kmutt_home/branch/show_time/select_chair/payment/[:sho
 
   //ADD ticket when booking in table "booking"
   $selectedSeats = $request->selectedSeats;
-  $service->select_seat = $selectedSeats;
   if(isset($_POST['book_seat'])){
     if($request->selectedSeats){
       try{
@@ -103,9 +94,7 @@ $klein->respond('POST', '/kmutt_home/branch/show_time/select_chair/payment/[:sho
           array_push($seats, $s);
         }
 
-        // $service->seats = $seats;
-
-        // var_dump($seats);
+        // var_dump($selectedSeats);
         // die;
         //echo json_encode($seats);
         $id_movie = $conn->query("select movie_id from G04_MSRnB_showingroom where id = $request->showtime_id;")->
@@ -159,7 +148,7 @@ $klein->respond('POST', '/kmutt_home/branch/show_time/select_chair/payment/[:sho
 
           for($j = 0;$j < count($selectedSeats);$j++){
             for($i = 0;$i < count($result);$i++){
-              //echo "selectedSeats[$i] = select_chair[$j] ? <br/>";
+
               if(strcmp($selectedSeats[$j], $result[$i]) == 0){
                 throw new Exception("unavailable seat");
                 // echo "unavailable seat";
@@ -193,13 +182,16 @@ $klein->respond('POST', '/kmutt_home/branch/show_time/select_chair/payment/[:sho
       catch(PDOException $e){
         //$conn->rollback();
         $service->flash($e->getMessage());
-        //window.history.back();
-        $service->back();
+        $response->redirect("/customer/kmutt_home");
+        $response->sendHeaders();
+        return;
       }
       catch(Exception $e){
         //$conn->rollback();
         $service->flash($e->getMessage());
-        $service->back();
+        $response->redirect("/customer/kmutt_home");
+        $response->sendHeaders();
+        return;
       }
     }
   }

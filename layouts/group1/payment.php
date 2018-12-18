@@ -37,7 +37,7 @@
               <font size="4">
                 <i class="far fa-clock"></i>
                 <?php echo $this->date; ?>
-                <b><?php echo $this->time; ?></b> (<?= $this->length ?> Hours)
+                <b><?php echo $this->time; ?></b>
                 <!-- 30 February 2030
 
                 21 : 00 &nbsp&nbsp&nbsp <br> -->
@@ -49,7 +49,7 @@
               </font>
               <br>
 
-                    <font size="4"> SEAT : </font><br>
+                    <font size="4"> ที่นั่ง </font><br>
                     <?php
 
                     $arry = json_decode(json_encode($this->seats), true);
@@ -82,43 +82,20 @@
               </p>
               <br>
 
-<<<<<<< Updated upstream
-              <!-- <p id = "demo"></p> -->
-
-              </p><br>
-
-              <script>
-              // Set the date we're counting down to
-              var countDownDate = new Date("<?= $this->d_dead ?>"+" "+"<?= $this->t_dead ?>").getTime();
-
-=======
               </p><br>
 
               <?php $this->partial("layouts/group1/js/countdown.php");
->>>>>>> Stashed changes
               // var_dump($this->showtime_id);
               // die; ?>
+              <form action = "/customer/kmutt/ticket/<?= $this->showtime_id?>" method = "post">
+                <button name = Kbank value="Kbank" id="Kbank" class="btn btn-lg btn-default" >KBANK</button>
+                <!-- <button name =  class="btn btn-lg btn-default" >SCB</button>
+                <button type="button" class="btn btn-lg btn-default" >CREDIT</button>
+                <button type="button" class="btn btn-lg btn-default" >CLUBCARD</button> -->
+                <!-- <button name = "book_seat" value = "book_seat" id = "book_seat" class = "checkout-button">Book now
+                </button>
+   -->        </form>
 
-
-            <form action = "/customer/kmutt/ticket/<?= $this->showtime_id?>" method = "post">
-              <button name = Kbank value="Kbank" id="Kbank" class="btn btn-lg btn-default" >KBANK</button>
-              <button name = Scb value="Scb" id="Scb" class="btn btn-lg btn-default" >SCB</button>
-              <button name = Credit value="Credit" id="Credit" class="btn btn-lg btn-default" >CREDIT</button>
-              <button name = Club value="Club" id="Club" class="btn btn-lg btn-default" >CLUBCARD</button>
-              <!-- <button name =  class="btn btn-lg btn-default" >SCB</button>
-              <button type="button" class="btn btn-lg btn-default" >CREDIT</button>
-              <button type="button" class="btn btn-lg btn-default" >CLUBCARD</button> -->
-              <!-- <button name = "book_seat" value = "book_seat" id = "book_seat" class = "checkout-button">Book now
-              </button>
- -->
-        <div id="legend"></div>
-      </div>
-      <div style="clear:both"></div>
-      </div> </form>
-              <!-- <button type="button" class="btn btn-lg btn-default" >KBANK</button>
-              <button type="button" class="btn btn-lg btn-default" >SCB</button>
-              <button type="button" class="btn btn-lg btn-default" >CREDIT</button>
-              <button type="button" class="btn btn-lg btn-default" >CLUBCARD</button> -->
 
               <br><br>
             </div>

@@ -128,5 +128,5 @@
 <?php
   $total_price = "<script> document.write($total) </script>"
 
-  $service->total = $total_price;
+  //$this->total = $total_price;
  ?>

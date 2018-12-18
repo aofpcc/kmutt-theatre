@@ -181,6 +181,16 @@ $klein->respond('GET', '/login', function ($request, $response, $service, $app, 
     $service->render('layouts/group5/login.php');
 });
 
+$klein->respond('POST', '/login', function ($request, $response, $service, $app, $validator) {
+    $app->login->requireNotLogin('/customer/kmutt_home');
+    global $database;
+    $conn = $database->getConnection();
+    $service->pageTitle = 'Fish and Chips';
+    $service->validateParam('username')->notNull();
+    $service->validateParam('password')->notNull();
+    $app->login->perform($request->username, $request->password, "/customer/kmutt_home");
+});
+
 // Drive-Register
 $klein->respond('GET', '/register', function ($request, $response, $service) {
     $service->title = "Register New Member";

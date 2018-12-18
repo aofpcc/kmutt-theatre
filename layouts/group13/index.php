@@ -24,7 +24,7 @@
         </ul>
     </div>
 </nav> -->
-<form action="/emp/fnb/update_point" method="post">
+<form action="/emp/fnb/add_point" method="get">
 <div class="d-flex justify-content-start">
     <div class="container-fluid" style="margin-top:100px;">
         <div class="form-group">
@@ -266,7 +266,6 @@
 
 
     <input type="hidden" id="points" name="points">
-    <input type="hidden" id="hisPoints" name="hisPoints" >
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">

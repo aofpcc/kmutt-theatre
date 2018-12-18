@@ -32,7 +32,7 @@
         <button title="Copied" id="getCode" type="button" class="btn btn-lg btn-danger">Get Code</button>
         <small>Code :
             <span id="code">
-                <?=$this->id?></span></small>
+                <?=$this->invite_data["code"]?></span></small>
     </h1>
     <div class="card card-temp shadow-lg">
         <div class="container">
@@ -50,54 +50,31 @@
                     <h6>Rate: G</h6><br>
                     <h6>135 Mins</h6><br><br>
                     <div class="container col-xs-10">
-                        <h2>Friends</h2>
+                        <h2>List</h2>
                         <div class="table-wrapper-scroll-y ">
                             <table class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">Username</th>
+                                        <th scope="col">Name</th>
                                         <th scope="col">Phone</th>
                                         <th scope="col">Email</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    
+                                    <?php 
+                                    $count = 1;
+                                    foreach($this->invite_data["list"] as $person) { ?>
                                     <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
+                                        <th scope="row"><?=$count?></th>
+                                        <td><?=$person["Name"]?></td>
+                                        <td><?=$person["Phone"]?></td>
+                                        <td><?=$person["Email"]?></td>
                                     </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">4</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">5</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">6</th>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
-                                    </tr>
+                                    <?php 
+                                    $count++;
+                                    } ?>
                                 </tbody>
                             </table>
                         </div>

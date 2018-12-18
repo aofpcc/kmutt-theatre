@@ -254,6 +254,7 @@ $klein->respond('POST', '/staff/employee/editprofile/save', function($request, $
   //not null
   $firstname = $request->firstName;
   $lastname = $request->lastName;
+  $tell = $request->tell;
   $email = $request->Email;
   $username = $request->Username;
   $file = $request->file;
@@ -274,7 +275,7 @@ $klein->respond('POST', '/staff/employee/editprofile/save', function($request, $
 
       if(count($countEmail) == null){
       //update db G11_Emp_staff
-      $updateProfile = "UPDATE G11_Emp_staff SET Firstname = '$firstname', Lastname = '$lastname', Email = '$email' WHERE userID = $id";
+      $updateProfile = "UPDATE G11_Emp_staff SET Firstname = '$firstname', Lastname = '$lastname', Tell = '$tell', Email = '$email' WHERE userID = $id";
       $stmt = $conn->prepare($updateProfile);
       $stmt->execute();
 
@@ -301,7 +302,7 @@ $klein->respond('POST', '/staff/employee/editprofile/save', function($request, $
 
         if(count($countUser) == null){
         //update db G11_Emp_staff
-        $updateProfile = "UPDATE G11_Emp_staff SET Firstname = '$firstname', Lastname = '$lastname', Email = '$email' WHERE userID = $id";
+        $updateProfile = "UPDATE G11_Emp_staff SET Firstname = '$firstname', Lastname = '$lastname',Tell = '$tell', Email = '$email' WHERE userID = $id";
         $stmt = $conn->prepare($updateProfile);
         $stmt->execute();
 
@@ -313,7 +314,7 @@ $klein->respond('POST', '/staff/employee/editprofile/save', function($request, $
   }
 
   //update db G11_Emp_staff
-  $updateProfile = "UPDATE G11_Emp_staff SET Firstname = '$firstname', Lastname = '$lastname' WHERE userID = $id";
+  $updateProfile = "UPDATE G11_Emp_staff SET Firstname = '$firstname', Lastname = '$lastname', Tell = '$tell' WHERE userID = $id";
   $stmt = $conn->prepare($updateProfile);
   $stmt->execute();
 

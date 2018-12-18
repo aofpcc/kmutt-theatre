@@ -32,17 +32,17 @@
       <div class="row">
         <div class="col-lg-4 col-md-6 mb-4">
           <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="<?=$this->photo["Image"]?>"
+            <a href="#"><img class="card-img-top" src="<?=$this->image ?>"
                 alt=""></a>
           </div>
         </div>
         <div class="col-md-7">
-          <br><br><br><br>
-          <font size = "5" style="font-weight:bold"> Movie Name: <?=$this->name["title"] ?></font><br><br>
-          <font size = "5">Genre: <?=$this->genre["genre"] ?></font><br>
+          <br>
+          <font size = "5" style="font-weight:bold"> Movie Name: <?=$this->title ?></font><br><br>
+          <font size = "5" style="font-weight:bold"> Genre: </font> <font size ="4"> <?=$this->genre ?></font><br>
           <!-- <font size = "5">Rate: G</font><br> -->
-          <font size = "5">Length: <?=$this->length ?></font><br>
-          <!-- <font size = "5">Detail : <?=$this->details["datail"] ?></font><br><br> -->
+          <font size = "5" style="font-weight:bold"> Length: </font> <font size ="4"> <?=$this->length ?></font><br>
+          <font size = "5" style="font-weight:bold"> Detail : </font> <font size = "4"> <?=$this->detail ?></font><br><br>
           <?php
 // var_dump($this->details["datail"]);
 // die;
@@ -61,9 +61,14 @@
     <a class="nav-item nav-link" href="#">Sat<br><small>17 Nov 2018</small></a>
     <a class="nav-item nav-link disabled" href="#">Mon<br><small>18 Nov 2018</small></a>
     <a class="nav-item nav-link disabled" href="#">Tue<br><small>19 Nov 2018</small></a> -->
-    <?php foreach($this->query as $q) { ?>
+    <?php
+    if(count($this->query) != 0) {
+    foreach($this->query as $q) { ?>
       <a class="btn-dark nav-item nav-link <?=$q["status"]?>" href="/customer/movies/showtime/all/<?=$this->movie_id?>/<?=$q["value"]?>"><?=$q["date"] ?><br><small><?=$q["str"] ?></small></a>
-    <?php } ?>
+    <?php }
+      }else{
+      echo "No any showtime";
+    } ?>
   </nav>
   <hr>
   <!-- Project One -->
@@ -82,9 +87,11 @@
   $(document).ready(function(){
     var movie_id = "<?=$this->movie_id?>";
     var date = "<?=$this->datenow?>";
-    $.get("/customer/movies/showtime/all/"+movie_id+"/"+date).done(function(data){
-      $("#showtime").html(data);
-    });
+    if(<?=count($this->query) == 0? "false" : "true" ?>){
+      $.get("/customer/movies/showtime/all/"+movie_id+"/"+date).done(function(data){
+        $("#showtime").html(data);
+      });
+    }
   });
 
   function openLink(e){

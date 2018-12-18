@@ -23,21 +23,21 @@
           <div class="col-lg-4 col-md-6 mb-4">
               <div class="card">
                 <!-- <a href="#"> -->
-                  <img class="card-img-top" src="https://lh3.googleusercontent.com/8Lr1BMoZOxsSLoTZr6IxDZuLDiSc6oMTopLA2B-MhXbwxqpDguDHy8r_zj1430V2augHqTSdHsNjz6MYfbEm=w260" alt="">
+                  <img class="card-img-top" src="<?= $this->image ?>" alt="">
                 <!-- </a> -->
               </div>
             </div>
 
             <div class="col-md-8">
               <font size="6">
-                <?php echo $this->movie_name; ?>
+                <?php echo $this->title; ?>
                 <br>
               </font>
 
               <font size="4">
                 <i class="far fa-clock"></i>
-                <?php echo date('d/m/Y', $this->showtime); ?>
-                <b><?php echo date('H:i', $this->showtime); ?></b> (135 Mins)
+                <?php echo $this->date; ?>
+                <b><?php echo $this->time; ?></b> (135 Mins)
                 <!-- 30 February 2030
 
                 21 : 00 &nbsp&nbsp&nbsp <br> -->

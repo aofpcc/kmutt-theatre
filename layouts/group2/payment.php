@@ -39,7 +39,7 @@
       <div class="step-bar">
         <div class="container">
           <ul class="desktop">
-            <li class="step-item pass"><a href="/emp/group2/home_page/select_movie/select_showtime">
+            <li class="step-item pass"><a href="/emp/group2/home_page/select_movie">
                 <div class="no">1</div>
                 <div class="step-name">Showtime</div>
               </a></li>

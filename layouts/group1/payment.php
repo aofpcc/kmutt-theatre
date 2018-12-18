@@ -37,7 +37,7 @@
               <font size="4">
                 <i class="far fa-clock"></i>
                 <?php echo $this->date; ?>
-                <b><?php echo $this->time; ?></b> (135 Mins)
+                <b><?php echo $this->time; ?></b>
                 <!-- 30 February 2030
 
                 21 : 00 &nbsp&nbsp&nbsp <br> -->
@@ -78,13 +78,28 @@
               <font size="4"> ราคารวม </font>
               <br/>
               <p>
-
+                <li>: <b><i>$</i><span id="total">0</span></b></li>
               </p>
               <br>
 
               </p><br>
 
-              <?php $this->partial("layouts/group1/js/countdown.php"); ?>
+              <?php $this->partial("layouts/group1/js/countdown.php");
+              // var_dump($this->showtime_id);
+              // die; ?>
+              <form action = "/customer/kmutt/ticket/<?= $this->showtime_id?>" method = "post">
+                <button name = Kbank value="Kbank" id="Kbank" class="btn btn-lg btn-default" >KBANK</button>
+                <!-- <button name =  class="btn btn-lg btn-default" >SCB</button>
+                <button type="button" class="btn btn-lg btn-default" >CREDIT</button>
+                <button type="button" class="btn btn-lg btn-default" >CLUBCARD</button> -->
+                <!-- <button name = "book_seat" value = "book_seat" id = "book_seat" class = "checkout-button">Book now
+                </button>
+   -->
+          <div id="legend"></div>
+        </div>
+        <div style="clear:both"></div>
+        </div> </form>
+
 
               <button type="button" class="btn btn-lg btn-default" >KBANK</button>
               <button type="button" class="btn btn-lg btn-default" >SCB</button>
@@ -101,4 +116,5 @@
 
 
   <!-- <script src="/layouts/group1/js/jquery.nicescroll.js"></script> -->
+  <?php $this->partial("layouts/group1/js/booking.php");  ?>
   <script src="/layouts/group1/js/scripts.js"></script>

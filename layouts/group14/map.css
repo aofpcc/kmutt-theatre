@@ -54,7 +54,7 @@ background-color: #ea0015; }
 .button1 {
   background-color: #4CAF50;
   border: none;
-  color: black;
+  color: white;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
@@ -65,9 +65,9 @@ background-color: #ea0015; }
 }
 
 .button1:hover {
-  background-color: #4DD820;
+  background-color: #0EBD45;
 }
 
-.button1 {background-color: #5CF72A;}
+.button1 {background-color: #0FCA4B;}
 .button1 {border-radius: 8px;}
 .button1 {width: 98%;}

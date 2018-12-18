@@ -11,7 +11,7 @@
   </div>
 
 <div class="" style="">
-  <form action="/test/login/action" method="POST">
+  <form action="/customer/login" method="POST">
   <div style="margin: auto; width: 40%">
     <div>
       <label for="username"></label>
@@ -25,7 +25,7 @@
 </div>
 </div>
 
-<div class="text-center mb-2"> 
+<div class="text-center mb-2">
   <p class="" style="text-align: right; padding-right: 30%;"><a href="">Forget password?</a></p>
 
 </div>
@@ -33,7 +33,7 @@
     <button type="submit" class="btn color-box" style="margin-top: 5%; width:100%; background-color: #DC143C; color: #FFFFFF">Login</button>
 </div>
 
-<div class="text-center mb-2 mt-5"> 
+<div class="text-center mb-2 mt-5">
   <p class="" style="margin-top: 0%"> New to Theatre? <a href="">Sign up now » </a></p>
 
 </div>
@@ -53,5 +53,5 @@
         </label>
       </div>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-  
+
     </form> -->

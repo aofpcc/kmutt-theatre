@@ -20,7 +20,7 @@
       <div class="row">
         <div class="col-sm-1"></div>
         <div class="col-sm-6">
-          <form action="/test/resetPassword" method="post">
+          <form action="/resetPassword" method="post">
             <div class="form-group">
               <label class="box-name-text" for="usr">New Password (Please include at least 6 characters)</label>
               <input type="password" class="form-control form-control-lg" id="usr" name="newpassword" pattern=".{6,}" required>

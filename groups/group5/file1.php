@@ -38,6 +38,50 @@ $klein->respond(['GET', 'POST'], '/membership', function ($request, $response, $
     $service->render('layouts/group5/membership.php');
 });
 
+    // Forget Password (page)
+    $klein->respond('GET', '/forgetPassword', function ($request, $response, $service, $app, $validator) {
+        $service->title = "Forget Password";
+        $service->render('layouts/group5/forgetPassword.php');
+    });
+
+    // Forget Password (actual SQL)
+    $klein->respond('POST', '/forgetPassword', function ($request, $response, $service, $app, $validator) {
+        $result = $app->login->forgetPassword($request->email);
+        $service->title = "Forget Password ";
+        $service->content = "Check your email to change your password";
+        $service->render('layouts/core/home.php');
+    });
+
+    // Reset Password (page)
+    $klein->respond('GET', '/forgetPassword/reset/[:base]', function ($request, $response, $service, $app, $validator) {
+        $result = $app->login->resetPassword($request->base);
+        $service->render('layouts/group5/resetPassword.php');
+    });
+
+    // Reset Password (actual SQL)
+    $klein->respond('POST', '/resetPassword', function ($request, $response, $service, $app, $validator) {
+      // die("Hoi");
+        $service->validateParam('newpassword', 'New Password cannot be null')->notNull();
+        $service->validateParam('confirmpassword', 'Confirm Password cannot be null')->notNull();
+        if ($request->newpassword != $request->confirmpassword) {
+            $service->flash('Shit Not the same');
+            $service->back();
+        }
+        $result = $app->login->setNewPassword($request->newpassword);
+        // $p = $service->passValue;
+        if ($result["update"]) {
+            $service->flash("Password was reseted");
+
+        } else {
+            $service->flash("Password was not reseted. Please Contact Us");
+        }
+         // $service->passValue = $p;
+
+        $response->redirect("/customer/login");
+        $response->sendHeaders();
+    });
+                                                                                            
+
 // change password (page)
 $klein->respond('GET', '/change/password', function ($request, $response, $service, $app, $validator) {
     // get login info (send to login page if not logged in)
@@ -75,47 +119,6 @@ $klein->respond('POST', '/change/password/action', function ($request, $response
     }
     $response->redirect("/customer/membership");
 });
-
-// forget password
-$klein->respond('GET', '/forgetPassword', function ($request, $response, $service, $app, $validator) {
-    $service->title = "Forget Password";
-    $service->render('layouts/group5/forgetPassword.php');
-});
-
-$klein->respond('POST', '/forgetPassword', function ($request, $response, $service, $app, $validator) {
-    $result = $app->login->forgetPassword($request->email);
-    $service->title = "Forget Password Page";
-    $service->content = "Check your email to change your password";
-    $service->render('layouts/core/home.php');
-});
-
-// reset password
-$klein->respond('GET', '/forgetPassword/reset/[:base]', function ($request, $response, $service, $app, $validator) {
-    $result = $app->login->resetPassword($request->base);
-    $service->render('layouts/group5/resetPassword.php');
-});
-
-$klein->respond('POST', '/resetPassword', function ($request, $response, $service, $app, $validator) {
-  // die("Hoi");
-    $service->validateParam('newpassword', 'New Password cannot be null')->notNull();
-    $service->validateParam('confirmpassword', 'Confirm Password cannot be null')->notNull();
-    if ($request->newpassword != $request->confirmpassword) {
-        $service->flash('Shit Not the same');
-        $service->back();
-    }
-    $result = $app->login->setNewPassword($request->newpassword);
-    // $p = $service->passValue;
-    if ($result["update"]) {
-        $service->flash("Password was reseted");
-    } else {
-        $service->flash("Password was not reseted. Please Contact Us");
-    }
-     // $service->passValue = $p;
-    $response->redirect("/customer/login");
-    $response->sendHeaders();
-});
-
-
 
 // Change phone number (page)
 $klein->respond('GET', '/change/phonenumber', function ($request, $response, $service, $app, $validator) {
@@ -378,12 +381,12 @@ $klein->respond('GET', '/transaction_point', function ($request, $response, $ser
     $stmt = $conn->prepare($query);
     $stmt->bindParam(":MemberID", $userID);
     $stmt->execute();
-    
+
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     // $response->dump($result);
     // $response->sendBody();
     // die;
-    
+
 
     $service->title = 'Fish and Chips';
     $service->list = $result;

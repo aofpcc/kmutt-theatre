@@ -66,7 +66,7 @@ $klein->respond('GET', '/androidUpdate', function ($request, $response, $service
 
   //Check if anything changed
   $query = "SELECT * from G05_Member_profile A, G05_Member_address B where A.MemberID = '$userID' and A.Fname = '$firstname' and A.Lname = '$lastname' and A.Gender = '$gender' and A.Birthdate = '$birthdate' and A.PhoneNumber = '$phoneno'
-            and B.Address = '$address' and B.Province = '$province' and B.District = '$district' and B.SubDistrict = '$subdist' and B.ZipCode = '$postcode' ";
+            and B.Address = '$address' and B.Province = '$province' and B.District = '$district' and B.SubDistrict = '$subdist' and B.ZipCode = '$postcode' and B.MemberID = '$userID'";
   $stmt = $conn->prepare($query);
   $stmt->execute();
   $num1 = $stmt->rowCount();
@@ -78,7 +78,7 @@ $klein->respond('GET', '/androidUpdate', function ($request, $response, $service
   $num2 = $stmt->rowCount();
 
   //Check uniqeness
-  $query = "SELECT PhoneNumber from G05_Member_profile where PhoneNumber = '$phoneno'";
+  $query = "SELECT PhoneNumber from G05_Member_profile where PhoneNumber = '$phoneno' and MemberID <> '$userID'";
   $stmt = $conn->prepare($query);
   $stmt->execute();
   $num3 = $stmt->rowCount();
@@ -156,16 +156,18 @@ $klein->respond('GET', '/androidRegist', function ($request, $response, $service
                                 VALUES ('$userID', '$identNo', '$firstname', '$lastname', '$gender', '$birthdate', '$email', '$phoneno')";
         $stmt = $conn->prepare($query);
         $stmt->execute();
+
         //$memberID = $conn->lastInsertId();
         $query = "INSERT INTO G05_Member_address (MemberID, Address, Province, District, SubDistrict, ZipCode)
                                 VALUES ('$userID','$address', '$province', '$district', '$subdist', '$postcode')";
-
         $stmt = $conn->prepare($query);
         $stmt->execute();
+        /*
         $query = "INSERT INTO G05_Member_point (MemberID, Total_Point)
                                 VALUES ('$userID', 0)";
         $stmt = $conn->prepare($query);
         $stmt->execute();
+        */
         $arr["done"] = true;
         $arr["note"] = "Account have been created succesfully";
         $arr["userID"] = $result["userID"];

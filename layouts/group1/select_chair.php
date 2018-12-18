@@ -32,12 +32,12 @@
                     </div>
                   </div>
 
-                  <div class="col-md-8">
-                      <br><br>
-                      <font size="6.5"><?=$this->name["title"] ?></font><br><br>
-                      <font size="4">Date   : <?=$this->string ?></font><br><br>
-                      <font size="4">Time   : 21:00</font> &nbsp&nbsp&nbsp  <font size="4"> Theater : 5 </font><br><br>
-                      <font size="4">Length : 135 Mins</font> <br><br>
+                  <div class="col-md-7">
+                      <br><br><br><br>
+                      <font size="5" style="font-weight:bold"> Movie Name: <?=$this->name["title"] ?></font><br><br>
+                      <font size="5">Date   : <?=$this->string ?></font><br><br>
+                      <font size="5">Time   : 21:00</font> &nbsp&nbsp&nbsp  <font size="4"> Theater : 5 </font><br><br>
+                      <font size="5">Length : 135 Mins</font> <br><br>
 
                     <br><br> <!--link to ticket-->
 
@@ -69,7 +69,7 @@
         <div class="clear"></div>
 
             <?php //foreach($this->movie_id as $movie_id) { ?>
-            <form action = "/customer/kmutt_home/branch/show_time/select_chair/payment/<?= $this->movie_id["movie_id"]?>" method = "post">
+            <form action = "/customer/kmutt_home/branch/show_time/select_chair/payment/<?= $this->showtime_id?>" method = "post">
                 <ul id="selectedSeats" class="scrollbar scrollbar1"></ul>
               <button name = "book_seat" value = "book_seat" id = "book_seat" class = "checkout-button">Book now
               </button>

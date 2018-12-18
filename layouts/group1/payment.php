@@ -85,7 +85,7 @@
               </p>
               <br>
 
-              </p><br> <!--link to ticket-->
+              </p><br> 
 
               <?php $this->partial("layouts/group1/js/countdown.php"); ?>
 

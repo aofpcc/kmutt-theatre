@@ -10,7 +10,7 @@
             padding-right: 15px;
             padding-left: 15px;
         }
-        
+
     </style>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,12 +22,12 @@
 </head>
 <!-- <div id="map"></div> -->
 <div class="container" style="width: 70%">
-    
+
     <div id="map"></div>
     <hr style="height:2pt; visibility:hidden; margin-bottom:-1px; margin-top:5px" />
     <div><input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search" style="width: 100%"/></div>
     <hr style="height:2pt; visibility:hidden; margin-bottom:-1px; margin-top:5px" />
-    <div class="scrollable scrollbar-near-moon" style='height: 200px'>
+    <div class="scrollable scrollbar-danger" style='height: 200px'>
         <div class="force-overflow" id="BtnContainer">
             <ul id="myUL">
                 <?php for ($i = 0; $i < count($this->guy); $i++) {?>
@@ -35,8 +35,8 @@
                         class="btn btn-info btn-lg btn-block">
                         <?php /*echo ($this->guy[$i]['BranchName']) */?>
                         <?php echo ($this->guy[$i]['BranchName']); ?>
-                    </button></li>
-                    <hr style="height:2pt; visibility:hidden; margin-bottom:-1px; margin-top:3px" />
+                    </button>
+                    <hr style="height:1pt; visibility:hidden; margin-bottom:0px; margin-top:1px" /></li>
                 <?php }?>
             </ul>
         </div>
@@ -110,7 +110,7 @@
             })(marker, i));
         }
 
-        
+
     }
 
     function changePos(setLoc) {
@@ -135,6 +135,6 @@
     }
   }
 }
-    
+
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVya5jGbVLcFvCfHrR8yNKU7CPJhZ1eVI&callback=initMap"></script>

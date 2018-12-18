@@ -40,7 +40,9 @@
                       <font size="5">Length : 135 Mins</font> <br>
 
                     <br> <!--link to ticket-->
-                    <button type="button" class="btn btn-lg btn-danger" onclick="location.href = '/customer/invitation/showtime/<?=$request->showtime_id?>;">INVITED FRIEND</button>
+                    <button type="button" class="btn btn-lg btn-danger"
+                    onclick="location.href = '/customer/invitation/showtime/<?=$this->showtime_id?>'">INVITED FRIEND
+                  </button>
 
                     </div>
                 </div>

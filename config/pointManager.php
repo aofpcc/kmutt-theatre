@@ -59,7 +59,7 @@ class PointManager
             $stmt->execute();
     }
 
-    //deletePoint
+    //decreasePoint
     public function subtractPoint($input)
     {
         $result = [
@@ -78,9 +78,8 @@ class PointManager
             // $pointID = $this->conn->lastInsertId();
             $this->conn->commit();
             $result["result"] = true;
-            echo "OHO";
         } catch (Exception $e) {
-            echo $e->getMessage();
+            // echo $e->getMessage();
             $this->conn->rollback();
         }
         return $result;

@@ -13,42 +13,44 @@ $klein->respond('GET', '/group6', function ($request, $response, $service) {
   echo json_encode($arr);
 });
 
-$klein->respond('GET', '/group6/loginn', function ($request, $response, $service) {
+$klein->respond('GET', '/androidForgetPassword', function ($request, $response, $service, $app, $validator) {
   global $database;
   $conn = $database->getConnection();
 
-  $user = $_GET['user'];
-  $password = $_GET['pass'];
+  $email = $_GET['email'];
 
-  //$query = "SELECT userID from core_user_pwd where username = '$user' and password = '$password' ";
-  $query = "SELECT MemberID from G05_Member_profile where Email = '$user' and PhoneNumber = '$password' ";
-  $stmt = $conn->prepare($query);
-  $stmt->execute();
+  $result = $app->login->forgetPassword($email);
 
-  $num = $stmt->rowCount();
-  $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
-
-  echo json_encode($arr);
+  echo json_encode([$result]);
 });
 
-$klein->respond('GET', '/group6/regis', function ($request, $response, $service) {
+$klein->respond('GET', '/androidChangePassword', function ($request, $response, $service) {
   global $database;
   $conn = $database->getConnection();
 
-  $user = $_GET['user'];  $pass = $_GET['pass'];  $firstname = $_GET['firstname'];
-  $lastname = $_GET['lastname'];  $gender = $_GET['gender'];  $birthdate = $_GET['birthdate'];
-  $email = $_GET['email'];  $phonenumber = $_GET['phonenumber'];  $address = $_GET['address'];
-  $district = $_GET['district'];  $province = $_GET['province'];  $postcode = $_GET['postcode'];
+  $userID = $_GET['userID'];  $oldPass = $_GET['oldpass'];  $newPass = $_GET['newpass'];
 
-  $query = "INSERT INTO Membership (Username, Password, FirstName,LastName,Gender,Birthdate,Email,PhoneNumber,Address,District,Province,Postcode)
-                          VALUES ('$user', '$pass', '$firstname', '$lastname', '$gender', '$birthdate', '$email', '$phonenumber', '$address', '$district', '$province', '$postcode')";
+  $query = "SELECT * from core_user_pwd WHERE (password = '$oldPass' and userID = '$userID')";
   $stmt = $conn->prepare($query);
   $stmt->execute();
 
   $num = $stmt->rowCount();
-  $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
 
-  echo json_encode([$query]);
+  $arr = array();
+  if($num == 1){
+    $query = "INSERT INTO core_password_table (userID, password, create_date)
+                            VALUES ('$userID', '$newPass', NOW());";
+    $stmt = $conn->prepare($query);
+    $stmt->execute();
+    $arr["done"] = true;
+    $arr["note"] = "Password have been changed";
+  }else{
+    $arr["done"] = false;
+    $arr["note"] = "Invalid password";
+  }
+
+
+  echo json_encode([$arr]);
 });
 
 $klein->respond('GET', '/androidUpdate', function ($request, $response, $service) {

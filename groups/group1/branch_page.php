@@ -21,18 +21,30 @@ $klein->respond('GET', '/kmutt_home/branch/[:movie_id]', function ($request, $re
         $status = true;
     }
 
-    $name = $conn->query("select distinct title, Image from G09_Movie where id = '$request->movie_id'")->fetchAll(PDO::FETCH_ASSOC);
+    $name = $conn->query("select distinct title, Image, detail from G09_Movie where id = '$request->movie_id'")->fetchAll(PDO::FETCH_ASSOC);
+
+    $details = $conn->query("select detail from G09_Movie where id = '$request->movie_id'")->fetchAll(PDO::FETCH_ASSOC);
+
+    $genre = $conn->query("select distinct genre from G09_Gerne where id = '$request->movie_id'")->fetchAll(PDO::FETCH_ASSOC);
+
+    $length = $conn->query("select length from G09_Length where id = '$request->movie_id'")->fetchAll(PDO::FETCH_ASSOC);
 
     // $response->dump($name);
     // $response->sendBody();
     // die;
+    // var_dump($name);
+    // die;
 
     $service->name = $name[0];
     $service->photo = $name[0];
+    // $service->detail = $name[0];
     $service->datenow = (new DateTime)->format("Y-m-d");
     $service->query = $date;
     $service->movie_id = $request->movie_id;
+    // var_dump($service->detail);
+    // die;
     $service->render('layouts/group1/showtime318.php');
+
 });
 
 $klein->respond('GET', '/movies/showtime/all/[:movie_id]/[:show_date]', function ($request, $response, $service, $app, $validator) {
@@ -91,8 +103,10 @@ $klein->respond('GET', '/movies/showtime/all/[:movie_id]/[:show_date]', function
                     } else{
                         $movie["status"] = " btn-dark";//btn-outline-primary
                     }
+                    $movie["clickable"] = true;
                 }else{
                     $movie["status"] = " inactive ";
+                    $movie["clickable"] = false;
                 }
                 array_push($r_temp["movies"], $movie);
             }

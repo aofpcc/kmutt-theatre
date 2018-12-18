@@ -60,7 +60,8 @@
                 <?=$promotion["PromoName"] ?><br><br><?=$promotion["StartDate"] ?>
                 <br><?=$promotion["EndDate"] ?><br><br><?=$promotion["Description"] ?>
                 <br><br>CODE = <?=$promotion["PromoCode"] ?><br>one code / person
-                <button type = "button" class="">
+                <button type="button" class="btn btn-success" onClick="location.href='/emp/promotion/edit/<?=$promotion["PromoID"] ?>';">Edit</button>
+                    <button type="button" class="btn btn-danger" onClick="del(<?=$rt['id']?>);">Delete</button>
               </h4>
               <p class="card-text">     </p>
             </div>

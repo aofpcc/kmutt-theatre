@@ -299,7 +299,14 @@ class LoginPerformer
                 $_SESSION['role'] = $result[0]["role"];
                 $_SESSION['userID'] = $result[0]["userID"];
                 $_SESSION['username'] = $result[0]["username"];
-                $this->klein->response()->redirect($redirect);
+                
+                if(isset($_SESSION['callback'])) {
+                    $call = $_SESSION['callback'];
+                    $_SESSION["callback"] = null;
+                    $this->klein->response()->redirect($call);
+                }else{
+                    $this->klein->response()->redirect($redirect);
+                }
                 $this->klein->response()->sendHeaders();
             } else {
                 throw new \Exception("Incorrect Username of Password", 1);
@@ -310,6 +317,7 @@ class LoginPerformer
         }
     }
     public function requireLogin($role) {
+        $_SESSION['callback'] = $this->klein->request()->uri();
         return $this->LoginThenGoTo($role, '/test/login');
     }
 

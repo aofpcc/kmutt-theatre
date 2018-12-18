@@ -15,7 +15,7 @@ session_start();
 $klein->respond(function ($request, $response, $service, $app, $validator) use ($database, $loginperformer, $pointmanager) {
     $service->layout('layouts/core/default.php');
     $service->pageRole = "THEATRE";
-    $service->bootstrap3 = true;
+    $service->bootstrap3 = false;
     $service->bootstrap = true;
     $app->db = $database;
     $app->login = $loginperformer;
@@ -80,11 +80,11 @@ foreach ($included as $key => $value) {
 // );
 
 $customer = [
-    'group1', 'group5', 'group6', 'group12', 'group14' 
+    'group1', 'group5', 'group6', 'group12', 'group14', 'group7'
 ];
 
 $employees = array(
-      'group2','group3','group4','group7','group8','group9','group10',
+      'group2','group3','group4','group8','group9','group10',
       'group11','group13'
 );
 

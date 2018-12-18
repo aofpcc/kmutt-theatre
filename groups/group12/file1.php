@@ -29,5 +29,5 @@ $klein->respond('GET', '/mobile/getShowtime', function ($request, $response, $se
   $service->allMovies = $arr;
   // $service->pageTitle = 'Hello';
   // $service->render('layouts/group12/home.php');
-  echo json_encode($arr);
+  return $response->json($arr);
 });

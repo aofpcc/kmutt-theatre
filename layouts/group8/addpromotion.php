@@ -27,7 +27,11 @@
   </div>
   <div class="form-group">
     <label for="" class="form-label">Code Promotion</label>
-    <input name="promotion_code" type="text" class="form-control" id='promotion_code' placeholder="Movie30฿" required>
+    <input name="promotion_code" type="text" class="form-control" id='promotion_code' placeholder="Movie30฿" >
+  </div>
+  <div class="form-group">
+    <label for="" class="form-label">Promotion Point</label>
+    <input name="promotion_point" type="number" class="form-control" id='promotion_point' placeholder="0" >
   </div>
   <div class="form-group">
   <input type="file" name="promotion_pic" id='promotion_pic' required>

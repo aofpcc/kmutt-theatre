@@ -24,8 +24,10 @@
     <div id="legend"></div>
   </div>
   <div style="clear:both"></div>
+  <!-- <div id="link2" style="display: none;">
+<a id="link1" href="/emp/ticket/get/" target="_blank">link text</a>
+</div> -->
 </div>
-
 
 <script>
   var price = 10; //price
@@ -41,8 +43,9 @@
     }).done(function(e){
       if(e.result) {
         alert("Buy Seat Success");
-        console.log(e.code);
-        $(".modal").hide();
+        //console.log(e.code);
+        show(e.code);
+        
       }else{
         alert("Fail");
       }
@@ -151,7 +154,7 @@
   function recalculateTotal(sc) {
     var total = 0;
     sc.find('selected').each(function () {
-      total += price;
+      total = total+price;
     });
 
     return total;

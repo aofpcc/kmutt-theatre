@@ -27,7 +27,7 @@
 </head>
 <!-- <div id="map"></div> -->
 <div class="container" style="width: 95%;">
-<hr style="height:5px; visibility:hidden; margin-bottom:-1px; margin-top:0px" />
+<hr style="height:2px; visibility:hidden; margin-bottom:-1px; margin-top:0px" />
     <div id="map" style=" height: 50%; width: 100%;"></div>
     <hr style="height:2pt; visibility:hidden; margin-bottom:-1px; margin-top: 0px" />
     <div action="/group14/map/action" method="post">

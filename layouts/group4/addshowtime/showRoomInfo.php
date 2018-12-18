@@ -1,5 +1,5 @@
 <br>
-<h2>Seat Type</h2> 
+<h2>Room Info</h2> 
 <div class="container-fluid">
   <div class="row">
   		<div class="col-md-6"></div>
@@ -16,22 +16,28 @@
     <thead>
         <tr>
         <td>Id</td>
+        <td>Seat Pic</td>
+        <td>Room Type</td>
+        <td>Room Info</td>
         <td>Seat Type</td>
+        <td>Seat Info</td>
         <td>Seat Price</td>
-        <td>Seat Type Information</td>
         <td>Action</td>
         </tr>
     </thead>
     <tbody>
-        <?php foreach($this->Sdata as $rt) { ?>
+        <?php foreach($this->RIdata as $ri) { ?>
             <tr>
-                <td><?=$rt['id']?></td>
-                <td><?=$rt['seattype']?></td>
-                <td><?=$rt['seat_price']?></td>
-                <td><?=$rt['seatInfo']?></td>
+                <td><?=$ri['id']?></td>
+                <td><?=$ri['seatpic']?></td>
+                <td><?=$ri['roomtype']?></td>
+                <td><?=$ri['roomInfo']?></td>
+                <td><?=$ri['seattype']?></td>
+                <td><?=$ri['seatInfo']?></td>
+                <td><?=$ri['seat_price']?></td>
                 <td>
-                    <button type="button" class="btn btn-success" onClick="location.href='/emp/edit_seattype/<?=$rt['id']?>';">Edit</button>
-                    <button type="button" class="btn btn-danger" onClick="del(<?=$rt['id']?>);">Delete</button>
+                    <button type="button" class="btn btn-success" onClick="location.href='/emp/edit_roomtype/<?=$ri['id']?>';">Edit</button>
+                    <button type="button" class="btn btn-danger" onClick="del(<?=$ri['id']?>);">Delete</button>
                 </td>
             </tr>
         <?php } ?>
@@ -42,7 +48,7 @@
         if(!confirm("Confirm Delete")) {
             return;
         }
-        $.post("/emp/g04/seatType/del/"+e).done(function(data){
+        $.post("/emp/g04/roomType/del/"+e).done(function(data){
             // console.log(data);
             if(!data.err){
                 alert(data.message);
@@ -58,7 +64,7 @@
 
     function add_page()
     {
-        location.href = "/emp/add_seattype";
+        location.href = "/emp/add_roominfo";
     } 
 
 </script>

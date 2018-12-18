@@ -30,6 +30,10 @@ background-color: #ea0015; }
   cursor: pointer;
 }
 
+.button:hover {
+  background-color: #656565;
+}
+
 .button {background-color: black;}
 .button {border-radius: 8px;}
 .button {width: 99%;}

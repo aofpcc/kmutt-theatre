@@ -55,7 +55,7 @@
       <p class="gap"></p>
       <!-- <p class="gap set-text"><a href="localhost:8000/change/username">Change username</a></p> -->
       <!-- <p class="gap set-text"><a href="/customer/change/password">Change password</a></p> -->
-      <p class="gap set-text"><a href="/test/changePassword">Change password</a></p>
+      <p class="gap set-text"><a href="/customer/change/password">Change password</a></p>
       <p class="gap set-text"><a href="/customer/change/phonenumber">Change phone number</a></p>
       <!-- <p class="gap set-text"><a href="/customer/change/email">Change e-mail</a></p> -->
     </div>
@@ -72,12 +72,13 @@
   <div class="row">
     <div class="col-sm-3"></div>
     <div class="col-sm-9">
+      <!-- current point -->
       <div class="bold field-title" style="margin-bottom: 0">REMAINING POINTS <br/>
         <a class="field-value">
           <?php
-            $totalPoint = $this->usr[0]["TotalPoint"];
-            if ($totalPoint) {
-              echo $totalPoint;
+            $totalpoint = $this->usr[0]["totalpoint"];
+            if ($totalpoint) {
+              echo $totalpoint;
             }
             else {
               echo 0;
@@ -85,6 +86,13 @@
           ?>
         </a>
         <a class="field-value">points</a>
+      </div>
+      <!-- money -->
+      <div class="bold field-title" style="margin-bottom: 0">REMAINING VALUE <br/>
+        <a class="field-value">
+          10000
+        </a>
+        <a class="field-value">baht</a>
       </div>
     </div>
   </div>
@@ -151,7 +159,7 @@
       <p class="bold field-title">AGE <br/>
         <a class="unbold field-value">
           <?php echo $this->ages[0]["Age"]; ?>
-          years old
+          <!-- years old -->
         </a>
       </p>
       <p class="bold field-title">ADDRESS <br/>

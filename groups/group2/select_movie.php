@@ -2,19 +2,15 @@
   error_reporting(E_ALL);
   ini_set('display_errors', 1);
 
-  $klein->respond('GET', '/group2/home_page/select_movie', function ($request, $response, $service){
-  global $database;
+  $klein->respond('GET', '/group2/home_page/select_movie', function ($request, $response, $service) use ($database) {
+  
   $conn = $database->getConnection();
 
-  // $query = "SELECT movie_id from G04_MSRnB_showingroom";
-  // $stmt = $conn->prepare($query);
-  // $stmt->execute();
+  $movieid = $conn->query("SELECT id FROM G09_Movie")->fetchAll(PDO::FETCH_BOTH);
+  $movietitle = $conn->query("SELECT title FROM G09_Movie ")->fetchAll(PDO::FETCH_BOTH);
 
-  // $num = $stmt->rowCount();
-  // $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
-
-  // $service->allMovies = $arr;
-  $service->pageTitle = 'KMUTT THEATRE | Movie Selection';
+  $service->movieid=$movieid;
+  $service->movietitle=$movietitle[1];
 
   $service->render('layouts/group2/selectmovie.php');
 });?>

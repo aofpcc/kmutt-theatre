@@ -59,7 +59,7 @@ class PointManager
             $stmt->execute();
     }
 
-    //deletePoint
+    //decreasePoint
     public function subtractPoint($input)
     {
         $result = [

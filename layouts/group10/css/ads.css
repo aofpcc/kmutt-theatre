@@ -13,9 +13,14 @@ body {
   background-color: #ffdfdf;
 }
 
-.head h1 {
-  margin: 0 10px;
+.head h1, .head h3 {
+  display: inline;
+  margin: 5px 10px;
   color: #509aaf;
+}
+
+.head a {
+  text-decoration: none;
 }
 
 .main-body {
@@ -36,26 +41,35 @@ body {
   flex-basis: 60%;
 }
 
-.list h2 {
+.logs {
+  margin: 20px;
+  flex-basis: 100%;
+}
+
+.list h2, .logs h2 {
   margin: 10px;
   color: #509aaf;
 }
 
-.list table {
+.list table, .logs table {
   width: 100%;
   background-color: #fff6f6;
   overflow: scroll;
 }
 
-.list thead tr {
+.list thead tr, .logs thead tr {
   background-color: #fb929e;
 }
 
-.list thead th {
+.list thead th, .logs thead th {
   color: #fff6f6;
 }
 
-.list tbody td {
+.logs thead th {
+  text-align: center;
+}
+
+.list tbody td, .logs tbody td {
   text-align: center;
   border-bottom: 1pt solid rgba(128, 128, 128, 0.3);
   
@@ -91,6 +105,22 @@ body {
 
 .list-date {
   width: 15%;
+}
+
+.logs-id {
+  width: 10%;
+}
+
+.logs-user {
+  width: 30%;
+}
+
+.logs-act {
+  width: 20%;
+}
+
+.logs-date {
+  width: 40%;
 }
 
 .ads {

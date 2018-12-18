@@ -16,9 +16,9 @@
           height: 100%;
           width: 100%;
         }
-        
-        
-        
+
+
+
 
     </style>
     <meta charset="utf-8">
@@ -35,7 +35,7 @@
     <div id="map" style=" height: 50%; width: 100%;"></div>
     <hr style="height:2pt; visibility:hidden; margin-bottom:-1px; margin-top:3px" />
     <form action="/group14/map/action" method="post">
-        <div class=""><input class="" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search location..." style="width: 100%; border: none; border-bottom: 2px solid red;"/></div>
+        <div class=""><input class="" type="text" id="myInput" onkeyup="myFunction()" placeholder="  Search location..." style="width: 100%; height: 42px; border: none; border-radius: 6px; font-size: 17px; "/></div>
         <hr style="height:2pt; visibility:hidden; margin-bottom:-1px; margin-top:3px" />
         <div class="scrollable scrollbar-danger" style='height: 30%'>
             <div class="force-overflow" id="BtnContainer">
@@ -50,7 +50,7 @@
             </div>
         </div>
         <hr style="height:2pt; visibility:hidden; margin-bottom:-1px; margin-top:2px" />
-        <div><button id="confirmLoc" type="submit" name="" value="" class="btn button btn-lg btn-block" >Confirm</button></div>
+        <div><button id="confirmLoc" type="submit" name="" value="" class="btn button1 btn-lg btn-block" >Confirm</button></div>
     </form>
 </div>
 <br>

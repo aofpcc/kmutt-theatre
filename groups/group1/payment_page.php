@@ -29,6 +29,13 @@ $klein->respond('POST', '/kmutt_home/branch/show_time/select_chair/payment/[:sho
   $query_movie = $conn->query("select title, Image,length from G09_Movie where id = '".$id_movie."';")
   ->fetchAll(PDO::FETCH_ASSOC);
 
+  $daedline = $conn->query("select distinct date(deadline) as dead_date, time(deadline) as dead_time from G01_Booking where buyer_id = 151; ")
+  ->fetchAll(PDO::FETCH_ASSOC);
+
+  // var_dump($daedline);
+  // die;
+
+
   //$date = DateTime::createFromFormat('Y-m-d', $query_showtime[0]["startDate"]);
   //$date = date_format($query_showtime[0]["startDate"], 'd-m-y');;
   $times = date('g:ia', strtotime($query_showtime[0]["startTime"]));
@@ -40,6 +47,8 @@ $klein->respond('POST', '/kmutt_home/branch/show_time/select_chair/payment/[:sho
   $title = $query_movie[0]["title"];
   $image = $query_movie[0]["Image"];
   $length = $query_movie[0]["length"];
+  $d_dead = $daedline[0]["dead_date"];
+  $t_dead = $daedline[0]["dead_time"];
   $theatre_no = $query_showtime[0]["room_id"];
   // $dates = $date;
   // $times = $time;
@@ -47,6 +56,8 @@ $klein->respond('POST', '/kmutt_home/branch/show_time/select_chair/payment/[:sho
   $service->title = $title;
   $service->image = $image;
   $service->length = $length;
+  $service->d_dead = $d_dead;
+  $service->t_dead = $t_dead;
   $service->theatre_no = $theatre_no;
   $service->date = $dates;
   $service->time = $times;

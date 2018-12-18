@@ -26,7 +26,7 @@ body {
 .main-body {
   display: flex;
   position: relative;
-  height: 80vh;
+  height: 85vh;
   
   background-color: #ffdfdf;
 }

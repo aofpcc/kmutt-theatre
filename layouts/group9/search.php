@@ -68,7 +68,7 @@
         <td><?=$movie["detail"]?></td>
         <td><?=$movie["studio_name"]?></td>
         <td>
-          <button class="btn btn-secondary" onclick="location.href='/emp/group9/edit/<?=$movie['id']?>';">Edit</button>
+          <button class="btn btn-secondary" onclick="location.href='/emp/group9/update/<?=$movie['id']?>';">Edit</button>
           <button class="btn btn-danger" onclick="del(<?=$movie['id']?>);">Delete</button>
         </td>
       </tr>

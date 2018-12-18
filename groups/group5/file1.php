@@ -45,7 +45,7 @@ $klein->respond('GET', '/change/password', function ($request, $response, $servi
     // $userID = $loginInfo['userID'];
     $result = $app->login->requireLogin('customer');
     $newOne = $service->passValue;
-    $service->passValue["userID"] = $result["userID"];
+    $newOne["userID"] = $result["userID"];
     $service->passValue = $newOne;
     $service->render('layouts/group5/changePassword.php');
 });

@@ -62,7 +62,7 @@
                                     <div class="poster"><img src="/layouts/group2/images/selectseat/unnamed.jpg"></div>
                                     <div class="movie-detail">
                                         <div class="main-detail">
-                                            <h1 class="name">อควาแมน เจ้าสมุทร</h1>
+                                            <h1 class="name">Aquaman</h1>
                                             <ul class="movie-detail-list movie-date-time">
                                                 <li class="list-item"><span class="date">13 ธันวาคม 2018</span></li>
                                                 <li class="list-item"><span class="time">13:20</span></li>
@@ -140,5 +140,5 @@
 
                     </div>
                 </div>
-                <script src="/layouts/group1/js/jquery.nicescroll.js"></script>
-                <script src="/layouts/group1/js/scripts.js"></script>
+                <!-- <script src="/layouts/group1/js/jquery.nicescroll.js"></script>
+                <script src="/layouts/group1/js/scripts.js"></script> -->

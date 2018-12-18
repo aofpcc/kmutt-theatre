@@ -27,7 +27,7 @@
               <input type="email" class="form-control form-control-lg" id="usr" name="email" required>
             </div>
             <div class="gap-more"></div>
-            <button type="submit" class="cancel-block gap red-block white-font" name="button" >Submit</button>
+            <button type="submit" class="cancel-block gap red-block white-font" name="button" >Send</button>
             <button type="button" class="cancel-block gap" onclick="location = '/customer/login'">Cancel</button>
           </form>
         </div>

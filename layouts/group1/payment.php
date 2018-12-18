@@ -56,6 +56,7 @@
 
                     // var_dump($this->seats);
                     // die;
+
                     foreach ($arry as $result)
                     {
                       echo 'row : ', $result['row'],'   seat : ', $result['seat'],'<br/>';

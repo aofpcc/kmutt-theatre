@@ -68,16 +68,28 @@ function ($request, $response, $service)  use($database){
         $theatre_no = $room_no[0]["room_id"];
         $movie_id = $id_movie[0]["movie_id"];
 
-        // $array = json_decode(json_encode($seats), true);
-        // foreach ($array as $result) {
-        //   $row = $result['row'];
-        //   $seat = $result['seat'];
-        //
-        //   $sql = "INSERT INTO G01_Booking (status, deadline, booking_time, code, buyer_id, row_ticket, seat_ticket, room_id, movie_id)
-        //   values('$status',FROM_UNIXTIME($deadline), CURRENT_TIMESTAMP, '$code', '$buyer_id', '$row', '$seat', '$theatre_no', '$movie_id')";
-        //   $stmt = $conn->prepare($sql);
-        //   $stmt->execute();
-        // }
+
+        $array = json_decode(json_encode($seats), true);
+        foreach ($array as $result) {
+          $row = $result['row'];
+          $seat = $result['seat'];
+
+
+          //$seat = array();
+          // $soldSeat = $conn->query("select seat_ticket from G02_Ticket_history where movie_id = $id;")
+          // ->fetchAll(PDO::FETCH_ASSOC);
+          for ($i=0; $i < count($selectedSeats); $i++) {
+            $seat = $selectedSeats[$i];
+            // var_dump($seat);
+            // die;
+            $sql = "INSERT INTO G01_Booking (status, deadline, selected_seat, booking_time, code, buyer_id, row_ticket, seat_ticket, room_id, movie_id)
+            values('$status',FROM_UNIXTIME($deadline), $seat, CURRENT_TIMESTAMP, '$code', '$buyer_id', '$row', '$seat', '$theatre_no', '$movie_id')";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+          }
+          // var_dump($selectedSeats[1]);
+          // die;
+        }
 
       }
       catch(PDOException $e){
@@ -88,14 +100,16 @@ function ($request, $response, $service)  use($database){
     }
   }
 
-  // var_dump($seats);
+  // var_dump($seats[0]);
   // die;
-
   // // Pass on the params to the page we're gonna render
   //$service->selectedSeats = $request->selectedSeats;
   // $service->pageTitle = 'Payment';
+  $service->seats = $seats;
   $service->render('layouts/group1/payment.php');
-  $service->seats = $request->seats;
+
+  // var_dump($seats[0]);
+  // die;
   // $response->redirect('/customer/kmutt_home/branch/show_time/select_chair/payment');
 });
 

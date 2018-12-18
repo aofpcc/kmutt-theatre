@@ -45,16 +45,12 @@ $klein->respond('GET', '/kmutt_home/branch/show_time/select_chair/[:showtime_id]
   $month = $temp->format("F");
   $service->string = $temp->format("d")." ".$month." ".$temp->format("Y");
 
-  // $response->dump($movie_id);
-  // $response->sendBody();
-  // die;
+
 
   // Pass on the params to the page we're gonna render
   $service->selectedSeats = $request->selectedSeats;
   $service->name = $name[0];
   $service->movie_id = $movie_id[0];
-  // $service->deadline = $deadline;
-  // $service->movie_name = $movie_name;
   $service->showtime_id = $request->showtime_id;
   // $service->theatre_no = $theatre_no;
   // $service->pageTitle = 'Payment';
@@ -66,34 +62,17 @@ $klein->respond('GET', '/kmutt_home/branch/show_time/select_chair/[:showtime_id]
   $soldSeat = $conn->query("select seat_ticket from G02_Ticket_history where movie_id = $id;")
   ->fetchAll(PDO::FETCH_ASSOC);
 
-
   // var_dump($result);
   // die;
 
-   // $query = "select seat_ticket from G02_Ticket_history where movie_id = $id;";
-   // $stmt = $conn->prepare($query);
-   // $stmt->execute();
-   // $num = $stmt->rowCount();
-   //  //echo $num;
-   // $result = array();
-   //
-   // if($num > 0) {
-   //   while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-   //     extract($row);
-   //     array_push($result, $row);
-   //   }
-   // }
-
-   // var_dump($soldSeat);
-   // die;
    $result = [];
    foreach ($soldSeat as $value) {
      $str = $value["seat_ticket"];
      array_push($result, $str);
    }
 
-  $service->soldSeat = $result;
 
-  //$service->soldSeat = ['1_2', '4_4','4_5','6_6','6_7','8_5','8_6','8_7','8_8', '10_1', '10_2'];
+
+  $service->soldSeat = $result;
   $service->render('layouts/group1/select_chair.php');
 });

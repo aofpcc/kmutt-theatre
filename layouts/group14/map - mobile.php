@@ -27,9 +27,9 @@
 </head>
 <!-- <div id="map"></div> -->
 <div class="container" style="width: 95%;">
-<hr style="height:8px; visibility:hidden; margin-bottom:-1px; margin-top:0px" />
+<hr style="height:5px; visibility:hidden; margin-bottom:-1px; margin-top:0px" />
     <div id="map" style=" height: 50%; width: 100%;"></div>
-    <hr style="height:2pt; visibility:hidden; margin-bottom:-1px; margin-top:3px" />
+    <hr style="height:2pt; visibility:hidden; margin-bottom:-1px; margin-top: 0px" />
     <div action="/group14/map/action" method="post">
         <div class=""><input class="" type="text" id="myInput" onkeyup="myFunction()" placeholder="  Search location..." style="width: 100%; height: 40px; border: none; border-radius: 6px; font-size: 17px; "/></div>
         <hr style="height:2pt; visibility:hidden; margin-bottom:-1px; margin-top:3px" />

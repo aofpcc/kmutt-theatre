@@ -35,13 +35,12 @@ $klein->respond('GET','/promotion/edit/[:promo_id]', function($request, $respons
     $conn = $database->getConnection();
     $sql = "SELECT * FROM G08_Promo_main WHERE PromoID = :promo_id";
     $stmt = $conn->prepare($sql);
-    $promo_id = $request->promo_id; 
-    $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $stmt->bindParam(":promo_id", $promo_id);
     $stmt->execute();
-
+    echo $promo_id;
+    $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $service->title = "Edit Promotion [:promo_name]";
     $service->bootstrap3 = false; 
-    $service->render =("layouts/group8/editpromotion.php");
-
+    $service->data = $data;
+    $service->render("layouts/group8/editpromotion.php");
 });

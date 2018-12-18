@@ -46,7 +46,7 @@ $klein->respond('GET', '/androidChangePassword', function ($request, $response, 
   $arr = array();
   if($num == 1){
     $query = "INSERT INTO core_password_table (userID, password, create_date)
-                            VALUES ($userID, $newPass, NOW());";
+                            VALUES ('$userID', '$newPass', NOW());";
     $stmt = $conn->prepare($query);
     $stmt->execute();
     $arr["done"] = true;
@@ -57,7 +57,7 @@ $klein->respond('GET', '/androidChangePassword', function ($request, $response, 
   }
 
 
-  echo json_encode([$query]);
+  echo json_encode([$arr]);
 });
 
 $klein->respond('GET', '/androidUpdate', function ($request, $response, $service) {

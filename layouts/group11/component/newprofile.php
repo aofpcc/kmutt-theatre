@@ -57,6 +57,44 @@
                                 <input type="radio" name="gender" value="M" checked> Male<br>
                                 <input type="radio" name="gender" value="F"> Female<br>
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label edit-label">Profession:</label>
+                            <div class="col-lg-8 edit">
+                            <input class="form-control" type="text" name="Profession" value="" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label edit-label">experience:</label>
+                            <div class="col-lg-8 edit">
+                            <select class="form-control" name="experience">
+                                <option value="Entry Level">Entry Level</option>   
+                                <option value="Mid Level">Mid Level</option>  
+                                <option value="Senior Level">Senior Level</option>                                             
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label edit-label">O.T. rate:</label>
+                            <div class="col-lg-8 edit">
+                            <input class="form-control" type="text" name="ot_rate" value="" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label edit-label">English Level:</label>
+                            <div class="col-lg-8 edit">
+                            <select class="form-control" name="eng_lv">
+                                <option value="Entry Level">Entry Level</option>   
+                                <option value="Mid Level">Mid Level</option>  
+                                <option value="Senior Level">Senior Level</option>                                                 
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label edit-label">availability:</label>
+                            <div class="col-lg-8 edit">
+                            <input class="form-control" type="date" name="availability" value="" required>
+                            </div>
                         </div>                                               
                         <div class="form-group">
                             <label class="col-lg-3 control-label edit-label">Email:</label>
@@ -88,7 +126,7 @@
                         <div class="form-group">
                             <label class="col-lg-3 control-label edit-label">Status:</label>
                             <div class="col-lg-8 edit">
-                                <select name="Status">
+                                <select class="form-control" name="Status">
                                     <?php
                                         $result = $this->showstatus;
                                         for($i = 0; $i<count($result); $i++){

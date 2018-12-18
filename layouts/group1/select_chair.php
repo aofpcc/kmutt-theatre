@@ -28,20 +28,20 @@
               <div class="row">
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="card h-100">
-                      <a href="#"><img class="card-img-top" src="<?=$this->name["Image"] ?>" alt=""></a>
+                      <a href="#"><img class="card-img-top" src="<?= $this->image ?>" alt=""></a>
                     </div>
                   </div>
-                  <?php
-                  // var_dump($this->date_time);
-                  // die;
-                   ?>
+
                   <div class="col-md-7">
                       <br><br><br><br>
-                      <font size="5" style="font-weight:bold"> Movie Name: <?=$this->name["title"] ?></font><br><br>
-                      <font size="5">Date   : <?=$this->string ?></font><br><br>
-
-                      <font size="5">Time   : <?=$this->date_time ?></font> &nbsp&nbsp&nbsp  <font size="5"> Theater : <?=$this->movie_id["room_id"] ?></font><br><br>
-                      <font size="5">Length : <?=$this->length["length"] ?></font> <br>
+                      <font size="5" style="font-weight:bold"> Movie Name: <?=$this->title ?></font><br><br>
+                      <font size="5">Date   : <?=$this->startDate ?></font><br><br>
+                      <font size="5">Time   : <?= $this->startTime ?></font> &nbsp&nbsp&nbsp
+                      <font size="5"> Theater : <?= $this->id_room ?> </font><br><br>
+                      <font size="5">Length : <?= $this->length ?></font> <br>
+                      <front size = "5">Type of seat : <?=$this->type_seat ?></front><br><br>
+                      <front size = "5">Information about seat : <?=$this->seat_info ?></front><br><br>
+                      <front size = "5">Price of seat : <?=$this->price ?></front><br><br>
 
                     <br> <!--link to ticket-->
                     <button type="button" class="btn btn-lg btn-danger"

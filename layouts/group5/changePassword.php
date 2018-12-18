@@ -38,7 +38,7 @@
             </div>
             <!-- Button -->
             <div class="gap-more"></div>
-              <button type="submit" class="block gap">Save</button>
+              <button type="submit" class="block gap red-block white-font">Save</button>
               <button type="button" class="cancel-block gap" onclick="location = '/customer/membership'">Cancel</button>
           </form>
         </div>

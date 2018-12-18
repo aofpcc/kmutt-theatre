@@ -13,8 +13,8 @@ function removeitem(id) {
      $("#tritem"+id).remove();
      item--;
      total_price();
-
  }
+
 
 function additem() {
     var type = $('.typeCheckbox:checked').val();
@@ -43,14 +43,17 @@ function additem() {
         var productID = type + snack + '00';
         get_price(productID);
     }
-
 }
+
+
 function sum_price(price,unit,id){
     var sum = price*unit;
     $("#sum"+id).val(sum);
     total_price();
 
 }
+
+
 function total_price(){
     total = 0;
     $("#totalprice").text("");
@@ -60,6 +63,7 @@ function total_price(){
     }
     $("#totalprice").text("Total = "+total);
 }
+
 
 function get_price(productID) {
  let formData = new FormData();
@@ -172,7 +176,7 @@ function updateOrder(){
 
 function getPointAndName(){
     var cusID = $("#CusID").val();
-    var points = Math.floor(total/100);
+    var points = Math.floor(total/25);
     let formData = new FormData();
     formData.append("CusID", cusID);
     let xhr = new XMLHttpRequest();

@@ -4,9 +4,9 @@ $klein->respond('GET', '/showRoominfo', function ($request, $response, $service,
     $service->bootstrap3 = false;
     $conn = $app->db->getConnection();
 
-    $query1 = "select ti.id, st.seatpic, rt.roomtype, rt.roomInfo, st.seattype, st.seat_price, st.seatInfo 
-    from G04_MSRnB_theaterInfo ti, G04_MSRnB_roomtype rt, G04_MSRnB_seattype st
-    where ti.roomtype_id = rt.id and ti.seattype_id = st.id;";
+    $query1 = "select st.seatpic, rt.roomtype, rt.roomInfo, st.seattype, st.seat_price, st.seatInfo 
+    from G04_MSRnB_roomtype rt, G04_MSRnB_seattype st
+    where rt.seattype_id = st.id ;";
 
 
     $stmt = $conn->prepare($query1);

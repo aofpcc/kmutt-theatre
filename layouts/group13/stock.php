@@ -2,7 +2,7 @@
 <?php
   global $database;
   $conn = $database->getConnection();
-  $sql = "select Remain,stockName,StockID from G13_FNB_Stock";
+  $sql = "SELECT Remain,stockName,s.StockID FROM G13_v_Stock as s, G13_FNB_StockName as n WHERE s.StockID = n.StockID;";
   $stmt = $conn->prepare($sql);
   $stmt->execute();
   $num = $stmt->rowCount();
@@ -12,14 +12,14 @@
   // echo "</pre>";
   for($i=0;$i<$num;$i++){
     if (substr($row[$i]["StockID"],0,2) == "DR"){
-      $unit[$i] = 'Liter';
+      $unit[$i] = 'Liters';
     };
     if (substr($row[$i]["StockID"],0,2) == "PC"){
       $row[$i]["Remain"] = $row[$i]["Remain"]/1000;
-      $unit[$i] = 'Kilogram';
+      $unit[$i] = 'Kilograms';
     };
     if (substr($row[$i]["StockID"],0,2) == "SN"){
-      $unit[$i] = 'Piece';
+      $unit[$i] = 'Packs';
     };
   }
 ?>

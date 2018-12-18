@@ -53,14 +53,12 @@
                     <?php
 
                     $arry = json_decode(json_encode($this->seats), true);
-
                     // var_dump($this->seats);
                     // die;
                     foreach ($arry as $result)
                     {
                       echo 'row : ', $result['row'],'   seat : ', $result['seat'],'<br/>';
                     }
-
                     ?>
                     <br> <br>
 
@@ -84,7 +82,7 @@
               </p>
               <br>
 
-              </p><br> <!--link to ticket-->
+              </p><br>
 
               <?php $this->partial("layouts/group1/js/countdown.php"); ?>
 

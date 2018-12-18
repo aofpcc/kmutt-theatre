@@ -23,6 +23,40 @@ $klein->respond('GET', '/add_showtime', function ($request, $response, $service,
     $service->render("layouts/group4/addshowtime/addshowtime.php");
 });
 
+$klein->respond('GET', '/add_showtime/[:table]/[:movie_id]', function ($request, $response, $service, $app, $validator) {
+    $service->bootstrap3 = false;
+    $conn = $app->db->getConnection();
+
+    $movie_id = $request->movie_id;
+    
+    if($request->table=="Soundtrack") {
+        $x = "soundtrack";
+    }else{
+        $x = "subtitle";
+    }
+
+    $query = "SELECT * from G09_".$request->table."_Movie WHERE id =:id order by $x asc";
+    $stmt = $conn->prepare($query);
+    $stmt->bindParam(":id", $movie_id);
+    $stmt->execute();
+
+    $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    // var_dump($data);
+    // die;
+    $options = [];
+    if($x == "subtitle") {
+        $options = [["movie_id" => "", "value" => "No Subtitle"]];
+    }
+        foreach($data as $d) {
+            array_push($options, [
+                "movie_id" => $d["id"],
+                "value" => $d[$x]
+            ]);
+        }
+    $service->options = $options;
+    $service->partial("layouts/group4/addshowtime/option.php");
+});
+
 $klein->respond('POST', '/g04/showTime/add', function ($request, $response, $service, $app, $validator) {
     $conn = $app->db->getConnection();
     // receive all data need
@@ -30,12 +64,16 @@ $klein->respond('POST', '/g04/showTime/add', function ($request, $response, $ser
     $room_id = $request->room_id;
     $startTime = $request->startTime;
     $endTime = $request->endTime;
+    $soundtrack = $request->soundtrack;
+    $subtitle = $request->subtitle;
 
     // insert data into db using PDO, again PDO , PDO, PDO, PDO
     try {
-        $stmt = $conn->prepare("insert into G04_MSRnB_showingroom(movie_id, room_id, startTime, endTime) values(:movie_id, :room_id, :startTime, :endTime);");
+        $stmt = $conn->prepare("insert into G04_MSRnB_showingroom(movie_id, room_id, soundtrack, subtitle, startTime, endTime) values(:movie_id, :room_id, :soundtrack, :subtitle, :startTime, :endTime);");
         $stmt->bindParam(':movie_id', $movie_id);
         $stmt->bindParam(':room_id', $room_id);
+        $stmt->bindParam(':soundtrack', $soundtrack);
+        $stmt->bindParam(':subtitle', $subtitle);
         $stmt->bindParam(':startTime', $startTime);
         $stmt->bindParam(':endTime', $endTime);
 

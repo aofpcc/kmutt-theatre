@@ -36,6 +36,7 @@ $klein->respond('GET', '/staff/employee', function($request, $response, $service
 $klein->respond('GET', '/staff/employee/dashboard', function ($request, $response, $service, $app, $validator) {
   error_reporting(E_ALL);
   ini_set('display_errors', 1);
+  $service->bootstrap3 = true;
   //check login
    $data = $app->login->LoginThenGoTo('employee','/emp/staff');
   //  echo($data['userID']);
@@ -72,7 +73,7 @@ $klein->respond('GET', '/staff/employee/dashboard', function ($request, $respons
 $klein->respond('GET', '/staff/employee/profile', function($request, $response, $service, $app, $validator) {
   error_reporting(E_ALL);
   ini_set('display_errors', 1);
-
+  $service->bootstrap3 = true;
   //check login
   $data = $app->login->LoginThenGoTo('employee','/emp/staff');
 
@@ -93,6 +94,18 @@ $klein->respond('GET', '/staff/employee/profile', function($request, $response, 
   $stmt = $conn->prepare($user);
   $stmt->execute();
   $service->picture = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+  //select db G11_Emp_department
+  $depart = "SELECT * FROM G11_Emp_department WHERE userID = $id " ;
+  $stmt = $conn->prepare($depart);
+  $stmt->execute();
+  $service->department = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+   //select db G11_Emp_department Availability
+   $time = "SELECT YEAR(CURRENT_DATE) - YEAR(`availability`) AS 'time' from G11_Emp_department  WHERE userID = $id " ;
+   $stmt = $conn->prepare($time);
+   $stmt->execute();
+   $service->depTime = $stmt->fetchAll(PDO::FETCH_BOTH);
 
   //permission
   $checks = "SELECT * from G11_Emp_staff where userID = $id" ;
@@ -117,7 +130,7 @@ $klein->respond('GET', '/staff/employee/profile', function($request, $response, 
 $klein->respond('GET', '/staff/employee/editprofile', function($request, $response, $service, $app, $validator){
   error_reporting(E_ALL);
   ini_set('display_errors', 1);
-
+  $service->bootstrap3 = true;
   //check login
   $data = $app->login->LoginThenGoTo('employee','/emp/staff');
 
@@ -165,7 +178,7 @@ $klein->respond('GET', '/staff/employee/editprofile', function($request, $respon
 $klein->respond('POST', '/staff/employee/editprofile/save', function($request, $response, $service, $app, $validator){
   error_reporting(E_ALL);
   ini_set('display_errors', 1);
-
+  $service->bootstrap3 = true;
   //check login
   $data = $app->login->LoginThenGoTo('employee','/emp/staff');
 
@@ -351,10 +364,29 @@ $klein->respond('POST', '/staff/employee/editprofile/save', function($request, $
     $response->redirect('/emp/staff/employee/profile');
   });
 
+  //timestamp
+  $klein->respond('GET', '/staff/employee/timestamp', function($request, $response, $service, $app, $validator){
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+    $service->bootstrap3 = true;
+    //check login
+    $data = $app->login->LoginThenGoTo('employee','/emp/staff');
+  
+    // connect db
+    global $database;
+    $conn = $database->getConnection();
+
+    $id = $data['userID'];
+    
+
+      $service->nameTag = 'timestamp.php';
+      $service->render('layouts/group11/employee.php');
+  });
+
   $klein->respond('GET', '/staff/employee/createprofile', function($request, $response, $service, $app, $validator){
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
-  
+    $service->bootstrap3 = true;
     //check login
     $data = $app->login->LoginThenGoTo('employee','/emp/staff');
   
@@ -389,7 +421,7 @@ $klein->respond('POST', '/staff/employee/editprofile/save', function($request, $
   $klein->respond('POST', '/staff/employee/createprofile/save', function($request, $response, $service, $app, $validator){
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
-  
+    $service->bootstrap3 = true;
     //check login
     $data = $app->login->LoginThenGoTo('employee','/emp/staff');
   
@@ -447,13 +479,26 @@ $klein->respond('POST', '/staff/employee/editprofile/save', function($request, $
      $Super_emp = 5;
      $Tell = $request->Tell;
      $users = 0;
+
+     $experience = $request->experience;
+     $Profession = $request->Profession;
+     $ot_rate = $request->ot_rate;
+     $eng_lv = $request->eng_lv;
+     $availability = $request->availability;
+
      if($request->password == $request->confirmpassword) {
      $users = $user[0]['userID'];
-
+      //insert db G11_Emp_staff
      $newprofile = "INSERT INTO G11_Emp_staff (Firstname, Lastname, Sex, `Status` , Email, `Address`, Salary, Super_emp, Tell, userID) 
      VALUES ('$firstName','$lastName','$gender','$Status','$email','$address','$Salary','$Super_emp','$Tell','$users')";
      $stmt = $conn->prepare($newprofile);
      $stmt->execute();
+
+       //insert db G11_Emp_department
+       $newdepart = "INSERT INTO G11_Emp_department (userID, experience, Profession, ot_rate , eng_lv, `availability`) 
+                                            VALUES ('$users','$experience','$Profession','$ot_rate','$eng_lv','$availability')";
+       $stmt = $conn->prepare($newdepart);
+       $stmt->execute();
      }
 
       //insert db G11_Emp_picture
@@ -527,7 +572,7 @@ $klein->respond('GET', '/staff/employee/finance', function($request, $response, 
       //test
       global $database;
       $conn = $database->getConnection();
-
+      $service->bootstrap3 = true;
       
 
       $revenue = $conn->query("SELECT sum(amount) as total FROM G03_FIN_Revenue")->fetchAll(PDO::FETCH_BOTH);

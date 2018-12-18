@@ -2,7 +2,7 @@
     <style>
         .box_tab {
             height: 100vh;
-            border: 3px solid black;
+            border: 2px solid black;
             padding-left: 0px !important;
             padding-right: 0px !important;
         }
@@ -27,7 +27,7 @@
         }
 
         .box-movie:nth-child(even) {
-            background-color: red;
+            background-color: rgb(232,121,23);
             border: 1px solid black;
         }
 
@@ -88,7 +88,7 @@
   background-color: #fefefe;
   margin: auto;
   padding: 20px;
-  border: 1px solid #888;
+  border: 1px solid;
   width: 80%;
   min-width: 1100px;
 }
@@ -156,6 +156,12 @@
         $.get("/emp/ticket/" + branch_id + "/" + i).done(function (data) {
             $("#allbranch").html(data);
         })
+    }
+
+    function show(code) {
+        var x = "<a href='/emp/ticket/get/"+code+"' target='_blank'>GET CODE</a>";
+        $("#select_seat").empty();
+        $("#select_seat").html(x);
     }
 
     function selectShowTime(i) {

@@ -136,3 +136,15 @@ $klein->respond('POST', '/ticket/showtime/buy/[:showtime_id]', function($request
     return $response->json($result);
     // $service->partial('layouts/group2/new_sub_select_seat.php');
 });
+
+$klein->respond('GET', '/ticket/get/[:code]', function($request, $response, $service, $app, $validator){
+    $service->bootstrap3 = false;
+    $conn = $app->db->getConnection();
+    $query = "Select * From G02_Ticket_history";
+    $stmt = $conn->prepare($query);
+    $stmt->bindParam(":code", $code);
+    $stmt->execute();
+
+
+    
+});

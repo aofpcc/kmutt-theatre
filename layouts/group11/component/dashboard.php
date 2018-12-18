@@ -25,6 +25,7 @@
                   <th>Call</th>
                   <?php
                    if($this->permission[0]['finance'] == 1){
+                    echo ' <th>ID</th>';
                     echo ' <th></th>';
                     } 
                   ?>                 
@@ -42,6 +43,7 @@
                     echo '<td>'.$row['Email'].'</td>';
                     echo '<td>'.$row['Tell'].'</td>';
                     if($this->permission[0]['finance'] == 1){
+                      echo '<td>'.$row['userID'].'</td>';  
                     echo '<td><a href ="/emp/staff/employee/editemp/'.$row['userID'].'">edit</a></td>';
                     }  
                     echo '</tr>';                        

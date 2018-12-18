@@ -63,14 +63,18 @@
                 echo '</a>';
                 echo '</li>';
               }
-              ?>
-              <li class="nav-item">
-                <a class="nav-link" href="">
-                  <span data-feather="clock"></span>
-                  Time Stamp
-                </a>
-              </li>
+              ?>            
               <?php 
+              if($this->permission[0]['timestamp'] == 1){
+                echo '<li class="nav-item">';
+                echo ' <a class="nav-link" href="/emp/staff/employee/timestamp">';
+                echo '  <span  data-feather="clock"></span>';
+                echo '  Time Stamp';
+                echo '</a>';
+                echo '</li>';
+              }
+              ?>
+              <?php             
               if($this->permission[0]['addMovie'] == 1){
                 echo '<li class="nav-item">';
                 echo ' <a class="nav-link" href="">';

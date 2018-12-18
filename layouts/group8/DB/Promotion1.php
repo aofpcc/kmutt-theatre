@@ -6,139 +6,87 @@
 
     <!-- Custom styles for this template -->
     <link href="/layouts/group8/DB/css/3-col-portfolio.css" rel="stylesheet" type="text/css">
+    <!-- Bootstrap core CSS -->
+    <link href="/layouts/group8/DB/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="/layouts/group8/DB/css/small-business.css" rel="stylesheet">
+    <style>
+
+p.solid {border-style: solid;}
+
+p.groove {border-style: groove;}
+p.double {border-style: double;}p.ridge {border-style: ridge;}
+p.inset {border-style: inset;}
+p.outset {border-style: outset;}
+p.none {border-style: none;}
+p.hidden {border-style: hidden;}
+p.mix {border-style: dotted dashed solid double;}
+.portfolio-item {
+  border: 1px solid gray;
+}
+.card-img-top {
+  max-height: 300px;
+  max-width: 245px;
+  height: auto;
+  width: auto;
+}
+</style>
+    
+    
 
   </head>
-
-    <!-- Navigation -->
-    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="#">KMUTT Theatre</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Movie</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Promotion</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav> -->
-
+  <body>
     <!-- Page Content -->
     <div class="container">
+      
 
       <!-- Page Heading -->
-      <h1 class="my-4">Promotion List
+      <h1 class="my-4">
+        Promotion List
         <small>
-        <h4 class="card-title">
-                <a href="/emp/promotion/add" id="m1">+Add</a>  
-                <a href="/emp/promotion/edit" id="m2">+Edit</a>
-              </h4>
+          <h4 class="card-title">
+            <br>
+            <button onclick = "location.href = '/emp/group8/search'" type="button" class="btn btn-secondary btn-lg">Search Promotion</button>
+            <button onclick = "location.href = '/emp/promotion/add'" type="button" class="btn btn-danger" id="m1">+Add</button></a>
+
+          </h4>
         </small>
       </h1>
 
       <div class="row">
-        <?php foreach($this->promotions as $promotion) { ?>
-          <div class="col-lg-4 col-sm-6 portfolio-item">
-          <div class="card h-100">
-            <a href="#"><img class="card-img-top" src='/groups/group8<?=$promotion["PromoPic"]?>' alt=""></a>
-            <div class="card-body">
-              <h4 class="card-title">
-                <?=$promotion["PromoName"] ?><br><br><?=$promotion["StartDate"] ?>
-                <br><?=$promotion["EndDate"] ?><br><br><?=$promotion["Description"] ?>
-                <br><br>CODE = <?=$promotion["PromoCode"] ?><br>one code / person
-                <button type="button" class="btn btn-success" onClick="location.href='/emp/promotion/edit/<?=$promotion["PromoID"] ?>';">Edit</button>
-                    <button type="button" class="btn btn-danger" onClick="del(<?=$rt['id']?>);">Delete</button>
-              </h4>
-              <p class="card-text">     </p>
+        <?php foreach($this->promotions as $promotion) { ?> 
+          <div class="col-lg-3 col-sm-4 portfolio-item">
+            <div class="card h-100"><br>
+              <a href="#"><img  height="400px" class="card-img-top" src='/groups/group8<?=$promotion["PromoPic"]?>' alt=""/></a>
+              <div class="card-body">
+                <h4 class="card-title">
+                <h6>Promotion name</h6>
+                  <?=$promotion["PromoName"] ?>
+                  <br><br><h6>start-end time</h6>
+                  <?=$promotion["StartDate"] ?>
+                  <br>
+                  <?=$promotion["EndDate"] ?>
+                  <br><br><h6>Description</h6>
+                  <?=$promotion["Description"] ?>
+                  <br><br>
+                  <h6>Discount</h6><?=$promotion["Discount"] ?>
+                  <br><br>
+                  <h6>Code</h6><?=$promotion["PromoCode"] ?>
+                  <br><br>
+                  <h6>Point</h6><?=$promotion["PointUsed"] ?><br>
+                  <button type="button" class="btn btn-success" onClick="location.href='/emp/promotion/edit/<?=$promotion["PromoID"]?>';">Edit</button>
+                  <button type="button" class="btn btn-danger" onClick="location.href='/promotion/<?php ?>/<?php echo $this->promotions["PromoID"]; ?>';">Use Point</button>
+                </h4>
+                <p class="card-text">     </p>
+              </div>
             </div>
           </div>
-        </div>
         <?php } ?>
-        
-
-        <!-- <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card">
-          <a href="#"><img class="card-img-top" src='/layouts/group8/DB/Pic/<?=$promotion["PromoPic"]?>' alt=""></a>
-            <div class="card-body">
-            <?=$promotion["PromoName"] ?><br><br><?=$promotion["StartDate"] ?>
-                <br><?=$promotion["EndDate"] ?><br><br><?=$promotion["Description"] ?>
-                <br><br>CODE = <?=$promotion["PromoCode"] ?><br>one code / person
-            </div>
-            
-          </div>
-        </div> -->
-        <!-- <div class="col-lg-4 col-sm-6 portfolio-item">
-          <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="/layouts/group8/DB2/Pic/Movie1.jpg" alt=""></a>
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="/emp/group8M" id="m1">Before 03:00 PM</a>
-                
-              </h4>
-              <p class="card-text">     </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-          <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="/layouts/group8/DB2/Pic/Movie2.jpg" alt=""></a>
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="/emp/group8M2" >After 03:00 PM</a>
-              </h4>
-              <p class="card-text">     </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-          <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="/layouts/group8/DB2/Pic/Food1.jpg" alt=""></a>
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="/emp/group8F">Couple set(Popcorn M + Drink M)</a>
-              </h4>
-              <p class="card-text"></p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-          <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="/layouts/group8/DB2/Pic/Food2.jpg" alt=""></a>
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="/emp/group8F2">Couple set(Popcorn L + Drink L)</a>
-              </h4>
-              <p class="card-text">    </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-          <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="/layouts/group8/DB2/Pic/Food3.jpg" alt=""></a>
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="group8F3">Family set(Popcorn XL + Drink XL)</a>
-              </h4>
-              <p class="card-text"></p>
-            </div>
-          </div>
-        </div> -->
-       
       </div>
+
+      
+       
+      <!-- </div> -->
       <!-- /.row -->
 
       <!-- Pagination -->
@@ -174,3 +122,4 @@
     <!-- Bootstrap core JavaScript -->
     <!-- <script src="vendor/jquery/jquery.min.js"></script> -->
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>

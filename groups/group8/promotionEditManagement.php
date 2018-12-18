@@ -57,16 +57,17 @@ $klein->respond('POST','/promotion/edit/[:promo_id]', function($request, $respon
     $conn = $database->getConnection();
     $stmt = $conn->prepare("UPDATE G08_Promo_main
     SET PromoName = :promotion_name, Description = :promotion_des, Discount = :promotion_dis,
-    PromoCode =:promotion_code,  StartDate = :promotion_start,EndDate = :promotion_end
+    PromoCode =:promotion_code,  StartDate = :promotion_start,EndDate = :promotion_end,PointUsed = :promotion_point
      WHERE PromoID = :promo_id;");
 
     $promo_id = $request->promo_id;
     $name = $request->promotion_name;
     $des = $request->promotion_des;
     $dis = $request->promotion_dis;
-        $start_date = $request->promotion_start;
-        $end_date = $request->promotion_end;
-        $code = $request->promotion_code;
+    $start_date = $request->promotion_start;
+    $end_date = $request->promotion_end;
+    $code = $request->promotion_code;
+    $point = $request->promotion_point;
         // $link = $_POST['link'];
         // var_dump($des);
         // die;
@@ -74,14 +75,31 @@ $klein->respond('POST','/promotion/edit/[:promo_id]', function($request, $respon
     $stmt->bindParam(":promo_id", $promo_id);
     $stmt->bindParam(':promotion_name', $name);
     $stmt->bindParam(':promotion_des', $des);
-        $stmt->bindParam(':promotion_dis', $dis);
-        $stmt->bindParam(':promotion_start', $start_date);
-        $stmt->bindParam(':promotion_end', $end_date);
-        $stmt->bindParam(':promotion_code', $code);
-        
+    $stmt->bindParam(':promotion_dis', $dis);
+    $stmt->bindParam(':promotion_start', $start_date);
+    $stmt->bindParam(':promotion_end', $end_date);
+    $stmt->bindParam(':promotion_code', $code);
+    $stmt->bindParam(':promotion_point', $point);
     $stmt -> execute();
     // $service->render("layouts/group8/DB/Promotion1.php");
     $response->redirect("/emp/group8");
         $response->sendHeaders();
+});
+$klein->respond('GET','/group8/search', function($request, $response, $service, $app, $valiator) {
+    $service->boostrap3 = false;
+    $sql = "select * 
+    from G08_Promo_main
+    where now() between StartDate and EndDate;";
+   
+    $conn = $app->db->getConnection();
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
+   //  $response->dump($data);
+   //  $response->sendBody();
+   $service->list = $list;
+   $service->isManagementPage = true;
+   $service->promotions = $list;
+    $service->render("layouts/group8/DB/SearchTable.php");
 });
 ?>

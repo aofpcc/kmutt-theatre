@@ -19,7 +19,7 @@ $klein->respond('GET', '/mobile/getShowtime', function ($request, $response, $se
   global $database;
   $conn = $database->getConnection();
 
-  $query = "SELECT * from G09_Movie";
+  $query = "SELECT * from G09_Movie_Name";
   $stmt = $conn->prepare($query);
   $stmt->execute();
 

@@ -228,4 +228,42 @@ $klein->respond('POST', '/staff/employee/editemp/save', function ($request, $res
    
      $response->redirect('/emp/staff/employee/dashboard');
   });
+
+  $klein->respond('POST', '/staff/employee/dashboard/search', function ($request, $response, $service, $app, $validator) {
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+    $service->bootstrap3 = true;
+    //check login
+     $data = $app->login->LoginThenGoTo('employee','/emp/staff');
+    //  echo($data['userID']);
+  
+     // connect db
+     global $database;
+     $conn = $database->getConnection();
+     
+    $tell =  $request->tell;
+    //select
+    $query = "SELECT * from G11_Emp_staff WHERE Tell LIKE '%$tell%' OR `Status` LIKE '%$tell%' OR Firstname LIKE '%$tell%'  OR Lastname LIKE '%$tell%' OR Email LIKE '%$tell%' " ;
+      $stmt = $conn->prepare($query);
+      $stmt->execute();
+      $service->employee = $stmt->fetchAll(PDO::FETCH_BOTH);
+      $id = $data['userID'];
+  
+      $checks = "SELECT * from G11_Emp_staff where userID = $id" ;
+      $stmt = $conn->prepare($checks);
+      $stmt->execute();
+      $service->state = $stmt->fetchAll(PDO::FETCH_BOTH);
+      $status = $service->state[0]['Status'];
+  
+       //select G11_Emp_permission
+    $checkstatus = "SELECT * from G11_Emp_permission where `status` = '$status'" ;
+    $stmt = $conn->prepare($checkstatus);
+    $stmt->execute();
+    $service->permission = $stmt->fetchAll(PDO::FETCH_BOTH);
+  
+  
+    $service->nameTag = 'dashboard.php';
+    $service->render('layouts/group11/employee.php');
+  
+  });
 ?>

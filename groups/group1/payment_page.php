@@ -95,7 +95,7 @@ function ($request, $response, $service)  use($database){
   //$service->selectedSeats = $request->selectedSeats;
   // $service->pageTitle = 'Payment';
   $service->render('layouts/group1/payment.php');
-  $service->seats = $seats;
+  $service->seats = $request->seats;
   // $response->redirect('/customer/kmutt_home/branch/show_time/select_chair/payment');
 });
 

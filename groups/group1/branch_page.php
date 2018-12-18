@@ -91,8 +91,10 @@ $klein->respond('GET', '/movies/showtime/all/[:movie_id]/[:show_date]', function
                     } else{
                         $movie["status"] = " btn-dark";//btn-outline-primary
                     }
+                    $movie["clickable"] = true;
                 }else{
                     $movie["status"] = " inactive ";
+                    $movie["clickable"] = false;
                 }
                 array_push($r_temp["movies"], $movie);
             }

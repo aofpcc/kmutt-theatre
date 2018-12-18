@@ -1,7 +1,7 @@
   <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <!-- <link rel="stylesheet" type="text/css" href="/layouts/group10/css/ads.css"> -->
+    <link rel="stylesheet" href="/layouts/group10/css/ads.css">
     <script src="/layouts/group10/js/ads.js"></script>
   </head>
     <div name="header" class="head">

@@ -36,11 +36,13 @@
                       <br><br><br><br>
                       <font size="5" style="font-weight:bold"> Movie Name: <?=$this->name["title"] ?></font><br><br>
                       <font size="5">Date   : <?=$this->string ?></font><br><br>
-                      <font size="5">Time   : 21:00</font> &nbsp&nbsp&nbsp  <font size="4"> Theater : 5 </font><br><br>
-                      <font size="5">Length : 135 Mins</font> <br><br>
+                      <font size="5">Time   : 21:00</font> &nbsp&nbsp&nbsp  <font size="5"> Theater : 5 </font><br><br>
+                      <font size="5">Length : 135 Mins</font> <br>
 
-                    <br><br> <!--link to ticket-->
-
+                    <br> <!--link to ticket-->
+                    <button type="button" class="btn btn-lg btn-danger"
+                    onclick="location.href = '/customer/invitation/showtime/<?=$this->showtime_id?>'">INVITED FRIEND
+                  </button>
 
                     </div>
                 </div>
@@ -61,8 +63,8 @@
           <li>Seats :</li>
         </ul>
         <ul class="book-right">
-          <li>: Gingerclown</li>
-          <li>: April 3, 21:00</li>
+          <!-- <li>: Gingerclown</li>
+          <li>: April 3, 21:00</li> -->
           <li>: <span id="counter">0</span></li>
           <li>: <b><i>$</i><span id="total">0</span></b></li>
         </ul>

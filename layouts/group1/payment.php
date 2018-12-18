@@ -54,8 +54,8 @@
 
                     $arry = json_decode(json_encode($this->seats), true);
 
-                    var_dump($this->seats);
-                    die;
+                    // var_dump($this->seats);
+                    // die;
                     foreach ($arry as $result)
                     {
                       echo 'row : ', $result['row'],'   seat : ', $result['seat'],'<br/>';

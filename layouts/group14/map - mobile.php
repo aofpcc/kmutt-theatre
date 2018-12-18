@@ -11,11 +11,13 @@
             padding-right: 15px;
             padding-left: 15px;
         } */
-        html, body{
+        body{
           background-color: #212529;
           height: 100%;
           width: 100%;
         }
+        
+        
         
 
     </style>
@@ -28,14 +30,14 @@
     <link rel="stylesheet" href="/layouts/group14/map.css">
 </head>
 <!-- <div id="map"></div> -->
-<div class="container" style="width: 95%; height:100%">
-
-    <div id="map" style="margin-top: 8px; height: 50%; width: 100%;"></div>
+<div class="container" style="width: 95%;">
+<hr style="height:8px; visibility:hidden; margin-bottom:-1px; margin-top:0px" />
+    <div id="map" style=" height: 50%; width: 100%;"></div>
     <hr style="height:2pt; visibility:hidden; margin-bottom:-1px; margin-top:3px" />
     <form action="/group14/map/action" method="post">
-        <div class="input-group stylish-input-group"><input class="form-control" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search location..." style="width: 100%"/></div>
+        <div class=""><input class="" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search location..." style="width: 100%; border: none; border-bottom: 2px solid red;"/></div>
         <hr style="height:2pt; visibility:hidden; margin-bottom:-1px; margin-top:3px" />
-        <div class="scrollable scrollbar-danger" style='height: 200px'>
+        <div class="scrollable scrollbar-danger" style='height: 30%'>
             <div class="force-overflow" id="BtnContainer">
                 <ul id="myUL" style="line-height: 10%">
                     <?php for ($i = 0; $i < count($this->guy); $i++) {?>

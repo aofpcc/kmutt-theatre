@@ -1,5 +1,5 @@
 <?php
-$klein->respond('GET', '/kmutt_home/branch/[:movie_id]', function ($request, $response, $service) use ($database) {
+$klein->respond('GET', '/group2/home_page/select_movie/branch/[:movie_id]', function ($request, $response, $service) use ($database) {
     $service->bootstrap3 = false;
     $conn = $database->getConnection();
     date_default_timezone_set("Asia/Bangkok");
@@ -7,20 +7,10 @@ $klein->respond('GET', '/kmutt_home/branch/[:movie_id]', function ($request, $re
     $query = $conn->query("select distinct date(startTime) as start_date from available_movies where movie_id = '$request->movie_id'
     order by start_date asc;")->fetchAll(PDO::FETCH_ASSOC);
 
-    $num = count($query);
-    if($num == 0) {
-      $service->flash("No any showtime available");
-      $response->redirect("/customer/kmutt_home");
-      $response->sendHeaders();
-      return;
-    }
-
     $date = [];
     $status = false;
-    $isFirst = null;
     foreach($query as $q) {
         $temp = new DateTime($q["start_date"]);
-        if($isFirst == null) $isFirst = $temp;
         $month = substr($temp->format("F"), 0, 3);
         array_push($date, [
             "str" => $temp->format("d")." ".$month." ".$temp->format("Y"),
@@ -31,45 +21,26 @@ $klein->respond('GET', '/kmutt_home/branch/[:movie_id]', function ($request, $re
         $status = true;
     }
 
-    $query_movie = $conn->query("select distinct title, Image, detail, length from G09_Movie where id = '$request->movie_id'")->fetchAll(PDO::FETCH_ASSOC);
+    $name = $conn->query("select distinct title, Image, detail,length from G09_Movie where id = '$request->movie_id'")->fetchAll(PDO::FETCH_ASSOC);
 
-    // $details = $conn->query("select detail from G09_Movie where id = '$request->movie_id'")->fetchAll(PDO::FETCH_ASSOC);
+    $details = $conn->query("select detail from G09_Movie where id = '$request->movie_id'")->fetchAll(PDO::FETCH_ASSOC);
 
-    $gen = $conn->query("select distinct genre from G09_Genre_Movie where id = '$request->movie_id'")->fetchAll(PDO::FETCH_ASSOC);
-
-    $title = $query_movie[0]["title"];
-    $image = $query_movie[0]["Image"];
-    $detail = $query_movie[0]["detail"];
-    $length = $query_movie[0]["length"];
-    $genre = $gen[0]["genre"];
-
-    $service->title = $title;
-    $service->image = $image;
-    $service->detail = $detail;
-    $service->length = $length;
-    $service->genre = $genre;
-    // $response->dump($name);
-    // $response->sendBody();
-    // die;
-    // var_dump($genre);
-    // die;
-
-    // $service->name = $name[0];
-    // $service->photo = $name[0];
+    $genre = $conn->query("select distinct genre from G09_Genre_Movie where id = '$request->movie_id'")->fetchAll(PDO::FETCH_ASSOC);
+    
+    $service->name = $name[0];
+    $service->photo = $name[0];
     // $service->detail = $name[0];
-    $service->datenow = empty($isFirst)? (new DateTime())->format("Y-m-d") :$isFirst->format("Y-m-d");
+    $service->datenow = (new DateTime)->format("Y-m-d");
     $service->query = $date;
-    // var_dump($date);
-    // die;
-    // $service->length = $name[0]["length"];
+    $service->length = $name[0]["length"];
     $service->movie_id = $request->movie_id;
-    // var_dump($service->detail);
-    // die;
-    $service->render('layouts/group1/showtime318.php');
+
+    $service->render('layouts/group2/showtime.php');
 
 });
 
-$klein->respond('GET', '/movies/showtime/all/[:movie_id]/[:show_date]', function ($request, $response, $service, $app, $validator) {
+
+$klein->respond('GET', '/group2/showtime/all/[:movie_id]/[:show_date]', function ($request, $response, $service, $app, $validator) {
     $conn = $app->db->getConnection();
     date_default_timezone_set("Asia/Bangkok");
 
@@ -136,6 +107,6 @@ $klein->respond('GET', '/movies/showtime/all/[:movie_id]/[:show_date]', function
 
     // ret 1
     $service->result = $result;
-    $service->partial("layouts/group1/branch_each.php");
+    $service->partial("layouts/group2/eachbranch.php");
 });
 ?>

@@ -20,7 +20,7 @@
       <div class="row">
         <div class="col-sm-1"></div>
         <div class="col-sm-6">
-          <form action="/test/forgetPassword" method="post">
+          <form action="/customer/forgetPassword" method="post">
             <div class="form-group">
               <p>Please enter your email to get reset password link</p>
               <label class="box-name-text" for="usr">Email</label>

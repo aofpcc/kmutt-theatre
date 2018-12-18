@@ -1,4 +1,9 @@
 <?php
+$klein->respond('GET', '/group10', function ($request, $response, $service) {
+  $response->redirect("/emp/group10/ads");
+  $response->sendHeaders();
+});
+
 $klein->respond('GET', '/group10/ads', function ($request, $response, $service, $app, $validator) {
   // $service->bootstrap3 = true;
   if(empty($_SESSION['login'])) {
@@ -38,6 +43,7 @@ $klein->respond('GET', '/group10/ads/[:ads_id]', function ($request, $response, 
 
   $service->link = "https://".$data[$ran]["url"];
   $service->linkads = "/layouts/group10".$data[$ran]["banner"];
+
   $service->render("layouts/group10/test_ads/index.php");
 });
 

@@ -10,13 +10,10 @@ function randomCode($length = 4) {
   return $str;
 }
 
-$klein->respond('GET', '/kmutt_home/branch/show_time/select_chair/[:showtime_id]', function ($request, $response, $service)  use($database){
+$klein->respond('GET', '/kmutt_home/branch/show_time/select_chair/[:showtime_id]', function ($request, $response, $service, $app, $validator)  use($database){
+  $userID = "".$app->login->requireLogin('customer')["userID"];
   $service->bootstrap3 = false;
   $conn = $database->getConnection();
-
-  // $x = $request->showtime_id;
-  // var_dump($x);
-  // die;
 
   $service->seatMap = [  //Seating chart
     'aaaaaaaaaa',
@@ -34,75 +31,78 @@ $klein->respond('GET', '/kmutt_home/branch/show_time/select_chair/[:showtime_id]
   // Pass on the params to the page we're gonna render
   $service->selectedSeats = $request->selectedSeats;
 
-  $movie_id = $conn->query("select movie_id , room_id from G04_MSRnB_showingroom where id = '$request->showtime_id';")->
+  $query_showtime = $conn->query("select movie_id , room_id, date(startTime) as startDate,
+  time(startTime) as startTime from G04_MSRnB_showingroom where id = '$request->showtime_id';")->
   fetchAll(PDO::FETCH_ASSOC);
-  $name = $conn->query("select title, Image,length from G09_Movie where id = '".$movie_id[0]["movie_id"]."';")->fetchAll(PDO::FETCH_ASSOC);
+  $id_movie = $query_showtime[0]["movie_id"];
 
-  $date = $conn->query("select date(startTime) as startDate from G04_MSRnB_showingroom where id = '$request->showtime_id';")
+  $query_movie = $conn->query("select title, Image,length from G09_Movie where id = '".$id_movie."';")
   ->fetchAll(PDO::FETCH_ASSOC);
 
-  $dateTime = $conn->query("select time(startTime) as start_time from G04_MSRnB_showingroom where id = '$request->showtime_id';")
-  ->fetchAll(PDO::FETCH_ASSOC);
+  //$id_movie = $query_showtime[0]["movie_id"];
+  $id_room =  $query_showtime[0]["room_id"];
+  $startDate = $query_showtime[0]["startDate"];
+  $startTime = $query_showtime[0]["startTime"];
 
-  $date_time = date('g:ia', strtotime($dateTime[0]["start_time"]));
+  $title = $query_movie[0]["title"];
+  $image = $query_movie[0]["Image"];
+  $length = $query_movie[0]["length"];
 
+  $soldSeat = $conn->query("select seat_ticket from G02_Ticket_history where movie_id = $id_movie")->
+  fetchAll(PDO::FETCH_ASSOC);
 
-  $temp = new DateTime($date[0]["startDate"]);
-  //$temp1 = new DateTime($date[1]["startDate"]);
+  $date_time = date('g:ia', strtotime($startTime));
+
+  $temp = new DateTime($startDate);
   $month = $temp->format("F");
   $service->string = $temp->format("d")." ".$month." ".$temp->format("Y");
 
-  // $response->dump($movie_id);
-  // $response->sendBody();
-  // die;
+  $type_seat = $conn->query("select st.seattype as type_seat
+  from G04_MSRnB_room r, G14_Branch b, G04_MSRnB_showingroom s, G04_MSRnB_theaterInfo ti, G04_MSRnB_seattype st
+  where s.room_id = r.id and r.theaterinfo_id = ti.id and ti.seattype_id = st.id and r.branch_id = b.BranchID and
+  s.id = '$request->showtime_id' and s.movie_id = $id_movie;")->fetchAll(PDO::FETCH_ASSOC);
+
+  $seat_info = $conn->query("select st.seatInfo as seat_info
+  from G04_MSRnB_room r, G14_Branch b, G04_MSRnB_showingroom s, G04_MSRnB_theaterInfo ti, G04_MSRnB_seattype st
+  where s.room_id = r.id and r.theaterinfo_id = ti.id and ti.seattype_id = st.id and r.branch_id = b.BranchID and
+  s.id = '$request->showtime_id' and s.movie_id = $id_movie;")->fetchAll(PDO::FETCH_ASSOC);
+
+  $price = $conn->query("select st.seat_price as price
+  from G04_MSRnB_room r, G14_Branch b, G04_MSRnB_showingroom s, G04_MSRnB_theaterInfo ti, G04_MSRnB_seattype st
+  where s.room_id = r.id and r.theaterinfo_id = ti.id and ti.seattype_id = st.id and r.branch_id = b.BranchID and
+  s.id = '$request->showtime_id' and s.movie_id = $id_movie;")->fetchAll(PDO::FETCH_ASSOC);
 
   // Pass on the params to the page we're gonna render
   $service->selectedSeats = $request->selectedSeats;
-  $service->length = $name[0]["length"];
-  $service->name = $name[0];
-  $service->movie_id = $movie_id[0];
-  $service->date_time = $date_time;
-  // $service->deadline = $deadline;
-  // $service->movie_name = $movie_name;
+  $service->id_room = $id_room;
+  $service->startDate = $startDate;
+  $service->startTime = $startTime;
+  $service->title = $title;
+  $service->image = $image;
+  $service->length = $length;
+  $service->type_seat = $type_seat[0]["type_seat"];
+  $service->seat_info = $seat_info[0]["seat_info"];
+  $service->price = $price[0]["price"];
+  // $service->length = $name[0]["length"];
+  // $service->name = $name[0];
+  // $service->movie_id = $movie_id[0];
+  // $service->price = $price[0];
+  // $service->type_seat = $type_seat[0];
+  // $service->seat_info = $seat_info[0];
   $service->showtime_id = $request->showtime_id;
+
   // $service->theatre_no = $theatre_no;
   // $service->pageTitle = 'Payment';
   // $service->render('layouts/group1/select_chair.php');
-
-  //select soldSeat
-   $id = $movie_id[0]["movie_id"];
-  //
-  $soldSeat = $conn->query("select seat_ticket from G02_Ticket_history where movie_id = $id;")
-  ->fetchAll(PDO::FETCH_ASSOC);
-
-
-  // var_dump($result);
+  // var_dump($soldSeat);
   // die;
 
-   // $query = "select seat_ticket from G02_Ticket_history where movie_id = $id;";
-   // $stmt = $conn->prepare($query);
-   // $stmt->execute();
-   // $num = $stmt->rowCount();
-   //  //echo $num;
-   // $result = array();
-   //
-   // if($num > 0) {
-   //   while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-   //     extract($row);
-   //     array_push($result, $row);
-   //   }
-   // }
-
-   // var_dump($soldSeat);
-   // die;
    $result = [];
    foreach ($soldSeat as $value) {
      $str = $value["seat_ticket"];
      array_push($result, $str);
    }
-
-  $service->soldSeat = $result;
-
-  //$service->soldSeat = ['1_2', '4_4','4_5','6_6','6_7','8_5','8_6','8_7','8_8', '10_1', '10_2'];
+  //
+   $service->soldSeat = $result;
   $service->render('layouts/group1/select_chair.php');
 });

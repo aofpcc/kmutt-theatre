@@ -171,21 +171,7 @@
                             required>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="col-md-3 control-label edit-label">Password:</label>
-                            <div class="col-md-8 edit">
-                            <input class="form-control" type="password" name="password" placeholder="******" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-3 control-label edit-label">Confirm password:</label>
-                            <div class="col-md-8 edit">
-                            <input class="form-control" type="password" name="confirmpassword" placeholder="******" required>
-                                <div style = "font-size:11px; color:#cc0000; margin-top:10px">
-                                    <?php echo $this->error; ?>
-                                </div>
-                            </div>
-                        </div>
+                        
                         <div class="form-group">
                             <label class="col-lg-3 control-label edit-label">Status:</label>
                             <div class="col-lg-8 edit">
@@ -200,7 +186,22 @@
                                 </select>
                                
                             </div>
-                        </div> 
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label edit-label">Branch:</label>
+                            <div class="col-lg-8 edit">
+                                <select class="form-control" name="branch">
+                                    <?php
+                                        $branch = $this->branch;
+                                        for($i = 0; $i<count($branch); $i++){
+                                            $row = $branch[$i];
+                                            echo '<option value='.$row['BranchID'].'>'.$row['BranchName'].'</option>';                                      
+                                        } 
+                                    ?>
+                                </select>
+                               
+                            </div>
+                        </div>  
                         <div class="form-group">
                             <label class="col-md-3 control-label"></label>
                             <div class="col-md-8 edit">

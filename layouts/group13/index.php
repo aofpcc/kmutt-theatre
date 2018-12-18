@@ -24,7 +24,7 @@
         </ul>
     </div>
 </nav> -->
-<form action="/emp/fnb/add_point" method="get">
+<form id="form" action="/emp/fnb/add_point" method="get">
 <div class="d-flex justify-content-start">
     <div class="container-fluid" style="margin-top:100px;">
         <div class="form-group">
@@ -60,6 +60,8 @@
     <div id="nameCusID">
 
     </div>
+    <input type="hidden" id="total">
+    <input type="hidden" id="totalPoint">
     <div id="pointCusID">
 
     </div>
@@ -240,7 +242,7 @@
                         <select id="payment" style="width:100px;" name="payment" class="custom-select" onchange="couponcheck(this.value)">
                             <option value="Cash">Cash</option>
                             <option value="Visa">Visa</option>
-                            <option value="Coupon">Coupon</option>
+                            <option id="redeemPoint" value="redeemPoint">Redeem Point</option>
                         </select>
                         <div id="couponbox" style="margin-left:10px; display:none;">
                             <input type="text" class="form-control w-35" name="coupon" id="coupon" aria-describedby="helpId" placeholder="">

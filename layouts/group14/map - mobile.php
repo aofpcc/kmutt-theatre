@@ -148,16 +148,16 @@
     }
     $("#confirmLoc").click(function(e){
         if(selected == null) {
-            alert("Please Choose Branch");
+            // alert("Please Choose Branch");
             return;
         }
         //console.log(locations[selected])
         var branchID = locations[selected]["BranchID"];
         var branchName = locations[selected]["BranchName"];
         //console.log(branchID);
-        if(!confirm("Confirm select branch " + branchName)) {
-            return;
-        }
+        // if(!confirm("Confirm select branch " + branchName)) {
+        //     return;
+        // }
         location.href = "/customer/group14/booking/92/" + branchID;
     });
 </script>

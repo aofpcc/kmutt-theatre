@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="/layouts/group14/map.css">
 </head>
 <!-- <div id="map"></div> -->
-<div class="container" style="width: 95%; height:100%">
+<div class="container" style="width: 95%;">
 
     <div id="map" style="margin-top: 8px; height: 50%; width: 100%;"></div>
     <hr style="height:2pt; visibility:hidden; margin-bottom:-1px; margin-top:3px" />

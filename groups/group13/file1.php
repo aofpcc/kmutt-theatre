@@ -381,4 +381,5 @@ function updateStock($receiptID,$stockID,$amount){
 function updateAllOrderStock($receiptID,$productOrderForStock){
     foreach ($productOrderForStock as $product){
         updateStock($receiptID,$product["stockID"],$product["size"]*$product["quantity"]*-1);
+      }
 }

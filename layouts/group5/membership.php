@@ -55,7 +55,7 @@
       <p class="gap"></p>
       <!-- <p class="gap set-text"><a href="localhost:8000/change/username">Change username</a></p> -->
       <!-- <p class="gap set-text"><a href="/customer/change/password">Change password</a></p> -->
-      <p class="gap set-text"><a href="/test/changePassword">Change password</a></p>
+      <p class="gap set-text"><a href="/customer/change/password">Change password</a></p>
       <p class="gap set-text"><a href="/customer/change/phonenumber">Change phone number</a></p>
       <!-- <p class="gap set-text"><a href="/customer/change/email">Change e-mail</a></p> -->
     </div>
@@ -72,6 +72,7 @@
   <div class="row">
     <div class="col-sm-3"></div>
     <div class="col-sm-9">
+      <!-- current point -->
       <div class="bold field-title" style="margin-bottom: 0">REMAINING POINTS <br/>
         <a class="field-value">
           <?php
@@ -85,6 +86,13 @@
           ?>
         </a>
         <a class="field-value">points</a>
+      </div>
+      <!-- money -->
+      <div class="bold field-title" style="margin-bottom: 0">REMAINING VALUE <br/>
+        <a class="field-value">
+          10000
+        </a>
+        <a class="field-value">baht</a>
       </div>
     </div>
   </div>

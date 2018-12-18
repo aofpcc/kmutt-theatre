@@ -1,4 +1,7 @@
 <?php
 $included = array(
-  'file1'
+  'file1',
+  'director',
+  'soundNtext',
+  'genre'
 );

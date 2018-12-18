@@ -20,7 +20,7 @@
   <br>
   <div class="scrollable scrollbar-near-moon">
     <div class="force-overflow">
-        <button type="button" class="btn btn-success btn-lg btn-block">Paragon Cineplex</button><button type="button" class="btn btn-success btn-lg btn-block">Major Cineplex Central Rama II</button>
+        <button type="button" class="btn btn-danger btn-lg btn-block">Paragon Cineplex</button><button type="button" class="btn btn-success btn-lg btn-block">Major Cineplex Central Rama II</button>
         <button type="button" class="btn btn-success btn-lg btn-block">Seacon Cineplex</button>
         <button type="button" class="btn btn-success btn-lg btn-block">Mega Cineplex</button>
     </div>

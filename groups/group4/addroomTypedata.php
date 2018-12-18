@@ -8,8 +8,10 @@ $klein->respond('GET', '/add_roomtype', function ($request, $response, $service,
 });
 
 $klein->respond('GET', '/g04/roomType/test', function ($request, $response, $service, $app, $validator) {
-    $response->redirect("/customer/login");
-    $response->sendHeaders();
+    // $response->redirect("/customer/login");
+    // $response->sendHeaders();
+    header( "location: http://www.ireallyhost.com" );
+    exit(0);
 });
 
 $klein->respond('POST', '/g04/roomType/add', function ($request, $response, $service, $app, $validator) {

@@ -61,52 +61,38 @@ $klein->respond('GET', '/kmutt_home/branch/show_time/select_chair/[:showtime_id]
   // $service->render('layouts/group1/select_chair.php');
 
   //select soldSeat
-  $id = $movie_id[0]["movie_id"];
-
+   $id = $movie_id[0]["movie_id"];
+  //
   $soldSeat = $conn->query("select seat_ticket from G02_Ticket_history where movie_id = $id;")
   ->fetchAll(PDO::FETCH_ASSOC);
 
 
+  // var_dump($result);
+  // die;
 
-   // $query = "select seat_ticket from G02_Ticket_history where movie_id = $movie_id;";
+   // $query = "select seat_ticket from G02_Ticket_history where movie_id = $id;";
    // $stmt = $conn->prepare($query);
    // $stmt->execute();
    // $num = $stmt->rowCount();
-   //
+   //  //echo $num;
    // $result = array();
    //
    // if($num > 0) {
    //   while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
    //     extract($row);
-   //     array_push($result, $seat_no);
+   //     array_push($result, $row);
    //   }
    // }
 
-  // $movie_id = '1';
-  // $theatre_no = '3';
-  // $branch = '1';
-  // $showtime = TIME("00:00:00");
-  // $dates = '0000-00-00';
-  //
-  // $query = "SELECT seat_no FROM ticket WHERE movie_id = '$movie_id' AND theatre_no = '$theatre_no'
-  //           AND branch = '$branch'";
-  // //echo $query;
-  // $stmt = $conn->prepare($query);
-  // $stmt->execute();
-  // $num = $stmt->rowCount();
-  //
-  // $result = array();
-  //
-  // if($num > 0) {
-  //   while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-  //     extract($row);
-  //     array_push($result, $seat_no);
-  //   }
-  // }
+   // var_dump($soldSeat);
+   // die;
+   $result = [];
+   foreach ($soldSeat as $value) {
+     $str = $value["seat_ticket"];
+     array_push($result, $str);
+   }
 
-  // $query = array("SELECT seat_no from Booking");
-
-  $service->soldSeat = $soldSeat[0];
+  $service->soldSeat = $result;
 
   //$service->soldSeat = ['1_2', '4_4','4_5','6_6','6_7','8_5','8_6','8_7','8_8', '10_1', '10_2'];
   $service->render('layouts/group1/select_chair.php');

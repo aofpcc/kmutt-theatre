@@ -155,21 +155,6 @@ $klein->with("/test", function () use ($klein) {
         $service->render('layouts/core/changePassword.php');
     });
 
-    $klein->respond('POST', '/changePassword', function ($request, $response, $service, $app, $validator) {
-        $result = $app->login->requireLogin('customer');
-        if ($request->newpassword != $request->confirmpassword) {
-            $service->flash("New password is not same as confirm password");
-            $service->back();
-        }
-        $result = $app->login->changePassword($request->oldpassword, $request->newpassword);
-        if (!$result["change"]) {
-            $service->flash("The old password incorrect");
-            $service->back();
-        }
-        $service->content = "The password was changed";
-        $service->render('layouts/core/home.php');
-    });
-
     $klein->respond('GET', '/bank', function($request, $response, $service, $app, $validator) {
       $service->render('layouts/core/bank.php');
     });

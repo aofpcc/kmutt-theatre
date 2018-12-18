@@ -102,7 +102,7 @@ $klein->respond('GET', '/kmutt_home/branch/show_time/select_chair/[:showtime_id]
      $str = $value["seat_ticket"];
      array_push($result, $str);
    }
-
-  $service->soldSeat = $result;
+  //
+   $service->soldSeat = $result;
   $service->render('layouts/group1/select_chair.php');
 });

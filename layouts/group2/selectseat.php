@@ -68,7 +68,7 @@
                                                 <li class="list-item"><span class="time">13:20</span></li>
                                             </ul>
                                         </div>
-                                       
+
                                         <ul class="movie-detail-list movie-theater">
                                             <li class="list-item theater"><span class="cinema-text">Theatre no.</span><span
                                                     class="cinema-number">4</span></li>
@@ -115,9 +115,11 @@
                                 </ul>
                                 <div class="clear"></div>
 
-                                <form action="/emp/group2/home_page/select_movie/select_time/select_seat/pay_ment" method="post">
+                                <form action="/emp/group2/home_page/select_movie/select_time/select_seat/pay_ment"
+                                    method="post">
                                     <ul id="selectedSeats" class="scrollbar scrollbar1"></ul>
-                                    <button name="book_seat" value="book_seat" id="book_seat" class="checkout-button">Book Now
+                                    <button name="book_seat" value="book_seat" id="book_seat" class="checkout-button">Book
+                                        Now
                                     </button>
                                     <div id="legend"></div>
                             </div>

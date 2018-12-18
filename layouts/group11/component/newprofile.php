@@ -91,7 +91,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-3 control-label edit-label">availability:</label>
+                            <label class="col-lg-3 control-label edit-label">work date:</label>
                             <div class="col-lg-8 edit">
                             <input class="form-control" type="date" name="availability" value="" required>
                             </div>

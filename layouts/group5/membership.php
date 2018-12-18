@@ -23,7 +23,7 @@
     <div class="col-sm-3">
       <p></p>
       <h3>MEMBERSHIP</h3>
-      <a href="#" class="btn btn-secondary my-2 bold set-text">Point Transaction</a>
+      <a href="#" class="btn btn-secondary my-2 bold set-text" onclick="location = '/customer/transaction_point'">Point Transaction</a>
     </div>
     <!-- middle left-->
     <div class="col-sm-4">

@@ -48,6 +48,7 @@
                         <div class="row">
                             <div class="col-sm equal-column column-movie grid-movies" style="min-height: 2741.91px;">
                                 <div class="flex-wrapper movies-wrapper movies-now-showing">
+                                <?php foreach($this->movietitle as $movietitle){ ?>
                                     <div class="movie-card flex-item" type="now-showing"><a href="/emp/group2/home_page/select_movie/select_time"
                                             class="" title="อควาแมน เจ้าสมุทร">
                                             <div class="poster">
@@ -55,9 +56,11 @@
                                                 <div class="ribbon advance-ticket" style=""><span>Advance Ticket</span></div>
                                             </div>
                                             <div class="info">
-                                                <p class="release-date"><span class="text">วันที่เข้าฉาย: </span><span
+                                            
+                                                <p class="release-date"><span class="text">Date: </span><span
                                                         class="date">2018-12-13</span></p>
-                                                <h2 class="name">อควาแมน เจ้าสมุทร</h2>
+                                                <h2 class="name"><?=$movietitle?></h2>
+                                                          
                                             </div>
                                         </a></div>
                                     <div class="movie-card flex-item" type="now-showing"><a href="#/HO00000370" class=""
@@ -67,9 +70,9 @@
                                                 <div class="ribbon advance-ticket" style=""><span>Advance Ticket</span></div>
                                             </div>
                                             <div class="info">
-                                                <p class="release-date"><span class="text">วันที่เข้าฉาย: </span><span
+                                                <p class="release-date"><span class="text">Date: </span><span
                                                         class="date">2018-12-01</span></p>
-                                                <h2 class="name">เฮอร์รี่ โก ราวด์</h2>
+                                                <h2 class="name"><?=$movietitle?></h2>
                                             </div>
                                         </a></div>
                                     <div class="movie-card flex-item" type="now-showing"><a href="#/HO00000338" class=""
@@ -79,9 +82,9 @@
                                                 <div class="ribbon advance-ticket" style=""><span>Advance Ticket</span></div>
                                             </div>
                                             <div class="info">
-                                                <p class="release-date"><span class="text">วันที่เข้าฉาย: </span><span
+                                                <p class="release-date"><span class="text">Date: </span><span
                                                         class="date">2018-11-29</span></p>
-                                                <h2 class="name">ฟาห์เรนไฮต์ 11/9</h2>
+                                                <h2 class="name"><?=$movietitle?></h2>
                                             </div>
                                         </a></div>
                                     <div class="movie-card flex-item" type="now-showing"><a href="#/HO00000158" class=""
@@ -91,9 +94,9 @@
                                                 <div class="ribbon advance-ticket"><span>Advance Ticket</span></div>
                                             </div>
                                             <div class="info">
-                                                <p class="release-date"><span class="text">วันที่เข้าฉาย: </span><span
+                                                <p class="release-date"><span class="text">Date: </span><span
                                                         class="date">2018-11-29</span></p>
-                                                <h2 class="name">ราล์ฟตะลุยโลกอินเทอร์เน็ต วายร้ายหัวใจฮีโร่ 2</h2>
+                                                <h2 class="name"><?=$movietitle?></h2>
                                             </div>
                                         </a></div>
                                     <div class="movie-card flex-item" type="now-showing"><a href="#/HO00000311" class=""
@@ -103,9 +106,9 @@
 
                                             </div>
                                             <div class="info">
-                                                <p class="release-date"><span class="text">วันที่เข้าฉาย: </span><span
+                                                <p class="release-date"><span class="text">Date: </span><span
                                                         class="date">2018-11-24</span></p>
-                                                <h2 class="name">ไทบ้านเดอะซีรีส์ 2.2</h2>
+                                                <h2 class="name"><?=$movietitle?></h2>
                                             </div>
                                         </a></div>
                                     <div class="movie-card flex-item" type="now-showing"><a href="#/HO00000346" class=""
@@ -115,9 +118,9 @@
 
                                             </div>
                                             <div class="info">
-                                                <p class="release-date"><span class="text">วันที่เข้าฉาย: </span><span
+                                                <p class="release-date"><span class="text">Date: </span><span
                                                         class="date">2018-11-22</span></p>
-                                                <h2 class="name">ไอซ์แมน 2</h2>
+                                                <h2 class="name"><?=$movietitle?></h2>
                                             </div>
                                         </a></div>
                                     <div class="movie-card flex-item" type="now-showing"><a href="#/HO00000329" class=""
@@ -127,9 +130,9 @@
 
                                             </div>
                                             <div class="info">
-                                                <p class="release-date"><span class="text">วันที่เข้าฉาย: </span><span
+                                                <p class="release-date"><span class="text">Date: </span><span
                                                         class="date">2018-11-22</span></p>
-                                                <h2 class="name">ปาฎิหาริย์แก้วนาคราช</h2>
+                                                <h2 class="name"><?=$movietitle?></h2>
                                             </div>
                                         </a></div>
                                     <div class="movie-card flex-item" type="now-showing"><a href="#/HO00000195" class=""
@@ -138,9 +141,9 @@
                                                 <div class="image" style="background-image: url(&quot;https://lh3.googleusercontent.com/umVM-4MK3MLAYHp2nYE3V07KzHmV_8PQ2N1CF7x1F_-trIcYA_qqW5DxxEowqBAaMGRIA11BrGn9EEErRVM=w215&quot;);"></div>
                                             </div>
                                             <div class="info">
-                                                <p class="release-date"><span class="text">วันที่เข้าฉาย: </span><span
+                                                <p class="release-date"><span class="text">Date: </span><span
                                                         class="date">2018-11-22</span></p>
-                                                <h2 class="name">พยัคฆ์ร้ายโรบินฮู้ด</h2>
+                                                <h2 class="name"><?=$movietitle?></h2>
                                             </div>
                                         </a></div>
                                     <div class="movie-card flex-item" type="now-showing"><a href="#/HO00000079" class=""
@@ -149,9 +152,9 @@
                                                 <div class="image" style="background-image: url(&quot;https://lh3.googleusercontent.com/8Lr1BMoZOxsSLoTZr6IxDZuLDiSc6oMTopLA2B-MhXbwxqpDguDHy8r_zj1430V2augHqTSdHsNjz6MYfbEm=w215&quot;);"></div>
                                             </div>
                                             <div class="info">
-                                                <p class="release-date"><span class="text">วันที่เข้าฉาย: </span><span
+                                                <p class="release-date"><span class="text">Date: </span><span
                                                         class="date">2018-11-15</span></p>
-                                                <h2 class="name">สัตว์มหัศจรรย์ อาชญากรรมของกรินเดลวัลด์</h2>
+                                                <h2 class="name"><?=$movietitle?></h2>
                                             </div>
                                         </a></div>
                                     <div class="movie-card flex-item" type="now-showing"><a href="#/HO00000157" class=""
@@ -161,9 +164,9 @@
 
                                             </div>
                                             <div class="info">
-                                                <p class="release-date"><span class="text">วันที่เข้าฉาย: </span><span
+                                                <p class="release-date"><span class="text">Date: </span><span
                                                         class="date">2018-11-08</span></p>
-                                                <h2 class="name">เดอะ กริ๊นช์</h2>
+                                                <h2 class="name"><?=$movietitle?></h2>
                                             </div>
                                         </a></div>
                                     <div class="movie-card flex-item" type="now-showing"><a href="#/HO00000127" class=""
@@ -173,9 +176,9 @@
 
                                             </div>
                                             <div class="info">
-                                                <p class="release-date"><span class="text">วันที่เข้าฉาย: </span><span
+                                                <p class="release-date"><span class="text">Date: </span><span
                                                         class="date">2018-11-08</span></p>
-                                                <h2 class="name">พยัคฆ์สาวล่ารหัสใยมรณะ</h2>
+                                                <h2 class="name"><?=$movietitle?></h2>
                                             </div>
                                         </a></div>
                                     <div class="movie-card flex-item" type="now-showing"><a href="#/HO00000265" class=""
@@ -185,9 +188,9 @@
 
                                             </div>
                                             <div class="info">
-                                                <p class="release-date"><span class="text">วันที่เข้าฉาย: </span><span
+                                                <p class="release-date"><span class="text">Date: </span><span
                                                         class="date">2018-11-08</span></p>
-                                                <h2 class="name">ปฏิบัติการโอเวอร์ลอร์ด</h2>
+                                                <h2 class="name"><?=$movietitle?></h2>
                                             </div>
                                         </a></div>
                                     <div class="movie-card flex-item" type="now-showing"><a href="#/HO00000103" class=""
@@ -197,9 +200,9 @@
 
                                             </div>
                                             <div class="info">
-                                                <p class="release-date"><span class="text">วันที่เข้าฉาย: </span><span
+                                                <p class="release-date"><span class="text">Date: </span><span
                                                         class="date">2018-11-01</span></p>
-                                                <h2 class="name">โบฮีเมียน แรปโซดี</h2>
+                                                <h2 class="name"><?=$movietitle?></h2>
                                             </div>
                                         </a></div>
                                     <div class="movie-card flex-item" type="now-showing"><a href="#/HO00000303" class=""
@@ -209,9 +212,9 @@
 
                                             </div>
                                             <div class="info">
-                                                <p class="release-date"><span class="text">วันที่เข้าฉาย: </span><span
+                                                <p class="release-date"><span class="text">Date: </span><span
                                                         class="date">2018-11-01</span></p>
-                                                <h2 class="name">โนราห์</h2>
+                                                <h2 class="name"><?=$movietitle?></h2>
                                             </div>
                                         </a></div>
                                     <div class="movie-card flex-item" type="now-showing"><a href="#/HO00000156" class=""
@@ -221,9 +224,9 @@
 
                                             </div>
                                             <div class="info">
-                                                <p class="release-date"><span class="text">วันที่เข้าฉาย: </span><span
+                                                <p class="release-date"><span class="text">Date: </span><span
                                                         class="date">2018-11-01</span></p>
-                                                <h2 class="name">เดอะนัทแครกเกอร์กับสี่อาณาจักรมหัศจรรย์</h2>
+                                                <h2 class="name"><?=$movietitle?></h2>
                                             </div>
                                         </a></div>
                                     <div class="movie-card flex-item" type="now-showing"><a href="#/HO00000190" class=""
@@ -233,9 +236,9 @@
 
                                             </div>
                                             <div class="info">
-                                                <p class="release-date"><span class="text">วันที่เข้าฉาย: </span><span
+                                                <p class="release-date"><span class="text">Date: </span><span
                                                         class="date">2018-10-25</span></p>
-                                                <h2 class="name">สงครามอเมริกันผ่ารัสเซีย</h2>
+                                                <h2 class="name"><?=$movietitle?></h2>
                                             </div>
                                         </a></div>
                                     <div class="movie-card flex-item" type="now-showing"><a href="#/HO00000318" class=""
@@ -245,11 +248,12 @@
 
                                             </div>
                                             <div class="info">
-                                                <p class="release-date"><span class="text">วันที่เข้าฉาย: </span><span
+                                                <p class="release-date"><span class="text">Date: </span><span
                                                         class="date">2018-10-25</span></p>
-                                                <h2 class="name">โฮมสเตย์</h2>
+                                                <h2 class="name"><?=$movietitle?></h2>
                                             </div>
                                         </a></div>
+                                        <?php } ?> 
                                 </div>
                             </div>
 

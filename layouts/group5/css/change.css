@@ -71,3 +71,11 @@
   font-family: 'Open Sans', sans-serif;
   font-size: 18px;
 }
+
+.red-block {
+  background-color: #DC143C;
+}
+
+.white-font {
+  color : #ffffff;
+}

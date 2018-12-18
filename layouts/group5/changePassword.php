@@ -20,26 +20,25 @@
       <div class="row">
         <div class="col-sm-1"></div>
         <div class="col-sm-6">
-          <form action="/change/password/action" method="post">
+          <form action="/customer/change/password/action" method="post">
             <!-- Current Password -->
             <div class="form-group">
-              <label class="box-name-text gap" for="exampleInputPassword1">Current Password</label>
-              <!-- <small class="right"><a href="localhost:8000/chage/password">Forget password?</a></small> -->
-              <input name="oldPassword" type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="">
+              <label class="box-name-text gap" for="usr">Current Password</label>
+              <input type="password" class="form-control form-control-lg" id="usr" name="oldpassword" required>
             </div>
             <!-- New Password -->
             <div class="form-group">
-              <label class="box-name-text gap" for="exampleInputPassword1">New password (8-20 characters)</label>
-              <input name="newPassword1" type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="">
+              <label class="box-name-text gap" for="usr">New password (Please include at least 6 characters)</label>
+              <input type="password" class="form-control form-control-lg" id="usr" name="newpassword1" pattern=".{6,}" required>
             </div>
             <!-- Confirm New Password -->
             <div class="form-group">
-              <label class="box-name-text gap" for="exampleInputPassword1">Confirm new password</label>
-              <input name="newPassword2" type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="">
+              <label class="box-name-text gap" for="usr">Confirm new password</label>
+              <input type="password" class="form-control form-control-lg" id="usr" name="newpassword2" pattern=".{6,}" required>
             </div>
             <!-- Button -->
             <div class="gap-more"></div>
-              <button type="submit" class="block gap">Save</button>
+              <button type="submit" class="block gap red-block white-font">Save</button>
               <button type="button" class="cancel-block gap" onclick="location = '/customer/membership'">Cancel</button>
           </form>
         </div>

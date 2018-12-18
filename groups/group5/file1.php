@@ -399,7 +399,7 @@ $klein->respond('GET', '/transaction_point', function ($request, $response, $ser
     // die;
 
 
-    $service->title = 'Fish and Chips';
+    $service->title = 'Transaction Point';
     $service->list = $result;
     $service->render('layouts/group5/transcation_point.php');
 });

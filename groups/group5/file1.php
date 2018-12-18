@@ -305,7 +305,7 @@ $klein->respond('POST', '/kong/action', function ($request, $response, $service,
 // Drive-php-register
 $klein->respond('POST', '/register-form', function ($request, $response, $service, $app, $validator) {
   if ($request->password != $request->confirmpassword) {
-    $service->flash("MTF Password has not matched");
+    $service->flash("Password has not matched");
     $response->redirect('/customer/register');
     $response->sendHeaders();
     die;
@@ -314,6 +314,67 @@ $klein->respond('POST', '/register-form', function ($request, $response, $servic
   try {
     $conn->beginTransaction();
 
+    try {
+        $query = "SELECT * from G05_Member_profile 
+    WHERE memberID=:userID or ID_Card=:ID_Card or
+    Email=:Email or PhoneNumber=:PhoneNumber";
+    $username = $request->username;
+    $id_card = $request->id_card;
+    $firstname = $request->firstName;
+    $lastname = $request->lastName;
+    $gender = $request->gender;
+    $phone = $request->phone;
+    $birth = $request->birth;
+
+    $stmt = $conn->prepare($query);
+    $stmt->bindParam(":userID", $userID);
+    $stmt->bindParam(":ID_Card", $id_card);
+    $stmt->bindParam(":Email", $email);
+    $stmt->bindParam(":PhoneNumber", $phone);
+    $stmt->execute();
+    $d = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $d_num = count($d);
+    if($d_num > 0) $d = $d[0];
+
+    $v = $conn->query("SELECT * FROM core_user_table WHERE username='$username'")->fetchAll(PDO::FETCH_ASSOC);
+    $x_num = count($v);
+    if($x_num > 0) $v = $v[0];
+
+    $a = false;
+    if($d_num > 0 && $request->email == $d["Email"]){
+        $service->flash("This e-mail is already used");
+        $a = true;
+        // $response->redirect('/customer/register');
+        // $response->sendHeaders();
+      }
+       if($x_num > 0 && $request->username == $v["username"]) { 
+        $service->flash("This username is already used");
+        $a = true;
+        // $response->redirect('/customer/register');
+        // $response->sendHeaders();
+
+      }
+       if($d_num > 0 && $request->phone == $d["PhoneNumber"]){
+        $service->flash("This phone number is already used");$a = true;
+
+        // $response->redirect('/customer/register');
+        // $response->sendHeaders();
+      }
+        if($d_num > 0 && $request->id_card == $d["ID_Card"]) { 
+        $service->flash("This ID number is already used");
+        $a = true;
+        // $response->redirect('/customer/register');
+        // $response->sendHeaders();
+      }
+      if($a) {
+          throw new Exception();
+      }
+    } catch (\Exception $e) {
+        // die($e->getMessage());
+       $service->back();
+       return; 
+    }
+
     $username = $request->username;
     $password = $request->password;
     $password = $request->confirmpassword;
@@ -321,6 +382,7 @@ $klein->respond('POST', '/register-form', function ($request, $response, $servic
     $validateLink = "/test/verify"; // neeed to have / before  and no / at the end
     $role = 'customer';
     $result = $app->login->register($username, $password, $email, $validateLink, $role);
+
     if ($result['created']) {
       $userID = $result['userID'];
       $query = "insert into G05_Member_profile(MemberID, ID_Card, FName, Lname, Gender, Birthdate, Email, PhoneNumber)
@@ -367,12 +429,14 @@ $klein->respond('POST', '/register-form', function ($request, $response, $servic
       $service->flash("User created");
       $app->login->loginPage();
     } else {
-      echo "Failed\n";
-      echo $result["data"];
+        // die($result["data"]);
+      $service->flash("Username or Email is already used");
+      $service->back();
+      return;
     }
   } catch (Exception $e) {
-    echo $e->getMessage();
     $conn->rollback();
+    $service->back();
   }
 });
 

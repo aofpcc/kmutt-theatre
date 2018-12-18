@@ -36,9 +36,9 @@
               <small class="right"><a href="localhost:8000/chage/password">Forget password?</a></small>
               <input type="password" class="form-control form-control-lg" id="Password" name="Password" placeholder="">
             </div> -->
-            <div class="gap-more"></div>
+            <!-- <div class="gap-more"></div> -->
 
-              <input type="submit" class="cancel-block gap" value="Submit">
+              <input type="submit" class="cancel-block gap red-block white-font" value="Submit">
               <button type="button" class="cancel-block gap" onclick="location = '/customer/membership'">Cancel</button>
 
           </form>

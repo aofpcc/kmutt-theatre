@@ -48,13 +48,13 @@
     </div>
     <div class="form-group">
       <div class="form-group">
-        <label for="exampleFormControlInput1">Length (00:00:00)</label>
+        <label for="exampleFormControlInput1">Length</label>
         <input type="text" class="form-control" id="exampleFormControlInput1" name="time" placeholder="Minute" value=""
           required>
       </div>
       <div class="form-group">
-        <label for="exampleFormControlTextarea1">Describetion</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="des" placeholder="add Describetion" required></textarea>
+        <label for="exampleFormControlTextarea1">Description</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="des" placeholder="add Description" required></textarea>
       </div>
       <button class="btn btn-primary" type="submit">Update</button>
         </div>

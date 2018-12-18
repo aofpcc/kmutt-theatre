@@ -50,3 +50,24 @@ background-color: #ea0015; }
     border:0;
     background:transparent;
 }
+
+.button1 {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button1:hover {
+  background-color: #656565;
+}
+
+.button1 {background-color: #84EA38;}
+.button1 {border-radius: 8px;}
+.button1 {width: 98%;}

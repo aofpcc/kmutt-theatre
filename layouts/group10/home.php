@@ -12,7 +12,7 @@
       <h3><a href="/emp/group10/logs">Logs</a></h3>
     </div>
     <div name="body" class="main-body">
-      <?php if($this->isManagementPage) { ?>
+      <?php if ($this->isManagementPage) { ?>
         <div class="list">
           <h2>Advertisement List</h2>
           <div class="table-scroll">

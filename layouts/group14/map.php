@@ -146,16 +146,15 @@
         console.log(document.getElementById("confirmLoc").value);
         console.log(document.getElementById("confirmLoc").name);
     }
-
     $("#confirmLoc").click(function(e){
         if(selected == null) {
             alert("Please Choose Branch");
             return;
         }
-        // console.log(locations[selected])
+        //console.log(locations[selected])
         var branchID = locations[selected]["BranchID"];
         var branchName = locations[selected]["BranchName"];
-        // console.log(branchID);
+        //console.log(branchID);
         if(!confirm("Confirm select branch " + branchName)) {
             return;
         }

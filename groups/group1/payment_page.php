@@ -20,7 +20,7 @@ $klein->respond('POST', '/kmutt_home/branch/show_time/select_chair/payment/[:sho
     $service->back();
     return;
   }
-
+  $service->showtime_id = $request->showtime_id;
   $query_showtime = $conn->query("select movie_id, room_id, date(startTime) as startDate,
   time(startTime) as startTime from G04_MSRnB_showingroom where id = '$request->showtime_id';")->
   fetchAll(PDO::FETCH_ASSOC);
@@ -29,7 +29,7 @@ $klein->respond('POST', '/kmutt_home/branch/show_time/select_chair/payment/[:sho
   $query_movie = $conn->query("select title, Image,length from G09_Movie where id = '".$id_movie."';")
   ->fetchAll(PDO::FETCH_ASSOC);
 
-  $daedline = $conn->query("select distinct date(deadline) as dead_date, time(deadline) as dead_time from G01_Booking where buyer_id = 151; ")
+  $daedline = $conn->query("select distinct date(deadline) as dead_date, time(deadline) as dead_time from G01_Booking where buyer_id = '".$userID."'; ")
   ->fetchAll(PDO::FETCH_ASSOC);
 
   // var_dump($daedline);
@@ -127,7 +127,16 @@ $klein->respond('POST', '/kmutt_home/branch/show_time/select_chair/payment/[:sho
 
           $select_chair = $conn->query("select selected_seat from G01_Booking where movie_id = $movie_id and showtime_id = $request->showtime_id;")
           ->fetchAll(PDO::FETCH_ASSOC);
-          $chair = $select_chair[0]["selected_seat"];
+
+          $result = [];
+          foreach ($select_chair as $value) {
+            $str = $value["selected_seat"];
+            array_push($result, $str);
+          }
+
+          // var_dump($result);
+          // die;
+
 
 
           // $response->dump($movie_id);
@@ -138,16 +147,19 @@ $klein->respond('POST', '/kmutt_home/branch/show_time/select_chair/payment/[:sho
           // die;
 
           for($j = 0;$j < count($selectedSeats);$j++){
-            for($i = 0;$i < count($select_chair);$i++){
-              if(strcmp($selectedSeats[$i], $select_chair[$j]) == 0){
-                // throw new Exception("unavailable seat");
-                echo "$selectedSeats[$i] = $select_chair[$j] ? <br/>";
+            for($i = 0;$i < count($result);$i++){
+              echo "selectedSeats[$i] = select_chair[$j] ? <br/>";
+              if(strcmp($selectedSeats[$j], $result[$i]) == 0){
+                throw new Exception("unavailable seat");
+                // echo "unavailable seat";
+
+                //echo "$selectedSeats[$i] = $select_chair[$j] ? <br/>";
                 // echo "yep <br/>";
                 //  $service->flash("unavailable seat");
                 // $service->back();
 
               }
-              echo "nope <br/>";
+              //echo "nope <br/>";
 
           }
             // $seatInfo = explode('_', $selectedSeats[$j]);
@@ -170,8 +182,12 @@ $klein->respond('POST', '/kmutt_home/branch/show_time/select_chair/payment/[:sho
       catch(PDOException $e){
         //$conn->rollback();
         $service->flash($e->getMessage());
-        //$service->flash("unavailable seat");
-        //alert("unavailable seat");
+        //window.history.back();
+        $service->back();
+      }
+      catch(Exception $e){
+        //$conn->rollback();
+        $service->flash($e->getMessage());
         $service->back();
       }
     }

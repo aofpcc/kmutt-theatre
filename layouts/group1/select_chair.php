@@ -33,15 +33,14 @@
                   </div>
 
                   <div class="col-md-7">
-                      <br><br><br><br>
-                      <font size="5" style="font-weight:bold"> Movie Name: <?=$this->title ?></font><br><br>
-                      <font size="5">Date   : <?=$this->startDate ?></font><br><br>
-                      <font size="5">Time   : <?= $this->startTime ?></font> &nbsp&nbsp&nbsp
-                      <font size="5"> Theater : <?= $this->id_room ?> </font><br><br>
-                      <font size="5">Length : <?= $this->length ?></font> <br>
-                      <front size = "5">Type of seat : <?=$this->type_seat ?></front><br><br>
-                      <front size = "5">Information about seat : <?=$this->seat_info ?></front><br><br>
-                      <front size = "5">Price of seat : <?=$this->price ?></front><br><br>
+                      <font size="3" style="font-weight:bold"> Movie Name: <?=$this->title ?></font><br>
+                      <font size="3">Date   : <?=$this->startDate ?></font><br>
+                      <font size="3">Time   : <?= $this->startTime ?></font> &nbsp&nbsp&nbsp
+                      <font size="3"> Theater : <?= $this->id_room ?> </font><br>
+                      <font size="3">Length : <?= $this->length ?></font> <br><br>
+                      <font size="3" style="font-weight:bold">Type of seat : </font> <font size = "3"><?=$this->type_seat ?></font> <br><br>
+                      <font size="3" style="font-weight:bold">Information about seat : </font> <front size = "3"><?=$this->seat_info ?></front><br><br>
+                      <font size="3" style="font-weight:bold">Price of seat : </font> <font size = "3"><?=$this->price ?></font><br>
 
                     <br> <!--link to ticket-->
                     <button type="button" class="btn btn-lg btn-danger"

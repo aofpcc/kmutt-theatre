@@ -65,5 +65,5 @@ $klein->respond('GET', '/group14/map/mobile', function ($request, $response, $se
   $stmt->execute();
   $data = $stmt->fetchAll();
   $service->guy = $data;
-  $service->partial('layouts/group14/map.php');
+  $service->partial('layouts/group14/map - mobile.php');
 });

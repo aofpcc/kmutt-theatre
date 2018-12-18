@@ -147,7 +147,7 @@ $klein->with("/test", function () use ($klein) {
         $response->sendHeaders();
     });
 
-    $klein->respond('GET', '/changePassword', function ($request, $response, $service, $app, $validator) {
+    $klein->respond('GET', '/change/password', function ($request, $response, $service, $app, $validator) {
         $result = $app->login->requireLogin('customer');
         $newOne = $service->passValue;
         $service->passValue["userID"] = $result["userID"];

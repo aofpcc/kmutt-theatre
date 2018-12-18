@@ -10,5 +10,9 @@ $included = array(
   'addroomTypedata',
   'deleteroomTypedata',
   'seattypeData',
-  'addseatTypedata'
+  'addseatTypedata',
+  'deleteseatTypedata',
+  'amountseatData',
+  'addAmountseatdata',
+  'deleteAmountseatdata'
 );

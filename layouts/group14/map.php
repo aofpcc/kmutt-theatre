@@ -10,6 +10,9 @@
             padding-right: 15px;
             padding-left: 15px;
         }
+        body{
+          background-color: #212529;
+        }
 
     </style>
     <meta charset="utf-8">
@@ -21,18 +24,18 @@
     <link rel="stylesheet" href="/layouts/group14/map.css">
 </head>
 <!-- <div id="map"></div> -->
-<div class="container" style="width: 70%">
+<div class="container" style="width: 70%;">
 
     <div id="map"></div>
     <hr style="height:2pt; visibility:hidden; margin-bottom:-1px; margin-top:5px" />
-    <div><input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search" style="width: 100%"/></div>
+    <div><input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search location..." style="width: 100%"/></div>
     <hr style="height:2pt; visibility:hidden; margin-bottom:-1px; margin-top:5px" />
     <div class="scrollable scrollbar-danger" style='height: 200px'>
         <div class="force-overflow" id="BtnContainer">
             <ul id="myUL">
                 <?php for ($i = 0; $i < count($this->guy); $i++) {?>
                     <li><button id="bttn" type="button" onclick="changePos(<?php echo ($i) ?>);"
-                        class="btn btn-info btn-lg btn-block">
+                        class="btn button btn-lg btn-block">
                         <?php /*echo ($this->guy[$i]['BranchName']) */?>
                         <?php echo ($this->guy[$i]['BranchName']); ?>
                     </button>

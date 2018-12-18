@@ -31,21 +31,29 @@ $klein->respond('GET', '/kmutt_home/branch/show_time/select_chair/[:showtime_id]
   // Pass on the params to the page we're gonna render
   $service->selectedSeats = $request->selectedSeats;
 
-  //select soldSeat
    $id = $movie_id[0]["movie_id"];
   $soldSeat = $conn->query("select seat_ticket from G02_Ticket_history where movie_id = $id;")
   ->fetchAll(PDO::FETCH_ASSOC);
-
   $movie_id = $conn->query("select movie_id from G04_MSRnB_showingroom where id = '$request->showtime_id';")->
   fetchAll(PDO::FETCH_ASSOC);
   $room_id = $conn->query("select room_id from G04_MSRnB_showingroom where movie_id = $movie_id and id = '$request->showtime_id';")
   ->fetchAll(PDO::FETCH_ASSOC);
-  $name = $conn->query("select title from G09_Movie where id = '".$movie_id[0]["movie_id"]."';")->fetchAll(PDO::FETCH_ASSOC);
+  $name = $conn->query("select title, Image from G09_Movie where id = '".$movie_id[0]["movie_id"]."';")->fetchAll(PDO::FETCH_ASSOC);
 
   $date = $conn->query("select date(startTime) as startDate from G04_MSRnB_showingroom where id = '$request->showtime_id';")
   ->fetchAll(PDO::FETCH_ASSOC);
 
+  $dateTime = $conn->query("select time(startTime) as start_time from G04_MSRnB_showingroom where id = '$request->showtime_id';")
+  ->fetchAll(PDO::FETCH_ASSOC);
+
+  $length = $conn->query("select length from G09_Length where id = '".$movie_id[0]["movie_id"]."';")
+  ->fetchAll(PDO::FETCH_ASSOC);
+
+  $date_time = date('g:ia', strtotime($dateTime[0]["start_time"]));
+
+
   $temp = new DateTime($date[0]["startDate"]);
+  //$temp1 = new DateTime($date[1]["startDate"]);
   $month = $temp->format("F");
   $service->string = $temp->format("d")." ".$month." ".$temp->format("Y");
 
@@ -70,9 +78,8 @@ $klein->respond('GET', '/kmutt_home/branch/show_time/select_chair/[:showtime_id]
   $service->selectedSeats = $request->selectedSeats;
   $service->name = $name[0];
   $service->movie_id = $movie_id[0];
-  $service->price = $price[0];
-  $service->type_seat = $type_seat[0];
-  $service->seat_info = $seat_info[0];
+  // $service->deadline = $deadline;
+  // $service->movie_name = $movie_name;
   $service->showtime_id = $request->showtime_id;
   // $service->theatre_no = $theatre_no;
   // $service->pageTitle = 'Payment';

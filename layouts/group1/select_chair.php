@@ -28,10 +28,13 @@
               <div class="row">
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="card h-100">
-                      <a href="#"><img class="card-img-top" src="https://lh3.googleusercontent.com/8Lr1BMoZOxsSLoTZr6IxDZuLDiSc6oMTopLA2B-MhXbwxqpDguDHy8r_zj1430V2augHqTSdHsNjz6MYfbEm=w260" alt=""></a>
+                      <a href="#"><img class="card-img-top" src="<?=$this->name["Image"] ?>" alt=""></a>
                     </div>
                   </div>
-
+                  <?php
+                  // var_dump($this->date_time);
+                  // die;
+                   ?>
                   <div class="col-md-7">
                       <br><br><br><br>
                       <font size="5" style="font-weight:bold"> Movie Name: <?=$this->name["title"] ?></font><br><br>
@@ -41,6 +44,9 @@
                       <front size = "5">Type of seat : <?=$this->type_seat ?></front><br><br>
                       <front size = "5">Information about seat : <?=$this->seat_info ?></front><br><br>
                       <front size = "5">Price of seat : <?=$this->price?></front><br><br>
+
+                      <font size="5">Time   : <?=$this->date_time ?></font> &nbsp&nbsp&nbsp  <font size="5"> Theater : <?=$this->movie_id["room_id"] ?></font><br><br>
+                      <font size="5">Length : <?=$this->length["length"] ?></font> <br>
 
                     <br> <!--link to ticket-->
                     <button type="button" class="btn btn-lg btn-danger"

@@ -63,7 +63,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text">@</span>
               </div>
-              <input type="text" pattern="[A-Za-z0-9]{5,}" title="Please include at least 5 characters" class="form-control" id="username" name="username" placeholder="Username" require>
+              <input type="text" pattern="[A-Za-z0-9]{5,}" title="Please include at least 5 characters" class="form-control" id="username" name="username" placeholder="Username" required="">
               <div class="invalid-feedback" style="width: 100%;">
                 Your username is required.
                 ) </div>
@@ -77,7 +77,7 @@
                     <div class="invalid-feedback">
                         Valid password is required.
                     </div> --><input
-              type="password" title="Please include at least 6 characters" name="password" pattern=".{6,}" id="password" class="form-control" placeholder="Enter your Password..." required="" value="123456">
+              type="password" title="Please include at least 6 characters" name="password" pattern=".{6,}" id="password" class="form-control" placeholder="Enter your Password..." required="" value="">
             <div class="invalid-feedback">
               Valid password is required.
             </div>
@@ -91,8 +91,7 @@
                     <div class="invalid-feedback">
                         Valid password is required.
                     </div> -->
-            <input type="password" name="confirmpassword" pattern=".{6,}" id="password" class="form-control" value="" placeholder="Enter your Password again..."
-              required>
+            <input type="password" name="confirmpassword" pattern=".{6,}" id="password" class="form-control" value="" placeholder="Enter your Password again..."required>
             <div class="invalid-feedback">
               Valid password is required.
             </div>
@@ -204,7 +203,12 @@
             </div>
           </div>
         </div>
-        <input type="submit" class="btn btn-primary" value="Confirm" />
+        <div class="py-3">
+        <center>
+          <input type="submit" class="mr-3 btn btn-primary" style=" background-color: #DC143C;" value="Confirm" />
+          <input type="submit" class="btn btn-primary" onclick="location='/customer/login'" style=" background-color: #DC143C;" value="Cancle" />
+      </center>
+</div>
       </form>
   </div>
   <!-- End Register -->

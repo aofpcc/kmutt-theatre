@@ -61,6 +61,7 @@ $klein->respond('GET', '/kmutt_home/branch/show_time/select_chair/[:showtime_id]
   where s.room_id = r.id and r.theaterinfo_id = ti.id and ti.seattype_id = st.id and r.branch_id = b.BranchID and
   s.id = '$request->showtime_id' and s.movie_id = $id;")->fetchAll(PDO::FETCH_ASSOC);
 
+
   $price = $conn->query("select st.seat_price
   from G04_MSRnB_room r, G14_Branch b, G04_MSRnB_showingroom s, G04_MSRnB_theaterInfo ti, G04_MSRnB_seattype st
   where s.room_id = r.id and r.theaterinfo_id = ti.id and ti.seattype_id = st.id and r.branch_id = b.BranchID and

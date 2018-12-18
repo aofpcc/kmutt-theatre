@@ -175,6 +175,19 @@
                                     </p>
                                   </div>
                               </div>
+                              <div class="row">
+                                  <div class="col-md-6">
+                                      <label>Branch</label>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <p>
+                                      <?php 
+                                                $Branch = $this->Branch;
+                                                echo $Branch[0]['BranchName'];                                        
+                                        ?>
+                                    </p>
+                                  </div>
+                              </div>
             </div> 
       </div>                           
   </div>        

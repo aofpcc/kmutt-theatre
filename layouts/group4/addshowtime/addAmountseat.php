@@ -33,7 +33,7 @@
                             <?php }?>
                           </select>
                         </div>
-                        <div class="control-group" style="display: block;" id="room_no">
+                        <div class="control-group" style="display: block;">
                           <div class="form-group floating-label-form-group controls mb-0 pb-2">
                             <label>Room No:</label>
                             <input id="rroom_no" type="hidden" name="room_no">
@@ -52,7 +52,7 @@
                           </select>
                         </div>
 
-                        <div class="control-group" style="display: block;" id="seattype">
+                        <div class="control-group" style="display: block;">
                           <div class="form-group floating-label-form-group controls mb-0 pb-2">
                             <label>Seat Type:</label>
                             <input id="sseattype" type="hidden" name="seattype">
@@ -84,10 +84,60 @@
             <br><br>
           </div>
           <script>
-               function showAmountseat_page()
-                {
-                    location.href = "/emp/showAmountseat";
+            $(document).ready(function(){
+              changeRoomNumber();
+            });
+
+                $('#roomtype').change(function() {
+                  // alert( "room type changed" );
+                  changeSeatType($("#roomtype").val());
+                });
+
+                function changeSeatType(e) {
+                  $.get('/emp/g04/getSeattype/' + e).done(function(data){
+                    data = JSON.parse(data)[0];
+                    console.log(data);
+                    $("#sseattype").val(data['id']);
+                    $("#seattype").val(data['seattype']);
+
+                    // $.each(data, function(key, value) {   
+                        // $('#seattype').append($("<option></option>")
+                        //                 // .attr("value",value.id)
+                        //                 .text(value.seattype)); 
+                    //     alert("value = " + value.seattype);
+                    // });
+                  });
                 }
+                $('#branch_id').change(function() {
+                  // alert( "room type changed" );
+                  // changeRoom($("#room_no").val());
+                  changeRoomNumber();
+                });
+
+                function changeRoomNumber(){
+                  var e = $('#branch_id').val();
+                  $.get('/emp/g04/add_amountseat/' + e).done(function(data){
+                    // console.log(data);
+                  // return;
+                    data = JSON.parse(data)[0];
+                    data = data[0] + 1;
+                    // console.log(data);
+                    $("#rroom_no").val(data);
+                    $("#room_no").val(data);
+                  });
+                }
+
+                function changeRoom(e) {
+                  $.get('/emp/g04/add_amountseat/' + e).done(function(data){
+                    // con
+                    data = JSON.parse(data);
+                    console.log(data);
+                    $("#rroom_no").val(data['id']);
+                    $("#room_no").val(data['room_no']);
+
+                  });
+                }
+
           </script>
 
 

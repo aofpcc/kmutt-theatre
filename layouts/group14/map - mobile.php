@@ -16,9 +16,9 @@
           height: 100%;
           width: 100%;
         }
-        
-        
-        
+
+
+
 
     </style>
     <meta charset="utf-8">
@@ -50,7 +50,7 @@
             </div>
         </div>
         <hr style="height:2pt; visibility:hidden; margin-bottom:-1px; margin-top:2px" />
-        <div><button id="confirmLoc" type="submit" name="" value="" class="btn button btn-lg btn-block" >Confirm</button></div>
+        <div><button id="confirmLoc" type="submit" name="" value="" class="btn button1 btn-lg btn-block" >Confirm</button></div>
     </form>
 </div>
 <br>

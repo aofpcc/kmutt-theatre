@@ -309,10 +309,10 @@ class LoginPerformer
                 }
                 $this->klein->response()->sendHeaders();
             } else {
-                throw new \Exception("Incorrect Username of Password", 1);
+                throw new \Exception("Incorrect Username or password", 1);
             }
         } catch (Exception $e) {
-            $this->klein->service()->flash('Shit Wrong password or username');
+            $this->klein->service()->flash('Username or password was wrong');
             $this->klein->service()->back();
         }
     }

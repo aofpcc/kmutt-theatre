@@ -1,9 +1,11 @@
 <?php
-$klein->respond('GET', '/group6', function ($request, $response, $service) {
+$klein->respond('GET', '/androidGetPoint', function ($request, $response, $service, $app, $validator) {
   global $database;
   $conn = $database->getConnection();
 
-  $query = "SELECT * from G05_Member_profile";
+  $memberID = $_GET['memberID'];
+
+  $query = "SELECT * from G05_totalpoint where MemberID = '$memberID'";
   $stmt = $conn->prepare($query);
   $stmt->execute();
 

@@ -21,14 +21,12 @@ $klein->respond('GET', '/kmutt_home/branch/[:movie_id]', function ($request, $re
         $status = true;
     }
 
-    $name = $conn->query("select distinct title, Image, detail from G09_Movie where id = '$request->movie_id'")->fetchAll(PDO::FETCH_ASSOC);
+    $name = $conn->query("select distinct title, Image, detail,length from G09_Movie where id = '$request->movie_id'")->fetchAll(PDO::FETCH_ASSOC);
 
     $details = $conn->query("select detail from G09_Movie where id = '$request->movie_id'")->fetchAll(PDO::FETCH_ASSOC);
 
-    $genre = $conn->query("select distinct genre from G09_Gerne where id = '$request->movie_id'")->fetchAll(PDO::FETCH_ASSOC);
-
-    $length = $conn->query("select length from G09_Length where id = '$request->movie_id'")->fetchAll(PDO::FETCH_ASSOC);
-
+    $genre = $conn->query("select distinct genre from G09_Genre_Movie where id = '$request->movie_id'")->fetchAll(PDO::FETCH_ASSOC);
+    
     // $response->dump($name);
     // $response->sendBody();
     // die;
@@ -40,6 +38,7 @@ $klein->respond('GET', '/kmutt_home/branch/[:movie_id]', function ($request, $re
     // $service->detail = $name[0];
     $service->datenow = (new DateTime)->format("Y-m-d");
     $service->query = $date;
+    $service->length = $name[0]["length"];
     $service->movie_id = $request->movie_id;
     // var_dump($service->detail);
     // die;
@@ -70,24 +69,21 @@ $klein->respond('GET', '/movies/showtime/all/[:movie_id]/[:show_date]', function
             "branch_name" => $branch["branchname"],
             "rooms" => []
         ];
-        $query = "select distinct room_no, roomtype_id from available_movies where movie_id = $target and date(startTime) = '$show_date'  and branch_id = ".$branch["branch_id"];
+        $query = "select distinct room_no, b.roomtype from available_movies a
+        join G04_MSRnB_theaterInfo c on a.theaterinfo_id = c.id
+        join G04_MSRnB_roomtype b
+        on c.roomtype_id = b.id where a.movie_id = $target and date(startTime) = '$show_date'  and a.branch_id = ".$branch["branch_id"];
         $stmt = $conn->prepare($query);
         $stmt->execute();
         $rooms = $stmt->fetchAll(PDO::FETCH_ASSOC);
         foreach($rooms as $room) {
-            switch($room["roomtype_id"]){
-                case 1: $room_name = "LED 2D"; break;
-                case 2: $room_name = "3D"; break;
-                default: $room_name = "4DX"; break;
-            }
-
             $r_temp = [
                 "room_no" => $room["room_no"],
-                "roomtype_id" => $room["roomtype_id"],
-                "room_name" => $room_name,
+                "roomtype" => $room["roomtype"],
+                "room_name" =>$room["roomtype"],
                 "movies" => []
             ];
-            $query = "select id, movie_id, startTime, endTime from available_movies where movie_id = $target and date(startTime) = '$show_date'  and branch_id = ".$branch["branch_id"]." and room_no = ".$room["room_no"]." order by startTime";
+            $query = "select id, movie_id, soundtrack, subtitle, startTime, endTime from available_movies where movie_id = $target and date(startTime) = '$show_date'  and branch_id = ".$branch["branch_id"]." and room_no = ".$room["room_no"]." order by startTime";
             $stmt = $conn->prepare($query);
             $stmt->execute();
 

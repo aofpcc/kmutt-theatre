@@ -12,14 +12,14 @@
   // echo "</pre>";
   for($i=0;$i<$num;$i++){
     if (substr($row[$i]["StockID"],0,2) == "DR"){
-      $unit[$i] = 'Liter';
+      $unit[$i] = 'Liters';
     };
     if (substr($row[$i]["StockID"],0,2) == "PC"){
       $row[$i]["Remain"] = $row[$i]["Remain"]/1000;
-      $unit[$i] = 'Kilogram';
+      $unit[$i] = 'Kilograms';
     };
     if (substr($row[$i]["StockID"],0,2) == "SN"){
-      $unit[$i] = 'Piece';
+      $unit[$i] = 'Packs';
     };
   }
 ?>

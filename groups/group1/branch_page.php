@@ -9,8 +9,10 @@ $klein->respond('GET', '/kmutt_home/branch/[:movie_id]', function ($request, $re
 
     $date = [];
     $status = false;
+    $isFirst = null;
     foreach($query as $q) {
         $temp = new DateTime($q["start_date"]);
+        if($isFirst == null) $isFirst = $temp;
         $month = substr($temp->format("F"), 0, 3);
         array_push($date, [
             "str" => $temp->format("d")." ".$month." ".$temp->format("Y"),
@@ -26,7 +28,7 @@ $klein->respond('GET', '/kmutt_home/branch/[:movie_id]', function ($request, $re
     $details = $conn->query("select detail from G09_Movie where id = '$request->movie_id'")->fetchAll(PDO::FETCH_ASSOC);
 
     $genre = $conn->query("select distinct genre from G09_Genre_Movie where id = '$request->movie_id'")->fetchAll(PDO::FETCH_ASSOC);
-    
+
     // $response->dump($name);
     // $response->sendBody();
     // die;
@@ -36,7 +38,7 @@ $klein->respond('GET', '/kmutt_home/branch/[:movie_id]', function ($request, $re
     $service->name = $name[0];
     $service->photo = $name[0];
     // $service->detail = $name[0];
-    $service->datenow = (new DateTime)->format("Y-m-d");
+    $service->datenow = ($isFirst)->format("Y-m-d");
     $service->query = $date;
     $service->length = $name[0]["length"];
     $service->movie_id = $request->movie_id;

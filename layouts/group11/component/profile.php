@@ -121,6 +121,19 @@
                                       </p>
                                   </div>
                               </div>
+                              <div class="row">
+                                  <div class="col-md-6">
+                                      <label>Salary</label>
+                                  </div>
+                                  <div class="col-md-6">
+                                      <p>
+                                        <?php 
+                                                $profile = $this->profile;
+                                                echo $profile[0]['Salary'].'฿';                                        
+                                        ?>
+                                      </p>
+                                  </div>
+                              </div>
                     </div>
                     <div id="menu1" class="tab-pane fade">
                     <div class="row">

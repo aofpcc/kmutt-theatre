@@ -1,3 +1,9 @@
+<style media="screen">
+  a.inactive {
+    pointer-events: none;
+  }
+</style>
+
 <?php foreach($this->result as $r) { ?>
 <div class="card card-temp shadow-sm">
     <!-- <div class="row blue-head">
@@ -21,7 +27,7 @@
         <br>
         <h4>ENG</h4>
         <?php foreach($room["movies"] as $movie) { ?>
-            <a class="btn <?=$movie["status"] ?>" href="/customer/kmutt_home/branch/show_time/select_chair/<?=$movie["id"]?>"><?=$movie["showtime"]?></a>
+            <a class="btn <?=$movie["status"] ?>" href="/emp/group2/home_page/select_movie/branch/<?=$movie["id"]?>"><?=$movie["showtime"]?></a>
         <?php } ?>
       </div>
     </div>

@@ -321,6 +321,13 @@ class LoginPerformer
         return $this->LoginThenGoTo($role, '/customer/login');
     }
 
+    public function requireNotLogin($link) {
+        if (!empty($_SESSION['login']) && $_SESSION['login'] == true) {
+            $this->klein->response()->redirect($link);
+            $this->klein->response()->sendHeaders();
+        }
+    }
+
     public function loginPage(){
         $this->klein->response()->redirect("/customer/login");
         $this->klein->response()->sendHeaders();

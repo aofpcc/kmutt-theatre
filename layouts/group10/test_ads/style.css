@@ -10,7 +10,7 @@
   top: 0;*/
   height: 120vh; 
   margin: 0;
-  position: absolute;
+  position: fixed;
   top: 50%;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
@@ -51,6 +51,11 @@
 .modal-body {
   padding: 10px 20px;
   background: #fff;
+}
+
+.modal-body img {
+  max-width: 80vh;
+  max-height: 80vh;
 }
 
 .modal-footer {

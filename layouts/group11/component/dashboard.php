@@ -26,6 +26,7 @@
                   <th>Surname</th>
                   <th>Email</th>
                   <th>Call</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>              
@@ -38,10 +39,13 @@
                     echo '<td>'.$row['Firstname'].'</td>';
                     echo '<td>'.$row['Lastname'].'</td>';
                     echo '<td>'.$row['Email'].'</td>';
-                    echo '<td>'.$row['Tell'].'</td>';      
-                    echo '</tr>';
+                    echo '<td>'.$row['Tell'].'</td>';
+                    echo '<td><a href ="/emp/staff/employee/finance">edit</a></td>';  
+                    echo '</tr>';                        
                   } 
-                ?>                
+                ?>  
+                 <td><a href ="/emp/staff/employee/finance">edit</a></td>    
+                 </tr>             
               </tbody>
             </table>
           </div>

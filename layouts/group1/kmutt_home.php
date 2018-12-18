@@ -105,14 +105,14 @@
 
     <div class = "container" id = "movies">
       <h1><center>MOVIES</center></h1>
-      <nav class="nav nav-pills nav-fill">
+      <!-- <nav class="nav nav-pills nav-fill">
           <a class="nav-item nav-link disabled"></a>
           <a class="nav-item nav-link disabled" ></a>
           <a class="nav-item nav-link" href="#">Now Showing</a>
           <a class="nav-item nav-link" href="#">Coming Soon</a>
           <a class="nav-item nav-link disabled"></a>
           <a class="nav-item nav-link disabled" ></a>
-        </nav>
+        </nav> -->
     <hr><br><br>
 
 

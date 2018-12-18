@@ -80,7 +80,7 @@ $klein->respond(['GET', 'POST'], '/membership', function ($request, $response, $
         $response->redirect("/customer/login");
         $response->sendHeaders();
     });
-                                                                                            
+
 
 // change password (page)
 $klein->respond('GET', '/change/password', function ($request, $response, $service, $app, $validator) {
@@ -174,6 +174,7 @@ $klein->respond('POST', '/change/phonenumber/action', function ($request, $respo
 
 // member information
 $klein->respond('GET', '/login', function ($request, $response, $service, $app, $validator) {
+    $app->login->requireNotLogin('/customer/kmutt_home');
     global $database;
     $conn = $database->getConnection();
     $service->pageTitle = 'Fish and Chips';
@@ -395,12 +396,17 @@ $klein->respond('GET', '/transaction_point', function ($request, $response, $ser
 
 //add
   $klein->respond('GET', '/g05/test_add_point', function ($request, $response, $service, $app, $validator) {
-  $app->point->addPoint([
-    "type" => "Ticket", //FNB
-    "memberID" => "151",
-    "point" => "300",
-    "transactionID" => "X01AB"
-  ]);
+    $x = $app->point->addPoint([
+        "type" => "Ticket", //FNB
+        "memberID" => "151",
+        "point" => "300",
+        "transactionID" => "X01AB"
+    ]);
+    if($x["result"]) {
+        // ok
+    }else{
+        // not ok
+    }
 });
 
   //subtract

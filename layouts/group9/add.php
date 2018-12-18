@@ -73,7 +73,7 @@
         <?php }?>
       </div>
       <div class="form-group">
-        <label for="exampleFormControlInput1">Length (00:00:00)</label>
+        <label for="exampleFormControlInput1">Length</label>
         <input type="text" class="form-control" id="exampleFormControlInput1" name="time" placeholder="Minute" value=""
           required>
       </div>
@@ -107,12 +107,12 @@
       </div>
       <br>
       <div class="form-group">
-        <label for="exampleFormControlTextarea1">Describetion</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="des" placeholder="add Describetion"></textarea>
+        <label for="exampleFormControlTextarea1">Description</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="des" placeholder="add Description"></textarea>
       </div>
       <div class="form-group">
         <label for="exampleFormControlTextarea1">Image</label>
-        <input type="file" class="form-control-file border" rows="3" name="image" placeholder="add Describetion">
+        <input type="file" class="form-control-file border" rows="3" name="image" placeholder="add Description">
       </div>
       <button class="btn btn-primary" type="submit">Submit</button>
         </div>

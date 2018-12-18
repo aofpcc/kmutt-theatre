@@ -35,7 +35,7 @@ $klein->respond('GET', '/androidChangePassword', function ($request, $response, 
   global $database;
   $conn = $database->getConnection();
 
-  $userID = $_GET['userID'];  $oldPass = $_GET['oldpass'];  $newPass = $_GET['newpass']
+  $userID = $_GET['userID'];  $oldPass = $_GET['oldpass'];  $newPass = $_GET['newpass'];
 
   $query = "SELECT * from core_user_pwd WHERE (password = '$oldPass' and userID = '$userID')";
   $stmt = $conn->prepare($query);

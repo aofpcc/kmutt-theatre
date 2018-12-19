@@ -85,7 +85,7 @@
       else {
         echo "upload unsuccessful";
       }
-      header("location: /emp/group10/ads",  true,  301 );
+      header("location: /emp/ads",  true,  301 );
       exit;
       
     }
@@ -102,7 +102,7 @@
     $conn->exec("INSERT INTO G10_Advertisement_log 
                 VALUES ('$id', '$emp_id','".date('Y-m-d H:i:s')."', 'delete')");
     if($conn->exec($stmt)) {
-      header("location: /emp/group10/ads",  true,  301 );
+      header("location: /emp/ads",  true,  301 );
       exit;
     }
   }

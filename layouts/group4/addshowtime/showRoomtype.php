@@ -5,6 +5,7 @@
   		<div class="col-md-6"></div>
         <div class="col-md-6 text-right">
             <input type="button" class="btn btn-primary btn-lg custom-button-width .navbar-right"  value="  Add  " onclick=" add_page()"></button>
+            <input type="button" class="btn btn-success btn-lg custom-button-width .navbar-right"  value="  Back  " onclick=" back_page()"></button>
     	</div>
   </div>
 </div>
@@ -57,6 +58,10 @@
     function add_page()
     {
         location.href = "/emp/add_roomtype";
+    } 
+    function back_page()
+    {
+        location.href = "/emp/showRoominfo";
     } 
 
 </script>

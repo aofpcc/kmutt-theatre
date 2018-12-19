@@ -9,7 +9,7 @@ $klein->respond('GET', '/edit_showtime/[:showtime_id]', function ($request, $res
     //
     // MAIN QUERY
     //
-    $query = "select s.id as showtime_id, br.BranchName, r.room_no, s.room_id, s.movie_id, m.title, s.subtitle, s.soundtrack, date(s.startTime), time(s.startTime), time(s.endTime)
+    $query = "select s.id as showtime_id, br.BranchName, r.room_no, s.room_id, s.movie_id, m.title, s.subtitle, s.soundtrack, s.startTime, s.endTime, date(s.startTime), time(s.startTime), time(s.endTime)
     from G09_Movie m, G04_MSRnB_showingroom s, G04_MSRnB_room r, G14_Branch br
     where m.id = s.movie_id and r.id = s.room_id and br.branchID = r.branch_id and s.id = $id;";
 
@@ -43,10 +43,23 @@ $klein->respond('GET', '/edit_showtime/[:showtime_id]', function ($request, $res
     //
     $service->title = "Showing Time - Movie";
     $service->bootstrap3 = false;
+
+    $service->soundtrack = $data[0]["soundtrack"];
+    $service->subtitle = $data[0]["subtitle"];
+    $service->room_id = $data[0]["room_id"];
+
     $service->data = $data[0];
     $service->movies = $movies;
     $service->branches = $branches;
-    echo json_encode($data[0]);
+
+    $a = new DateTime($data[0]["startTime"]);
+    $b = new DateTime($data[0]["endTime"]);
+
+    $service->startTime = $a->format("Y-m-d")."T".$a->format("H:i");
+    // var_dump($service->startTime);
+    // die;
+    $service->endTime = $b->format("Y-m-d")."T".$b->format("H:i");
+    //echo json_encode($data[0]);
     $service->render("layouts/group4/addshowtime/editshowtime.php");
 });
 
@@ -73,12 +86,13 @@ $klein->respond('POST', '/g04/showTime/edit', function ($request, $response, $se
             $stmt->bindParam(':startTime', $startTime);
             $stmt->bindParam(':endTime', $endTime);
         $stmt->execute();
-
         $service->flash("Edit Amount of Seat Success");
     } catch (PDOException $e) {
         $service->flash("Edit Amount of Seat Failed Beacuzs" . $e->getMessage());
+        $service->back();
+        return;
     }
-
-    $response->redirect("/emp/showAmountseat");
+    
+    $response->redirect("/emp/showtime");
     $response->sendHeaders();
 });

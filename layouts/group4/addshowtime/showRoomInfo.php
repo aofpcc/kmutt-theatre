@@ -6,6 +6,7 @@
         <div class="col-md-6 text-right">
             <input type="button" class="btn btn-warning btn-lg custom-button-width .navbar-right"  value=" Room Management  " onclick=" roomadd_page()"></button>
             <input type="button" class="btn btn-warning btn-lg custom-button-width .navbar-right"  value=" Seat Management  " onclick=" seatadd_page()"></button>
+            <input type="button" class="btn btn-success btn-lg custom-button-width .navbar-right"  value=" Back  " onclick=" main_page()"></button>
     	</div>
   </div>
 </div>
@@ -64,5 +65,9 @@
     function seatadd_page()
     {
         location.href = "/emp/showSeattype";
+    } 
+    function main_page()
+    {
+        location.href = "/emp/g04";
     } 
 </script>

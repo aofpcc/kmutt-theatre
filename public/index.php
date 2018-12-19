@@ -6,6 +6,7 @@ require_once __DIR__ . '/../config/promotion.php';
 require_once __DIR__ . '/../config/login.php';
 require_once __DIR__ . '/../config/js.php';
 
+date_default_timezone_set("Asia/Bangkok");
 
 $klein = new \Klein\Klein();
 $database = new \Database();

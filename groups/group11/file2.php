@@ -1,4 +1,153 @@
 <?php
+
+//timestamp
+$klein->respond('POST', '/staff/employee/timestamp/working', function($request, $response, $service, $app, $validator){
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+    $service->bootstrap3 = true;
+    //check login
+    $data = $app->login->LoginThenGoTo('employee','/emp/staff');
+  
+    // connect db
+    global $database;
+    $conn = $database->getConnection();
+
+    date_default_timezone_set("Asia/Bangkok");
+
+    $id = $data['userID'];
+
+    //check
+    $checks = "SELECT * from G11_Emp_staff where userID = $id" ;
+    $stmt = $conn->prepare($checks);
+    $stmt->execute();
+    $service->state = $stmt->fetchAll(PDO::FETCH_BOTH);
+    $status = $service->state[0]['Status'];
+
+     //select G11_Emp_permission
+    $checkstatus = "SELECT * from G11_Emp_permission where `status` = '$status'" ;
+    $stmt = $conn->prepare($checkstatus);
+    $stmt->execute();
+    $service->permission = $stmt->fetchAll(PDO::FETCH_BOTH);
+    
+    $now = new DateTime("NOW");
+    
+    $checkDay = "SELECT * FROM G11_Emp_timestamp WHERE userID = $id";
+    $stmt = $conn->prepare($checkDay);
+    $stmt->execute();
+    $day = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+    $check = 0;
+    for($i = 0; $i<count($day); $i++) {
+      if($now->format("Y-m-d") === $day[$i]['timeIn']->format("Y-m-d") ) {
+        if(intval($now->format("H")) >= 16) {
+          $check = 2;
+          $day = $day[$i]['timeIn'];
+        } else {
+          $check = 1;
+        }
+      }
+    }
+
+    if($check == 2) {
+      $checkUser = "UPDATE G11_Emp_timeStamp SET timeOut=$out";
+        $stmt = $conn->prepare($checkUser);
+        $stmt->execute();
+    } else if ($check == 0){
+      $checkUser = "INSERT INTO G11_Emp_timeStamp (userID , timeIn , timeOut ) 
+         VALUES ($id,NULL,NULL)";
+        $stmt = $conn->prepare($checkUser);
+        $stmt->execute();
+    }
+
+    // $service->nameTag = 'timestamp.php';
+    // $service->render('layouts/group11/employee.php');
+  });
+
+  $klein->respond('GET', '/staff/employee/timestamp', function($request, $response, $service, $app, $validator){
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+    $service->bootstrap3 = true;
+    //check login
+    $data = $app->login->LoginThenGoTo('employee','/emp/staff');
+  
+    // connect db
+    global $database;
+    $conn = $database->getConnection();
+
+    date_default_timezone_set("Asia/Bangkok");
+
+    $id = $data['userID'];
+
+    //check
+    $checks = "SELECT * from G11_Emp_staff where userID = $id" ;
+    $stmt = $conn->prepare($checks);
+    $stmt->execute();
+    $service->state = $stmt->fetchAll(PDO::FETCH_BOTH);
+    $status = $service->state[0]['Status'];
+
+     //select G11_Emp_permission
+    $checkstatus = "SELECT * from G11_Emp_permission where `status` = '$status'" ;
+    $stmt = $conn->prepare($checkstatus);
+    $stmt->execute();
+    $service->permission = $stmt->fetchAll(PDO::FETCH_BOTH);
+    
+    $checkUser = "SELECT * FROM G11_Emp_timeStamp";
+    $stmt = $conn->prepare($checkUser);
+    $stmt->execute();
+    $service->countUser = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+    $user = "SELECT * FROM G11_Emp_staff";
+    $stmt = $conn->prepare($user);
+    $stmt->execute();
+    $service->user = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+    $now = new DateTime("now");
+    $service->monthNow = $now->format("Y-m");
+
+    $service->nameTag = 'timestamp.php';
+    $service->render('layouts/group11/employee.php');
+  });
+
+  $klein->respond('POST', '/staff/employee/timestamp', function($request, $response, $service, $app, $validator){
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+    $service->bootstrap3 = true;
+    //check login
+    $data = $app->login->LoginThenGoTo('employee','/emp/staff');
+  
+    // connect db
+    global $database;
+    $conn = $database->getConnection();
+
+    date_default_timezone_set("Asia/Bangkok");
+
+    $id = $data['userID'];
+
+    //check
+    $checks = "SELECT * from G11_Emp_staff where userID = $id" ;
+    $stmt = $conn->prepare($checks);
+    $stmt->execute();
+    $service->state = $stmt->fetchAll(PDO::FETCH_BOTH);
+    $status = $service->state[0]['Status'];
+
+     //select G11_Emp_permission
+    $checkstatus = "SELECT * from G11_Emp_permission where `status` = '$status'" ;
+    $stmt = $conn->prepare($checkstatus);
+    $stmt->execute();
+    $service->permission = $stmt->fetchAll(PDO::FETCH_BOTH);
+    
+    $checkUser = "SELECT * FROM G11_Emp_timeStamp WHERE userID = $request->id";
+    $stmt = $conn->prepare($checkUser);
+    $stmt->execute();
+    $service->countUser = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+    $service->monthNow = $request->month;
+
+    $service->nameTag = 'timestamp.php';
+    $service->render('layouts/group11/employee.php');
+  });
+  //timestamp
+
 $klein->respond('GET', '/staff/employee/editemp/[:userID]', function ($request, $response, $service, $app, $validator) {
   error_reporting(E_ALL);
   ini_set('display_errors', 1);
@@ -83,11 +232,51 @@ $klein->respond('POST', '/staff/employee/editemp/save', function ($request, $res
    $stmt->execute();
    $service->branch = $stmt->fetchAll(PDO::FETCH_BOTH);
 
-   //select G11_Emp_department
-   $dep = "SELECT * from G11_Emp_department WHERE userID = $request->userID" ;
-   $stmt = $conn->prepare($dep);
-   $stmt->execute();
-   $service->department = $stmt->fetchAll(PDO::FETCH_BOTH);
+   //history
+   $firstname =  $service->employee[0]['Firstname'];
+   $lastname = $service->employee[0]['Lastname'];
+   $tell = $service->employee[0]['Tell'];
+   $email = $service->employee[0]['Email'];
+   $sex = $service->employee[0]['Sex'];
+   $status = $service->employee[0]['Status'];
+   $address = $service->employee[0]['Address'];
+   $salary = $service->employee[0]['Salary'];
+   $super_emp= $service->employee[0]['Super_emp'];
+   // $userID= $service->profile[0]['userID'];
+
+
+    //insert db G11_Emp_history_staff
+  $historyEmp = "INSERT INTO G11_Emp_history_staff (Firstname, Lastname, Sex, `Status` , Email, `Address`, Salary, Super_emp, Tell, userID) 
+               VALUES ('$firstname','$lastname','$sex','$status','$email','$address','$salary','$super_emp','$tell','$request->userID')";
+  $stmt = $conn->prepare($historyEmp);
+  $stmt->execute();
+
+  
+    //select G11_Emp_department
+    $dep = "SELECT * from G11_Emp_department WHERE userID = $request->userID" ;
+    $stmt = $conn->prepare($dep);
+    $stmt->execute();
+    $service->department = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+    $experience = $service->department[0]['experience'];
+    $Profession = $service->department[0]['Profession'];
+    $ot_rate = $service->department[0]['ot_rate'];
+    $eng_lv = $service->department[0]['eng_lv'];
+    $availability = $service->department[0]['availability'];
+    $branch = $service->department[0]['branchID'];
+
+     //insert db G11_Emp_history_dep
+     $historydep = "INSERT INTO G11_Emp_history_dep (userID, experience, Profession, ot_rate , eng_lv, `availability`, branchID) 
+                                    VALUES ('$request->userID', '$experience', '$Profession', '$ot_rate', ' $eng_lv', '$availability','$branch')";
+    $stmt = $conn->prepare($historydep);
+    $stmt->execute();
+
+  $experience = $request->experience;
+  $Profession = $request->Profession;
+  $ot_rate = $request->ot_rate;
+  $eng_lv = $request->eng_lv;
+  $availability = $request->availability;
+  $branch = $request->branch;
 
     //select db core_user_table
     $user = "SELECT * FROM core_user_table WHERE userID = $request->userID " ;

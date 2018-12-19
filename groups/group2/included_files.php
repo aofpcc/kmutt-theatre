@@ -8,6 +8,7 @@ $included = array(
   'done_page',
   'return_ticket',
   'change_ticket',
-  'each_branch'
+  'each_branch',
+  'new_file'
 );
 ?>

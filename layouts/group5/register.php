@@ -63,7 +63,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text">@</span>
               </div>
-              <input type="text" pattern="[A-Za-z0-9]{5,}" title="Please include at least 5 characters" class="form-control" id="username" name="username" placeholder="Username" required="">
+              <input type="text" pattern="[a-zA-Z0-9-_\.]{5,}" title="Please include at least 5 characters" class="form-control" id="username" name="username" placeholder="Username" required="">
               <div class="invalid-feedback" style="width: 100%;">
                 Your username is required.
                 ) </div>

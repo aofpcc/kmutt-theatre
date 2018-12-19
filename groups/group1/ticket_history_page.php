@@ -6,9 +6,9 @@ $klein->respond('POST', '/kmutt/ticket/ticket_history/[:showtime_id]', function 
 
   $ticket_id = $conn->query("select ticket_id from G02_Ticket_member where UserID = $userID;")
   ->fetchAll(PDO::FETCH_ASSOC);
-
-  var_dump($ticket_id);
-  die;
+  //
+  // var_dump($ticket_id);
+  // die;
 
   // $seat_ticket = $conn->query("select seat_ticket, showtime_id from G02_Ticket_history where  id = $ticket;")
   // ->fetchAll(PDO::FETCH_ASSOC);

@@ -31,7 +31,7 @@
     <input name="promotion_point" type="number" class="form-control" id='promotion_point' placeholder="0" >
   </div>
   <div class="form-group">
-  <button class="btn btn-primary" type="submit">Add</button>
+  <button class="btn btn-primary" type="submit">Confirm</button>
   </div>
   
 </form>

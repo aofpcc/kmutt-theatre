@@ -3,7 +3,8 @@ $klein->respond('GET', '/ticket/[:branch_id]', function($request, $response, $se
     $conn = $app->db->getConnection();
     $userID = $app->login->requireLogin('employee')["userID"];
 
-    $data2 = $conn->query("SELECT * FROM G11_Current_dep_of_emp WHERE userID=$userID and branchID=$request->branch_id")->fetchAll(PDO::FETCH_ASSOC);
+    $query = "SELECT * FROM G11_Emp_department WHERE userID=$userID and branchID=$request->branch_id";
+    $data2 = $conn->query($query)->fetchAll(PDO::FETCH_ASSOC);
 
     // branch id doest not belong to this userID
     if(count($data2) == 0 ) {

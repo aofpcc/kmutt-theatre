@@ -60,8 +60,8 @@
     <div id="nameCusID">
 
     </div>
-    <input type="hidden" id="total">
-    <input type="hidden" id="totalPoint">
+    <input type="hidden" name="total" id="total">
+    <input type="hidden" namr="totalPoint" id="totalPoint">
     <div id="pointCusID">
 
     </div>

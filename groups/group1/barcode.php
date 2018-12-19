@@ -1,11 +1,10 @@
 <?php
-$klein->respond('POST', '/kmutt/ticket/barcode/[:code]', function ($request, $response, $service, $app, $validator)  use($database){
-  $userID = "".$app->login->requireLogin('customer')["userID"];
-  $service->bootstrap3 = false;
+$klein->respond('GET', '/kmutt/ticket/barcode/[:code]', function ($request, $response, $service, $app, $validator)  use($database){
+  $app->login->requireLogin('customer');
   $conn = $app->db->getConnection();
-
-  $sql = $conn->query("select code from G02_Ticket_history where how_booking = 'Web';")
-  ->fetchAll(PDO::FETCH_ASSOC);
-  $service->code = $code;
-  $service->render('layouts/group1/bar.php');
+  $data = $conn->query("SELECT * FROM G02_Ticket_history WHERE code='$request->code' and return_ticket=0");
+  $generator = new Picqer\Barcode\BarcodeGeneratorHTML();
+  $service->barcode = $generator->getBarcode($request->code, $generator::TYPE_CODE_128);
+  $service->code = $request->code;
+  $service->render('layouts/core/getBarcode.php');
 });

@@ -25,6 +25,7 @@
                 <div class="col-lg-8 mx-auto">
                   <!-- action form -->
                   <form action="/emp/g04/showTime/edit" method="post">
+                    <input type="hidden" name="showtime_id" value="<?=$this->showtime_id?>">
                     <div class="form-group">
                       <label for="sel1">Movie:</label>
                       <select class="form-control" id="movie_id" name="movie_id">
@@ -35,12 +36,12 @@
                     </div>
                     <div class="form-group">
                       <label for="sel1">Soundtrack</label>
-                      <select class="form-control" id="soundtrack" name="soundtrack">
+                      <select class="form-control" id="soundtrack" name="soundtrack" value="<?=$this->soundtrack?>">
                       </select>
                     </div>
                     <div class="form-group">
                       <label for="sel1">Subtitle</label>
-                      <select class="form-control" id="subtitle" name="subtitle" >
+                      <select class="form-control" id="subtitle" name="subtitle" value="<?=$this->subtitle?>" >
                         <option value="">No Subtitle</option>
                       </select>
                     </div>
@@ -55,14 +56,14 @@
 
                     <div class="form-group">
                       <label for="sel1">Room No:</label>
-                      <select class="form-control" id="room_id" name="room_id">
+                      <select class="form-control" id="room_id" name="room_id" value="<?=$this->room_id?>">
                       </select>
                     </div>
 
                     <div class="control-group">
                       <div class="form-group floating-label-form-group controls mb-0 pb-2">
                         <label>Start Time:</label>
-                        <input id="startTime" type="datetime-local" class="form-control" placeholder="" required name="startTime">
+                        <input id="startTime" type="datetime-local" class="form-control" placeholder="" required name="startTime" value="<?=$this->startTime?>">
                         <p class="help-block text-danger">
                           <!-- Choose Time to set period of the movie show time -->
                         </p>
@@ -72,8 +73,8 @@
                     <div class="control-group" style="display: block;" id="EndTimeBlock">
                       <div class="form-group floating-label-form-group controls mb-0 pb-2">
                         <label>End Time:</label>
-                        <input id="hendTime" type="hidden" name="endTime">
-                        <input id="endTime" type="datetime-local" class="form-control" placeholder="" required disabled name="">
+                        <input id="hendTime" type="hidden" name="endTime" value="<?=$this->endTime?>">
+                        <input id="endTime" type="datetime-local" class="form-control" placeholder="" required disabled name="" value="<?=$this->endTime?>">
                         <p class="help-block text-danger">
                           <!-- Choose Time to set period of the movie show time -->
                         </p>
@@ -82,7 +83,7 @@
                     <br>
                     <div id="success"></div>
                     <div class="form-group">
-                      <button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">Add</button>
+                    <button type="submit" class="btn btn-warning">Edit</button>
                       <input type="button" class="btn btn-success btn-xl custom-button-width .navbar-right"  value="  Back  " onclick=" data_page()"></button>
                       <br><br>
                     </div>
@@ -161,12 +162,7 @@
             var defaultMovie = <?php echo $this->data["movie_id"] ?>;
             $('#movie_id').val(defaultMovie);
 
-            var soundtrack = '<?php echo $this->data["soundtrack"] ?>';
-            $("#soundtrack").val(soundtrack);
             
-
-            // var defaultBranch = <?php echo $this->data["room_id"] ?>;
-            // $('#branch_id').val(defaultBranch);
 
             function changeSoundtrack() {
               var e = $("#movie_id").val();

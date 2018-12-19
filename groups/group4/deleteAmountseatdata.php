@@ -10,13 +10,12 @@ $klein->respond('POST', '/g04/Amountseat/del/[:id]', function ($request, $respon
     ];
     try {
         $conn->beginTransaction();
-        $stmt = $conn->prepare("delete from G04_MSRnB_seatPerRoom WHERE id=:id");
-        $room_id = $request->room_id;
+        $stmt = $conn->prepare("delete from G04_MSRnB_seatPerRoom WHERE room_id=:id");
         $stmt->bindParam(':id', $id);
         $stmt->execute();
 
-        $stmt = $conn->prepare("delete from G04_MSRnB_room WHERE id =:room_id");
-        $stmt->bindParam(':room_id', $room_id);
+        $stmt = $conn->prepare("delete from G04_MSRnB_room WHERE id =:id");
+        $stmt->bindParam(':id', $id);
         $stmt->execute();
 
         $conn->commit();

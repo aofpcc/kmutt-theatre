@@ -1,6 +1,6 @@
 <?php
 $klein->respond(['GET', 'POST'], "/test", function ($request, $response, $service, $app, $validator) {
-    $response->redirect("/test/home");
+    $response->redirect("/customer/kmutt_home");
     $response->sendHeaders();
 });
 

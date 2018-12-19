@@ -71,12 +71,16 @@
           <li>: <span id="counter">0</span></li>
           <li>: <b><i>$</i><span id="total">0</span></b></li>
         </ul>
-        <div class="clear"></div>
+        <div class="clear"></div><br>
+        
 
-        Code ID :  <br>
-          <input type="text" name="codeID" value="example : Mickey">
-          <button name = "send_code" value = "send_code" id = "send_code" class = "checkout-button">Send Code
-          </button>
+        <form action="index.html" method="post">
+          Code ID :  <br>
+            <input type="text" name="codeID" value="example : Mickey">
+            <button name = "send_code" action ="/emp/promotion/procode" value = "send_code" id = "send_code" class = "checkout-button">Send Code
+            </button>
+        </form>
+
             <?php //foreach($this->movie_id as $movie_id) { ?>
             <form action = "/customer/kmutt_home/branch/show_time/select_chair/payment/<?= $this->showtime_id?>" method = "post">
                 <ul id="selectedSeats" class="scrollbar scrollbar1"></ul>

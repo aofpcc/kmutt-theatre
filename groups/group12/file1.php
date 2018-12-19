@@ -43,11 +43,11 @@ $klein->respond('GET', '/mobile/movies/[:movie_id]', function ($request, $respon
             LEFT JOIN G09_Genre_Movie as g ON m.id = g.id
             WHERE m.id = $request->movie_id";
   // echo $query;
-  // $stmt = $conn->prepare($query);
-  // $stmt->execute();
+  $stmt = $conn->prepare($query);
+  $stmt->execute();
 
-  // $num = $stmt->rowCount();
-  // $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
+  $num = $stmt->rowCount();
+  $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
 
   // $service->allMovies = $arr;
   // $service->pageTitle = 'Hello';

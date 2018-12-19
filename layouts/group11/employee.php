@@ -31,7 +31,7 @@
       </ul>
     </div> -->
 
-    <div class="remove-container" style="width: inherit!important;">
+    <div class="" style="width: inherit!important;">
       <div class="row">
         <div class="col-md-2 d-none d-md-block bg-light sidebar">
           <div class="sidebar-sticky">
@@ -95,12 +95,17 @@
               }
               ?>
               <li class="nav-item">
+              <a class="nav-link" href="/emp/staff/employee/changepass">
+                <span data-feather="edit-2"></span>
+                Change Password                
+              </a>
+            </li>  
+              <li class="nav-item">
                 <a class="nav-link" href="/emp/staff/logout">
                   <span data-feather="power"></span>
-                  LOGOUT
+                  LOGOUT                 
                 </a>
-              </li>
-            </ul>
+              </li>       
 
             <!-- <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
               <span>Saved reports</span>

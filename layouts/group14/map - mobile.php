@@ -146,6 +146,7 @@
         console.log(document.getElementById("confirmLoc").value);
         console.log(document.getElementById("confirmLoc").name);
     }
+    var movieId = <?php echo json_encode($this -> movie_id); ?>;
     $("#confirmLoc").click(function(e){
         if(selected == null) {
             // alert("Please Choose Branch");
@@ -158,7 +159,7 @@
         // if(!confirm("Confirm select branch " + branchName)) {
         //     return;
         // }
-        location.href = "/customer/group14/booking/92/" + branchID;
+        location.href = "/customer/group14/booking/"+movieId+"/" + branchID;
     });
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVya5jGbVLcFvCfHrR8yNKU7CPJhZ1eVI&callback=initMap"></script>

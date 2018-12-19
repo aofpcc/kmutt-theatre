@@ -29,13 +29,21 @@
             <div style = "background-color:#333333; color:#FFFFFF; padding:3px;"><b>Login</b></div>
 				
             <div style = "margin:30px">
-               
+          
                <form action = "/emp/staff/login" method = "post">
                   <label>Email  :</label><input type = "text" name = "username" class = "box"/><br /><br />
-                  <label>Pass  &nbsp;:</label><input type = "password" name = "password" class = "box" /><br/><br />
+                  <label>Pass  &nbsp;:</label><input type = "password" name = "password" class = "box" /><br/><br />               
+               
+
+               <div class= "row">
+                  <div class= "col-6"> 
                   <input type = "submit" value = " Submit "/><br />
-               </form>                            
-					
+                  </div>
+                  <div class= "col-6"> 
+                  <a href="/customer/forgetPassword">forgetPassword</a>                          
+                  </div>
+               </div>
+               </form> 
             </div>
 				
          </div>

@@ -19,7 +19,9 @@ $klein->respond('GET', '/mobile/movies/all', function ($request, $response, $ser
   global $database;
   $conn = $database->getConnection();
 
-  $query = "SELECT * from G09_Movie";
+  $query = "SELECT * 
+            FROM G09_Movie as m
+            LEFT JOIN G09_Genre_Movie as g ON m.id = g.id";
   $stmt = $conn->prepare($query);
   $stmt->execute();
 
@@ -30,6 +32,27 @@ $klein->respond('GET', '/mobile/movies/all', function ($request, $response, $ser
   // $service->pageTitle = 'Hello';
   // $service->render('layouts/group12/home.php');
   return $response->json($arr);
+});
+
+$klein->respond('GET', '/mobile/movies/[:movie_id]', function ($request, $response, $service) {
+  global $database;
+  $conn = $database->getConnection();
+
+  $query = "SELECT * 
+            FROM G09_Movie as m
+            LEFT JOIN G09_Genre_Movie as g ON m.id = g.id
+            WHERE m.id = $request->movie_id";
+  // echo $query;
+  $stmt = $conn->prepare($query);
+  $stmt->execute();
+
+  $num = $stmt->rowCount();
+  $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+  // $service->allMovies = $arr;
+  // $service->pageTitle = 'Hello';
+  // $service->render('layouts/group12/home.php');
+  return $response->json($arr[0]);
 });
 
 $klein->respond('GET', '/mobile/showtimes/[:movie_id]', function ($request, $response, $service) {

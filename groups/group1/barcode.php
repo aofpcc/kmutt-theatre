@@ -9,4 +9,4 @@ $klein->respond('GET', '/kmutt/ticket/barcode/[:code]', function ($request, $res
   $stmt->bindParam(":code", $code);
   $stmt->execute();
   $service->render('layouts/group1/ticket.php');
- ?>
+});

@@ -26,11 +26,10 @@
     <link rel="stylesheet" href="/layouts/group14/map.css">
 </head>
 <!-- <div id="map"></div> -->
-<div class="container" style="width: 75%; height: 300px;">
-
+<div class="container" style="width: 75%; height: 50vh;">
     <div id="map" style="height=25%;"></div>
     <hr style="height:2pt; visibility:hidden; margin-bottom:-1px; margin-top:3px" />
-    <div action="/group14/map/action" method="post" style="height: 100%;">
+    <div style="height: 200px;">
         <div class="input-group stylish-input-group"><input class="form-control" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search location..." style="width: 100%"/></div>
         <hr style="height:2pt; visibility:hidden; margin-bottom:-1px; margin-top:3px" />
         <div class="scrollable scrollbar-danger" style='height: 70%'>

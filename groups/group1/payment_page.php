@@ -49,8 +49,8 @@ $klein->respond('POST', '/kmutt_home/branch/show_time/select_chair/payment/[:sho
   $title = $query_movie[0]["title"];
   $image = $query_movie[0]["Image"];
   $length = $query_movie[0]["length"];
-  $d_dead = $daedline[0]["dead_date"];
-  $t_dead = $daedline[0]["dead_time"];
+  // $d_dead = $daedline[0]["dead_date"];
+  // $t_dead = $daedline[0]["dead_time"];
   $theatre_no = $query_showtime[0]["room_id"];
   // $dates = $date;
   // $times = $time;
@@ -58,8 +58,8 @@ $klein->respond('POST', '/kmutt_home/branch/show_time/select_chair/payment/[:sho
   $service->title = $title;
   $service->image = $image;
   $service->length = $length;
-  $service->d_dead = $d_dead;
-  $service->t_dead = $t_dead;
+  // $service->d_dead = $d_dead;
+  // $service->t_dead = $t_dead;
   $service->theatre_no = $theatre_no;
   $service->date = $dates;
   $service->time = $times;
@@ -113,7 +113,7 @@ $klein->respond('POST', '/kmutt_home/branch/show_time/select_chair/payment/[:sho
         $code = $str ;
         $buyer_id = $userID;
         // $showtime = $this->showtime_id;
-        $deadline = strtotime('now + 10 minutes');
+        // $deadline = strtotime('now + 10 minutes');
 
         // $response->dump($room_no);
         // $response->sendBody();
@@ -172,10 +172,10 @@ $klein->respond('POST', '/kmutt_home/branch/show_time/select_chair/payment/[:sho
             // // die;
 
             $seat = $selectedSeats[$j];
-              $sql = "INSERT INTO G01_Booking (status, deadline, selected_seat, booking_time, code, buyer_id, row_ticket, seat_ticket, room_id, movie_id, showtime_id)
-                 values('$status',FROM_UNIXTIME($deadline), '$seat', CURRENT_TIMESTAMP, '$code', '$buyer_id', '$row', '$seat_tic', '$theatre_no', '$movie_id', '$request->showtime_id')";
-                $stmt = $conn->prepare($sql);
-                $stmt->execute();
+              // $sql = "INSERT INTO G01_Booking (status, deadline, selected_seat, booking_time, code, buyer_id, row_ticket, seat_ticket, room_id, movie_id, showtime_id)
+              //    values('$status',FROM_UNIXTIME($deadline), '$seat', CURRENT_TIMESTAMP, '$code', '$buyer_id', '$row', '$seat_tic', '$theatre_no', '$movie_id', '$request->showtime_id')";
+              //   $stmt = $conn->prepare($sql);
+              //   $stmt->execute();
           }
 
         $conn->commit();

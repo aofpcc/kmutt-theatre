@@ -128,7 +128,8 @@
           return 'selected';
         } else if (this.status() == 'selected') { //Checked
           //Update Number
-          $counter.text(sc.find('selected').length - 1);
+          $counter.text(sc.find('selected').lengthA
+           - 1);
           //update totalnum
           $total.text(recalculateTotal(sc) - price);
 
@@ -162,13 +163,4 @@
 
     return total;
   }
-  // function recalculateTotaldivide(sc) {
-  //   var total = 0;
-  //   sc.find('selected').each(function () {
-  //     total = total+price;
-      
-  //   });
-
-  //   return total/25;
-  // }
 </script>

@@ -292,5 +292,5 @@ $klein->respond('GET', '/group14/showtime/all/[:movie_id]/[:show_date]/[:branch_
     // ret 1
     $service->result = $result;
     // $service->partial("layouts/group1/branch_each.php");
-    return $response->result = $result;
+    return $response->json($result);
   });

@@ -407,13 +407,13 @@ $klein->respond('POST', '/register-form', function ($request, $response, $servic
       $stmt->execute();
       // address
 
-      $query = "insert into G05_Member_address(MemberID, Address, Province, District, ZipCode)
-      values(:userID, :Address, :Province, :District, :ZipCode);";
+      $query = "insert into G05_Member_address(MemberID, Address, Province, District, SubDistrict, ZipCode)
+      values(:userID, :Address, :Province, :District, :SubDistrict, :ZipCode);";
 
       $address = $request->address;
       $province = $request->province;
       $district = $request->district;
-      // $subDistrict = $request->phone;
+      $subdistrict = $request->subdistrict;
       $zip = $request->zip;
 
       $stmt = $conn->prepare($query);
@@ -421,7 +421,7 @@ $klein->respond('POST', '/register-form', function ($request, $response, $servic
       $stmt->bindParam(":Address", $address);
       $stmt->bindParam(":Province", $province);
       $stmt->bindParam(":District", $district);
-      // $stmt->bindParam(":SubDistrict", $SubDistrict);
+      $stmt->bindParam(":SubDistrict", $subdistrict);
       $stmt->bindParam(":ZipCode", $zip);
       $stmt->execute();
 

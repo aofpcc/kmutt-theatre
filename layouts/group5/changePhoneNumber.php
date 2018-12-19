@@ -33,7 +33,7 @@
             </div>
 
               <input type="submit" class="cancel-block gap red-block white-font" value="Submit">
-              <button type="button" class="cancel-block gap" onclick="location = '/customer/membership'">Cancel</button>
+              <button type="button" class="cancel-block gap" onclick="location = '/customer/membership'" >Cancel</button>
 
           </form>
         </div>

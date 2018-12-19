@@ -54,29 +54,42 @@ $klein->respond('POST', '/g04/Amountseat/add', function ($request, $response, $s
     // insert data into db using PDO, again PDO , PDO, PDO, PDO
     try {
         $conn->beginTransaction();
-        $stmt = $conn->prepare("insert into G04_MSRnB_seatPerRoom(all_seat_row, all_seat_no) values(:all_seat_row, :all_seat_no);
-                                insert into G04_MSRnB_room(id,branch_id,room_no) values(:id,:branch_id,:room_no);");
-        $nrow = $request->all_seat_row;
-        $nno = $request->all_seat_no;
-        $room_id = $request->id;
+        $stmt = $conn->prepare("insert into G04_MSRnB_room(branch_id,room_no,theaterinfo_id) values(:branch_id,:room_no,:roomtype);");
+
         $branch_id = $request->branch_id;
-        $room_id = $request->room_no;
+        $room_no = $request->room_no;
+        $theaterinfo_id = $request->roomtype;
         
-        $stmt->bindParam(':all_seat_row', $nrow);
-        $stmt->bindParam(':all_seat_no', $nno);
         
-        $stmt->bindParam(':id', $room_id);
         $stmt->bindParam(':branch_id', $branch_id);
         $stmt->bindParam(':room_no', $room_no);
+        $stmt->bindParam(':roomtype', $theaterinfo_id);
 
         $stmt->execute();
+        $LAST_ID = $conn->lastInsertId();
 
+        $service->flash("Add Room Success");
+      
+
+       $stmt = $conn->prepare("insert into G04_MSRnB_seatPerRoom(room_id, all_seat_row, all_seat_no) values(:id ,:all_seat_row, :all_seat_no); ");
+       $nrow = $request->all_seat_row;
+       $nno = $request->all_seat_no;
+
+       $stmt->bindParam(':id', $LAST_ID);     
+       $stmt->bindParam(':all_seat_row', $nrow);
+       $stmt->bindParam(':all_seat_no', $nno);
+            
+        $stmt->execute();
+        
+    
         $conn->commit();
-        $service->flash("Add Amount of seat Success");
+        $service->flash("Add Seat Success");
+
     } catch (PDOException $e) {
         $conn->rollback();
         $service->flash("Add Amount of seat Failed Beacuzs" . $e->getMessage());
     }
+    
 
     $response->redirect("/emp/add_amountseat");
     $response->sendHeaders();

@@ -15,6 +15,22 @@ $klein->respond('GET', '/androidGetPoint', function ($request, $response, $servi
   echo json_encode($arr);
 });
 
+$klein->respond('GET', '/androidGetPointHistory', function ($request, $response, $service, $app, $validator) {
+  global $database;
+  $conn = $database->getConnection();
+
+  $memberID = $_GET['memberID'];
+
+  $query = "SELECT * from G05_v_point_type_member_date where MemberID = '$memberID'";
+  $stmt = $conn->prepare($query);
+  $stmt->execute();
+
+  $num = $stmt->rowCount();
+  $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+  echo json_encode($arr);
+});
+
 $klein->respond('GET', '/androidForgetPassword', function ($request, $response, $service, $app, $validator) {
   global $database;
   $conn = $database->getConnection();

@@ -4,7 +4,7 @@ $klein->respond('GET', '/showtime', function ($request, $response, $service, $ap
     $service->bootstrap3 = false;
     $conn = $app->db->getConnection();
 
-    $query1 = "  select s.id as showtime_id, br.BranchName, r.room_no, m.title, s.subtitle, s.`soundtrack`, date(s.startTime), time(s.startTime), time(s.endTime)
+    $query1 = "select s.id as showtime_id, br.BranchName, r.room_no, m.title, s.subtitle, s.`soundtrack`, date(s.startTime), time(s.startTime), time(s.endTime)
     from G09_Movie m, G04_MSRnB_showingroom s, G04_MSRnB_room r, G14_Branch br
     where m.id = s.movie_id and r.id = s.room_id and br.branchID = r.branch_id
     order by date(s.startTime),r.id, time(s.startTime), time(s.endTime) asc";

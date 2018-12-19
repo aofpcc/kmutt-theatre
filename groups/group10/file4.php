@@ -1,5 +1,5 @@
 <?php
-$klein->respond('GET', '/group10/logs', function ($request, $response, $service, $app, $validator) {
+$klein->respond('GET', '/logs', function ($request, $response, $service, $app, $validator) {
   // $service->bootstrap3 = true;
   if(empty($_SESSION['login'])) {
     $userId = $app->login->requireLogin('employee');

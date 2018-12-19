@@ -1,6 +1,7 @@
 <head>
 <meta charset="utf-8">
-  <link rel="stylesheet" href="layouts\group5\register-makeup.css">
+  <link rel="stylesheet" href="/layouts/group5/register-makeup.css">
+  <link rel="stylesheet" href="/layouts/group5/css/change.css">
 </head>
 
 <body>
@@ -29,7 +30,7 @@
 
               <!-- body -->
               <tbody>
-                <?php 
+                <?php
                 $count = 1;
                 foreach($this->list as $list) { ?>
                 <tr class="<?=$list['prefix'] == "+" ? "table-success" : "table-danger" ?>">
@@ -44,9 +45,9 @@
               <!-- end body -->
             </table>
 
-            <div 
+            <div
             <div class="py-5 text-center" style="margin: auto; width: 15%;">
-            <button style="width:100%; background-color: #DC143C; color: #FFFFFF" class="btn btn-primary" onclick="location='/customer/membership'" type="submit">Back</button></div>
+            <button style="width:100%; background-color: #DC143C; color: #FFFFFF; border-radius: 8px;" class="cancel-block gap" onclick="location='/customer/membership'" type="submit">Back</button></div>
           </div>
 
 </body>

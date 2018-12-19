@@ -26,14 +26,13 @@
     <link rel="stylesheet" href="/layouts/group14/map.css">
 </head>
 <!-- <div id="map"></div> -->
-<div class="container" style="width: 75%; height: 300px;">
-
+<div class="container" style="width: 75%; height: 50vh;">
     <div id="map" style="height=25%;"></div>
     <hr style="height:2pt; visibility:hidden; margin-bottom:-1px; margin-top:3px" />
-    <div action="/group14/map/action" method="post">
+    <div style="height: 200px;">
         <div class="input-group stylish-input-group"><input class="form-control" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search location..." style="width: 100%"/></div>
         <hr style="height:2pt; visibility:hidden; margin-bottom:-1px; margin-top:3px" />
-        <div class="scrollable scrollbar-danger" style='height: 215px'>
+        <div class="scrollable scrollbar-danger" style='height: 70%'>
             <div class="force-overflow" id="BtnContainer">
                 <ul id="myUL">
                     <?php for ($i = 0; $i < count($this->guy); $i++) {?>
@@ -109,7 +108,7 @@
                 return function(){
                     infowindow.setContent('<h2 id="firstHeading" class="firstHeading">'+locations[i][0]+'</h2>'+
             '<div><p>'+locations[i][4]+', '+locations[i][5]+', '+locations[i][6]+', '+locations[i][7]+', '+locations[i][8]+'</p></div>'+
-            '<button id="confirmLoc" type="submit" style="float: right" onclick="bttnFunc('+i+');" value="'+locations[i][3]+'">Select Location</button>');
+            '<button id="confirmLoc" type="submit" style="float: right" onclick="bttnFunc('+locations[z][3]+');" value="'+locations[i][3]+'">Select Location</button>');
                     infowindow.open(map, marker);
                     changePos(i);
                 }
@@ -146,6 +145,8 @@
         console.log(document.getElementById("confirmLoc").value);
         console.log(document.getElementById("confirmLoc").name);
     }
+    var movieId = <?php echo json_encode($this -> mov_id); ?>;
+    console.log(movieId);
     $("#confirmLoc").click(function(e){
         if(selected == null) {
             alert("Please Choose Branch");
@@ -158,7 +159,7 @@
         if(!confirm("Confirm select branch " + branchName)) {
             return;
         }
-        location.href = "/customer/group14/booking/92/" + branchID;
+        location.href = "/customer/group14/booking/"+movieId+"/" + branchID;
     });
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVya5jGbVLcFvCfHrR8yNKU7CPJhZ1eVI&callback=initMap"></script>

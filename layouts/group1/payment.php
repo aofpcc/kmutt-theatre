@@ -49,14 +49,14 @@
               </font>
               <br>
 
-                    <font size="4"> ที่นั่ง </font><br>
+                    <font size="4"> ที่นั่ง </font
                     <?php
-
                     $arry = json_decode(json_encode($this->seats), true);
                     // var_dump($this->seats);
                     // die;
                     foreach ($arry as $result)
                     {
+
                       echo 'row : ', $result['row'],'   seat : ', $result['seat'],'<br/>';
                     }
                     ?>
@@ -91,7 +91,10 @@
                 <?php foreach($this->selectedSeats as $seat) { ?>
                   <input type="hidden" name="seat[]" value="<?=$seat?>">
                 <?php } ?>
-                <button name = Kbank value="Kbank" id="Kbank" class="btn btn-lg btn-default" >KBANK</button>
+                <button name = Kbank value="Kbank" id="Kbank" class="btn btn-lg btn-light" ><img class="card-img-top"  src="https://scontent-sin2-1.xx.fbcdn.net/v/t1.15752-9/48409192_350101379136594_639100741486641152_n.jpg?_nc_cat=103&_nc_ht=scontent-sin2-1.xx&oh=a5cac4ea7fac114f4569329cf3a81f0b&oe=5CA7543F" alt=""></button>
+                <button name = Kbank value="Kbank" id="Kbank" class="btn btn-lg btn-light" ><img class="card-img-top"  src="https://scontent.fbkk12-3.fna.fbcdn.net/v/t1.15752-9/48418644_529574334211916_686072037139021824_n.jpg?_nc_cat=102&_nc_ht=scontent.fbkk12-3.fna&oh=db592268cceda35f030917a2539e98ca&oe=5C998AF8" alt=""></button>
+                <button name = Kbank value="Kbank" id="Kbank" class="btn btn-lg btn-light" ><img class="card-img-top"  src="https://scontent.fbkk14-1.fna.fbcdn.net/v/t1.15752-9/48386545_377795689624201_8993543019676303360_n.jpg?_nc_cat=100&_nc_ht=scontent.fbkk14-1.fna&oh=9e2b84d6f959f4d0e46f71066e913563&oe=5CAA1A6E" alt=""></button>
+                <button name = Kbank value="Kbank" id="Kbank" class="btn btn-lg btn-light" ><img class="card-img-top"  src="https://scontent.fbkk10-1.fna.fbcdn.net/v/t1.15752-9/48427987_2141379852794389_1762163019271372800_n.jpg?_nc_cat=102&_nc_ht=scontent.fbkk10-1.fna&oh=707d2594488d9b249289ed5aa98c4986&oe=5CA21D96" alt=""></button>
                 <!-- <button name =  class="btn btn-lg btn-default" >SCB</button>
                 <button type="button" class="btn btn-lg btn-default" >CREDIT</button>
                 <button type="button" class="btn btn-lg btn-default" >CLUBCARD</button> -->

@@ -14,12 +14,12 @@
       <div style="margin: auto; width: 40%">
         <div>
           <label for="username"></label>
-          <input type="username" class="form-control box" id="username" placeholder="Enter Username" name="username">
+          <input type="username" class="form-control box" id="username" placeholder="Enter Username" name="username" required>
         </div>
         <div class="mb-2" style="">
           <label for="password"></label>
           <div class="">
-            <input type="password" class="form-control" style="" id="password" placeholder="Enter password" name="password">
+            <input type="password" class="form-control" style="" id="password" placeholder="Enter password" name="password" required>
           </div>
         </div>
       </div>

@@ -1,10 +1,5 @@
 <?php
-$klein->respond('GET', '/group10', function ($request, $response, $service) {
-  $response->redirect("/emp/group10/ads");
-  $response->sendHeaders();
-});
-
-$klein->respond('GET', '/group10/ads', function ($request, $response, $service, $app, $validator) {
+$klein->respond('GET', '/ads', function ($request, $response, $service, $app, $validator) {
   // $service->bootstrap3 = true;
   if(empty($_SESSION['login'])) {
     $userId = $app->login->requireLogin('employee');
@@ -27,7 +22,7 @@ $klein->respond('GET', '/group10/ads', function ($request, $response, $service, 
   $conn = null;
 });
 
-$klein->respond('GET', '/group10/ads/[:ads_id]', function ($request, $response, $service, $app, $validator) {
+$klein->respond('GET', '/ads/[:ads_id]', function ($request, $response, $service, $app, $validator) {
   $ads_id = $request->ads_id;
 
   $conn = $app->db->getConnection();

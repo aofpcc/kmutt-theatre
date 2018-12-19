@@ -14,12 +14,12 @@
 
       <!-- account -->
       <div class="row account-set-position">
-        <h2 style="margin-left: 110px;">Change Phone Number</h2>
+        <h2 style="margin-left: 70px;">Change Phone Number</h2>
       </div>
       <!-- line -->
       <div class="gap"></div>
-      <div class="box-name-text" style="margin-left: 118px;">Current Phone Number</div>
-      <div class="gap-less" style="margin-left: 130px;"><?php echo $this->currentPhone; ?></div>
+      <div class="box-name-text" style="margin-left: 100px;">Current Phone Number</div>
+      <div class="gap-less" style="margin-left: 110px;"><?php echo $this->currentPhone; ?></div>
       <div class="gap"></div>
       </br>
       <!-- change form -->
@@ -33,7 +33,7 @@
             </div>
 
               <input type="submit" class="cancel-block gap red-block white-font" value="Submit">
-              <button type="button" class="cancel-block gap" onclick="location = '/customer/membership'">Cancel</button>
+              <button type="button" class="cancel-block gap" onclick="location = '/customer/membership'" >Cancel</button>
 
           </form>
         </div>

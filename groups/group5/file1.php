@@ -48,7 +48,7 @@ $klein->respond('GET', '/forgetPassword', function ($request, $response, $servic
 $klein->respond('POST', '/forgetPassword', function ($request, $response, $service, $app, $validator) {
   $result = $app->login->forgetPassword($request->email);
   $service->title = "Forget Password ";
-  $service->content = "Check your email to change your password";
+  $service->flash("Check your email to change your password");
   $service->render('layouts/core/home.php');
 });
 

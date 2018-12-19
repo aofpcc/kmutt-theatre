@@ -20,7 +20,7 @@
                 1px 1px 0 #000;
 
             text-align: left;
-            padding-left: 20%;
+            padding-left: 30%;
             min-height: 200px;
             min-width: 100%;
             color: white;

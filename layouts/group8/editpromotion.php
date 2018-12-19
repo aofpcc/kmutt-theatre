@@ -24,7 +24,11 @@
   </div>
   <div class="form-group">
     <label for="" class="form-label">Code Promotion</label>
-    <input name="promotion_code" type="text" class="form-control" id='promotion_code' value = "<?=$this->data["PromoCode"] ?>" required>
+    <input name="promotion_code" type="text" class="form-control" id='promotion_code' value = "<?=$this->data["PromoCode"] ?>" >
+  </div>
+  <div class="form-group">
+    <label for="" class="form-label">Promotion Point</label>
+    <input name="promotion_point" type="number" class="form-control" id='promotion_point' placeholder="0" >
   </div>
   <div class="form-group">
   <button class="btn btn-primary" type="submit">Add</button>

@@ -1,10 +1,12 @@
 <?php
-$klein->respond('GET', '/group2/home_page/select_movie/branch/[:movie_id]', function ($request, $response, $service) use ($database) {
+$klein->respond('GET', '/group2/home_page/select_movie/branch/[:branch_id]/movie/[:movie_id]', function ($request, $response, $service) use ($database) {
     $service->bootstrap3 = false;
     $conn = $database->getConnection();
     date_default_timezone_set("Asia/Bangkok");
 
-    $query = $conn->query("select distinct date(startTime) as start_date from available_movies where movie_id = '$request->movie_id'
+    $query = $conn->query("select distinct date(startTime) as start_date 
+    from available_movies where movie_id = '$request->movie_id' 
+    and branch_id = '$request->branch_id'
     order by start_date asc;")->fetchAll(PDO::FETCH_ASSOC);
 
     $date = [];

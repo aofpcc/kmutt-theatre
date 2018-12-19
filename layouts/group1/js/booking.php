@@ -4,11 +4,31 @@
 <script src="/layouts/group1/js/jquery.seat-charts.js"></script>
 
 <script>
-  var price = 10; //price
+  <?php
+  // // var_dump($request->showtime_id);
+  // // die;
+  // $id = $request->showtime_id;
+  // // var_dump($id);
+  // // die;
+  //
+  // $query_showtime = $conn->query("select movie_id from G04_MSRnB_showingroom where id = $id;")->
+  // fetchAll(PDO::FETCH_ASSOC);
+  // $id_movie = $query_showtime[0]["movie_id"];
+  //
+  // $query_price = $conn->query("select st.seat_price as price
+  // from G04_MSRnB_room r, G14_Branch b, G04_MSRnB_showingroom s, G04_MSRnB_theaterInfo ti, G04_MSRnB_seattype st
+  // where s.room_id = r.id and r.theaterinfo_id = ti.id and ti.seattype_id = st.id and r.branch_id = b.BranchID and
+  // s.id = '$request->showtime_id' and s.movie_id = $id_movie;")->fetchAll(PDO::FETCH_ASSOC);
+  //
+  // $price = $price[0]["price"];
+   ?>
+  //price
+  var price = <?= $this->price ?>;
   $(document).ready(function() {
     var $cart = $('#selectedSeats'), //Sitting Area
     $counter = $('#counter'), //Votes
     $total = $('#total'); //Total money
+
 
     var sc = $('#seat-map').seatCharts({
       // map: [  //Seating chart
@@ -104,3 +124,9 @@
   }
 
 </script>
+
+<?php
+  //*$total_price = "<script> document.write($total) </script>"
+
+  //$this->total = $total_price;
+ ?>

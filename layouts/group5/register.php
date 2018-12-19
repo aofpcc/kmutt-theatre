@@ -63,7 +63,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text">@</span>
               </div>
-              <input type="text" pattern="[A-Za-z0-9]{5,}" title="Please include at least 5 characters" class="form-control" id="username" name="username" placeholder="Username" required="">
+              <input type="text" pattern="[a-zA-Z0-9-_\.]{5,}" title="Please include at least 5 characters" class="form-control" id="username" name="username" placeholder="Username" required="">
               <div class="invalid-feedback" style="width: 100%;">
                 Your username is required.
                 ) </div>
@@ -118,7 +118,7 @@
 
          <div class="row">
           <div class="col-md-6 mb-3">
-          <label for="email">Email <span class="text-muted">(Optional)</span></label>
+          <label for="email">Email <span class="text-muted"></span></label>
           <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com" value="">
           <div class="invalid-feedback">
             Please enter a valid email address for shipping updates.

@@ -413,7 +413,7 @@ $klein->respond('POST', '/register-form', function ($request, $response, $servic
       $address = $request->address;
       $province = $request->province;
       $district = $request->district;
-      $subdistrict = $request->subdistrict;
+      $subdistrict = $request->SubDistrict;
       $zip = $request->zip;
 
       $stmt = $conn->prepare($query);

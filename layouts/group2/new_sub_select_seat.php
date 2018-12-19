@@ -157,8 +157,18 @@
     var total = 0;
     sc.find('selected').each(function () {
       total = total+price;
+
     });
 
     return total;
   }
+  // function recalculateTotaldivide(sc) {
+  //   var total = 0;
+  //   sc.find('selected').each(function () {
+  //     total = total+price;
+      
+  //   });
+
+  //   return total/25;
+  // }
 </script>

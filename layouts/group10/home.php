@@ -8,8 +8,8 @@
   </head>
     <div name="header" class="head">
       <h1>KMUTT Theatre</h1>
-      <h3><a href="/emp/group10/ads">Ads management</a></h3>
-      <h3><a href="/emp/group10/logs">Logs</a></h3>
+      <h3><a href="/emp/ads">Ads management</a></h3>
+      <h3><a href="/emp/logs">Logs</a></h3>
     </div>
     <div name="body" class="main-body">
       <?php if ($this->isManagementPage) { ?>

@@ -80,6 +80,10 @@
                             </table>
                         </div>
                     </div>
+                    <!-- <br>
+                    <button title="Leave" id="leave" type="button" class="btn btn-lg btn-danger"
+                    onclick="location.href = '/customer/kmutt_home'">LEFT PARTY
+                  </button> -->
                 </div>
             </div>
         </div>
@@ -91,6 +95,10 @@
     $("#getCode").click(function (e) {
         CopyToClipboard("code");
     });
+
+    $("$leave").click(function (e) {
+      Leave();
+    })
 
     function CopyToClipboard(containerid) {
         if (document.selection) {
@@ -107,6 +115,11 @@
             alert("Code Copied");
         }
     }
+
+    function Leave() {
+
+    }
+
 </script>
 
 <br><br>

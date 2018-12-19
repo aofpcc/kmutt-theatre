@@ -5,9 +5,7 @@ $klein->respond('POST', '/kmutt/ticket/barcode/[:code]', function ($request, $re
   $conn = $app->db->getConnection();
 
   $sql = $conn->query("select code from G02_Ticket_history where how_booking = 'Web';")
-  $stmt = $conn->prepare($sql);
-  $stmt->bindParam(":code", $code);
-  $stmt->execute();
-  $service->code = $code
+  ->fetchAll(PDO::FETCH_ASSOC);
+  $service->code = $code;
   $service->render('layouts/group1/bar.php');
 });

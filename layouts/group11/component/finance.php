@@ -128,7 +128,7 @@ $("#search_graph").click(function(){
     var expenseLine = data.expensesLine;
     for(var i = 0; i < revenueLine.length ; i++ ){
        sumChart.data.datasets[0].data[i] = revenueLine[i][2];
-       //sumChart.data.datasets[1].data[i] = expenseLine[i][2];
+       sumChart.data.datasets[1].data[i] = expenseLine[i][2];
        window.sumChart.update();
     }
     for(var o = 0; o < expenseLine.length ; o++ ){
@@ -144,9 +144,10 @@ $("#search_graph").click(function(){
     console.log(newLabel);
     sumChart.data.labels = newLabel;
 
+    sumChart.data.labels =data.lebel.lebel;
     window.sumChart.update();
-    
+
   });
-  
+
 });
 </script>

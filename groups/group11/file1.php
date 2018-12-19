@@ -198,6 +198,24 @@ $klein->respond('POST', '/staff/employee/editprofile/save', function($request, $
       $stmt = $conn->prepare($profileName);
       $stmt->execute();
       $service->profile = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+      //history
+      $firstname =  $service->profile[0]['Firstname'];
+      $lastname = $service->profile[0]['Lastname'];
+      $tell = $service->profile[0]['Tell'];
+      $email = $service->profile[0]['Email'];
+      $sex = $service->profile[0]['Sex'];
+      $status = $service->profile[0]['Status'];
+      $address = $service->profile[0]['Address'];
+      $salary = $service->profile[0]['Salary'];
+      $Super_emp= $service->profile[0]['Super_emp'];
+      // $userID= $service->profile[0]['userID'];
+
+       //insert db G11_Emp_history_staff
+     $historyEmp = "INSERT INTO G11_Emp_history_staff (Firstname, Lastname, Sex, `Status` , Email, `Address`, Salary, Super_emp, Tell, userID) 
+                  VALUES ('$firstname','$lastname','$sex','$status','$email','$address','$salary','$Super_emp','$tell','$id')";
+     $stmt = $conn->prepare($historyEmp);
+     $stmt->execute();
       
       //permission
       $checks = "SELECT * from G11_Emp_staff where userID = $id" ;

@@ -38,7 +38,7 @@ $klein->respond('POST', '/ticket/check_change_ticket', function ($request, $resp
 
     if ($resultCount1 == 1 && $resultCount1 == 1) {
         // echo("founf]d it");
-        $response->redirect('/emp/ticket/home_page/select_movie');
+        $response->redirect('/emp/ticket/#');
         $response->send();
     } else {
         echo ("Not Found This Card No. !!");

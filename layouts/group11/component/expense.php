@@ -235,7 +235,7 @@ tbody.collapse.in {
 <!-- Graphs -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 <script>
-  <?php 
+  <?php
   $labels = [];
   $datas = [];
   foreach($this->expenseUU as $value){
@@ -256,9 +256,9 @@ tbody.collapse.in {
         data: datas,
         lineTension: 0,
         backgroundColor: 'transparent',
-        borderColor: '#007bff',
+        borderColor: '#FF0000',
         borderWidth: 4,
-        pointBackgroundColor: '#007bff'
+        pointBackgroundColor: '#FF0000'
       }]
     },
     options: {

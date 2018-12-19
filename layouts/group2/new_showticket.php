@@ -11,7 +11,7 @@
             Movie  : <?=$this->movieTitle?><br>
             Branch : <?=$this->branch?><br>
             Room   : <?=$this->room_no?><br>
-            <?=$this->startTime."-".$this->endTime?><br>
+            Time   : <?=$this->startTime."-".$this->endTime?><br>
     </h5>
         <p class="card-text">
             <?php

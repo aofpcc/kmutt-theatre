@@ -8,5 +8,5 @@ $included = array(
   'tenpeople_page',
   'ticket_page',
   'test',
-  'barcode'
+  'ticket_history_page'
 );

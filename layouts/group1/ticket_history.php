@@ -91,3 +91,8 @@
   </div>
   <script src="/layouts/group1/js/jquery.nicescroll.js"></script>
   <script src="/layouts/group1/js/scripts.js"></script>
+
+<?php
+  for($i = 0; $i < count($this->ticket_id); $i++) {
+
+ ?>

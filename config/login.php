@@ -1,5 +1,5 @@
 <?php
-//require_once __DIR__ . "/../vendor/phpmailer/phpmailer/PHPMailerAutoload.php";
+require_once __DIR__ . "/../vendor/phpmailer/phpmailer/PHPMailerAutoload.php";
 class MailSender
 {
     public function sent($to, $header, $body)

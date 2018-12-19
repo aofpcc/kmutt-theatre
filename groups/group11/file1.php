@@ -790,8 +790,8 @@ $klein->respond('GET', '/staff/employee/statistics', function($request, $respons
 
         // // NO movie table in the new DB yet..
          $gene = $conn->query(" SELECT genre as Genre, COUNT(*) as amount
-                                FROM G02_Ticket_history as ticket, G09_Movie as movies , G09_Gerne
-                                WHERE ticket.movie_id = movies.ID AND movies.id = G09_Gerne.id
+                                FROM G02_Ticket_history as ticket, G09_Movie as movies , G09_Genre_Movie
+                                WHERE ticket.movie_id = movies.ID AND movies.id = G09_Genre_Movie.id
                                 GROUP BY  genre")->fetchAll(PDO::FETCH_BOTH);
          $service->gene = $gene;
 

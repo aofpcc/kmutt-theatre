@@ -1,5 +1,5 @@
 <?php
-$klein->respond('POST', '/kmutt/ticket/barcode/[:showtime_id]', function ($request, $response, $service, $app, $validator)  use($database){
+$klein->respond('POST', '/kmutt/ticket/barcode/[:showtime_id.]', function ($request, $response, $service, $app, $validator)  use($database){
   $userID = "".$app->login->requireLogin('customer')["userID"];
 
   $sql = $conn->query("select code from G02_Ticket_history where showtime_id $request->showtime_id")

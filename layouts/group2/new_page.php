@@ -159,7 +159,7 @@
     }
 
     function show(code) {
-        var x = "<a href='/emp/ticket/get/"+code+"' target='_blank'>GET CODE</a>";
+        var x = "<a href='/emp/ticket/get/"+code+"' target='_blank'>________________________________________________________________________GET__CODE_____________________________________________________________________</a>";
         $("#select_seat").empty();
         $("#select_seat").html(x);
     }

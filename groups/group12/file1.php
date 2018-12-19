@@ -19,9 +19,12 @@ $klein->respond('GET', '/mobile/movies', function ($request, $response, $service
   global $database;
   $conn = $database->getConnection();
 
+  // $query = "SELECT * 
+  //           FROM G09_Movie as m
+  //           LEFT JOIN G09_Genre_Movie as g ON m.id = g.id";
+            
   $query = "SELECT * 
-            FROM G09_Movie as m
-            LEFT JOIN G09_Genre_Movie as g ON m.id = g.id";
+            FROM G09_Movie as m";
 
   // echo $query;
   $stmt = $conn->prepare($query);

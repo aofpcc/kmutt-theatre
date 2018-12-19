@@ -52,7 +52,7 @@ $klein->respond('GET', '/kmutt_home/map/[:movie_id]', function ($request, $respo
   $service->render('layouts/group14/map.php');
 });
 
-$klein->respond('GET', '/group14/map/mobile', function ($request, $response, $service) {
+$klein->respond('GET', '/group14/map/mobile/[:movie_id]', function ($request, $response, $service) {
   $service->bootstrap3 = false;
   global $database;
   $conn = $database->getConnection();
@@ -60,12 +60,14 @@ $klein->respond('GET', '/group14/map/mobile', function ($request, $response, $se
   $sql = "SELECT  b.BranchName, c.Longitude, c.Latitude, b.BranchID, a.street,
           a.Province, a.City, a.District, a.Postalcode
           FROM G14_Branch as b , G14_BranchCoords as c, G14_BranchAddress as a
-          where b.LatLngID = c.CoordID and b.AddressID = a.branchAddressID
+          where b.LatLngID = c.CoordID and b.AddressID = a.branchAddressID and 
+          b.BranchID in (select branch_id from available_movies where movie_id= $request->movie_id )
           order by b.BranchName Asc";
   $stmt = $conn->prepare($sql);
   $stmt->execute();
   $data = $stmt->fetchAll();
   $service->guy = $data;
+  $service->mov_id = $request->movie_id;
   $service->partial('layouts/group14/mapMobileCss.php');
   $service->partial('layouts/group14/map - mobile.php');
 });

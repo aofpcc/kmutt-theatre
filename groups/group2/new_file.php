@@ -165,12 +165,17 @@ $klein->respond('POST', '/ticket/showtime/buy/[:showtime_id]', function($request
 $klein->respond('GET', '/ticket/get/[:code]', function($request, $response, $service, $app, $validator){
     $service->bootstrap3 = false;
     $conn = $app->db->getConnection();
-    $query = "Select * From G02_Ticket_history WHERE code=:code";
+    $query = "Select * From G02_Ticket_history WHERE code=:code and return_ticket=0";
     $code = $request->code;
     $stmt = $conn->prepare($query);
     $stmt->bindParam(":code", $code);
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    if(count($result) == 0) {
+        $service->flash("Code invalid");
+        $service->back();
+        return;
+    }
     $showtime_id = $result[0]["showtime_id"];
     $data = $conn->query("select *
     from available_movies a

@@ -28,13 +28,10 @@
   <nav class="navbar navbar-custom-color">
     <div class="container-fluid nav-container">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#">KMUTT <?=$this->pageRole ?></a>
+        <a class="navbar-brand" href="/customer/kmutt_home">KMUTT <?=$this->pageRole ?></a>
       </div>
       <ul class="nav navbar-nav">
-        <li class="nav-item"><a class="nav-link" href="/test/home">Home</a></li>
-        <li class="nav-item"><a href="/test/movie">Movie</a></li>
-        <li class="nav-item"><a href="/test/newrelease">New Release</a></li>
-        <li class="nav-item"><a href="/test/promotion">Promotion</a></li>
+        <li class="nav-item"><a class="nav-link" href="/customer/kmutt_home">Home</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
@@ -51,21 +48,10 @@
   <?php }else{ ?>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top navbar-custom-color">
   <!-- Brand/logo -->
-    <a class="navbar-brand" href="#"> KMUTT THEATRE</a>
+    <a class="navbar-brand" href="/customer/kmutt_home"> KMUTT THEATRE</a>
   <!-- Links -->
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-         <a class="nav-link" href="#">Movies</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">New Release</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Promotion</a>
-        </li>
+      <li class="nav-item"><a class="nav-link" href="/customer/kmutt_home">Home</a></li>
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown">

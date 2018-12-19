@@ -60,7 +60,7 @@
 <!-- Graphs -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 <script>
-  <?php 
+  <?php
   $labels1 = [];
   $datas1 = [];
   $datas2 = [];
@@ -84,17 +84,17 @@
         data: datas1,
         lineTension: 0,
         backgroundColor: 'transparent',
-        borderColor: '#007bff',
+        borderColor: '#7CFC00',
         borderWidth: 4,
-        pointBackgroundColor: '#007bff'
+        pointBackgroundColor: '#7CFC00'
       },
       {
         data: datas2,
         lineTension: 0,
         backgroundColor: 'transparent',
-        borderColor: '#000000',
+        borderColor: '#FF0000',
         borderWidth: 4,
-        pointBackgroundColor: '#007bff'
+        pointBackgroundColor: '#FF0000'
       }]
     },
     options: {

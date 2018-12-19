@@ -318,7 +318,8 @@ class LoginPerformer
     }
     public function requireLogin($role) {
         $_SESSION['callback'] = $this->klein->request()->uri();
-        return $this->LoginThenGoTo($role, '/customer/login');
+        $path = $role == "customer"? '/customer/login' : '/emp/staff';
+        return $this->LoginThenGoTo($role, $path);
     }
 
     public function requireNotLogin($link) {

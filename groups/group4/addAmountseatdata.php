@@ -54,16 +54,18 @@ $klein->respond('POST', '/g04/Amountseat/add', function ($request, $response, $s
     // insert data into db using PDO, again PDO , PDO, PDO, PDO
     try {
         $conn->beginTransaction();
-        $stmt = $conn->prepare("insert into G04_MSRnB_room(branch_id,room_no,theaterinfo_id) values(:branch_id,:room_no,:roomtype);");
+        $stmt = $conn->prepare("insert into G04_MSRnB_room(branch_id,room_no,theaterinfo_id,fin_id) values(:branch_id,:room_no,:roomtype, :fin_id);");
 
         $branch_id = $request->branch_id;
         $room_no = $request->room_no;
         $theaterinfo_id = $request->roomtype;
+        $fin_id = $request->fin_id;
         
         
         $stmt->bindParam(':branch_id', $branch_id);
         $stmt->bindParam(':room_no', $room_no);
         $stmt->bindParam(':roomtype', $theaterinfo_id);
+        $stmt->bindParam(':fin_id', $fin_id);
 
         $stmt->execute();
         $LAST_ID = $conn->lastInsertId();
@@ -95,20 +97,7 @@ $klein->respond('POST', '/g04/Amountseat/add', function ($request, $response, $s
     $response->sendHeaders();
 });
 
-$klein->respond('GET', '/add_amountseat/roomtype/[:id]', function ($request, $response, $service, $app, $validator) {
-    $conn = $app->db->getConnection();
-    // receive all data need
-    $id = $request->id;
-    // var_dump($roomtype_id);
-    // die;
-    $query = "select * from G04_MSRnB_seatPerRoom WHERE id = $id";
-    $data = $conn->query($query)->fetchAll(PDO::FETCH_ASSOC);
 
-    $service->title = "Showing Time - Movie";
-    $service->bootstrap3 = false;
-    $service->data = $data[0];
-    $service->render("layouts/group4/addshowtime/editAmountseatdata.php");
-});
 
 $klein->respond('GET', '/edit_amountseat/[:id]', function ($request, $response, $service, $app, $validator) {
     $conn = $app->db->getConnection();
@@ -116,7 +105,7 @@ $klein->respond('GET', '/edit_amountseat/[:id]', function ($request, $response, 
     $id = $request->id;
     // var_dump($roomtype_id);
     // die;
-    $query = "select * from G04_MSRnB_seatPerRoom WHERE id = $id";
+    $query = "select * from G04_MSRnB_seatPerRoom WHERE room_id = $id";
     $data = $conn->query($query)->fetchAll(PDO::FETCH_ASSOC);
 
     $service->title = "Showing Time - Movie";

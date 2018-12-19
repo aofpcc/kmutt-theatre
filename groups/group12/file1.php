@@ -59,22 +59,41 @@ $klein->respond('GET', '/mobile/movies/[:movie_id]', function ($request, $respon
 });
 
 $klein->respond('GET', '/mobile/showtimes/[:movie_id]', function ($request, $response, $service) {
-  global $database;
-  $conn = $database->getConnection();
+    global $database;
+    $conn = $database->getConnection();
+  
+    $query = "select distinct date(startTime) as start_date from available_movies where movie_id = '$request->movie_id'
+    order by start_date asc;";
+    $stmt = $conn->prepare($query);
+    $stmt->execute();
+  
+    $num = $stmt->rowCount();
+    $arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  
+    $service->allMovies = $arr;
+    // $service->pageTitle = 'Hello';
+    // $service->render('layouts/group12/home.php');
+    return $response->json($arr);
+  });
 
-  $query = "select distinct date(startTime) as start_date from available_movies where movie_id = '$request->movie_id'
-  order by start_date asc;";
-  $stmt = $conn->prepare($query);
-  $stmt->execute();
-
-  $num = $stmt->rowCount();
-  $arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-  $service->allMovies = $arr;
-  // $service->pageTitle = 'Hello';
-  // $service->render('layouts/group12/home.php');
-  return $response->json($arr);
-});
+  $klein->respond('GET', '/mobile/showtimes/[:movie_id]/[:branch_id]', function ($request, $response, $service) {
+    global $database;
+    $conn = $database->getConnection();
+  
+    $query = "select distinct date(startTime) as start_date from available_movies where movie_id = '$request->movie_id'
+    and branch_id = '$request->branch_id'
+    order by start_date asc;";
+    $stmt = $conn->prepare($query);
+    $stmt->execute();
+  
+    $num = $stmt->rowCount();
+    $arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  
+    $service->allMovies = $arr;
+    // $service->pageTitle = 'Hello';
+    // $service->render('layouts/group12/home.php');
+    return $response->json($arr);
+  });
 
 $klein->respond('GET', '/mobile/showtime/all/[:movie_id]/[:show_date]', function ($request, $response, $service, $app, $validator) {
   $conn = $app->db->getConnection();

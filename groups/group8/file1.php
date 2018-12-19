@@ -50,6 +50,7 @@ $klein->respond('GET', '/promotion', function ($request, $response, $service, $a
   });
 
 $klein->respond('GET', '/group8', function ($request, $response, $service, $app, $validator) {
+  $app->login->requireLogin('employee');
  $service->boostrap3 = false;
  $sql = "select * 
  from G08_Promo_main

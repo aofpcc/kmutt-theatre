@@ -1,5 +1,5 @@
 <?php
-$klein->respond('GET', '/group2/home_page/changeticket', function ($request, $response, $service) {
+$klein->respond('GET', '/ticket/home_page/changeticket', function ($request, $response, $service) {
     // global $database;
     // $conn = $database->getConnection();
 
@@ -8,7 +8,7 @@ $klein->respond('GET', '/group2/home_page/changeticket', function ($request, $re
     $service->render('layouts/group2/changeticket.php');
 });
 
-$klein->respond('POST', '/group2/check_change_ticket', function ($request, $response, $service) {
+$klein->respond('POST', '/ticket/check_change_ticket', function ($request, $response, $service) {
     global $database;
     $conn = $database->getConnection();
 
@@ -38,7 +38,7 @@ $klein->respond('POST', '/group2/check_change_ticket', function ($request, $resp
 
     if ($resultCount1 == 1 && $resultCount1 == 1) {
         // echo("founf]d it");
-        $response->redirect('/emp/group2/home_page/select_movie');
+        $response->redirect('/emp/ticket/home_page/select_movie');
         $response->send();
     } else {
         echo ("Not Found This Card No. !!");

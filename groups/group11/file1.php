@@ -198,6 +198,24 @@ $klein->respond('POST', '/staff/employee/editprofile/save', function($request, $
       $stmt = $conn->prepare($profileName);
       $stmt->execute();
       $service->profile = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+      //history
+      $firstname =  $service->profile[0]['Firstname'];
+      $lastname = $service->profile[0]['Lastname'];
+      $tell = $service->profile[0]['Tell'];
+      $email = $service->profile[0]['Email'];
+      $sex = $service->profile[0]['Sex'];
+      $status = $service->profile[0]['Status'];
+      $address = $service->profile[0]['Address'];
+      $salary = $service->profile[0]['Salary'];
+      $Super_emp= $service->profile[0]['Super_emp'];
+      // $userID= $service->profile[0]['userID'];
+
+       //insert db G11_Emp_history_staff
+     $historyEmp = "INSERT INTO G11_Emp_history_staff (Firstname, Lastname, Sex, `Status` , Email, `Address`, Salary, Super_emp, Tell, userID) 
+                  VALUES ('$firstname','$lastname','$sex','$status','$email','$address','$salary','$Super_emp','$tell','$id')";
+     $stmt = $conn->prepare($historyEmp);
+     $stmt->execute();
       
       //permission
       $checks = "SELECT * from G11_Emp_staff where userID = $id" ;
@@ -254,6 +272,7 @@ $klein->respond('POST', '/staff/employee/editprofile/save', function($request, $
   //not null
   $firstname = $request->firstName;
   $lastname = $request->lastName;
+  $tell = $request->tell;
   $email = $request->Email;
   $username = $request->Username;
   $file = $request->file;
@@ -274,7 +293,7 @@ $klein->respond('POST', '/staff/employee/editprofile/save', function($request, $
 
       if(count($countEmail) == null){
       //update db G11_Emp_staff
-      $updateProfile = "UPDATE G11_Emp_staff SET Firstname = '$firstname', Lastname = '$lastname', Email = '$email' WHERE userID = $id";
+      $updateProfile = "UPDATE G11_Emp_staff SET Firstname = '$firstname', Lastname = '$lastname', Tell = '$tell', Email = '$email' WHERE userID = $id";
       $stmt = $conn->prepare($updateProfile);
       $stmt->execute();
 
@@ -301,7 +320,7 @@ $klein->respond('POST', '/staff/employee/editprofile/save', function($request, $
 
         if(count($countUser) == null){
         //update db G11_Emp_staff
-        $updateProfile = "UPDATE G11_Emp_staff SET Firstname = '$firstname', Lastname = '$lastname', Email = '$email' WHERE userID = $id";
+        $updateProfile = "UPDATE G11_Emp_staff SET Firstname = '$firstname', Lastname = '$lastname',Tell = '$tell', Email = '$email' WHERE userID = $id";
         $stmt = $conn->prepare($updateProfile);
         $stmt->execute();
 
@@ -313,7 +332,7 @@ $klein->respond('POST', '/staff/employee/editprofile/save', function($request, $
   }
 
   //update db G11_Emp_staff
-  $updateProfile = "UPDATE G11_Emp_staff SET Firstname = '$firstname', Lastname = '$lastname' WHERE userID = $id";
+  $updateProfile = "UPDATE G11_Emp_staff SET Firstname = '$firstname', Lastname = '$lastname', Tell = '$tell' WHERE userID = $id";
   $stmt = $conn->prepare($updateProfile);
   $stmt->execute();
 
@@ -370,24 +389,7 @@ $klein->respond('POST', '/staff/employee/editprofile/save', function($request, $
     $response->redirect('/emp/staff/employee/profile');
   });
 
-  //timestamp
-  $klein->respond('GET', '/staff/employee/timestamp', function($request, $response, $service, $app, $validator){
-    error_reporting(E_ALL);
-    ini_set('display_errors', 1);
-    $service->bootstrap3 = true;
-    //check login
-    $data = $app->login->LoginThenGoTo('employee','/emp/staff');
-  
-    // connect db
-    global $database;
-    $conn = $database->getConnection();
-
-    $id = $data['userID'];
-    
-
-      $service->nameTag = 'timestamp.php';
-      $service->render('layouts/group11/employee.php');
-  });
+ 
 
   $klein->respond('GET', '/staff/employee/createprofile', function($request, $response, $service, $app, $validator){
     error_reporting(E_ALL);

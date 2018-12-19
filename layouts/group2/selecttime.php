@@ -82,7 +82,7 @@
                                         <h1 class="name"><?=$this->movietitle["title"]?></h1>
                                        
                                         </div>
-                                        <p class="genre">Genre: Action</p>
+                                        <p class="genre">Genre: <?=$this->genre["genre"] ?></p>
                                         <ul class="movie-detail-list">
                                             <li class="list-item">Rate: TBC</li>
                                             <li class="list-item"><svg viewBox="0 0 126.89 126.89" class="sf-icon clock">
@@ -96,7 +96,7 @@
                                                     <line x1="111.89" y1="63.94" x2="106.55" y2="63.94" class="cls-3"></line>
                                                     <line x1="63.44" y1="36.53" x2="63.44" y2="56.36" class="cls-4"></line>
                                                     <line x1="68.64" y1="68.64" x2="84.25" y2="84.25" class="cls-4"></line>
-                                                </svg> 145 min
+                                                </svg> <?=$this->length ?>
                                             </li>
                                             
                                     </div>

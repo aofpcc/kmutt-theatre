@@ -52,7 +52,7 @@ $klein->respond('GET', '/mobile/movies/[:movie_id]', function ($request, $respon
   // $service->allMovies = $arr;
   // $service->pageTitle = 'Hello';
   // $service->render('layouts/group12/home.php');
-  return $response->json($arr[0]);
+  return $response->json($arr);
 });
 
 $klein->respond('GET', '/mobile/showtimes/[:movie_id]', function ($request, $response, $service) {

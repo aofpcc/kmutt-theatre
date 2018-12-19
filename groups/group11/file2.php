@@ -154,7 +154,21 @@ $klein->respond('POST', '/staff/employee/worktime', function($request, $response
   
     // connect db
     global $database;
-    $conn = $database->getConnection();    
+    $conn = $database->getConnection(); 
+    
+    $id = $data['userID'];   
+      //permission
+    $checks = "SELECT * from G11_Emp_staff where userID = $id" ;
+    $stmt = $conn->prepare($checks);
+    $stmt->execute();
+    $service->state = $stmt->fetchAll(PDO::FETCH_BOTH);
+    $status = $service->state[0]['Status'];
+
+    //select G11_Emp_permission
+    $checkstatus = "SELECT * from G11_Emp_permission where `status` = '$status'" ;
+    $stmt = $conn->prepare($checkstatus);
+    $stmt->execute();
+    $service->permission = $stmt->fetchAll(PDO::FETCH_BOTH);
 
     $service->nameTag = 'changepass.php';
     $service->render('layouts/group11/employee.php');
@@ -169,7 +183,21 @@ $klein->respond('POST', '/staff/employee/worktime', function($request, $response
     
     // connect db
     global $database;
-    $conn = $database->getConnection();   
+    $conn = $database->getConnection();
+    
+    $id = $data['userID'];   
+      //permission
+    $checks = "SELECT * from G11_Emp_staff where userID = $id" ;
+    $stmt = $conn->prepare($checks);
+    $stmt->execute();
+    $service->state = $stmt->fetchAll(PDO::FETCH_BOTH);
+    $status = $service->state[0]['Status'];
+
+    //select G11_Emp_permission
+    $checkstatus = "SELECT * from G11_Emp_permission where `status` = '$status'" ;
+    $stmt = $conn->prepare($checkstatus);
+    $stmt->execute();
+    $service->permission = $stmt->fetchAll(PDO::FETCH_BOTH);
     
     $service->validateParam('newpassword', 'New Password cannot be null')->notNull();
     $service->validateParam('confirmpassword', 'Confirm Password cannot be null')->notNull();

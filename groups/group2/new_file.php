@@ -7,8 +7,10 @@ $klein->respond('GET', '/ticket/[:branch_id]', function($request, $response, $se
 
     // branch id doest not belong to this userID
     if(count($data2) == 0 ) {
-        $service->flash("No this branch");
-        $service->back();
+        $service->flash("Incorrect Branch");
+        // $service->back();
+        $response->redirect("/emp/staff/employee/dashboard");
+        $response->sendHeaders();
         return;
     }
     
@@ -59,6 +61,17 @@ $klein->respond('GET', '/ticket/[:branch_id]/[:movie_id]', function($request, $r
 
 $klein->respond('GET', '/ticket/showtime/[:showtime_id]', function($request, $response, $service, $app, $validator){
     $conn = $app->db->getConnection();
+    
+    $query = "SELECT * from G04_v_showtime_seat WHERE showtime_id = $request->showtime_id";
+    $data = $conn->query($query)->fetchAll(PDO::FETCH_ASSOC);
+    
+    if(count($data) == 0) {
+        echo "No available showtime";
+        return;
+    }
+
+    $service->price = $data[0]["seat_price"];
+
     $service->seatMap = [  //Seating chart
         'aaaaaaaaaa',
         'aaaaaaaaaa',

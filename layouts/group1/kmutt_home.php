@@ -127,10 +127,10 @@
 
                     <div class="col-lg-4 col-md-6 mb-4">
                       <div class="card h-100">
-                        <a href="/customer/kmutt_home/branch/<?=$movie["id"]?>"><img class="card-img-top"  src="<?=$movie["Image"] ?>"" alt=""></a>
+                        <a href="/customer/kmutt_home/map/<?=$movie["id"]?>"><img class="card-img-top"  src="<?=$movie["Image"] ?>" alt=""></a>
                         <div class="card-body">
                           <h7 class="card-title" >
-                            <a href="/customer/kmutt_home/branch/<?=$movie["id"]?>" ><center><?=$movie["title"] ?></center></a>
+                            <a href="/customer/kmutt_home/map/<?=$movie["id"]?>" ><center><?=$movie["title"] ?></center></a>
                           </h7>
                         </div>
                       </div>

@@ -4,5 +4,6 @@ $included = array(
   'gen',
   'promotionManagement',
   'promotionEditManagement',
-  'file2'
+  'file2',
+  'checkCode'
 );

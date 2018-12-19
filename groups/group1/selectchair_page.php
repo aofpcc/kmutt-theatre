@@ -57,20 +57,32 @@ $klein->respond('GET', '/kmutt_home/branch/show_time/select_chair/[:showtime_id]
   $month = $temp->format("F");
   $service->string = $temp->format("d")." ".$month." ".$temp->format("Y");
 
-  $type_seat = $conn->query("select st.seattype as type_seat
-  from G04_MSRnB_room r, G14_Branch b, G04_MSRnB_showingroom s, G04_MSRnB_theaterInfo ti, G04_MSRnB_seattype st
-  where s.room_id = r.id and r.theaterinfo_id = ti.id and ti.seattype_id = st.id and r.branch_id = b.BranchID and
-  s.id = '$request->showtime_id' and s.movie_id = $id_movie;")->fetchAll(PDO::FETCH_ASSOC);
+  $type_seat = $conn->prepare("SELECT seattype from G04_v_showtime_seat WHERE showtime_id=:showtime_id");
+  $id = $request->showtime_id;
+  $type_seat->bindParam(':showtime_id', $id);
+  $type_seat->execute();
+  $type_seat0 = $type_seat->fetchAll(PDO::FETCH_ASSOC);
+  // var_dump($type_seat0);
+  // die;
 
-  $seat_info = $conn->query("select st.seatInfo as seat_info
+  $seat_info = $conn->prepare("select st.seatInfo as seat_info
   from G04_MSRnB_room r, G14_Branch b, G04_MSRnB_showingroom s, G04_MSRnB_theaterInfo ti, G04_MSRnB_seattype st
   where s.room_id = r.id and r.theaterinfo_id = ti.id and ti.seattype_id = st.id and r.branch_id = b.BranchID and
-  s.id = '$request->showtime_id' and s.movie_id = $id_movie;")->fetchAll(PDO::FETCH_ASSOC);
+  s.id = :id and s.movie_id = $id_movie");
+  $id = $request->showtime_id;
+  $seat_info->bindParam(':id', $id);
+  $seat_info->execute();
+  $seat_info0 = $seat_info->fetchAll(PDO::FETCH_ASSOC);
 
-  $price = $conn->query("select st.seat_price as price
+
+  $price = $conn->prepare("select st.seat_price as price
   from G04_MSRnB_room r, G14_Branch b, G04_MSRnB_showingroom s, G04_MSRnB_theaterInfo ti, G04_MSRnB_seattype st
   where s.room_id = r.id and r.theaterinfo_id = ti.id and ti.seattype_id = st.id and r.branch_id = b.BranchID and
-  s.id = '$request->showtime_id' and s.movie_id = $id_movie;")->fetchAll(PDO::FETCH_ASSOC);
+  s.id = :id and s.movie_id = $id_movie");
+  $id = $request->showtime_id;
+  $price->bindParam(':id', $id);
+  $price->execute();
+  $price0 = $price->fetchAll(PDO::FETCH_ASSOC);
 
   // Pass on the params to the page we're gonna render
   $service->selectedSeats = $request->selectedSeats;
@@ -80,9 +92,11 @@ $klein->respond('GET', '/kmutt_home/branch/show_time/select_chair/[:showtime_id]
   $service->title = $title;
   $service->image = $image;
   $service->length = $length;
-  $service->type_seat = $type_seat[0]["type_seat"];
-  $service->seat_info = $seat_info[0]["seat_info"];
-  $service->price = $price[0]["price"];
+  // var_dump($type_seat0);
+  // die;
+  $service->type_seat = $type_seat0[0]["seattype"];
+  $service->seat_info = $seat_info0[0]["seat_info"];
+  $service->price = $price0[0]["price"];
   // $service->length = $name[0]["length"];
   // $service->name = $name[0];
   // $service->movie_id = $movie_id[0];

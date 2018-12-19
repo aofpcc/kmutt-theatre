@@ -49,14 +49,14 @@
               </font>
               <br>
 
-                    <font size="4"> ที่นั่ง </font><br>
+                    <font size="4"> ที่นั่ง </font
                     <?php
-
                     $arry = json_decode(json_encode($this->seats), true);
                     // var_dump($this->seats);
                     // die;
                     foreach ($arry as $result)
                     {
+                      
                       echo 'row : ', $result['row'],'   seat : ', $result['seat'],'<br/>';
                     }
                     ?>

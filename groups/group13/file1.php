@@ -227,8 +227,6 @@ function getStock(){
 }
 
 
-
-
 $klein->respond('POST', '/fnb/get_points_and_name', function ($request, $response, $service, $app, $validator) {
     global $database;
     $conn = $database->getConnection();
@@ -322,7 +320,6 @@ $klein->respond('POST', '/fnb/do_order', function ($request, $response, $service
         $cusID=null;
     }
 
-
 //    return $response->json(
 //        [
 //            "result"=>"success",
@@ -336,9 +333,9 @@ $klein->respond('POST', '/fnb/do_order', function ($request, $response, $service
 
     $insertSalelistSql = "INSERT INTO G13_FNB_SaleList(cusID,empID,paymentType,codeID,total,Time,Date) values('$cusID','$empID','$payment','$coupon','$total',NOW(),NOW())";
     $order = "SELECT max(receiptID) as receiptID FROM G13_FNB_SaleList";
-    $conn->beginTransaction();
 
     try {
+        $conn->beginTransaction();
         $conn->exec($insertSalelistSql);
         $orderresult = $conn->prepare($order);
         $orderresult->execute();
@@ -350,12 +347,17 @@ $klein->respond('POST', '/fnb/do_order', function ($request, $response, $service
             $a = $conn->prepare($updateDetailSql);
             $a->execute();
         }
-        //update stock
 
+        //update stock
         $productsOrderStock = getProductOrderForStock($products,$items,$flavorSet,$drinkSet);
         updateAllOrderStock($receiptID,$productsOrderStock);
-//        $stock  = getStock();
-//        CreatePO($stock);
+
+        //check stock and do PO
+        $stock  = getStock();
+       // var_dump($stock);
+       // $conn->rollback();
+       // die;
+        //createPO($stock);
 
         $conn->commit();
         return $response->json(["result"=>"success","message"=>"all :".count($items)." item[s]"]);
@@ -374,10 +376,11 @@ function orderPO($stockID){
     $supID = $supProduct["supID"];
     $cost = $supProduct["cost"];
     $unit =$supProduct["unit"];
-    $totalPaid = ($cost * 10)/$unit;
+    $totalPaid = $cost*10;
 
     global $database;
     $conn = $database->getConnection();
+
     $orderPOSql = "INSERT INTO G13_FNB_POmain (supID,Date,Time,totalPaid) VALUES ('$supID',NOW(),NOW(),$totalPaid)";
     $orderPO = $conn->prepare($orderPOSql);
     $orderPO->execute();
@@ -385,7 +388,9 @@ function orderPO($stockID){
 
     $POID = getMaxPOID();
     $amount = $unit*10;
-    $POdetailSql = "INSERT INTO G13_FNB_POdetail (POID,stockID,amount) VALUES ($POID,$stockID,$amount)";
+
+
+    $POdetailSql = "INSERT INTO G13_FNB_POdetail (POID,StockID,amount) VALUES ('6','PCCA','10')";
     $POdetail = $conn->prepare($POdetailSql);
     $POdetail->execute();
     $conn->commit();
@@ -409,7 +414,7 @@ function getSupProduct($stockID){
     $supProduct["cost"]=$cost;
     return $supProduct;
 }
-//หยิ่งไม่รับด้วยว่ะะะะ
+
 function CreatePO($stockItems){
     $conditionTable = [
         "PC"=>5000,

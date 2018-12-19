@@ -25,6 +25,7 @@
                 <div class="col-lg-8 mx-auto">
                   <!-- action form -->
                   <form action="/emp/g04/Amountseat/add" method="post">
+                  <input type="hidden" name="fin_id" value="5">
                   <div class="form-group">
                           <label for="sel1">Branch:</label>
                           <select class="form-control" id="branch_id" name="branch_id">
@@ -137,6 +138,10 @@
 
                   });
                 }
+                function showAmountseat_page()
+                {
+                    location.href = "/emp/showAmountseat";
+                } 
 
           </script>
 

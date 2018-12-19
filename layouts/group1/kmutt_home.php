@@ -66,7 +66,7 @@
      </li>
    </ul>
   </nav> -->
-
+    <?php include("layouts/group10/test_ads/index.php");  ?>
     <div class="main">
     <div class = "container" id="promo-ads">
     <div class="col-lg-12">

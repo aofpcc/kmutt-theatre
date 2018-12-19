@@ -47,6 +47,17 @@
                                 ?>
                             >
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label edit">Tell:</label>
+                            <div class="col-lg-8 edit">
+                            <input class="form-control" type="text" name="tell" value=
+                                <?php 
+                                    $name = $this->profile;
+                                    echo $name[0]['Tell'];                                   
+                                ?>
+                            >
+                            </div>
                         </div>                   
                         <div class="form-group">
                             <label class="col-lg-3 control-label edit-label">Email:</label>

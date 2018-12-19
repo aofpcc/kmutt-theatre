@@ -45,12 +45,13 @@ $klein->respond('GET', '/add_showtime/[:table]/[:movie_id]', function ($request,
     // die;
     $options = [];
     if($x == "subtitle") {
-        $options = [["movie_id" => "", "value" => "No Subtitle"]];
+        $options = [["movie_id" => "", "value" => "No Subtitle", "key" => ""]];
     }
         foreach($data as $d) {
             array_push($options, [
                 "movie_id" => $d["id"],
-                "value" => $d[$x]
+                "value" => $d[$x],
+                "key" => $d[$x]
             ]);
         }
     $service->options = $options;
@@ -65,7 +66,11 @@ $klein->respond('POST', '/g04/showTime/add', function ($request, $response, $ser
     $startTime = $request->startTime;
     $endTime = $request->endTime;
     $soundtrack = $request->soundtrack;
-    $subtitle = $request->subtitle;
+    $subtitle = $request->subtitle == "" ? null : $request->subtitle;
+    // var_dump($subtitle);
+    // $response->dump($request);
+    // $response->sendBody();
+    // die;
 
     // insert data into db using PDO, again PDO , PDO, PDO, PDO
     try {

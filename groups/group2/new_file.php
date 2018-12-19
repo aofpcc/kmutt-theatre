@@ -1,7 +1,19 @@
 <?php
 $klein->respond('GET', '/ticket/[:branch_id]', function($request, $response, $service, $app, $validator){
-    $service->bootstrap3 = false;
     $conn = $app->db->getConnection();
+    $userID = $app->login->requireLogin('employee')["userID"];
+
+    $data2 = $conn->query("SELECT * FROM G11_Current_dep_of_emp WHERE userID=$userID and branchID=$request->branch_id")->fetchAll(PDO::FETCH_ASSOC);
+
+    // branch id doest not belong to this userID
+    if(count($data2) == 0 ) {
+        $service->flash("No this branch");
+        $service->back();
+        return;
+    }
+    
+    $service->bootstrap3 = false;
+    
     // $app->login->requireLogin('employee');
     // echo $request->branch_id;
     $query = "select * from G09_Movie b,
@@ -135,4 +147,16 @@ $klein->respond('POST', '/ticket/showtime/buy/[:showtime_id]', function($request
     }
     return $response->json($result);
     // $service->partial('layouts/group2/new_sub_select_seat.php');
+});
+
+$klein->respond('GET', '/ticket/get/[:code]', function($request, $response, $service, $app, $validator){
+    $service->bootstrap3 = false;
+    $conn = $app->db->getConnection();
+    $query = "Select code From G02_Ticket_history";
+    $stmt = $conn->prepare($query);
+    $stmt->bindParam(":code", $code);
+    $stmt->execute();
+
+    
+    
 });

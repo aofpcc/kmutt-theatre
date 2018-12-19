@@ -63,14 +63,18 @@
                 echo '</a>';
                 echo '</li>';
               }
-              ?>
-              <li class="nav-item">
-                <a class="nav-link" href="">
-                  <span data-feather="clock"></span>
-                  Time Stamp
-                </a>
-              </li>
+              ?>            
               <?php 
+              if($this->permission[0]['timestamp'] == 1){
+                echo '<li class="nav-item">';
+                echo ' <a class="nav-link" href="/emp/staff/employee/timestamp">';
+                echo '  <span  data-feather="clock"></span>';
+                echo '  Time Stamp';
+                echo '</a>';
+                echo '</li>';
+              }
+              ?>
+              <?php             
               if($this->permission[0]['addMovie'] == 1){
                 echo '<li class="nav-item">';
                 echo ' <a class="nav-link" href="">';
@@ -91,12 +95,17 @@
               }
               ?>
               <li class="nav-item">
+              <a class="nav-link" href="/emp/staff/employee/changepass">
+                <span data-feather="edit-2"></span>
+                Change Password                
+              </a>
+            </li>  
+              <li class="nav-item">
                 <a class="nav-link" href="/emp/staff/logout">
                   <span data-feather="power"></span>
-                  LOGOUT
+                  LOGOUT                 
                 </a>
-              </li>
-            </ul>
+              </li>       
 
             <!-- <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
               <span>Saved reports</span>

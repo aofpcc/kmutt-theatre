@@ -24,9 +24,9 @@
 					<i class="fa fa-lock"></i>
 					<div class="clear"></div>
 					<div class="login-agileits-top">
-                        <form action="/emp/group2/check_return_ticket" method="post">
-                            <input type="number" class="number" name="card_no" Placeholder="Card No." required/>
-							<input type="number" class="number" name="return_no" Placeholder="Movie ID." required/>
+                        <form action="/emp/ticket/check_return_ticket" method="post">
+                            <input type="number" class="number" name="card_no" maxlength="3" Placeholder="Card No." required/>
+							<input type="text" class="text" name="return_no" Placeholder="Movie ID." required/>
 							<input type="submit" value="Submit">
 						</form>
 					</div>
@@ -40,8 +40,8 @@
 					</div>
 					<div class="social_icons agileinfo">
 						<ul class="top-links">
-									<li><a href="/emp/group2/home_page" method="post" class="gohome"><i class="fas fa-arrow-alt-circle-left"></i> Go Back</a></li>
-									<li><a href="/emp/group2/home_page/changeticket" method="post" class="change"><i class="fas fa-exchange-alt"></i> Change</a></li>
+									<li><a href="/emp/ticket/home" method="post" class="gohome"><i class="fas fa-arrow-alt-circle-left"></i> Go Back</a></li>
+									<li><a href="/emp/ticket/changeticket" method="post" class="change"><i class="fas fa-exchange-alt"></i> Change</a></li>
 									<!-- <li><a href="#" class="no_member"><i class="fas fa-fighter-jet"></i> Reserve Now</a></li> -->
 								</ul>
 					</div>

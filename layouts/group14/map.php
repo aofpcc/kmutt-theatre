@@ -109,7 +109,7 @@
                 return function(){
                     infowindow.setContent('<h2 id="firstHeading" class="firstHeading">'+locations[i][0]+'</h2>'+
             '<div><p>'+locations[i][4]+', '+locations[i][5]+', '+locations[i][6]+', '+locations[i][7]+', '+locations[i][8]+'</p></div>'+
-            '<button id="confirmLoc" type="submit" style="float: right" onclick="bttnFunc('+i+');" value="'+locations[i][3]+'">Select Location</button>');
+            '<button id="confirmLoc" type="submit" style="float: right" onclick="bttnFunc('+locations[z][3]+');" value="'+locations[i][3]+'">Select Location</button>');
                     infowindow.open(map, marker);
                     changePos(i);
                 }
@@ -146,6 +146,8 @@
         console.log(document.getElementById("confirmLoc").value);
         console.log(document.getElementById("confirmLoc").name);
     }
+    var movieId = <?php echo json_encode($this -> mov_id); ?>;
+    console.log(movieId);
     $("#confirmLoc").click(function(e){
         if(selected == null) {
             alert("Please Choose Branch");
@@ -158,7 +160,7 @@
         if(!confirm("Confirm select branch " + branchName)) {
             return;
         }
-        location.href = "/customer/group14/booking/92/" + branchID;
+        location.href = "/customer/group14/booking/"+movieId+"/" + branchID;
     });
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVya5jGbVLcFvCfHrR8yNKU7CPJhZ1eVI&callback=initMap"></script>

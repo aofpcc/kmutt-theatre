@@ -30,10 +30,10 @@
 
     <div id="map" style="height=25%;"></div>
     <hr style="height:2pt; visibility:hidden; margin-bottom:-1px; margin-top:3px" />
-    <div action="/group14/map/action" method="post">
+    <div action="/group14/map/action" method="post" style="height: 100%;">
         <div class="input-group stylish-input-group"><input class="form-control" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search location..." style="width: 100%"/></div>
         <hr style="height:2pt; visibility:hidden; margin-bottom:-1px; margin-top:3px" />
-        <div class="scrollable scrollbar-danger" style='height: 215px'>
+        <div class="scrollable scrollbar-danger" style='height: 70%'>
             <div class="force-overflow" id="BtnContainer">
                 <ul id="myUL">
                     <?php for ($i = 0; $i < count($this->guy); $i++) {?>

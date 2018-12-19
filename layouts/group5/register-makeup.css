@@ -37,3 +37,40 @@ background: black;
 .navbar-color {
 color: #770A18;
 }
+
+.red-block {
+  background-color: #DC143C;
+}
+
+.white-font {
+  color : #ffffff;
+}
+
+.cancel-block {
+  /* display: block; */
+  width: 100px;
+  height: 45px;
+  border: none;
+  background-color: #E1E1E1;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.block {
+  /* display: block; */
+  width: 100px;
+  height: 45px;
+  border: none;
+  background-color: #006FFA;
+  padding: 10px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.gap {
+  margin-top: 20px;
+}

@@ -7,12 +7,14 @@
     <ul class="book-left">
       <!-- <li>Movie </li>
           <li>Time </li> -->
-      <li>Tickets</li>
+      <li>Cost</li>
+      <li>Number of Tickets</li>
       <li>Total</li>
     </ul>
     <ul class="book-right">
       <!-- <li>: Gingerclown</li>
           <li>: April 3, 21:00</li> -->
+        <li><?=$this->price?> Baht</li>
       <li>: <span id="counter">0</span></li>
       <li>: <b><i>$</i><span id="total">0</span></b></li>
     </ul>
@@ -30,7 +32,7 @@
 </div>
 
 <script>
-  var price = 10; //price
+  var price = <?=$this->price?>; //price
   var selectedSeatJa = [];
 
   $("#book_now").click(function (e) {

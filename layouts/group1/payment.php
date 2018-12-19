@@ -78,7 +78,7 @@
               <font size="4"> ราคารวม </font>
               <br/>
               <p>
-                <li>: <b><i>$</i><span id="total"><?=$this->total_price?></span></b></li>
+                 <b><i>$</i><span id="total"><?=$this->total_price?></span></b>
               </p>
               <br>
 

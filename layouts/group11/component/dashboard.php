@@ -10,7 +10,8 @@
           <h2>EMPLOYEE</h2>                  
               <form class="form-inline" action="/emp/staff/employee/dashboard/search" method="post">
                 <div class="form-group mx-sm-3 mb-2" action="/emp/staff/employee/editemp/save" method="post">
-                  <input type="text" class="form-control" name = "tell" id="tell" placeholder="SEARCH">
+                  <input type="text" class="form-control" name = "tell" id="tell" placeholder="SEARCH">                
+            </ul>
                 </div>
                 <button type="submit" class="btn btn-primary mb-2">SEARCH</button>
             </form>                               

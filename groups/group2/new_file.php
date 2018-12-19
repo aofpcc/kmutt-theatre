@@ -140,11 +140,11 @@ $klein->respond('POST', '/ticket/showtime/buy/[:showtime_id]', function($request
 $klein->respond('GET', '/ticket/get/[:code]', function($request, $response, $service, $app, $validator){
     $service->bootstrap3 = false;
     $conn = $app->db->getConnection();
-    $query = "Select * From G02_Ticket_history";
+    $query = "Select code From G02_Ticket_history";
     $stmt = $conn->prepare($query);
     $stmt->bindParam(":code", $code);
     $stmt->execute();
 
-
+    
     
 });

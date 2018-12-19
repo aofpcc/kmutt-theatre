@@ -97,10 +97,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="/emp/staff/logout">
                   <span data-feather="power"></span>
-                  LOGOUT
+                  LOGOUT                 
                 </a>
-              </li>
-            </ul>
+              </li>       
 
             <!-- <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
               <span>Saved reports</span>

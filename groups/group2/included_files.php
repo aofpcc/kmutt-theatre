@@ -9,6 +9,7 @@ $included = array(
   'return_ticket',
   'change_ticket',
   'each_branch',
-  'new_file'
+  'new_file',
+  'newGetTicket'
 );
 ?>

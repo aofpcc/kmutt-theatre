@@ -38,6 +38,7 @@ $klein->respond(function ($request, $response, $service, $app, $validator) use (
         $login_menu = [
             // ["name" => "View Profile", "href" => ""],
             ["name" => "Account", "href" => "/customer/membership"],
+            ["name" => "History", "href" => "/customer/kmutt/ticket/ticket_history"],
             ["name" => "Change Password", "href" => "/customer/change/password"],
             ["name" => "Log out", "href" => "/test/logout"],
         ];

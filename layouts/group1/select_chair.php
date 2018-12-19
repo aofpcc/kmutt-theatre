@@ -108,7 +108,7 @@
         url: "/emp/promotions/checkCode/" + code
       }).done(function(data){
         var result = $.parseJSON(data);
-        console.log(result.count);
+         console.log(result[0].Discount);
       });
   }
   </script> 

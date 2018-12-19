@@ -11,11 +11,12 @@ $klein->respond('GET', '/promotions/checkCode/[:code]', function ($request, $res
     $code = $request->code;
   
     // $stmt = $conn->prepare("SELECT * FROM advertisement WHERE id = :id");
-    $stmt = $conn->prepare("SELECT COUNT(*) AS count FROM G08_Promo_main WHERE PromoID = :code");
+    $stmt = $conn->prepare("SELECT *  FROM G08_Promo_main WHERE PromoCode= :code");
     $stmt->bindParam(':code', $code);
     $stmt->execute();
     $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
     echo json_encode($data);
     // echo $data;
+
   });

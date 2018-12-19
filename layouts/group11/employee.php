@@ -74,16 +74,6 @@
                 echo '</li>';
               }
               ?>
-              <?php             
-              if($this->permission[0]['addMovie'] == 1){
-                echo '<li class="nav-item">';
-                echo ' <a class="nav-link" href="">';
-                echo '  <span  data-feather="film"></span>';
-                echo '  Add movie';
-                echo '</a>';
-                echo '</li>';
-              }
-              ?>
               <?php 
               if($this->permission[0]['finance'] == 1){
                 echo '<li class="nav-item">';

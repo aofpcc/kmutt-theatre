@@ -35,12 +35,12 @@
                     </div>
                     <div class="form-group">
                       <label for="sel1">Soundtrack</label>
-                      <select class="form-control" id="soundtrack" name="soundtrack value="<?=$this->seatdata["seattype"] ?>"">
+                      <select class="form-control" id="soundtrack" name="soundtrack">
                       </select>
                     </div>
                     <div class="form-group">
                       <label for="sel1">Subtitle</label>
-                      <select class="form-control" id="subtitle" name="subtitle" value="<?=$this->seatdata["seattype"] ?>">
+                      <select class="form-control" id="subtitle" name="subtitle" >
                         <option value="">No Subtitle</option>
                       </select>
                     </div>
@@ -55,7 +55,7 @@
 
                     <div class="form-group">
                       <label for="sel1">Room No:</label>
-                      <select class="form-control" id="room_id" name="room_id" value="<?=$this->seatdata["seattype"] ?>">
+                      <select class="form-control" id="room_id" name="room_id">
                       </select>
                     </div>
 
@@ -157,6 +157,16 @@
               changeSoundtrack();
               changeSubtitle();
             });;
+
+            var defaultMovie = <?php echo $this->data["movie_id"] ?>;
+            $('#movie_id').val(defaultMovie);
+
+            var soundtrack = '<?php echo $this->data["soundtrack"] ?>';
+            $("#soundtrack").val(soundtrack);
+            
+
+            // var defaultBranch = <?php echo $this->data["room_id"] ?>;
+            // $('#branch_id').val(defaultBranch);
 
             function changeSoundtrack() {
               var e = $("#movie_id").val();

@@ -88,12 +88,12 @@
         <a class="field-value">points</a>
       </div>
       <!-- money -->
-      <div class="bold field-title" style="margin-bottom: 0">REMAINING VALUE <br/>
+      <!-- <div class="bold field-title" style="margin-bottom: 0">REMAINING VALUE <br/>
         <a class="field-value">
           10000
         </a>
         <a class="field-value">baht</a>
-      </div>
+      </div> -->
     </div>
   </div>
   <!-- middle line -->

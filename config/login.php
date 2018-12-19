@@ -165,7 +165,7 @@ class LoginPerformer
             $stmt->bindParam(":password", $password);
             $stmt->bindParam(":userID", $_SESSION['userID']);
             $stmt->execute();
-
+            session_destroy();
             return [
                 "update" => true,
             ];

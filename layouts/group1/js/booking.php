@@ -28,7 +28,6 @@
     var $cart = $('#selectedSeats'), //Sitting Area
     $counter = $('#counter'), //Votes
     $total = $('#total'); //Total money
-    
 
 
     var sc = $('#seat-map').seatCharts({
@@ -125,3 +124,9 @@
   }
 
 </script>
+
+<?php
+  //*$total_price = "<script> document.write($total) </script>"
+
+  //$this->total = $total_price;
+ ?>

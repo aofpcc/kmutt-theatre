@@ -46,7 +46,6 @@ $service->isManagementPage = true;
 $service->promotions = $list;
   // var_dump($list);
   // die;
-
    $service->render('layouts/group8/DB/Promotion1.php');
  });
 
@@ -77,48 +76,13 @@ catch(PDOException $e)
   $service->allMovies = $arr;
   $service->pageTitle = 'Hello';
   $service->render('layouts/group8/New.php');
-});
-$klein->respond('GET', '/promotion/[:ID]/[:PromoID]', function ($request, $response, $service,$app,$validator) {
-  global $database;
-  $conn = $database->getConnection();
-
-  //
-  // CURRENT POINTS
-  //
-  $sql = "SELECT totalpoint FROM G05_totalpoint where MemberId = $request->ID";
-  $stmt = $conn->prepare($sql);
-  $stmt->execute();
-  $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-  // echo json_encode($list);
-  $currentPoint = $list[0]["totalpoint"];
-
-  //
-  // REQUIRED POINTS
-  //
-  $sql2 = "SELECT PointUsed FROM G08_Promo_main where PromoID = $request->PromoID";
-  $stmt2 = $conn->prepare($sql2);
-  $stmt2->execute();
-  $list = $stmt2->fetchAll(PDO::FETCH_ASSOC);
   
-  // echo json_encode($list);
-  $requiredPoint = $list[0]["PointUsed"];
-  // $getpoint = $request->getpoint($stmt);
-  // $point = $app->point->getPoint("151");
-
-  // $point= $request->$sql2;
-  if($currentPoint>=$requiredPoint){
-    $newpoint = $currentPoint-$requiredPoint;
-    $sql = "INSERT INTO G05_Member_Redeem_Transaction(MemberID,Point)
-    VALUES('$request->ID','$newpoint')";
-    $stmt = $conn->prepare($sql);
-    $stmt->execute();
-    $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    echo "success";
-  }
-  else{
-    echo "you have not enough point";
-    ;
-  }
 });
-?>
+
+
+$klein->respond('GET', '/promotion/testjaa', function ($request, $response, $service,$app,$validator) {
+  return $app->promotion->getCode();
+});
+$klein->respond('GET', '/promotion/procode', function ($request, $response, $service,$app,$validator) {
+  return $app->promotion->usecode($memberID,$promocode);
+});

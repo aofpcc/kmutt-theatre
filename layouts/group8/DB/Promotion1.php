@@ -75,7 +75,7 @@ p.mix {border-style: dotted dashed solid double;}
                   <br><br>
                   <h6>Point</h6><?=$promotion["PointUsed"] ?><br>
                   <button type="button" class="btn btn-success" onClick="location.href='/emp/promotion/edit/<?=$promotion["PromoID"]?>';">Edit</button>
-                  <button type="button" class="btn btn-danger" onClick="location.href='/promotion/<?php ?>/<?php echo $this->promotions["PromoID"]; ?>';">Use Point</button>
+                  <!-- <button type="button" class="btn btn-danger" onClick="location.href='/emp/promotion/procode';">Use Point</button> -->
                 </h4>
                 <p class="card-text">     </p>
               </div>

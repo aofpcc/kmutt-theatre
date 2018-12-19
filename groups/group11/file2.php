@@ -232,11 +232,51 @@ $klein->respond('POST', '/staff/employee/editemp/save', function ($request, $res
    $stmt->execute();
    $service->branch = $stmt->fetchAll(PDO::FETCH_BOTH);
 
-   //select G11_Emp_department
-   $dep = "SELECT * from G11_Emp_department WHERE userID = $request->userID" ;
-   $stmt = $conn->prepare($dep);
-   $stmt->execute();
-   $service->department = $stmt->fetchAll(PDO::FETCH_BOTH);
+   //history
+   $firstname =  $service->employee[0]['Firstname'];
+   $lastname = $service->employee[0]['Lastname'];
+   $tell = $service->employee[0]['Tell'];
+   $email = $service->employee[0]['Email'];
+   $sex = $service->employee[0]['Sex'];
+   $status = $service->employee[0]['Status'];
+   $address = $service->employee[0]['Address'];
+   $salary = $service->employee[0]['Salary'];
+   $super_emp= $service->employee[0]['Super_emp'];
+   // $userID= $service->profile[0]['userID'];
+
+
+    //insert db G11_Emp_history_staff
+  $historyEmp = "INSERT INTO G11_Emp_history_staff (Firstname, Lastname, Sex, `Status` , Email, `Address`, Salary, Super_emp, Tell, userID) 
+               VALUES ('$firstname','$lastname','$sex','$status','$email','$address','$salary','$super_emp','$tell','$request->userID')";
+  $stmt = $conn->prepare($historyEmp);
+  $stmt->execute();
+
+  
+    //select G11_Emp_department
+    $dep = "SELECT * from G11_Emp_department WHERE userID = $request->userID" ;
+    $stmt = $conn->prepare($dep);
+    $stmt->execute();
+    $service->department = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+    $experience = $service->department[0]['experience'];
+    $Profession = $service->department[0]['Profession'];
+    $ot_rate = $service->department[0]['ot_rate'];
+    $eng_lv = $service->department[0]['eng_lv'];
+    $availability = $service->department[0]['availability'];
+    $branch = $service->department[0]['branchID'];
+
+     //insert db G11_Emp_history_dep
+     $historydep = "INSERT INTO G11_Emp_history_dep (userID, experience, Profession, ot_rate , eng_lv, `availability`, branchID) 
+                                    VALUES ('$request->userID', '$experience', '$Profession', '$ot_rate', ' $eng_lv', '$availability','$branch')";
+    $stmt = $conn->prepare($historydep);
+    $stmt->execute();
+
+  $experience = $request->experience;
+  $Profession = $request->Profession;
+  $ot_rate = $request->ot_rate;
+  $eng_lv = $request->eng_lv;
+  $availability = $request->availability;
+  $branch = $request->branch;
 
     //select db core_user_table
     $user = "SELECT * FROM core_user_table WHERE userID = $request->userID " ;

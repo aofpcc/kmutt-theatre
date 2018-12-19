@@ -54,20 +54,19 @@
                 //   echo json_encode($this->seats);
                 //
                 // }
-                $arry = json_decode(json_encode($this->seats), true);
+                $arry = json_decode(json_encode($this->total), true);
+                // var_dump($this->seats);
+                // die;
                 foreach ($arry as $result)
                 {
-                  $seat_no = $result['row'].'-'.$result['seat'];
-                  echo "<div class='btn btn-outline-dark btn-sm'><b>$seat_no</b></div>";
-                  echo "&nbsp;";  // add a little space
+                  echo 'row : ', $result['row'],'   seat : ', $result['seat'],'<br/>';
                 }
-                  //echo json_encode($this->seats);
-                  //print_r($this->seats);
-              ?>
-              <br> <br>
-              <!-- <from action = '/kmutt_home' method = 'post'>
-    <button type="button" class="btn btn-primary btn-lg btn-danger" >BACK TO HOME</button>
-  </from> -->
+                ?>
+                <br> <br>
+
+                <from action = '/cutomer/kmutt/ticket/barcode/<?= $this->showtime_id?>' method = 'post'>
+                  <button type="button" class="btn btn-primary btn-lg btn-danger" >GO TO BARCODE</button>
+                </from>
   </div>
 </div>
 </div>

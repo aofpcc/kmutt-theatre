@@ -32,7 +32,6 @@
 				<!-- <div class="login-agileits-bottom">
 						<h6><a href="#">Forgot password?</a></h6>
 					</div> -->
-
 			</div>
 		</div>
 	</div>
@@ -42,8 +41,8 @@
 	</div>
 	<div class="social_icons agileinfo">
 		<ul class="top-links">
-			<li><a href="/emp/ticket/home_page/returnticket" class="return"><i class="fas fa-undo"></i> Return Ticket</a></li>
-			<li><a href="/emp/ticket/home_page/changeticket" class="change"><i class="fas fa-exchange-alt"></i> Change</a></li>
+			<li><a href="/emp/ticket/returnticket" class="return"><i class="fas fa-undo"></i> Return Ticket</a></li>
+			<li><a href="/emp/ticket/changeticket" class="change"><i class="fas fa-exchange-alt"></i> Change</a></li>
 			<!-- <li><a href="#" class="no_member"><i class="fas fa-fighter-jet"></i> Reserve Now</a></li> -->
 		</ul>
 	</div>

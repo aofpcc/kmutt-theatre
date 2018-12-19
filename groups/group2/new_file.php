@@ -165,11 +165,37 @@ $klein->respond('POST', '/ticket/showtime/buy/[:showtime_id]', function($request
 $klein->respond('GET', '/ticket/get/[:code]', function($request, $response, $service, $app, $validator){
     $service->bootstrap3 = false;
     $conn = $app->db->getConnection();
-    $query = "Select code From G02_Ticket_history";
+    $query = "Select * From G02_Ticket_history WHERE code=:code and return_ticket=0";
+    $code = $request->code;
     $stmt = $conn->prepare($query);
     $stmt->bindParam(":code", $code);
     $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    if(count($result) == 0) {
+        $service->flash("Code invalid");
+        $service->back();
+        return;
+    }
+    $showtime_id = $result[0]["showtime_id"];
+    $data = $conn->query("select *
+    from available_movies a
+    join `G14_Branch` b on a.branch_id = b.`BranchID`
+    join G09_Movie c on a.movie_id = c.`id`
+    WHERE a.id=$showtime_id
+    ")->fetchAll(PDO::FETCH_ASSOC);
+    
+    $service->tickets = $result;
+    $service->movieTitle = $data[0]["title"];
+    $service->branch = $data[0]["BranchName"];
+    $service->room_no = $data[0]["room_no"];
 
+    $a = new DateTime($data[0]["startTime"]);
+    $service->startTime = $a->format("H:i");
+    $b = new DateTime($data[0]["EndTime"]);
+    $service->endTime = $b->format("H:i");
     
-    
+    // $response->dump($result);
+    // $response->sendBody();
+    // die;
+    $service->partial("layouts/group2/new_showticket.php");
 });

@@ -8,7 +8,7 @@
   </head>
     <div name="header" class="head">
       <h1>KMUTT Theatre</h1>
-      <h3><a href="/emp/group8/search">Promotion management</a></h3>
+      <h3><a href="/emp/group8">Promotion Home</a></h3>
     </div>
     <div name="body" class="main-body">
 

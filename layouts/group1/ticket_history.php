@@ -19,28 +19,101 @@
 
   <br>
   <div class="main">
-        <h1 class="my-4"><button type="button" class="btn btn-lg btn-danger">STEP 5</button>
     <!-- <h1 class="my-4"><button type="button" class="btn btn-lg btn-danger"></button> -->
       <small>History</small>
     </h1>
     <div class="card card-temp shadow-lg">
-      <div class="container">
-        <br>
-        <div class="row">
-          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="container">
+              <br>
+              <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100">
+                      <a href="#"><img class="card-img-top" src="<?= $this->image ?>" alt=""></a>
+                    </div>
+                  </div>
 
+                  <div class="col-md-7">
+                      <font size="3" style="font-weight:bold"> Movie Name: <?=$this->title ?></font><br>
+                      <font size="3">Date   : <?=$this->startDate ?></font><br>
+                      <font size="3">Time   : <?= $this->startTime ?></font> &nbsp&nbsp&nbsp
+                      <font size="3"> Theater : <?= $this->id_room ?> </font><br>
+                      <font size="3">Length : <?= $this->length ?></font> <br><br>
+                      <font size="3" style="font-weight:bold">Type of seat : </font> <font size = "3"><?=$this->type_seat ?></font> <br><br>
+                      <font size="3" style="font-weight:bold">Information about seat : </font> <front size = "3"><?=$this->seat_info ?></front><br><br>
+                      <font size="3" style="font-weight:bold">Price of seat : </font> <font size = "3"><?=$this->price ?></font><br>
 
+                    <br> <!--link to ticket-->
+                    <button type="button" class="btn btn-lg btn-danger"
+                    onclick="location.href = '/customer/invitation/showtime/<?=$this->showtime_id?>'">INVITED FRIEND
+                  </button>
 
-              <font size="4"> Your code </font
-              
-              <br> <br>
+                    </div>
+                </div>
+            </div>
+          </div>
+<br>
+<br>
+    <div class="demo">
+      <div id="seat-map" >
+        <div class="front">SCREEN</div>
+      </div>
+      <div class="booking-details">
+        <ul class="book-left">
+          <!-- <li>Movie </li>
+          <li>Time </li> -->
+          <li>Number of tickets</li>
+          <li>Total</li>
+          <li>Seats :</li>
+        </ul>
+        <ul class="book-right">
+          <!-- <li>: Gingerclown</li>
+          <li>: April 3, 21:00</li> -->
+          <li>: <span id="counter">0</span></li>
+          <li>: <b><i>$</i><span id="total">0</span></b></li>
+        </ul>
+        <div class="clear"></div>
 
+            <?php //foreach($this->movie_id as $movie_id) { ?>
+            <form action = "/customer/kmutt_home/branch/show_time/select_chair/payment/<?= $this->showtime_id?>" method = "post">
+                <ul id="selectedSeats" class="scrollbar scrollbar1"></ul>
+              <button name = "book_seat" value = "book_seat" id = "book_seat" class = "checkout-button">Book now
+              </button>
+
+        <div id="legend"></div>
+      </div>
+      <div style="clear:both"></div>
+      </div> </form>
+    <?php //} ?>
 
 
     <!-- <script src="/layouts/group1/js/booking.js" charset="utf-8"></script> -->
-
+    <?php $this->partial("layouts/group1/js/booking.php"); ?>
   </div>
-</div>
-</div>
-</div>
-</div>
+  <script src="/layouts/group1/js/jquery.nicescroll.js"></script>
+  <script src="/layouts/group1/js/scripts.js"></script>
+
+<?php
+  for($i = 0; $i < count($this->ticket_id); $i++) { ?>
+    <tr>
+      <td id="id<?=$this->list[$i]['id'] ?>"><?=$this->list[$i]['id'] ?></td>
+      <?php
+        $status = $this->list[$i]['status'];
+        if($status == 'on') {
+      ?>
+          <td id='status<?=$this->list[$i]['id'] ?>' style='color:green'>on</td>
+      <?php
+        }
+        else {
+      ?>
+          <td id='status<?=$this->list[$i]['id'] ?>' style='color:red'>off</td>
+      <?php
+        }
+      ?>
+      <td style="text-align: left"><a class="name" id="name<?=$this->list[$i]['id'] ?>" href="#"><?=$this->list[$i]['name'] ?></a></td>
+      <td id="type<?=$this->list[$i]['id'] ?>"><?=$this->list[$i]['type'] ?></td>
+      <td id="st-date<?=$this->list[$i]['id'] ?>"><?=$this->list[$i]['start_date'] ?></td>
+      <td id="en-date<?=$this->list[$i]['id'] ?>"><?=$this->list[$i]['end_date'] ?></td>
+    </tr>
+<?php }
+
+ ?>

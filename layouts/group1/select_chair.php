@@ -73,6 +73,10 @@
         </ul>
         <div class="clear"></div>
 
+        Code ID :  <br>
+          <input type="text" name="codeID" value="example : Mickey">
+          <button name = "send_code" value = "send_code" id = "send_code" class = "checkout-button">Send Code
+          </button>
             <?php //foreach($this->movie_id as $movie_id) { ?>
             <form action = "/customer/kmutt_home/branch/show_time/select_chair/payment/<?= $this->showtime_id?>" method = "post">
                 <ul id="selectedSeats" class="scrollbar scrollbar1"></ul>

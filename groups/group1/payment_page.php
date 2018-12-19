@@ -170,7 +170,7 @@ $klein->respond('POST', '/kmutt_home/branch/show_time/select_chair/payment/[:sho
             // // ];
             // // var_dump($seat);
             // // die;
-            //
+
             $seat = $selectedSeats[$j];
               $sql = "INSERT INTO G01_Booking (status, deadline, selected_seat, booking_time, code, buyer_id, row_ticket, seat_ticket, room_id, movie_id, showtime_id)
                  values('$status',FROM_UNIXTIME($deadline), '$seat', CURRENT_TIMESTAMP, '$code', '$buyer_id', '$row', '$seat_tic', '$theatre_no', '$movie_id', '$request->showtime_id')";

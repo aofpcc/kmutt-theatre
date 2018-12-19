@@ -45,7 +45,7 @@
       <table class="table table-striped table-sm">
         <thead>
           <tr>
-            <th>ID</th>
+            <th>Days</th>
             <th>User ID</th>
             <th>Time In</th>
             <th>Time Out</th>
@@ -56,14 +56,16 @@
         <tbody>
         <?php
           $result = $this->countUser;
+          $num = 1;
           for($i = 0; $i<count($result); $i++){
             $row = $result[$i];
             $datetime1 = new DateTime($row['timeIn']);
             $datetime2 = new DateTime($row['timeOut']);
             $interval = $datetime1->diff($datetime2);
-            if($now === $datetime1->format("Y-m")) {
+              
+            if($now === $datetime1->format("Y-m")) {            
                 echo '<tr>';
-                echo '<td>'.$row['tmpID'].'</td>';
+                echo '<td>'.$num.'</td>';
                 echo '<td>'.$row['userID'].'</td>';
                 echo '<td>'.$row['timeIn'].'</td>';
                 echo '<td>'.$row['timeOut'].'</td>';
@@ -78,7 +80,9 @@
                   echo '<td>0 Hour</td>';
                 }
                 echo '</tr>';
-              }                        
+                $num = $num +1;  
+              }
+                          
             } 
           ?>                
         </tbody>

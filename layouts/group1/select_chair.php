@@ -113,4 +113,4 @@
          console.log(document.getElementById('total').value);
       });
   }
-  </script> 
+  </script>

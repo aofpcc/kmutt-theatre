@@ -110,9 +110,9 @@
     </style>
 </head>
 <script src="/layouts/group1/js/jquery.seat-charts.js"></script>
-
 <link href="/layouts/group1/css/style.css" rel="stylesheet" type="text/css" media="all" />
 <!-- <link rel="stylesheet" href="/layouts/group1/css/onStyle.css"> -->
+
 <script src="/layouts/group1/js/jquery-1.11.0.min.js"></script>
 <script src="/layouts/group1/js/jquery.seat-charts.js"></script>
 <script>
@@ -159,7 +159,7 @@
     }
 
     function show(code) {
-        var x = "<a href='/emp/ticket/get/"+code+"' target='_blank'>________________________________________________________________________GET__CODE_____________________________________________________________________</a>";
+        var x = "<a href='/emp/ticket/get/"+code+"' target='_blank'>________________________________________________________________________________________________________GET__CODE_____________________________________________________________________________________________________</a>";
         $("#select_seat").empty();
         $("#select_seat").html(x);
     }

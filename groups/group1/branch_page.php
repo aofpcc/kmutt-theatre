@@ -4,7 +4,9 @@ $klein->respond('GET', '/kmutt_home/branch/[:movie_id]', function ($request, $re
     $conn = $database->getConnection();
     date_default_timezone_set("Asia/Bangkok");
 
-    $query = $conn->query("select distinct date(startTime) as start_date from available_movies where movie_id = '$request->movie_id'
+    $query = $conn->query("select distinct date(startTime) as start_date
+    from available_movies
+    where movie_id = '$request->movie_id' and branch_id = '$request->branch_id'
     order by start_date asc;")->fetchAll(PDO::FETCH_ASSOC);
 
     $num = count($query);
@@ -96,7 +98,7 @@ $klein->respond('GET', '/movies/showtime/all/[:movie_id]/[:show_date]', function
         join G04_MSRnB_theaterInfo c on a.theaterinfo_id = c.id
         join G04_MSRnB_roomtype b
         on c.roomtype_id = b.id where a.movie_id = $target and date(startTime) = '$show_date'  and a.branch_id = ".$branch["branch_id"];
-        
+
         $stmt = $conn->prepare($query);
         $stmt->execute();
         $rooms = $stmt->fetchAll(PDO::FETCH_ASSOC);

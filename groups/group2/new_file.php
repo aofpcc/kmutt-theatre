@@ -1,7 +1,21 @@
 <?php
 $klein->respond('GET', '/ticket/[:branch_id]', function($request, $response, $service, $app, $validator){
-    $service->bootstrap3 = false;
     $conn = $app->db->getConnection();
+    $userID = $app->login->requireLogin('employee')["userID"];
+
+    $data2 = $conn->query("SELECT * FROM G11_Current_dep_of_emp WHERE userID=$userID and branchID=$request->branch_id")->fetchAll(PDO::FETCH_ASSOC);
+
+    // branch id doest not belong to this userID
+    if(count($data2) == 0 ) {
+        $service->flash("Incorrect Branch");
+        // $service->back();
+        $response->redirect("/emp/staff/employee/dashboard");
+        $response->sendHeaders();
+        return;
+    }
+    
+    $service->bootstrap3 = false;
+    
     // $app->login->requireLogin('employee');
     // echo $request->branch_id;
     $query = "select * from G09_Movie b,
@@ -47,6 +61,17 @@ $klein->respond('GET', '/ticket/[:branch_id]/[:movie_id]', function($request, $r
 
 $klein->respond('GET', '/ticket/showtime/[:showtime_id]', function($request, $response, $service, $app, $validator){
     $conn = $app->db->getConnection();
+    
+    $query = "SELECT * from G04_v_showtime_seat WHERE showtime_id = $request->showtime_id";
+    $data = $conn->query($query)->fetchAll(PDO::FETCH_ASSOC);
+    
+    if(count($data) == 0) {
+        echo "No available showtime";
+        return;
+    }
+
+    $service->price = $data[0]["seat_price"];
+
     $service->seatMap = [  //Seating chart
         'aaaaaaaaaa',
         'aaaaaaaaaa',
@@ -140,11 +165,37 @@ $klein->respond('POST', '/ticket/showtime/buy/[:showtime_id]', function($request
 $klein->respond('GET', '/ticket/get/[:code]', function($request, $response, $service, $app, $validator){
     $service->bootstrap3 = false;
     $conn = $app->db->getConnection();
-    $query = "Select code From G02_Ticket_history";
+    $query = "Select * From G02_Ticket_history WHERE code=:code and return_ticket=0";
+    $code = $request->code;
     $stmt = $conn->prepare($query);
     $stmt->bindParam(":code", $code);
     $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    if(count($result) == 0) {
+        $service->flash("Code invalid");
+        $service->back();
+        return;
+    }
+    $showtime_id = $result[0]["showtime_id"];
+    $data = $conn->query("select *
+    from available_movies a
+    join `G14_Branch` b on a.branch_id = b.`BranchID`
+    join G09_Movie c on a.movie_id = c.`id`
+    WHERE a.id=$showtime_id
+    ")->fetchAll(PDO::FETCH_ASSOC);
+    
+    $service->tickets = $result;
+    $service->movieTitle = $data[0]["title"];
+    $service->branch = $data[0]["BranchName"];
+    $service->room_no = $data[0]["room_no"];
 
+    $a = new DateTime($data[0]["startTime"]);
+    $service->startTime = $a->format("H:i");
+    $b = new DateTime($data[0]["EndTime"]);
+    $service->endTime = $b->format("H:i");
     
-    
+    // $response->dump($result);
+    // $response->sendBody();
+    // die;
+    $service->partial("layouts/group2/new_showticket.php");
 });

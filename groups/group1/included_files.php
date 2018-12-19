@@ -7,5 +7,7 @@ $included = array(
   'payment_page',
   'tenpeople_page',
   'ticket_page',
-  'test'
+  'test',
+  'ticket_history_page',
+  'barcode'
 );

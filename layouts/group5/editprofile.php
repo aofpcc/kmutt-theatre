@@ -14,7 +14,7 @@
 
       <!-- account -->
       <div class="row account-set-position">
-        <h2 style="margin-left: 110px;">Edit Profile</h2>
+        <h2 style="margin-left: 70px;">Edit Profile</h2>
       </div>
       <!-- change form -->
       <div class="row">

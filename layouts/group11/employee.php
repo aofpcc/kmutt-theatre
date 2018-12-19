@@ -31,7 +31,7 @@
       </ul>
     </div> -->
 
-    <div class="remove-container" style="width: inherit!important;">
+    <div class="" style="width: inherit!important;">
       <div class="row">
         <div class="col-md-2 d-none d-md-block bg-light sidebar">
           <div class="sidebar-sticky">
@@ -74,16 +74,6 @@
                 echo '</li>';
               }
               ?>
-              <?php             
-              if($this->permission[0]['addMovie'] == 1){
-                echo '<li class="nav-item">';
-                echo ' <a class="nav-link" href="">';
-                echo '  <span  data-feather="film"></span>';
-                echo '  Add movie';
-                echo '</a>';
-                echo '</li>';
-              }
-              ?>
               <?php 
               if($this->permission[0]['finance'] == 1){
                 echo '<li class="nav-item">';
@@ -94,6 +84,12 @@
                 echo '</li>';
               }
               ?>
+              <li class="nav-item">
+              <a class="nav-link" href="/emp/staff/employee/changepass">
+                <span data-feather="edit-2"></span>
+                Change Password                
+              </a>
+            </li>  
               <li class="nav-item">
                 <a class="nav-link" href="/emp/staff/logout">
                   <span data-feather="power"></span>

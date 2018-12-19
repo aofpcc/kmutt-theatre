@@ -15,7 +15,63 @@ $klein->with("/emp/teststaff", function () use ($klein) {
 });
 
 $klein->respond('POST', '/staff/login', function ($request, $response, $service, $app, $validator) {
-  $app->login->perform($request->username, $request->password, "/emp/teststaff");
+$conn = $app->db->getConnection();
+  $query = "SELECT * from core_user_pwd WHERE username = '$request->username' OR email = '$request->username' " ;
+    $stmt = $conn->prepare($query);
+    $stmt->execute();
+    $x = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  
+    // $response->dump($x);
+    // $response->sendBody();
+    // die;
+
+    $num = $stmt->rowCount();
+    if($num == 0) {
+      $service->flash("Username incorrect");
+      $service->back();
+      return;
+    }
+
+    $id = $x[0]['userID'];
+    // var_dump($x[0]['userID']);
+    // die;
+
+    $query = "SELECT * from G11_Emp_department WHERE userID = $id" ;
+    $dep = $conn->query($query)->fetchAll(PDO::FETCH_ASSOC);
+
+    // $response->dump($dep);
+    // $response->sendBody();
+    // die;
+
+    $dep =  $dep[0]['Profession'];
+
+    $query = "SELECT * from G11_Department WHERE id = $dep" ;
+    $department = $conn->query($query)->fetchAll(PDO::FETCH_ASSOC);
+
+    // var_dump($department[0]['id']);
+    // $response->dump($department[0]['id']);
+    // $response->sendBody();
+    // die;
+    $deppart =  $department[0]['link'];
+    
+    if($department[0]['id'] == 1) {
+
+      // var_dump($id);
+      // die;
+
+        $query = "select branchID
+        from G11_Emp_department
+        WHERE userID=$id";
+        $branch_id = $conn->query($query)->fetchAll(PDO::FETCH_ASSOC)[0]["branchID"];
+    //     $response->dump($branch_id);
+    // $response->sendBody();
+    // die;
+        $deppart = $deppart."/".$branch_id;
+    }
+
+    // var_dump($deppart);
+    // die;
+  $app->login->perform($request->username, $request->password, $deppart);
 });
 
 $klein->respond('GET', '/staff', function ($request, $response, $service, $app, $validator) {
@@ -790,8 +846,8 @@ $klein->respond('GET', '/staff/employee/statistics', function($request, $respons
 
         // // NO movie table in the new DB yet..
          $gene = $conn->query(" SELECT genre as Genre, COUNT(*) as amount
-                                FROM G02_Ticket_history as ticket, G09_Movie as movies , G09_Gerne
-                                WHERE ticket.movie_id = movies.ID AND movies.id = G09_Gerne.id
+                                FROM G02_Ticket_history as ticket, G09_Movie as movies , G09_Genre_Movie
+                                WHERE ticket.movie_id = movies.ID AND movies.id = G09_Genre_Movie.id
                                 GROUP BY  genre")->fetchAll(PDO::FETCH_BOTH);
          $service->gene = $gene;
 

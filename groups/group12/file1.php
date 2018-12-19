@@ -15,11 +15,18 @@
 //   $service->render('layouts/group12/home.php');
 // });
 
-$klein->respond('GET', '/mobile/movies/all', function ($request, $response, $service) {
+$klein->respond('GET', '/mobile/movies', function ($request, $response, $service) {
   global $database;
   $conn = $database->getConnection();
 
-  $query = "SELECT * from G09_Movie";
+  // $query = "SELECT * 
+  //           FROM G09_Movie as m
+  //           LEFT JOIN G09_Genre_Movie as g ON m.id = g.id";
+            
+  $query = "SELECT * 
+            FROM G09_Movie as m";
+
+  // echo $query;
   $stmt = $conn->prepare($query);
   $stmt->execute();
 
@@ -27,28 +34,66 @@ $klein->respond('GET', '/mobile/movies/all', function ($request, $response, $ser
   $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
 
   $service->allMovies = $arr;
+  return $response->json($arr);
+});
+
+$klein->respond('GET', '/mobile/movies/[:movie_id]', function ($request, $response, $service) {
+  global $database;
+  $conn = $database->getConnection();
+
+  $query = "SELECT * 
+            FROM G09_Movie as m
+            LEFT JOIN G09_Genre_Movie as g ON m.id = g.id
+            WHERE m.id = $request->movie_id";
+  // echo $query;
+  $stmt = $conn->prepare($query);
+  $stmt->execute();
+
+  $num = $stmt->rowCount();
+  $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+  // $service->allMovies = $arr;
   // $service->pageTitle = 'Hello';
   // $service->render('layouts/group12/home.php');
   return $response->json($arr);
 });
 
 $klein->respond('GET', '/mobile/showtimes/[:movie_id]', function ($request, $response, $service) {
-  global $database;
-  $conn = $database->getConnection();
+    global $database;
+    $conn = $database->getConnection();
+  
+    $query = "select distinct date(startTime) as start_date from available_movies where movie_id = '$request->movie_id'
+    order by start_date asc;";
+    $stmt = $conn->prepare($query);
+    $stmt->execute();
+  
+    $num = $stmt->rowCount();
+    $arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  
+    $service->allMovies = $arr;
+    // $service->pageTitle = 'Hello';
+    // $service->render('layouts/group12/home.php');
+    return $response->json($arr);
+  });
 
-  $query = "select distinct date(startTime) as start_date from available_movies where movie_id = '$request->movie_id'
-  order by start_date asc;";
-  $stmt = $conn->prepare($query);
-  $stmt->execute();
-
-  $num = $stmt->rowCount();
-  $arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-  $service->allMovies = $arr;
-  // $service->pageTitle = 'Hello';
-  // $service->render('layouts/group12/home.php');
-  return $response->json($arr);
-});
+  $klein->respond('GET', '/mobile/showtimes/[:movie_id]/[:branch_id]', function ($request, $response, $service) {
+    global $database;
+    $conn = $database->getConnection();
+  
+    $query = "select distinct date(startTime) as start_date from available_movies where movie_id = '$request->movie_id'
+    and branch_id = '$request->branch_id'
+    order by start_date asc;";
+    $stmt = $conn->prepare($query);
+    $stmt->execute();
+  
+    $num = $stmt->rowCount();
+    $arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  
+    $service->allMovies = $arr;
+    // $service->pageTitle = 'Hello';
+    // $service->render('layouts/group12/home.php');
+    return $response->json($arr);
+  });
 
 $klein->respond('GET', '/mobile/showtime/all/[:movie_id]/[:show_date]', function ($request, $response, $service, $app, $validator) {
   $conn = $app->db->getConnection();

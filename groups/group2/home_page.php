@@ -1,9 +1,6 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-$klein->respond('GET', '/ticket/home_page', function ($request, $response, $service) {
-    // $service->title = "KMUTT THEATRE | MEMBER CHECKING";
+$klein->respond('GET', '/ticket/home/homepage', function ($request, $response, $service) {
+    $service->title = "KMUTT THEATRE | MEMBER CHECKING";
     // $service->bootstrap3 = false;
    
     // $service->allMovies = $arr;
@@ -11,7 +8,7 @@ $klein->respond('GET', '/ticket/home_page', function ($request, $response, $serv
     $service->render('layouts/group2/home.php');
 });
 
-$klein->respond('GET', '/ticket/home_page/subhome', function ($request, $response, $service) {
+$klein->respond('GET', '/ticket/home/subhome', function ($request, $response, $service) {
     // $service->title = "KMUTT THEATRE | MEMBER CHECKING";
     // $service->bootstrap3 = false;
    
@@ -41,7 +38,7 @@ $klein->respond('POST', '/ticket/check_card_no', function ($request, $response, 
     $resultCount = $stmt->rowCount();
     if ($resultCount == 1) {
         // echo("founf]d it");
-        $response->redirect('/emp/ticket/home_page/subhome.php');
+        $response->redirect('/emp/ticket/home/subhome');
         $response->send();
     } else {
         echo ("Not Found This Card No. !!");

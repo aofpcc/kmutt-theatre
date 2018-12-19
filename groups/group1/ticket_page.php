@@ -57,7 +57,7 @@ $klein->respond('POST', '/kmutt/ticket/[:showtime_id]', function ($request, $res
       $code = uniqid();
       foreach($request->seat as $s) {
           $query = "Insert into G02_Ticket_history SET showtime_id = :showtime_id, seat_ticket = :seat_ticket, return_ticket=0,
-          cost=:cost, code=:code, how_booking='Counter', paid=1, date_book=now(), change_ticket=0";
+          cost=:cost, code=:code, how_booking='Web', paid=1, date_book=now(), change_ticket=0";
           $stmt = $conn->prepare($query);
           $cost = 20;
           $seat_ticket = $s;

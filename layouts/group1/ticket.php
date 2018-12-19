@@ -64,11 +64,16 @@
                 ?>
                 <br> <br>
 
-                <from action = '/cutomer/kmutt/ticket/barcode/<?= $this->showtime_id?>' method = 'post'>
-                  <button type="button" class="btn btn-primary btn-lg btn-danger" >GO TO BARCODE</button>
-                </from>
+
+                  <button type="button" class="btn btn-primary btn-lg btn-danger" onclick="redirectTo('/customer/kmutt/ticket/barcode/<?= $this->code ?>')">GO TO BARCODE</button>
+
   </div>
 </div>
 </div>
 </div>
 </div>
+<script>
+  function redirectTo(url) {
+    location.replace(url);
+  }
+</script>

@@ -29,7 +29,28 @@ function RandomString()
 //---------------------------------------------------------------------
 
 // Move Move
+$klein->respond('GET', '/promotion', function ($request, $response, $service, $app, $validator) {
+  $service->boostrap3 = false;
+  $sql = "select * 
+  from G08_Promo_main
+  where now() between StartDate and EndDate;";
+ 
+  $conn = $app->db->getConnection();
+  $stmt = $conn->prepare($sql);
+  $stmt->execute();
+  $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
+ //  $response->dump($data);
+ //  $response->sendBody();
+ $service->list = $list;
+ $service->isManagementPage = true;
+ $service->promotions = $list;
+   // var_dump($list);
+   // die;
+    $service->render('layouts/group8/DB/cusPromotion.php');
+  });
+
 $klein->respond('GET', '/group8', function ($request, $response, $service, $app, $validator) {
+  $app->login->requireLogin('employee');
  $service->boostrap3 = false;
  $sql = "select * 
  from G08_Promo_main

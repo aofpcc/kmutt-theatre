@@ -1,33 +1,7 @@
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="layouts\group5\register-makeup.css">
-  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
-  <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script> -->
-  <!-- <title>Register</title> -->
-  <!--Navbar-->
-  <!-- <nav class="navbar navbar-expand-lg navbar navbar-dark navbar-bg">
-  <b><a class="navbar-brand mr-5 ml-3" href="#"><p class="navbar-color mb-1">CS-18</p></a></b> -->
-  <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button> -->
-  <!-- <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Movies</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Events</a>
-      </li> -->
-  <!-- <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li> -->
-  <!-- </ul>
-  </div>
-</nav> -->
-  <!-- End Navbar -->
+  <link rel="stylesheet" href="/layouts/group5/register-makeup.css">
+  <link rel="stylesheet" href="/layouts/group5/css/change.css">
 </head>
 
 <!-- p-3 mb-2 bg-light -->
@@ -205,8 +179,8 @@
         </div>
         <div class="py-3">
         <center>
-          <input type="submit" class="mr-3 btn btn-primary" style=" background-color: #DC143C;" value="Confirm" />
-          <input type="submit" class="btn btn-primary" onclick="location='/customer/login'" style=" background-color: #DC143C;" value="Cancle" />
+          <input type="submit" class="block gap red-block white-font" value="Confirm" />
+          <input type="submit" class="cancel-block gap" onclick="location='/customer/login'" value="Cancle" />
       </center>
 </div>
       </form>

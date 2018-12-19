@@ -19,6 +19,7 @@
 
   <br>
   <div class="main">
+        <h1 class="my-4"><button type="button" class="btn btn-lg btn-danger">STEP 5</button>
     <!-- <h1 class="my-4"><button type="button" class="btn btn-lg btn-danger"></button> -->
       <small>History</small>
     </h1>
@@ -27,45 +28,11 @@
         <br>
         <div class="row">
           <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card">
-                <!-- <a href="#"> -->
-                  <img class="card-img-top" src="<?= $this->image ?>" alt="">
-                <!-- </a> -->
-              </div>
-            </div>
 
-            <div class="col-md-8">
-              <font size="6">
-                <?php echo $this->title; ?>
-                <br>
-              </font>
 
-              <font size="4">
-                <i class="far fa-clock"></i>
-                <?php echo $this->date; ?>
-                <b><?php echo $this->time; ?></b>
-                <!-- 30 February 2030
 
-                21 : 00 &nbsp&nbsp&nbsp <br> -->
-                <br>
-              </font>
-
-              <font size="4">
-                <i class="fas fa-building"></i> THEATRE <?php echo $this->theatre_no; ?> <br>
-              </font>
-              <br>
-
-              <font size="4"> ที่นั่ง </font
-              <?php
-              $arry = json_decode(json_encode($this->seats), true);
-              // var_dump($this->seats);
-              // die;
-              foreach ($arry as $result)
-              {
-
-              echo 'row : ', $result['row'],'   seat : ', $result['seat'],'<br/>';
-              }
-              ?>
+              <font size="4"> Your code </font
+              
               <br> <br>
 
 

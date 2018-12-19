@@ -10,6 +10,18 @@ class PointManager
         $this->klein = $klein;
     }
 
+    public function getPoint($memberID) {
+        $query = "SELECT * From G05_totalpoint WHERE memberID = :memberID";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":memberID", $memberID);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        if(count($result) == 0){
+          return 0;
+        }
+        return $result[0]["totalpoint"];
+    }
+
     //addPoint
     public function addPoint($input) // type memberID point transactionID
     {
@@ -59,7 +71,7 @@ class PointManager
             $stmt->execute();
     }
 
-    //deletePoint
+    //decreasePoint
     public function subtractPoint($input)
     {
         $result = [
@@ -78,9 +90,8 @@ class PointManager
             // $pointID = $this->conn->lastInsertId();
             $this->conn->commit();
             $result["result"] = true;
-            echo "OHO";
         } catch (Exception $e) {
-            echo $e->getMessage();
+            // echo $e->getMessage();
             $this->conn->rollback();
         }
         return $result;

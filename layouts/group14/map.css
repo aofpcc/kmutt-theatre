@@ -30,6 +30,44 @@ background-color: #ea0015; }
   cursor: pointer;
 }
 
+.button:hover {
+  background-color: #656565;
+}
+
 .button {background-color: black;}
 .button {border-radius: 8px;}
-.button {width: 99%;}
+.button {width: 98%;}
+
+.stylish-input-group .input-group-addon{
+    background: white !important;
+}
+.stylish-input-group .form-control{
+	border-right:0;
+	box-shadow:0 0 0;
+	border-color:#ccc;
+}
+.stylish-input-group button{
+    border:0;
+    background:transparent;
+}
+
+.button1 {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button1:hover {
+  background-color: #0EBD45;
+}
+
+.button1 {background-color: #0FCA4B;}
+.button1 {border-radius: 8px;}
+.button1 {width: 98%;}

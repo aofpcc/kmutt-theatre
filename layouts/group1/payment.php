@@ -23,21 +23,21 @@
           <div class="col-lg-4 col-md-6 mb-4">
               <div class="card">
                 <!-- <a href="#"> -->
-                  <img class="card-img-top" src="https://lh3.googleusercontent.com/8Lr1BMoZOxsSLoTZr6IxDZuLDiSc6oMTopLA2B-MhXbwxqpDguDHy8r_zj1430V2augHqTSdHsNjz6MYfbEm=w260" alt="">
+                  <img class="card-img-top" src="<?= $this->image ?>" alt="">
                 <!-- </a> -->
               </div>
             </div>
 
             <div class="col-md-8">
               <font size="6">
-                <?php echo $this->movie_name; ?>
+                <?php echo $this->title; ?>
                 <br>
               </font>
 
               <font size="4">
                 <i class="far fa-clock"></i>
-                <?php echo date('d/m/Y', $this->showtime); ?>
-                <b><?php echo date('H:i', $this->showtime); ?></b> (135 Mins)
+                <?php echo $this->date; ?>
+                <b><?php echo $this->time; ?></b>
                 <!-- 30 February 2030
 
                 21 : 00 &nbsp&nbsp&nbsp <br> -->
@@ -49,18 +49,16 @@
               </font>
               <br>
 
-                    <font size="4"> ที่นั่ง </font><br>
+                    <font size="4"> ที่นั่ง </font
                     <?php
-
                     $arry = json_decode(json_encode($this->seats), true);
-
                     // var_dump($this->seats);
                     // die;
                     foreach ($arry as $result)
                     {
+
                       echo 'row : ', $result['row'],'   seat : ', $result['seat'],'<br/>';
                     }
-
                     ?>
                     <br> <br>
 
@@ -80,18 +78,30 @@
               <font size="4"> ราคารวม </font>
               <br/>
               <p>
-
+                 <b><i>$</i><span id="total"><?=$this->total_price?></span></b>
               </p>
               <br>
 
-              </p><br> <!--link to ticket-->
+              </p><br>
 
-              <?php $this->partial("layouts/group1/js/countdown.php"); ?>
+              <?php //$this->partial("layouts/group1/js/countdown.php");
+              // var_dump($this->showtime_id);
+              // die; ?>
+              <form action = "/customer/kmutt/ticket/<?= $this->showtime_id?>" method = "post">
+                <?php foreach($this->selectedSeats as $seat) { ?>
+                  <input type="hidden" name="seat[]" value="<?=$seat?>">
+                <?php } ?>
+                <button name = Kbank value="Kbank" id="Kbank" class="btn btn-lg btn-light" ><img class="card-img-top"  src="https://scontent-sin2-1.xx.fbcdn.net/v/t1.15752-9/48409192_350101379136594_639100741486641152_n.jpg?_nc_cat=103&_nc_ht=scontent-sin2-1.xx&oh=a5cac4ea7fac114f4569329cf3a81f0b&oe=5CA7543F" alt=""></button>
+                <button name = Kbank value="Kbank" id="Kbank" class="btn btn-lg btn-light" ><img class="card-img-top"  src="https://scontent.fbkk12-3.fna.fbcdn.net/v/t1.15752-9/48418644_529574334211916_686072037139021824_n.jpg?_nc_cat=102&_nc_ht=scontent.fbkk12-3.fna&oh=db592268cceda35f030917a2539e98ca&oe=5C998AF8" alt=""></button>
+                <button name = Kbank value="Kbank" id="Kbank" class="btn btn-lg btn-light" ><img class="card-img-top"  src="https://scontent.fbkk14-1.fna.fbcdn.net/v/t1.15752-9/48386545_377795689624201_8993543019676303360_n.jpg?_nc_cat=100&_nc_ht=scontent.fbkk14-1.fna&oh=9e2b84d6f959f4d0e46f71066e913563&oe=5CAA1A6E" alt=""></button>
+                <button name = Kbank value="Kbank" id="Kbank" class="btn btn-lg btn-light" ><img class="card-img-top"  src="https://scontent.fbkk10-1.fna.fbcdn.net/v/t1.15752-9/48427987_2141379852794389_1762163019271372800_n.jpg?_nc_cat=102&_nc_ht=scontent.fbkk10-1.fna&oh=707d2594488d9b249289ed5aa98c4986&oe=5CA21D96" alt=""></button>
+                <!-- <button name =  class="btn btn-lg btn-default" >SCB</button>
+                <button type="button" class="btn btn-lg btn-default" >CREDIT</button>
+                <button type="button" class="btn btn-lg btn-default" >CLUBCARD</button> -->
+                <!-- <button name = "book_seat" value = "book_seat" id = "book_seat" class = "checkout-button">Book now
+                </button>
+   -->        </form>
 
-              <button type="button" class="btn btn-lg btn-default" >KBANK</button>
-              <button type="button" class="btn btn-lg btn-default" >SCB</button>
-              <button type="button" class="btn btn-lg btn-default" >CREDIT</button>
-              <button type="button" class="btn btn-lg btn-default" >CLUBCARD</button>
 
               <br><br>
             </div>
@@ -103,4 +113,5 @@
 
 
   <!-- <script src="/layouts/group1/js/jquery.nicescroll.js"></script> -->
+  <?php $this->partial("layouts/group1/js/booking.php");  ?>
   <script src="/layouts/group1/js/scripts.js"></script>

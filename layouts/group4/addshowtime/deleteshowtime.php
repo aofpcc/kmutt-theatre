@@ -1,5 +1,5 @@
 <br>
-<h2>Basic Table</h2> 
+<h2>Movie Showtime</h2> 
 <div class="container-fluid">
   <div class="row">
   		<div class="col-md-6"></div>
@@ -19,7 +19,8 @@
         <td>Branch</td>
         <td>Room no</td>
         <td>Movie title</td>
-        <td>Language</td>
+        <td>Soundtrack</td>
+        <td>Subtitle</td>
         <td>Date</td>
         <td>Start Time</td>
         <td>End Time</td>
@@ -33,12 +34,13 @@
                 <td><?=$d['BranchName']?></td>
                 <td><?=$d['room_no']?></td>
                 <td><?=$d['title']?></td>
-                <td><?=$d['language']?></td>
+                <td><?=$d['soundtrack']?></td>
+                <td><?=$d['subtitle']?></td>
                 <td><?=$d['date(s.startTime)']?></td>
                 <td><?=$d['time(s.startTime)']?></td>
                 <td><?=$d['time(s.endTime)']?></td>
                 <td>
-                    <button type="button" class="btn btn-success">Edit</button>
+                    <button type="button" class="btn btn-success" onClick="location.href='/emp/edit_showtime/<?=$d['showtime_id']?>';">Edit</button>
                     <button type="button" class="btn btn-danger" onClick="del(<?=$d['showtime_id']?>);">Delete</button>
                 </td>
             </tr>

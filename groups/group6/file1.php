@@ -1,9 +1,11 @@
 <?php
-$klein->respond('GET', '/group6', function ($request, $response, $service) {
+$klein->respond('GET', '/androidGetPoint', function ($request, $response, $service, $app, $validator) {
   global $database;
   $conn = $database->getConnection();
 
-  $query = "SELECT * from G05_Member_profile";
+  $memberID = $_GET['memberID'];
+
+  $query = "SELECT * from G05_totalpoint where MemberID = '$memberID'";
   $stmt = $conn->prepare($query);
   $stmt->execute();
 
@@ -13,15 +15,13 @@ $klein->respond('GET', '/group6', function ($request, $response, $service) {
   echo json_encode($arr);
 });
 
-$klein->respond('GET', '/group6/loginn', function ($request, $response, $service) {
+$klein->respond('GET', '/androidGetPointHistory', function ($request, $response, $service, $app, $validator) {
   global $database;
   $conn = $database->getConnection();
 
-  $user = $_GET['user'];
-  $password = $_GET['pass'];
+  $memberID = $_GET['memberID'];
 
-  //$query = "SELECT userID from core_user_pwd where username = '$user' and password = '$password' ";
-  $query = "SELECT MemberID from G05_Member_profile where Email = '$user' and PhoneNumber = '$password' ";
+  $query = "SELECT * from G05_v_point_type_member_date where MemberID = '$memberID'";
   $stmt = $conn->prepare($query);
   $stmt->execute();
 
@@ -29,6 +29,17 @@ $klein->respond('GET', '/group6/loginn', function ($request, $response, $service
   $arr = $stmt->fetchAll(PDO::FETCH_BOTH);
 
   echo json_encode($arr);
+});
+
+$klein->respond('GET', '/androidForgetPassword', function ($request, $response, $service, $app, $validator) {
+  global $database;
+  $conn = $database->getConnection();
+
+  $email = $_GET['email'];
+
+  $result = $app->login->forgetPassword($email);
+
+  echo json_encode([$result]);
 });
 
 $klein->respond('GET', '/androidChangePassword', function ($request, $response, $service) {
@@ -171,12 +182,21 @@ $klein->respond('GET', '/androidRegist', function ($request, $response, $service
                                 VALUES ('$userID','$address', '$province', '$district', '$subdist', '$postcode')";
         $stmt = $conn->prepare($query);
         $stmt->execute();
-        /*
-        $query = "INSERT INTO G05_Member_point (MemberID, Total_Point)
-                                VALUES ('$userID', 0)";
+
+        //******* POINT *****************************************************
+        $type = "Ticket";
+        $query = "INSERT INTO G05_Member_Point_Transaction (MemberID, Date, Type)
+                                VALUES ('$userID', NOW(), '$type')";
         $stmt = $conn->prepare($query);
         $stmt->execute();
-        */
+
+        $type = "FNB";
+        $query = "INSERT INTO G05_Member_Point_Transaction (MemberID, Date, Type)
+                                VALUES ('$userID', NOW(), 'FNB')";
+        $stmt = $conn->prepare($query);
+        $stmt->execute();
+        //***** POINT ******************************************************
+
         $arr["done"] = true;
         $arr["note"] = "Account have been created succesfully";
         $arr["userID"] = $result["userID"];

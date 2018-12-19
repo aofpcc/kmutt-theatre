@@ -41,7 +41,13 @@ $(document).ready(function () {
         document.getElementById('start-date').value = result.start_date;
         document.getElementById('end-date').value = result.end_date;
         document.getElementById('status').checked = (result.status == 'on');
-      });
 
+      });
+      return false;
+  });
+  
+  $('#ads-table').DataTable( {
+    autoFill: true,
+    paging: false
   });
 });

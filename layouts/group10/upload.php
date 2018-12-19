@@ -53,6 +53,8 @@
                       VALUES((SELECT MAX(id) FROM G10_Advertisement_info), '$start_date', '$end_date')");
         $conn->exec("INSERT INTO G10_Advertisement_banner(id, type, banner)
                       VALUES((SELECT MAX(id) FROM G10_Advertisement_info), '$type','$imgContent')");
+        $conn->exec("INSERT INTO G10_Advertisement_log 
+                      VALUES ((SELECT MAX(id) FROM G10_Advertisement_info), '$emp_id','".date('Y-m-d H:i:s')."', 'add')");
       }
       else {
         // $stmt = "UPDATE advertisement
@@ -73,6 +75,8 @@
                     SET type = '$type', banner = '$imgContent'
                     WHERE id = $id");
         }
+        $conn->exec("INSERT INTO G10_Advertisement_log 
+                      VALUES ('$id', '$emp_id','".date('Y-m-d H:i:s')."', 'edit')");
       }
 
       if(move_uploaded_file($_FILES['ads-banner']['tmp_name'], __DIR__.$target_file)) {
@@ -81,7 +85,7 @@
       else {
         echo "upload unsuccessful";
       }
-      header("location: /emp/group10",  true,  301 );
+      header("location: /emp/ads",  true,  301 );
       exit;
       
     }
@@ -89,14 +93,16 @@
   }
   elseif(isset($_POST['delete'])) {
     $id = $_POST['id'];
+    $emp_id = $_SESSION['userID'];
 
     global $database;
     $conn = $database->getConnection();
     
     $stmt = "DELETE FROM G10_Advertisement_info WHERE id = $id";
-
+    $conn->exec("INSERT INTO G10_Advertisement_log 
+                VALUES ('$id', '$emp_id','".date('Y-m-d H:i:s')."', 'delete')");
     if($conn->exec($stmt)) {
-      header("location: /emp/group10",  true,  301 );
+      header("location: /emp/ads",  true,  301 );
       exit;
     }
   }

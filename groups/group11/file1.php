@@ -36,6 +36,7 @@ $klein->respond('GET', '/staff/employee', function($request, $response, $service
 $klein->respond('GET', '/staff/employee/dashboard', function ($request, $response, $service, $app, $validator) {
   error_reporting(E_ALL);
   ini_set('display_errors', 1);
+  $service->bootstrap3 = true;
   //check login
    $data = $app->login->LoginThenGoTo('employee','/emp/staff');
   //  echo($data['userID']);
@@ -49,6 +50,19 @@ $klein->respond('GET', '/staff/employee/dashboard', function ($request, $respons
     $stmt = $conn->prepare($query);
     $stmt->execute();
     $service->employee = $stmt->fetchAll(PDO::FETCH_BOTH);
+    $id = $data['userID'];
+
+    $checks = "SELECT * from G11_Emp_staff where userID = $id" ;
+    $stmt = $conn->prepare($checks);
+    $stmt->execute();
+    $service->state = $stmt->fetchAll(PDO::FETCH_BOTH);
+    $status = $service->state[0]['Status'];
+
+     //select G11_Emp_permission
+  $checkstatus = "SELECT * from G11_Emp_permission where `status` = '$status'" ;
+  $stmt = $conn->prepare($checkstatus);
+  $stmt->execute();
+  $service->permission = $stmt->fetchAll(PDO::FETCH_BOTH);
 
 
   $service->nameTag = 'dashboard.php';
@@ -59,7 +73,7 @@ $klein->respond('GET', '/staff/employee/dashboard', function ($request, $respons
 $klein->respond('GET', '/staff/employee/profile', function($request, $response, $service, $app, $validator) {
   error_reporting(E_ALL);
   ini_set('display_errors', 1);
-
+  $service->bootstrap3 = true;
   //check login
   $data = $app->login->LoginThenGoTo('employee','/emp/staff');
 
@@ -81,6 +95,38 @@ $klein->respond('GET', '/staff/employee/profile', function($request, $response, 
   $stmt->execute();
   $service->picture = $stmt->fetchAll(PDO::FETCH_BOTH);
 
+  //select db G11_Emp_department
+  $depart = "SELECT * FROM G11_Emp_department WHERE userID = $id " ;
+  $stmt = $conn->prepare($depart);
+  $stmt->execute();
+  $service->department = $stmt->fetchAll(PDO::FETCH_BOTH);
+  $branchID = $service->department[0]['branchID'];
+    // select db branch
+    $bran = "SELECT * FROM G14_Branch WHERE BranchID = $branchID " ;
+    $stmt = $conn->prepare($bran);
+    $stmt->execute();
+    $service->Branch = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+   //select db G11_Emp_department Availability
+   $time = "SELECT YEAR(CURRENT_DATE) - YEAR(`availability`) AS 'time' from G11_Emp_department  WHERE userID = $id " ;
+   $stmt = $conn->prepare($time);
+   $stmt->execute();
+   $service->depTime = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+  //permission
+  $checks = "SELECT * from G11_Emp_staff where userID = $id" ;
+  $stmt = $conn->prepare($checks);
+  $stmt->execute();
+  $service->state = $stmt->fetchAll(PDO::FETCH_BOTH);
+  $status = $service->state[0]['Status'];
+
+   //select G11_Emp_permission
+  $checkstatus = "SELECT * from G11_Emp_permission where `status` = '$status'" ;
+  $stmt = $conn->prepare($checkstatus);
+  $stmt->execute();
+  $service->permission = $stmt->fetchAll(PDO::FETCH_BOTH);
+  
+
   // $service->id2 =  $data['userID'];
   $service->nameTag = 'profile.php';
   $service->render('layouts/group11/employee.php');
@@ -90,7 +136,7 @@ $klein->respond('GET', '/staff/employee/profile', function($request, $response, 
 $klein->respond('GET', '/staff/employee/editprofile', function($request, $response, $service, $app, $validator){
   error_reporting(E_ALL);
   ini_set('display_errors', 1);
-
+  $service->bootstrap3 = true;
   //check login
   $data = $app->login->LoginThenGoTo('employee','/emp/staff');
 
@@ -104,6 +150,19 @@ $klein->respond('GET', '/staff/employee/editprofile', function($request, $respon
   $stmt = $conn->prepare($profileName);
   $stmt->execute();
   $service->profile = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+  //permission
+  $checks = "SELECT * from G11_Emp_staff where userID = $id" ;
+  $stmt = $conn->prepare($checks);
+  $stmt->execute();
+  $service->state = $stmt->fetchAll(PDO::FETCH_BOTH);
+  $status = $service->state[0]['Status'];
+
+   //select G11_Emp_permission
+  $checkstatus = "SELECT * from G11_Emp_permission where `status` = '$status'" ;
+  $stmt = $conn->prepare($checkstatus);
+  $stmt->execute();
+  $service->permission = $stmt->fetchAll(PDO::FETCH_BOTH);
 
    //select db core_user_table
    $user = "SELECT username FROM core_user_table WHERE userID = $id " ;
@@ -125,7 +184,7 @@ $klein->respond('GET', '/staff/employee/editprofile', function($request, $respon
 $klein->respond('POST', '/staff/employee/editprofile/save', function($request, $response, $service, $app, $validator){
   error_reporting(E_ALL);
   ini_set('display_errors', 1);
-
+  $service->bootstrap3 = true;
   //check login
   $data = $app->login->LoginThenGoTo('employee','/emp/staff');
 
@@ -139,6 +198,37 @@ $klein->respond('POST', '/staff/employee/editprofile/save', function($request, $
       $stmt = $conn->prepare($profileName);
       $stmt->execute();
       $service->profile = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+      //history
+      $firstname =  $service->profile[0]['Firstname'];
+      $lastname = $service->profile[0]['Lastname'];
+      $tell = $service->profile[0]['Tell'];
+      $email = $service->profile[0]['Email'];
+      $sex = $service->profile[0]['Sex'];
+      $status = $service->profile[0]['Status'];
+      $address = $service->profile[0]['Address'];
+      $salary = $service->profile[0]['Salary'];
+      $Super_emp= $service->profile[0]['Super_emp'];
+      // $userID= $service->profile[0]['userID'];
+
+       //insert db G11_Emp_history_staff
+     $historyEmp = "INSERT INTO G11_Emp_history_staff (Firstname, Lastname, Sex, `Status` , Email, `Address`, Salary, Super_emp, Tell, userID) 
+                  VALUES ('$firstname','$lastname','$sex','$status','$email','$address','$salary','$Super_emp','$tell','$id')";
+     $stmt = $conn->prepare($historyEmp);
+     $stmt->execute();
+      
+      //permission
+      $checks = "SELECT * from G11_Emp_staff where userID = $id" ;
+      $stmt = $conn->prepare($checks);
+      $stmt->execute();
+      $service->state = $stmt->fetchAll(PDO::FETCH_BOTH);
+      $status = $service->state[0]['Status'];
+
+      //select G11_Emp_permission
+      $checkstatus = "SELECT * from G11_Emp_permission where `status` = '$status'" ;
+      $stmt = $conn->prepare($checkstatus);
+      $stmt->execute();
+      $service->permission = $stmt->fetchAll(PDO::FETCH_BOTH);
 
      //select db core_user_table
       $user = "SELECT * FROM core_user_table WHERE userID = $id " ;
@@ -182,6 +272,7 @@ $klein->respond('POST', '/staff/employee/editprofile/save', function($request, $
   //not null
   $firstname = $request->firstName;
   $lastname = $request->lastName;
+  $tell = $request->tell;
   $email = $request->Email;
   $username = $request->Username;
   $file = $request->file;
@@ -202,7 +293,7 @@ $klein->respond('POST', '/staff/employee/editprofile/save', function($request, $
 
       if(count($countEmail) == null){
       //update db G11_Emp_staff
-      $updateProfile = "UPDATE G11_Emp_staff SET Firstname = '$firstname', Lastname = '$lastname', Email = '$email' WHERE userID = $id";
+      $updateProfile = "UPDATE G11_Emp_staff SET Firstname = '$firstname', Lastname = '$lastname', Tell = '$tell', Email = '$email' WHERE userID = $id";
       $stmt = $conn->prepare($updateProfile);
       $stmt->execute();
 
@@ -229,7 +320,7 @@ $klein->respond('POST', '/staff/employee/editprofile/save', function($request, $
 
         if(count($countUser) == null){
         //update db G11_Emp_staff
-        $updateProfile = "UPDATE G11_Emp_staff SET Firstname = '$firstname', Lastname = '$lastname', Email = '$email' WHERE userID = $id";
+        $updateProfile = "UPDATE G11_Emp_staff SET Firstname = '$firstname', Lastname = '$lastname',Tell = '$tell', Email = '$email' WHERE userID = $id";
         $stmt = $conn->prepare($updateProfile);
         $stmt->execute();
 
@@ -241,7 +332,7 @@ $klein->respond('POST', '/staff/employee/editprofile/save', function($request, $
   }
 
   //update db G11_Emp_staff
-  $updateProfile = "UPDATE G11_Emp_staff SET Firstname = '$firstname', Lastname = '$lastname' WHERE userID = $id";
+  $updateProfile = "UPDATE G11_Emp_staff SET Firstname = '$firstname', Lastname = '$lastname', Tell = '$tell' WHERE userID = $id";
   $stmt = $conn->prepare($updateProfile);
   $stmt->execute();
 
@@ -298,8 +389,144 @@ $klein->respond('POST', '/staff/employee/editprofile/save', function($request, $
     $response->redirect('/emp/staff/employee/profile');
   });
 
-  $klein->respond('POST', '/staff/employee/editprofile/test', function($request, $response, $service, $app, $validator){
-    // $target_dir = "/layouts/group11/uploads/";
+ 
+
+  $klein->respond('GET', '/staff/employee/createprofile', function($request, $response, $service, $app, $validator){
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+    $service->bootstrap3 = true;
+    //check login
+    $data = $app->login->LoginThenGoTo('employee','/emp/staff');
+  
+    // connect db
+    global $database;
+    $conn = $database->getConnection();
+
+    $id = $data['userID'];
+    //permission
+    $checks = "SELECT * from G11_Emp_staff where userID = $id" ;
+    $stmt = $conn->prepare($checks);
+    $stmt->execute();
+    $service->state = $stmt->fetchAll(PDO::FETCH_BOTH);
+    $status = $service->state[0]['Status'];
+
+    //select G11_Emp_permission
+    $checkstatus = "SELECT * from G11_Emp_permission where `status` = '$status'" ;
+    $stmt = $conn->prepare($checkstatus);
+    $stmt->execute();
+    $service->permission = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+    //select db G11_Emp_status
+     $status = "SELECT * FROM G11_Emp_status"  ;
+     $stmt = $conn->prepare($status);
+     $stmt->execute();
+     $service->showstatus = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+     $bran = "SELECT * FROM G14_Branch" ;
+     $stmt = $conn->prepare($bran);
+     $stmt->execute();
+     $service->branch = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+      $service->nameTag = 'newprofile.php';
+      $service->render('layouts/group11/employee.php');
+  });
+
+  $klein->respond('POST', '/staff/employee/createprofile/save', function($request, $response, $service, $app, $validator){
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+    $service->bootstrap3 = true;
+    //check login
+    $data = $app->login->LoginThenGoTo('employee','/emp/staff');
+  
+    // connect db
+    global $database;
+    $conn = $database->getConnection();
+
+    $id = $data['userID'];
+      //permission
+      $checks = "SELECT * from G11_Emp_staff where userID = $id" ;
+      $stmt = $conn->prepare($checks);
+      $stmt->execute();
+      $service->state = $stmt->fetchAll(PDO::FETCH_BOTH);
+      $status = $service->state[0]['Status'];
+
+      //select G11_Emp_permission
+      $checkstatus = "SELECT * from G11_Emp_permission where `status` = '$status'" ;
+      $stmt = $conn->prepare($checkstatus);
+      $stmt->execute();
+      $service->permission = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+    //checkpass
+    if($request->password != $request->confirmpassword) {
+       //select db G11_Emp_status
+      $status = "SELECT * FROM G11_Emp_status"  ;
+      $stmt = $conn->prepare($status);
+      $stmt->execute();
+      $service->showstatus = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+      $service->error = 'password is not same as confirm password.';
+      $service->nameTag = 'newprofile.php';
+      $service->render('layouts/group11/employee.php');
+    }
+
+    $bran = "SELECT * FROM G14_Branch" ;
+    $stmt = $conn->prepare($bran);
+    $stmt->execute();
+    $service->branch = $stmt->fetchAll(PDO::FETCH_BOTH);
+   
+    $username = $request->Username;
+    $password = $request->password;
+    $email = $request->Email;
+    $validateLink = 0;
+    $role = 'employee';
+    //create user
+    $app->login->register($username, $password, $email, $validateLink, $role);
+
+     //select db core_user_table
+     $userID = "SELECT userID FROM core_user_table WHERE username = '$username' AND email = '$email' "  ;
+     $stmt = $conn->prepare($userID);
+     $stmt->execute();
+     $user = $stmt->fetchAll(PDO::FETCH_BOTH);
+
+     $firstName = $request->firstName;
+     $lastName = $request->lastName;
+     $gender = $request->gender;
+     $Status = $request->Status;
+     $address = $request->address;
+     $Salary = $request->Salary;
+     $Super_emp = 5;
+     $Tell = $request->Tell;
+     $users = 0;
+
+     $experience = $request->experience;
+     $Profession = $request->Profession;
+     $ot_rate = $request->ot_rate;
+     $eng_lv = $request->eng_lv;
+     $availability = $request->availability;
+     $branch = $request->branch;
+
+     if($request->password == $request->confirmpassword) {
+     $users = $user[0]['userID'];
+      //insert db G11_Emp_staff
+     $newprofile = "INSERT INTO G11_Emp_staff (Firstname, Lastname, Sex, `Status` , Email, `Address`, Salary, Super_emp, Tell, userID) 
+     VALUES ('$firstName','$lastName','$gender','$Status','$email','$address','$Salary','$Super_emp','$Tell','$users')";
+     $stmt = $conn->prepare($newprofile);
+     $stmt->execute();
+
+       //insert db G11_Emp_department
+       $newdepart = "INSERT INTO G11_Emp_department (userID, experience, Profession, ot_rate , eng_lv, `availability`, branchID) 
+                                            VALUES ('$users','$experience','$Profession','$ot_rate','$eng_lv','$availability', '$branch')";
+       $stmt = $conn->prepare($newdepart);
+       $stmt->execute();
+     }
+
+      //insert db G11_Emp_picture
+      $newpic = "INSERT INTO G11_Emp_picture (userID) VALUES ('$users')";
+      $stmt = $conn->prepare($newpic);
+      $stmt->execute();
+
+
+       //upload picture
   $fileName = md5(uniqid(rand(),true));
   $target_dir = "layouts/group11/uploads/";
   $target_file = $target_dir .$fileName. basename($_FILES["fileToUpload"]["name"]);
@@ -338,20 +565,17 @@ $klein->respond('POST', '/staff/employee/editprofile/save', function($request, $
   // if everything is ok, try to upload file
   } else {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-        echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
         //update db G11_Emp_picture
-        $updatePicture = "UPDATE G11_Emp_picture SET parth = '$target_file' WHERE userID = $id";
+        $updatePicture = "UPDATE G11_Emp_picture SET parth = '$target_file' WHERE userID = $users";
         $stmt = $conn->prepare($updatePicture);
         $stmt->execute();
     } else {
         echo "Sorry, there was an error uploading your file.";
     }
   }
-
-  // $service->error =
-    $service->nameTag = 'tester.php';
-    $service->render('layouts/group11/employee.php');
-});
+  
+    $response->redirect('/emp/staff/employee/dashboard');
+  });
 
 $klein->respond('POST', 'staff/employee/add', function($request, $response, $service, $app, $validator){
   if($request->password != $request->confirmpassword) {
@@ -367,6 +591,8 @@ $klein->respond('GET', '/staff/employee/finance', function($request, $response, 
       //test
       global $database;
       $conn = $database->getConnection();
+      $service->bootstrap3 = true;
+      
 
       $revenue = $conn->query("SELECT sum(amount) as total FROM G03_FIN_Revenue")->fetchAll(PDO::FETCH_BOTH);
       $service->revenue = $revenue;

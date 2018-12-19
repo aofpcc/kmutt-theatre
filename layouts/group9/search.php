@@ -26,6 +26,10 @@
     <div class="container text-center">
       <button onclick = "location.href = '/emp/group9/action888'" type="button" class="btn btn-primary btn-lg">Home</button>
       <button onclick = "location.href = '/emp/group9/add'" type="button" class="btn btn-secondary btn-lg">Add Movie</button>
+      <button onclick = "location.href = '/emp/director/add'" type="button" class="btn btn-secondary btn-lg">Add Director</button>
+      <button onclick = "location.href = '/emp/soundtrack/add'" type="button" class="btn btn-secondary btn-lg">Add Soundtrack</button>
+      <button onclick = "location.href = '/emp/subtitle/add'" type="button" class="btn btn-secondary btn-lg">Add Subtitle</button>
+      <button onclick = "location.href = '/emp/genre/add'" type="button" class="btn btn-secondary btn-lg">Add Genre</button>
     </div>
 
 <div class="container text-center">
@@ -47,63 +51,37 @@
         <tr>
           <th scope="col">#</th>
           <th scope="col">Title</th>
-          <th scope="col">Director</th>
+          <th scope="col">Detail</th>
           <th scope="col">Studio</th>
-          <th scope="col"/>
+          <th scope="col">Action</th>
         </tr>
       </thead>
 
   <!-- rows -->
   <tbody>
+    <?php 
+    $count = 1;
+    foreach($this->movies as $movie) { ?>
+      <tr>
+        <td><?=$count?></td>
+        <td><?=$movie["title"]?></td>
+        <td><?=$movie["detail"]?></td>
+        <td><?=$movie["studio_name"]?></td>
+        <td>
+          <button class="btn btn-secondary" onclick="location.href='/emp/group9/update/<?=$movie['id']?>';">Edit</button>
+          <button class="btn btn-danger" onclick="del(<?=$movie['id']?>);">Delete</button>
+        </td>
+      </tr>
     <?php
-          $result = $this->sqlResult;
-          if($result != NULL)
-          for($i = 0; $i<count($result); $i++){
-            $row = $result[$i];
-            
-            echo '<tr>';
-            echo '<th scope="row">'.$row['id'].'</th>';
-            echo '<td>'.$row['title'].'</td>';
-            echo '<td>'.$row['director'].'</td>';
-            echo '<td>'.$row['studio_name'].'</td>';
-            
-            echo '<td>';
-            echo '<button onclick = "location.href = \'/emp/group9/update/'.$row['id'].'\'" type="button" class="btn btn-success">Update</button>';
-            echo '<button onclick = "showDeleteDialog('.$row['id'].', \''.$row['title'].'\')" type="button" class="btn btn-danger ml-1">Delete</button>';
-            echo '</td>';
-            // echo $row['NAME'];
-            echo '</tr>';
-          } 
-        ?>
-
-    <script>
-      function showDeleteDialog(id, title) {
-        if (confirm("Are you sure you want to delete '" + title + "'?")) {
-          location.href = '/emp/group9/action/delete/' + id;
-          // txt = "You pressed OK!";
-        }
-        // } else {
-        //   txt = "You pressed Cancel!";
-        // }
-      }
-    </script>
-    <!-- <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Larry</td>
-          <td>the Bird</td>
-          <td>@twitter</td>
-        </tr> -->
+    $count++;
+    } ?>
   </tbody>
+  <script>
+    function del(e) {
+        if(confirm("Are you sure!!")) {
+          location.href='/emp/group9/action/delete/'+e;
+
+        }
+    }
+  </script>
 </table>

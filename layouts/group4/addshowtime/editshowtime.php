@@ -24,16 +24,26 @@
               <div class="row">
                 <div class="col-lg-8 mx-auto">
                   <!-- action form -->
-                  <form action="/emp/g04/showTime/add" method="post">
+                  <form action="/emp/g04/showTime/edit" method="post">
                     <div class="form-group">
                       <label for="sel1">Movie:</label>
                       <select class="form-control" id="movie_id" name="movie_id">
                         <?php foreach($this->movies as $movie) { ?>
-                          <option value="<?=$movie["id"] ?>"><?=$movie["title"]." [".$movie['language']."]"?></option>
+                          <option value="<?=$movie["id"] ?>"><?=$movie["title"]?></option>
                         <?php } ?>
                       </select>
                     </div>
-
+                    <div class="form-group">
+                      <label for="sel1">Soundtrack</label>
+                      <select class="form-control" id="soundtrack" name="soundtrack">
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="sel1">Subtitle</label>
+                      <select class="form-control" id="subtitle" name="subtitle" >
+                        <option value="">No Subtitle</option>
+                      </select>
+                    </div>
                     <div class="form-group">
                       <label for="sel1">Branch:</label>
                       <select class="form-control" id="branch_id" name="branch_id">
@@ -107,6 +117,8 @@
 
             function changeRoomOption(e) {
               $.get('/emp/g04/getroom/' + e).done(function(data){
+                data = JSON.parse(data);
+                // console.log(data);
                 $("#room_id").children("option").remove();
                 $.each(data, function(key, value) {   
                     $('#room_id').append($("<option></option>")
@@ -123,11 +135,13 @@
                 data = JSON.parse(data);
                 // console.log(data);
                 newEndDate(data.minute);
-              })
+              });
             }
 
             $(document).ready(function(){
               changeRoomOption(1);
+              changeSoundtrack();
+              changeSubtitle();
             });
 
             $("#branch_id").change(function(){
@@ -140,7 +154,41 @@
 
             $("#movie_id").change(function(){
               changeMoviesEndTime();
+              changeSoundtrack();
+              changeSubtitle();
             });;
+
+            var defaultMovie = <?php echo $this->data["movie_id"] ?>;
+            $('#movie_id').val(defaultMovie);
+
+            var soundtrack = '<?php echo $this->data["soundtrack"] ?>';
+            $("#soundtrack").val(soundtrack);
+            
+
+            // var defaultBranch = <?php echo $this->data["room_id"] ?>;
+            // $('#branch_id').val(defaultBranch);
+
+            function changeSoundtrack() {
+              var e = $("#movie_id").val();
+              $.get("/emp/add_showtime/Soundtrack/" + e).done(function(e) {
+                // console.log("good");
+                console.log(e);
+                $("#soundtrack").html(e);
+              }).fail(function(d){
+                alert("Fail");
+              });
+            }
+
+            function changeSubtitle() {
+              var e = $("#movie_id").val();
+              $.get("/emp/add_showtime/Subtitle/" + e).done(function(e) {
+                // console.log("good");
+                console.log(e);
+                $("#subtitle").html(e);
+              }).fail(function(d){
+                alert("Fail");
+              });
+            }
             
             function newEndDate(min){
               // console.log("Min " + min);
@@ -173,3 +221,4 @@
           </script>
     
         <br><br><br>
+        

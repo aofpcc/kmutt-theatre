@@ -29,6 +29,26 @@ function RandomString()
 //---------------------------------------------------------------------
 
 // Move Move
+$klein->respond('GET', '/promotion', function ($request, $response, $service, $app, $validator) {
+  $service->boostrap3 = false;
+  $sql = "select * 
+  from G08_Promo_main
+  where now() between StartDate and EndDate;";
+ 
+  $conn = $app->db->getConnection();
+  $stmt = $conn->prepare($sql);
+  $stmt->execute();
+  $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
+ //  $response->dump($data);
+ //  $response->sendBody();
+ $service->list = $list;
+ $service->isManagementPage = true;
+ $service->promotions = $list;
+   // var_dump($list);
+   // die;
+    $service->render('layouts/group8/DB/cusPromotion.php');
+  });
+
 $klein->respond('GET', '/group8', function ($request, $response, $service, $app, $validator) {
  $service->boostrap3 = false;
  $sql = "select * 
@@ -38,47 +58,18 @@ $klein->respond('GET', '/group8', function ($request, $response, $service, $app,
  $conn = $app->db->getConnection();
  $stmt = $conn->prepare($sql);
  $stmt->execute();
- $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+ $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
 //  $response->dump($data);
 //  $response->sendBody();
-$service->promotions = $data;
-// var_dump($data);
-// die;
-
+$service->list = $list;
+$service->isManagementPage = true;
+$service->promotions = $list;
+  // var_dump($list);
+  // die;
    $service->render('layouts/group8/DB/Promotion1.php');
  });
 
 //---------------------------------------------------------------------
-
-
-
-$klein->respond('GET', '/group8M', function ($request, $response, $service) {
-  $service->title = "Movie1";
-  $service->bootstrap3 = false;
-  $service->render('layouts/group8/DB2/Movie1.php');
-});
-
-$klein->respond('GET', '/group8M/[:id]', function ($request, $response, $service) {
-  return $request->id;
-});
-
-$klein->respond('GET', 'emp/group8M2', function ($request, $response, $service) {
-
-  $service->render('layouts/group8/DB2/Movie2.php');
-});
-$klein->respond('GET', 'emp/group8F', function ($request, $response, $service) {
-
-  $service->render('layouts/group8/DB2/Food1.php');
-});
-$klein->respond('GET', 'emp/group8F2', function ($request, $response, $service) {
-
-  $service->render('layouts/group8/DB2/Food2.php');
-});
-$klein->respond('GET', 'emp/group8F3', function ($request, $response, $service) {
-
-  $service->render('layouts/group8/DB2/Food3.php');
-});
-
 
 $klein->respond('GET', '/group8/N', function ($request, $response, $service) {
   global $database;
@@ -98,11 +89,20 @@ $klein->respond('GET', '/group8/N', function ($request, $response, $service) {
     $conn->exec($sql);
     }
 catch(PDOException $e)
-    {
+    { 
     echo $sql."<br>". $e->getMessage();
     }
+  $service->bootstrap3 = false;
   $service->allMovies = $arr;
   $service->pageTitle = 'Hello';
   $service->render('layouts/group8/New.php');
+  
 });
-?>
+
+
+$klein->respond('GET', '/promotion/testjaa', function ($request, $response, $service,$app,$validator) {
+  return $app->promotion->getCode();
+});
+$klein->respond('GET', '/promotion/procode', function ($request, $response, $service,$app,$validator) {
+  return $app->promotion->usecode($memberID,$promocode);
+});

@@ -1,0 +1,10 @@
+.form-signin { 
+    width: 100%;
+    max-width: 330px !important ; 
+    padding: 15px;
+    margin: auto;
+}
+
+.color-box { 
+    background-color: #F000F2;
+}

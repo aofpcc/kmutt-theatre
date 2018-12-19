@@ -62,20 +62,13 @@
                                     <div class="poster"><img src="/layouts/group2/images/selectseat/unnamed.jpg"></div>
                                     <div class="movie-detail">
                                         <div class="main-detail">
-                                            <h1 class="name">อควาแมน เจ้าสมุทร</h1>
+                                            <h1 class="name">Aquaman</h1>
                                             <ul class="movie-detail-list movie-date-time">
                                                 <li class="list-item"><span class="date">13 ธันวาคม 2018</span></li>
                                                 <li class="list-item"><span class="time">13:20</span></li>
                                             </ul>
                                         </div>
-                                        <!-- <p class="cinema"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 82.97 119.39" class="sf-icon location">
-												<defs></defs>
-												<title>location</title>
-												<path d="M74.77,59.56C77.18,53.12,79,46.69,79,39,79,19.67,60.82,4,41.49,4S4,19.67,4,39c0,8.08,2.27,14.46,4.87,21.45l33.55,54.93Z"
-												 class="cls-1"></path>
-												<circle cx="41.49" cy="40.25" r="7.85" class="cls-2"></circle>
-											</svg> เอส เอฟ ซีเนม่า เดอะมอลล์ ท่าพระ
-										</p> -->
+
                                         <ul class="movie-detail-list movie-theater">
                                             <li class="list-item theater"><span class="cinema-text">Theatre no.</span><span
                                                     class="cinema-number">4</span></li>
@@ -92,7 +85,6 @@
                                                         class="cls-1"></path>
                                                 </svg> TH</li>
                                         </ul>
-
                                     </div>
                                 </div>
                             </div>
@@ -123,11 +115,11 @@
                                 </ul>
                                 <div class="clear"></div>
 
-                                <form action="/emp/group2/home_page/select_movie/select_time/select_seat/pay_ment<?= $this->showtime_id?>"
+                                <form action="/emp/group2/home_page/select_movie/select_time/select_seat/pay_ment"
                                     method="post">
                                     <ul id="selectedSeats" class="scrollbar scrollbar1"></ul>
                                     <button name="book_seat" value="book_seat" id="book_seat" class="checkout-button">Book
-                                        now
+                                        Now
                                     </button>
                                     <div id="legend"></div>
                             </div>
@@ -140,5 +132,3 @@
 
                     </div>
                 </div>
-                <script src="/layouts/group1/js/jquery.nicescroll.js"></script>
-                <script src="/layouts/group1/js/scripts.js"></script>

@@ -1,33 +1,7 @@
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="layouts\group5\register-makeup.css">
-  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
-  <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script> -->
-  <!-- <title>Register</title> -->
-  <!--Navbar-->
-  <!-- <nav class="navbar navbar-expand-lg navbar navbar-dark navbar-bg">
-  <b><a class="navbar-brand mr-5 ml-3" href="#"><p class="navbar-color mb-1">CS-18</p></a></b> -->
-  <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button> -->
-  <!-- <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Movies</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Events</a>
-      </li> -->
-  <!-- <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li> -->
-  <!-- </ul>
-  </div>
-</nav> -->
-  <!-- End Navbar -->
+  <link rel="stylesheet" href="/layouts/group5/register-makeup.css">
+  <link rel="stylesheet" href="/layouts/group5/css/change.css">
 </head>
 
 <!-- p-3 mb-2 bg-light -->
@@ -63,7 +37,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text">@</span>
               </div>
-              <input type="text" pattern="[A-Za-z0-9]{5,}" title="Please include at least 5 characters" class="form-control" id="username" name="username" placeholder="Username" require>
+              <input type="text" pattern="[a-zA-Z0-9-_\.]{5,}" title="Please include at least 5 characters" class="form-control" id="username" name="username" placeholder="Username" required="">
               <div class="invalid-feedback" style="width: 100%;">
                 Your username is required.
                 ) </div>
@@ -77,7 +51,7 @@
                     <div class="invalid-feedback">
                         Valid password is required.
                     </div> --><input
-              type="password" title="Please include at least 6 characters" name="password" pattern=".{6,}" id="password" class="form-control" placeholder="Enter your Password..." required="" value="123456">
+              type="password" title="Please include at least 6 characters" name="password" pattern=".{6,}" id="password" class="form-control" placeholder="Enter your Password..." required="" value="">
             <div class="invalid-feedback">
               Valid password is required.
             </div>
@@ -91,8 +65,7 @@
                     <div class="invalid-feedback">
                         Valid password is required.
                     </div> -->
-            <input type="password" name="confirmpassword" pattern=".{6,}" id="password" class="form-control" value="" placeholder="Enter your Password again..."
-              required>
+            <input type="password" name="confirmpassword" pattern=".{6,}" id="password" class="form-control" value="" placeholder="Enter your Password again..."required>
             <div class="invalid-feedback">
               Valid password is required.
             </div>
@@ -119,7 +92,7 @@
 
          <div class="row">
           <div class="col-md-6 mb-3">
-          <label for="email">Email <span class="text-muted">(Optional)</span></label>
+          <label for="email">Email <span class="text-muted"></span></label>
           <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com" value="">
           <div class="invalid-feedback">
             Please enter a valid email address for shipping updates.
@@ -204,7 +177,12 @@
             </div>
           </div>
         </div>
-        <input type="submit" class="btn btn-primary" value="Confirm" />
+        <div class="py-3">
+        <center>
+          <input type="submit" class="block gap red-block white-font" value="Confirm" />
+          <input type="submit" class="cancel-block gap" onclick="location='/customer/login'" value="Cancle" />
+      </center>
+</div>
       </form>
   </div>
   <!-- End Register -->

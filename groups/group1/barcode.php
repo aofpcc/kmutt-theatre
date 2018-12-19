@@ -6,4 +6,4 @@ $klein->respond('POST', '/kmutt/ticket/barcode/[:showtime_id.]', function ($requ
   ->fetchAll(PDO::FETCH_ASSOC);
   $service->showtime_id = $showtime_id;
   $service->render('layouts/group1/ticket.php');
- ?>
+});

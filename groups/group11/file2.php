@@ -33,7 +33,7 @@ $klein->respond('POST', '/staff/employee/worktime', function($request, $response
     } else {
       for($i=0; $i < count($res); $i++) {
         $d = $now->format("Y-m-d");
-        if($now->format("Y-m-d") === $res[$i]['workDate'] && $res[$i]['timeOut'] === NULL && intval($now->format("H")) >= 20 ) {
+        if($now->format("Y-m-d") === $res[$i]['workDate'] && $res[$i]['timeOut'] === NULL && intval($now->format("H")) >= 18 ) {
           $date = "UPDATE G11_Emp_timeStamp SET 
           timeOut=CURRENT_TIMESTAMP  
           WHERE userID = $request->uid ORDER BY timeIn DESC limit 1";
@@ -144,6 +144,53 @@ $klein->respond('POST', '/staff/employee/worktime', function($request, $response
     $service->render('layouts/group11/employee.php');
   });
   //timestamp
+
+  $klein->respond('GET', '/staff/employee/changepass', function($request, $response, $service, $app, $validator){
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+    $service->bootstrap3 = true;
+    //check login
+    $data = $app->login->LoginThenGoTo('employee','/emp/staff');
+  
+    // connect db
+    global $database;
+    $conn = $database->getConnection();    
+
+    $service->nameTag = 'changepass.php';
+    $service->render('layouts/group11/employee.php');
+  });
+
+  $klein->respond('POST', '/staff/employee/changepass/save', function($request, $response, $service, $app, $validator){
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+    $service->bootstrap3 = true;
+    //check login
+    $data = $app->login->LoginThenGoTo('employee','/emp/staff');
+    
+    // connect db
+    global $database;
+    $conn = $database->getConnection();   
+    
+    $service->validateParam('newpassword', 'New Password cannot be null')->notNull();
+    $service->validateParam('confirmpassword', 'Confirm Password cannot be null')->notNull();
+    if ($request->newpassword != $request->confirmpassword) {
+      $service->error ='Password not the same';
+      $service->nameTag = 'changepass.php';
+      $service->render('layouts/group11/employee.php');
+    }
+    if($request->newpassword == $request->confirmpassword){
+    $result = $app->login->setNewPassword($request->newpassword);
+    }
+    // $p = $service->passValue;
+    if ($result["update"]) {
+        $service->flash("Password was reseted");
+    } else {
+        $service->flash("Password was not reseted. Please Contact Us");
+    }
+     // $service->passValue = $p;
+     $response->redirect('/emp/staff/employee/dashboard');
+
+  });
 
 $klein->respond('GET', '/staff/employee/editemp/[:userID]', function ($request, $response, $service, $app, $validator) {
   error_reporting(E_ALL);

@@ -95,6 +95,12 @@
               }
               ?>
               <li class="nav-item">
+              <a class="nav-link" href="/emp/staff/employee/changepass">
+                <span data-feather="edit-2"></span>
+                Change Password                
+              </a>
+            </li>  
+              <li class="nav-item">
                 <a class="nav-link" href="/emp/staff/logout">
                   <span data-feather="power"></span>
                   LOGOUT                 

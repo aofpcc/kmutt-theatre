@@ -59,7 +59,7 @@ $klein->respond('GET', '/edit_showtime/[:showtime_id]', function ($request, $res
     // var_dump($service->startTime);
     // die;
     $service->endTime = $b->format("Y-m-d")."T".$b->format("H:i");
-    echo json_encode($data[0]);
+    //echo json_encode($data[0]);
     $service->render("layouts/group4/addshowtime/editshowtime.php");
 });
 

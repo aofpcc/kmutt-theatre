@@ -19,9 +19,12 @@
                   <form>
                     <div class="form-group">
                     <div class="container">
-                            <a href="/emp/showRoominfo">Room Info</a><br>
-                            <a href="/emp/showAmountseat">Amount Seat</a><br>
-                            <a href="/emp/showtime">show time</a><br>
+                    <input type="button" class="btn btn-success btn-xl custom-button-width .navbar-right"  value="  Room Info  " onclick=" showRoominfo_page()"></button><br><br>
+                    <input type="button" class="btn btn-success btn-xl custom-button-width .navbar-right"  value="  Seat Amount  " onclick=" showAmountseat_page()"></button><br><br>
+                    <input type="button" class="btn btn-success btn-xl custom-button-width .navbar-right"  value="  Showtime  " onclick=" showtime_page()"></button><br><br>
+                            <!-- <a href="/emp/showRoominfo">Room Info</a><br>
+                            <a href="/emp/showAmountseat">Seat Amount</a><br>
+                            <a href="/emp/showtime">Showtime</a><br> -->
                       <br><br>
                     </div>
                   </form>
@@ -33,3 +36,19 @@
             </div>
             <br><br>
           </div>
+          <script>
+                  function showRoominfo_page()
+                {
+                    location.href = "/emp/showRoominfo";
+                } 
+
+                function showAmountseat_page()
+                {
+                    location.href = "/emp/showAmountseat";
+                } 
+
+                function showtime_page()
+                {
+                    location.href = "/emp/showtime";
+                } 
+         </script>

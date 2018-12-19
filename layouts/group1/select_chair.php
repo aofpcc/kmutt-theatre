@@ -72,14 +72,14 @@
           <li>: <b><i>$</i><span id="total">0</span></b></li>
         </ul>
         <div class="clear"></div><br>
-        
 
-        <form action="index.html" method="post">
+
+        <!-- <form action="index.html" method="post">
           Code ID :  <br>
             <input type="text" name="codeID" value="example : Mickey">
             <button name = "send_code" action ="/emp/promotion/procode" value = "send_code" id = "send_code" class = "checkout-button">Send Code
             </button>
-        </form>
+        </form> -->
 
             <?php //foreach($this->movie_id as $movie_id) { ?>
             <form action = "/customer/kmutt_home/branch/show_time/select_chair/payment/<?= $this->showtime_id?>" method = "post">

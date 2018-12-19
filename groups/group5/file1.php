@@ -315,7 +315,7 @@ $klein->respond('POST', '/register-form', function ($request, $response, $servic
     $conn->beginTransaction();
 
     try {
-        $query = "SELECT * from G05_Member_profile 
+        $query = "SELECT * from G05_Member_profile
     WHERE memberID=:userID or ID_Card=:ID_Card or
     Email=:Email or PhoneNumber=:PhoneNumber";
     $username = $request->username;
@@ -347,7 +347,7 @@ $klein->respond('POST', '/register-form', function ($request, $response, $servic
         // $response->redirect('/customer/register');
         // $response->sendHeaders();
       }
-       if($x_num > 0 && $request->username == $v["username"]) { 
+       if($x_num > 0 && $request->username == $v["username"]) {
         $service->flash("This username is already used");
         $a = true;
         // $response->redirect('/customer/register');
@@ -360,7 +360,7 @@ $klein->respond('POST', '/register-form', function ($request, $response, $servic
         // $response->redirect('/customer/register');
         // $response->sendHeaders();
       }
-        if($d_num > 0 && $request->id_card == $d["ID_Card"]) { 
+        if($d_num > 0 && $request->id_card == $d["ID_Card"]) {
         $service->flash("This ID number is already used");
         $a = true;
         // $response->redirect('/customer/register');
@@ -372,7 +372,7 @@ $klein->respond('POST', '/register-form', function ($request, $response, $servic
     } catch (\Exception $e) {
         // die($e->getMessage());
        $service->back();
-       return; 
+       return;
     }
 
     $username = $request->username;
@@ -430,7 +430,7 @@ $klein->respond('POST', '/register-form', function ($request, $response, $servic
       $app->login->loginPage();
     } else {
         // die($result["data"]);
-      $service->flash("Username or Email is already used");
+      $service->flash("This e-mail is already used");
       $service->back();
       return;
     }

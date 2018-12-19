@@ -111,4 +111,4 @@
          console.log(result[0].Discount);
       });
   }
-  </script> 
+  </script>

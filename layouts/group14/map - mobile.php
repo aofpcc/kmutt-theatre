@@ -146,7 +146,7 @@
         console.log(document.getElementById("confirmLoc").value);
         console.log(document.getElementById("confirmLoc").name);
     }
-    var movieId = <?php echo json_encode($this -> movie_id); ?>;
+    var movieId = <?php echo json_encode($this -> mov_id); ?>;
     $("#confirmLoc").click(function(e){
         if(selected == null) {
             // alert("Please Choose Branch");

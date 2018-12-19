@@ -49,6 +49,7 @@ $klein->respond('GET', '/kmutt_home/map/[:movie_id]', function ($request, $respo
   $stmt->execute();
   $data = $stmt->fetchAll();
   $service->guy = $data;
+  $service->mov_id = $request->movie_id;
   $service->render('layouts/group14/map.php');
 });
 
